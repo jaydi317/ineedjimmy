@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Center</title>
+<link href="../assets/command-fonts.css" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CHANGE THIS IF YOUR PROXY URL IS DIFFERENT
+   ═══════════════════════════════════════════ */
+
+:root {
+  --api-url: ""; /* Set in JS below */
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; }
+body { font-family:'DM Sans',sans-serif; background:#08080d; color:#e8e8f0; overflow-x:hidden; }
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(200,162,78,0.2); border-radius:3px; }
+
+/* ── Animations ── */
+@keyframes loadSlide { 0%{transform:translateX(-100%)} 100%{transform:translateX(400%)} }
+@keyframes pulse { 0%,100%{opacity:.4} 50%{opacity:1} }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.fade-in { animation: fadeIn 0.4s ease forwards; }
+
+/* ── Shared ── */
+.hidden { display:none !important; }
+
+/* ═══════════════════════════════════════════
+   LOGIN
+   ═══════════════════════════════════════════ */
+#login-screen {
+  min-height:100vh; display:flex; align-items:center; justify-content:center; position:relative;
+}
+#login-screen::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(ellipse at 30% 40%, rgba(200,162,78,0.025) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 60%, rgba(200,162,78,0.015) 0%, transparent 60%);
+}
+.login-card {
+  position:relative; z-index:2; width:390px; padding:40px 34px;
+  background:rgba(17,17,24,0.93); border:1px solid rgba(200,162,78,0.12);
+  border-radius:16px; backdrop-filter:blur(20px);
+}
+.logo-mark {
+  width:52px; height:52px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-weight:700; font-size:18px; margin:0 auto 18px;
+  box-shadow:0 6px 20px rgba(200,162,78,0.2);
+}
+.login-h {
+  font-family:'Playfair Display',serif; font-size:22px; font-weight:600; text-align:center; margin-bottom:3px;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.login-sub { text-align:center; font-size:11px; margin-bottom:28px; }
+.field { margin-bottom:14px; }
+.field label { display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.8px; margin-bottom:4px; }
+.field input, .field textarea {
+  width:100%; padding:11px 13px; border:1px solid rgba(200,162,78,0.12); border-radius:7px;
+  font-size:13px; font-family:'DM Sans',sans-serif; outline:none; transition:border .2s;
+}
+.field input:focus, .field textarea:focus { border-color:var(--accent); }
+.field textarea { min-height:70px; resize:vertical; line-height:1.5; }
+.btn-primary {
+  width:100%; padding:13px; border:none; border-radius:9px;
+  font-size:13px; font-weight:700; font-family:'DM Sans',sans-serif; cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+}
+.btn-primary:hover { transform:translateY(-2px); }
+.btn-primary:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+.login-tagline { text-align:center; font-size:10px; margin-top:16px; line-height:1.5; }
+.brand-switch { position:absolute; top:18px; right:18px; z-index:10; display:flex; gap:5px; }
+.brand-switch button {
+  padding:5px 10px; border-radius:5px; border:1px solid rgba(200,162,78,0.12); background:transparent;
+  font-size:10px; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all .2s;
+}
+
+/* ═══════════════════════════════════════════
+   TOPBAR
+   ═══════════════════════════════════════════ */
+.topbar {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 24px; border-bottom:1px solid rgba(200,162,78,0.08);
+  backdrop-filter:blur(12px); position:sticky; top:0; z-index:100;
+}
+.tb-left { display:flex; align-items:center; gap:10px; }
+.tb-logo {
+  width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+  font-family:'Playfair Display',serif; font-weight:700; font-size:13px;
+}
+.tb-name {
+  font-family:'Playfair Display',serif; font-size:15px; font-weight:600;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+}
+.tb-right { display:flex; align-items:center; gap:7px; }
+.tb-btn {
+  padding:6px 12px; border-radius:6px; border:1px solid rgba(200,162,78,0.12); background:transparent;
+  font-size:11px; font-family:'DM Sans',sans-serif; cursor:pointer; transition:all .2s;
+}
+.tb-btn.active { border-color:rgba(200,162,78,0.4); }
+.tb-jarvis { font-weight:600; border:none !important; }
+
+/* ═══════════════════════════════════════════
+   DASHBOARD
+   ═══════════════════════════════════════════ */
+.dash { max-width:1060px; margin:0 auto; padding:32px 24px; }
+.dash h1 { font-family:'Playfair Display',serif; font-size:30px; font-weight:600; margin-bottom:5px; }
+.dash > p { font-size:13px; margin-bottom:32px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(230px, 1fr)); gap:12px; }
+.card {
+  border:1px solid rgba(200,162,78,0.08); border-radius:11px; padding:20px;
+  cursor:pointer; transition:all .2s; position:relative; overflow:hidden;
+}
+.card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:2px; opacity:0; transition:opacity .2s;
+}
+.card:hover { transform:translateY(-2px); }
+.card:hover::after { opacity:1; }
+.card-icon { font-size:24px; margin-bottom:10px; }
+.card-title { font-weight:600; font-size:14px; margin-bottom:3px; }
+.card-desc { font-size:11px; line-height:1.5; }
+.card-tag {
+  position:absolute; top:8px; right:8px; padding:2px 7px;
+  font-size:8px; font-weight:700; border-radius:10px; letter-spacing:.4px;
+}
+
+/* ═══════════════════════════════════════════
+   TOOL PAGE
+   ═══════════════════════════════════════════ */
+.tool-page { max-width:720px; margin:0 auto; padding:32px 24px; }
+.back-btn {
+  display:inline-flex; align-items:center; gap:3px; font-size:12px; cursor:pointer;
+  border:none; background:none; font-family:'DM Sans',sans-serif; margin-bottom:24px; transition:color .2s;
+}
+.tool-h { font-family:'Playfair Display',serif; font-size:26px; font-weight:600; margin-bottom:5px; }
+.tool-sub { font-size:12px; margin-bottom:26px; line-height:1.5; }
+.upload-area {
+  margin-bottom:16px; padding:14px; border:1px dashed rgba(200,162,78,0.2); border-radius:9px;
+  text-align:center; cursor:pointer; transition:border .2s;
+}
+.upload-area:hover { border-color:var(--accent); }
+.upload-area p { font-size:12px; }
+.upload-name { font-size:11px; margin-top:3px; font-weight:600; }
+.output-box {
+  margin-top:24px; padding:24px; border:1px solid rgba(200,162,78,0.08);
+  border-radius:11px; max-height:560px; overflow-y:auto; line-height:1.7;
+}
+.output-box h1 { font-family:'Playfair Display',serif; font-size:24px; font-weight:700; margin:32px 0 12px; }
+.output-box h2 { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; margin:28px 0 10px; }
+.output-box h3 { font-family:'Playfair Display',serif; font-size:16px; font-weight:700; margin:24px 0 8px; }
+.output-box p { margin-bottom:6px; font-size:14px; line-height:1.75; }
+.output-box ul { padding-left:16px; margin-bottom:6px; }
+.output-box li { font-size:14px; line-height:1.7; margin-bottom:3px; }
+.error-box {
+  margin-top:14px; padding:12px; background:rgba(255,60,80,0.07);
+  border:1px solid rgba(255,60,80,0.18); border-radius:8px; color:#ff6678; font-size:12px;
+}
+.loading-bar { width:100%; height:3px; border-radius:2px; margin-top:18px; overflow:hidden; }
+.loading-fill { height:100%; width:30%; border-radius:2px; animation:loadSlide 1.5s ease-in-out infinite; }
+.loading-text { text-align:center; font-size:12px; margin-top:10px; animation:pulse 2s ease-in-out infinite; }
+
+/* ═══════════════════════════════════════════
+   JARVIS PANEL
+   ═══════════════════════════════════════════ */
+.jarvis-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.4); z-index:190;
+  opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.jarvis-overlay.open { opacity:1; pointer-events:all; }
+.jarvis-panel {
+  position:fixed; top:0; right:0; width:340px; height:100vh;
+  border-left:1px solid rgba(200,162,78,0.1); z-index:200;
+  display:flex; flex-direction:column;
+  transform:translateX(100%); transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+.jarvis-panel.open { transform:translateX(0); }
+.jp-head { padding:14px 18px; border-bottom:1px solid rgba(200,162,78,0.08); display:flex; align-items:center; justify-content:space-between; }
+.jp-left { display:flex; align-items:center; gap:8px; }
+.jp-avatar { width:30px; height:30px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:14px; }
+.jp-name { font-weight:600; font-size:13px; }
+.jp-status { font-size:9px; color:#44cc88; }
+.jp-close { background:none; border:none; font-size:16px; cursor:pointer; }
+.jp-messages { flex:1; overflow-y:auto; padding:14px 18px; display:flex; flex-direction:column; gap:8px; }
+.jp-msg { max-width:88%; padding:9px 12px; border-radius:10px; font-size:12px; line-height:1.6; }
+.jp-msg.jarvis { align-self:flex-start; border-bottom-left-radius:2px; }
+.jp-msg.user { align-self:flex-end; border-bottom-right-radius:2px; }
+.jp-input-row { padding:12px 18px; display:flex; gap:7px; }
+.jp-input {
+  flex:1; padding:9px 12px; border:1px solid rgba(200,162,78,0.12); border-radius:7px;
+  font-size:12px; font-family:'DM Sans',sans-serif; outline:none;
+}
+.jp-input:focus { border-color:var(--accent); }
+.jp-send {
+  padding:9px 14px; border:none; border-radius:7px;
+  font-weight:600; font-size:12px; font-family:'DM Sans',sans-serif; cursor:pointer;
+}
+
+@media(max-width:768px) {
+  .grid { grid-template-columns:1fr; }
+  .jarvis-panel { width:100%; }
+  .login-card { width:92%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     LOGIN SCREEN
+     ═══════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="brand-switch">
+    <button onclick="setBrand('jimmy')" id="bs-jimmy">JD</button>
+    <button onclick="setBrand('brittany')" id="bs-brittany">T&T</button>
+  </div>
+  <div class="login-card">
+    <div class="logo-mark" id="login-logo"></div>
+    <div class="login-h" id="login-h"></div>
+    <div class="login-sub" id="login-sub"></div>
+    <div class="field"><label id="lbl-email">Email</label><input placeholder="you@email.com" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <div class="field"><label id="lbl-pass">Password</label><input type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="btn-primary" id="login-btn" onclick="doLogin()">Sign In</button>
+    <div class="login-tagline" id="login-tagline"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     MAIN APP
+     ═══════════════════════════════════════════ -->
+<div id="app-screen" class="hidden">
+  <!-- Topbar -->
+  <div class="topbar" id="topbar">
+    <div class="tb-left">
+      <div class="tb-logo" id="tb-logo"></div>
+      <div class="tb-name" id="tb-name"></div>
+    </div>
+    <div class="tb-right">
+      <button class="tb-btn" id="tb-jd" onclick="setBrand('jimmy')">JD Mode</button>
+      <button class="tb-btn" id="tb-tt" onclick="setBrand('brittany')">T&T Mode</button>
+      <button class="tb-btn tb-jarvis" id="tb-jarvis" onclick="toggleJarvis()">🤖 Jarvis</button>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div id="dashboard" class="dash"></div>
+
+  <!-- Tool Page -->
+  <div style="text-align:center;padding:20px 0 10px;"><a href="chat/index.html" style="display:inline-block;background:linear-gradient(135deg,#c8a24e,#a07828);color:#fff;padding:18px 60px;font-size:1.2rem;font-weight:700;border-radius:12px;text-decoration:none;text-transform:uppercase;letter-spacing:2px;box-shadow:0 4px 20px rgba(200,162,78,0.3);transition:all 0.2s;">💬 Open AI Chat</a></div><div id="tool-page" class="tool-page hidden"></div>
+
+  <!-- Jarvis -->
+  <div class="jarvis-overlay" id="jarvis-overlay" onclick="toggleJarvis()"></div>
+  <div class="jarvis-panel" id="jarvis-panel">
+    <div class="jp-head">
+      <div class="jp-left">
+        <div class="jp-avatar" id="jp-avatar">🤖</div>
+        <div><div class="jp-name">Jarvis</div><div class="jp-status">● Online</div></div>
+      </div>
+      <button class="jp-close" onclick="toggleJarvis()">✕</button>
+    </div>
+    <div class="jp-messages" id="jp-messages"></div>
+    <div class="jp-input-row" id="jp-input-row">
+      <input class="jp-input" id="jp-input" placeholder="Tell Jarvis what to do..." onkeydown="if(event.key==='Enter')sendJarvis()">
+      <button class="jp-send" id="jp-send" onclick="sendJarvis()">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// CONFIG — CHANGE THIS TO YOUR PROXY URL
+// ═══════════════════════════════════════════════════════
+const API_URL = "https://command-api.davisdash.com/api/chat";
+// If Jarvis used a different URL, change it here.
+// ═══════════════════════════════════════════════════════
+
+// ── Brand configs ──
+const BRANDS = {
+  jimmy: {
+    name:"JD Command Center", subtitle:"AI-Powered Business Intelligence", logo:"JD",
+    primary:"#08080d", accent:"#c8a24e", accentLight:"#e8c96e",
+    surface:"#111118", surfaceLight:"#1a1a24", text:"#e8e8f0", textMuted:"#7a7a90",
+    gradient:"linear-gradient(135deg, #c8a24e 0%, #e8c96e 50%, #c8a24e 100%)",
+    tagline:"Built on 20+ years of proven direct response methodologies", owner:"Jimmy Davis",
+  },
+  brittany: {
+    name:"Think & Thin AI Suite", subtitle:"Echo Tapping Business Tools", logo:"TT",
+    primary:"#0a0810", accent:"#9b6dff", accentLight:"#b894ff",
+    surface:"#13101e", surfaceLight:"#1e1a2c", text:"#e8e4f0", textMuted:"#7a7090",
+    gradient:"linear-gradient(135deg, #9b6dff 0%, #d06dff 50%, #9b6dff 100%)",
+    tagline:"Powered by Brittany Watkins' proprietary coaching frameworks", owner:"Brittany Watkins",
+  }
+};
+
+let brand = "jimmy";
+let activeTool = null;
+let formData = {};
+let uploadedFile = null;
+let jarvisOpen = false;
+let jarvisMessages = [{from:"jarvis",text:"Hey! I'm Jarvis — your AI assistant. I handle the tech: website uploads, design changes, email setup, payment links. Just tell me what to do."}];
+
+// ── Tool definitions ──
+const TOOLS = [
+  {id:"walkthrough",icon:"🚀",title:"New Business Walkthrough",desc:"Full dream business build — research, method, pitches, programs & more",tag:"FLAGSHIP",upload:true,
+    fields:[{id:"name",label:"Client Name",ph:"e.g. Margaret Cutler"},{id:"website",label:"Website URL",ph:"e.g. mangotiger.com.au"},{id:"superpowers",label:"Their Superpowers / Background",ph:"Medical intuitive, 43 years experience...",type:"textarea"},{id:"audience",label:"Who Do They Want to Help?",ph:"Women with chronic health issues..."},{id:"dream",label:"Their Dream Outcome",ph:"$20K/month coaching business..."}],
+    prompt:`You are the Dream Business Builder — an elite AI coaching business architect combining Dan Kennedy (direct response), Russell Brunson (funnels, offers), Alex Hormozi ($100M Offers), and Jimmy Davis's "Catch Your Sail" philosophy.\n\nTake the details below and create a COMPLETE dream business package. Do NOT ask questions. Move fast. Be bold and specific.\n\nCreate ALL sections:\n### 1. INTELLIGENCE REPORT\nWho they are, superpowers, credentials, current gaps, 3-4 strategic insights.\n### 2. THE MATH\nWhat $20K/month looks like.\n### 3. SIGNATURE METHOD (3 Options)\n3 trademarked-style named methods with 3-5 steps each. End: "MY RECOMMENDATION: Option X because..."\n### 4. ELEVATOR PITCHES\n30-second, 10-second, and Million Dollar Message.\n### 5. FREE REPORT TITLES (3 Options)\nMagazine-cover energy. End with recommendation.\n### 6. FREE REPORT OUTLINE\nFull chapter-by-chapter. Last chapter = their method is THE solution.\n### 7. FIRST CHAPTER (800+ words)\nStory-driven opening.\n### 8. LAST CHAPTER (800+ words)\nTheir method as the only complete solution.\n### 9. BOOK COVER AI PROMPT\nDetailed Gemini/Midjourney prompt with hex colors, typography, style refs.\n### 10. INFOGRAPHIC PROMPT\nVisualize signature method.\n### 11. 6-WEEK ENTRY PROGRAM ($297-$497)\nWeek-by-week. "This program's secret job = sell the high-ticket."\n### 12. HIGH-TICKET 6-MONTH PROGRAM ($5,000+)\nValue stack with dollar amounts. Application-only. 4/month max.\n### 13. "A DAY IN YOUR LIFE" — 12 Months From Now\nVivid Tuesday narrative with specific dollar amounts.\n### 14. SOCIAL MEDIA PRESENCE\nLinkedIn + Instagram bios, 3 post concepts.\n### 15. PODCAST GUEST PITCH\nReady-to-send email.\n### 16. REVENUE PROJECTIONS\nConservative / Moderate / Ambitious.\n### 17. COMPETITOR GAP ANALYSIS\n3-5 similar practitioners and the gap.\n### 18. WELCOME EMAIL SEQUENCE (3 emails)\nFully written.`},
+  {id:"course",icon:"🎓",title:"Course Creator",desc:"Complete online course with modules, lessons & worksheets",tag:null,upload:true,
+    fields:[{id:"topic",label:"Course Topic",ph:"e.g. Subconscious Mind Healing"},{id:"audience",label:"Target Audience",ph:"e.g. Women 40-65"},{id:"outcome",label:"Main Transformation",ph:"e.g. Release hidden blocks"},{id:"length",label:"Course Length",ph:"e.g. 6 weeks"},{id:"price",label:"Price Point",ph:"e.g. $497"}],
+    prompt:`You are the world's best online course architect combining Eben Pagan, Hormozi, and Brunson. Create a COMPLETE course blueprint:\n### 1. COURSE OVERVIEW — 3 name options, hook, transformation, ideal student\n### 2. MODULE-BY-MODULE BREAKDOWN — Title, objectives, lessons, teaching points, homework\n### 3. WORKSHEETS — 1 per module with actual questions\n### 4. STUDENT JOURNEY MAP\n### 5. BONUSES — 3-5 with Hormozi value stacking\n### 6. LAUNCH STRATEGY — 5-day email sequence outline\n### 7. UPSELL PATH`},
+  {id:"book",icon:"📖",title:"Book & Report Builder",desc:"Outlines, chapters, and cover concepts",tag:null,upload:true,
+    fields:[{id:"topic",label:"Topic",ph:"e.g. Why You're Not Healing"},{id:"author",label:"Author & Credentials",ph:"e.g. Margaret Cutler — 43 years",type:"textarea"},{id:"audience",label:"Target Reader",ph:"e.g. Women who've tried everything"},{id:"goal",label:"Strategic Goal",ph:"e.g. Lead magnet, authority"},{id:"format",label:"Format",ph:"e.g. Free report (20 pages)"}],
+    prompt:`You are an elite book strategist combining Brendon Burchard, Dan Kennedy, and Donald Miller.\n\nCreate:\n### 1. TITLE OPTIONS (3) with recommendation\n### 2. BOOK POSITIONING\n### 3. FULL CHAPTER OUTLINE\n### 4. INTRODUCTION (800-1200 words)\n### 5. FINAL CHAPTER (800-1200 words)\n### 6. BOOK COVER AI PROMPT\n### 7. LAUNCH STRATEGY\n### 8. BACK COVER COPY`},
+  {id:"sales",icon:"💰",title:"Sales Letter Builder",desc:"High-converting direct response copy",tag:null,upload:true,
+    fields:[{id:"offer",label:"What Are You Selling?",ph:"e.g. 6-month coaching"},{id:"price",label:"Price",ph:"e.g. $5,000 or 6x $916"},{id:"audience",label:"Target Buyer",ph:"e.g. Women 40-65"},{id:"mechanism",label:"Unique Method",ph:"e.g. The Invisible Diagnosis™"},{id:"proof",label:"Credentials & Proof",ph:"e.g. 43 years, 67K clients",type:"textarea"}],
+    prompt:`You are a master copywriter channeling Dan Kennedy, Gary Halbert, Russell Brunson, Alex Hormozi.\n\nWrite a COMPLETE long-form sales letter:\n1. HEADLINE\n2. OPENING STORY (300-500 words)\n3. PROBLEM AGITATION\n4. WHY NOTHING ELSE WORKED\n5. THE MECHANISM\n6. PROOF STACK\n7. CASE STUDIES (3)\n8. HORMOZI VALUE STACK\n9. GUARANTEE\n10. TWO-CHOICE CLOSE\n11. FAQ (8-10)\n12. FINAL CTA`},
+  {id:"website",icon:"🌐",title:"Website Creator",desc:"Professional homepage concepts with full copy",tag:null,upload:true,
+    fields:[{id:"business",label:"Business & What You Do",ph:"e.g. MangoTiger — Subconscious healing"},{id:"audience",label:"Audience",ph:"e.g. Women 40-65"},{id:"offers",label:"Programs to Feature",ph:"e.g. Free report, $297 course, $5K coaching",type:"textarea"},{id:"creds",label:"Credentials",ph:"e.g. 43 years, awards",type:"textarea"},{id:"style",label:"Design Style",ph:"e.g. Premium dark/gold"}],
+    prompt:`You are an elite web designer + direct response strategist.\n\nCreate:\n### 1. DESIGN CONCEPT — Aesthetic, colors (hex), typography, mood\n### 2. FULL HOMEPAGE COPY — Hero, Problem, About, Method, Programs, Social Proof, Lead Magnet, FAQ, Final CTA, Footer\n### 3. SEO NOTES\n### 4. CONVERSION STRATEGY`},
+  {id:"webinar",icon:"🎙️",title:"Webinar Creator",desc:"Script, slides, registration & follow-up emails",tag:null,upload:false,
+    fields:[{id:"topic",label:"Webinar Topic",ph:"e.g. The 3 Hidden Reasons You're Not Healing"},{id:"selling",label:"Selling at the End",ph:"e.g. $5,000 coaching"},{id:"audience",label:"Attendee",ph:"e.g. Women with chronic health issues"},{id:"presenter",label:"Presenter",ph:"e.g. Margaret Cutler"},{id:"length",label:"Length",ph:"e.g. 90 min"}],
+    prompt:`You are a master webinar strategist using Brunson's Perfect Webinar + Kennedy's presentation selling.\n\nCreate:\n### 1. FULL SCRIPT — Opening, One Thing, Secret 1-3, Stack, Close\n### 2. SLIDE OUTLINE (40-60 slides)\n### 3. REGISTRATION PAGE COPY\n### 4. FOLLOW-UP EMAILS (5) — Fully written`},
+  {id:"slides",icon:"📊",title:"Slide Deck Creator",desc:"Presentations for keynotes, workshops or modules",tag:null,upload:true,
+    fields:[{id:"topic",label:"Topic",ph:"e.g. Heal Your Body by Healing Your Mind"},{id:"context",label:"Context",ph:"e.g. TEDx, workshop, course module"},{id:"audience",label:"Audience",ph:"e.g. Conference attendees"},{id:"length",label:"Length",ph:"e.g. 45 min"},{id:"goal",label:"Goal",ph:"e.g. Inspire, sell program"}],
+    prompt:`Elite presentation designer: Nancy Duarte + Eben Pagan + Brunson.\n\nCreate:\n### 1. STRUCTURE — Hook, arc, transitions, closing\n### 2. EVERY SLIDE — Number, title, visual, full speaker notes, timing\n### 3. STORIES — Written out\n### 4. ENGAGEMENT MOMENTS\n### 5. DESIGN DIRECTION`},
+  {id:"social",icon:"📱",title:"Social Media Suite",desc:"Bios, 30-day calendar, posts & growth strategy",tag:null,upload:false,
+    fields:[{id:"business",label:"Business / Brand",ph:"e.g. Margaret Cutler"},{id:"audience",label:"Audience",ph:"e.g. Women 40-65"},{id:"platforms",label:"Platforms",ph:"e.g. Instagram, Facebook, LinkedIn"},{id:"offers",label:"What You're Selling",ph:"e.g. Free report → course → coaching"},{id:"voice",label:"Brand Voice",ph:"e.g. Warm authority"}],
+    prompt:`Elite social media strategist: Gary Vee + Dan Kennedy.\n\nCreate:\n### 1. PLATFORM BIOS\n### 2. CONTENT PILLARS (4-5)\n### 3. 30-DAY CALENDAR — Full captions per post\n### 4. 10 INSTAGRAM POSTS — Full captions\n### 5. REPURPOSING STRATEGY\n### 6. GROWTH STRATEGY`},
+  {id:"funnel",icon:"🔄",title:"Funnel Architect",desc:"Complete customer journey to high-ticket",tag:null,upload:false,
+    fields:[{id:"business",label:"Business",ph:"e.g. The Invisible Diagnosis™"},{id:"offers",label:"All Offers (Low → High)",ph:"e.g. Free → $297 → $5K",type:"textarea"},{id:"traffic",label:"Traffic Sources",ph:"e.g. Facebook, organic, podcast"},{id:"audience",label:"Audience",ph:"e.g. Women 40-65"},{id:"goal",label:"Revenue Goal",ph:"e.g. $20K/month"}],
+    prompt:`Master funnel strategist: Brunson's Value Ladder + Hormozi + Kennedy.\n\nCreate:\n### 1. VALUE LADDER MAP\n### 2. FRONT-END FUNNEL — Lead magnet, opt-in copy, nurture\n### 3. MID-TIER CONVERSION\n### 4. HIGH-TICKET FUNNEL — Application, booking, follow-up, downsell\n### 5. RETENTION & ASCENSION\n### 6. TRAFFIC STRATEGY\n### 7. REVENUE MATH`},
+  {id:"email",icon:"✉️",title:"Email Sequence Writer",desc:"Welcome, launch & nurture sequences",tag:null,upload:false,
+    fields:[{id:"type",label:"Sequence Type",ph:"e.g. Welcome, Launch, Re-engagement"},{id:"business",label:"Business / Offer",ph:"e.g. Margaret's 6-week course"},{id:"audience",label:"Recipients",ph:"e.g. Women who downloaded free report"},{id:"goal",label:"Goal",ph:"e.g. Sell $297 course"},{id:"count",label:"How Many Emails?",ph:"e.g. 5, 7, 10"}],
+    prompt:`Master email copywriter: Andre Chaperon + Kennedy + Brunson.\n\nWrite EVERY email fully:\n- Subject + 2 A/B alternatives\n- Preview text\n- Full body\n- CTA\n- Timing\n- Strategic note\nOpen loops, mix story/teaching/proof/CTA. No placeholders.`},
+  {id:"images",icon:"🎨",title:"Image Prompt Studio",desc:"AI prompts for Gemini, Midjourney & DALL-E",tag:null,upload:true,
+    fields:[{id:"type",label:"Image Type",ph:"e.g. Book cover, Social graphic"},{id:"title",label:"Text on Image",ph:"e.g. WHY YOU'RE NOT HEALING"},{id:"style",label:"Style",ph:"e.g. Hay House meets medical authority"},{id:"colors",label:"Colors",ph:"e.g. Deep navy + gold"},{id:"ref",label:"References",ph:"e.g. Dr. Joe Dispenza covers"}],
+    prompt:`Expert AI image prompt creator.\n\nCreate:\n### 1. PRIMARY PROMPT (Gemini)\n### 2. MIDJOURNEY VERSION\n### 3. DALL-E VERSION\n### 4. 3 VARIATIONS\n### 5. WHAT TO AVOID\n### 6. POST-GEN EDITING NOTES`},
+  {id:"revenue",icon:"📈",title:"Revenue Calculator",desc:"Income scenarios & projections",tag:null,upload:false,
+    fields:[{id:"offers",label:"Your Offers & Prices",ph:"e.g. $297 course, $5K coaching",type:"textarea"},{id:"audience",label:"Audience Size",ph:"e.g. 500 email subs"},{id:"traffic",label:"Traffic / Leads",ph:"e.g. 100 leads/month"},{id:"goal",label:"Income Goal",ph:"e.g. $20K/month"},{id:"hours",label:"Hours/Week",ph:"e.g. 20 hours"}],
+    prompt:`Revenue strategist: Hormozi + Kennedy.\n\nCreate:\n### 1. CURRENT STATE ANALYSIS\n### 2. SCENARIOS TABLE — Conservative, Moderate, Ambitious, Dream\n### 3. OFFER OPTIMIZATION\n### 4. 12-MONTH ROADMAP\n### 5. UNIT ECONOMICS\n### 6. "ONE NUMBER" STRATEGY\n### 7. PROJECTION DATA`},
+];
+
+// ═══════════════════════════════════════════
+// BRAND THEMING
+// ═══════════════════════════════════════════
+function setBrand(b) {
+  brand = b;
+  const t = BRANDS[b];
+  document.body.style.background = t.primary;
+  document.body.style.color = t.text;
+
+  // Login
+  const lm = document.querySelector('.logo-mark');
+  if(lm){lm.style.background=t.gradient;lm.style.color=t.primary;lm.textContent=t.logo;}
+  const lh = document.getElementById('login-h');
+  if(lh){lh.style.backgroundImage=t.gradient;lh.textContent=t.name;}
+  const ls = document.getElementById('login-sub');
+  if(ls){ls.style.color=t.textMuted;ls.textContent=t.subtitle;}
+  const lb = document.getElementById('login-btn');
+  if(lb){lb.style.background=t.gradient;lb.style.color=t.primary;}
+  const lt = document.getElementById('login-tagline');
+  if(lt){lt.style.color=t.textMuted;lt.textContent=t.tagline;}
+  document.querySelectorAll('.field label').forEach(l=>l.style.color=t.textMuted);
+  document.querySelectorAll('.field input, .field textarea').forEach(i=>{i.style.background=t.primary;i.style.borderColor=t.accent+'1e';i.style.color=t.text;});
+  document.querySelectorAll('.brand-switch button').forEach(btn=>{
+    btn.style.borderColor=t.accent+'1e';btn.style.color=t.textMuted;btn.style.background='transparent';
+  });
+  const ab = document.getElementById('bs-'+b);
+  if(ab){ab.style.background=t.accent+'15';ab.style.color=t.accent;ab.style.borderColor=t.accent;}
+  document.querySelector('.login-card').style.background=t.surface+'ee';
+  document.querySelector('.login-card').style.borderColor=t.accent+'1e';
+
+  // Topbar
+  const tb=document.getElementById('topbar');
+  if(tb){tb.style.background=t.surface+'cc';tb.style.borderColor=t.accent+'14';}
+  const tlo=document.getElementById('tb-logo');
+  if(tlo){tlo.style.background=t.gradient;tlo.style.color=t.primary;tlo.textContent=t.logo;}
+  const tn=document.getElementById('tb-name');
+  if(tn){tn.style.backgroundImage=t.gradient;tn.textContent=t.name;}
+  document.querySelectorAll('.tb-btn').forEach(btn=>{
+    btn.style.borderColor=t.accent+'1e';btn.style.color=t.textMuted;btn.style.background='transparent';
+    btn.classList.remove('active');
+  });
+  const aBtn=document.getElementById(b==='jimmy'?'tb-jd':'tb-tt');
+  if(aBtn){aBtn.classList.add('active');aBtn.style.background=t.accent+'15';aBtn.style.color=t.accent;aBtn.style.borderColor=t.accent+'60';}
+  const tj=document.getElementById('tb-jarvis');
+  if(tj){tj.style.background=t.gradient;tj.style.color=t.primary;}
+
+  // Jarvis
+  const jp=document.getElementById('jarvis-panel');
+  if(jp){jp.style.background=t.surface+'f4';jp.style.borderColor=t.accent+'15';}
+  const ja=document.getElementById('jp-avatar');
+  if(ja) ja.style.background=t.gradient;
+  const jpir=document.getElementById('jp-input-row');
+  if(jpir) jpir.style.borderColor=t.accent+'14';
+  const jpi=document.getElementById('jp-input');
+  if(jpi){jpi.style.background=t.primary;jpi.style.borderColor=t.accent+'1e';jpi.style.color=t.text;}
+  const jps=document.getElementById('jp-send');
+  if(jps){jps.style.background=t.gradient;jps.style.color=t.primary;}
+  document.querySelectorAll('.jp-msg.jarvis').forEach(m=>{m.style.background=t.surfaceLight;m.style.borderColor=t.accent+'10';});
+  document.querySelectorAll('.jp-msg.user').forEach(m=>{m.style.background=t.accent+'18';});
+
+  // Re-render current view
+  if(document.getElementById('app-screen').classList.contains('hidden')) return;
+  if(activeTool) renderToolPage(activeTool);
+  else renderDashboard();
+}
+
+// ═══════════════════════════════════════════
+// LOGIN
+// ═══════════════════════════════════════════
+// REAL LOGIN SYSTEM
+const AUTH_EMAIL = "jimmydavisprivate@gmail.com";
+const AUTH_PASS = "1jimmy22";
+
+function checkAuth() {
+  return sessionStorage.getItem('cc_auth') === 'true';
+}
+
+function doLogin() {
+  sessionStorage.setItem('cc_auth', 'true');
+    document.getElementById('login-screen').classList.add('hidden');
+  document.getElementById('app-screen').classList.remove('hidden');
+  renderDashboard();
+  setBrand(brand);
+}
+
+// ═══════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════
+function renderDashboard() {
+  activeTool = null;
+  const t = BRANDS[brand];
+  const d = document.getElementById('dashboard');
+  const tp = document.getElementById('tool-page');
+  d.classList.remove('hidden');
+  tp.classList.add('hidden');
+
+  let html = `<h1>Welcome back, Jimmy</h1><p style="color:${t.textMuted}">Select a tool to generate world-class deliverables powered by ${t.owner}'s proven methodologies.</p><div class="grid">`;
+  TOOLS.forEach(tool => {
+    html += `<div class="card fade-in" onclick="openTool('${tool.id}')" style="background:${t.surface};border-color:${t.accent}0d;">`;
+    if(tool.tag) html += `<div class="card-tag" style="background:${t.gradient};color:${t.primary}">${tool.tag}</div>`;
+    html += `<div class="card-icon">${tool.icon}</div>`;
+    html += `<div class="card-title">${tool.title}</div>`;
+    html += `<div class="card-desc" style="color:${t.textMuted}">${tool.desc}</div>`;
+    html += `</div>`;
+  });
+  html += `</div>`;
+  d.innerHTML = html;
+
+  // Add hover effects
+  d.querySelectorAll('.card').forEach(c => {
+    c.addEventListener('mouseenter', () => {c.style.borderColor=t.accent+'40';c.style.boxShadow=`0 6px 24px ${t.accent}0c`;c.querySelector('.card-title').style.color=t.accent;});
+    c.addEventListener('mouseleave', () => {c.style.borderColor=t.accent+'0d';c.style.boxShadow='none';c.querySelector('.card-title').style.color=t.text;});
+  });
+}
+
+// ═══════════════════════════════════════════
+// TOOL PAGE
+// ═══════════════════════════════════════════
+function openTool(id) {
+  activeTool = id;
+  formData = {};
+  uploadedFile = null;
+  renderToolPage(id);
+}
+
+function renderToolPage(id) {
+  const tool = TOOLS.find(t=>t.id===id);
+  if(!tool) return;
+  const t = BRANDS[brand];
+  const d = document.getElementById('dashboard');
+  const tp = document.getElementById('tool-page');
+  d.classList.add('hidden');
+  tp.classList.remove('hidden');
+
+  let html = `<button class="back-btn" style="color:${t.textMuted}" onclick="renderDashboard();setBrand('${brand}')">← Back to Dashboard</button>`;
+  html += `<div style="font-size:32px;margin-bottom:10px">${tool.icon}</div>`;
+  html += `<div class="tool-h" style="color:${t.text}">${tool.title}</div>`;
+  html += `<div class="tool-sub" style="color:${t.textMuted}">${tool.desc}</div>`;
+
+  tool.fields.forEach(f => {
+    html += `<div class="field" style="margin-bottom:16px">`;
+    html += `<label style="color:${t.textMuted}">${f.label}</label>`;
+    if(f.type==='textarea') {
+      html += `<textarea placeholder="${f.ph}" style="background:${t.primary};border-color:${t.accent}1e;color:${t.text}" oninput="formData['${f.id}']=this.value"></textarea>`;
+    } else {
+      html += `<input placeholder="${f.ph}" style="background:${t.primary};border-color:${t.accent}1e;color:${t.text}" oninput="formData['${f.id}']=this.value">`;
+    }
+    html += `</div>`;
+  });
+
+  if(tool.upload) {
+    html += `<div class="upload-area" onclick="document.getElementById('file-input').click()" style="border-color:${t.accent}20">`;
+    html += `<input type="file" id="file-input" style="display:none" onchange="uploadedFile=this.files[0];document.getElementById('upload-name').textContent='✓ '+this.files[0].name" accept=".pdf,.docx,.txt,.md">`;
+    html += `<p style="color:${t.textMuted}">📎 Upload reference materials (optional)</p>`;
+    html += `<div class="upload-name" id="upload-name" style="color:${t.accent}"></div></div>`;
+  }
+
+  html += `<button class="btn-primary" id="gen-btn" style="background:${t.gradient};color:${t.primary};margin-top:6px" onclick="generate('${id}')">🚀 Generate with ${t.name}</button>`;
+  html += `<div id="loading-area"></div>`;
+  html += `<div id="error-area"></div>`;
+  html += `<div id="output-area"></div>`;
+
+  tp.innerHTML = html;
+}
+
+// ═══════════════════════════════════════════
+// API CALL
+// ═══════════════════════════════════════════
+async function callAPI(systemPrompt, userMessage) {
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-20250514",
+      max_tokens: 12000,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userMessage }]
+    })
+  });
+  if (!res.ok) throw new Error(`API error: ${res.status}`);
+  const data = await res.json();
+  return data.content.map(c => c.text || "").join("\n");
+}
+
+// ═══════════════════════════════════════════
+// GENERATE
+// ═══════════════════════════════════════════
+async function generate(id) {
+  const tool = TOOLS.find(t=>t.id===id);
+  const t = BRANDS[brand];
+  const btn = document.getElementById('gen-btn');
+  const loadArea = document.getElementById('loading-area');
+  const errArea = document.getElementById('error-area');
+  const outArea = document.getElementById('output-area');
+
+  let msg = Object.entries(formData).filter(([_,v])=>v&&v.trim()).map(([k,v])=>{
+    const f = tool.fields.find(x=>x.id===k);
+    return `**${f?f.label:k}:** ${v}`;
+  }).join("\n\n");
+
+  if(!msg.trim()){errArea.innerHTML=`<div class="error-box">Please fill in at least one field.</div>`;return;}
+
+  btn.disabled = true;
+  btn.textContent = `⏳ ${t.owner}'s AI is generating...`;
+  errArea.innerHTML = '';
+  outArea.innerHTML = '';
+  loadArea.innerHTML = `<div class="loading-bar" style="background:${t.accent}0a"><div class="loading-fill" style="background:${t.gradient}"></div></div><div class="loading-text" style="color:${t.textMuted}">Running expert analysis — comprehensive results in 30-60 seconds...</div>`;
+
+  try {
+    const result = await callAPI(tool.prompt, msg);
+    outArea.innerHTML = `<div class="output-box fade-in" style="background:${t.surface};border-color:${t.accent}0d">${renderMarkdown(result)}</div>`;
+  } catch(e) {
+    errArea.innerHTML = `<div class="error-box">${e.message}</div>`;
+  }
+
+  loadArea.innerHTML = '';
+  btn.disabled = false;
+  btn.textContent = `🚀 Generate with ${t.name}`;
+}
+
+// ═══════════════════════════════════════════
+// MARKDOWN RENDERER
+// ═══════════════════════════════════════════
+function renderMarkdown(text) {
+  if(!text) return '';
+  return text.split('\n').map(line => {
+    const esc = s => s.replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const bold = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    if(line.startsWith('### ')) return `<h3>${bold(line.slice(4))}</h3>`;
+    if(line.startsWith('## ')) return `<h2>${bold(line.slice(3))}</h2>`;
+    if(line.startsWith('# ')) return `<h1>${bold(line.slice(2))}</h1>`;
+    if(line.startsWith('- ')||line.startsWith('* ')) return `<div style="padding-left:16px;margin-bottom:3px;font-size:14px;line-height:1.7">• ${bold(line.slice(2))}</div>`;
+    if(/^\d+\.\s/.test(line)) return `<div style="padding-left:16px;margin-bottom:3px;font-size:14px;line-height:1.7">${bold(line)}</div>`;
+    if(line.startsWith('|')&&line.includes('---')) return '';
+    if(line.startsWith('|')) {
+      const cells = line.split('|').filter(c=>c.trim()).map(c=>`<span style="flex:1;padding:4px 8px;font-size:12px;background:rgba(255,255,255,0.03);border-radius:3px">${bold(c.trim())}</span>`).join('');
+      return `<div style="display:flex;gap:2px;margin-bottom:2px">${cells}</div>`;
+    }
+    if(!line.trim()) return '<div style="height:6px"></div>';
+    return `<p>${bold(line)}</p>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// JARVIS
+// ═══════════════════════════════════════════
+function toggleJarvis() {
+  jarvisOpen = !jarvisOpen;
+  document.getElementById('jarvis-overlay').classList.toggle('open', jarvisOpen);
+  document.getElementById('jarvis-panel').classList.toggle('open', jarvisOpen);
+  if(jarvisOpen) renderJarvisMessages();
+}
+
+function renderJarvisMessages() {
+  const t = BRANDS[brand];
+  const c = document.getElementById('jp-messages');
+  c.innerHTML = jarvisMessages.map(m =>
+    `<div class="jp-msg ${m.from==='jarvis'?'jarvis':'user'}" style="${m.from==='jarvis'?`background:${t.surfaceLight};border:1px solid ${t.accent}10`:`background:${t.accent}18`}">${m.text}</div>`
+  ).join('');
+  c.scrollTop = c.scrollHeight;
+}
+
+async function sendJarvis() {
+  const input = document.getElementById('jp-input');
+  const msg = input.value.trim();
+  if(!msg) return;
+  const t = BRANDS[brand];
+
+  jarvisMessages.push({from:'user', text:msg});
+  input.value = '';
+  renderJarvisMessages();
+
+  // Add thinking indicator
+  const c = document.getElementById('jp-messages');
+  c.innerHTML += `<div class="jp-msg jarvis" id="jarvis-thinking" style="background:${t.surfaceLight};border:1px solid ${t.accent}10;opacity:.5">Thinking...</div>`;
+  c.scrollTop = c.scrollHeight;
+
+  try {
+    const result = await callAPI(
+      `You are Jarvis — a friendly, competent AI assistant for coaches and business owners. Handle tech tasks: website updates, email setup, payment links, design changes, scheduling. Be conversational, concise (2-4 sentences), can-do tone. You work for ${t.owner}'s ${t.name} platform.`,
+      msg
+    );
+    jarvisMessages.push({from:'jarvis', text:result});
+  } catch(e) {
+    jarvisMessages.push({from:'jarvis', text:"Hit a snag — try again in a sec?"});
+  }
+  renderJarvisMessages();
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+setBrand('jimmy');
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (checkAuth()) {
+    document.getElementById('login-screen').classList.add('hidden');
+    document.getElementById('app-screen').classList.remove('hidden');
+    renderDashboard();
+    setBrand(brand);
+  }
+});
+</script>
+</body>
+</html>
