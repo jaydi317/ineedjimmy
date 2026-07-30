@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rich Doc. Broke Doc.℠ — Which one are you on track to be?</title>
+<style>
+  :root{
+    --ivory:#faf6ee; --ink:#20261f; --green:#123f2e; --green2:#1b5a42; --copper:#b4652a; --copper-lt:#e9c9a8;
+    --muted:#66705f; --line:#e5ddc9; --white:#fff; --red:#8f3b2c; --cream:#f3ecdc;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ivory); color:var(--ink); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif; line-height:1.15;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+  .btn{display:inline-block; background:var(--copper); color:#fff; font-weight:700; padding:16px 32px; border-radius:8px; text-decoration:none; font-size:16.5px; box-shadow:0 4px 14px rgba(180,101,42,.35);}
+  .btn.green{background:var(--green); box-shadow:0 4px 14px rgba(18,63,46,.3);}
+  .btn.big{font-size:18.5px; padding:19px 40px;}
+  .mock-note{background:#111; color:#9aa; text-align:center; font-size:11px; padding:6px; letter-spacing:.08em;}
+
+  nav{background:var(--ivory); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:50;}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; padding:16px 24px; max-width:1100px; margin:0 auto;}
+  .logo{font-family:Georgia,serif; font-size:20px; font-weight:700; color:var(--green);}
+  .logo em{color:var(--copper); font-style:normal;}
+  .logo small{display:block; font-size:9.5px; letter-spacing:.26em; color:var(--muted); font-family:-apple-system,sans-serif; font-weight:700;}
+  .links{display:flex; gap:24px; align-items:center; font-size:14px;}
+  .links a{color:var(--ink); text-decoration:none; font-weight:500;}
+  .links a.cta{background:var(--green); color:#fff; padding:10px 20px; border-radius:7px; font-weight:700;}
+  @media(max-width:900px){.links a:not(.cta){display:none;}}
+
+  /* Hero — two paths */
+  .hero{padding:70px 0 0; text-align:center;}
+  .eyebrow{display:inline-block; background:var(--cream); border:1px solid var(--line); color:var(--green); font-size:12.5px; letter-spacing:.18em; font-weight:800; text-transform:uppercase; padding:8px 18px; border-radius:99px; margin-bottom:24px;}
+  .hero h1{font-size:56px; color:var(--green); max-width:860px; margin:0 auto 20px;}
+  .hero h1 .rich{color:var(--green);}
+  .hero h1 .broke{color:var(--red);}
+  .hero .sub{font-size:20px; color:var(--muted); max-width:640px; margin:0 auto 34px;}
+  .hero .sub b{color:var(--ink);}
+
+  .split{display:grid; grid-template-columns:1fr 1fr; gap:0; max-width:900px; margin:0 auto; border-radius:16px; overflow:hidden; box-shadow:0 18px 50px rgba(32,38,31,.16); text-align:left;}
+  @media(max-width:800px){.split{grid-template-columns:1fr;}}
+  .path{padding:38px 34px;}
+  .path.broke{background:#2b2320; color:#d8ccc2;}
+  .path.rich{background:var(--green); color:#d9e8de;}
+  .path .tag{font-size:11.5px; letter-spacing:.22em; font-weight:800; margin-bottom:14px;}
+  .path.broke .tag{color:#c98d6b;}
+  .path.rich .tag{color:var(--copper-lt);}
+  .path h3{font-family:Georgia,serif; font-size:24px; color:#fff; margin-bottom:14px;}
+  .path ul{list-style:none;}
+  .path li{padding:7px 0 7px 26px; position:relative; font-size:14.5px;}
+  .path.broke li::before{content:"✕"; position:absolute; left:0; color:#c98d6b; font-weight:700;}
+  .path.rich li::before{content:"✓"; position:absolute; left:0; color:#8fd0a8; font-weight:700;}
+  .split-caption{font-size:14px; color:var(--muted); margin:18px auto 30px; max-width:600px;}
+  .split-caption b{color:var(--ink);}
+
+  .quiz-cta{background:var(--cream); border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:34px 0; text-align:center; margin-top:26px;}
+  .quiz-cta .q{font-family:Georgia,serif; font-size:23px; color:var(--green); margin-bottom:6px;}
+  .quiz-cta .s{color:var(--muted); font-size:14.5px; margin-bottom:18px;}
+
+  /* proof strip */
+  .proof{background:var(--green); color:#fff; padding:30px 0;}
+  .proof-in{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1100px; margin:0 auto; padding:0 24px; text-align:center;}
+  @media(max-width:800px){.proof-in{grid-template-columns:repeat(2,1fr);}}
+  .pr .n{font-family:Georgia,serif; font-size:30px; color:var(--copper-lt); font-weight:700;}
+  .pr .l{font-size:12.5px; color:#bcd3c5; line-height:1.4; margin-top:2px;}
+
+  section{padding:80px 0;}
+  .kick{color:var(--copper); letter-spacing:.22em; font-size:12px; text-transform:uppercase; font-weight:800; margin-bottom:12px;}
+  h2{font-size:38px; color:var(--green); margin-bottom:16px; max-width:780px;}
+  .deck{font-size:18px; color:var(--muted); max-width:680px; margin-bottom:32px;}
+
+  /* Story */
+  .story{background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .story-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;}
+  @media(max-width:900px){.story-grid{grid-template-columns:1fr;}}
+  .story p{font-size:16.5px; margin-bottom:16px; color:#3a4437;}
+  .pull{font-family:Georgia,serif; font-size:22px; color:var(--green); border-left:4px solid var(--copper); padding-left:20px; margin:24px 0; font-style:italic;}
+  .story-img{background:linear-gradient(160deg,var(--green2),var(--green)); border-radius:14px; min-height:420px; display:flex; align-items:flex-end; padding:26px; color:#cfe2d6; font-size:13px;}
+  .story-img .cap{border-left:3px solid var(--copper-lt); padding-left:12px;}
+
+  /* Conveyor */
+  .belt{background:var(--ivory);}
+  .belt-track{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; margin-top:20px;}
+  @media(max-width:900px){.belt-track{grid-template-columns:1fr;}}
+  .belt-track::before{content:""; position:absolute; top:26px; left:6%; right:6%; height:3px; background:repeating-linear-gradient(90deg,var(--copper) 0 14px, transparent 14px 26px);}
+  @media(max-width:900px){.belt-track::before{display:none;}}
+  .bstop{padding:0 18px; text-align:center; position:relative;}
+  .bstop .dot{width:52px; height:52px; border-radius:50%; background:var(--green); color:#fff; font-family:Georgia,serif; font-size:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; border:4px solid var(--ivory); box-shadow:0 0 0 3px var(--copper); position:relative; z-index:2;}
+  .bstop h3{font-size:18px; color:var(--green); margin-bottom:8px;}
+  .bstop p{font-size:13.5px; color:var(--muted);}
+  .belt .found{margin:38px auto 0; max-width:760px; text-align:center; font-family:Georgia,serif; font-size:20px; font-style:italic; color:var(--green);}
+
+  /* Challenge */
+  .challenge{background:var(--green); color:#fff;}
+  .challenge h2{color:#fff;}
+  .challenge .deck{color:#bcd3c5;}
+  .ch-grid{display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center;}
+  @media(max-width:900px){.ch-grid{grid-template-columns:1fr;}}
+  .ch-card{background:rgba(255,255,255,.07); border:1px solid rgba(233,201,168,.3); border-radius:14px; padding:32px;}
+  .ch-card .d{font-size:12px; letter-spacing:.2em; color:var(--copper-lt); font-weight:800; margin-bottom:8px;}
+  .ch-card h3{color:#fff; font-size:22px; margin-bottom:8px;}
+  .ch-card p{font-size:14px; color:#c6d8cc; margin-bottom:0;}
+  .ch-card + .ch-card{margin-top:14px;}
+
+  /* Book funnel */
+  .bookf{background:var(--white); border-top:1px solid var(--line);}
+  .bf-grid{display:grid; grid-template-columns:.62fr 1.38fr; gap:52px; align-items:center;}
+  @media(max-width:900px){.bf-grid{grid-template-columns:1fr;}}
+  .bcover{background:var(--green); border-radius:8px 16px 16px 8px; border-left:10px solid var(--copper); padding:38px 30px; color:#fff; min-height:400px; box-shadow:16px 18px 40px rgba(18,63,46,.3); display:flex; flex-direction:column; justify-content:space-between;}
+  .bcover .bt{font-family:Georgia,serif; font-size:34px; line-height:1.12;}
+  .bcover .bt .r{color:#fff;}
+  .bcover .bt .b{color:var(--copper-lt);}
+  .bcover .bs{font-size:13px; color:#bcd3c5; margin-top:14px; line-height:1.55;}
+  .bcover .ba{font-size:11.5px; color:var(--copper-lt); letter-spacing:.12em;}
+  .bullets{list-style:none; margin:20px 0 28px;}
+  .bullets li{padding:9px 0 9px 34px; position:relative; font-size:16px; color:#3a4437;}
+  .bullets li::before{content:"📍"; position:absolute; left:0;}
+  .price-line{font-size:14px; color:var(--muted); margin-top:14px;}
+  .price-line s{color:#a3a89d;}
+
+  /* Testimonial wall */
+  .wall{background:var(--ivory);}
+  .w-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media(max-width:900px){.w-grid{grid-template-columns:1fr;}}
+  .wcard{background:var(--white); border:1px solid var(--line); border-radius:12px; padding:24px;}
+  .wcard .stars{color:var(--copper); letter-spacing:2px; margin-bottom:8px;}
+  .wcard p{font-size:14px; font-style:italic; color:#3a4437; margin-bottom:12px;}
+  .wcard .who{font-size:12.5px; color:var(--muted); font-weight:700;}
+  .w-note{font-size:12px; color:#a3a89d; margin-top:14px;}
+
+  /* Final */
+  .final{background:linear-gradient(160deg,var(--green),var(--green2)); color:#fff; text-align:center;}
+  .final h2{color:#fff; margin-left:auto; margin-right:auto;}
+  .final .deck{margin:0 auto 30px; color:#bcd3c5;}
+  .final .alt{margin-top:18px; font-size:14px;}
+  .final .alt a{color:var(--copper-lt);}
+
+  footer{background:#0d2b20; color:#7fa18d; padding:44px 0 36px; font-size:13px;}
+  .fineprint{font-size:11.5px; color:#5d8070; line-height:1.7; margin-top:18px; border-top:1px solid rgba(255,255,255,.12); padding-top:16px;}
+</style>
+</head>
+<body>
+
+<div class="mock-note">MOCKUP B — "THE MOVEMENT" · Brunson-style story/funnel rebuild around the Rich Doc. Broke Doc.℠ brand · Prepared by the Council for Jimmy Davis, 7/29/2026 · Photos &amp; testimonials are placeholders pending real assets</div>
+
+<nav>
+  <div class="nav-in">
+    <div class="logo">MD Financial <em>Advisors</em><small>HOME OF RICH DOC. BROKE DOC.℠</small></div>
+    <div class="links">
+      <a href="#story">Katherine's Story</a>
+      <a href="#belt">How It Works</a>
+      <a href="#book">The Book</a>
+      <a href="#events">Free Trainings</a>
+      <a class="cta" href="#quiz">Get Your Wealth Score</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">650 Doctors · $300M+ Managed · 8 in 10 Come by Referral</div>
+    <h1>Every doctor ends up one of two ways: <span class="rich">Rich Doc</span> or <span class="broke">Broke Doc.</span></h1>
+    <p class="sub">Same medical school. Same income. Completely different lives at 55. <b>The difference is 12 decisions</b> — and most doctors never learn them, because the people teaching them earn commissions.</p>
+    <a class="btn big" href="#quiz">Take the 3-Minute Doctor Wealth Score™ Quiz</a>
+    <p class="split-caption" style="margin-top:14px;">Free · Built from 15 years of data on 650 physician households · Get your score + the 12 decisions instantly</p>
+
+    <div class="split">
+      <div class="path broke">
+        <div class="tag">THE BROKE DOC PATH</div>
+        <h3>High income. No wealth.</h3>
+        <ul>
+          <li>Bought whole life from a "nice guy" in residency</li>
+          <li>Six figures in taxes nobody tried to reduce</li>
+          <li>Contract signed without negotiation</li>
+          <li>Still can't answer: "Could I stop working?"</li>
+        </ul>
+      </div>
+      <div class="path rich">
+        <div class="tag">THE RICH DOC PATH</div>
+        <h3>Income becomes freedom.</h3>
+        <ul>
+          <li>A salaried fiduciary team — no commissions to advisors</li>
+          <li>Tax strategy that starts before the money arrives</li>
+          <li>Protection built for physicians, not sold to them</li>
+          <li>A number, a plan, and a date they could walk away</li>
+        </ul>
+      </div>
+    </div>
+    <p class="split-caption">We've watched both stories play out for 15 years, across <b>650 doctor families from Hawaii to Cape Cod.</b> The fork in the road is earlier than you think.</p>
+  </div>
+  <div class="quiz-cta" id="quiz">
+    <div class="q">Which path are you on? Most doctors are wrong about their answer.</div>
+    <div class="s">12 questions · 3 minutes · instant score, benchmarked against 650 physician households</div>
+    <a class="btn green big" href="#">Get My Doctor Wealth Score™ →</a>
+  </div>
+</header>
+
+<div class="proof">
+  <div class="proof-in">
+    <div class="pr"><div class="n">650</div><div class="l">physician &amp; dentist families</div></div>
+    <div class="pr"><div class="n">$300M+</div><div class="l">under management</div></div>
+    <div class="pr"><div class="n">15 yrs</div><div class="l">doctors only — no exceptions</div></div>
+    <div class="pr"><div class="n">4 books</div><div class="l">by our founder on protecting professional wealth</div></div>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div>
+        <div class="kick">The Origin Story</div>
+        <h2>The swimming pool that started a 650-doctor movement.</h2>
+        <p>Katherine Vessenes was twelve when she learned what money can do to a family. Her stepfather went from flying high to nearly bankrupt in a matter of weeks — and took the only work he could find: cleaning swimming pools at minimum wage.</p>
+        <p>She became an attorney. Then a CFP®. Then the ethics expert the biggest names in financial services called when they needed to be kept honest. And then one day, inside a firm that "served" doctors, she watched the president lie to physicians and recommend whatever paid the fattest commission.</p>
+        <div class="pull">"I told him we may go bankrupt, but I no longer cared. I quit."</div>
+        <p>In 2011 she started over in Rhode Island, knowing zero doctors. Today 650 physician families trust her firm — and 8 out of 10 new clients are sent by a doctor who already does. That's not marketing. That's a movement doctors built themselves, one referral at a time.</p>
+        <a class="btn" href="#belt">See the system doctors refer their colleagues into →</a>
+      </div>
+      <div class="story-img"><div class="cap">[PHOTO: Katherine, candid, mid-conversation with a physician couple. Warm, editorial, real — not stock. This is the "she's one of us" frame.]</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="belt" id="belt">
+  <div class="wrap">
+    <div class="kick">The Unique Mechanism</div>
+    <h2>The only wealth firm built like a medical residency.</h2>
+    <p class="deck">Your advisors trained the way you trained — years as residents and fellows inside our concierge teams before they ever lead a case. And we take doctors on the same way: early, at a loss, on purpose.</p>
+    <div class="belt-track">
+      <div class="bstop"><div class="dot">1</div><h3>Resident You</h3><p>We take you on when you're broke — loans, first contract, first disability policy. We lose money at this stage, happily.</p></div>
+      <div class="bstop"><div class="dot">2</div><h3>New Attending You</h3><p>Income quadruples overnight. So do the mistakes available to you. Contract, house, taxes, protection — handled as one plan.</p></div>
+      <div class="bstop"><div class="dot">3</div><h3>Peak-Career You</h3><p>Full concierge team — planner, tax, trading, estate — running your money like a tumor board runs a case: together.</p></div>
+      <div class="bstop"><div class="dot">4</div><h3>Free You</h3><p>The Rich Doc ending: a number, a date, a legacy plan — and the option to practice because you want to, not because you must.</p></div>
+    </div>
+    <div class="found">"I don't know any other group in the country that's got this kind of system going." — Katherine Vessenes, JD, CFP®, Founder</div>
+  </div>
+</section>
+
+<section class="bookf" id="book">
+  <div class="wrap">
+    <div class="bf-grid">
+      <div class="bcover">
+        <div>
+          <div class="bt"><span class="r">RICH DOC.</span><br><span class="b">BROKE DOC.℠</span></div>
+          <div class="bs">The 12 things Rich Doctors — those with the Million-Dollar Mindset — do to become rich and stay rich.</div>
+        </div>
+        <div class="ba">KATHERINE VESSENES, JD, CFP® · BLOOMBERG PRESS AUTHOR · TRUSTED BY 650 DOCTOR FAMILIES</div>
+      </div>
+      <div>
+        <div class="kick">The Front Door</div>
+        <h2>Get the book doctors will be handing each other in the on-call room.</h2>
+        <ul class="bullets">
+          <li>The 12 decisions that separate Rich Docs from Broke Docs — with the real numbers behind each one</li>
+          <li>Why the "nice guy" who visited your residency program cost your classmates six figures</li>
+          <li>The Wealthspan℠ method: how 650 doctor families run their money on one conveyor belt</li>
+        </ul>
+        <a class="btn big" href="#">Send Me The Book →</a>
+        <div class="price-line">Free for residents &amp; fellows · <s>$24.95</s> just cover shipping for attendings · [Funnel economics per the Council's report — the book IS the marketing budget]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="challenge" id="events">
+  <div class="wrap">
+    <div class="ch-grid">
+      <div>
+        <div class="kick" style="color:var(--copper-lt);">Free Live Trainings</div>
+        <h2>Own the moment your income quadruples.</h2>
+        <p class="deck">Every June, thousands of residents become attendings — and get swarmed by salespeople. We built the antidote: free, live, no-pitch training weeks timed to the moments that decide which Doc you become.</p>
+        <a class="btn big" href="#">Save My Seat — It's Free</a>
+      </div>
+      <div>
+        <div class="ch-card">
+          <div class="d">EVERY JUNE · 5 DAYS · LIVE</div>
+          <h3>New Attending Money Week™</h3>
+          <p>Contract, first big paycheck, loans, insurance, taxes — the 5 decisions of your first 90 days as an attending, taught live by salaried fiduciaries.</p>
+        </div>
+        <div class="ch-card">
+          <div class="d">QUARTERLY WEBINAR</div>
+          <h3>The Rich Doc Tax Briefing</h3>
+          <p>What changed this quarter, what it costs you, what to do before December 31. Bring your CPA; ours will out-nerd them.</p>
+        </div>
+        <div class="ch-card">
+          <div class="d">PODCAST · ONGOING</div>
+          <h3>More Money Minutes for Doctors</h3>
+          <p>Katherine's long-running series — as heard on the Brown Emergency Medicine blog.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wall">
+  <div class="wrap">
+    <div class="kick">Referred, Not Recruited</div>
+    <h2>8 out of 10 new clients are sent by another doctor.</h2>
+    <div class="w-grid">
+      <div class="wcard"><div class="stars">★★★★★</div><p>"[PLACEHOLDER — real quote with a dollar outcome: tax savings, negotiated contract, premium cut.]"</p><div class="who">— Attending, [Specialty], [State]</div></div>
+      <div class="wcard"><div class="stars">★★★★★</div><p>"[PLACEHOLDER — 'they took me on as a broke resident' journey quote.]"</p><div class="who">— [Name], DO</div></div>
+      <div class="wcard"><div class="stars">★★★★★</div><p>"[PLACEHOLDER — the multi-referral quote: 'half my department is with them now.']"</p><div class="who">— [Name], MD</div></div>
+    </div>
+    <div class="w-note">Compliance: real, consented statements with SEC marketing-rule disclosures. The founder wrote the book on this — literally.</div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="kick" style="color:var(--copper-lt);">Two Paths. One Decision.</div>
+    <h2>Ten years from now, you'll be one Doc or the other.</h2>
+    <p class="deck">Start with the score. Then the book. Then, when you're ready, 45 minutes with the team 650 of your colleagues already trust.</p>
+    <a class="btn big" href="#quiz">Get My Doctor Wealth Score™</a>
+    <div class="alt">Already know you're ready? <a href="#">Book your Wealthspan℠ Exam directly →</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="font-family:Georgia,serif; font-size:18px; color:#fff; margin-bottom:8px;">MD Financial Advisors · Home of Rich Doc. Broke Doc.℠</div>
+    <div>Concierge wealth management, exclusively for physicians and dentists — Hawaii to Cape Cod since 2011.</div>
+    <div class="fineprint">Advisory services offered through Vestment Financial LLC, d/b/a MD Financial Advisors, an SEC-registered investment adviser. Client counts and assets under management per the firm's Form ADV. Our advisors are salaried; the firm may receive compensation from insurance carriers on placed policies — ask and we'll show you exactly how we're paid. Quiz, book, and event names are design concepts in this mockup; verify all claims and trademark statuses before publication. Rich Doc. Broke Doc.℠ and Wealthspan℠ are service marks of the firm.</div>
+  </div>
+</footer>
+
+</body>
+</html>

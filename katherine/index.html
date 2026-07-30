@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Diamond Report — Katherine Vessenes</title>
+  <style>
+    :root {
+      --navy: #0f2440;
+      --navy-light: #193858;
+      --gold: #c9a227;
+      --cream: #faf8f3;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      background: var(--cream);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .tabs {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .25);
+    }
+    .tab {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 6px;
+      padding: 10px 18px;
+      background: var(--navy-light);
+      color: #fff;
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .tab:hover { border-color: var(--gold); }
+    .tab.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+    iframe {
+      width: 100%;
+      flex: 1;
+      border: 0;
+      background: var(--cream);
+    }
+    @media (max-width: 620px) {
+      .tabs { gap: 5px; padding: 8px; }
+      .tab { flex: 1; padding: 9px 6px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="tabs" aria-label="Katherine report sections">
+    <button class="tab active" type="button" data-page="report.html">The Diamond Report</button>
+    <button class="tab" type="button" data-page="exhibit-a.html">Exhibit A</button>
+    <button class="tab" type="button" data-page="exhibit-b.html">Exhibit B</button>
+  </nav>
+  <iframe id="content" name="content" src="report.html" title="The Diamond Report"></iframe>
+  <script>
+    const frame = document.getElementById('content');
+    const tabs = document.querySelectorAll('.tab');
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((item) => item.classList.remove('active'));
+        tab.classList.add('active');
+        frame.src = tab.dataset.page;
+        frame.title = tab.textContent;
+      });
+    });
+  </script>
+</body>
+</html>
