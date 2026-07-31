@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>iNeedJimmy — Back Office</title>
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#101312; --surface:#181c1a; --surface-2:#1f2422; --line:#2c332f;
+    --ink:#f2f4f0; --ink-2:#b9c1ba; --ink-3:#7d857e;
+    --accent:#3987e5; --good:#2bbd7e; --warn:#eda100; --hot:#e66767; --violet:#9085e9;
+    --mono:"SF Mono","Cascadia Code","JetBrains Mono",Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;line-height:1.45;
+    background-image:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(57,135,229,.08),transparent),
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.015) 40px);}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 60px}
+
+  /* ---------- LOGIN GATE ---------- */
+  #gate{position:fixed;inset:0;background:var(--bg);z-index:50;display:flex;align-items:center;justify-content:center;
+    background-image:radial-gradient(ellipse 70% 55% at 50% 20%,rgba(57,135,229,.10),transparent),
+    repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.015) 40px);
+    transition:opacity .8s ease}
+  #gate.out{opacity:0;pointer-events:none}
+  .gatebox{width:min(380px,92vw);text-align:center}
+  .gatemark{width:64px;height:64px;border-radius:14px;margin:0 auto 18px;background:linear-gradient(135deg,#3987e5,#1c5eb0);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:26px;letter-spacing:-1px;box-shadow:0 8px 40px rgba(57,135,229,.35)}
+  .gatebox h1{font-size:17px;letter-spacing:.08em;font-weight:750}
+  .gatebox h1 span{color:var(--accent)}
+  .gatesub{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.22em;text-transform:uppercase;margin:6px 0 26px}
+  .gatecard{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 24px 22px;text-align:left}
+  .gatecard.shake{animation:shake .4s}
+  @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+  .fld{margin-bottom:14px}
+  .fld label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink-3);margin-bottom:6px}
+  .fld input{width:100%;background:var(--surface-2);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:11px 13px;font-size:14px;outline:none;font-family:var(--mono)}
+  .fld input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(57,135,229,.15)}
+  #authbtn{width:100%;margin-top:6px;background:linear-gradient(135deg,#3987e5,#1c5eb0);border:none;border-radius:8px;color:#fff;font-weight:700;font-size:13px;letter-spacing:.14em;padding:12px;cursor:pointer;font-family:var(--mono)}
+  #authbtn:hover{filter:brightness(1.12)}
+  #authbtn:disabled{opacity:.6;cursor:default}
+  #authmsg{font-family:var(--mono);font-size:11px;margin-top:13px;min-height:15px;letter-spacing:.05em;color:var(--ink-3)}
+  #authmsg.err{color:var(--hot)}
+  #authmsg.ok{color:var(--good)}
+  .gatefoot{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.12em;margin-top:20px;text-transform:uppercase}
+  #app{opacity:0;transition:opacity .9s ease}
+  #app.in{opacity:1}
+
+  /* ---------- DASHBOARD ---------- */
+  header{border-bottom:1px solid var(--line);padding:22px 0 18px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:14px}
+  .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#3987e5,#1c5eb0);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:19px;letter-spacing:-1px}
+  .brand h1{font-size:19px;letter-spacing:.06em;font-weight:750}
+  .brand h1 span{color:var(--accent)}
+  .brand .sub{font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+  .hstat{text-align:right}
+  .hstat .op{font-family:var(--mono);font-size:12px;color:var(--good);letter-spacing:.1em}
+  .hstat .op::before{content:"●";margin-right:7px;animation:blink 2.2s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .hstat .clock{font-family:var(--mono);font-size:12px;color:var(--ink-3);margin-top:3px}
+  .hstat .clock button{background:none;border:1px solid var(--line);border-radius:6px;color:var(--ink-3);font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;margin-left:10px;cursor:pointer}
+  .hstat .clock button:hover{color:var(--ink-2);border-color:var(--ink-3)}
+
+  h2{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin:38px 0 14px;display:flex;align-items:center;gap:12px}
+  h2::after{content:"";flex:1;height:1px;background:var(--line)}
+  h2 b{color:var(--ink-2);font-weight:600}
+
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:24px}
+  .tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 18px 15px}
+  .tile .n{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .tile .n small{font-size:16px;color:var(--ink-2);font-weight:650}
+  .tile .l{font-size:12.5px;color:var(--ink-2);margin-top:4px}
+  .tile .d{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:7px;letter-spacing:.03em}
+  .tile.hero{border-color:#2b4c74;background:linear-gradient(180deg,rgba(57,135,229,.10),var(--surface))}
+  .tile.hero .n{color:#7cb4f2}
+
+  .feed{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .feed .row{display:flex;gap:16px;padding:15px 20px;border-bottom:1px solid var(--line);align-items:baseline}
+  .feed .row:last-child{border-bottom:none}
+  .feed .t{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap;letter-spacing:.05em;min-width:64px}
+  .feed .msg{font-size:14px;color:var(--ink-2)}
+  .feed .msg b{color:var(--ink);font-weight:680}
+  .badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 9px;border-radius:99px;border:1px solid;margin-left:8px;vertical-align:1px}
+  .b-live{color:var(--good);border-color:rgba(43,189,126,.45);background:rgba(43,189,126,.08)}
+  .b-warn{color:var(--warn);border-color:rgba(237,161,0,.45);background:rgba(237,161,0,.08)}
+  .b-info{color:#7cb4f2;border-color:rgba(57,135,229,.5);background:rgba(57,135,229,.09)}
+
+  .pipe{display:grid;gap:12px}
+  .biz{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .biz-top{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+  .biz-top h3{font-size:15.5px;font-weight:720}
+  .biz-top .who{font-size:12.5px;color:var(--ink-3);margin-left:8px;font-weight:400}
+  .money{font-family:var(--mono);font-size:11.5px;color:var(--warn);letter-spacing:.02em}
+  .stages{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 10px}
+  .st{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--ink-3);background:var(--surface-2)}
+  .st.done{color:var(--good);border-color:rgba(43,189,126,.35);background:rgba(43,189,126,.07)}
+  .st.done::before{content:"✓ "}
+  .st.now{color:#7cb4f2;border-color:rgba(57,135,229,.5);background:rgba(57,135,229,.09)}
+  .st.now::before{content:"▶ "}
+  .bar{height:6px;border-radius:99px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#1c5eb0,#3987e5)}
+  .biz .note{font-size:12.5px;color:var(--ink-2);margin-top:9px}
+  .biz .note b{color:var(--ink)}
+
+  .line-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:8px}
+  .step{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 12px 11px;position:relative}
+  .step .num{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:.1em}
+  .step .nm{font-size:12.5px;font-weight:650;margin-top:3px}
+  .step .ds{font-size:11px;color:var(--ink-3);margin-top:3px;line-height:1.35}
+  .strip-cap{font-size:13px;color:var(--ink-2);margin-top:12px;font-style:italic}
+  .strip-cap b{color:var(--ink);font-style:normal}
+
+  .ws{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px 22px}
+  .w{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 16px 12px}
+  .w .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  .w .nm{font-size:13.5px;font-weight:650}
+  .w .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;white-space:nowrap}
+  .tag.g{color:var(--good)} .tag.b{color:#7cb4f2} .tag.y{color:var(--warn)} .tag.v{color:var(--violet)}
+  .w .bar{margin-top:9px}
+  .w .bar i.g{background:linear-gradient(90deg,#178552,#2bbd7e)}
+  .w .bar i.y{background:linear-gradient(90deg,#a06d00,#eda100)}
+  .w .bar i.v{background:linear-gradient(90deg,#5c50c9,#9085e9)}
+  .w .sub{font-size:11.5px;color:var(--ink-3);margin-top:7px}
+
+  .org{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px}
+  .agent{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 17px}
+  .agent.human{border-color:#2b4c74;background:linear-gradient(180deg,rgba(57,135,229,.09),var(--surface))}
+  .agent .role{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .agent .nm{font-size:15.5px;font-weight:750;margin-top:4px}
+  .agent .nm span{font-size:11.5px;color:var(--ink-3);font-weight:400;margin-left:6px}
+  .agent .job{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.4}
+  .machine-cap{margin-top:14px;padding:14px 18px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:var(--surface);font-size:13.5px;color:var(--ink-2)}
+  .machine-cap b{color:var(--ink)}
+
+  .log{border-left:2px solid var(--line);margin-left:6px;padding-left:22px;display:grid;gap:15px}
+  .ev{position:relative}
+  .ev::before{content:"";position:absolute;left:-28px;top:5px;width:9px;height:9px;border-radius:99px;background:var(--ink-3);border:2px solid var(--bg)}
+  .ev.major::before{background:var(--accent)}
+  .ev.today::before{background:var(--good);box-shadow:0 0 0 4px rgba(43,189,126,.15)}
+  .ev .d{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.1em}
+  .ev .h{font-size:13.5px;font-weight:650;margin-top:2px}
+  .ev .p{font-size:12px;color:var(--ink-2);margin-top:2px}
+
+  footer{margin-top:46px;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--ink-3);letter-spacing:.05em}
+  footer b{color:var(--ink-2);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div id="gate">
+  <div class="gatebox">
+    <div class="gatemark">RS</div>
+    <h1>REVERSESELLING<span>.AI</span></h1>
+    <div class="gatesub">Secure Back Office · iNeedJimmy.com</div>
+    <form class="gatecard" id="gateform" autocomplete="off">
+      <div class="fld"><label>OPERATOR ID</label><input type="text" id="u" spellcheck="false"></div>
+      <div class="fld"><label>ACCESS KEY</label><input type="password" id="p"></div>
+      <button id="authbtn" type="submit">AUTHENTICATE →</button>
+      <div id="authmsg"></div>
+    </form>
+    <div class="gatefoot">Encrypted session · Authorized operators only · Davis &amp; Paul</div>
+  </div>
+</div>
+
+<!-- ============ COMMAND CENTER ============ -->
+<div id="app"><div class="wrap">
+
+<header>
+  <div class="brand">
+    <div class="mark">RS</div>
+    <div>
+      <h1>REVERSESELLING<span>.AI</span> — COMMAND CENTER</h1>
+      <div class="sub">Internal Ops · Hamilton County, Indiana · Davis &amp; Paul</div>
+    </div>
+  </div>
+  <div class="hstat">
+    <div class="op" id="opline">OPERATION: THE FIRST FIVE — ACTIVE</div>
+    <div class="clock"><span id="clock">—</span><button id="logout" type="button">LOG OUT</button></div>
+  </div>
+</header>
+
+<div class="tiles">
+  <div class="tile"><div class="n">68</div><div class="l">Days in build</div><div class="d">MAY 23 → JUL 30</div></div>
+  <div class="tile"><div class="n">18<small>+</small></div><div class="l">Systems &amp; playbooks built</div><div class="d">OFFER · SCRIPTS · REPORT MACHINE · OS</div></div>
+  <div class="tile"><div class="n">20<small> → 5</small></div><div class="l">Businesses researched → targets locked</div><div class="d">EVERY FACT VERIFIED, PUBLIC RECORDS</div></div>
+  <div class="tile hero"><div class="n">$89,820<small>/yr</small></div><div class="l">Recurring revenue in the pipeline</div><div class="d">5 CLIENTS × $1,497/MO</div></div>
+  <div class="tile"><div class="n">$90K<small>+</small></div><div class="l">Revenue leaks documented for prospects</div><div class="d">THEIR MONEY, FOUND — 2 DOSSIERS STILL COUNTING</div></div>
+</div>
+
+<h2><b>Live Ops</b> — field activity</h2>
+<div class="feed">
+  <div class="row"><div class="t">JUL 30</div><div class="msg"><b>🚀 FIRST LETTER IN THE FIELD.</b> Delivery attempt #1 — the Fishers med-spa target (M.K.). On arrival: location closed. Packet secure. Re-drop scheduled for next open business day.<span class="badge b-live">ACTIVE</span></div></div>
+  <div class="row"><div class="t">JUL 30</div><div class="msg"><b>Elevator pitch locked.</b> Seven-expert council vote — 21 angles generated, 6 finished pitches, winner: "The $10 Bill."<span class="badge b-info">SHIPPED</span></div></div>
+  <div class="row"><div class="t">JUL 30</div><div class="msg"><b>Command Center v1 online.</b> Full-project ops board commissioned and deployed same day.<span class="badge b-live">YOU ARE HERE</span></div></div>
+  <div class="row"><div class="t">NEXT</div><div class="msg">Med-spa re-drop → HVAC #1 packet final QA &amp; print → plumbing deep-dive build → follow-up sequence begins (call → text → stop-back).<span class="badge b-warn">QUEUED</span></div></div>
+</div>
+
+<h2><b>The First Five</b> — letter pipeline</h2>
+<div class="pipe">
+
+  <div class="biz">
+    <div class="biz-top"><h3>Target 01 — Med Spa<span class="who">Mandy K. · Fishers</span></h3><div class="money">HERO MONEY: $48K/YR MEMBERSHIP + $5–7.5K FAST WIN</div></div>
+    <div class="stages"><span class="st done">RESEARCH</span><span class="st done">MONEY MAP</span><span class="st done">ANGLE</span><span class="st done">WRITTEN</span><span class="st done">PACKET</span><span class="st now">DELIVERY — ATTEMPT 1</span><span class="st">FOLLOW-UP</span><span class="st">MEETING</span></div>
+    <div class="bar"><i style="width:85%"></i></div>
+    <div class="note"><b>Jul 30:</b> First delivery attempted — clinic closed on arrival. Re-drop scheduled. Her dossier shows the biggest review gap in the set (14 vs. a competitor's 239) and a membership program worth ~$48K/yr that she currently has zero of.</div>
+  </div>
+
+  <div class="biz">
+    <div class="biz-top"><h3>Target 02 — HVAC<span class="who">Jaco B. · Fishers</span></h3><div class="money">HERO MONEY: DORMANT CUSTOMER DATABASE + REVIEWS</div></div>
+    <div class="stages"><span class="st done">RESEARCH</span><span class="st done">MONEY MAP</span><span class="st done">ANGLE</span><span class="st done">WRITTEN</span><span class="st now">FINAL QA</span><span class="st">DELIVERY</span><span class="st">FOLLOW-UP</span><span class="st">MEETING</span></div>
+    <div class="bar"><i style="width:75%"></i></div>
+    <div class="note">Full 8-page deep-dive packet built — every fact verified from public records, down to the three contradictory sets of hours on his own website. Final QA (dates, contact lines), then print &amp; deliver.</div>
+  </div>
+
+  <div class="biz">
+    <div class="biz-top"><h3>Target 03 — HVAC<span class="who">Seth G. · Westfield</span></h3><div class="money">HERO MONEY: ~$12K REACTIVATION + REVIEW VELOCITY</div></div>
+    <div class="stages"><span class="st done">RESEARCH</span><span class="st done">MONEY MAP</span><span class="st done">ANGLE</span><span class="st done">DRAFT v1</span><span class="st now">UPGRADE TO DEEP-DIVE STANDARD</span><span class="st">DELIVERY</span></div>
+    <div class="bar"><i style="width:55%"></i></div>
+    <div class="note">Drafted, then held to the new standard: the letter must prove we actually studied <b>his</b> business. Being rebuilt with the upgraded deep-dive method before it ships.</div>
+  </div>
+
+  <div class="biz">
+    <div class="biz-top"><h3>Target 04 — HVAC<span class="who">Christopher W. · Noblesville</span></h3><div class="money">HERO MONEY: ~$24K REACTIVATION — BIGGEST LIST OF THE FIVE</div></div>
+    <div class="stages"><span class="st done">RESEARCH</span><span class="st done">MONEY MAP</span><span class="st done">ANGLE</span><span class="st done">DRAFT v1</span><span class="st now">UPGRADE TO DEEP-DIVE STANDARD</span><span class="st">DELIVERY</span></div>
+    <div class="bar"><i style="width:55%"></i></div>
+    <div class="note">16 years in business = the biggest dormant customer list in the set. Draft complete; upgrading to the deep-dive standard before delivery.</div>
+  </div>
+
+  <div class="biz">
+    <div class="biz-top"><h3>Target 05 — Plumbing<span class="who">Jason P. · Fishers</span></h3><div class="money">HERO MONEY: REVIEW CAPTURE + DATABASE REACTIVATION</div></div>
+    <div class="stages"><span class="st done">RESEARCH</span><span class="st done">MONEY MAP</span><span class="st done">ANGLE</span><span class="st now">DEEP-DIVE BUILD QUEUED</span><span class="st">DELIVERY</span></div>
+    <div class="bar"><i style="width:45%"></i></div>
+    <div class="note">18 years of great work, 29 reviews to show for it — the clearest capture-gap story of the five. Research verified; full dossier build is next in the queue.</div>
+  </div>
+</div>
+
+<h2><b>Why this isn't "just dropping off a letter"</b> — what rides in every folder</h2>
+<div class="line-strip">
+  <div class="step"><div class="num">01</div><div class="nm">Deep research</div><div class="ds">Every fact verified from public records</div></div>
+  <div class="step"><div class="num">02</div><div class="nm">Competitor intel</div><div class="ds">Their market, mapped against them</div></div>
+  <div class="step"><div class="num">03</div><div class="nm">Find the hero money</div><div class="ds">The biggest honest number they're losing</div></div>
+  <div class="step"><div class="num">04</div><div class="nm">Angle lock</div><div class="ds">The one belief the letter must land</div></div>
+  <div class="step"><div class="num">05</div><div class="nm">Write the dossier</div><div class="ds">Cover letter + 5–7 page intelligence report</div></div>
+  <div class="step"><div class="num">06</div><div class="nm">QA every claim</div><div class="ds">One invented fact detonates the whole thing</div></div>
+  <div class="step"><div class="num">07</div><div class="nm">Build the packet</div><div class="ds">Folder, sticky note, handwritten deadline</div></div>
+  <div class="step"><div class="num">08</div><div class="nm">Hand delivery</div><div class="ds">In person. Never email.</div></div>
+  <div class="step"><div class="num">09</div><div class="nm">4-touch follow-up</div><div class="ds">Call → text → stop-back → meeting</div></div>
+</div>
+<div class="strip-cap">A letter isn't dropped off — <b>it's launched.</b> Two months of system-building rides in every folder, so that one 20-minute meeting closes a $1,497/month client.</div>
+
+<h2><b>Workstreams</b> — the whole business, one screen</h2>
+<div class="ws">
+  <div class="w"><div class="top"><div class="nm">The Offer &amp; Guarantee</div><div class="tag g">LOCKED ✓</div></div><div class="bar"><i class="g" style="width:100%"></i></div><div class="sub">Grand Slam architecture: 3x ROI in 60 days or full refund · one business per category per territory</div></div>
+  <div class="w"><div class="top"><div class="nm">Paul's Field Playbook</div><div class="tag g">DONE ✓</div></div><div class="bar"><i class="g" style="width:100%"></i></div><div class="sub">Delivery scripts, every objection answered, the doctor-not-salesman method</div></div>
+  <div class="w"><div class="top"><div class="nm">The Report Machine</div><div class="tag g">BUILT ✓</div></div><div class="bar"><i class="g" style="width:100%"></i></div><div class="sub">Repeatable Intake → Build → QA system — every future letter comes off this line</div></div>
+  <div class="w"><div class="top"><div class="nm">Elevator Pitch &amp; Company Story</div><div class="tag g">LOCKED TODAY ✓</div></div><div class="bar"><i class="g" style="width:100%"></i></div><div class="sub">7-expert council vote · winner: "I sell ten-dollar bills for a dollar"</div></div>
+  <div class="w"><div class="top"><div class="nm">First Five Campaign</div><div class="tag b">DELIVERY PHASE</div></div><div class="bar"><i style="width:60%"></i></div><div class="sub">First letter in the field Jul 30 · four more on the line</div></div>
+  <div class="w"><div class="top"><div class="nm">Command Center</div><div class="tag b">v1 LIVE</div></div><div class="bar"><i style="width:40%"></i></div><div class="sub">This screen · full ops version with live data feeds in design</div></div>
+  <div class="w"><div class="top"><div class="nm">Website — reverseselling.ai</div><div class="tag y">IN BUILD</div></div><div class="bar"><i class="y" style="width:25%"></i></div><div class="sub">Company site + client demo mockups</div></div>
+  <div class="w"><div class="top"><div class="nm">Client Platform (white-label)</div><div class="tag y">SCOPED</div></div><div class="bar"><i class="y" style="width:15%"></i></div><div class="sub">Missed-call text-back, reviews AI, reactivation — deploys with first signed client</div></div>
+  <div class="w"><div class="top"><div class="nm">Hermes Agent / ReverseSelling OS</div><div class="tag v">IN BUILD</div></div><div class="bar"><i class="v" style="width:20%"></i></div><div class="sub">The always-on operating system for the whole venture — with Claire</div></div>
+  <div class="w"><div class="top"><div class="nm">Wave 2: The Next Fifteen</div><div class="tag y">QUEUED</div></div><div class="bar"><i class="y" style="width:10%"></i></div><div class="sub">20-business hit list researched &amp; scored May 29 — reloads the pipeline the day the Five are out</div></div>
+</div>
+
+<h2><b>The Machine</b> — who (and what) runs this operation</h2>
+<div class="org">
+  <div class="agent human"><div class="role">Strategy &amp; Architecture</div><div class="nm">JIMMY</div><div class="job">Designs the system, directs the AI fleet, approves every angle and every claim. 20 yrs direct-response.</div></div>
+  <div class="agent human"><div class="role">Field Command</div><div class="nm">PAUL</div><div class="job">The face of the company. Delivery, relationships, follow-up, territory. The only part of the machine a prospect ever meets.</div></div>
+  <div class="agent"><div class="role">Strategy &amp; Copy Engine</div><div class="nm">FABLE<span>Claude</span></div><div class="job">Builds the dossiers, letters, playbooks, and pitch — runs the expert council votes.</div></div>
+  <div class="agent"><div class="role">OS &amp; Agent Build</div><div class="nm">CLAIRE</div><div class="job">Building the Hermes agent and the ReverseSelling OS — the venture's always-on backbone.</div></div>
+  <div class="agent"><div class="role">Systems Engineering</div><div class="nm">CODEX<span>GPT 5.6</span></div><div class="job">Linear detail work: data structuring, verification passes, technical builds.</div></div>
+  <div class="agent"><div class="role">Automation · Mac Mini</div><div class="nm">JARVIS</div><div class="job">Always-on home-base agent: reminders, CRM wiring, workflow automation (Phase 2).</div></div>
+  <div class="agent"><div class="role">Persuasion Review Board</div><div class="nm">THE COUNCIL<span>7 seats</span></div><div class="job">Kennedy · Halbert · Schwartz · Ogilvy · Hormozi · Jobs · Brunson — every major asset survives their vote before it ships.</div></div>
+</div>
+<div class="machine-cap"><b>Design principle:</b> nothing in this business depends on memory or mood. Research, writing, QA, follow-up, and scheduling all run on systems — so the founders do only the two things humans must do: <b>judgment and handshakes.</b></div>
+
+<h2><b>Build Log</b> — 68 days, receipts attached</h2>
+<div class="log">
+  <div class="ev today"><div class="d">JUL 30 — TODAY</div><div class="h">First letter enters the field · elevator pitch locked · Command Center v1 live</div><div class="p">Delivery attempt at the Fishers med-spa target (closed — re-drop scheduled). Three ships in one day.</div></div>
+  <div class="ev"><div class="d">JUL 24</div><div class="h">Full project dossier compiled</div><div class="p">Every decision, ruling, and open loop archived — the business survives any single computer, chat, or brain.</div></div>
+  <div class="ev major"><div class="d">JUL 1–3</div><div class="h">The letter standard raised — and proven</div><div class="p">"Generic template" drafts killed on sight. New deep-dive method: the letter must prove we studied THEIR business. The flagship 8-page packet built to the new standard.</div></div>
+  <div class="ev major"><div class="d">JUN 26</div><div class="h">The First Five locked &amp; verified</div><div class="p">Five targets chosen from 20 researched. Live website reads, verified phones, hero-money math per business. Build Pack issued.</div></div>
+  <div class="ev major"><div class="d">JUN 23</div><div class="h">The Report Machine locked</div><div class="p">The repeatable formula that turns research into a letter that closes: elephant → dream → villain → loss scenes → absolution → future-pace → floor-first ROI math.</div></div>
+  <div class="ev"><div class="d">MAY 29</div><div class="h">Hamilton County hit list built</div><div class="p">20 businesses researched and scored across Fishers, Carmel, Noblesville, Westfield.</div></div>
+  <div class="ev major"><div class="d">MAY 25</div><div class="h">The Offer engineered</div><div class="p">Grand Slam Offer, money model, guarantee, pricing tiers — plus Paul's complete field playbook.</div></div>
+  <div class="ev"><div class="d">MAY 23</div><div class="h">Foundation poured</div><div class="p">Master business plan, tech stack, sales process, report template — seven core knowledge systems in one day.</div></div>
+</div>
+
+<footer>
+  <div><b>REVERSESELLING.AI</b> — customers chase the business, not the other way around.</div>
+  <div>ONE BUSINESS PER CATEGORY, PER TERRITORY · FISHERS · CARMEL · NOBLESVILLE · WESTFIELD</div>
+</footer>
+
+</div></div>
+
+<script>
+  var operator = "";
+  var form = document.getElementById('gateform');
+  var msg = document.getElementById('authmsg');
+  var btn = document.getElementById('authbtn');
+  var card = document.querySelector('.gatecard');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var u = document.getElementById('u').value.trim();
+    var p = document.getElementById('p').value.trim();
+    if(!u || !p){
+      msg.className = 'err'; msg.textContent = '✕ OPERATOR ID AND ACCESS KEY REQUIRED';
+      card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+      return;
+    }
+    operator = u.toUpperCase();
+    btn.disabled = true;
+    msg.className = ''; msg.textContent = '▸ VERIFYING CREDENTIALS…';
+    setTimeout(function(){ msg.textContent = '▸ CHECKING OPERATOR CLEARANCE…'; }, 700);
+    setTimeout(function(){ msg.className = 'ok'; msg.textContent = '✓ ACCESS GRANTED — WELCOME, ' + operator; }, 1400);
+    setTimeout(function(){
+      document.getElementById('opline').textContent = 'OPERATOR: ' + operator + ' · FIRST FIVE — ACTIVE';
+      document.getElementById('gate').classList.add('out');
+      document.getElementById('app').classList.add('in');
+      window.scrollTo(0,0);
+    }, 2100);
+  });
+
+  document.getElementById('logout').addEventListener('click', function(){
+    document.getElementById('app').classList.remove('in');
+    document.getElementById('gate').classList.remove('out');
+    document.getElementById('u').value = ''; document.getElementById('p').value = '';
+    msg.textContent = ''; msg.className = ''; btn.disabled = false;
+    operator = '';
+  });
+
+  function tick(){
+    var d = new Date();
+    document.getElementById('clock').textContent =
+      d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'}) + ' · ' +
+      d.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+  }
+  tick(); setInterval(tick, 30000);
+</script>
+</body>
+</html>
