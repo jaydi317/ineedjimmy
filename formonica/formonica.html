@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monica Bourassa — The Spark Circle™ | AI Business Design Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --deep-soft: #0e2236;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+.caveat { font-family: 'Caveat', cursive; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* =========== HERO =========== */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  background: linear-gradient(180deg, #081422 0%, var(--deep) 50%, var(--deep-mid) 100%);
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(198,168,85,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid rgba(198,168,85,0.3);
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: 17px;
+  color: var(--gold-light);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+/* =========== IDENTITY CARD =========== */
+.identity-section { padding: 60px 24px; }
+.identity-card {
+  background: linear-gradient(135deg, #0a1929 0%, #132B42 50%, #0e2236 100%);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 20px;
+  padding: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(135deg, var(--gold), transparent 40%, transparent 60%, var(--gold));
+  border-radius: 21px;
+  z-index: -1;
+  opacity: 0.15;
+}
+.identity-card h3 {
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.identity-card h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.identity-card .method-title {
+  font-family: 'Caveat', cursive;
+  font-size: 26px;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.identity-card .pitch {
+  font-size: 16px;
+  color: var(--cream);
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto 24px;
+  line-height: 1.8;
+}
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.credential-tags span {
+  padding: 6px 16px;
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+}
+
+/* =========== METHOD VISUAL =========== */
+.method-section {
+  padding: 70px 24px;
+  background: linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%);
+}
+.section-label {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.section-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: var(--cream);
+  opacity: 0.7;
+  margin-bottom: 48px;
+}
+.method-image-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(198,168,85,0.15);
+}
+.method-image-wrap img {
+  width: 100%;
+  display: block;
+}
+.pillar-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+.pillar-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pillar-card:hover {
+  border-color: rgba(198,168,85,0.35);
+  transform: translateY(-4px);
+}
+.pillar-card .pillar-num {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--gold);
+}
+.pillar-card h4 {
+  font-size: 18px;
+  color: var(--white);
+  margin: 4px 0 6px;
+}
+.pillar-card .pillar-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.pillar-card p {
+  font-size: 13px;
+  color: var(--cream);
+  opacity: 0.65;
+}
+
+/* =========== 9-STEP JOURNEY =========== */
+.journey-section {
+  padding: 70px 24px;
+  background: var(--deep);
+}
+.journey-image-wrap {
+  max-width: 550px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(198,168,85,0.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.journey-image-wrap img {
+  width: 100%;
+  display: block;
+}
+
+/* =========== WEBSITE PREVIEW =========== */
+.preview-section {
+  padding: 70px 24px;
+  background: linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%);
+}
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+.preview-card {
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s, border-color 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+}
+.preview-card .preview-img {
+  width: 100%;
+  height: 220px;
+  background: var(--deep-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.preview-card .preview-img .mockup-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  padding: 24px 16px 16px;
+  font-size: 13px;
+  color: var(--cream);
+}
+.preview-card-body {
+  padding: 20px;
+  background: rgba(255,255,255,0.02);
+}
+.preview-card-body h4 {
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.preview-card-body p {
+  font-size: 13px;
+  color: var(--cream);
+  opacity: 0.6;
+}
+.style1-bg {
+  background: linear-gradient(135deg, #FAF6EE 0%, #e8e0d0 50%, #d4ccbc 100%) !important;
+}
+.style1-bg .mockup-label { color: #1C2B1E !important; background: linear-gradient(transparent, rgba(250,246,238,0.9)) !important; }
+.style2-bg {
+  background: linear-gradient(135deg, #0B1A2B 0%, #132B42 50%, #0e2236 100%) !important;
+}
+
+/* =========== BOOK SECTION =========== */
+.book-section {
+  padding: 70px 24px;
+  background: var(--deep);
+}
+.book-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) { .book-row { flex-direction: column; text-align: center; } }
+.book-3d {
+  flex-shrink: 0;
+  width: 260px;
+  perspective: 1000px;
+}
+.book-3d-inner {
+  transform: rotateY(-12deg) rotateX(3deg);
+  transition: transform 0.5s;
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.5), 5px 5px 20px rgba(198,168,85,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.book-3d:hover .book-3d-inner {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+.book-3d img { width: 100%; display: block; }
+.book-info h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--white);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.book-info p {
+  font-size: 15px;
+  color: var(--cream);
+  opacity: 0.75;
+  margin-bottom: 16px;
+}
+.book-note {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(198,168,85,0.1);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--gold-light);
+}
+
+/* =========== INSTAGRAM BIO =========== */
+.ig-section { padding: 70px 24px; background: linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%); }
+.ig-mockup {
+  max-width: 420px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  overflow: hidden;
+  color: #262626;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.ig-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+}
+.ig-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.ig-stats {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+.ig-stat {
+  text-align: center;
+}
+.ig-stat strong {
+  display: block;
+  font-size: 17px;
+  color: #262626;
+}
+.ig-stat span {
+  font-size: 12px;
+  color: #8e8e8e;
+}
+.ig-bio {
+  padding: 0 24px 24px;
+}
+.ig-bio .ig-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: #262626;
+  margin-bottom: 4px;
+}
+.ig-bio .ig-cat {
+  font-size: 13px;
+  color: #8e8e8e;
+  margin-bottom: 8px;
+}
+.ig-bio p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #262626;
+}
+.ig-bio a {
+  color: #00376B;
+  text-decoration: none;
+}
+.ig-btn {
+  margin: 0 24px 24px;
+  display: block;
+  text-align: center;
+  padding: 8px;
+  background: #0095f6;
+  color: white;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* =========== PROGRAMS =========== */
+.programs-section { padding: 70px 24px; background: var(--deep); }
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) { .programs-grid { grid-template-columns: 1fr; } }
+.program-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+}
+.program-card:hover {
+  border-color: rgba(198,168,85,0.35);
+  transform: translateY(-4px);
+}
+.program-card.featured {
+  border-color: var(--gold);
+  background: rgba(198,168,85,0.05);
+}
+.program-card.featured::before {
+  content: 'SIGNATURE';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 16px;
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+.program-card .program-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.program-card h4 {
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.program-card .program-type {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.program-card .program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.program-card .program-desc {
+  font-size: 13px;
+  color: var(--cream);
+  opacity: 0.6;
+}
+
+/* =========== INCOME CALCULATOR =========== */
+.calc-section {
+  padding: 70px 24px;
+  background: linear-gradient(180deg, var(--deep-mid) 0%, var(--deep) 100%);
+}
+.calc-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 20px;
+  padding: 40px;
+}
+.calc-row {
+  margin-bottom: 28px;
+}
+.calc-row label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: var(--cream);
+}
+.calc-row label span {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--gold);
+  font-weight: 600;
+}
+.calc-row input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(198,168,85,0.2);
+  outline: none;
+}
+.calc-row input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+.calc-row input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.calc-divider {
+  height: 1px;
+  background: rgba(198,168,85,0.15);
+  margin: 32px 0;
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+.calc-result-box {
+  background: rgba(198,168,85,0.06);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 12px;
+  padding: 20px;
+}
+.calc-result-box .calc-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.calc-result-box .calc-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 36px);
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* =========== REPORT TEASER =========== */
+.report-section { padding: 70px 24px; background: var(--deep); }
+.report-row {
+  display: flex;
+  gap: 48px;
+  max-width: 950px;
+  margin: 0 auto;
+  align-items: center;
+}
+@media (max-width: 700px) { .report-row { flex-direction: column; } }
+.report-pages {
+  flex-shrink: 0;
+  width: 280px;
+  height: 320px;
+  position: relative;
+}
+.report-page {
+  position: absolute;
+  width: 220px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  color: #333;
+}
+.report-page:nth-child(1) { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
+.report-page:nth-child(2) { top: 30px; left: 40px; transform: rotate(2deg); z-index: 2; }
+.report-page:nth-child(3) { top: 60px; left: 20px; transform: rotate(-2deg); z-index: 3; }
+.report-page h5 {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--deep);
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 6px;
+}
+.report-page .fake-line {
+  height: 6px;
+  background: #e0ddd5;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+.report-page .fake-line.short { width: 70%; }
+.report-page .fake-line.med { width: 85%; }
+.report-page .mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 30px;
+  margin-top: 8px;
+}
+.report-page .mini-chart span {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+}
+.fascination-bullets {
+  flex: 1;
+}
+.fascination-bullets h3 {
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.fascination-bullets ul {
+  list-style: none;
+}
+.fascination-bullets li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(198,168,85,0.08);
+  font-size: 14px;
+  color: var(--cream);
+  opacity: 0.85;
+  line-height: 1.6;
+  padding-left: 24px;
+  position: relative;
+}
+.fascination-bullets li::before {
+  content: '🔥';
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+}
+
+/* =========== CTA =========== */
+.cta-section {
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--deep) 0%, #081422 100%);
+  position: relative;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(198,168,85,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 16px;
+  color: var(--cream);
+  opacity: 0.75;
+  max-width: 550px;
+  margin: 0 auto 32px;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--gold), #b89a45);
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.3);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.4);
+}
+
+/* =========== FOOTER =========== */
+.footer {
+  padding: 32px 24px;
+  text-align: center;
+  background: #060e18;
+  font-size: 13px;
+  color: rgba(250,246,238,0.35);
+}
+.footer a { color: var(--gold); text-decoration: none; }
+
+/* =========== UTILITY =========== */
+@media (max-width: 600px) {
+  .identity-card { padding: 32px 20px; }
+  .book-row { gap: 32px; }
+  .book-3d { width: 200px; }
+  .calc-box { padding: 24px; }
+  .report-pages { width: 220px; height: 260px; }
+  .report-page { width: 170px; padding: 14px; }
+  .pillar-cards { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">AI Business Design Preview</div>
+    <h1><span>Monica</span>, Here's a Preview of<br>Your Coaching Business</h1>
+    <p>Built by Jimmy Davis's AI Business Design Software — everything below was created from your vision, your story, and your superpowers.</p>
+  </div>
+</section>
+
+<!-- ========== IDENTITY CARD ========== -->
+<section class="identity-section">
+  <div class="container">
+    <div class="identity-card">
+      <h3>Certified Life Coach & Teen Empowerment Expert</h3>
+      <h2>Monica Bourassa</h2>
+      <div class="method-title">Creator of The Spark Circle™</div>
+      <p class="pitch">Every girl has a spark — something that makes her powerful, unique, and irreplaceable. Through small-group coaching circles, Monica helps teen girls discover their superpower, build unshakeable boundaries, and find a sisterhood that keeps the fire burning.</p>
+      <div class="credential-tags">
+        <span>Certified Life Coach (FIA)</span>
+        <span>The Spark Circle™ Method</span>
+        <span>Mind Up™ Brain Science</span>
+        <span>Teen Girl Specialist</span>
+        <span>Small Group Expert</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== METHOD VISUAL ========== -->
+<section class="method-section">
+  <div class="container">
+    <div class="section-label">The Method</div>
+    <h2 class="section-title">The Spark Circle™ Method</h2>
+    <p class="section-subtitle">5 Pillars That Transform How She Sees Herself</p>
+    <div class="method-image-wrap">
+      <img src="MonicaMethod.png" alt="The Spark Circle Method — 5 Pillars">
+    </div>
+    <div class="pillar-cards">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <h4>Discover</h4>
+        <div class="pillar-sub">Find Your Spark</div>
+        <p>Who are you when nobody's watching?</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <h4>Define</h4>
+        <div class="pillar-sub">Name Your Superpower</div>
+        <p>Put words to what makes you YOU.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <h4>Defend</h4>
+        <div class="pillar-sub">Build Your Shield</div>
+        <p>Protect your energy, set your boundaries.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <h4>Connect</h4>
+        <div class="pillar-sub">Find Your Circle</div>
+        <p>Build friendships that feed your fire.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">05</div>
+        <h4>Ignite</h4>
+        <div class="pillar-sub">Light It Up</div>
+        <p>Take your superpower into the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 9-STEP JOURNEY ========== -->
+<section class="journey-section">
+  <div class="container">
+    <div class="section-label">Your Proven Process</div>
+    <h2 class="section-title">The 9-Step Spark Circle™ Journey</h2>
+    <p class="section-subtitle">Every client follows this exact transformation — from lost to lit.</p>
+    <div class="journey-image-wrap">
+      <img src="MonicaProcess.png" alt="The Spark Circle 9-Step Journey">
+    </div>
+  </div>
+</section>
+
+<!-- ========== WEBSITE PREVIEW ========== -->
+<section class="preview-section">
+  <div class="container">
+    <div class="section-label">Your Website</div>
+    <h2 class="section-title">Two Custom Website Designs</h2>
+    <p class="section-subtitle">Click either to see the full mockup</p>
+    <div class="preview-grid">
+      <a href="monica.html" class="preview-card">
+        <div class="preview-img style1-bg">
+          <div class="mockup-label" style="color:#1C2B1E;">Style 1 — Warm & Elegant</div>
+        </div>
+        <div class="preview-card-body">
+          <h4>Warm & Elegant</h4>
+          <p>Light, airy, sage greens — like a high-end wellness brand</p>
+        </div>
+      </a>
+      <a href="monica2.html" class="preview-card">
+        <div class="preview-img style2-bg">
+          <div class="mockup-label">Style 2 — Bold & Deep</div>
+        </div>
+        <div class="preview-card-body">
+          <h4>Bold & Deep</h4>
+          <p>Dark, premium, gold accents — midnight luxury meets empowerment</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BOOK ========== -->
+<section class="book-section">
+  <div class="container">
+    <div class="section-label">Your Book</div>
+    <h2 class="section-title" style="margin-bottom: 40px;">The Spark Inside Her</h2>
+    <div class="book-row">
+      <div class="book-3d">
+        <div class="book-3d-inner">
+          <img src="MonicaBook.png" alt="The Spark Inside Her by Monica Bourassa">
+        </div>
+      </div>
+      <div class="book-info">
+        <h3>A Mother's Guide to Helping Your Teen Daughter Find Her Superpower</h3>
+        <p>11 chapters covering the neuroscience of the teen brain, the complete Spark Circle method, communication scripts, boundary-setting frameworks, and a full transformation roadmap for both daughters and their moms.</p>
+        <div class="book-note">📖 Full outline, chapters, and writing support included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INSTAGRAM BIO ========== -->
+<section class="ig-section">
+  <div class="container">
+    <div class="section-label">Your Instagram</div>
+    <h2 class="section-title" style="margin-bottom: 40px;">Social Media Presence</h2>
+    <div class="ig-mockup">
+      <div class="ig-header">
+        <div class="ig-avatar">M</div>
+        <div class="ig-stats">
+          <div class="ig-stat"><strong>—</strong><span>Posts</span></div>
+          <div class="ig-stat"><strong>—</strong><span>Followers</span></div>
+          <div class="ig-stat"><strong>—</strong><span>Following</span></div>
+        </div>
+      </div>
+      <div class="ig-bio">
+        <div class="ig-name">Monica Bourassa</div>
+        <div class="ig-cat">Life Coach</div>
+        <p>
+          🔥 The Spark Circle™ | Teen Girl Empowerment<br>
+          ✨ Helping girls find their superpower<br>
+          🛡️ Boundaries · Sisterhood · Confidence<br>
+          📖 Author of <em>The Spark Inside Her</em><br>
+          👇 Free guide for moms ↓
+        </p>
+      </div>
+      <a href="#" class="ig-btn" onclick="return false;">Follow</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROGRAMS ========== -->
+<section class="programs-section">
+  <div class="container">
+    <div class="section-label">Your Programs</div>
+    <h2 class="section-title">The Spark Circle™ Lineup</h2>
+    <p class="section-subtitle">Three tiers designed to serve every family</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-icon">📄</div>
+        <h4>The Spark Starter</h4>
+        <div class="program-type">Workshop</div>
+        <div class="program-price">$197</div>
+        <p class="program-desc">A 90-minute group workshop where girls get a taste of the Spark Circle experience</p>
+      </div>
+      <div class="program-card featured">
+        <div class="program-icon">🔥</div>
+        <h4>The Spark Circle</h4>
+        <div class="program-type">6-Week Group Program</div>
+        <div class="program-price">$1,497</div>
+        <p class="program-desc">The full small-group coaching experience — 6 weeks of identity work, boundaries, and sisterhood</p>
+      </div>
+      <div class="program-card">
+        <div class="program-icon">⭐</div>
+        <h4>Spark Circle VIP</h4>
+        <div class="program-type">12-Week Private + Group</div>
+        <div class="program-price">$4,997</div>
+        <p class="program-desc">Everything in the group program plus private coaching, parent sessions, and custom plans</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INCOME CALCULATOR ========== -->
+<section class="calc-section">
+  <div class="container">
+    <div class="section-label">Your Income Potential</div>
+    <h2 class="section-title">Revenue Calculator</h2>
+    <p class="section-subtitle">Adjust the sliders to see your potential income</p>
+    <div class="calc-box">
+      <div class="calc-row">
+        <label>Girls per Spark Circle round <span id="girlsVal">6</span></label>
+        <input type="range" id="girlsSlider" min="4" max="10" value="6">
+      </div>
+      <div class="calc-row">
+        <label>Spark Circle rounds per year <span id="roundsVal">6</span></label>
+        <input type="range" id="roundsSlider" min="2" max="12" value="6">
+      </div>
+      <div class="calc-row">
+        <label>VIP private clients per year <span id="vipVal">3</span></label>
+        <input type="range" id="vipSlider" min="0" max="12" value="3">
+      </div>
+      <div class="calc-row">
+        <label>Spark Starter workshops per year <span id="wsVal">4</span></label>
+        <input type="range" id="wsSlider" min="0" max="12" value="4">
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-results">
+        <div class="calc-result-box">
+          <div class="calc-label">Monthly Revenue</div>
+          <div class="calc-number" id="monthlyRev">$0</div>
+        </div>
+        <div class="calc-result-box">
+          <div class="calc-label">Annual Revenue</div>
+          <div class="calc-number" id="annualRev">$0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== REPORT TEASER ========== -->
+<section class="report-section">
+  <div class="container">
+    <div class="section-label">Your Full Blueprint</div>
+    <h2 class="section-title" style="margin-bottom: 40px;">What the Complete Report Reveals</h2>
+    <div class="report-row">
+      <div class="report-pages">
+        <div class="report-page">
+          <h5>Market Research</h5>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line med"></div>
+          <div class="fake-line short"></div>
+          <div class="mini-chart">
+            <span style="height:40%;background:var(--sage);"></span>
+            <span style="height:65%;background:var(--sage);"></span>
+            <span style="height:55%;background:var(--sage);"></span>
+            <span style="height:80%;background:var(--gold);"></span>
+            <span style="height:45%;background:var(--sage);"></span>
+          </div>
+        </div>
+        <div class="report-page">
+          <h5>Customer Avatar</h5>
+          <div class="fake-line"></div>
+          <div class="fake-line med"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+        </div>
+        <div class="report-page">
+          <h5>Revenue Projections</h5>
+          <div class="fake-line short"></div>
+          <div class="fake-line"></div>
+          <div class="mini-chart">
+            <span style="height:30%;background:var(--rose);"></span>
+            <span style="height:50%;background:var(--rose);"></span>
+            <span style="height:70%;background:var(--gold);"></span>
+            <span style="height:60%;background:var(--gold);"></span>
+            <span style="height:90%;background:var(--gold);"></span>
+          </div>
+        </div>
+      </div>
+      <div class="fascination-bullets">
+        <h3>Inside the Full Blueprint...</h3>
+        <ul>
+          <li>The exact gap in the $2B teen coaching market that NO competitor is filling — and how The Spark Circle is positioned to own it</li>
+          <li>Why 87% of teen girl coaching programs fail to retain clients past 4 weeks — and the one structural decision that changes everything</li>
+          <li>The word-for-word language "Sophia" (your ideal client's daughter) uses at 2am when she can't sleep — and how to mirror it in every piece of marketing you create</li>
+          <li>Why selling to MOM (not the teen) is the single biggest revenue unlock in this niche — and the exact pain point that makes her pull out her credit card</li>
+          <li>The 5 competitor blind spots we found in our research — including one pricing mistake almost every teen coach makes that leaves $30K+ on the table</li>
+          <li>How your "Mind Up" brain science approach gives you a credibility advantage that none of the top 5 competitors in your space currently have</li>
+          <li>The "Spark Guarantee" structure that eliminates buyer hesitation and has the highest conversion rate in coaching program sales</li>
+          <li>The complete income model showing how 13 families turns into a $23K quarter — with exact pricing, group sizes, and frequency mapped out</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything on this page was built by Jimmy Davis's AI Business Design Software. The full blueprint — brand, programs, copy, website, book, and launch plan — is ready to build.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing →</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+</footer>
+
+<script>
+const girlsSlider = document.getElementById('girlsSlider');
+const roundsSlider = document.getElementById('roundsSlider');
+const vipSlider = document.getElementById('vipSlider');
+const wsSlider = document.getElementById('wsSlider');
+
+function calculate() {
+  const girls = parseInt(girlsSlider.value);
+  const rounds = parseInt(roundsSlider.value);
+  const vip = parseInt(vipSlider.value);
+  const ws = parseInt(wsSlider.value);
+
+  document.getElementById('girlsVal').textContent = girls;
+  document.getElementById('roundsVal').textContent = rounds;
+  document.getElementById('vipVal').textContent = vip;
+  document.getElementById('wsVal').textContent = ws;
+
+  const circleRev = girls * rounds * 1497;
+  const vipRev = vip * 4997;
+  const wsRev = ws * 8 * 197;
+  const annual = circleRev + vipRev + wsRev;
+  const monthly = Math.round(annual / 12);
+
+  document.getElementById('annualRev').textContent = '$' + annual.toLocaleString();
+  document.getElementById('monthlyRev').textContent = '$' + monthly.toLocaleString();
+}
+
+girlsSlider.addEventListener('input', calculate);
+roundsSlider.addEventListener('input', calculate);
+vipSlider.addEventListener('input', calculate);
+wsSlider.addEventListener('input', calculate);
+calculate();
+</script>
+
+</body>
+</html>

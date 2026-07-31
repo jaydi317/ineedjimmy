@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karelyn, Here's a Preview of Your Coaching Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --deep-90: rgba(11,26,43,0.9);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  overflow-x: hidden;
+}
+
+/* UTILITY */
+.section { padding: 80px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--deep);
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: #5a6a7a;
+  max-width: 640px;
+  line-height: 1.7;
+}
+.gold-divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold);
+  margin: 24px 0;
+  border-radius: 2px;
+}
+
+/* ============ HERO ============ */
+.hero {
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 55%, #1a3a55 100%);
+  padding: 100px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(198,168,85,0.06) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 80%, rgba(122,158,126,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(198,168,85,0.15);
+  border: 1px solid rgba(198,168,85,0.3);
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  color: rgba(250,246,238,0.7);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============ IDENTITY CARD ============ */
+.identity-section { padding: 80px 24px; }
+.identity-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, var(--deep), var(--deep-mid));
+  border-radius: 20px;
+  padding: 48px 40px;
+  border: 1px solid rgba(198,168,85,0.2);
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(198,168,85,0.08), transparent 70%);
+  pointer-events: none;
+}
+.identity-card .card-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+.identity-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.identity-card .method-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.identity-card .pitch {
+  color: rgba(250,246,238,0.75);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 700px;
+  margin-bottom: 28px;
+}
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.credential-tag {
+  background: rgba(198,168,85,0.1);
+  border: 1px solid rgba(198,168,85,0.25);
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ============ METHOD VISUAL ============ */
+.method-section {
+  padding: 80px 24px;
+  background: var(--white);
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.method-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid rgba(198,168,85,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11,26,43,0.08);
+}
+.method-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  display: block;
+}
+.method-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--deep);
+  margin-bottom: 10px;
+}
+.method-card p {
+  font-size: 0.88rem;
+  color: #5a6a7a;
+  line-height: 1.6;
+}
+
+/* ============ 9-STEP JOURNEY ============ */
+.journey-section {
+  padding: 80px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+  text-align: center;
+}
+.journey-section .section-label { color: var(--gold); }
+.journey-section .section-title { color: var(--cream); }
+.journey-section .section-subtitle { color: rgba(250,246,238,0.65); margin: 0 auto 40px; }
+.journey-img {
+  max-width: 700px;
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ============ WEBSITE PREVIEWS ============ */
+.preview-section { padding: 80px 24px; background: var(--white); }
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 700px) {
+  .preview-grid { grid-template-columns: 1fr; }
+}
+.preview-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(11,26,43,0.12);
+}
+.preview-thumb {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.preview-thumb-warm {
+  background: linear-gradient(135deg, #FAF6EE 0%, #e8e0d0 50%, #d4ccbc 100%);
+}
+.preview-thumb-dark {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 50%, #1a3a55 100%);
+}
+.preview-thumb .mock-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  text-align: center;
+  padding: 20px;
+  line-height: 1.4;
+}
+.preview-thumb-warm .mock-text { color: var(--deep); }
+.preview-thumb-dark .mock-text { color: var(--gold-light); }
+.preview-info {
+  padding: 20px 24px;
+  background: var(--cream);
+}
+.preview-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.preview-info p { font-size: 0.85rem; color: #5a6a7a; }
+.preview-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+.badge-warm { background: rgba(122,158,126,0.15); color: var(--sage); }
+.badge-dark { background: rgba(198,168,85,0.15); color: var(--gold); }
+
+/* ============ BOOK SECTION ============ */
+.book-section {
+  padding: 80px 24px;
+  background: var(--cream);
+}
+.book-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .book-layout { grid-template-columns: 1fr; text-align: center; }
+}
+.book-3d {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+}
+.book-3d img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-12deg) rotateX(2deg);
+  box-shadow: 20px 20px 60px rgba(11,26,43,0.25), 0 0 0 1px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease;
+}
+.book-3d img:hover {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin-bottom: 8px;
+  color: var(--deep);
+}
+.book-info .book-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.book-info p {
+  font-size: 0.95rem;
+  color: #5a6a7a;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.book-note {
+  font-size: 0.85rem;
+  color: var(--sage);
+  font-style: italic;
+  border-left: 3px solid var(--sage);
+  padding-left: 16px;
+  margin-top: 20px;
+}
+
+/* ============ INSTAGRAM BIO ============ */
+.insta-section {
+  padding: 80px 24px;
+  background: var(--white);
+}
+.insta-mockup {
+  max-width: 420px;
+  margin: 40px auto 0;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+.insta-header {
+  padding: 24px 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.insta-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  color: var(--white);
+  font-size: 1.6rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.insta-stats {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+.insta-stat {
+  text-align: center;
+}
+.insta-stat .num {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--deep);
+}
+.insta-stat .label {
+  font-size: 0.72rem;
+  color: #8e8e8e;
+}
+.insta-bio {
+  padding: 0 24px 24px;
+}
+.insta-bio .insta-name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+  color: var(--deep);
+}
+.insta-bio .insta-category {
+  font-size: 0.78rem;
+  color: #8e8e8e;
+  margin-bottom: 8px;
+}
+.insta-bio p {
+  font-size: 0.85rem;
+  color: var(--deep);
+  line-height: 1.5;
+}
+.insta-bio p span.bio-emoji { margin-right: 4px; }
+.insta-follow-btn {
+  margin: 0 24px 24px;
+  display: block;
+  background: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: default;
+  width: calc(100% - 48px);
+}
+
+/* ============ PROGRAMS ============ */
+.programs-section {
+  padding: 80px 24px;
+  background: var(--cream);
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) {
+  .programs-grid { grid-template-columns: 1fr; max-width: 400px; }
+}
+.program-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11,26,43,0.08);
+}
+.program-card.featured {
+  border: 2px solid var(--gold);
+  background: linear-gradient(170deg, var(--white), #fdfbf5);
+}
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 12px;
+}
+.program-card .program-type {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--sage);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.program-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+.program-card .program-desc {
+  font-size: 0.85rem;
+  color: #5a6a7a;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--deep);
+  font-weight: 600;
+}
+.program-price .price-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #8e8e8e;
+  font-weight: 400;
+  margin-top: 4px;
+}
+
+/* ============ INCOME CALCULATOR ============ */
+.calculator-section {
+  padding: 80px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+}
+.calculator-section .section-label { color: var(--gold); }
+.calculator-section .section-title { color: var(--cream); }
+.calculator-section .section-subtitle { color: rgba(250,246,238,0.6); }
+.calc-box {
+  max-width: 700px;
+  margin: 40px auto 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 20px;
+  padding: 40px 36px;
+}
+.slider-group {
+  margin-bottom: 32px;
+}
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.slider-label span {
+  color: rgba(250,246,238,0.8);
+  font-size: 0.92rem;
+}
+.slider-label .slider-val {
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+input[type="range"] {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(250,246,238,0.12);
+  border-radius: 3px;
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(198,168,85,0.2);
+}
+.calc-result-box {
+  text-align: center;
+  padding: 20px;
+  background: rgba(198,168,85,0.06);
+  border-radius: 12px;
+  border: 1px solid rgba(198,168,85,0.15);
+}
+.calc-result-box .result-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(250,246,238,0.5);
+  margin-bottom: 8px;
+}
+.calc-result-box .result-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ============ REPORT TEASER ============ */
+.report-section {
+  padding: 80px 24px;
+  background: var(--white);
+}
+.report-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 40px auto 0;
+}
+@media (max-width: 768px) {
+  .report-layout { grid-template-columns: 1fr; }
+}
+.report-stack {
+  position: relative;
+  height: 320px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.report-page {
+  position: absolute;
+  width: 220px;
+  background: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(11,26,43,0.1);
+  padding: 24px 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.report-page:nth-child(1) {
+  transform: rotate(-8deg) translateX(-20px);
+  z-index: 1;
+}
+.report-page:nth-child(2) {
+  transform: rotate(0deg) translateY(-10px);
+  z-index: 2;
+}
+.report-page:nth-child(3) {
+  transform: rotate(6deg) translateX(20px);
+  z-index: 3;
+}
+.report-page .rp-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--deep);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 8px;
+}
+.rp-line {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.rp-line.short { width: 60%; }
+.rp-line.med { width: 80%; }
+.rp-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 50px;
+  margin-top: 12px;
+}
+.rp-bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+}
+.fascination-list {
+  list-style: none;
+}
+.fascination-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 16px;
+  font-size: 0.92rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+.fascination-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.8rem;
+  top: 2px;
+}
+
+/* ============ CTA ============ */
+.cta-section {
+  padding: 80px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+  text-align: center;
+}
+.cta-section .section-title { color: var(--cream); }
+.cta-section p {
+  color: rgba(250,246,238,0.7);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.8;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(198,168,85,0.3);
+  background: var(--gold-light);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--deep);
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+.footer p {
+  font-size: 0.8rem;
+  color: rgba(250,246,238,0.35);
+}
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * {
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+}
+.hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+.hero-inner > *:nth-child(2) { animation-delay: 0.3s; }
+.hero-inner > *:nth-child(3) { animation-delay: 0.5s; }
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">AI Business Design Preview</div>
+    <h1><span>Karelyn</span>, Here's a Preview of Your Coaching Business</h1>
+    <p>Everything below was designed by Jimmy Davis's AI Business Design Software — built around your unique superpowers, your ideal audience, and the method only YOU can deliver.</p>
+  </div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity-section">
+  <div class="identity-card">
+    <div class="card-label">Your Brand Identity</div>
+    <h2>Karelyn Goins</h2>
+    <div class="method-title">Creator of The Inner Alchemy Method™</div>
+    <p class="pitch">I help spiritual women who've done the courses, read the books, and tried the practitioners — but still feel like something deeper is trying to come through. The Inner Alchemy Method combines BodyTalk, EFT, breathwork, essential oils, and crystal healing into one integrated system — so you stop collecting healing experiences and start BECOMING the transformed woman you already are underneath.</p>
+    <div class="credential-tags">
+      <span class="credential-tag">Certified BodyTalk Practitioner</span>
+      <span class="credential-tag">EFT Practitioner</span>
+      <span class="credential-tag">Breathwork Facilitator</span>
+      <span class="credential-tag">Essential Oil Specialist</span>
+      <span class="credential-tag">Crystal Healer</span>
+      <span class="credential-tag">Published Author</span>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD VISUAL -->
+<section class="method-section section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Signature Method</div>
+    <h2 class="section-title">The Inner Alchemy Method™</h2>
+    <p class="section-subtitle" style="margin: 0 auto 16px;">Five ancient healing channels. One integrated system. Total transformation.</p>
+    <div class="gold-divider" style="margin:0 auto 0;"></div>
+  </div>
+  <div class="method-grid">
+    <div class="method-card">
+      <span class="method-icon">👁️</span>
+      <h3>Awaken</h3>
+      <p>Tune into your body's innate intelligence through BodyTalk to identify what's actually out of alignment.</p>
+    </div>
+    <div class="method-card">
+      <span class="method-icon">🔓</span>
+      <h3>Alchemize</h3>
+      <p>Release stored emotional patterns through EFT tapping to clear the meridian pathways.</p>
+    </div>
+    <div class="method-card">
+      <span class="method-icon">🌬️</span>
+      <h3>Amplify</h3>
+      <p>Use conscious connected breathwork to access the nervous system's deepest wisdom.</p>
+    </div>
+    <div class="method-card">
+      <span class="method-icon">🫧</span>
+      <h3>Anoint</h3>
+      <p>Layer essential oils to anchor energetic shifts through the limbic system.</p>
+    </div>
+    <div class="method-card">
+      <span class="method-icon">💎</span>
+      <h3>Attune</h3>
+      <p>Amplify and stabilize your new frequency with crystal energy work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+  <div class="section-label">Your Proven Process</div>
+  <h2 class="section-title">The Inner Alchemy Journey™</h2>
+  <p class="section-subtitle">Every client follows this exact 9-step transformation — from scattered seeker to integrated alchemist.</p>
+  <img src="KarelynProcess.png" alt="The Inner Alchemy Journey - 9 Steps to Full-Spectrum Transformation" class="journey-img">
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="preview-section section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Website — Two Directions</div>
+    <h2 class="section-title">Choose Your Visual Identity</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Two complete website mockups designed for your brand. Click to preview each one.</p>
+  </div>
+  <div class="preview-grid">
+    <a href="karelyn.html" class="preview-card">
+      <div class="preview-thumb preview-thumb-warm">
+        <div class="mock-text">The Inner Alchemy Method™<br><span style="font-family:'Inter';font-size:0.8rem;font-weight:400;color:#5a6a7a;">Warm · Elegant · Earthy</span></div>
+      </div>
+      <div class="preview-info">
+        <h3>Style 1: Warm &amp; Elegant</h3>
+        <p>Cream, sage greens, and nature-inspired warmth. Think Brené Brown meets high-end wellness.</p>
+        <span class="preview-badge badge-warm">Click to Preview</span>
+      </div>
+    </a>
+    <a href="karelyn2.html" class="preview-card">
+      <div class="preview-thumb preview-thumb-dark">
+        <div class="mock-text">The Inner Alchemy Method™<br><span style="font-family:'Inter';font-size:0.8rem;font-weight:400;color:rgba(250,246,238,0.5);">Bold · Deep · Premium</span></div>
+      </div>
+      <div class="preview-info">
+        <h3>Style 2: Bold &amp; Deep</h3>
+        <p>Dark navy, gold accents, and midnight luxury. Sophisticated, immersive, and powerful.</p>
+        <span class="preview-badge badge-dark">Click to Preview</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="book-section">
+  <div class="book-layout">
+    <div class="book-3d">
+      <img src="KarelynBook.png" alt="Inner Alchemy by Karelyn Goins">
+    </div>
+    <div class="book-info">
+      <div class="section-label">Your Book</div>
+      <h3>Inner Alchemy</h3>
+      <div class="book-subtitle">The 5-Channel Path to Becoming the Woman Your Soul Already Knows You Are</div>
+      <p>A transformative guide that introduces the world to your integrated healing philosophy — establishing you as the definitive voice in full-spectrum energy work for spiritual women.</p>
+      <p>12 chapters. 3 parts. One complete roadmap from scattered seeker to integrated alchemist.</p>
+      <div class="book-note">Full outline, chapters, and writing support included in the complete Blueprint.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM BIO MOCKUP -->
+<section class="insta-section section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Social Presence</div>
+    <h2 class="section-title">Instagram Profile Preview</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Your bio, optimized for authority and conversion.</p>
+  </div>
+  <div class="insta-mockup">
+    <div class="insta-header">
+      <div class="insta-avatar">KG</div>
+      <div class="insta-stats">
+        <div class="insta-stat"><div class="num">—</div><div class="label">posts</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="label">followers</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="label">following</div></div>
+      </div>
+    </div>
+    <div class="insta-bio">
+      <div class="insta-name">Karelyn Goins</div>
+      <div class="insta-category">Health & Wellness Coach</div>
+      <p>
+        <span class="bio-emoji">🔮</span> Creator of The Inner Alchemy Method™<br>
+        <span class="bio-emoji">✨</span> 5 modalities. 1 integrated system. Total transformation.<br>
+        <span class="bio-emoji">🌿</span> Certified BodyTalk | EFT | Breathwork | Oils | Crystals<br>
+        <span class="bio-emoji">📖</span> Author of <em>Inner Alchemy</em><br>
+        <span class="bio-emoji">⬇️</span> Which channel is blocked? Take the free quiz
+      </p>
+    </div>
+    <div class="insta-follow-btn">Follow</div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Programs</div>
+    <h2 class="section-title">Three Ways to Work With You</h2>
+    <p class="section-subtitle" style="margin:0 auto;">A clear value ladder from free entry point to premium transformation.</p>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="program-type">Lead Magnet</div>
+      <h3>The 5 Channels</h3>
+      <div class="program-desc">Free guide + quiz: discover which of your 5 intelligence channels is blocked and get a practice to start opening it.</div>
+      <div class="program-price">FREE<span class="price-label">Email opt-in</span></div>
+    </div>
+    <div class="program-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="program-type">Group Program</div>
+      <h3>Sacred Alchemy Circle</h3>
+      <div class="program-desc">6-week group experience: one channel activated per week, with full integration in Week 6. Live sessions + daily practices.</div>
+      <div class="program-price">$1,997<span class="price-label">Per enrollment</span></div>
+    </div>
+    <div class="program-card">
+      <div class="program-type">Private Intensive</div>
+      <h3>The Alchemist's Journey</h3>
+      <div class="program-desc">12 weeks of deep, private 1:1 work. Custom protocols, Voxer access, crystal + oil kit included.</div>
+      <div class="program-price">$7,500<span class="price-label">By application</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calculator-section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Revenue Potential</div>
+    <h2 class="section-title">Income Calculator</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Adjust the sliders to see what's possible with your programs at your prices.</p>
+  </div>
+  <div class="calc-box">
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Women per Sacred Alchemy Circle round</span>
+        <span class="slider-val" id="val-group">8</span>
+      </div>
+      <input type="range" id="slider-group" min="4" max="20" value="8">
+    </div>
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Rounds per year</span>
+        <span class="slider-val" id="val-rounds">4</span>
+      </div>
+      <input type="range" id="slider-rounds" min="1" max="8" value="4">
+    </div>
+    <div class="slider-group">
+      <div class="slider-label">
+        <span>Private intensive clients per year</span>
+        <span class="slider-val" id="val-private">3</span>
+      </div>
+      <input type="range" id="slider-private" min="0" max="12" value="3">
+    </div>
+    <div class="calc-results">
+      <div class="calc-result-box">
+        <div class="result-label">Monthly Revenue</div>
+        <div class="result-number" id="result-monthly">$7,225</div>
+      </div>
+      <div class="calc-result-box">
+        <div class="result-label">Annual Revenue</div>
+        <div class="result-number" id="result-annual">$86,700</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-section section">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">The Full Blueprint</div>
+    <h2 class="section-title">What the Complete Report Reveals</h2>
+    <p class="section-subtitle" style="margin:0 auto;">Everything above is just a preview. The full Blueprint goes much deeper.</p>
+  </div>
+  <div class="report-layout">
+    <div class="report-stack">
+      <div class="report-page">
+        <div class="rp-header">Market Research</div>
+        <div class="rp-line"></div>
+        <div class="rp-line short"></div>
+        <div class="rp-line med"></div>
+        <div class="rp-line"></div>
+        <div class="rp-line short"></div>
+        <div class="rp-chart">
+          <div class="rp-bar" style="height:60%;background:var(--sage);"></div>
+          <div class="rp-bar" style="height:85%;background:var(--gold);"></div>
+          <div class="rp-bar" style="height:45%;background:var(--rose);"></div>
+          <div class="rp-bar" style="height:70%;background:var(--sage);"></div>
+        </div>
+      </div>
+      <div class="report-page">
+        <div class="rp-header">Customer Avatar</div>
+        <div class="rp-line med"></div>
+        <div class="rp-line"></div>
+        <div class="rp-line short"></div>
+        <div class="rp-line med"></div>
+        <div class="rp-line"></div>
+        <div class="rp-line short"></div>
+        <div class="rp-line med"></div>
+      </div>
+      <div class="report-page">
+        <div class="rp-header">Revenue Projections</div>
+        <div class="rp-line"></div>
+        <div class="rp-line short"></div>
+        <div class="rp-chart">
+          <div class="rp-bar" style="height:40%;background:var(--warm);"></div>
+          <div class="rp-bar" style="height:65%;background:var(--gold);"></div>
+          <div class="rp-bar" style="height:90%;background:var(--sage);"></div>
+          <div class="rp-bar" style="height:100%;background:var(--gold);"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="fascination-list">
+        <li>The exact gap in the spiritual healing market that none of Karelyn's 5 competitors are owning — and why her modality combination is the key to claiming it</li>
+        <li>The psychological profile of her ideal client "Dana" — including the 2am thought that keeps her up, the embarrassing truth she won't admit, and the exact words she uses when talking to friends</li>
+        <li>Why practitioners who specialize in ONE modality are leaving a massive opportunity on the table — and how integrating all five creates a "frequency lock" no single-channel healer can match</li>
+        <li>The complete 6-week group curriculum, week by week — every teaching topic, exercise, and quick win mapped to The Inner Alchemy Method's 5 pillars</li>
+        <li>The 12-week private coaching intensive structure — including the month-by-month journey from excavation to emergence, and how to charge $7,500 with confidence</li>
+        <li>Three complete income scenarios from $51K to $447K — with the exact math showing how many clients, rounds, and certifications each requires</li>
+        <li>The full book outline for "Inner Alchemy" — 12 chapters, 3 parts, and the positioning strategy that makes it a client-attraction machine rather than just another self-help book</li>
+        <li>Dan Kennedy-style sales copy written in Karelyn's voice — including the opening hook, fascination bullets, and CTA that will convert the spiritual women who are DONE collecting modalities</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-label">Your Next Step</div>
+  <h2 class="section-title">Want to Bring This to Life?</h2>
+  <p>Everything you see on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint — complete with sales copy, email sequences, program curricula, and implementation plan — is available when you're ready.</p>
+  <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services &amp; Pricing</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const sliderGroup = document.getElementById('slider-group');
+const sliderRounds = document.getElementById('slider-rounds');
+const sliderPrivate = document.getElementById('slider-private');
+
+function calculate() {
+  const women = parseInt(sliderGroup.value);
+  const rounds = parseInt(sliderRounds.value);
+  const priv = parseInt(sliderPrivate.value);
+
+  document.getElementById('val-group').textContent = women;
+  document.getElementById('val-rounds').textContent = rounds;
+  document.getElementById('val-private').textContent = priv;
+
+  const groupRevenue = women * rounds * 1997;
+  const privateRevenue = priv * 7500;
+  const annual = groupRevenue + privateRevenue;
+  const monthly = Math.round(annual / 12);
+
+  document.getElementById('result-annual').textContent = '$' + annual.toLocaleString();
+  document.getElementById('result-monthly').textContent = '$' + monthly.toLocaleString();
+}
+
+sliderGroup.addEventListener('input', calculate);
+sliderRounds.addEventListener('input', calculate);
+sliderPrivate.addEventListener('input', calculate);
+calculate();
+</script>
+
+</body>
+</html>

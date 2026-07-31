@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Well Qigong Online — with MaryAnn McDonald</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mist:#edf2ee;
+    --paper:#fdfdfb;
+    --ink:#22382f;
+    --pine:#2e5448;
+    --pine-soft:#3f6a5b;
+    --gold:#c2913a;
+    --gold-soft:#e7d4ab;
+    --muted:#6f8278;
+    --line:#d8e1da;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito Sans',sans-serif;
+    font-size:19px;
+    line-height:1.7;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.15;}
+  .eyebrow{
+    font-family:'Nunito Sans',sans-serif;
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  .narrow{max-width:740px;margin:0 auto;}
+
+  /* ---------- header ---------- */
+  header{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+  }
+  header .wrap{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--pine);}
+  .logo em{color:var(--gold);font-style:italic;}
+  .header-cta{
+    font-size:15px;font-weight:700;color:var(--pine);
+    text-decoration:none;border:1.5px solid var(--pine);
+    border-radius:999px;padding:9px 22px;transition:.25s;
+  }
+  .header-cta:hover{background:var(--pine);color:#fff;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:linear-gradient(180deg,var(--mist) 0%, var(--paper) 100%);
+    padding:88px 0 72px;position:relative;overflow:hidden;
+  }
+  .hero .qi-line{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    pointer-events:none;opacity:.5;
+  }
+  .hero-inner{position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center;}
+  .hero h1{font-size:56px;color:var(--ink);margin:18px 0 22px;}
+  .hero h1 em{font-style:italic;color:var(--pine-soft);}
+  .hero .lede{font-size:21px;color:#42564c;max-width:54ch;}
+  .hero .lede strong{color:var(--pine);}
+  .portrait{
+    width:100%;aspect-ratio:4/5;border-radius:200px 200px 18px 18px;
+    background:linear-gradient(160deg,#cfe0d5,#9db8aa);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Cormorant Garamond',serif;font-size:20px;
+    text-align:center;padding:24px;border:6px solid #fff;
+    box-shadow:0 24px 50px rgba(34,56,47,.18);
+  }
+  .btn{
+    display:inline-block;background:var(--pine);color:#fff;
+    font-weight:700;font-size:18px;text-decoration:none;
+    padding:17px 40px;border-radius:999px;
+    box-shadow:0 10px 26px rgba(46,84,72,.32);
+    transition:.25s;
+  }
+  .btn:hover{background:#234539;transform:translateY(-2px);}
+  .btn-row{margin-top:34px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .btn-note{font-size:15px;color:var(--muted);}
+
+  /* ---------- seat ribbon ---------- */
+  .ribbon{
+    background:var(--pine);color:#f3efe4;
+    padding:16px 0;text-align:center;
+    font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;
+  }
+  .ribbon strong{color:var(--gold-soft);font-style:normal;}
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0;}
+  section h2{font-size:42px;margin:14px 0 26px;color:var(--ink);}
+  .center{text-align:center;}
+
+  /* ---------- practice ---------- */
+  .benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px;}
+  .benefit{
+    background:var(--mist);border-radius:16px;padding:28px 30px;
+    border:1px solid var(--line);
+  }
+  .benefit h3{font-size:24px;color:var(--pine);margin-bottom:8px;}
+  .benefit p{font-size:17px;color:#46584e;}
+
+  /* ---------- sponsored seat (signature) ---------- */
+  .mission{background:var(--mist);}
+  .seats{
+    display:grid;grid-template-columns:1fr auto 1fr;gap:0;align-items:stretch;
+    max-width:860px;margin:46px auto 0;
+  }
+  .seat-card{
+    background:#fff;border:1px solid var(--line);border-radius:20px;
+    padding:38px 34px;text-align:center;
+  }
+  .seat-card.given{background:var(--pine);color:#eef3ee;border-color:var(--pine);}
+  .seat-card .seat-label{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .seat-card h3{font-size:30px;margin:10px 0 12px;}
+  .seat-card.given h3{color:#fff;}
+  .seat-card p{font-size:17px;}
+  .seat-card.given p{color:#cfe0d4;}
+  .seat-link{
+    display:flex;align-items:center;justify-content:center;
+    padding:0 18px;font-family:'Cormorant Garamond',serif;
+    font-size:46px;color:var(--gold);font-style:italic;
+  }
+  .mission .tagline{
+    text-align:center;font-family:'Cormorant Garamond',serif;
+    font-size:26px;font-style:italic;color:var(--pine);margin-top:38px;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  .creds{margin-top:26px;display:flex;flex-direction:column;gap:12px;}
+  .cred{display:flex;gap:14px;align-items:baseline;font-size:17px;color:#46584e;}
+  .cred::before{content:"—";color:var(--gold);font-weight:700;}
+
+  /* ---------- inside ---------- */
+  .inside-list{margin-top:36px;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+  .inside-item{
+    display:grid;grid-template-columns:220px 1fr;gap:30px;
+    padding:26px 6px;border-bottom:1px solid var(--line);
+  }
+  .inside-item h3{font-size:25px;color:var(--pine);}
+  .inside-item p{font-size:17.5px;color:#46584e;}
+
+  /* ---------- testimonials ---------- */
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;}
+  .quote{
+    background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:30px 28px;font-size:16.5px;color:#42544a;
+  }
+  .quote .q-mark{font-family:'Cormorant Garamond',serif;font-size:52px;line-height:.5;color:var(--gold);display:block;margin-bottom:14px;}
+  .quote footer{margin-top:16px;font-weight:700;color:var(--pine);font-size:15px;}
+
+  /* ---------- offer ---------- */
+  .offer{background:var(--ink);color:#e9efe9;}
+  .offer h2{color:#fff;}
+  .offer-card{
+    max-width:560px;margin:44px auto 0;background:#fff;color:var(--ink);
+    border-radius:24px;padding:48px 44px;text-align:center;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+  }
+  .offer-card .plan{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .price{font-family:'Cormorant Garamond',serif;font-size:74px;color:var(--pine);line-height:1;margin:18px 0 4px;}
+  .price span{font-size:26px;color:var(--muted);}
+  .offer-card ul{list-style:none;margin:28px 0 32px;text-align:left;}
+  .offer-card li{padding:10px 0;border-bottom:1px solid var(--line);font-size:17px;display:flex;gap:12px;}
+  .offer-card li::before{content:"✦";color:var(--gold);}
+  .founders{
+    margin-top:22px;font-size:15.5px;color:#b9c8bd;max-width:520px;
+    margin-left:auto;margin-right:auto;text-align:center;
+  }
+  .founders strong{color:var(--gold-soft);}
+
+  /* ---------- faq ---------- */
+  .faq-item{border-bottom:1px solid var(--line);padding:24px 4px;}
+  .faq-item h3{font-size:24px;color:var(--pine);margin-bottom:8px;}
+  .faq-item p{font-size:17.5px;color:#46584e;}
+
+  /* ---------- final ---------- */
+  .final{background:var(--mist);text-align:center;}
+  .final h2{font-size:46px;}
+  .final p{max-width:58ch;margin:0 auto;}
+
+  footer.site{
+    background:var(--ink);color:#9db1a4;text-align:center;
+    padding:30px 0;font-size:14px;
+  }
+
+  @media(max-width:880px){
+    .hero-inner,.about-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:40px;}
+    section h2{font-size:33px;}
+    .benefits,.quotes{grid-template-columns:1fr;}
+    .seats{grid-template-columns:1fr;}
+    .seat-link{padding:14px 0;}
+    .inside-item{grid-template-columns:1fr;gap:6px;}
+    .portrait{max-width:320px;margin:0 auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Living Well <em>Qigong</em></div>
+    <a class="header-cta" href="#join">Become a Founding Member</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="qi-line" viewBox="0 0 1200 600" preserveAspectRatio="none">
+    <path d="M-50,420 C200,330 380,520 620,400 C840,290 980,460 1250,340"
+          fill="none" stroke="#c2913a" stroke-width="2" opacity=".35"/>
+    <path d="M-50,460 C220,380 400,560 640,440 C860,330 1000,500 1250,380"
+          fill="none" stroke="#2e5448" stroke-width="1.5" opacity=".18"/>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Live Online Classes · Twice Weekly · All Levels Welcome</div>
+      <h1>Gentle movement.<br>Deep healing.<br><em>And every seat you take gives one away.</em></h1>
+      <p class="lede">Join MaryAnn McDonald — M.Ed. counselor and certified Spring Forest Qigong trainer — for live online qigong that restores your energy, calms your mind, and deepens your spirit. <strong>Every membership sponsors a free seat for a veteran, refugee, or neighbor in hardship.</strong></p>
+      <div class="btn-row">
+        <a class="btn" href="#join">Become a Founding Member</a>
+        <span class="btn-note">$39/month · cancel anytime</span>
+      </div>
+    </div>
+    <div class="portrait">[ MaryAnn's qigong photo here —<br>the mirror-pose image from<br>livingwellqigong.com ]</div>
+  </div>
+</section>
+
+<div class="ribbon">
+  “A healer in every family, and a world without pain and suffering.” — <strong>the mission we practice toward, together</strong>
+</div>
+
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow">The Practice</div>
+    <h2>Healing that has been in your hands all along</h2>
+    <p>Spring Forest Qigong is a gentle, modern form of an ancient Chinese practice — simple flowing movements, breath, and meditation that work with your body's own energy. No mats, no floor work, no strain. If you can sit in a chair, you can do this practice.</p>
+    <div class="benefits">
+      <div class="benefit"><h3>Steadier balance &amp; ease of movement</h3><p>Slow, deliberate movement that strengthens without strain — practiced standing or fully seated.</p></div>
+      <div class="benefit"><h3>A calmer nervous system</h3><p>Breath-centered practice that quiets worry and helps you sleep — most students feel it the very first class.</p></div>
+      <div class="benefit"><h3>Energy that carries your whole day</h3><p>Morning practice that opens energy blockages and leaves you clear instead of tired.</p></div>
+      <div class="benefit"><h3>A spiritual practice that deepens with you</h3><p>This is more than exercise. It is a path — and MaryAnn walks it with you.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="mission">
+  <div class="wrap narrow center">
+    <div class="eyebrow">Why We Call It a Sponsored Seat</div>
+    <h2>Your practice pays for someone else's healing</h2>
+    <p>Healing shouldn't depend on a bank account. So this membership is built on a simple promise: <strong>for every paid member, MaryAnn holds one free seat</strong> for a veteran, a refugee, an immigrant, or a neighbor going through a hard season — no questions, no paperwork, no language barrier. Qigong needs no translation.</p>
+  </div>
+  <div class="wrap">
+    <div class="seats">
+      <div class="seat-card">
+        <div class="seat-label">Your Seat</div>
+        <h3>You join for $39/month</h3>
+        <p>Live classes, the practice library, and a community that moves together.</p>
+      </div>
+      <div class="seat-link">&amp;</div>
+      <div class="seat-card given">
+        <div class="seat-label">Their Seat</div>
+        <h3>Someone heals for free</h3>
+        <p>Your membership opens the door for a person who could never afford to walk through it.</p>
+      </div>
+    </div>
+    <p class="tagline">You don't just join a class. You become someone's reason it exists.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap about-grid">
+    <div class="portrait" style="aspect-ratio:4/5;">[ MaryAnn portrait —<br>the Santa Barbara<br>headshot ]</div>
+    <div>
+      <div class="eyebrow">Your Teacher</div>
+      <h2>MaryAnn McDonald</h2>
+      <p>MaryAnn has spent more than twenty years helping people heal — first as a master's-level counselor specializing in trauma relief, and now through the practice she loves most. She has studied with international Qigong Master Chunyi Lin, success teacher Jack Canfield, and Mary Morrissey's Life Mastery Institute. At 74, she is living proof of her own teaching: vital, growing, and still deepening her practice every morning.</p>
+      <div class="creds">
+        <div class="cred">M.Ed., Counseling Psychology — Washington State University</div>
+        <div class="cred">Certified Spring Forest Qigong Trainer &amp; Healing Practitioner</div>
+        <div class="cred">Certified Life Coach — NLP &amp; Coaching Institute of California</div>
+        <div class="cred">Certified DreamBuilder Coach — Life Mastery Institute</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--mist);">
+  <div class="wrap narrow">
+    <div class="eyebrow">Inside Your Membership</div>
+    <h2>What your seat includes</h2>
+    <div class="inside-list">
+      <div class="inside-item"><h3>Two live classes weekly</h3><p>Live on Zoom with MaryAnn — gentle Level-1 health routines and the Five Elements Healing Movements. Mornings, all levels, chairs welcome.</p></div>
+      <div class="inside-item"><h3>The Practice Library</h3><p>Every class recorded and waiting for you. Travel, miss a week, practice at midnight — your practice never has to pause.</p></div>
+      <div class="inside-item"><h3>Monthly Deepening Circle</h3><p>One evening gathering each month for the spiritual side of the practice — energy centers, meditation, and the questions that don't fit in class.</p></div>
+      <div class="inside-item"><h3>Seasonal in-person gatherings</h3><p>Periodic live events in the Tri-Cities for members who want to practice together in the same room.</p></div>
+      <div class="inside-item"><h3>Your Sponsored Seat</h3><p>The one you give away — held open in your name for someone in hardship, every month you're a member.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="narrow center">
+      <div class="eyebrow">From MaryAnn's Students</div>
+      <h2>What students say</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote"><span class="q-mark">“</span>[ Placeholder — swap in real testimonial from strategiesoflivingwell.com/testimonials ]<footer>— Student name, Richland WA</footer></div>
+      <div class="quote"><span class="q-mark">“</span>[ Placeholder — swap in real testimonial from strategiesoflivingwell.com/testimonials ]<footer>— Student name</footer></div>
+      <div class="quote"><span class="q-mark">“</span>[ Placeholder — swap in real testimonial from strategiesoflivingwell.com/testimonials ]<footer>— Student name</footer></div>
+    </div>
+  </div>
+</section>
+
+<section class="offer" id="join">
+  <div class="wrap narrow center">
+    <div class="eyebrow">Founding Membership</div>
+    <h2>Take your seat. Give one away.</h2>
+    <div class="offer-card">
+      <div class="plan">Living Well Qigong Online</div>
+      <div class="price">$39<span>/month</span></div>
+      <ul>
+        <li>2 live Zoom classes every week with MaryAnn</li>
+        <li>Full access to the Practice Library recordings</li>
+        <li>Monthly evening Deepening Circle</li>
+        <li>Seasonal in-person gatherings (Tri-Cities)</li>
+        <li>One sponsored seat given in your name, every month</li>
+      </ul>
+      <a class="btn" href="#">Become a Founding Member</a>
+      <p style="margin-top:16px;font-size:14.5px;color:var(--muted);">Cancel anytime. No contracts, no pressure — that's not how we practice.</p>
+    </div>
+    <p class="founders"><strong>Founding enrollment is limited to the first 26 members.</strong> When these seats fill, 26 sponsored seats are funded — a full class of people healing for free — and enrollment closes until the next season.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow">
+    <div class="eyebrow">Common Questions</div>
+    <h2>Before you ask…</h2>
+    <div class="faq-item"><h3>I've never done qigong. Will I keep up?</h3><p>Yes. Spring Forest Qigong was designed so almost anyone can practice it — including people with physical challenges. Every movement can be done seated, and MaryAnn teaches to the room, not the clock.</p></div>
+    <div class="faq-item"><h3>What if I miss a class?</h3><p>Every class is recorded into the Practice Library. Your membership means your practice travels with you.</p></div>
+    <div class="faq-item"><h3>How do I nominate someone for a sponsored seat?</h3><p>Simply reply to any member email with their name and a way to reach them. MaryAnn handles the invitation personally and privately.</p></div>
+    <div class="faq-item"><h3>Is this religious?</h3><p>No. Qigong is a health and energy practice with deep spiritual roots, welcoming to people of every faith — and none.</p></div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2>The healing has always been in your hands.</h2>
+    <p>Twenty-six founding seats. Twenty-six seats given away. One community, moving together every week. Take yours.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <a class="btn" href="#join">Become a Founding Member — $39/month</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  Living Well Qigong · MaryAnn McDonald, M.Ed. · Richland, Washington<br>
+  MaryAnn@LivingWellQigong.com · Spring Forest Qigong taught with gratitude and attribution to Master Chunyi Lin
+</footer>
+
+</body>
+</html>

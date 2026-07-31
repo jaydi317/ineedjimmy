@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahin — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--deep:#0B1A2B;--deep-mid:#132B42;--gold:#C6A855;--gold-light:#E8D5A0;
+--cream:#FAF6EE;--sage:#7A9E7E;--rose:#C9928E;--warm:#D4A574;--white:#fff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--deep);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2}
+.accent{font-family:'Caveat',cursive}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:768px){section{padding:56px 0}}
+
+/* HERO */
+.hero{background:linear-gradient(170deg,var(--deep) 0%,var(--deep-mid) 50%,#1a3a55 100%);color:var(--cream);text-align:center;padding:100px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(198,168,85,0.08) 0%,transparent 60%);pointer-events:none}
+.hero-eyebrow{font-family:'Caveat',cursive;font-size:1.35rem;color:var(--gold);margin-bottom:12px;letter-spacing:1px}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:16px;color:var(--cream)}
+.hero h1 span{color:var(--gold)}
+.hero-sub{font-size:1.05rem;color:var(--gold-light);max-width:600px;margin:0 auto 10px;opacity:.9;line-height:1.7}
+.hero-note{font-size:.85rem;color:rgba(250,246,238,.5);margin-top:20px;font-style:italic}
+
+/* IDENTITY CARD */
+.identity{background:var(--deep);padding:60px 0}
+.id-card{background:linear-gradient(135deg,var(--deep-mid),#0d2236);border:1px solid rgba(198,168,85,.25);border-radius:16px;padding:48px;max-width:800px;margin:0 auto;position:relative;overflow:hidden}
+.id-card::after{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(198,168,85,.1) 0%,transparent 70%);pointer-events:none}
+.id-card h2{color:var(--gold);font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:6px}
+.id-card .method-title{font-family:'Caveat',cursive;font-size:1.4rem;color:var(--gold-light);margin-bottom:20px;display:block}
+.id-card .pitch{color:var(--cream);font-size:1.05rem;line-height:1.8;margin-bottom:24px;opacity:.9}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:rgba(198,168,85,.12);border:1px solid rgba(198,168,85,.3);color:var(--gold-light);padding:6px 16px;border-radius:100px;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase}
+
+/* METHOD */
+.method{background:var(--cream);text-align:center}
+.method h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.method-subtitle{font-family:'Caveat',cursive;color:var(--gold);font-size:1.3rem;margin-bottom:40px}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:768px){.pillars{grid-template-columns:1fr 1fr;gap:16px}}
+@media(max-width:480px){.pillars{grid-template-columns:1fr}}
+.pillar{background:var(--white);border-radius:14px;padding:32px 24px;border:1px solid rgba(198,168,85,.15);transition:transform .3s,box-shadow .3s;text-align:center}
+.pillar:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(11,26,43,.1)}
+.pillar-num{font-family:'Caveat',cursive;font-size:2rem;color:var(--gold);display:block;margin-bottom:4px}
+.pillar h3{font-size:1.15rem;margin-bottom:10px;color:var(--deep)}
+.pillar p{font-size:.88rem;color:#5a6a7a;line-height:1.6}
+
+/* 9-STEP JOURNEY */
+.journey{background:var(--deep);color:var(--cream);text-align:center}
+.journey h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold);margin-bottom:6px}
+.journey-subtitle{color:var(--gold-light);font-size:1.05rem;margin-bottom:36px;opacity:.85}
+.journey-img{max-width:700px;width:100%;border-radius:12px;margin:0 auto;display:block}
+
+/* WEBSITE PREVIEWS */
+.previews{background:var(--cream);text-align:center}
+.previews h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.previews-sub{color:#5a6a7a;font-size:1.05rem;margin-bottom:40px}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:900px;margin:0 auto}
+@media(max-width:640px){.preview-grid{grid-template-columns:1fr}}
+.preview-card{border-radius:14px;overflow:hidden;border:1px solid rgba(198,168,85,.2);transition:transform .3s,box-shadow .3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.preview-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(11,26,43,.12)}
+.preview-card .thumb{width:100%;height:220px;position:relative;overflow:hidden}
+.preview-card .thumb.warm{background:linear-gradient(135deg,#FAF6EE,#e8f0e5,#d4ddd0)}
+.preview-card .thumb.bold{background:linear-gradient(135deg,#0B1A2B,#132B42,#1a3a55)}
+.thumb-inner{position:absolute;inset:20px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem}
+.thumb.warm .thumb-inner{background:rgba(255,255,255,.7);color:var(--deep);border:1px solid rgba(122,158,126,.3)}
+.thumb.bold .thumb-inner{background:rgba(198,168,85,.1);color:var(--gold);border:1px solid rgba(198,168,85,.3)}
+.preview-label{padding:18px;background:var(--white);font-weight:600;font-size:.95rem}
+.preview-label span{font-family:'Caveat',cursive;color:var(--gold);font-size:1.1rem;font-weight:400;display:block;margin-top:2px}
+
+/* BOOK */
+.book-section{background:var(--deep);color:var(--cream);overflow:hidden}
+.book-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.book-grid{grid-template-columns:1fr;gap:36px;text-align:center}}
+.book-img-wrap{perspective:800px;display:flex;justify-content:center}
+.book-img{max-width:300px;width:100%;border-radius:4px;transform:rotateY(-8deg) rotateX(2deg);box-shadow:20px 20px 60px rgba(0,0,0,.5),-5px -5px 20px rgba(198,168,85,.1);transition:transform .5s}
+.book-img:hover{transform:rotateY(-2deg) rotateX(1deg)}
+.book-content h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--gold);margin-bottom:16px}
+.book-content p{color:var(--cream);opacity:.85;line-height:1.8;margin-bottom:16px;font-size:1rem}
+.book-note{font-family:'Caveat',cursive;color:var(--gold-light);font-size:1.15rem;margin-top:12px;font-style:italic}
+
+/* INSTAGRAM BIO */
+.insta{background:var(--cream);text-align:center}
+.insta h2{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:32px}
+.insta-card{background:var(--white);border-radius:16px;padding:36px;max-width:420px;margin:0 auto;border:1px solid #e8e2d8;box-shadow:0 4px 20px rgba(0,0,0,.05)}
+.insta-header{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.insta-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--warm));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);font-weight:700;flex-shrink:0}
+.insta-handle{text-align:left}
+.insta-handle strong{display:block;font-size:.95rem}
+.insta-handle span{font-size:.82rem;color:#5a6a7a}
+.insta-stats{display:flex;justify-content:space-around;padding:16px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;margin-bottom:16px}
+.insta-stat{text-align:center}
+.insta-stat strong{display:block;font-size:1rem;color:var(--deep)}
+.insta-stat span{font-size:.75rem;color:#888}
+.insta-bio{text-align:left;font-size:.88rem;line-height:1.7;color:var(--deep)}
+.insta-bio .bio-line{margin-bottom:2px}
+
+/* PROGRAMS */
+.programs{background:linear-gradient(180deg,var(--cream),#f0ebe0);text-align:center}
+.programs h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.programs-sub{color:#5a6a7a;margin-bottom:40px;font-size:1.05rem}
+.program-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+@media(max-width:768px){.program-grid{grid-template-columns:1fr;max-width:400px}}
+.program-card{background:var(--white);border-radius:14px;padding:32px 24px;border:1px solid rgba(198,168,85,.15);transition:transform .3s,box-shadow .3s}
+.program-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(11,26,43,.1)}
+.program-card.featured{border:2px solid var(--gold);position:relative}
+.program-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.7rem;font-weight:700;padding:4px 16px;border-radius:100px;letter-spacing:1px;white-space:nowrap}
+.program-card h3{font-size:1.15rem;margin-bottom:6px;color:var(--deep)}
+.program-card .price{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin-bottom:8px;display:block}
+.program-card .price-note{font-size:.82rem;color:#888;margin-bottom:16px;display:block}
+.program-card p{font-size:.88rem;color:#5a6a7a;line-height:1.6}
+
+/* INCOME CALCULATOR */
+.calculator{background:var(--deep);color:var(--cream);text-align:center}
+.calculator h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold);margin-bottom:6px}
+.calc-subtitle{color:var(--gold-light);opacity:.8;margin-bottom:8px;font-size:1.05rem}
+.calc-hook{font-family:'Caveat',cursive;color:var(--rose);font-size:1.2rem;margin-bottom:36px}
+.calc-box{background:var(--deep-mid);border:1px solid rgba(198,168,85,.2);border-radius:16px;padding:40px;max-width:700px;margin:0 auto}
+.slider-group{margin-bottom:28px;text-align:left}
+.slider-group label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:.92rem;color:var(--cream)}
+.slider-group label span{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;background:rgba(198,168,85,.2);border-radius:3px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--gold);border-radius:50%;cursor:pointer;border:3px solid var(--deep)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;background:var(--gold);border-radius:50%;cursor:pointer;border:3px solid var(--deep)}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:32px;padding-top:28px;border-top:1px solid rgba(198,168,85,.2)}
+@media(max-width:480px){.calc-results{grid-template-columns:1fr}}
+.calc-result{text-align:center}
+.calc-result .label{font-size:.82rem;color:var(--gold-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.calc-result .amount{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--gold)}
+
+/* REPORT TEASER */
+.report{background:var(--cream)}
+.report h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px;text-align:center}
+.report-sub{text-align:center;color:#5a6a7a;font-size:1.05rem;margin-bottom:40px}
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.report-grid{grid-template-columns:1fr;gap:32px}}
+.report-pages{position:relative;height:280px}
+.report-page{position:absolute;width:200px;background:var(--white);border-radius:10px;padding:20px;box-shadow:0 8px 30px rgba(11,26,43,.1);border:1px solid #e8e2d8}
+.report-page:nth-child(1){top:20px;left:10px;transform:rotate(-6deg)}
+.report-page:nth-child(2){top:0;left:80px;transform:rotate(2deg);z-index:2}
+.report-page:nth-child(3){top:40px;left:150px;transform:rotate(5deg)}
+.report-page h4{font-size:.75rem;color:var(--deep);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+.report-page .fake-line{height:4px;background:#e8e2d8;border-radius:2px;margin-bottom:6px}
+.report-page .fake-line.short{width:60%}
+.report-page .fake-line.med{width:80%}
+.report-page .mini-chart{height:30px;display:flex;align-items:flex-end;gap:3px;margin-top:10px}
+.mini-bar{width:8px;border-radius:2px 2px 0 0}
+.fascinations{list-style:none}
+.fascinations li{position:relative;padding:10px 0 10px 24px;font-size:.92rem;line-height:1.6;color:var(--deep);border-bottom:1px solid rgba(198,168,85,.1)}
+.fascinations li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700}
+.fascinations li:last-child{border-bottom:none}
+
+/* CTA */
+.cta{background:linear-gradient(170deg,var(--deep),var(--deep-mid));color:var(--cream);text-align:center;padding:80px 0}
+.cta h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold);margin-bottom:16px}
+.cta p{max-width:600px;margin:0 auto 28px;color:var(--cream);opacity:.85;line-height:1.8;font-size:1.02rem}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--deep);font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;padding:16px 40px;border-radius:8px;text-decoration:none;transition:all .3s;border:2px solid var(--gold)}
+.cta-btn:hover{background:transparent;color:var(--gold)}
+
+/* FOOTER */
+.footer{background:var(--deep);color:rgba(250,246,238,.4);text-align:center;padding:28px 0;font-size:.8rem;letter-spacing:.5px}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-eyebrow">✦ A Preview Built Just For You</div>
+<h1><span>Shahin</span>, Here's a Preview of<br>Your Coaching Business</h1>
+<p class="hero-sub">Our AI Business Design software analyzed your superpowers, researched your market, and built a complete business blueprint — including your brand, your method, your programs, and your income math.</p>
+<p class="hero-sub" style="font-size:.95rem;opacity:.7">Everything below is yours. This is what your coaching business could look like.</p>
+<p class="hero-note">Designed by Jimmy Davis's AI Business Design System — INeedJimmy.com</p>
+</div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity">
+<div class="container">
+<div class="id-card fade-in">
+<h2>Shahin van Harmelen-Mol</h2>
+<span class="method-title">Creator of The Soul Release Method™</span>
+<p class="pitch">I help women trapped in cycles of addiction — whether it's food, alcohol, or other substances — break free by going to the root most people never reach. Using soul constellation, energy healing, and EFT tapping, I trace the pattern back to where it actually started — often generations ago — and clear it at the soul level. So instead of white-knuckling your way through recovery, you actually release the need. My clients don't just get sober. They come alive again.</p>
+<div class="tags">
+<span class="tag">Soul Constellation Facilitator</span>
+<span class="tag">Reiki Master</span>
+<span class="tag">EFT Practitioner</span>
+<span class="tag">Addiction Recovery</span>
+<span class="tag">Ancestral Healing</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD -->
+<section class="method">
+<div class="container">
+<h2 class="fade-in">The Soul Release Method™</h2>
+<p class="method-subtitle fade-in">4 Pillars. One Transformation. Complete Liberation.</p>
+<div class="pillars">
+<div class="pillar fade-in">
+<span class="pillar-num">01</span>
+<h3>Reveal</h3>
+<p>Soul Constellation to trace your addictive pattern back to its ancestral and energetic root — where the cycle truly began.</p>
+</div>
+<div class="pillar fade-in">
+<span class="pillar-num">02</span>
+<h3>Release</h3>
+<p>Reiki energy healing to clear inherited trauma, pain, and blocked energy stored in your body and energy field.</p>
+</div>
+<div class="pillar fade-in">
+<span class="pillar-num">03</span>
+<h3>Rewire</h3>
+<p>EFT tapping to reprogram your nervous system triggers and dissolve cravings at the neurological level.</p>
+</div>
+<div class="pillar fade-in">
+<span class="pillar-num">04</span>
+<h3>Reignite</h3>
+<p>Reconnect to the joy, enthusiasm, and aliveness that the pattern buried — and step into the woman you were always meant to be.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey">
+<div class="container">
+<h2 class="fade-in">Your Proven 9-Step Process</h2>
+<p class="journey-subtitle fade-in">Every client follows this exact journey — from inherited pattern to complete liberation.</p>
+<img src="ShahinProcess.png" alt="The Soul Release Journey - 9 Steps" class="journey-img fade-in">
+</div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="previews">
+<div class="container">
+<h2 class="fade-in">Your Website — Two Directions</h2>
+<p class="previews-sub fade-in">We designed two complete website concepts for your brand. Click to preview each one.</p>
+<div class="preview-grid">
+<a href="shahin.html" class="preview-card fade-in">
+<div class="thumb warm">
+<div class="thumb-inner">✦ Warm & Elegant — Light, airy, nature-inspired</div>
+</div>
+<div class="preview-label">Style 1: Warm & Elegant<span>Cream, sage, editorial warmth</span></div>
+</a>
+<a href="shahin2.html" class="preview-card fade-in">
+<div class="thumb bold">
+<div class="thumb-inner">✦ Bold & Deep — Premium, immersive, luxurious</div>
+</div>
+<div class="preview-label">Style 2: Bold & Deep<span>Navy, gold, midnight luxury</span></div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section">
+<div class="container">
+<div class="book-grid">
+<div class="book-img-wrap fade-in">
+<img src="ShahinBook.png" alt="The Soul Release — Book Cover" class="book-img">
+</div>
+<div class="book-content fade-in">
+<h2>Your Book: "The Soul Release"</h2>
+<p>Break Free from Addiction by Healing What You Inherited — a 10-chapter guide that positions you as THE authority in soul-level addiction recovery. Not a pamphlet. A real, full-length book that builds your credibility and brings clients to your door.</p>
+<p>Complete chapter outline, writing support, and publishing guidance included in the full Blueprint.</p>
+<span class="book-note">✦ "A book doesn't just build authority — it builds an empire." — Dan Kennedy</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta">
+<div class="container">
+<h2 class="fade-in">Your Instagram Presence</h2>
+<div class="insta-card fade-in">
+<div class="insta-header">
+<div class="insta-avatar">S</div>
+<div class="insta-handle">
+<strong>@shahinvanharmelen</strong>
+<span>Shahin van Harmelen-Mol</span>
+</div>
+</div>
+<div class="insta-stats">
+<div class="insta-stat"><strong>—</strong><span>Posts</span></div>
+<div class="insta-stat"><strong>—</strong><span>Followers</span></div>
+<div class="insta-stat"><strong>—</strong><span>Following</span></div>
+</div>
+<div class="insta-bio">
+<div class="bio-line">🔮 Creator of The Soul Release Method™</div>
+<div class="bio-line">✨ Helping women break free from addiction at the soul level</div>
+<div class="bio-line">🌿 Soul Constellation · Reiki Master · EFT</div>
+<div class="bio-line">📖 Author of <em>The Soul Release</em></div>
+<div class="bio-line">🔗 Free guide: "Why Willpower Doesn't Work" ⬇️</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs">
+<div class="container">
+<h2 class="fade-in">Your Program Suite</h2>
+<p class="programs-sub fade-in">Three tiers. One transformation. Every woman finds her entry point.</p>
+<div class="program-grid">
+<div class="program-card fade-in">
+<h3>"Why Willpower Doesn't Work"</h3>
+<span class="price">FREE</span>
+<span class="price-note">Downloadable Guide</span>
+<p>The 3 hidden reasons you can't break free from addiction using willpower alone — and what to do instead. Your gateway to The Soul Release Method™.</p>
+</div>
+<div class="program-card featured fade-in">
+<h3>"Soul Release" 6-Week Program</h3>
+<span class="price">$2,497</span>
+<span class="price-note">Group Coaching Experience</span>
+<p>Six weeks of live group coaching taking you through all 4 pillars. Soul constellation, Reiki clearings, EFT protocols, and community support.</p>
+</div>
+<div class="program-card fade-in">
+<h3>"Total Liberation" Private Intensive</h3>
+<span class="price">$7,500</span>
+<span class="price-note">12 Weeks · 1-on-1 · Application Only</span>
+<p>Private deep-dive with Shahin. Complete ancestral pattern clearing, personalized protocols, and full identity transformation. Her most profound work.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calculator">
+<div class="container">
+<h2 class="fade-in">Your Income Potential</h2>
+<p class="calc-subtitle fade-in">Adjust the sliders to see what's possible with The Soul Release Method™</p>
+<p class="calc-hook fade-in">"The math doesn't lie — and neither does the market demand."</p>
+<div class="calc-box fade-in">
+<div class="slider-group">
+<label>Women per group round <span id="groupVal">8</span></label>
+<input type="range" id="groupSize" min="4" max="20" value="8" oninput="calcIncome()">
+</div>
+<div class="slider-group">
+<label>Group rounds per year <span id="roundsVal">4</span></label>
+<input type="range" id="rounds" min="1" max="12" value="4" oninput="calcIncome()">
+</div>
+<div class="slider-group">
+<label>Private intensive clients per year <span id="privateVal">4</span></label>
+<input type="range" id="privateClients" min="0" max="20" value="4" oninput="calcIncome()">
+</div>
+<div class="calc-results">
+<div class="calc-result">
+<div class="label">Monthly Revenue</div>
+<div class="amount" id="monthlyRev">$9,164</div>
+</div>
+<div class="calc-result">
+<div class="label">Annual Revenue</div>
+<div class="amount" id="annualRev">$109,968</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report">
+<div class="container">
+<h2 class="fade-in">What's Inside the Full Blueprint</h2>
+<p class="report-sub fade-in">Your complete business design — 40+ pages of strategy, copy, and execution plans</p>
+<div class="report-grid">
+<div class="report-pages fade-in">
+<div class="report-page">
+<h4>Market Research</h4>
+<div class="fake-line"></div>
+<div class="fake-line med"></div>
+<div class="fake-line short"></div>
+<div class="fake-line"></div>
+<div class="mini-chart">
+<div class="mini-bar" style="height:12px;background:var(--sage)"></div>
+<div class="mini-bar" style="height:20px;background:var(--sage)"></div>
+<div class="mini-bar" style="height:28px;background:var(--gold)"></div>
+<div class="mini-bar" style="height:16px;background:var(--sage)"></div>
+<div class="mini-bar" style="height:24px;background:var(--sage)"></div>
+</div>
+</div>
+<div class="report-page">
+<h4>Customer Avatar</h4>
+<div class="fake-line"></div>
+<div class="fake-line short"></div>
+<div class="fake-line med"></div>
+<div class="fake-line"></div>
+<div class="fake-line short"></div>
+</div>
+<div class="report-page">
+<h4>Revenue Projections</h4>
+<div class="fake-line med"></div>
+<div class="fake-line"></div>
+<div class="fake-line short"></div>
+<div class="mini-chart">
+<div class="mini-bar" style="height:10px;background:var(--gold)"></div>
+<div class="mini-bar" style="height:16px;background:var(--gold)"></div>
+<div class="mini-bar" style="height:22px;background:var(--gold)"></div>
+<div class="mini-bar" style="height:30px;background:var(--gold)"></div>
+</div>
+</div>
+</div>
+<div class="fade-in">
+<ul class="fascinations">
+<li>The $2.4 billion gap in the women's addiction recovery market that <em>zero</em> competitors are positioned to own — and why Shahin's exact modality stack is the key to claiming it</li>
+<li>Why the 5 biggest names in holistic addiction coaching all make the same critical mistake — leaving a wide-open lane for a soul constellation-based approach</li>
+<li>The "Invisible Loyalty" phenomenon that keeps women repeating their mother's addictive patterns — and the exact framework that breaks it (this alone could fill a practice)</li>
+<li>How one specific ancestral healing technique turns a single $197 workshop into a $7,500 private client pipeline — without a single hard sell</li>
+<li>The 3-tier pricing architecture that lets Shahin serve women at every level while building toward $100K+ annually on just 4 hours of client-facing work per week</li>
+<li>Why "recovery coach" is the wrong positioning — and the 4-word title shift that instantly commands 3x higher fees in this market</li>
+<li>The exact email sequence structure that converts free guide downloads into $2,497 group program enrollments at 4-8% — using language her ideal client already uses at 2am</li>
+<li>The "book-as-business-card" strategy that positions Shahin as a published authority in 90 days — and why it's the single highest-ROI move in the holistic healing space right now</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="container">
+<h2 class="fade-in">Want to Bring This to Life?</h2>
+<p class="fade-in">Everything you've just seen — your method, your brand, your programs, your book, your website — was designed by Jimmy Davis's AI Business Design Software. The complete Blueprint includes all the copy, curriculum, email sequences, and implementation plans you need to launch.</p>
+<a href="https://ineedjimmy.com/hire" class="cta-btn fade-in">See Jimmy's Services & Pricing</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+✦ This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com" style="color:var(--gold);text-decoration:none">INeedJimmy.com</a> ✦
+</div>
+</footer>
+
+<script>
+function calcIncome(){
+const g=document.getElementById('groupSize').value;
+const r=document.getElementById('rounds').value;
+const p=document.getElementById('privateClients').value;
+document.getElementById('groupVal').textContent=g;
+document.getElementById('roundsVal').textContent=r;
+document.getElementById('privateVal').textContent=p;
+const groupRev=g*2497*r;
+const privateRev=p*7500;
+const annual=groupRev+privateRev;
+const monthly=Math.round(annual/12);
+document.getElementById('monthlyRev').textContent='$'+monthly.toLocaleString();
+document.getElementById('annualRev').textContent='$'+annual.toLocaleString();
+}
+// Scroll animations
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

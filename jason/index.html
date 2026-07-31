@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<!--
+  MOCKUP A — "THE BRAND PAGE"  |  All-Pro Plumbing / Jason Probst
+  Built for ReverseSelling.ai (Jimmy + Paul). Draft copy for client review.
+
+  >>> CONFIRM-WITH-JASON FLAGS (do not show as fact until verified) <<<
+  1. The "why he left other employers" motivation (cut corners / treated people
+     like a number / billed for a crew the master never joined) is DRAMATIZED
+     from a plausible Kennedy founding arc. Jason's REAL reason goes here.
+  2. "Twenty years later / since 2007" — verified from his About page (founded
+     July 2007). 1993-1997 apprenticeship + master license — verified.
+  3. Dog line ("your dog likes me better than your mailman") is a callback to a
+     REAL review (Betsy Deken). Klaus is Jason's own dog (verified).
+  4. Charities (Peyton Manning Children's Hospital, breast cancer, veterans,
+     charter schools) via HOG Indy Chapter 1 — verified from About page.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jason Probst — All-Pro Plumbing, Fishers IN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#15171a;
+    --asphalt-2:#1d2126;
+    --steel:#262e36;
+    --ember:#c9692b;
+    --ember-bright:#e8843a;
+    --bone:#efe9dc;
+    --bone-dim:#b9b1a1;
+    --line:rgba(239,233,220,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--asphalt);
+    color:var(--bone);
+    font-family:'Barlow',system-ui,sans-serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ember-bright);
+  }
+  h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;line-height:.96;text-transform:uppercase;letter-spacing:.005em}
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(21,23,26,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brandmark{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:18px}
+  .brandmark span{color:var(--ember-bright)}
+  .callbtn{
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    background:var(--ember);color:#fff;text-decoration:none;
+    padding:11px 18px;border-radius:3px;font-size:14px;white-space:nowrap;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .callbtn:hover{background:var(--ember-bright);transform:translateY(-1px)}
+
+  /* ---- hero ---- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:96px 0 84px;
+    background:
+      radial-gradient(120% 120% at 80% -10%, rgba(201,105,43,.20), transparent 55%),
+      linear-gradient(180deg,#15171a 0%, #181b1f 100%);
+  }
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{
+    font-size:clamp(44px,8.4vw,104px);
+    margin:18px 0 26px;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:normal;color:var(--ember-bright)}
+  .lede{max-width:46ch;font-size:clamp(18px,2.1vw,22px);color:var(--bone)}
+  .lede strong{color:#fff}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center}
+  .btn-primary{
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.07em;text-transform:uppercase;font-size:16px;
+    background:var(--ember);color:#fff;text-decoration:none;padding:16px 26px;border-radius:3px;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .btn-primary:hover{background:var(--ember-bright);transform:translateY(-1px)}
+  .btn-ghost{
+    font-family:'Oswald',sans-serif;font-weight:500;letter-spacing:.07em;text-transform:uppercase;font-size:16px;
+    color:var(--bone);text-decoration:none;padding:16px 8px;border-bottom:2px solid transparent;
+  }
+  .btn-ghost:hover{border-bottom-color:var(--ember)}
+
+  /* craftsman seal */
+  .seal{
+    position:absolute;right:-40px;top:40px;width:300px;height:300px;z-index:1;opacity:.9;
+    display:grid;place-items:center;
+  }
+  .seal svg{width:100%;height:100%}
+  .seal .seal-core{
+    position:absolute;text-align:center;font-family:'Oswald',sans-serif;
+    text-transform:uppercase;color:var(--bone-dim);
+  }
+  .seal .seal-core b{display:block;font-family:'Anton';color:var(--ember-bright);font-size:30px;letter-spacing:.02em;line-height:1}
+  .seal .seal-core small{display:block;font-size:11px;letter-spacing:.22em;margin-top:6px}
+
+  /* ---- forged timeline ---- */
+  .why{padding:78px 0;background:var(--asphalt-2);border-top:1px solid var(--line)}
+  .why h2{font-size:clamp(30px,4.6vw,56px);max-width:18ch;margin-bottom:14px}
+  .why h2 em{font-style:normal;color:var(--ember-bright)}
+  .why .sub{color:var(--bone-dim);font-family:'Oswald';letter-spacing:.16em;text-transform:uppercase;font-size:13px;margin-bottom:40px}
+  .letter{max-width:62ch;font-size:19px}
+  .letter p{margin-bottom:18px}
+  .letter strong{color:#fff}
+  .pullquote{
+    border-left:3px solid var(--ember);
+    padding:6px 0 6px 22px;margin:30px 0;
+    font-family:'Oswald';font-weight:500;font-size:23px;line-height:1.3;color:#fff;
+  }
+  .timeline{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:54px 0 8px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .tl{padding:24px 18px 24px 0;border-right:1px solid var(--line)}
+  .tl:last-child{border-right:none}
+  .tl .yr{font-family:'Anton';font-size:34px;color:var(--ember-bright);line-height:1}
+  .tl .lab{font-family:'Oswald';text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--bone-dim);margin-top:8px}
+
+  /* ---- who jason is ---- */
+  .who{padding:78px 0;border-top:1px solid var(--line)}
+  .who h2{font-size:clamp(28px,4.4vw,52px);max-width:20ch;margin-bottom:8px}
+  .who .sub{color:var(--bone-dim);max-width:54ch;margin-bottom:42px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .card{
+    background:var(--steel);border:1px solid var(--line);border-radius:6px;padding:24px;
+    transition:transform .18s ease,border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-3px);border-color:rgba(232,132,58,.5)}
+  .card .ic{font-size:26px;margin-bottom:12px}
+  .card h3{font-family:'Oswald';font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.04em;color:#fff;margin-bottom:8px}
+  .card p{font-size:15.5px;color:var(--bone-dim);line-height:1.55}
+
+  /* ---- proof ---- */
+  .proof{padding:78px 0;background:var(--asphalt-2);border-top:1px solid var(--line)}
+  .proof .eyebrow{margin-bottom:10px}
+  .proof h2{font-size:clamp(26px,4vw,46px);margin-bottom:40px;max-width:20ch}
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+  .q{background:var(--asphalt);border:1px solid var(--line);border-radius:6px;padding:26px}
+  .q .stars{color:var(--ember-bright);letter-spacing:2px;font-size:15px;margin-bottom:12px}
+  .q p{font-size:16.5px;line-height:1.55;margin-bottom:14px}
+  .q .name{font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-size:13px;color:var(--bone-dim)}
+
+  /* ---- big close ---- */
+  .close{
+    padding:96px 0;text-align:center;
+    background:
+      radial-gradient(120% 140% at 50% 0%, rgba(201,105,43,.22), transparent 60%),
+      var(--asphalt);
+    border-top:1px solid var(--line);
+  }
+  .close h2{font-size:clamp(32px,5.4vw,68px);max-width:16ch;margin:0 auto 22px}
+  .close h2 em{font-style:normal;color:var(--ember-bright)}
+  .close p{color:var(--bone-dim);max-width:44ch;margin:0 auto 30px;font-size:19px}
+  .phonebig{
+    font-family:'Anton';font-size:clamp(34px,6vw,58px);color:#fff;text-decoration:none;display:inline-block;
+    letter-spacing:.01em;
+  }
+  .phonebig:hover{color:var(--ember-bright)}
+  .ps{max-width:54ch;margin:46px auto 0;text-align:left;border-top:1px solid var(--line);padding-top:26px}
+  .ps p{font-size:16px;color:var(--bone);margin-bottom:14px;max-width:none}
+  .ps b{color:var(--ember-bright);font-family:'Oswald';letter-spacing:.04em}
+
+  /* ---- footer ---- */
+  footer{padding:42px 0;border-top:1px solid var(--line);background:var(--asphalt)}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  footer .col h4{font-family:'Oswald';text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--ember-bright);margin-bottom:10px}
+  footer .col p,footer .col a{font-size:14.5px;color:var(--bone-dim);text-decoration:none;display:block;line-height:1.7}
+  footer .col a:hover{color:var(--bone)}
+
+  @media (max-width:680px){
+    .seal{display:none}
+    .timeline{grid-template-columns:repeat(2,1fr)}
+    .tl{border-bottom:1px solid var(--line)}
+    .tl:nth-child(2){border-right:none}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brandmark">ALL&#8209;PRO <span>/ Jason Probst</span></div>
+    <a class="callbtn" href="tel:3172815510">Call Jason &middot; 317-281-5510</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="seal" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="96" fill="none" stroke="#c9692b" stroke-width="2"/>
+      <circle cx="100" cy="100" r="78" fill="none" stroke="#3a4149" stroke-width="1"/>
+      <path id="cpath" d="M100,18 a82,82 0 1,1 -0.1,0" fill="none"/>
+      <text fill="#b9b1a1" font-family="Oswald,sans-serif" font-size="12.5" letter-spacing="5">
+        <textPath href="#cpath" startOffset="2%">MASTER PLUMBER &bull; FISHERS INDIANA &bull; ESTABLISHED 2007 &bull; INTEGRITY &bull; HONESTY &bull; EXCELLENCE &bull; </textPath>
+      </text>
+    </svg>
+    <div class="seal-core"><b>30 YRS</b><small>ONE NAME</small></div>
+  </div>
+  <div class="wrap">
+    <div class="eyebrow">Jason Probst &middot; Master Plumber &middot; Fishers, Indiana</div>
+    <h1>Your neighbors don&rsquo;t call a plumber. They call <em>Jason.</em></h1>
+    <p class="lede">For 30 years I&rsquo;ve built this on one promise: <strong>my name is on every truck, so every job gets done to my standard</strong> &mdash; and I stand behind it long after the truck pulls out of your driveway. No faceless franchise. No treating you like a number on a route sheet. Just a handshake that still means something in Hamilton County.</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="tel:3172815510">Call Jason &mdash; 317-281-5510</a>
+      <a class="btn-ghost" href="#why">Read my story &darr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / FOUNDING STORY -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sub">From the man whose name is on the truck</div>
+    <h2>I didn&rsquo;t start this company to be big. I started it to be <em>trusted.</em></h2>
+    <div class="letter">
+      <p>In 1993, I was a kid with a wrench and something to prove. I spent four years in a real apprenticeship &mdash; learning the trade the slow, hard, right way &mdash; passed the State of Indiana exam, and earned the title that still means the most to me: <strong>master plumber.</strong></p>
+      <p>Then I spent years working for other outfits. And I watched good people &mdash; your neighbors &mdash; get treated like a ticket number. Double-booked. Talked down to. Handed a bill for a &ldquo;crew&rdquo; when the man who actually knew the trade never set foot in the house.</p>
+      <p class="pullquote">I figured the people of Hamilton County deserved a plumber who&rsquo;s actually accountable to them. So I built one.</p>
+      <p>In July of 2007, I put my own name on a truck. <strong>ALL-PRO.</strong> If a job went well, that was on me. If it ever went sideways, that was on me too. I wanted it that way &mdash; because that&rsquo;s the only way you earn the kind of trust that lasts 18 years and three remodels.</p>
+      <p>Twenty years and thousands of homes later, that promise hasn&rsquo;t changed. We still walk you through exactly what&rsquo;s wrong and what it&rsquo;ll cost <strong>before</strong> we ever touch a thing. And we still treat your home &mdash; and your dog &mdash; like we&rsquo;d want our own treated.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl"><div class="yr">1993</div><div class="lab">Started a 4-year apprenticeship</div></div>
+      <div class="tl"><div class="yr">1997</div><div class="lab">Licensed master plumber, State of Indiana</div></div>
+      <div class="tl"><div class="yr">2007</div><div class="lab">Put his name on the truck &mdash; All-Pro is born</div></div>
+      <div class="tl"><div class="yr">Today</div><div class="lab">Still the name on every truck</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO JASON IS -->
+<section class="who">
+  <div class="wrap">
+    <div class="eyebrow">Off the clock</div>
+    <h2>Who Jason is when he&rsquo;s not under your sink</h2>
+    <p class="sub">You&rsquo;re not hiring a logo. You&rsquo;re hiring a neighbor &mdash; and the standard he holds every job to. Here&rsquo;s the man behind the name on the truck.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="ic">&#128295;</div>
+        <h3>Master of the trade</h3>
+        <p>Licensed since 1997. Jason set the standard this company runs on &mdash; and he stands behind every job his name is on. Residential service and remodeling are the specialty.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#127949;</div>
+        <h3>Harley man with a cause</h3>
+        <p>Proud member of the Harley Owners Group, Indianapolis Chapter 1 &mdash; riding for Peyton Manning Children&rsquo;s Hospital, breast cancer research, and our veterans.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#127831;</div>
+        <h3>The pitmaster</h3>
+        <p>Homemade ribs, pulled pork, and a BBQ sauce his customers keep asking about. Hire him for the plumbing &mdash; stick around for the cooking talk.</p>
+      </div>
+      <div class="card">
+        <div class="ic">&#128021;</div>
+        <h3>Klaus&rsquo;s dad</h3>
+        <p>Dog guy, backpacker, and Hoosier through and through. The kind of person you&rsquo;re glad to let in your front door &mdash; and so is your dog.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <div class="wrap">
+    <div class="eyebrow">In your neighbors&rsquo; words</div>
+    <h2>They didn&rsquo;t leave a review for a company. They left it for Jason.</h2>
+    <div class="quotes">
+      <div class="q">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;We were with our old plumbing company for 18 years. Switching to Jason has been a match made in heaven &mdash; pleasant, knowledgeable, fair pricing. We&rsquo;re grateful to have his service.&rdquo;</p>
+        <div class="name">Bernard &amp; Jean Frost</div>
+      </div>
+      <div class="q">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Jason stands behind his work and explains everything. He&rsquo;s been in our home several times over the years. Even our dog greets him at the door &mdash; and she normally doesn&rsquo;t let anyone in!&rdquo;</p>
+        <div class="name">Betsy Deken</div>
+      </div>
+      <div class="q">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;We bought a fixer-upper. Jason got the house up and running, then walked us through two bathroom remodels and a water heater. Honest, timely, professional. I&rsquo;d refer him to anyone.&rdquo;</p>
+        <div class="name">Klynt Brummett</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<section class="close">
+  <div class="wrap">
+    <h2>There are a hundred plumbers in Hamilton County. You only need to know <em>one name.</em></h2>
+    <p>Call All-Pro direct. You&rsquo;ll hear exactly what&rsquo;s wrong, what it costs, and when we can be there &mdash; before we touch a thing.</p>
+    <a class="phonebig" href="tel:3172815510">317-281-5510</a>
+
+    <div class="ps">
+      <p><b>P.S.</b> &mdash; If it&rsquo;s an emergency, don&rsquo;t wait. Emergency service is available outside of normal hours (Mon&ndash;Fri, 8&ndash;5). Call and you&rsquo;ll get straight through to All-Pro.</p>
+      <p><b>P.P.S.</b> &mdash; Locally owned and operated since 2007. The money you spend here stays here &mdash; in Fishers, Carmel, Noblesville, Westfield, and the rest of our community.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="col">
+      <h4>All-Pro Plumbing Services, LLC</h4>
+      <p>Fishers, Indiana</p>
+      <a href="tel:3172815510">317-281-5510</a>
+    </div>
+    <div class="col">
+      <h4>Hours</h4>
+      <p>Mon&ndash;Fri &middot; 8:00a&ndash;5:00p<br>Emergency service available</p>
+    </div>
+    <div class="col">
+      <h4>Service area</h4>
+      <p>Carmel &middot; Fishers &middot; Noblesville<br>Westfield &middot; Zionsville &middot; Indianapolis<br>Fortville &middot; McCordsville &middot; Castleton</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

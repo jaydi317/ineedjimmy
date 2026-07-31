@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nancy Dubé — The Rooted Release Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF6EE;
+  --cream-dark: #f0ebe0;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --sage-light: #a8c5ab;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --deep: #1C2B1E;
+  --deep-warm: #2a3a2c;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --text: #3a4a3c;
+  --text-light: #6a7a6c;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(122,158,126,0.1);
+}
+
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover { color: var(--sage-dark); }
+
+.nav-cta {
+  background: var(--sage) !important;
+  color: var(--white) !important;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600 !important;
+  transition: background 0.3s !important;
+}
+
+.nav-cta:hover { background: var(--sage-dark) !important; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--deep);
+}
+
+/* HERO */
+.hero {
+  padding: 180px 24px 120px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  position: relative;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(122,158,126,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  color: var(--deep);
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 em {
+  color: var(--sage-dark);
+  font-style: italic;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--white);
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); }
+
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--sage-dark);
+  text-decoration: none;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid var(--sage);
+  transition: all 0.3s ease;
+}
+.btn-secondary:hover { background: var(--sage); color: var(--white); }
+
+/* SHARED SECTION STYLING */
+.section-label {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--deep);
+  margin-bottom: 16px;
+}
+
+p.section-sub {
+  font-size: 1.02rem;
+  color: var(--text-light);
+  max-width: 580px;
+  margin: 0 auto 48px;
+  line-height: 1.8;
+}
+
+.container { max-width: 1100px; margin: 0 auto; }
+
+/* PAIN SECTION */
+.pain-section {
+  padding: 100px 24px;
+  background: var(--white);
+}
+
+.pain-section h2 {
+  text-align: center;
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pain-item {
+  background: var(--cream);
+  border-radius: 12px;
+  padding: 24px 28px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+  border-left: 3px solid var(--rose);
+  font-style: italic;
+}
+
+/* METHOD */
+.method-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.method-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 36px 24px;
+  text-align: center;
+  border: 1px solid rgba(122,158,126,0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(28,43,30,0.06);
+}
+
+.method-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.method-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--deep);
+}
+
+.method-card p {
+  font-size: 0.88rem;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* JOURNEY */
+.journey-section {
+  padding: 100px 24px;
+  background: var(--white);
+  text-align: center;
+}
+
+.journey-img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 16px 50px rgba(28,43,30,0.1);
+  margin-top: 16px;
+}
+
+/* PROGRAMS */
+.programs-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.prog-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 40px 28px;
+  text-align: center;
+  border: 1px solid rgba(122,158,126,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.prog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(28,43,30,0.06);
+}
+.prog-card.featured {
+  border-color: var(--sage);
+  box-shadow: 0 8px 30px rgba(122,158,126,0.12);
+  position: relative;
+}
+.prog-badge {
+  position: absolute;
+  top: -12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--sage);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 20px;
+}
+
+.prog-tier {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 10px;
+}
+
+.prog-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  color: var(--deep);
+}
+
+.prog-card .desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.prog-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--sage-dark);
+  font-weight: 600;
+}
+.prog-note { font-size: 0.75rem; color: var(--text-light); margin-top: 4px; }
+
+/* ABOUT */
+.about-section {
+  padding: 100px 24px;
+  background: var(--white);
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about-photo-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--sage-light) 0%, var(--cream-dark) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--sage-dark);
+  text-align: center;
+}
+
+.about-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: var(--deep);
+}
+
+.about-info .about-tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--sage);
+  margin-bottom: 20px;
+}
+
+.about-info p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.about-tag {
+  background: rgba(122,158,126,0.1);
+  border: 1px solid rgba(122,158,126,0.2);
+  color: var(--sage-dark);
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* BOOK */
+.book-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.book-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.book-img {
+  max-width: 280px;
+  width: 100%;
+  border-radius: 4px;
+  box-shadow: 16px 16px 50px rgba(28,43,30,0.15);
+  transform: rotateY(-8deg);
+  transition: transform 0.4s;
+}
+.book-img:hover { transform: rotateY(-2deg) scale(1.02); }
+
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 4px;
+  color: var(--deep);
+}
+.book-author {
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  color: var(--sage);
+  margin-bottom: 16px;
+}
+.book-info p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+/* LEAD MAGNET */
+.lead-section {
+  padding: 80px 24px;
+  background: var(--sage);
+  text-align: center;
+}
+
+.lead-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.lead-section p {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+
+.lead-form {
+  display: flex;
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.lead-form input[type="email"] {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  font-size: 0.9rem;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+.lead-form input::placeholder { color: rgba(255,255,255,0.6); }
+
+.lead-form button {
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  background: var(--white);
+  color: var(--sage-dark);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Inter', sans-serif;
+}
+.lead-form button:hover { background: var(--cream); transform: translateY(-1px); }
+
+/* FOOTER */
+.site-footer {
+  background: var(--deep);
+  padding: 60px 24px 40px;
+  text-align: center;
+}
+.site-footer .footer-brand {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+.site-footer .footer-tagline {
+  font-family: 'Caveat', cursive;
+  color: var(--sage-light);
+  font-size: 1rem;
+  margin-bottom: 24px;
+}
+.footer-links {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.footer-links a {
+  color: rgba(250,246,238,0.5);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--sage-light); }
+.footer-copy {
+  color: rgba(250,246,238,0.25);
+  font-size: 0.72rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+  .about-layout, .book-layout { grid-template-columns: 1fr; text-align: center; }
+  .about-photo-placeholder { max-width: 300px; margin: 0 auto; }
+  .book-img { margin: 0 auto; display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Nancy Dubé</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Me</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Holistic Weight Loss for Women</div>
+  <h1>Stop Fighting Your Body.<br>Start <em>Coming Home</em> to It.</h1>
+  <p>The Rooted Release Method™ combines EFT tapping, mindfulness, herbal support, and bodywork to help you release emotional weight and finally feel at peace with food.</p>
+  <div class="hero-btns">
+    <a href="#programs" class="btn-primary">Explore Programs</a>
+    <a href="#lead" class="btn-secondary">Get the Free Guide</a>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section" id="pain">
+  <div class="container text-center">
+    <p class="section-label">Sound Familiar?</p>
+    <h2 class="section-title">Does This Sound Like You?</h2>
+    <p class="section-sub">You're not broken. You're not weak. You're carrying emotional weight that no diet was ever designed to address.</p>
+    <div class="pain-grid">
+      <div class="pain-item">"I know I eat when I'm stressed but I literally can't stop. By 3pm I'm white-knuckling it past the pantry."</div>
+      <div class="pain-item">"I've lost the same 15 pounds four different times. I'm so tired of starting over every Monday."</div>
+      <div class="pain-item">"I just want to feel normal around food. I want to eat dinner without calculating what I 'deserve.'"</div>
+      <div class="pain-item">"My anxiety sits in my stomach like a rock. I can feel it but I have no idea how to get it out."</div>
+      <div class="pain-item">"I avoid photos. I stand behind my kids in group shots. I haven't posted a picture of myself in months."</div>
+      <div class="pain-item">"I don't need to be thin. I just want to feel comfortable — just at ease — in my own skin."</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+  <div class="container text-center">
+    <p class="section-label">The Method</p>
+    <h2 class="section-title">The Rooted Release Method™</h2>
+    <p class="section-sub">Four pillars working together to address your body, your emotions, your nervous system, and your daily nourishment — so the change comes from every direction at once.</p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon">🌊</div>
+        <h3>Release</h3>
+        <p>EFT tapping to clear emotional blocks and food triggers at the source.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🧘</div>
+        <h3>Reconnect</h3>
+        <p>Mindfulness practices to rebuild the mind-body conversation.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🌿</div>
+        <h3>Restore</h3>
+        <p>Herbal support to nourish and calm your nervous system from the inside out.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🌳</div>
+        <h3>Root</h3>
+        <p>Bodywork and somatic practices to anchor healing into your physical body.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section">
+  <div class="container">
+    <p class="section-label">The Journey</p>
+    <h2 class="section-title">Your 9-Step Path to Homecoming</h2>
+    <p class="section-sub">Every client follows this exact journey — from disconnection to feeling at home in your body.</p>
+    <img src="NancyProcess.png" alt="The Rooted Release Journey - 9 Steps" class="journey-img">
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="container text-center">
+    <p class="section-label">Programs</p>
+    <h2 class="section-title">Three Ways to Work Together</h2>
+    <p class="section-sub">Whether you're just getting started or ready to go deep — there's a path for you.</p>
+    <div class="programs-grid">
+      <div class="prog-card">
+        <div class="prog-tier">Free Guide</div>
+        <h3>The 5 Emotional Weights</h3>
+        <p class="desc">PDF guide + introductory tapping audio to start your release today.</p>
+        <div class="prog-price">FREE</div>
+        <div class="prog-note">Instant download</div>
+      </div>
+      <div class="prog-card featured">
+        <div class="prog-badge">Most Popular</div>
+        <div class="prog-tier">6-Week Program</div>
+        <h3>Rooted Release</h3>
+        <p class="desc">Live group tapping, mindfulness, herbal protocols, and bodywork integration.</p>
+        <div class="prog-price">$1,497</div>
+        <div class="prog-note">or 3 payments of $547</div>
+      </div>
+      <div class="prog-card">
+        <div class="prog-tier">Private Coaching</div>
+        <h3>Body Homecoming</h3>
+        <p class="desc">12 weeks of deep, personalized 1-on-1 transformation work.</p>
+        <div class="prog-price">$5,000</div>
+        <div class="prog-note">Application required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-photo-placeholder">Your photo<br>goes here</div>
+      <div class="about-info">
+        <p class="section-label">Meet Nancy</p>
+        <h3>Nancy Dubé</h3>
+        <p class="about-tagline">Creator of The Rooted Release Method™</p>
+        <p>I help women who've spent years fighting their bodies finally find peace with food and feel at home in their own skin. After watching so many women cycle through diets that never addressed the real problem, I built a system that goes to the root — the emotional patterns, the stored stress, and the disconnection from your own body.</p>
+        <p>The Rooted Release Method™ combines EFT tapping, mindfulness, herbal support, and bodywork into one holistic approach — because lasting change requires the whole picture, not just another meal plan.</p>
+        <div class="about-tags">
+          <span class="about-tag">Certified EFT Practitioner</span>
+          <span class="about-tag">Mindfulness Guide</span>
+          <span class="about-tag">Herbal Wellness</span>
+          <span class="about-tag">Holistic Bodywork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+  <div class="container">
+    <div class="book-layout">
+      <div style="text-align:center; perspective:800px;">
+        <img src="NancyBook.png" alt="Rooted Release by Nancy Dubé" class="book-img">
+      </div>
+      <div class="book-info">
+        <p class="section-label">The Book</p>
+        <h3>Rooted Release</h3>
+        <p class="book-author">by Nancy Dubé</p>
+        <p>The Four-Pillar Path to Releasing Emotional Weight, Healing Your Relationship with Food, and Finally Feeling at Home in Your Body.</p>
+        <p>12 chapters across 3 parts — from the neuroscience of why willpower fails to your daily 10-minute practice that keeps the emotional (and physical) weight from coming back.</p>
+        <a href="#lead" class="btn-primary" style="display:inline-block; margin-top:8px;">Get Notified at Launch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="lead-section" id="lead">
+  <h2>Get Your Free Guide</h2>
+  <p>Download "The 5 Emotional Weights You're Carrying" — and start your first tapping sequence today.</p>
+  <div class="lead-form">
+    <input type="email" placeholder="Your email address">
+    <button type="button">Send My Guide</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" id="contact">
+  <div class="footer-brand">Nancy Dubé</div>
+  <div class="footer-tagline">The Rooted Release Method™</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#method">Method</a>
+    <a href="#programs">Programs</a>
+    <a href="#book">Book</a>
+    <a href="#lead">Free Guide</a>
+  </div>
+  <p class="footer-copy">© 2026 Nancy Dubé. All rights reserved. The Rooted Release Method™ is a trademark of Nancy Dubé.</p>
+</footer>
+
+</body>
+</html>

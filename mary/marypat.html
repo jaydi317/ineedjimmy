@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary Pat Potts — The Golden Chapter Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #FAF6EE;
+  --cream-dark: #f0ebe0;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --sage-light: #e8f0e9;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --deep: #1C2B1E;
+  --deep-soft: #2a3d2d;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+.handwritten { font-family: 'Caveat', cursive; }
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--deep);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.82rem;
+  color: var(--deep-soft);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage-dark); }
+.nav-cta {
+  background: var(--sage) !important;
+  color: var(--white) !important;
+  padding: 8px 22px !important;
+  border-radius: 30px;
+  font-weight: 600 !important;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: var(--sage-dark) !important; }
+
+@media (max-width: 768px) {
+  .nav { padding: 0 20px; }
+  .nav-links { display: none; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 140px 24px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--cream) 0%, #f5f0e5 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(122,158,126,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-label {
+  font-family: 'Caveat', cursive;
+  color: var(--sage);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.hero h1 {
+  font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+  font-weight: 700;
+  color: var(--deep);
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  color: var(--sage-dark);
+  font-style: italic;
+}
+.hero .subtitle {
+  font-size: 1.1rem;
+  color: rgba(28,43,30,0.6);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--sage);
+  color: var(--white);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(122,158,126,0.25);
+}
+.btn-primary:hover {
+  background: var(--sage-dark);
+  transform: translateY(-2px);
+}
+.btn-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--sage-dark);
+  padding: 14px 36px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--sage);
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  background: var(--sage);
+  color: white;
+}
+
+/* ===== COMPASS VISUAL ===== */
+.compass-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 24px 0;
+}
+.compass {
+  width: 280px;
+  height: 280px;
+  position: relative;
+}
+.compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: 0 4px 20px rgba(122,158,126,0.3);
+}
+.compass-point {
+  position: absolute;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--deep);
+}
+.compass-point span {
+  display: block;
+  font-family: 'Caveat', cursive;
+  font-size: 0.95rem;
+  color: var(--sage);
+  font-weight: 400;
+}
+.compass-point.n { top: 10px; left: 50%; transform: translateX(-50%); }
+.compass-point.s { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.compass-point.e { right: 0; top: 50%; transform: translateY(-50%); }
+.compass-point.w { left: 0; top: 50%; transform: translateY(-50%); }
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--sage);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--deep);
+}
+.section-subtitle {
+  font-size: 1rem;
+  color: rgba(28,43,30,0.55);
+  max-width: 560px;
+  margin-bottom: 40px;
+  line-height: 1.7;
+}
+.centered { text-align: center; }
+.centered .section-subtitle { margin-left: auto; margin-right: auto; }
+
+/* ===== PAIN SECTION ===== */
+.pain-section {
+  background: #f5f0e5;
+  padding: 80px 24px;
+}
+.pain-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pain-quote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--deep);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  position: relative;
+  padding: 0 20px;
+}
+.pain-quote::before {
+  content: '"';
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: var(--sage);
+  opacity: 0.3;
+  position: absolute;
+  top: -20px;
+  left: -10px;
+}
+.pain-list {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+.pain-list li {
+  font-size: 0.95rem;
+  color: rgba(28,43,30,0.7);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding-left: 28px;
+  position: relative;
+}
+.pain-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--rose);
+  font-size: 0.75rem;
+  top: 3px;
+}
+
+/* ===== METHOD CARDS ===== */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.method-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  border-color: var(--sage);
+}
+.method-card .pillar-label {
+  font-family: 'Caveat', cursive;
+  color: var(--sage);
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+.method-card h3 {
+  font-size: 1.2rem;
+  color: var(--deep);
+  margin-bottom: 10px;
+}
+.method-card p {
+  font-size: 0.85rem;
+  color: rgba(28,43,30,0.55);
+  line-height: 1.6;
+}
+
+/* ===== JOURNEY ===== */
+.journey-section {
+  background: #f5f0e5;
+  padding: 80px 24px;
+  text-align: center;
+}
+.journey-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.journey-img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  margin-top: 40px;
+}
+
+/* ===== PROGRAMS ===== */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.program-card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s;
+  position: relative;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.program-card.featured {
+  border-color: var(--sage);
+  border-width: 2px;
+}
+.program-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--sage);
+  color: var(--white);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.program-card .program-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--sage);
+  margin-bottom: 10px;
+}
+.program-card h3 {
+  font-size: 1.1rem;
+  color: var(--deep);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.program-card .program-desc {
+  font-size: 0.82rem;
+  color: rgba(28,43,30,0.5);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.program-card .program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--sage-dark);
+  font-weight: 700;
+}
+
+/* ===== ABOUT ===== */
+.about-section {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.about-visual {
+  flex: 0 0 280px;
+  height: 340px;
+  background: linear-gradient(135deg, var(--sage-light), #d4e0d5);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: var(--sage-dark);
+  font-weight: 700;
+  opacity: 0.4;
+}
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+}
+.about-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+.about-text p {
+  font-size: 0.95rem;
+  color: rgba(28,43,30,0.65);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.about-tag {
+  background: var(--sage-light);
+  color: var(--sage-dark);
+  font-size: 0.75rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+/* ===== BOOK ===== */
+.book-section {
+  background: #f5f0e5;
+  padding: 80px 24px;
+}
+.book-inner {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.book-img {
+  flex: 0 0 auto;
+}
+.book-img img {
+  width: 240px;
+  border-radius: 6px;
+  box-shadow: 12px 12px 40px rgba(0,0,0,0.15);
+}
+.book-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+.book-text h2 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+.book-text .author {
+  font-family: 'Caveat', cursive;
+  color: var(--sage);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.book-text p {
+  font-size: 0.95rem;
+  color: rgba(28,43,30,0.6);
+  line-height: 1.7;
+}
+
+/* ===== LEAD MAGNET ===== */
+.lead-section {
+  padding: 80px 24px;
+  text-align: center;
+}
+.lead-box {
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 2px solid var(--sage);
+  border-radius: 16px;
+  padding: 48px 36px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+}
+.lead-box h2 {
+  font-size: 1.5rem;
+  color: var(--deep);
+  margin-bottom: 8px;
+}
+.lead-box p {
+  font-size: 0.92rem;
+  color: rgba(28,43,30,0.6);
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+.lead-input {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.lead-input input {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px 18px;
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border 0.2s;
+}
+.lead-input input:focus { border-color: var(--sage); }
+.lead-input button {
+  padding: 12px 28px;
+  background: var(--sage);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.lead-input button:hover { background: var(--sage-dark); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--deep);
+  color: rgba(250,246,238,0.5);
+  text-align: center;
+  padding: 48px 24px;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--cream);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.footer p {
+  font-size: 0.82rem;
+  line-height: 1.6;
+}
+.footer-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+.footer-links a {
+  font-size: 0.8rem;
+  color: rgba(250,246,238,0.4);
+  text-decoration: none;
+}
+.footer-links a:hover { color: var(--gold); }
+
+@media (max-width: 700px) {
+  .section { padding: 60px 20px; }
+  .about-visual { width: 200px; height: 240px; flex: 0 0 200px; font-size: 2.5rem; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Mary Pat Potts</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#start" class="nav-cta">Begin Your Golden Chapter</a></li>
+  </ul>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <span class="hero-label">The Golden Chapter Method™</span>
+  <h1>Your Best Chapter Hasn't Been <em>Written</em> Yet</h1>
+  <p class="subtitle">EFT tapping + life coaching for retired women who know there's more. Release the emotional weight. Reclaim your identity. Redesign your life.</p>
+  <div class="hero-btns">
+    <a href="#start" class="btn-primary">Begin Your Golden Chapter</a>
+    <a href="#method" class="btn-secondary">See How It Works</a>
+  </div>
+  <div class="compass-section">
+    <div class="compass">
+      <div class="compass-center">Golden<br>Chapter<br>Method</div>
+      <div class="compass-point n"><span>Pillar 1</span>Release</div>
+      <div class="compass-point e"><span>Pillar 2</span>Reclaim</div>
+      <div class="compass-point s"><span>Pillar 3</span>Redesign</div>
+      <div class="compass-point w"><span>Pillar 4</span>Radiate</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN SECTION ===== -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <span class="section-label" style="text-align:center;">Does This Sound Like You?</span>
+    <div class="pain-quote">
+      I gave everyone the best years of my life. Now I'm sitting here wondering — is this really all there is?
+    </div>
+    <ul class="pain-list">
+      <li>You wake up with nowhere to be and no one who needs you — and the freedom you dreamed about feels more like free-falling</li>
+      <li>You feel guilty for wanting more because you know you should feel grateful — but "grateful" and "fulfilled" are not the same thing</li>
+      <li>You've tried the book clubs, the volunteering, the "just enjoy it" advice — but nothing touches the hollow feeling underneath</li>
+      <li>You've started to wonder if your best years really are behind you — and that thought keeps you up at 2am</li>
+      <li>You spent your whole life being the woman who does everything for everyone — and now you don't know who you are without someone to take care of</li>
+      <li>Some days the house is so quiet you can hear your own heartbeat — and it sounds like a clock</li>
+    </ul>
+    <p style="text-align:center;margin-top:28px;font-size:0.95rem;color:var(--sage-dark);font-weight:600;">You're not broken. You're not ungrateful. You're carrying something that needs to be released.</p>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section class="section centered" id="method">
+  <span class="section-label">The Method</span>
+  <h2 class="section-title">The Golden Chapter Method™</h2>
+  <p class="section-subtitle">A proven 4-pillar system that combines EFT tapping with strategic life coaching to help you go from stuck and invisible to vibrant and fully alive.</p>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="pillar-label">Pillar One</div>
+      <h3>Release</h3>
+      <p>Clear decades of emotional weight, limiting beliefs, and identity patterns through targeted EFT tapping.</p>
+    </div>
+    <div class="method-card">
+      <div class="pillar-label">Pillar Two</div>
+      <h3>Reclaim</h3>
+      <p>Rediscover who you are underneath the roles — your desires, your passions, your forgotten dreams.</p>
+    </div>
+    <div class="method-card">
+      <div class="pillar-label">Pillar Three</div>
+      <h3>Redesign</h3>
+      <p>Build a daily life that makes you feel alive, purposeful, and deeply fulfilled on your own terms.</p>
+    </div>
+    <div class="method-card">
+      <div class="pillar-label">Pillar Four</div>
+      <h3>Radiate</h3>
+      <p>Step into your new identity with confidence, joy, and an energy everyone around you can feel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9-STEP JOURNEY ===== -->
+<section class="journey-section">
+  <div class="journey-inner">
+    <span class="section-label">The Journey</span>
+    <h2 class="section-title">The 9-Step Golden Chapter Journey™</h2>
+    <p class="section-subtitle" style="margin:0 auto 0;">Every client walks this exact transformation path — a proven process from stuck to radiant.</p>
+    <img src="MaryPatProcess.png" alt="The 9-Step Golden Chapter Journey" class="journey-img">
+  </div>
+</section>
+
+<!-- ===== PROGRAMS ===== -->
+<section class="section centered" id="programs">
+  <span class="section-label">Programs</span>
+  <h2 class="section-title">Work With Mary Pat</h2>
+  <p class="section-subtitle">Three ways to begin your transformation — choose the path that feels right for you.</p>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="program-type">Free Guide</div>
+      <h3>The Golden Key Guide</h3>
+      <p class="program-desc">5 EFT tapping scripts to release the emotional weight of retirement</p>
+      <div class="program-price">FREE</div>
+    </div>
+    <div class="program-card featured">
+      <div class="program-type">6-Week Program</div>
+      <h3>The Golden Chapter Experience</h3>
+      <p class="program-desc">Live group coaching + EFT tapping. Walk through all 4 pillars of the method.</p>
+      <div class="program-price">$1,997</div>
+    </div>
+    <div class="program-card">
+      <div class="program-type">Private Coaching</div>
+      <h3>The Golden Chapter Private Intensive</h3>
+      <p class="program-desc">6 months of deep, private 1-on-1 coaching + custom EFT tapping protocols</p>
+      <div class="program-price">$7,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="section" id="about">
+  <div class="about-section">
+    <div class="about-visual">MP</div>
+    <div class="about-text">
+      <span class="section-label">Meet Your Guide</span>
+      <h2>Hi, I'm Mary Pat.</h2>
+      <p>I know what it feels like to wonder "is this really it?" — because I've been there. After years of giving everything to everyone else, I found myself in a quiet house with a full schedule and an empty heart.</p>
+      <p>EFT tapping changed everything. It helped me release decades of emotional weight I didn't even know I was carrying. And once that weight was gone, the purpose, the passion, the JOY — it all came rushing back.</p>
+      <p>Now I help other women experience the same transformation. Because your Golden Chapter is waiting. You just need someone to hand you the key.</p>
+      <div class="about-tags">
+        <span class="about-tag">EFT Tapping Practitioner</span>
+        <span class="about-tag">Certified Life Coach</span>
+        <span class="about-tag">Author</span>
+        <span class="about-tag">Retirement Fulfillment Expert</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BOOK ===== -->
+<section class="book-section" id="book">
+  <div class="book-inner">
+    <div class="book-img">
+      <img src="MaryPatBook.png" alt="Your Golden Chapter by Mary Pat Potts">
+    </div>
+    <div class="book-text">
+      <span class="section-label">The Book</span>
+      <h2>Your Golden Chapter</h2>
+      <p class="author">by Mary Pat Potts</p>
+      <p>The complete guide to releasing the emotional weight of a lifetime and stepping into the most fulfilling season you've ever lived. Includes EFT tapping scripts, exercises, and the full Golden Chapter Method framework.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEAD MAGNET ===== -->
+<section class="lead-section" id="start">
+  <div class="lead-box">
+    <span class="section-label">Free Resource</span>
+    <h2>Download The Golden Key Guide</h2>
+    <p>5 powerful EFT tapping scripts designed specifically for retired women — to release guilt, find purpose, and start feeling alive again. Free and instant.</p>
+    <div class="lead-input">
+      <input type="email" placeholder="Your email address">
+      <button>Send My Free Guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-brand">Mary Pat Potts</div>
+  <p>Creator of The Golden Chapter Method™ — EFT Tapping + Life Coaching for Retired Women</p>
+  <div class="footer-links">
+    <a href="#">About</a>
+    <a href="#">Programs</a>
+    <a href="#">Book</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy Policy</a>
+  </div>
+  <p style="margin-top:24px;font-size:0.72rem;opacity:0.5;">© 2026 Mary Pat Potts. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

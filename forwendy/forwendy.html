@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wendy Epstein — The Whole Woman Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-teal: #1A4F5C;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif { font-family: 'Playfair Display', serif; }
+.hand { font-family: 'Caveat', cursive; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 40%, var(--deep-teal) 100%);
+  padding: 80px 24px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 20%, rgba(198,168,85,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(122,158,126,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-badge {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(198,168,85,0.3);
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 32px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  font-size: clamp(32px, 5.5vw, 52px);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  color: var(--gold-light);
+  font-size: 16px;
+  max-width: 560px;
+  margin: 0 auto;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+/* ── SECTION UTILITY ── */
+.section {
+  padding: 80px 24px;
+}
+.section-dark {
+  background: linear-gradient(175deg, var(--deep) 0%, var(--deep-mid) 100%);
+  color: var(--cream);
+}
+.section-cream {
+  background: var(--cream);
+}
+.section-warm {
+  background: linear-gradient(175deg, #F5F0E6 0%, var(--cream) 100%);
+}
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 15px;
+  opacity: 0.75;
+  max-width: 600px;
+  line-height: 1.7;
+}
+
+/* ── IDENTITY CARD ── */
+.id-card {
+  background: linear-gradient(160deg, var(--deep) 0%, var(--deep-mid) 50%, var(--deep-teal) 100%);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.id-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.id-card .name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 38px);
+  color: var(--cream);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.id-card .title-line {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.id-card .pitch {
+  color: var(--gold-light);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto 28px;
+  opacity: 0.9;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.tag {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--sage);
+  border: 1px solid rgba(122,158,126,0.3);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* ── METHOD PILLARS ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.pillar-card {
+  background: rgba(198,168,85,0.06);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,0.4);
+}
+.pillar-num {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.pillar-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.pillar-desc {
+  font-size: 13px;
+  color: var(--gold-light);
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+/* ── METHOD IMAGE ── */
+.method-img-section { text-align: center; margin-top: 50px; }
+.method-img-section img {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(198,168,85,0.2);
+}
+
+/* ── PROCESS INFOGRAPHIC ── */
+.process-img {
+  text-align: center;
+  margin-top: 40px;
+}
+.process-img img {
+  max-width: 900px;
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(198,168,85,0.15);
+}
+
+/* ── WEBSITE PREVIEWS ── */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-top: 40px;
+}
+@media (max-width: 640px) { .preview-grid { grid-template-columns: 1fr; } }
+.preview-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(11,26,43,0.08);
+  box-shadow: 0 8px 32px rgba(11,26,43,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(11,26,43,0.12);
+}
+.preview-thumb {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.preview-thumb.style-1 {
+  background: linear-gradient(135deg, #F5F0E6 0%, var(--cream) 50%, #e8e3d6 100%);
+  color: var(--sage-dark);
+}
+.preview-thumb.style-2 {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-teal) 100%);
+}
+.preview-thumb .mock-nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 6px;
+}
+.style-1 .mock-nav { background: rgba(92,125,96,0.1); }
+.style-2 .mock-nav { background: rgba(198,168,85,0.1); }
+.mock-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+}
+.style-1 .mock-dot { background: var(--sage); opacity: 0.4; }
+.style-2 .mock-dot { background: var(--gold); opacity: 0.4; }
+.preview-info {
+  padding: 20px 24px;
+}
+.preview-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+.preview-info p {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* ── BOOK MOCKUP ── */
+.book-area {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.book-3d {
+  perspective: 800px;
+  flex-shrink: 0;
+}
+.book-3d img {
+  width: 260px;
+  border-radius: 4px;
+  box-shadow: 12px 12px 40px rgba(0,0,0,0.35), 2px 2px 8px rgba(0,0,0,0.2);
+  transform: rotateY(-12deg) rotateX(2deg);
+  transition: transform 0.4s ease;
+}
+.book-3d img:hover {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+.book-text { max-width: 420px; }
+.book-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--cream);
+  margin-bottom: 14px;
+}
+.book-text p {
+  font-size: 14px;
+  color: var(--gold-light);
+  opacity: 0.8;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.book-note {
+  font-family: 'Caveat', cursive;
+  font-size: 17px;
+  color: var(--gold);
+}
+
+/* ── INSTAGRAM MOCKUP ── */
+.ig-mock {
+  max-width: 400px;
+  margin: 40px auto 0;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(11,26,43,0.08);
+  box-shadow: 0 8px 32px rgba(11,26,43,0.06);
+  overflow: hidden;
+}
+.ig-header {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-teal) 100%);
+  padding: 28px 24px 20px;
+  text-align: center;
+}
+.ig-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  margin: 0 auto 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--deep);
+  font-weight: 600;
+  border: 3px solid rgba(198,168,85,0.4);
+}
+.ig-handle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.ig-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 16px;
+}
+.ig-stat {
+  text-align: center;
+}
+.ig-stat-num {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--cream);
+}
+.ig-stat-label {
+  font-size: 11px;
+  color: var(--gold-light);
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.ig-bio {
+  padding: 20px 24px;
+}
+.ig-bio p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--deep);
+  margin-bottom: 4px;
+}
+.ig-bio .ig-link {
+  color: var(--deep-teal);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* ── PROGRAMS ── */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.program-card {
+  background: var(--white);
+  border: 1px solid rgba(11,26,43,0.06);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.program-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(11,26,43,0.08);
+}
+.program-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(198,168,85,0.1);
+}
+.program-card.featured::before {
+  content: 'SIGNATURE';
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 10px;
+}
+.program-type {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+.program-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--deep);
+}
+.program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.program-price span { font-size: 15px; opacity: 0.6; font-weight: 400; }
+.program-desc {
+  font-size: 13px;
+  opacity: 0.6;
+  line-height: 1.6;
+}
+
+/* ── INCOME CALCULATOR ── */
+.calc-wrap {
+  max-width: 680px;
+  margin: 40px auto 0;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid rgba(11,26,43,0.06);
+  padding: 40px 36px;
+  box-shadow: 0 8px 32px rgba(11,26,43,0.04);
+}
+.calc-row {
+  margin-bottom: 28px;
+}
+.calc-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.calc-label span {
+  font-size: 14px;
+  color: var(--deep);
+}
+.calc-label strong {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--gold);
+}
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, #e8e3d6 100%);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.calc-results {
+  background: linear-gradient(160deg, var(--deep) 0%, var(--deep-teal) 100%);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  margin-top: 12px;
+}
+.calc-results .label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 6px;
+}
+.calc-results .amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: var(--gold);
+  font-weight: 600;
+}
+.calc-results .sub {
+  font-size: 13px;
+  color: var(--gold-light);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+.calc-row-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.calc-mini {
+  background: rgba(198,168,85,0.08);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+.calc-mini .label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+.calc-mini .amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── REPORT TEASER ── */
+.report-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+@media (max-width: 768px) {
+  .report-area { grid-template-columns: 1fr; gap: 40px; }
+}
+.report-pages {
+  position: relative;
+  height: 320px;
+}
+.report-page {
+  position: absolute;
+  width: 220px;
+  height: 280px;
+  background: var(--white);
+  border-radius: 8px;
+  border: 1px solid rgba(11,26,43,0.08);
+  box-shadow: 0 4px 16px rgba(11,26,43,0.08);
+  padding: 24px 20px;
+}
+.report-page:nth-child(1) {
+  transform: rotate(-6deg);
+  top: 20px; left: 10px;
+  z-index: 1;
+}
+.report-page:nth-child(2) {
+  transform: rotate(2deg);
+  top: 10px; left: 60px;
+  z-index: 2;
+}
+.report-page:nth-child(3) {
+  transform: rotate(-1deg);
+  top: 0; left: 110px;
+  z-index: 3;
+}
+.report-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--deep);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.report-line {
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  background: #e8e3d6;
+}
+.report-line.short { width: 60%; }
+.report-line.med { width: 80%; }
+.report-line.long { width: 95%; }
+.report-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 50px;
+  margin-top: 16px;
+}
+.report-bar {
+  width: 16px;
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(to top, var(--sage), var(--gold));
+}
+.bullets-list { list-style: none; }
+.bullets-list li {
+  font-size: 14.5px;
+  line-height: 1.65;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(11,26,43,0.06);
+  color: var(--deep);
+  position: relative;
+  padding-left: 20px;
+}
+.bullets-list li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+.bullets-list li:last-child { border-bottom: none; }
+
+/* ── CTA ── */
+.cta-section {
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 50%, var(--deep-teal) 100%);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 50% 50%, rgba(198,168,85,0.06) 0%, transparent 60%);
+}
+.cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+.cta-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4.5vw, 42px);
+  color: var(--cream);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.cta-inner p {
+  color: var(--gold-light);
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.8;
+  margin-bottom: 36px;
+}
+.cta-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.3);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(198,168,85,0.4);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  font-size: 12px;
+  color: var(--deep);
+  opacity: 0.4;
+  background: var(--cream);
+}
+.footer a { color: var(--gold); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero { padding: 60px 20px 50px; }
+  .section { padding: 60px 20px; }
+  .id-card { padding: 36px 24px; }
+  .book-area { gap: 40px; }
+  .book-3d img { width: 200px; }
+  .calc-wrap { padding: 28px 20px; }
+  .report-pages { height: 260px; }
+  .report-page { width: 180px; height: 230px; }
+  .report-page:nth-child(2) { left: 40px; }
+  .report-page:nth-child(3) { left: 80px; }
+  .pillars-grid { grid-template-columns: 1fr 1fr; }
+  .ig-stats { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">AI Business Design Preview</div>
+    <h1>Wendy, Here's a Preview of<br>Your <span>Coaching Business</span></h1>
+    <p>Built by Jimmy Davis's AI Business Design Software — a custom-built system that designs coaching brands, programs, and marketing in days instead of months.</p>
+  </div>
+</section>
+
+<!-- ═══════ IDENTITY CARD ═══════ -->
+<section class="section section-cream" style="padding-bottom: 40px;">
+  <div class="container">
+    <div class="id-card">
+      <div class="name">Wendy Epstein</div>
+      <div class="title-line">Creator of The Whole Woman Method™</div>
+      <p class="pitch">I help women who've spent years battling weight and anxiety finally get to the root of both — using a combination of emotional freedom techniques, plant-based nutrition, and nervous system healing. I don't put women on diets. I help them release what's been weighing them down from the inside out.</p>
+      <div class="tags">
+        <span class="tag">EFT Weight Loss Specialist</span>
+        <span class="tag">IIN Certified Health Coach</span>
+        <span class="tag">Cornell Plant-Based Nutrition</span>
+        <span class="tag">20+ Years Healing Arts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ METHOD PILLARS ═══════ -->
+<section class="section section-dark">
+  <div class="container" style="text-align: center;">
+    <div class="section-label">Your Signature Method</div>
+    <h2 class="section-title" style="color: var(--cream);">The Whole Woman Method™</h2>
+    <p class="section-sub" style="margin: 0 auto 8px; color: var(--gold-light);">Heal what's underneath. Release what's weighing you down.</p>
+    <p class="hand" style="color: var(--gold); font-size: 19px; margin-bottom: 0;">"You can't grow new leaves on a tree with damaged roots."</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-num">01</div>
+        <div class="pillar-name">Release</div>
+        <div class="pillar-desc">Clear the emotional weight — tapping to release stored trauma, stress, and the beliefs keeping you stuck.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">02</div>
+        <div class="pillar-name">Nourish</div>
+        <div class="pillar-desc">Feed the whole woman — plant-based, science-backed nutrition that restores your body from the inside out.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">03</div>
+        <div class="pillar-name">Restore</div>
+        <div class="pillar-desc">Calm the nervous system — regulation, energy healing, and rebuilding trust with your body.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-num">04</div>
+        <div class="pillar-name">Rise</div>
+        <div class="pillar-desc">Step into your full capacity — reclaim your confidence, your visibility, and the life that matches who you really are.</div>
+      </div>
+    </div>
+    <div class="method-img-section">
+      <img src="WendyMethod.png" alt="The Whole Woman Method — Tree Visual">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 9-STEP JOURNEY ═══════ -->
+<section class="section section-warm" style="text-align: center;">
+  <div class="container">
+    <div class="section-label" style="color: var(--sage-dark);">Your Proven Process</div>
+    <h2 class="section-title">The Whole Woman Journey™</h2>
+    <p class="section-sub" style="margin: 0 auto; color: var(--deep); opacity: 0.65;">Every client follows this exact 9-step path — from feeling stuck, anxious, and at war with their body to feeling free, nourished, and fully at home.</p>
+    <div class="process-img">
+      <img src="WendyProcess.png" alt="The Whole Woman Journey — 9 Steps to Coming Home to Yourself">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WEBSITE PREVIEWS ═══════ -->
+<section class="section section-cream" style="text-align: center;">
+  <div class="container">
+    <div class="section-label" style="color: var(--sage-dark);">Your Website</div>
+    <h2 class="section-title">Two Custom Website Concepts</h2>
+    <p class="section-sub" style="margin: 0 auto; opacity: 0.6;">Fully designed, scroll-ready mockups for your coaching brand. Click either to preview.</p>
+    <div class="preview-grid">
+      <a href="wendy.html" class="preview-card">
+        <div class="preview-thumb style-1">
+          <div class="mock-nav"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+          <span>Warm &amp; Elegant</span>
+        </div>
+        <div class="preview-info">
+          <h3>Style 1 — Warm &amp; Elegant</h3>
+          <p>Light, airy, editorial. Sage greens and natural warmth.</p>
+        </div>
+      </a>
+      <a href="wendy2.html" class="preview-card">
+        <div class="preview-thumb style-2">
+          <div class="mock-nav"><span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span></div>
+          <span style="color: var(--gold);">Bold &amp; Deep</span>
+        </div>
+        <div class="preview-info">
+          <h3>Style 2 — Bold &amp; Deep</h3>
+          <p>Dark, premium, immersive. Navy and gold luxury.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BOOK ═══════ -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="book-area">
+      <div class="book-3d">
+        <img src="WendyBook.png" alt="The Whole Woman by Wendy Epstein">
+      </div>
+      <div class="book-text">
+        <div class="section-label">Your Book</div>
+        <h3>The Whole Woman</h3>
+        <p>How to Release the Emotional Weight That's Keeping You Stuck, Anxious, and at War with Your Body — a complete book with 11 chapters, a framework your readers can follow, and the kind of depth that positions you as the definitive voice in this space.</p>
+        <div class="book-note">Full outline, chapters, and writing support included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INSTAGRAM MOCKUP ═══════ -->
+<section class="section section-warm" style="text-align: center;">
+  <div class="container">
+    <div class="section-label" style="color: var(--sage-dark);">Your Social Presence</div>
+    <h2 class="section-title">Instagram Bio Preview</h2>
+    <div class="ig-mock">
+      <div class="ig-header">
+        <div class="ig-avatar">WE</div>
+        <div class="ig-handle">@wendyepstein</div>
+        <div class="ig-stats">
+          <div class="ig-stat">
+            <div class="ig-stat-num">—</div>
+            <div class="ig-stat-label">Posts</div>
+          </div>
+          <div class="ig-stat">
+            <div class="ig-stat-num">—</div>
+            <div class="ig-stat-label">Followers</div>
+          </div>
+          <div class="ig-stat">
+            <div class="ig-stat-num">—</div>
+            <div class="ig-stat-label">Following</div>
+          </div>
+        </div>
+      </div>
+      <div class="ig-bio">
+        <p><strong>Wendy Epstein</strong></p>
+        <p>Creator of The Whole Woman Method™</p>
+        <p>Helping women release weight + anxiety at the root</p>
+        <p>🌿 Tapping | Plant-Based Nutrition | Nervous System Healing</p>
+        <p>Cornell + IIN Certified | EFT Weight Loss Specialist</p>
+        <p class="ig-link">⬇️ Free guide: "5 Things Your Diet Will Never Fix"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROGRAMS ═══════ -->
+<section class="section section-cream" style="text-align: center;">
+  <div class="container">
+    <div class="section-label" style="color: var(--sage-dark);">Your Programs</div>
+    <h2 class="section-title">Your Coaching Offer Suite</h2>
+    <p class="section-sub" style="margin: 0 auto; opacity: 0.6;">Three tiers designed to meet women wherever they are — and guide them deeper.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-type">Lead Magnet</div>
+        <div class="program-name">5 Things Your Diet Will Never Fix</div>
+        <div class="program-price">FREE</div>
+        <div class="program-desc">Downloadable guide introducing the emotional root of weight + anxiety — with one tapping exercise to try tonight.</div>
+      </div>
+      <div class="program-card featured">
+        <div class="program-type">Signature Program</div>
+        <div class="program-name">The Whole Woman Transformation</div>
+        <div class="program-price">$1,997</div>
+        <div class="program-desc">6-week group program. Live calls, tapping sessions, plant-based nutrition, community support. The full method.</div>
+      </div>
+      <div class="program-card">
+        <div class="program-type">Private Coaching</div>
+        <div class="program-name">Whole Woman Private</div>
+        <div class="program-price">$7,500 <span>/ 12 weeks</span></div>
+        <div class="program-desc">Intensive 1:1 coaching. Weekly tapping, custom nutrition plan, nervous system protocol, Voxer access.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INCOME CALCULATOR ═══════ -->
+<section class="section section-warm" style="text-align: center;">
+  <div class="container">
+    <div class="section-label" style="color: var(--sage-dark);">Your Revenue</div>
+    <h2 class="section-title">Income Calculator</h2>
+    <p class="section-sub" style="margin: 0 auto 0; opacity: 0.6;">Adjust the sliders to see what's possible with your programs.</p>
+    <div class="calc-wrap">
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Women per Group Round</span>
+          <strong id="groupVal">10</strong>
+        </div>
+        <input type="range" id="groupSlider" min="4" max="30" value="10">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Group Rounds per Year</span>
+          <strong id="roundVal">4</strong>
+        </div>
+        <input type="range" id="roundSlider" min="1" max="6" value="4">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Private Clients per Year</span>
+          <strong id="privateVal">6</strong>
+        </div>
+        <input type="range" id="privateSlider" min="0" max="20" value="6">
+      </div>
+      <div class="calc-results">
+        <div class="label">Projected Annual Revenue</div>
+        <div class="amount" id="annualRevenue">$124,880</div>
+        <div class="calc-row-results">
+          <div class="calc-mini">
+            <div class="label">Monthly</div>
+            <div class="amount" id="monthlyRevenue">$10,407</div>
+          </div>
+          <div class="calc-mini">
+            <div class="label">Per Group Round</div>
+            <div class="amount" id="perRound">$19,970</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ REPORT TEASER ═══════ -->
+<section class="section section-cream">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 10px;">
+      <div class="section-label" style="color: var(--sage-dark);">Your Full Blueprint</div>
+      <h2 class="section-title">What the Complete Report Reveals</h2>
+    </div>
+    <div class="report-area">
+      <div class="report-pages">
+        <div class="report-page">
+          <div class="report-page-title">Market Research</div>
+          <div class="report-line long"></div>
+          <div class="report-line med"></div>
+          <div class="report-line short"></div>
+          <div class="report-line long"></div>
+          <div class="report-line med"></div>
+          <div class="report-chart">
+            <div class="report-bar" style="height: 25px;"></div>
+            <div class="report-bar" style="height: 38px;"></div>
+            <div class="report-bar" style="height: 18px;"></div>
+            <div class="report-bar" style="height: 45px;"></div>
+            <div class="report-bar" style="height: 30px;"></div>
+          </div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Customer Avatar</div>
+          <div class="report-line med"></div>
+          <div class="report-line long"></div>
+          <div class="report-line short"></div>
+          <div class="report-line long"></div>
+          <div class="report-line med"></div>
+          <div class="report-line short"></div>
+          <div class="report-line long"></div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Revenue Projections</div>
+          <div class="report-line short"></div>
+          <div class="report-line med"></div>
+          <div class="report-line long"></div>
+          <div class="report-chart">
+            <div class="report-bar" style="height: 15px;"></div>
+            <div class="report-bar" style="height: 28px;"></div>
+            <div class="report-bar" style="height: 42px;"></div>
+            <div class="report-bar" style="height: 35px;"></div>
+            <div class="report-bar" style="height: 50px;"></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ul class="bullets-list">
+          <li>The exact gap in the tapping-for-weight-loss market that no competitor has claimed — and why Wendy's unique combination of credentials fills it perfectly</li>
+          <li>Why the 5 biggest names in EFT weight loss coaching are all missing the ONE thing that Wendy's clients will get from day one</li>
+          <li>The "Night Kitchen Protocol" — and why the emotional eating trigger at 9pm is actually the key to unlocking the entire transformation</li>
+          <li>The specific income math showing how 8 women per group round creates a six-figure coaching business working part-time hours</li>
+          <li>Why women aged 48-62 are the most underserved — and highest-paying — segment in the holistic weight loss market right now</li>
+          <li>The "Invisible Woman" insight that makes Wendy's sales copy practically write itself — because every woman in her audience has felt it</li>
+          <li>The Cornell research angle that gives Wendy instant credibility over 90% of coaches in her space — and how to lead with it without sounding clinical</li>
+          <li>A complete 11-chapter book outline, 6-week program curriculum, and high-ticket coaching framework — ready to launch</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to Bring<br>This to Life?</h2>
+    <p>Everything you've seen on this page — the method, the programs, the website, the book, the brand — was designed by Jimmy Davis's AI Business Design Software. The system is ready. Your blueprint is built. The only piece missing is you.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services &amp; Pricing</a>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundSlider = document.getElementById('roundSlider');
+const privateSlider = document.getElementById('privateSlider');
+
+function updateCalc() {
+  const group = parseInt(groupSlider.value);
+  const rounds = parseInt(roundSlider.value);
+  const priv = parseInt(privateSlider.value);
+  
+  document.getElementById('groupVal').textContent = group;
+  document.getElementById('roundVal').textContent = rounds;
+  document.getElementById('privateVal').textContent = priv;
+  
+  const groupRev = group * rounds * 1997;
+  const privRev = priv * 7500;
+  const annual = groupRev + privRev;
+  const monthly = Math.round(annual / 12);
+  const perRound = group * 1997;
+  
+  document.getElementById('annualRevenue').textContent = '$' + annual.toLocaleString();
+  document.getElementById('monthlyRevenue').textContent = '$' + monthly.toLocaleString();
+  document.getElementById('perRound').textContent = '$' + perRound.toLocaleString();
+}
+
+groupSlider.addEventListener('input', updateCalc);
+roundSlider.addEventListener('input', updateCalc);
+privateSlider.addEventListener('input', updateCalc);
+updateCalc();
+</script>
+</body>
+</html>

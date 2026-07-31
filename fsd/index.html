@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FSD Copilot — Your co-pilot for the car that drives itself</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --asphalt:#0e1216; --panel:#161c22; --panel-edge:#232c35;
+    --lane:#ffc94d; --lane-dim:#8a6f2e;
+    --text:#e8edf2; --text-dim:#8b98a5; --good:#5dd39e; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--asphalt);color:var(--text);font-family:'Inter',system-ui,sans-serif;min-height:100vh}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 80px}
+  h1,h2,h3,.btn,.chip,.copy-btn{font-family:'Chakra Petch',sans-serif}
+
+  /* header strip: glanceable ambient info */
+  .topbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+  .logo{font-weight:700;font-size:clamp(24px,3.5vw,34px)}
+  .logo span{color:var(--lane)}
+  .ambient{display:flex;gap:22px;flex-wrap:wrap;color:var(--text-dim);font-size:15px}
+  .ambient b{color:var(--text);font-weight:600;font-family:'Chakra Petch',sans-serif}
+
+  .btn{font-weight:600;font-size:17px;letter-spacing:.03em;border:none;border-radius:var(--radius);
+    padding:15px 22px;cursor:pointer;min-height:54px;transition:transform .08s}
+  .btn:active{transform:scale(.97)}
+  .btn:focus-visible,.chip:focus-visible,.copy-btn:focus-visible,input:focus-visible{outline:3px solid var(--lane);outline-offset:2px}
+  .btn-primary{background:var(--lane);color:#1a1405}
+  .btn-ghost{background:var(--panel);color:var(--text);border:1px solid var(--panel-edge)}
+
+  .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:14px 0 6px}
+  .status{font-size:14px;color:var(--text-dim);width:100%;margin-top:4px}
+  .status strong{color:var(--text)}
+
+  section{margin-top:38px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .sec-head h2{font-size:22px}
+  .sec-head .sub{color:var(--text-dim);font-size:14px}
+
+  /* ------- copilot chat ------- */
+  .copilot{background:var(--panel);border:1px solid var(--panel-edge);border-radius:var(--radius);padding:18px}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .chip{font-size:14px;font-weight:600;background:transparent;color:var(--text-dim);
+    border:1px solid var(--panel-edge);border-radius:999px;padding:11px 16px;cursor:pointer;min-height:44px}
+  .chip:hover{color:var(--lane);border-color:var(--lane-dim)}
+  .chat-log{max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+  .msg{padding:12px 14px;border-radius:10px;font-size:15.5px;line-height:1.5;max-width:88%}
+  .msg.user{background:#20303c;align-self:flex-end}
+  .msg.ai{background:var(--asphalt);border:1px solid var(--panel-edge)}
+  .chat-row{display:flex;gap:10px;flex-wrap:wrap}
+  .chat-row input{flex:1;min-width:200px;background:var(--asphalt);border:1px solid var(--panel-edge);
+    border-radius:10px;color:var(--text);font-size:16px;padding:14px;min-height:52px}
+  .mic{font-size:22px;min-width:56px}
+  .mic.listening{background:#c0392b;color:#fff}
+  .toggle{display:flex;align-items:center;gap:8px;color:var(--text-dim);font-size:14px;margin-top:10px;cursor:pointer;user-select:none}
+  .toggle input{accent-color:var(--lane);width:18px;height:18px}
+
+  /* ------- gems ------- */
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+  .filters .chip[aria-pressed="true"]{background:var(--lane);color:#1a1405;border-color:var(--lane)}
+  .road{position:relative;padding-left:34px}
+  .road::before{content:"";position:absolute;left:12px;top:8px;bottom:8px;border-left:4px dashed var(--lane-dim)}
+  .card{position:relative;background:var(--panel);border:1px solid var(--panel-edge);border-radius:var(--radius);
+    padding:18px;margin-bottom:16px}
+  .card::before{content:"";position:absolute;left:-28px;top:26px;width:12px;height:12px;border-radius:50%;
+    background:var(--lane);box-shadow:0 0 0 4px var(--asphalt)}
+  .card-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .gem-name{font-family:'Chakra Petch',sans-serif;font-size:20px;font-weight:600}
+  .badge{font-family:'Chakra Petch',sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.06em;color:var(--lane);
+    border:1px solid var(--lane-dim);border-radius:6px;padding:4px 9px;text-transform:uppercase;white-space:nowrap;height:fit-content}
+  .drive-line{margin-top:4px;font-size:14.5px;color:var(--text-dim)}
+  .drive-line strong{color:var(--text)}
+  .why{margin-top:10px;font-size:15px;line-height:1.55}
+  .addr-row{display:flex;gap:12px;align-items:center;margin-top:14px;flex-wrap:wrap}
+  .addr{font-size:14px;color:var(--text-dim);background:var(--asphalt);border:1px solid var(--panel-edge);
+    border-radius:10px;padding:11px 13px;flex:1;min-width:200px;user-select:all}
+  .copy-btn{font-weight:600;font-size:15.5px;background:transparent;color:var(--lane);border:2px solid var(--lane);
+    border-radius:10px;padding:11px 18px;cursor:pointer;min-height:48px;min-width:160px}
+  .copy-btn.copied{background:var(--good);border-color:var(--good);color:#08130d}
+
+  /* ------- podcasts ------- */
+  .pods{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .pod{background:var(--panel);border:1px solid var(--panel-edge);border-radius:var(--radius);padding:16px}
+  .pod h3{font-size:16.5px;margin-bottom:4px}
+  .pod .len{color:var(--lane);font-size:13px;font-family:'Chakra Petch',sans-serif;font-weight:600}
+  .pod p{color:var(--text-dim);font-size:14px;margin-top:6px;line-height:1.45}
+
+  /* ------- parked ------- */
+  .links{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+  .link-card{display:block;background:var(--panel);border:1px solid var(--panel-edge);border-radius:var(--radius);
+    padding:18px;text-decoration:none;color:var(--text)}
+  .link-card:hover{border-color:var(--lane-dim)}
+  .link-card h3{font-size:17px;color:var(--lane);margin-bottom:4px}
+  .link-card p{color:var(--text-dim);font-size:14px;line-height:1.45}
+
+  .capture{margin-top:44px;background:var(--panel);border:1px solid var(--panel-edge);border-radius:var(--radius);
+    padding:22px;text-align:center}
+  .capture h2{font-size:19px;margin-bottom:6px}
+  .capture p{color:var(--text-dim);font-size:14.5px;margin-bottom:12px}
+  .capture form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .capture input{background:var(--asphalt);border:1px solid var(--panel-edge);border-radius:10px;color:var(--text);
+    font-size:16px;padding:13px 16px;min-width:230px;min-height:50px}
+  footer{margin-top:28px;text-align:center;color:var(--text-dim);font-size:13px}
+  @media (prefers-reduced-motion:no-preference){
+    .card{animation:pull-in .3s ease both}
+    @keyframes pull-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <h1 class="logo">FSD <span>COPILOT</span></h1>
+    <div class="ambient">
+      <div>🕐 <b id="clock">--:--</b></div>
+      <div>🌤 <b id="wx">--°</b></div>
+      <div>🌇 Golden hour <b id="sunset">--</b></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-primary" id="locateBtn">📍 Set my location</button>
+    <button class="btn btn-ghost" id="luckyBtn">🎲 Surprise journey</button>
+    <div class="status" id="status">Set your location to unlock weather, sunset time, and gems sorted by drive time.</div>
+  </div>
+
+  <!-- ===================== COPILOT AI ===================== -->
+  <section>
+    <div class="sec-head"><h2>🤖 Ask your Copilot</h2><div class="sub">Hands-free answers while you ride</div></div>
+    <div class="copilot">
+      <div class="quick">
+        <button class="chip" data-q="Tell me something fascinating about the area I'm driving through right now.">What's around here?</button>
+        <button class="chip" data-q="Give me a fun 2-minute history of the nearest town.">Town history</button>
+        <button class="chip" data-q="Give me 3 road trip trivia questions, one at a time. Start with the first one.">Road trivia</button>
+        <button class="chip" data-q="Recommend a scenic backroad loop from my current location, about 45 minutes.">Plan a loop</button>
+      </div>
+      <div class="chat-log" id="chatLog">
+        <div class="msg ai">Hey! I'm your FSD Copilot. Ask me anything while the car does the driving — local history, trivia, what that weird building was, or where to go next. Tap the mic to talk.</div>
+      </div>
+      <div class="chat-row">
+        <input id="chatInput" type="text" placeholder="Ask anything…" aria-label="Ask the copilot">
+        <button class="btn btn-ghost mic" id="micBtn" title="Talk to Copilot">🎙</button>
+        <button class="btn btn-primary" id="sendBtn">Send</button>
+      </div>
+      <label class="toggle"><input type="checkbox" id="speakToggle" checked> Read answers aloud (so you can keep your eyes up)</label>
+    </div>
+  </section>
+
+  <!-- ===================== GEMS ===================== -->
+  <section>
+    <div class="sec-head"><h2>💎 FSD Gems</h2><div class="sub">Destinations worth the drive — copy &amp; paste into Nav</div></div>
+    <div class="filters" id="filters" role="group" aria-label="Journey length">
+      <button class="chip" data-max="9999" aria-pressed="true">All journeys</button>
+      <button class="chip" data-max="30" aria-pressed="false">≤ 30 min</button>
+      <button class="chip" data-max="45" aria-pressed="false">≤ 45 min</button>
+      <button class="chip" data-max="75" aria-pressed="false">≤ 75 min</button>
+    </div>
+    <div class="road" id="list"></div>
+    <div class="status" id="empty" hidden>No gems in that range yet — try a longer journey.</div>
+  </section>
+
+  <!-- ===================== AUDIO ===================== -->
+  <section>
+    <div class="sec-head"><h2>🎧 Match a podcast to your drive</h2><div class="sub">Pick by episode length, not by scrolling</div></div>
+    <div class="filters" id="podFilters" role="group" aria-label="Drive length">
+      <button class="chip" data-len="short" aria-pressed="false">~20 min drive</button>
+      <button class="chip" data-len="mid" aria-pressed="true">~45 min drive</button>
+      <button class="chip" data-len="long" aria-pressed="false">60+ min drive</button>
+    </div>
+    <div class="pods" id="pods"></div>
+  </section>
+
+  <!-- ===================== PARKED ===================== -->
+  <section>
+    <div class="sec-head"><h2>🅿️ While you're parked</h2><div class="sub">The community's best tools, one tap away</div></div>
+    <div class="links">
+      <a class="link-card" href="https://teslawaze.azurewebsites.net" target="_blank"><h3>TeslaWaze</h3><p>Live traffic incidents, hazards &amp; police on a map. The community gold standard.</p></a>
+      <a class="link-card" href="https://abetterrouteplanner.com" target="_blank"><h3>A Better Route Planner</h3><p>Smarter charging stops for long trips than native nav.</p></a>
+      <a class="link-card" href="https://www.plugshare.com" target="_blank"><h3>PlugShare</h3><p>Every charger near you, with reviews from real owners.</p></a>
+      <a class="link-card" href="https://abettertheater.com" target="_blank"><h3>A Better Theater</h3><p>Full-screen streaming while you charge.</p></a>
+    </div>
+  </section>
+
+  <div class="capture">
+    <h2>New gems &amp; features, straight to your inbox</h2>
+    <p>Join FSD Copilot updates. No spam — just better drives.</p>
+    <form onsubmit="event.preventDefault(); this.querySelector('button').textContent='You\'re in! 🚗';">
+      <input type="email" placeholder="you@email.com" aria-label="Email" required>
+      <button class="btn btn-primary" type="submit">Join the list</button>
+    </form>
+  </div>
+
+  <footer>FSD Copilot prototype · Turn on "Avoid Highways" and enjoy the ride.</footer>
+</div>
+
+<script>
+/* =========================================================
+   STATE + UTILITIES
+========================================================= */
+const $ = id => document.getElementById(id);
+let userLoc = null, maxMinutes = 9999, placeName = null;
+const AVG_MPH = 34, ROAD_FACTOR = 1.28;
+const hav = (a,b)=>{const R=3958.8,t=d=>d*Math.PI/180,dLa=t(b.lat-a.lat),dLn=t(b.lng-a.lng),
+  h=Math.sin(dLa/2)**2+Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLn/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const mins = mi => Math.round(mi*ROAD_FACTOR/AVG_MPH*60);
+
+/* clock */
+setInterval(()=>{ $('clock').textContent = new Date().toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); },1000);
+
+/* =========================================================
+   GEMS DATA (central Indiana seed set)
+========================================================= */
+const GEMS = [
+ {name:"World's Largest Ball of Paint",cat:"Roadside Legend",addr:"10696 N 200 W, Alexandria, IN 46001",lat:40.258881,lng:-85.709094,why:"A Guinness World Record ball with 25,000+ layers. You add a layer, sign the wall, leave with a certificate. Prime farm-road cruising up SR 13."},
+ {name:"Mr. Muffin's Trains",cat:"Hidden Wonder",addr:"165 E Main St, Atlanta, IN 46031",lat:40.216290,lng:-86.025742,why:"Museum-grade model train empire hiding in a one-street farm town. Open Saturdays 10–3."},
+ {name:"Mounds State Park",cat:"Ancient Site",addr:"4306 Mounds Rd, Anderson, IN 46017",lat:40.100564,lng:-85.619738,why:"2,000-year-old earthworks above the White River — Indiana's Stonehenge. Go at golden hour."},
+ {name:"Strawtown Koteewi Park",cat:"River Escape",addr:"12308 Strawtown Ave, Noblesville, IN 46060",lat:40.126159,lng:-85.950283,why:"800 river acres with reconstructed Native dwellings and resident bald eagles. Classic two-lane river road."},
+ {name:"Falls Park",cat:"Small-Town Gem",addr:"460 Falls Park Dr, Pendleton, IN 46064",lat:40.007340,lng:-85.740065,why:"Small waterfall, historic brick downtown one block away. Best right after rain."},
+ {name:"Bonge's Tavern",cat:"Destination Dinner",addr:"9830 W 280 N, Anderson, IN 46011",lat:40.143900,lng:-85.859270,why:"Legendary countryside roadhouse — regulars tailgate before dinner. Tue–Sat from 4:30. The Perkinsville river roads are the appetizer."},
+ {name:"Holliday Park Ruins",cat:"Hidden Wonder",addr:"6363 Spring Mill Rd, Indianapolis, IN 46260",lat:39.870893,lng:-86.163494,why:"Genuine Greek-style ruins from a demolished NYC skyscraper, standing in a leafy Indy park."},
+ {name:"100 Acres Art & Nature Park",cat:"Art Outdoors",addr:"1850 W 38th St, Indianapolis, IN 46228",lat:39.825996,lng:-86.189428,why:"Giant sculptures around a lake behind Newfields. Free and feels like a treasure hunt."},
+ {name:"Zionsville Village Main Street",cat:"Small-Town Gem",addr:"175 S Main St, Zionsville, IN 46077",lat:39.950312,lng:-86.261376,why:"Brick main street, 1800s storefronts. The most Hallmark-movie town near Indy."},
+ {name:"KokoMantis",cat:"Roadside Legend",addr:"200 W Sycamore St, Kokomo, IN 46901",lat:40.486579,lng:-86.133509,why:"17-ft praying mantis welded from recycled car parts. SR 19 through Tipton is pure corn-country cruising."},
+ {name:"Conner Prairie",cat:"Living History",addr:"13400 Allisonville Rd, Fishers, IN 46038",lat:39.986,lng:-86.024,why:"1,000 acres of living history — 1836 Prairietown and a tethered balloon ride."},
+ {name:"Flat Fork Creek Treehouses",cat:"Hidden Wonder",addr:"16141 E 101st St, Fishers, IN 46040",lat:39.928,lng:-85.890,why:"Three architect-built treehouses in the woods. A short hop that still feels like a find."},
+ {name:"Nickel Plate Express",cat:"Living History",addr:"825 Forest Park Dr, Noblesville, IN 46060",lat:40.062,lng:-86.024,why:"Vintage rail rides through Hamilton County farmland. Check the weekend schedule."},
+ {name:"Morse Lake / Cicero Waterfront",cat:"River Escape",addr:"331 W Jackson St, Cicero, IN 46034",lat:40.1239,lng:-86.0138,why:"Sleepy lakefront square with a park on the water. Gorgeous no-highway loop up 234."}
+];
+
+function renderGems(){
+  const list=$('list'); list.innerHTML='';
+  let gems=GEMS.map(g=>{const mi=userLoc?hav(userLoc,g):null;return{...g,mi,mins:mi==null?null:mins(mi)}});
+  if(userLoc) gems=gems.filter(g=>g.mins<=maxMinutes).sort((a,b)=>a.mins-b.mins);
+  $('empty').hidden=gems.length>0;
+  gems.forEach((g,i)=>{
+    const c=document.createElement('div');c.className='card';c.style.animationDelay=(i*35)+'ms';
+    c.innerHTML=`<div class="card-top"><div><div class="gem-name">${g.name}</div>
+      <div class="drive-line">${g.mins!=null?`<strong>~${g.mins} min</strong> scenic drive · ${g.mi.toFixed(0)} mi`:'Set location for drive time'}</div></div>
+      <span class="badge">${g.cat}</span></div>
+      <p class="why">${g.why}</p>
+      <div class="addr-row"><div class="addr">${g.addr}</div>
+      <button class="copy-btn" data-addr="${g.addr}">Copy for Nav</button></div>`;
+    list.appendChild(c);
+  });
+  list.querySelectorAll('.copy-btn').forEach(b=>b.addEventListener('click',()=>copyAddr(b)));
+}
+function copyAddr(btn){
+  const t=btn.dataset.addr;
+  const done=ok=>{btn.textContent=ok?'✓ Copied — paste in Nav':'Select & copy above';btn.classList.toggle('copied',ok);
+    setTimeout(()=>{btn.textContent='Copy for Nav';btn.classList.remove('copied')},2500)};
+  if(navigator.clipboard?.writeText){navigator.clipboard.writeText(t).then(()=>done(true)).catch(()=>fb(t,done))}else fb(t,done);
+}
+function fb(t,done){const ta=document.createElement('textarea');ta.value=t;ta.style.cssText='position:fixed;opacity:0';
+  document.body.appendChild(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}
+  document.body.removeChild(ta);done(ok)}
+
+/* =========================================================
+   LOCATION + WEATHER + SUNSET (free open-meteo API, no key)
+========================================================= */
+$('locateBtn').addEventListener('click',()=>{
+  const s=$('status');
+  if(!navigator.geolocation){s.textContent='Location not supported — showing full list.';renderGems();return}
+  s.textContent='Getting your location…';
+  navigator.geolocation.getCurrentPosition(async pos=>{
+    userLoc={lat:pos.coords.latitude,lng:pos.coords.longitude};
+    s.innerHTML='<strong>Location set.</strong> Gems sorted by scenic-pace drive time.';
+    renderGems(); fetchAmbient();
+  },()=>{s.textContent='Location blocked — showing full list. (Allow location in browser settings.)';renderGems()},
+  {timeout:8000,maximumAge:300000});
+});
+
+async function fetchAmbient(){
+  if(!userLoc) return;
+  try{
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${userLoc.lat}&longitude=${userLoc.lng}&current=temperature_2m,weather_code&daily=sunset&temperature_unit=fahrenheit&timezone=auto`);
+    const d=await r.json();
+    $('wx').textContent=Math.round(d.current.temperature_2m)+'°F';
+    const ss=new Date(d.daily.sunset[0]);
+    $('sunset').textContent=ss.toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+  }catch(e){/* ambient is optional */}
+  try{ // reverse geocode for the copilot's context
+    const r=await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${userLoc.lat}&lon=${userLoc.lng}&format=json&zoom=10`);
+    const d=await r.json();
+    placeName=d.address?.city||d.address?.town||d.address?.county||null;
+  }catch(e){}
+}
+
+/* =========================================================
+   COPILOT AI CHAT (Anthropic API — works inside Claude artifacts;
+   for public hosting, route through your own backend)
+========================================================= */
+const chatLog=$('chatLog');
+let history=[];
+function addMsg(text,who){const m=document.createElement('div');m.className='msg '+who;m.textContent=text;
+  chatLog.appendChild(m);chatLog.scrollTop=chatLog.scrollHeight;return m}
+
+async function askCopilot(q){
+  addMsg(q,'user');
+  const thinking=addMsg('…','ai');
+  history.push({role:'user',content:q});
+  const locNote=userLoc?`The driver is near ${placeName||'latitude '+userLoc.lat.toFixed(3)+', longitude '+userLoc.lng.toFixed(3)}.`:'Location unknown.';
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1000,
+        system:`You are FSD Copilot, a friendly in-car companion for a Tesla owner riding on Full Self-Driving. ${locNote} Keep answers short (under 120 words), conversational, and written to be READ ALOUD — no lists, no markdown, no headers. Be vivid and interesting, like a great road-trip passenger.`,
+        messages:history.slice(-10)})
+    });
+    const data=await res.json();
+    const text=(data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join(' ').trim()||'Hmm, I lost signal for a second — ask me again.';
+    thinking.textContent=text;
+    history.push({role:'assistant',content:text});
+    if($('speakToggle').checked) speak(text);
+  }catch(e){thinking.textContent='No connection right now — try again in a moment.'}
+}
+$('sendBtn').addEventListener('click',()=>{const v=$('chatInput').value.trim();if(v){$('chatInput').value='';askCopilot(v)}});
+$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('sendBtn').click()});
+document.querySelectorAll('.quick .chip').forEach(c=>c.addEventListener('click',()=>askCopilot(c.dataset.q)));
+
+/* voice in: Web Speech API (Chromium) */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+if(SR){
+  const rec=new SR();rec.lang='en-US';rec.interimResults=false;
+  $('micBtn').addEventListener('click',()=>{ $('micBtn').classList.add('listening');rec.start(); });
+  rec.onresult=e=>{const t=e.results[0][0].transcript;$('micBtn').classList.remove('listening');askCopilot(t)};
+  rec.onerror=rec.onend=()=>$('micBtn').classList.remove('listening');
+}else{
+  $('micBtn').addEventListener('click',()=>addMsg('Voice input isn\'t supported in this browser — type your question instead.','ai'));
+}
+/* voice out */
+function speak(text){
+  try{const u=new SpeechSynthesisUtterance(text);u.rate=1.02;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}
+}
+
+/* =========================================================
+   PODCAST MATCHER
+========================================================= */
+const PODS={
+ short:[
+  {n:"The Daily (NYT)",l:"20–30 min",d:"One big news story, told well. Perfect quick-loop companion."},
+  {n:"Hidden Brain: Shortwave picks",l:"~15 min",d:"Bite-size science for a grocery-run drive."},
+  {n:"Marketing Against the Grain (shorts)",l:"~20 min",d:"Fast marketing takes for a quick spin."}],
+ mid:[
+  {n:"Ride the Lightning",l:"~45 min",d:"The unofficial Tesla podcast — weekly Tesla & FSD news. On-brand for the drive."},
+  {n:"How I Built This",l:"40–60 min",d:"Founder stories that fit a 45-minute loop almost perfectly."},
+  {n:"Marketing Secrets (Russell Brunson)",l:"30–45 min",d:"Funnel talk while the car handles the corners."}],
+ long:[
+  {n:"Lex Fridman Podcast",l:"2–3 hrs",d:"Deep AI and tech conversations — the classic long-journey pick."},
+  {n:"Acquired",l:"2–4 hrs",d:"Epic company histories. One episode = one grand tour."},
+  {n:"The Game (Alex Hormozi)",l:"varies, queue 3–4",d:"Stack short episodes into a full business masterclass drive."}]
+};
+function renderPods(len){
+  const el=$('pods');el.innerHTML='';
+  PODS[len].forEach(p=>{const d=document.createElement('div');d.className='pod';
+    d.innerHTML=`<h3>${p.n}</h3><div class="len">${p.l}</div><p>${p.d}</p>`;el.appendChild(d)});
+}
+$('podFilters').addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');if(!chip)return;
+  document.querySelectorAll('#podFilters .chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+  chip.setAttribute('aria-pressed','true');renderPods(chip.dataset.len);
+});
+
+/* =========================================================
+   SURPRISE + GEM FILTERS
+========================================================= */
+$('luckyBtn').addEventListener('click',()=>{
+  let pool=GEMS;
+  if(userLoc) pool=GEMS.filter(g=>mins(hav(userLoc,g))<=(maxMinutes===9999?75:maxMinutes));
+  if(!pool.length)pool=GEMS;
+  const pick=pool[Math.floor(Math.random()*pool.length)];
+  $('status').innerHTML=`🎲 Your journey: <strong>${pick.name}</strong> — copy the address below and go.`;
+  const i=GEMS.indexOf(pick);GEMS.splice(i,1);GEMS.unshift(pick);renderGems();
+  if($('speakToggle').checked) speak(`Your surprise journey: ${pick.name}. ${pick.why}`);
+});
+$('filters').addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');if(!chip)return;
+  document.querySelectorAll('#filters .chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+  chip.setAttribute('aria-pressed','true');maxMinutes=Number(chip.dataset.max);renderGems();
+});
+
+renderGems(); renderPods('mid');
+</script>
+</body>
+</html>

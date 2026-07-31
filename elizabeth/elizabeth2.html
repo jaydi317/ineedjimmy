@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Mayle — The Sacred Skin Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-light: #1a3a5c;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --gold-dim: rgba(198,168,85,0.15);
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--cream);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;color:var(--cream);}
+img{max-width:100%;height:auto;}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(11,26,43,0.92);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(198,168,85,0.1);
+  padding:16px 32px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);font-weight:700;text-decoration:none;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--gold-light);font-size:0.82rem;letter-spacing:0.5px;transition:color 0.3s;opacity:0.8;}
+.nav-links a:hover{color:var(--gold);opacity:1;}
+.nav-cta{
+  padding:8px 24px;background:var(--gold);color:var(--deep)!important;opacity:1!important;
+  border-radius:50px;font-weight:700;font-size:0.8rem!important;letter-spacing:1px!important;transition:all 0.3s;
+}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:120px 32px 80px;text-align:center;
+  background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 40%,var(--deep) 100%);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 50% 30%,rgba(198,168,85,0.06),transparent 60%),
+  radial-gradient(ellipse at 20% 80%,rgba(122,158,126,0.04),transparent 50%);
+}
+.hero-content{position:relative;z-index:1;max-width:800px;}
+.hero-eyebrow{font-family:'Caveat',cursive;color:var(--gold);font-size:1.4rem;margin-bottom:12px;}
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:12px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero-subtitle{font-size:1.1rem;color:var(--gold-light);opacity:0.7;max-width:580px;margin:0 auto 36px;line-height:1.8;}
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn-gold{
+  padding:14px 36px;background:var(--gold);color:var(--deep);
+  text-decoration:none;border-radius:50px;font-weight:700;font-size:0.9rem;
+  transition:all 0.3s;box-shadow:0 4px 20px rgba(198,168,85,0.25);
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(198,168,85,0.35);}
+.btn-outline{
+  padding:14px 36px;border:1.5px solid var(--gold);color:var(--gold);
+  text-decoration:none;border-radius:50px;font-weight:600;font-size:0.9rem;transition:all 0.3s;
+}
+.btn-outline:hover{background:var(--gold);color:var(--deep);}
+.hero-method{margin-top:60px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;}
+.hm-item{display:flex;flex-direction:column;align-items:center;gap:8px;}
+.hm-icon{
+  width:56px;height:56px;border-radius:50%;
+  border:1px solid rgba(198,168,85,0.3);
+  display:flex;align-items:center;justify-content:center;font-size:1.4rem;
+  background:rgba(198,168,85,0.06);
+}
+.hm-label{font-size:0.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:600;}
+
+/* SECTIONS */
+.section{padding:100px 32px;}
+.s-deep{background:var(--deep);}
+.s-mid{background:var(--deep-mid);}
+.s-accent{background:linear-gradient(180deg,var(--deep-mid),var(--deep));}
+.container{max-width:1100px;margin:0 auto;}
+.s-label{font-family:'Caveat',cursive;color:var(--gold);font-size:1.15rem;text-align:center;margin-bottom:6px;}
+.s-title{text-align:center;font-size:clamp(1.6rem,3.5vw,2.5rem);margin-bottom:14px;line-height:1.3;}
+.s-sub{text-align:center;max-width:620px;margin:0 auto 52px;font-size:0.95rem;color:var(--gold-light);opacity:0.6;line-height:1.7;}
+
+/* DIVIDER */
+.gold-line{width:80px;height:2px;background:var(--gold);margin:0 auto 48px;opacity:0.4;}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.pain-card{
+  padding:28px 24px;border-radius:12px;
+  background:rgba(198,168,85,0.04);
+  border-left:2px solid var(--rose);
+  transition:all 0.3s;
+}
+.pain-card:hover{background:rgba(198,168,85,0.08);transform:translateX(4px);}
+.pain-card p{font-size:0.92rem;line-height:1.7;font-style:italic;color:var(--gold-light);opacity:0.75;}
+
+/* METHOD */
+.method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;}
+.mc{
+  text-align:center;padding:40px 24px;border-radius:16px;
+  border:1px solid rgba(198,168,85,0.12);
+  background:rgba(198,168,85,0.03);
+  transition:all 0.4s;
+}
+.mc:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 16px 50px rgba(198,168,85,0.08);}
+.mc-icon{
+  width:60px;height:60px;border-radius:50%;margin:0 auto 16px;
+  background:linear-gradient(135deg,var(--gold),var(--warm));
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+}
+.mc h3{font-size:1.15rem;margin-bottom:4px;color:var(--gold);}
+.mc .mc-sub{font-family:'Caveat',cursive;color:var(--sage);font-size:1rem;margin-bottom:10px;}
+.mc p{font-size:0.88rem;color:var(--gold-light);opacity:0.6;line-height:1.6;}
+
+/* JOURNEY */
+.journey-img{max-width:700px;margin:0 auto;display:block;}
+.journey-img img{
+  width:100%;border-radius:16px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  border:1px solid rgba(198,168,85,0.1);
+}
+
+/* PROGRAMS */
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:950px;margin:0 auto;}
+.pc{
+  border-radius:16px;padding:36px 24px;text-align:center;
+  border:1px solid rgba(198,168,85,0.12);
+  background:rgba(198,168,85,0.03);
+  transition:all 0.3s;position:relative;
+}
+.pc.feat{border-color:var(--gold);background:rgba(198,168,85,0.06);box-shadow:0 8px 30px rgba(198,168,85,0.08);}
+.pc.feat::before{
+  content:'FLAGSHIP';position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--deep);padding:4px 16px;border-radius:50px;
+  font-size:0.65rem;font-weight:700;letter-spacing:2px;
+}
+.pc:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(198,168,85,0.1);}
+.pc-type{font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--sage);margin-bottom:12px;}
+.pc h3{font-size:1.15rem;margin-bottom:8px;}
+.pc-price{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:8px;}
+.pc-desc{font-size:0.85rem;color:var(--gold-light);opacity:0.5;line-height:1.6;}
+
+/* ABOUT */
+.about-layout{display:flex;gap:60px;align-items:center;flex-wrap:wrap;}
+.about-img{
+  flex:0 0 300px;height:380px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(198,168,85,0.08),rgba(122,158,126,0.06));
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid rgba(198,168,85,0.15);
+}
+.about-img-ph{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);opacity:0.3;}
+.about-text{flex:1;min-width:280px;}
+.about-text h2{font-size:2rem;margin-bottom:16px;}
+.about-text p{font-size:0.95rem;line-height:1.8;margin-bottom:16px;color:var(--gold-light);opacity:0.65;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.about-tag{
+  padding:6px 16px;border:1px solid rgba(198,168,85,0.3);border-radius:50px;
+  font-size:0.75rem;color:var(--gold);letter-spacing:0.5px;
+}
+
+/* BOOK */
+.book-layout{display:flex;gap:60px;align-items:center;flex-wrap:wrap;justify-content:center;}
+.book-cover{flex:0 0 260px;perspective:1000px;}
+.book-inner{
+  transform:rotateY(-10deg);transition:transform 0.5s;
+  box-shadow:20px 20px 60px rgba(0,0,0,0.5);border-radius:4px;overflow:hidden;
+}
+.book-cover:hover .book-inner{transform:rotateY(-4deg);}
+.book-inner img{width:100%;display:block;}
+.book-text{flex:1;min-width:280px;}
+.book-text h2{font-size:2rem;margin-bottom:6px;color:var(--gold);}
+.book-text .ba{font-family:'Caveat',cursive;color:var(--sage);font-size:1.2rem;margin-bottom:16px;}
+.book-text p{font-size:0.95rem;line-height:1.8;margin-bottom:16px;color:var(--gold-light);opacity:0.65;}
+
+/* LEAD MAGNET */
+.lead-section{
+  background:linear-gradient(135deg,var(--gold),var(--warm));
+  border-radius:24px;padding:60px 40px;text-align:center;color:var(--deep);
+  max-width:800px;margin:0 auto;
+}
+.lead-section h2{color:var(--deep);font-size:1.8rem;margin-bottom:8px;}
+.lead-section .lead-sub{font-family:'Caveat',cursive;font-size:1.2rem;opacity:0.8;margin-bottom:20px;color:var(--deep-mid);}
+.lead-section p{opacity:0.75;max-width:500px;margin:0 auto 28px;line-height:1.7;color:var(--deep);}
+.lead-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:480px;margin:0 auto;}
+.lead-input{
+  flex:1;min-width:200px;padding:14px 20px;border:none;border-radius:50px;
+  font-size:0.9rem;font-family:'Inter',sans-serif;background:var(--white);
+}
+.lead-btn{
+  padding:14px 28px;background:var(--deep);color:var(--gold);
+  border:none;border-radius:50px;font-weight:700;font-size:0.85rem;cursor:pointer;transition:all 0.3s;
+}
+.lead-btn:hover{background:var(--deep-mid);transform:translateY(-1px);}
+
+/* FOOTER */
+.footer{
+  background:var(--deep);color:rgba(250,246,238,0.4);text-align:center;padding:48px 32px;
+  border-top:1px solid rgba(198,168,85,0.08);
+}
+.footer-brand{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.4rem;margin-bottom:8px;}
+.footer-tagline{font-family:'Caveat',cursive;color:var(--sage);font-size:1rem;margin-bottom:24px;}
+.footer-links{display:flex;justify-content:center;gap:28px;margin-bottom:20px;flex-wrap:wrap;}
+.footer-links a{color:rgba(250,246,238,0.4);text-decoration:none;font-size:0.8rem;transition:color 0.3s;}
+.footer-links a:hover{color:var(--gold);}
+.footer-copy{font-size:0.72rem;opacity:0.4;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hero{padding:100px 20px 60px;min-height:auto;}
+  .section{padding:60px 20px;}
+  .about-layout,.book-layout{flex-direction:column;text-align:center;}
+  .about-img{flex:none;width:100%;height:250px;}
+  .book-cover{flex:none;}
+  .lead-section{padding:40px 24px;}
+  .pain-grid{grid-template-columns:1fr;}
+  .prog-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Elizabeth Mayle</a>
+  <div class="nav-links">
+    <a href="#method">Method</a>
+    <a href="#journey">Journey</a>
+    <a href="#programs">Programs</a>
+    <a href="#about">About</a>
+    <a href="#book">Book</a>
+    <a href="#start" class="nav-cta">Begin Healing</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Healing from the skin in</p>
+    <h1>Your Body <em>Survived</em>.<br>Now Let It <em>Rest</em>.</h1>
+    <p class="hero-subtitle">The Sacred Skin Method™ helps women who've experienced sexual abuse come home to their bodies — through touch, movement, energy, and sound.</p>
+    <div class="hero-buttons">
+      <a href="#start" class="btn-gold">Begin Your Journey</a>
+      <a href="#method" class="btn-outline">Learn the Method</a>
+    </div>
+    <div class="hero-method">
+      <div class="hm-item"><div class="hm-icon">🤲</div><span class="hm-label">Release</span></div>
+      <div class="hm-item"><div class="hm-icon">🧘</div><span class="hm-label">Reconnect</span></div>
+      <div class="hm-item"><div class="hm-icon">✨</div><span class="hm-label">Restore</span></div>
+      <div class="hm-item"><div class="hm-icon">🔔</div><span class="hm-label">Resound</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="section s-mid">
+  <div class="container">
+    <p class="s-label">Does this sound like you?</p>
+    <h2 class="s-title">You've Done the Work.<br>Your Body Hasn't Caught Up.</h2>
+    <p class="s-sub">You understand your trauma. You can narrate it with clarity. But your body still braces. Still flinches. Still holds its breath.</p>
+    <div class="gold-line"></div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <p>"I know I'm safe. My mind knows it. But my body still scans every room for exits — and I'm exhausted from the effort of appearing normal."</p>
+      </div>
+      <div class="pain-card">
+        <p>"I flinch when my husband reaches for me, and then I feel guilty about it. I've done years of therapy. Why can't my body just... let go?"</p>
+      </div>
+      <div class="pain-card">
+        <p>"I tried a yoga class once and the instructor told me to 'open my hips and let go.' I nearly had a panic attack on the mat. I never went back."</p>
+      </div>
+      <div class="pain-card">
+        <p>"I've read The Body Keeps the Score. I highlighted half of it. But knowing my body stores trauma doesn't teach me how to release it safely."</p>
+      </div>
+      <div class="pain-card">
+        <p>"I don't even know what it feels like to be IN my body. I've been living above my neck for years. I want to feel like my skin is MINE again."</p>
+      </div>
+      <div class="pain-card">
+        <p>"I look at other women who seem comfortable in their own skin and I wonder what that feels like. I'm so tired of being strong. I just want to feel safe."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section s-deep" id="method">
+  <div class="container">
+    <p class="s-label">The Sacred Skin Method™</p>
+    <h2 class="s-title">Four Pathways Home</h2>
+    <p class="s-sub">Most approaches to trauma healing work from the neck up. This one works from the skin in.</p>
+    <div class="method-grid">
+      <div class="mc">
+        <div class="mc-icon">🤲</div>
+        <h3>Release</h3>
+        <p class="mc-sub">Massage & Bodywork</p>
+        <p>Unlocking trauma stored in your tissues through safe, intentional therapeutic touch. Your body held on to protect you — now it learns to let go.</p>
+      </div>
+      <div class="mc">
+        <div class="mc-icon">🧘</div>
+        <h3>Reconnect</h3>
+        <p class="mc-sub">Yoga & Movement</p>
+        <p>Coming home to your body through breath, gentle movement, and embodied awareness. Learning your body is a sanctuary, not a source of pain.</p>
+      </div>
+      <div class="mc">
+        <div class="mc-icon">✨</div>
+        <h3>Restore</h3>
+        <p class="mc-sub">Energy Medicine</p>
+        <p>Clearing the invisible patterns beneath the surface — energetic wounds and disrupted fields that talk therapy can't reach.</p>
+      </div>
+      <div class="mc">
+        <div class="mc-icon">🔔</div>
+        <h3>Resound</h3>
+        <p class="mc-sub">Sound Therapy</p>
+        <p>Using vibrational frequencies to reset your nervous system and create a felt sense of safety that goes deeper than words.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="section s-mid" id="journey">
+  <div class="container">
+    <p class="s-label">Your Proven Process</p>
+    <h2 class="s-title">The Sacred Skin Journey™</h2>
+    <p class="s-sub">Every client follows this exact 9-step path — from survival to sovereignty.</p>
+    <div class="journey-img">
+      <img src="ElizabethProcess.png" alt="The Sacred Skin Journey - 9-Step Healing Path">
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section s-deep" id="programs">
+  <div class="container">
+    <p class="s-label">Work With Elizabeth</p>
+    <h2 class="s-title">Three Ways to Begin</h2>
+    <p class="s-sub">Meet yourself where you are. Every option is a doorway to feeling safe in your own skin.</p>
+    <div class="prog-grid">
+      <div class="pc">
+        <div class="pc-type">Free Resource</div>
+        <h3>The Body After Trauma</h3>
+        <div class="pc-price">FREE</div>
+        <p class="pc-desc">5 Somatic Practices to Feel Safe in Your Own Skin — a downloadable guide introducing the Sacred Skin framework.</p>
+      </div>
+      <div class="pc feat">
+        <div class="pc-type">6-Week Group Program</div>
+        <h3>Sacred Skin Circle</h3>
+        <div class="pc-price">$1,997</div>
+        <p class="pc-desc">Live weekly sessions combining trauma-informed yoga, sound healing, energy medicine, and somatic integration in a safe group container.</p>
+      </div>
+      <div class="pc">
+        <div class="pc-type">12-Week Private 1:1</div>
+        <h3>Sacred Skin Private Immersion</h3>
+        <div class="pc-price">$7,500</div>
+        <p class="pc-desc">A fully personalized healing journey including massage, yoga, energy medicine, and sound therapy. In person or virtual.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section s-mid" id="about">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-img">
+        <div class="about-img-ph">EM</div>
+      </div>
+      <div class="about-text">
+        <p class="s-label" style="text-align:left;">Meet Elizabeth</p>
+        <h2>Your Body Deserves a Guide Who Speaks Its Language</h2>
+        <p>Elizabeth Mayle is a somatic healing practitioner and the creator of the Sacred Skin Method™ — a body-based approach to healing from sexual trauma through massage, yoga, energy medicine, and sound therapy.</p>
+        <p>Trained through Briana Borten's Spirit Medicine Academy in Entheos Energy Medicine, Elizabeth is a licensed massage therapist, yoga teacher, and sound healing practitioner who works with women both in person and virtually.</p>
+        <p>Her work is rooted in one belief: your body is where trauma lives — and your body is where healing begins.</p>
+        <div class="about-tags">
+          <span class="about-tag">Licensed Massage Therapist</span>
+          <span class="about-tag">Yoga Teacher</span>
+          <span class="about-tag">Entheos Energy Medicine Seer</span>
+          <span class="about-tag">Sound Healing Practitioner</span>
+          <span class="about-tag">Spirit Medicine Academy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="section s-deep" id="book">
+  <div class="container">
+    <div class="book-layout">
+      <div class="book-cover">
+        <div class="book-inner">
+          <img src="ElizabethBook.png" alt="Sacred Skin by Elizabeth Mayle">
+        </div>
+      </div>
+      <div class="book-text">
+        <p class="s-label" style="text-align:left;">The Book</p>
+        <h2>Sacred Skin</h2>
+        <p class="ba">by Elizabeth Mayle</p>
+        <p>A Body-Based Path to Healing After Sexual Abuse — How Touch, Movement, Energy, and Sound Can Bring You Home to Your Body.</p>
+        <p>Part memoir, part method, part guided practice — Sacred Skin walks you through Elizabeth's complete framework for healing from the skin in. Ten chapters of somatic wisdom, practical exercises, and the radical reframe that changes everything: your body didn't betray you. Your body survived for you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="section s-mid" id="start">
+  <div class="container">
+    <div class="lead-section">
+      <h2>Start Your Journey Home</h2>
+      <p class="lead-sub">Free Guide — No commitment required</p>
+      <p>Download "The Body After Trauma: 5 Somatic Practices to Feel Safe in Your Own Skin" — and take your first step toward coming home to your body.</p>
+      <div class="lead-form">
+        <input type="email" class="lead-input" placeholder="Your email address">
+        <button class="lead-btn">Send My Free Guide</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Elizabeth Mayle</div>
+  <div class="footer-tagline">Creator of The Sacred Skin Method™</div>
+  <div class="footer-links">
+    <a href="#method">Method</a>
+    <a href="#journey">Journey</a>
+    <a href="#programs">Programs</a>
+    <a href="#about">About</a>
+    <a href="#book">Book</a>
+    <a href="#start">Free Guide</a>
+  </div>
+  <p class="footer-copy">© 2026 Elizabeth Mayle. All rights reserved. Website mockup — INeedJimmy.com</p>
+</footer>
+
+</body>
+</html>

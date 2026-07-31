@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Realtime Elite — Capability Statement</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+@page { size:letter; margin:0; }
+:root {
+  --navy: #0B1A2E;
+  --navy-light: #132B4A;
+  --navy-mid: #1A3A5C;
+  --gold: #C9A84C;
+  --gold-light: #E8D48B;
+  --gold-dim: rgba(201,168,76,0.12);
+  --cream: #F7F4ED;
+  --white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-mid: #4A4A5A;
+  --text-light: #7A7A8A;
+  --border: rgba(0,0,0,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Source Sans 3',sans-serif;color:var(--text-dark);
+  line-height:1.5;-webkit-font-smoothing:antialiased;
+  background:#e0ddd6;
+  display:flex;justify-content:center;padding:32px 16px;
+}
+
+/* ─── PAGE ─── */
+.page {
+  width:8.5in;
+  min-height:11in;
+  background:var(--white);
+  box-shadow:0 4px 40px rgba(0,0,0,0.12);
+  overflow:hidden;
+  position:relative;
+}
+
+/* ─── HEADER ─── */
+.header {
+  background:var(--navy);
+  color:var(--white);
+  padding:28px 40px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  position:relative;
+}
+.header::after {
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.header-left {}
+.header-logo {
+  font-family:'Playfair Display',serif;font-size:26px;font-weight:700;
+  letter-spacing:0.5px;margin-bottom:2px;
+}
+.header-logo span{color:var(--gold);}
+.header-tagline {
+  font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.5);font-weight:500;
+}
+.header-right {
+  text-align:right;font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;
+}
+.header-right a{color:var(--gold);text-decoration:none;font-weight:600;}
+.header-right .phone{font-size:16px;font-weight:700;color:var(--white);}
+
+/* ─── HERO LINE ─── */
+.hero-line {
+  padding:28px 40px;
+  border-bottom:1px solid var(--border);
+}
+.hero-line h1 {
+  font-family:'Playfair Display',serif;
+  font-size:28px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:10px;
+}
+.hero-line h1 em{color:var(--gold);font-style:normal;}
+.hero-pitch {
+  font-size:15px;color:var(--text-mid);line-height:1.65;max-width:620px;
+}
+
+/* ─── TRUST STRIP ─── */
+.trust-strip {
+  padding:14px 40px;
+  background:var(--gold-dim);
+  display:flex;align-items:center;gap:8px;
+  border-bottom:1px solid var(--border);
+}
+.trust-label {
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--text-light);font-weight:700;margin-right:8px;
+}
+.trust-name {
+  font-size:13px;font-weight:600;color:var(--navy);
+}
+.trust-sep { color:var(--gold);font-size:12px; }
+
+/* ─── 3-COLUMN SECTION ─── */
+.three-col {
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  border-bottom:1px solid var(--border);
+}
+.col {
+  padding:24px 28px;
+  border-right:1px solid var(--border);
+}
+.col:last-child{border-right:none;}
+.col-header {
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:14px;
+  padding-bottom:8px;border-bottom:2px solid var(--gold);
+  display:inline-block;
+}
+.col ul {
+  list-style:none;padding:0;
+}
+.col li {
+  font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;
+  position:relative;line-height:1.45;
+}
+.col li::before {
+  content:'';position:absolute;left:0;top:11px;
+  width:5px;height:5px;background:var(--gold);
+}
+
+/* ─── DIFFERENTIATOR BAR ─── */
+.diff-bar {
+  background:var(--navy);
+  padding:20px 40px;
+  text-align:center;
+}
+.diff-text {
+  font-family:'Playfair Display',serif;
+  font-size:16px;font-weight:600;color:var(--white);line-height:1.4;
+}
+.diff-text em{color:var(--gold);font-style:normal;}
+
+/* ─── TEAM STRIP ─── */
+.team-strip {
+  padding:24px 40px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:24px;
+  border-bottom:1px solid var(--border);
+}
+.team-member {}
+.team-member-name {
+  font-family:'Playfair Display',serif;font-size:16px;font-weight:700;
+  color:var(--navy);margin-bottom:2px;
+}
+.team-member-role {
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:8px;
+}
+.team-member p {
+  font-size:12px;color:var(--text-mid);line-height:1.55;
+}
+
+/* ─── WHY US ─── */
+.why-section {
+  padding:24px 40px;
+  border-bottom:1px solid var(--border);
+}
+.why-header {
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin-bottom:16px;
+}
+.why-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;
+}
+.why-item {
+  display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start;
+}
+.why-icon {
+  width:36px;height:36px;background:var(--gold-dim);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:var(--gold);
+}
+.why-item h5{font-size:13px;color:var(--navy);margin-bottom:2px;}
+.why-item p{font-size:12px;color:var(--text-mid);line-height:1.5;margin:0;}
+
+/* ─── CTA FOOTER ─── */
+.cta-footer {
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color:var(--white);
+  padding:24px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:relative;
+}
+.cta-footer::before {
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+.cta-left h3 {
+  font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
+  margin-bottom:4px;
+}
+.cta-left h3 em{color:var(--gold);font-style:normal;}
+.cta-left p{font-size:13px;color:rgba(255,255,255,0.6);}
+.cta-right{text-align:right;}
+.cta-right .phone {
+  font-family:'Playfair Display',serif;font-size:24px;font-weight:700;
+  color:var(--gold);margin-bottom:2px;
+}
+.cta-right .email{font-size:13px;color:rgba(255,255,255,0.7);}
+.cta-right .web{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
+
+/* ─── MOCKUP NOTE ─── */
+.mockup-note {
+  text-align:center;padding:16px;font-size:11px;color:var(--text-light);
+  letter-spacing:1px;
+}
+
+@media print {
+  body{background:none;padding:0;}
+  .page{box-shadow:none;width:100%;min-height:auto;}
+  .mockup-note{display:none;}
+}
+@media(max-width:700px){
+  .page{width:100%;}
+  .three-col{grid-template-columns:1fr;}
+  .col{border-right:none;border-bottom:1px solid var(--border);}
+  .team-strip{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .cta-footer{flex-direction:column;gap:16px;text-align:center;}
+  .cta-right{text-align:center;}
+  .header{flex-direction:column;gap:12px;}
+  .header-right{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<div>
+<div class="page">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-logo">Realtime <span>Elite</span></div>
+      <div class="header-tagline">Your Global Deposition Solution</div>
+    </div>
+    <div class="header-right">
+      <div class="phone">240-472-1080</div>
+      <a href="mailto:info@realtimeelite.com">info@realtimeelite.com</a><br>
+      <span style="font-size:12px;color:rgba(255,255,255,0.5);">realtimeelite.com · Washington, D.C.</span>
+    </div>
+  </div>
+
+  <!-- ═══ HERO LINE ═══ -->
+  <div class="hero-line">
+    <h1>Complex Litigation Demands an <em>Elite</em> Court Reporter.</h1>
+    <p class="hero-pitch">Realtime Elite is a family-owned court reporting and legal videography team based in Washington, D.C. We specialize in complex multi-party arbitrations, patent litigation, and pharmaceutical cases — with 30+ years of certified stenographic experience across 15+ countries. One call gets your firm a certified realtime stenographer, a legal videographer, and dedicated technology support — coordinated by a team that's worked together for decades.</p>
+  </div>
+
+  <!-- ═══ TRUST STRIP ═══ -->
+  <div class="trust-strip">
+    <span class="trust-label">Trusted by:</span>
+    <span class="trust-name">U.S. House of Representatives</span>
+    <span class="trust-sep">◆</span>
+    <span class="trust-name">The European Union</span>
+    <span class="trust-sep">◆</span>
+    <span class="trust-name">The United Nations</span>
+  </div>
+
+  <!-- ═══ THREE COLUMNS ═══ -->
+  <div class="three-col">
+    <div class="col">
+      <div class="col-header">Services</div>
+      <ul>
+        <li>Realtime Stenographic Reporting</li>
+        <li>Legal Videography (In-House)</li>
+        <li>Remote Deposition Support</li>
+        <li>IT & Technology Administration</li>
+        <li>Expedited & Same-Day Transcripts</li>
+        <li>Rough Draft Delivery</li>
+        <li>Bilingual Video (English/Spanish)</li>
+        <li>International Travel Assignments</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="col-header">Specializations</div>
+      <ul>
+        <li>Patent Litigation</li>
+        <li>Pharmaceutical Cases</li>
+        <li>Complex Multi-Party Arbitrations</li>
+        <li>Intellectual Property</li>
+        <li>Securities & Financial Litigation</li>
+        <li>International Arbitration</li>
+        <li>Government & Congressional Proceedings</li>
+        <li>Regulatory Hearings</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="col-header">Credentials</div>
+      <ul>
+        <li>U.S. House of Representatives</li>
+        <li>The European Union</li>
+        <li>The United Nations</li>
+        <li>33 Years Certified Stenographic Reporter</li>
+        <li>Certified Legal Video Specialist</li>
+        <li>15+ Countries Served</li>
+        <li>4 Continents</li>
+        <li>Family-Owned & Operated</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══ DIFFERENTIATOR BAR ═══ -->
+  <div class="diff-bar">
+    <div class="diff-text">The <em>only</em> independent team in the D.C. area that delivers your certified realtime stenographer, legal videographer, and technology support in <em>one coordinated package.</em></div>
+  </div>
+
+  <!-- ═══ TEAM STRIP ═══ -->
+  <div class="team-strip">
+    <div class="team-member">
+      <div class="team-member-name">Cassandra Ellis</div>
+      <div class="team-member-role">Certified Stenographic Reporter · Since 1993</div>
+      <p>33 years of realtime stenographic court reporting specializing in complex multi-party arbitrations, patent litigation, and pharmaceutical cases. Proceedings covered across 15+ countries including the United States, Japan, Korea, England, Germany, France, and Italy.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-member-name">Joseph Ellis</div>
+      <div class="team-member-role">Legal Videographer & IT Director</div>
+      <p>Certified Legal Video Specialist since 1995 with 30 years of information technology expertise. Manages all technology infrastructure for remote depositions, realtime feeds, and multi-platform synchronization.</p>
+    </div>
+    <div class="team-member">
+      <div class="team-member-name">Robyn Ellis</div>
+      <div class="team-member-role">Legal Videographer · Bilingual Eng/Span</div>
+      <p>Legal videographer since 2010 covering complex litigation across multiple jurisdictions. Fluent in English and Spanish — bilingual video capability for depositions involving Spanish-speaking witnesses.</p>
+    </div>
+  </div>
+
+  <!-- ═══ WHY US ═══ -->
+  <div class="why-section">
+    <div class="why-header">Why Law Firms Choose Realtime Elite</div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">👥</div>
+        <div>
+          <h5>One Coordinated Team</h5>
+          <p>Reporter, videographer, and tech support from one family — no vendor juggling, no communication gaps, total accountability.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚖️</div>
+        <div>
+          <h5>Complex Case Specialists</h5>
+          <p>Patent, pharma, IP, multi-party arbitrations — we specialize where generalist agencies send their least experienced reporters.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🌍</div>
+        <div>
+          <h5>Global Experience</h5>
+          <p>15+ countries, 4 continents. From Brussels to Tokyo to D.C. — the same standard of excellence, wherever the record goes.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h5>Realtime & Rapid Delivery</h5>
+          <p>Live realtime streaming during testimony. Same-day or next-day rough drafts. Expedited final transcripts when your deadline won't wait.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CTA FOOTER ═══ -->
+  <div class="cta-footer">
+    <div class="cta-left">
+      <h3>Schedule Your Next <em>Deposition.</em></h3>
+      <p>Available D.C. metro, nationwide, and internationally.</p>
+    </div>
+    <div class="cta-right">
+      <div class="phone">240-472-1080</div>
+      <div class="email">info@realtimeelite.com</div>
+      <div class="web">realtimeelite.com</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mockup-note">Capability Statement Mockup — Prepared by iNeedJimmy.com — May 2026</div>
+</div>
+
+</body>
+</html>

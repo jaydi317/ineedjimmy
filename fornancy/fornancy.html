@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nancy Dubé — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --deep-95: rgba(11,26,43,0.95);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ===== UTILITY ===== */
+.section-pad { padding: 100px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.text-center { text-align: center; }
+.handwritten { font-family: 'Caveat', cursive; }
+.serif { font-family: 'Playfair Display', serif; }
+
+.gold-line {
+  width: 60px; height: 2px;
+  background: var(--gold);
+  margin: 20px auto;
+}
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+p.section-sub {
+  font-size: 1.05rem;
+  color: #5a6a7a;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 50%, #1a3a55 100%);
+  padding: 120px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(198,168,85,0.06) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(122,158,126,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: inline-block;
+  border: 1px solid rgba(198,168,85,0.3);
+  padding: 8px 24px;
+  border-radius: 30px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--cream);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.hero p {
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.85;
+  line-height: 1.8;
+}
+
+/* ===== IDENTITY CARD ===== */
+.identity-section {
+  padding: 80px 24px;
+  background: var(--cream);
+}
+
+.identity-card {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%);
+  border-radius: 20px;
+  padding: 60px 48px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(11,26,43,0.3);
+}
+
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--gold), var(--rose));
+}
+
+.identity-card .name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: var(--cream);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.identity-card .method {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.identity-card .pitch {
+  color: var(--gold-light);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 32px;
+  opacity: 0.85;
+}
+
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.credential-tag {
+  background: rgba(198,168,85,0.1);
+  border: 1px solid rgba(198,168,85,0.25);
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 30px;
+}
+
+/* ===== METHOD VISUAL ===== */
+.method-section {
+  padding: 100px 24px;
+  background: var(--white);
+}
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.method-card {
+  background: var(--cream);
+  border-radius: 16px;
+  padding: 40px 28px;
+  text-align: center;
+  border: 1px solid rgba(122,158,126,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.method-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(11,26,43,0.08);
+}
+
+.method-card .icon {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 1.5rem;
+}
+
+.method-card:nth-child(1) .icon { background: rgba(122,158,126,0.15); color: var(--sage); }
+.method-card:nth-child(2) .icon { background: rgba(198,168,85,0.15); color: var(--gold); }
+.method-card:nth-child(3) .icon { background: rgba(201,146,142,0.15); color: var(--rose); }
+.method-card:nth-child(4) .icon { background: rgba(212,165,116,0.15); color: var(--warm); }
+
+.method-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: var(--deep);
+}
+
+.method-card p {
+  font-size: 0.92rem;
+  color: #6a7a8a;
+  line-height: 1.7;
+}
+
+/* ===== 9-STEP JOURNEY ===== */
+.journey-section {
+  padding: 100px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+  text-align: center;
+}
+
+.journey-section .section-label { color: var(--gold); }
+.journey-section h2 { color: var(--cream); }
+.journey-section .section-sub { color: var(--gold-light); opacity: 0.8; }
+
+.journey-img {
+  max-width: 100%;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+/* ===== WEBSITE PREVIEW ===== */
+.preview-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.preview-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(11,26,43,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: var(--deep);
+  display: block;
+}
+
+.preview-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(11,26,43,0.12);
+}
+
+.preview-thumb {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.preview-card:nth-child(1) .preview-thumb {
+  background: linear-gradient(135deg, #FAF6EE 0%, #e8e0d0 100%);
+  color: var(--sage-dark);
+}
+
+.preview-card:nth-child(2) .preview-thumb {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%);
+  color: var(--gold);
+}
+
+.preview-thumb-content {
+  text-align: center;
+  padding: 20px;
+}
+
+.preview-thumb-content .mock-nav {
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+
+.preview-thumb-content .mock-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.preview-thumb-content .mock-sub {
+  font-size: 0.7rem;
+  opacity: 0.6;
+  font-family: 'Inter', sans-serif;
+}
+
+.preview-info {
+  padding: 24px;
+  text-align: center;
+}
+
+.preview-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.preview-info p {
+  font-size: 0.85rem;
+  color: #7a8a9a;
+}
+
+.preview-info .view-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* ===== BOOK SECTION ===== */
+.book-section {
+  padding: 100px 24px;
+  background: var(--white);
+}
+
+.book-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.book-3d {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+}
+
+.book-3d img {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-12deg) rotateX(2deg);
+  box-shadow: 20px 20px 60px rgba(11,26,43,0.25), 0 0 0 1px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease;
+}
+
+.book-3d img:hover {
+  transform: rotateY(-4deg) rotateX(1deg) scale(1.03);
+}
+
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.book-info .author {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.book-info p {
+  font-size: 0.95rem;
+  color: #5a6a7a;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.book-note {
+  background: rgba(198,168,85,0.08);
+  border-left: 3px solid var(--gold);
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  color: var(--deep);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+}
+
+/* ===== INSTAGRAM BIO ===== */
+.insta-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.insta-mockup {
+  max-width: 400px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 16px 50px rgba(11,26,43,0.08);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.insta-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.insta-avatar {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sage), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.insta-handle {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.insta-type {
+  font-size: 0.78rem;
+  color: #8a8a8a;
+}
+
+.insta-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding: 16px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.insta-stat-num {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #bbb;
+}
+
+.insta-stat-label {
+  font-size: 0.72rem;
+  color: #999;
+  margin-top: 2px;
+}
+
+.insta-bio {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--deep);
+}
+
+.insta-bio .line { margin-bottom: 2px; }
+.insta-bio .method-line { font-weight: 600; }
+.insta-bio .book-line { color: var(--sage-dark); }
+.insta-bio .cta-line { color: var(--gold); font-weight: 500; }
+
+/* ===== PROGRAMS ===== */
+.programs-section {
+  padding: 100px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+}
+
+.programs-section .section-label, .programs-section .section-sub { color: var(--gold-light); }
+.programs-section h2 { color: var(--cream); }
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.program-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  padding: 40px 28px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.program-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,0.4);
+}
+
+.program-card.featured {
+  background: rgba(198,168,85,0.08);
+  border-color: var(--gold);
+  position: relative;
+}
+
+.featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  border-radius: 20px;
+}
+
+.program-card .tier {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.program-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.program-card .desc {
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.program-card .price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.program-card .price-note {
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  opacity: 0.6;
+  margin-top: 4px;
+}
+
+/* ===== INCOME CALCULATOR ===== */
+.calc-section {
+  padding: 100px 24px;
+  background: var(--white);
+}
+
+.calculator {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--cream);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 0 10px 40px rgba(11,26,43,0.06);
+}
+
+.calc-row {
+  margin-bottom: 32px;
+}
+
+.calc-row label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.calc-row .val {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+
+.calc-results {
+  border-top: 2px solid var(--gold);
+  padding-top: 28px;
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+
+.calc-result-box h4 {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8a8a8a;
+  margin-bottom: 6px;
+}
+
+.calc-result-box .amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--deep);
+  font-weight: 700;
+}
+
+.calc-result-box .amount.annual {
+  color: var(--gold);
+}
+
+/* ===== REPORT TEASER ===== */
+.report-section {
+  padding: 100px 24px;
+  background: var(--cream);
+}
+
+.report-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.report-pages {
+  position: relative;
+  height: 340px;
+}
+
+.report-page {
+  position: absolute;
+  width: 220px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 8px 30px rgba(11,26,43,0.1);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.report-page:nth-child(1) {
+  top: 0; left: 10px;
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+.report-page:nth-child(2) {
+  top: 30px; left: 70px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+.report-page:nth-child(3) {
+  top: 60px; left: 40px;
+  transform: rotate(-1deg);
+  z-index: 3;
+}
+
+.report-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.8rem;
+  color: var(--deep);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.report-page .fake-line {
+  height: 6px;
+  background: #e8e2d8;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.report-page .fake-line.short { width: 65%; }
+.report-page .fake-line.med { width: 85%; }
+
+.fake-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+  margin-top: 12px;
+}
+.fake-bar {
+  width: 14px;
+  border-radius: 3px 3px 0 0;
+}
+
+.report-bullets h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.report-bullets .sub {
+  font-size: 0.9rem;
+  color: #7a8a9a;
+  margin-bottom: 24px;
+}
+
+.report-bullets ul {
+  list-style: none;
+  padding: 0;
+}
+
+.report-bullets li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 14px;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #3a4a5a;
+}
+
+.report-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  padding: 100px 24px;
+  background: linear-gradient(170deg, var(--deep) 0%, var(--deep-mid) 100%);
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+
+.cta-section p {
+  color: var(--gold-light);
+  font-size: 1rem;
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  text-decoration: none;
+  padding: 18px 44px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 30px rgba(198,168,85,0.3);
+}
+
+.cta-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(198,168,85,0.4);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--deep);
+  padding: 40px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+
+.footer p {
+  color: rgba(232,213,160,0.4);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+}
+
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .section-pad { padding: 70px 20px; }
+  .identity-card { padding: 40px 24px; }
+  .book-layout { grid-template-columns: 1fr; text-align: center; }
+  .book-3d { margin-bottom: 20px; }
+  .report-layout { grid-template-columns: 1fr; }
+  .report-pages { height: 280px; }
+  .report-page { width: 180px; padding: 18px; }
+  .calc-results { grid-template-columns: 1fr; }
+  .calculator { padding: 32px 24px; }
+  .preview-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">AI Business Design Preview</div>
+  <h1>Nancy, Here's a Preview of<br>Your <em>Coaching Business</em></h1>
+  <p>Everything below was designed using Jimmy Davis's AI Business Design software — your brand, your method, your programs, your website, and your book concept. All built around <strong>you</strong>.</p>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity-section">
+  <div class="container text-center">
+    <p class="section-label">Your Coaching Identity</p>
+    <div class="identity-card">
+      <div class="name">Nancy Dubé</div>
+      <div class="method">Creator of The Rooted Release Method™</div>
+      <p class="pitch">I help women who've spent years fighting their bodies finally find peace with food and feel at home in their own skin — using a four-pillar approach that combines EFT tapping, mindfulness, herbal support, and bodywork — so the emotional weight releases first, and the physical weight follows naturally.</p>
+      <div class="credential-tags">
+        <span class="credential-tag">Certified EFT Practitioner</span>
+        <span class="credential-tag">Mindfulness Guide</span>
+        <span class="credential-tag">Herbal Wellness Advocate</span>
+        <span class="credential-tag">Holistic Bodywork</span>
+        <span class="credential-tag">Women's Wellness</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD VISUAL -->
+<section class="method-section section-pad">
+  <div class="container text-center">
+    <p class="section-label">Your Signature Method</p>
+    <h2 class="section-title">The Rooted Release Method™</h2>
+    <p class="section-sub">A four-pillar holistic system that goes to the root of emotional eating and releases it there — so the change comes from every direction at once.</p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="icon">🌊</div>
+        <h3>Release</h3>
+        <p>EFT tapping to clear emotional blocks, food triggers, and stored stress at the source — so cravings dissolve instead of being managed.</p>
+      </div>
+      <div class="method-card">
+        <div class="icon">🧘</div>
+        <h3>Reconnect</h3>
+        <p>Mindfulness practices that rebuild the conversation between your mind and your body — so you can hear what you actually need.</p>
+      </div>
+      <div class="method-card">
+        <div class="icon">🌿</div>
+        <h3>Restore</h3>
+        <p>Herbal and plant-based support to nourish and calm your nervous system from the inside out — nature's reset for a body in overdrive.</p>
+      </div>
+      <div class="method-card">
+        <div class="icon">🌳</div>
+        <h3>Root</h3>
+        <p>Bodywork and somatic practices that anchor your healing into your physical body — so the transformation stays and becomes who you are.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+  <div class="container">
+    <p class="section-label">Your Proven Process</p>
+    <h2 class="section-title">The Rooted Release Journey™</h2>
+    <p class="section-sub">Every client follows this exact 9-step path — from disconnection to homecoming.</p>
+    <img src="NancyProcess.png" alt="The Rooted Release Journey - 9 Step Process" class="journey-img">
+  </div>
+</section>
+
+<!-- WEBSITE PREVIEW -->
+<section class="preview-section section-pad">
+  <div class="container text-center">
+    <p class="section-label">Your Website — Two Directions</p>
+    <h2 class="section-title">Which Style Feels Like You?</h2>
+    <p class="section-sub">We designed two complete website mockups for your coaching business. Click either one to preview the full scrolling page.</p>
+    <div class="preview-grid">
+      <a href="nancy.html" class="preview-card">
+        <div class="preview-thumb">
+          <div class="preview-thumb-content">
+            <div class="mock-nav">Home &nbsp;&bull;&nbsp; About &nbsp;&bull;&nbsp; Programs &nbsp;&bull;&nbsp; Book</div>
+            <div class="mock-title">The Rooted Release Method™</div>
+            <div class="mock-sub">Warm &bull; Natural &bull; Inviting</div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Style 1 — Warm & Elegant</h3>
+          <p>Light, airy, nature-inspired. Sage greens and warm cream.</p>
+          <span class="view-link">View Full Site →</span>
+        </div>
+      </a>
+      <a href="nancy2.html" class="preview-card">
+        <div class="preview-thumb">
+          <div class="preview-thumb-content">
+            <div class="mock-nav">Home &nbsp;&bull;&nbsp; About &nbsp;&bull;&nbsp; Programs &nbsp;&bull;&nbsp; Book</div>
+            <div class="mock-title">The Rooted Release Method™</div>
+            <div class="mock-sub">Bold &bull; Premium &bull; Immersive</div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Style 2 — Bold & Deep</h3>
+          <p>Dark, luxurious, sophisticated. Navy and gold.</p>
+          <span class="view-link">View Full Site →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="book-section section-pad">
+  <div class="container">
+    <div class="book-layout">
+      <div class="book-3d">
+        <img src="NancyBook.png" alt="Rooted Release by Nancy Dubé">
+      </div>
+      <div class="book-info">
+        <p class="section-label">Your Book Concept</p>
+        <h3>Rooted Release</h3>
+        <p class="author">by Nancy Dubé</p>
+        <p>The Four-Pillar Path to Releasing Emotional Weight, Healing Your Relationship with Food, and Finally Feeling at Home in Your Body. A complete book concept with 12 chapters across 3 parts — from the neuroscience of emotional eating to your daily 10-minute practice.</p>
+        <div class="book-note">Full chapter outline, writing support, and publishing strategy included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta-section section-pad">
+  <div class="container text-center">
+    <p class="section-label">Your Social Presence</p>
+    <h2 class="section-title">Instagram Profile Preview</h2>
+    <p class="section-sub">Your brand, your bio, your method — ready for the world to see.</p>
+    <div class="insta-mockup">
+      <div class="insta-header">
+        <div class="insta-avatar">N</div>
+        <div>
+          <div class="insta-handle">@nancydube.wellness</div>
+          <div class="insta-type">Wellness Coach</div>
+        </div>
+      </div>
+      <div class="insta-stats">
+        <div><div class="insta-stat-num">—</div><div class="insta-stat-label">Posts</div></div>
+        <div><div class="insta-stat-num">—</div><div class="insta-stat-label">Followers</div></div>
+        <div><div class="insta-stat-num">—</div><div class="insta-stat-label">Following</div></div>
+      </div>
+      <div class="insta-bio">
+        <div class="line method-line">🌿 The Rooted Release Method™</div>
+        <div class="line">Helping women release emotional weight &amp; feel at home in their bodies</div>
+        <div class="line">EFT Tapping · Mindfulness · Herbs · Bodywork</div>
+        <div class="line book-line">📖 Author of <em>Rooted Release</em></div>
+        <div class="line cta-line">⬇️ Free guide: The 5 Emotional Weights</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section section-pad">
+  <div class="container text-center">
+    <p class="section-label">Your Programs</p>
+    <h2 class="section-title" style="color:var(--cream);">Three Ways to Work With You</h2>
+    <p class="section-sub">A value ladder designed to meet women wherever they are — and guide them deeper.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="tier">Free Lead Magnet</div>
+        <h3>The 5 Emotional Weights</h3>
+        <p class="desc">PDF guide + 10-min introductory tapping audio</p>
+        <div class="price">FREE</div>
+        <div class="price-note">Email opt-in</div>
+      </div>
+      <div class="program-card featured">
+        <div class="featured-badge">Most Popular</div>
+        <div class="tier">6-Week Group Program</div>
+        <h3>Rooted Release</h3>
+        <p class="desc">Weekly live tapping, mindfulness, herbal protocols &amp; bodywork</p>
+        <div class="price">$1,497</div>
+        <div class="price-note">or 3 payments of $547</div>
+      </div>
+      <div class="program-card">
+        <div class="tier">Private 1-on-1 Coaching</div>
+        <h3>Body Homecoming</h3>
+        <p class="desc">12 weeks of deep, personalized transformation</p>
+        <div class="price">$5,000</div>
+        <div class="price-note">or 3 payments of $1,800</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calc-section section-pad">
+  <div class="container text-center">
+    <p class="section-label">Your Income Potential</p>
+    <h2 class="section-title">What Could This Look Like?</h2>
+    <p class="section-sub">Adjust the sliders to see your potential revenue using your actual program prices.</p>
+    <div class="calculator">
+      <div class="calc-row">
+        <label>Women per group round <span class="val" id="groupVal">10</span></label>
+        <input type="range" id="groupSlider" min="5" max="25" value="10">
+      </div>
+      <div class="calc-row">
+        <label>Group rounds per year <span class="val" id="roundVal">4</span></label>
+        <input type="range" id="roundSlider" min="2" max="8" value="4">
+      </div>
+      <div class="calc-row">
+        <label>Private clients per year <span class="val" id="privateVal">4</span></label>
+        <input type="range" id="privateSlider" min="0" max="12" value="4">
+      </div>
+      <div class="calc-results">
+        <div class="calc-result-box">
+          <h4>Monthly Revenue</h4>
+          <div class="amount" id="monthlyRev">$6,652</div>
+        </div>
+        <div class="calc-result-box">
+          <h4>Annual Revenue</h4>
+          <div class="amount annual" id="annualRev">$79,880</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-section section-pad">
+  <div class="container">
+    <div class="report-layout">
+      <div class="report-pages">
+        <div class="report-page">
+          <div class="report-page-title">Market Research</div>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line med"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-chart">
+            <div class="fake-bar" style="height:20px;background:var(--sage);"></div>
+            <div class="fake-bar" style="height:32px;background:var(--gold);"></div>
+            <div class="fake-bar" style="height:24px;background:var(--rose);"></div>
+            <div class="fake-bar" style="height:38px;background:var(--sage);"></div>
+            <div class="fake-bar" style="height:18px;background:var(--warm);"></div>
+          </div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Customer Avatar</div>
+          <div class="fake-line med"></div>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line med"></div>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Revenue Projections</div>
+          <div class="fake-line short"></div>
+          <div class="fake-line"></div>
+          <div class="fake-chart">
+            <div class="fake-bar" style="height:14px;background:var(--gold);"></div>
+            <div class="fake-bar" style="height:22px;background:var(--gold);"></div>
+            <div class="fake-bar" style="height:30px;background:var(--gold);"></div>
+            <div class="fake-bar" style="height:36px;background:var(--sage);"></div>
+            <div class="fake-bar" style="height:40px;background:var(--sage);"></div>
+          </div>
+          <div class="fake-line" style="margin-top:12px;"></div>
+          <div class="fake-line med"></div>
+        </div>
+      </div>
+      <div class="report-bullets">
+        <p class="section-label" style="text-align:left;">The Full Blueprint</p>
+        <h3>What the Complete Report Reveals</h3>
+        <p class="sub">Your full business blueprint goes deep. Here's a taste of what's inside:</p>
+        <ul>
+          <li>The gap in the EFT weight loss market that <em>no one</em> is filling — and why Nancy's herbal + bodywork stack positions her to own it before anyone else catches on</li>
+          <li>The exact language "Rachel" uses at 2am when she's standing at the pantry — and how to use those words in every piece of marketing you write</li>
+          <li>Why Brittany Watkins' graduates will be looking for differentiation — and how The Rooted Release Method™ is already built to be that answer</li>
+          <li>The "Reality Check Number" — the bare minimum scenario that proves this business is viable even part-time, even starting from zero</li>
+          <li>The 12-chapter book outline that positions Nancy as a thought leader — not just another tapping coach with an Instagram account</li>
+          <li>Why "comfortable in her own skin" is a more powerful positioning hook than "weight loss" — and the competitor research that proves it</li>
+          <li>The specific herbal protocols that no competitor in the EFT space is offering — and why this is a $0 marketing advantage hiding in plain sight</li>
+          <li>The 9-step client journey that turns a "method" into a <em>system</em> — so every client knows exactly where she is and where she's going</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-label">Ready?</p>
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything you see on this page was generated by Jimmy Davis's AI Business Design Software. The complete blueprint — strategy, copy, programs, curriculum, website, and launch plan — is available when you're ready to make this real.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundSlider = document.getElementById('roundSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundVal = document.getElementById('roundVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRev = document.getElementById('monthlyRev');
+const annualRev = document.getElementById('annualRev');
+
+function calculate() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundVal.textContent = r;
+  privateVal.textContent = p;
+  const annual = (g * r * 1497) + (p * 5000);
+  const monthly = Math.round(annual / 12);
+  monthlyRev.textContent = '$' + monthly.toLocaleString();
+  annualRev.textContent = '$' + annual.toLocaleString();
+}
+
+groupSlider.addEventListener('input', calculate);
+roundSlider.addEventListener('input', calculate);
+privateSlider.addEventListener('input', calculate);
+calculate();
+</script>
+
+</body>
+</html>

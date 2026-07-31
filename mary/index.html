@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mary Pat Potts — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Playfair Display', serif;
+}
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  background: linear-gradient(180deg, #0a1520 0%, var(--deep) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(198,168,85,0.12);
+  border: 1px solid rgba(198,168,85,0.3);
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.hero h1 span {
+  color: var(--gold);
+}
+.hero p {
+  font-size: 1.05rem;
+  color: rgba(250,246,238,0.65);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== SECTION WRAPPER ===== */
+.section {
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--cream);
+}
+.section-subtitle {
+  font-size: 1rem;
+  color: rgba(250,246,238,0.6);
+  max-width: 600px;
+  margin-bottom: 40px;
+}
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 60px;
+  opacity: 0.5;
+}
+.centered { text-align: center; }
+.centered .section-subtitle { margin-left: auto; margin-right: auto; }
+
+/* ===== IDENTITY CARD ===== */
+.identity-card {
+  background: linear-gradient(145deg, var(--deep-mid), #0e2236);
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.identity-card h2 {
+  font-size: 2rem;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.identity-card .method-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+}
+.identity-card .pitch {
+  font-size: 1rem;
+  color: rgba(250,246,238,0.75);
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 auto 24px;
+  font-style: italic;
+}
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.credential-tag {
+  background: rgba(198,168,85,0.1);
+  border: 1px solid rgba(198,168,85,0.2);
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* ===== METHOD CARDS ===== */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.method-card {
+  background: rgba(19,43,66,0.6);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.method-card:hover {
+  border-color: rgba(198,168,85,0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+.method-card .step-num {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.method-card h3 {
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.method-card p {
+  font-size: 0.88rem;
+  color: rgba(250,246,238,0.55);
+  line-height: 1.6;
+}
+
+/* ===== 9-STEP JOURNEY (infographic) ===== */
+.journey-section {
+  text-align: center;
+  padding: 80px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.journey-img {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid rgba(198,168,85,0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ===== WEBSITE PREVIEW ===== */
+.preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+@media (max-width: 700px) { .preview-grid { grid-template-columns: 1fr; } }
+.preview-card {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+.preview-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(0,0,0,0.4);
+}
+.preview-mockup {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+.preview-mockup-warm {
+  background: linear-gradient(135deg, #FAF6EE, #e8e0d0);
+}
+.preview-mockup-warm .mock-nav { background: #FAF6EE; height: 40px; display: flex; align-items: center; padding: 0 16px; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.preview-mockup-warm .mock-nav span { width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.preview-mockup-warm .mock-nav span:nth-child(1) { background: #C9928E; }
+.preview-mockup-warm .mock-nav span:nth-child(2) { background: #C6A855; }
+.preview-mockup-warm .mock-nav span:nth-child(3) { background: #7A9E7E; }
+.preview-mockup-warm .mock-hero-text { text-align: center; padding: 30px 20px 10px; }
+.preview-mockup-warm .mock-hero-text h4 { font-family: 'Playfair Display', serif; color: #1C2B1E; font-size: 1rem; }
+.preview-mockup-warm .mock-hero-text p { font-size: 0.65rem; color: #5C7D60; margin-top: 6px; }
+.preview-mockup-warm .mock-btn { display: inline-block; background: #7A9E7E; color: white; font-size: 0.55rem; padding: 4px 14px; border-radius: 20px; margin-top: 10px; }
+.preview-mockup-warm .mock-cards { display: flex; gap: 8px; padding: 14px 16px; }
+.preview-mockup-warm .mock-cards div { flex: 1; background: white; border-radius: 6px; height: 50px; border: 1px solid rgba(0,0,0,0.05); }
+
+.preview-mockup-dark {
+  background: linear-gradient(135deg, #0B1A2B, #132B42);
+}
+.preview-mockup-dark .mock-nav { background: rgba(255,255,255,0.03); height: 40px; display: flex; align-items: center; padding: 0 16px; border-bottom: 1px solid rgba(198,168,85,0.1); }
+.preview-mockup-dark .mock-nav span { width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.preview-mockup-dark .mock-nav span:nth-child(1) { background: #C6A855; }
+.preview-mockup-dark .mock-nav span:nth-child(2) { background: #7A9E7E; }
+.preview-mockup-dark .mock-nav span:nth-child(3) { background: #C9928E; }
+.preview-mockup-dark .mock-hero-text { text-align: center; padding: 30px 20px 10px; }
+.preview-mockup-dark .mock-hero-text h4 { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; }
+.preview-mockup-dark .mock-hero-text p { font-size: 0.65rem; color: rgba(250,246,238,0.5); margin-top: 6px; }
+.preview-mockup-dark .mock-btn { display: inline-block; background: var(--gold); color: var(--deep); font-size: 0.55rem; padding: 4px 14px; border-radius: 20px; margin-top: 10px; }
+.preview-mockup-dark .mock-cards { display: flex; gap: 8px; padding: 14px 16px; }
+.preview-mockup-dark .mock-cards div { flex: 1; background: rgba(255,255,255,0.04); border-radius: 6px; height: 50px; border: 1px solid rgba(198,168,85,0.1); }
+
+.preview-info {
+  padding: 20px 24px;
+}
+.preview-info h4 {
+  font-family: 'Playfair Display', serif;
+  color: var(--cream);
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+.preview-info p {
+  font-size: 0.82rem;
+  color: rgba(250,246,238,0.5);
+}
+.preview-info .view-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+.preview-info .view-link:hover { text-decoration: underline; }
+
+/* ===== BOOK SECTION ===== */
+.book-section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.book-3d {
+  flex: 0 0 auto;
+  perspective: 800px;
+}
+.book-3d img {
+  width: 260px;
+  border-radius: 4px;
+  transform: rotateY(-12deg);
+  box-shadow: 20px 15px 50px rgba(0,0,0,0.5), 4px 4px 20px rgba(198,168,85,0.1);
+  transition: transform 0.4s ease;
+}
+.book-3d:hover img {
+  transform: rotateY(-5deg);
+}
+.book-text {
+  flex: 1;
+  min-width: 280px;
+  max-width: 450px;
+}
+.book-text h2 {
+  font-size: 1.8rem;
+  color: var(--cream);
+  margin-bottom: 6px;
+}
+.book-text .book-author {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+.book-text p {
+  font-size: 0.95rem;
+  color: rgba(250,246,238,0.6);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.book-note {
+  display: inline-block;
+  background: rgba(198,168,85,0.1);
+  border: 1px solid rgba(198,168,85,0.2);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  font-style: italic;
+}
+
+/* ===== INSTAGRAM MOCKUP ===== */
+.ig-mockup {
+  max-width: 400px;
+  margin: 40px auto 0;
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.ig-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+}
+.ig-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--sage));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.ig-stats {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  justify-content: center;
+}
+.ig-stat { text-align: center; }
+.ig-stat .num { font-weight: 700; color: #262626; font-size: 1rem; }
+.ig-stat .label { font-size: 0.7rem; color: #8e8e8e; }
+.ig-bio {
+  padding: 14px 20px 20px;
+}
+.ig-bio .ig-name {
+  font-weight: 700;
+  color: #262626;
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+.ig-bio p {
+  font-size: 0.82rem;
+  color: #262626;
+  line-height: 1.5;
+  margin-bottom: 2px;
+}
+.ig-bio .ig-link {
+  color: #00376b;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.ig-btn-row {
+  padding: 0 20px 20px;
+  display: flex;
+  gap: 8px;
+}
+.ig-btn {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: default;
+}
+.ig-btn-primary { background: #0095f6; color: white; }
+.ig-btn-secondary { background: #efefef; color: #262626; }
+
+/* ===== PROGRAMS ===== */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.program-card {
+  background: rgba(19,43,66,0.5);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 12px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.program-card:hover {
+  border-color: rgba(198,168,85,0.35);
+  transform: translateY(-4px);
+}
+.program-card.featured {
+  border-color: var(--gold);
+  background: rgba(198,168,85,0.08);
+}
+.program-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.program-card .program-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.program-card h3 {
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.program-card .program-desc {
+  font-size: 0.82rem;
+  color: rgba(250,246,238,0.5);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+.program-card .program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--gold);
+  font-weight: 700;
+}
+.program-card .program-price span {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(250,246,238,0.4);
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== INCOME CALCULATOR ===== */
+.calc-container {
+  background: linear-gradient(145deg, var(--deep-mid), #0e2236);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+.calc-row {
+  margin-bottom: 28px;
+}
+.calc-row label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+  color: rgba(250,246,238,0.8);
+}
+.calc-row label .val {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(198,168,85,0.15);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(198,168,85,0.15);
+}
+.calc-result-box {
+  text-align: center;
+  padding: 20px;
+  background: rgba(198,168,85,0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(198,168,85,0.12);
+}
+.calc-result-box .result-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: rgba(250,246,238,0.5);
+  margin-bottom: 6px;
+}
+.calc-result-box .result-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ===== REPORT TEASER ===== */
+.report-section {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.report-visual {
+  flex: 0 0 280px;
+  position: relative;
+  height: 320px;
+}
+.report-page {
+  position: absolute;
+  width: 220px;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 20px 18px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.report-page:nth-child(1) {
+  bottom: 0; left: 0;
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+.report-page:nth-child(2) {
+  bottom: 30px; left: 30px;
+  transform: rotate(-2deg);
+  z-index: 2;
+}
+.report-page:nth-child(3) {
+  bottom: 60px; left: 15px;
+  transform: rotate(3deg);
+  z-index: 3;
+}
+.report-page-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 6px;
+}
+.report-page .fake-line {
+  height: 4px;
+  background: #e0dcd4;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.report-page .fake-line:nth-child(odd) { width: 100%; }
+.report-page .fake-line:nth-child(even) { width: 75%; }
+.mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 30px;
+  margin-top: 10px;
+}
+.mini-chart div {
+  flex: 1;
+  background: var(--gold);
+  border-radius: 2px 2px 0 0;
+  opacity: 0.6;
+}
+.report-bullets {
+  flex: 1;
+  min-width: 280px;
+  max-width: 480px;
+}
+.report-bullets ul {
+  list-style: none;
+  padding: 0;
+}
+.report-bullets ul li {
+  font-size: 0.92rem;
+  color: rgba(250,246,238,0.75);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  padding-left: 24px;
+  position: relative;
+}
+.report-bullets ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  text-align: center;
+  padding: 80px 24px;
+  background: linear-gradient(180deg, var(--deep) 0%, #091422 100%);
+}
+.cta-section h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 1rem;
+  color: rgba(250,246,238,0.6);
+  max-width: 560px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 50px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.3);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.4);
+  background: #d4b45e;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+.footer p {
+  font-size: 0.78rem;
+  color: rgba(250,246,238,0.35);
+}
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .section { padding: 60px 20px; }
+  .identity-card { padding: 32px 24px; }
+  .book-section { gap: 40px; }
+  .book-3d img { width: 200px; }
+  .calc-container { padding: 32px 20px; }
+  .calc-results { grid-template-columns: 1fr; }
+  .report-visual { display: none; }
+  .report-section { gap: 0; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .method-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-badge">AI Business Design Preview</div>
+  <h1><span>Mary Pat</span>, Here's a Preview of<br>Your Coaching Business</h1>
+  <p>Built by Jimmy Davis's AI Business Design Software — a complete business blueprint based on your unique superpowers, audience, and expertise.</p>
+</section>
+
+<!-- ===== IDENTITY CARD ===== -->
+<section class="section centered">
+  <span class="section-label">Your Coaching Identity</span>
+  <div class="identity-card">
+    <h2>Mary Pat Potts</h2>
+    <div class="method-title">Creator of The Golden Chapter Method™</div>
+    <p class="pitch">"I help women in the retirement season release the emotional weight they've been carrying for decades — using EFT tapping and life coaching — so they can finally feel alive, purposeful, and deeply fulfilled. Because your best chapter hasn't been written yet."</p>
+    <div class="credential-tags">
+      <span class="credential-tag">EFT Tapping Practitioner</span>
+      <span class="credential-tag">Certified Life Coach</span>
+      <span class="credential-tag">Retirement Fulfillment Expert</span>
+      <span class="credential-tag">Author</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METHOD ===== -->
+<section class="section centered">
+  <span class="section-label">Your Signature Method</span>
+  <h2 class="section-title">The Golden Chapter Method™</h2>
+  <p class="section-subtitle">A proven 4-pillar system that combines EFT tapping with strategic life coaching to help retired women go from stuck and invisible to vibrant and fully alive.</p>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="step-num">Pillar One</div>
+      <h3>Release</h3>
+      <p>Clear decades of emotional weight, limiting beliefs, and identity patterns through targeted EFT tapping.</p>
+    </div>
+    <div class="method-card">
+      <div class="step-num">Pillar Two</div>
+      <h3>Reclaim</h3>
+      <p>Rediscover who you are underneath the roles — your desires, your passions, your forgotten dreams.</p>
+    </div>
+    <div class="method-card">
+      <div class="step-num">Pillar Three</div>
+      <h3>Redesign</h3>
+      <p>Build a daily life that makes you feel alive, purposeful, and deeply fulfilled on your own terms.</p>
+    </div>
+    <div class="method-card">
+      <div class="step-num">Pillar Four</div>
+      <h3>Radiate</h3>
+      <p>Step into your new identity with confidence, joy, and an energy that everyone around you can feel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9-STEP JOURNEY ===== -->
+<section class="journey-section">
+  <span class="section-label">Your Proven Process</span>
+  <h2 class="section-title">The 9-Step Golden Chapter Journey™</h2>
+  <p class="section-subtitle" style="margin-left:auto;margin-right:auto;">Every client follows this exact transformation path — from stuck and invisible to vibrant and fully alive.</p>
+  <img src="MaryPatProcess.png" alt="The 9-Step Golden Chapter Journey" class="journey-img">
+</section>
+
+<!-- ===== WEBSITE PREVIEWS ===== -->
+<section class="section centered">
+  <span class="section-label">Your Website Options</span>
+  <h2 class="section-title">Two Professional Website Designs</h2>
+  <p class="section-subtitle">Click either mockup to see the full scrolling website — your brand, your method, your programs, all designed and ready to go.</p>
+  <div class="preview-grid">
+    <a href="marypat.html" class="preview-card">
+      <div class="preview-mockup preview-mockup-warm">
+        <div class="mock-nav"><span></span><span></span><span></span></div>
+        <div class="mock-hero-text">
+          <h4>The Golden Chapter Method™</h4>
+          <p>EFT Tapping & Life Coaching for Retired Women</p>
+          <div class="mock-btn">Begin Your Golden Chapter</div>
+        </div>
+        <div class="mock-cards"><div></div><div></div><div></div></div>
+      </div>
+      <div class="preview-info">
+        <h4>Style 1 — Warm & Elegant</h4>
+        <p>Light, airy, nature-inspired. Think Brené Brown meets high-end wellness.</p>
+        <span class="view-link">View Full Website →</span>
+      </div>
+    </a>
+    <a href="marypat2.html" class="preview-card">
+      <div class="preview-mockup preview-mockup-dark">
+        <div class="mock-nav"><span></span><span></span><span></span></div>
+        <div class="mock-hero-text">
+          <h4>The Golden Chapter Method™</h4>
+          <p>EFT Tapping & Life Coaching for Retired Women</p>
+          <div class="mock-btn">Begin Your Golden Chapter</div>
+        </div>
+        <div class="mock-cards"><div></div><div></div><div></div></div>
+      </div>
+      <div class="preview-info">
+        <h4>Style 2 — Bold & Deep</h4>
+        <p>Dark, luxurious, sophisticated. Midnight luxury meets conscious healing.</p>
+        <span class="view-link">View Full Website →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ===== BOOK ===== -->
+<section class="section">
+  <div class="book-section">
+    <div class="book-3d">
+      <img src="MaryPatBook.png" alt="Your Golden Chapter by Mary Pat Potts">
+    </div>
+    <div class="book-text">
+      <span class="section-label">Your Book</span>
+      <h2>Your Golden Chapter</h2>
+      <p class="book-author">by Mary Pat Potts</p>
+      <p>A complete book concept with chapter outline, tapping scripts, and a publishing strategy designed to position you as THE authority in retirement fulfillment coaching.</p>
+      <p>This book becomes your best business card — the thing that makes every woman who reads it say, "I need to work with her."</p>
+      <div class="book-note">📖 Full outline, chapters, and writing support included in the complete Blueprint.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM BIO MOCKUP ===== -->
+<section class="section centered">
+  <span class="section-label">Your Social Presence</span>
+  <h2 class="section-title">Your Instagram Profile</h2>
+  <p class="section-subtitle">A complete social media identity — ready to attract your ideal clients.</p>
+  <div class="ig-mockup">
+    <div class="ig-header">
+      <div class="ig-avatar">MP</div>
+      <div class="ig-stats">
+        <div class="ig-stat"><div class="num">—</div><div class="label">posts</div></div>
+        <div class="ig-stat"><div class="num">—</div><div class="label">followers</div></div>
+        <div class="ig-stat"><div class="num">—</div><div class="label">following</div></div>
+      </div>
+    </div>
+    <div class="ig-bio">
+      <div class="ig-name">Mary Pat Potts</div>
+      <p>✨ Creator of The Golden Chapter Method™</p>
+      <p>🔑 EFT Tapping + Life Coach for Retired Women</p>
+      <p>📖 Author of <em>Your Golden Chapter</em></p>
+      <p>👇 Download your free guide ↓</p>
+      <div class="ig-link">linktr.ee/marypatpotts</div>
+    </div>
+    <div class="ig-btn-row">
+      <div class="ig-btn ig-btn-primary">Follow</div>
+      <div class="ig-btn ig-btn-secondary">Message</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROGRAMS ===== -->
+<section class="section centered">
+  <span class="section-label">Your Programs</span>
+  <h2 class="section-title">Your Revenue Streams</h2>
+  <p class="section-subtitle">Three tiers designed to serve women at every level — and build you a sustainable, scalable coaching business.</p>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="program-type">Lead Magnet</div>
+      <h3>The Golden Key Guide</h3>
+      <p class="program-desc">5 EFT tapping scripts to release the emotional weight of retirement</p>
+      <div class="program-price">FREE</div>
+    </div>
+    <div class="program-card featured">
+      <div class="program-type">6-Week Group Program</div>
+      <h3>The Golden Chapter Experience</h3>
+      <p class="program-desc">Live group coaching + EFT tapping. Walk through all 4 pillars of the method.</p>
+      <div class="program-price">$1,997</div>
+    </div>
+    <div class="program-card">
+      <div class="program-type">Private Coaching</div>
+      <h3>The Golden Chapter Private Intensive</h3>
+      <p class="program-desc">6 months of deep, private 1-on-1 coaching + custom EFT tapping protocols</p>
+      <div class="program-price">$7,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INCOME CALCULATOR ===== -->
+<section class="section centered">
+  <span class="section-label">Your Income Potential</span>
+  <h2 class="section-title">Revenue Calculator</h2>
+  <p class="section-subtitle">Slide the numbers to see what's possible with your programs and pricing.</p>
+  <div class="calc-container">
+    <div class="calc-row">
+      <label>Women per group round <span class="val" id="groupVal">10</span></label>
+      <input type="range" id="groupSlider" min="4" max="25" value="10">
+    </div>
+    <div class="calc-row">
+      <label>Group rounds per year <span class="val" id="roundsVal">4</span></label>
+      <input type="range" id="roundsSlider" min="2" max="8" value="4">
+    </div>
+    <div class="calc-row">
+      <label>Private clients per year <span class="val" id="privateVal">3</span></label>
+      <input type="range" id="privateSlider" min="0" max="12" value="3">
+    </div>
+    <div class="calc-results">
+      <div class="calc-result-box">
+        <div class="result-label">Monthly Revenue</div>
+        <div class="result-num" id="monthlyRev">$8,525</div>
+      </div>
+      <div class="calc-result-box">
+        <div class="result-label">Annual Revenue</div>
+        <div class="result-num" id="annualRev">$102,300</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REPORT TEASER ===== -->
+<section class="section">
+  <div class="centered" style="margin-bottom: 48px;">
+    <span class="section-label">Your Full Blueprint</span>
+    <h2 class="section-title">What the Complete Report Reveals</h2>
+    <p class="section-subtitle">Your AI Business Design Blueprint is a comprehensive document covering every detail of your coaching business. Here's a taste of what's inside.</p>
+  </div>
+  <div class="report-section">
+    <div class="report-visual">
+      <div class="report-page">
+        <div class="report-page-header">Market Research</div>
+        <div class="fake-line"></div><div class="fake-line"></div><div class="fake-line"></div>
+        <div class="fake-line" style="width:60%"></div>
+        <div class="mini-chart">
+          <div style="height:40%"></div><div style="height:60%"></div><div style="height:85%"></div><div style="height:50%"></div><div style="height:100%"></div>
+        </div>
+      </div>
+      <div class="report-page">
+        <div class="report-page-header">Customer Avatar</div>
+        <div class="fake-line"></div><div class="fake-line"></div><div class="fake-line"></div>
+        <div class="fake-line" style="width:50%"></div>
+        <div class="fake-line"></div><div class="fake-line"></div>
+      </div>
+      <div class="report-page">
+        <div class="report-page-header">Revenue Projections</div>
+        <div class="fake-line"></div><div class="fake-line"></div>
+        <div class="mini-chart">
+          <div style="height:30%"></div><div style="height:55%"></div><div style="height:75%"></div><div style="height:65%"></div><div style="height:100%"></div><div style="height:90%"></div>
+        </div>
+        <div class="fake-line" style="margin-top:8px"></div><div class="fake-line"></div>
+      </div>
+    </div>
+    <div class="report-bullets">
+      <ul>
+        <li>The surprising reason why almost ZERO coaches combine EFT tapping with retirement coaching — and why this gap is a six-figure opportunity waiting for Mary Pat to claim</li>
+        <li>The exact emotional language retired women use when describing their emptiness (hint: they never say "depressed" — they say "flat") and how to use it in every piece of marketing</li>
+        <li>Why the 5 most popular retirement coaches online are all missing the ONE thing their clients actually need — and how The Golden Chapter Method fills that gap</li>
+        <li>The "Giver's Trap" framework that makes every retired woman nod and say "that's ME" — and why it's the most powerful hook in this niche</li>
+        <li>The complete income math showing how 8 women per round at $1,997 each — just 3 times a year — creates a $48K baseline before a single private client</li>
+        <li>The specific false belief that keeps retired women stuck ("my best years are behind me") and the exact EFT protocol that shatters it</li>
+        <li>A done-for-you Instagram bio, podcast intro, and elevator pitch — all written in Mary Pat's voice, ready to copy and paste today</li>
+        <li>The 9-Step Golden Chapter Journey map that transforms a coaching practice from "I help women" to "I take every client through my proven 9-step system"</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <span class="section-label">Ready?</span>
+  <h2>Want to Bring This to Life?</h2>
+  <p>Everything you've seen on this page — the method, the programs, the website, the book, the income plan — is just a preview. The complete AI Business Design Blueprint, plus hands-on implementation support, is available through Jimmy's services.</p>
+  <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing →</a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundsSlider = document.getElementById('roundsSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundsVal = document.getElementById('roundsVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRev = document.getElementById('monthlyRev');
+const annualRev = document.getElementById('annualRev');
+
+function calculate() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundsSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundsVal.textContent = r;
+  privateVal.textContent = p;
+  const groupIncome = g * r * 1997;
+  const privateIncome = p * 7500;
+  const annual = groupIncome + privateIncome;
+  const monthly = Math.round(annual / 12);
+  monthlyRev.textContent = '$' + monthly.toLocaleString();
+  annualRev.textContent = '$' + annual.toLocaleString();
+}
+
+groupSlider.addEventListener('input', calculate);
+roundsSlider.addEventListener('input', calculate);
+privateSlider.addEventListener('input', calculate);
+calculate();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformations by Karen — Strategy Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF5F0; --paper:#FFFFFF; --mauve:#9C6B82; --rose:#C99AA6;
+    --gold:#BD9648; --ink:#3A2A32; --muted:#7C6670; --line:#EBDDD6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Mulish',sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .page{max-width:880px;margin:0 auto;padding:54px 40px 80px}
+  .kicker{font-family:'Mulish';font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:var(--mauve)}
+  h1{font-family:'Fraunces';font-weight:500;font-size:clamp(34px,5vw,52px);line-height:1.05;margin:14px 0 6px;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--mauve)}
+  .sub{font-family:'Fraunces';font-style:italic;font-size:19px;color:var(--muted);margin-bottom:34px}
+  .rule{height:2px;width:60px;background:var(--gold);margin:0 0 40px;border-radius:2px}
+  .pos{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:26px 28px;margin-bottom:38px;box-shadow:0 14px 40px -28px rgba(58,42,50,.4)}
+  .pos .lbl{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--mauve);margin-bottom:8px}
+  .pos p{font-family:'Fraunces';font-size:22px;line-height:1.4}
+  .pos p b{color:var(--mauve);font-weight:600}
+  h2{font-family:'Fraunces';font-weight:600;font-size:15px;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+  h2::before{content:"";width:22px;height:1.5px;background:var(--gold);display:inline-block}
+  .block{margin-bottom:34px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:20px 22px}
+  .card h3{font-family:'Fraunces';font-weight:600;font-size:18px;margin-bottom:6px}
+  .card p{font-size:14.5px;color:var(--muted)}
+  p.lead{font-size:16px;margin-bottom:10px}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:6px}
+  .step{background:linear-gradient(180deg,#fff, #fdf7f3);border:1px solid var(--line);border-radius:12px;padding:22px 18px;text-align:center}
+  .step .n{font-family:'Fraunces';font-style:italic;font-size:34px;color:var(--rose);line-height:1}
+  .step h3{font-family:'Fraunces';font-weight:600;font-size:20px;margin:8px 0 6px;color:var(--mauve)}
+  .step p{font-size:13.5px;color:var(--muted)}
+  .ladder{list-style:none}
+  .ladder li{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px 20px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+  .ladder .name{font-family:'Fraunces';font-weight:600;font-size:18px}
+  .ladder .desc{font-size:14px;color:var(--muted);margin-top:3px}
+  .ladder .price{font-family:'Fraunces';font-weight:600;font-size:18px;color:var(--gold);white-space:nowrap}
+  .moves{counter-reset:m;list-style:none}
+  .moves li{position:relative;padding:14px 0 14px 52px;border-bottom:1px dashed var(--line)}
+  .moves li:last-child{border-bottom:0}
+  .moves li::before{counter-increment:m;content:counter(m);position:absolute;left:0;top:12px;width:32px;height:32px;border-radius:50%;background:var(--mauve);color:#fff;font-family:'Fraunces';font-weight:600;display:grid;place-items:center;font-size:16px}
+  .moves b{font-weight:700}
+  .note{background:#f6ecef;border-radius:10px;padding:20px 24px;font-family:'Fraunces';font-size:16px;font-style:italic;color:var(--mauve);border:1px solid #ecd9df}
+  .ft{margin-top:46px;text-align:center;color:var(--muted);font-size:12.5px}
+  .ft b{color:var(--ink)}
+  @media(max-width:680px){.grid2,.steps{grid-template-columns:1fr}.page{padding:36px 22px 60px}.ladder li{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="kicker">Strategy Brief · Prepared for Karen Seleen</div>
+  <h1>Transformations <em>by Karen</em></h1>
+  <div class="sub">From "the salon" to a business that fits your life — and finally feels like you.</div>
+  <div class="rule"></div>
+
+  <div class="pos">
+    <div class="lbl">The business, in one sentence</div>
+    <p>You help women who were made to feel <b>invisible</b> — told they were "the ugly one," or simply never shown how — finally feel <b>seen, beautiful, and comfortable in their own skin</b>, from the inside out.</p>
+  </div>
+
+  <div class="block">
+    <h2>The one woman you serve</h2>
+    <p class="lead">You said it without hesitation: the woman who was <b>told she was ugly</b> is the one who makes your heart race. So we build the whole business around her. Not "women who want a closet cleanout" — <em>her.</em></p>
+    <div class="grid2">
+      <div class="card"><h3>Where she is now</h3><p>She's stopped trying. She skips the mirror. She wears the same safe three outfits. Somewhere — from a parent, a comment, or just years of being overlooked — she decided she's "not the pretty one," so why bother. She feels invisible, and she's quietly convinced no one would notice if she changed.</p></div>
+      <div class="card"><h3>Where you take her</h3><p>In your words: <b>joyful, confident, happier — comfortable in her own skin.</b> She looks in the mirror and, maybe for the first time, likes the woman looking back. She feels seen. That's the product. The clothes and makeup are just how you get her there.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Why no one can copy you</h2>
+    <p class="lead">There are stylists everywhere. There is exactly one of you. For two decades, women in your chair have wanted three things from you that had <em>nothing</em> to do with hair — and you named all three yourself: <b>safety, an ear that listens, and someone to finally teach them what no one ever did.</b> That's not a service. That's a gift. It's also proof you've been doing this work for years without charging for the part that matters most.</p>
+  </div>
+
+  <div class="block">
+    <h2>Your signature method</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Seen</h3><p>You listen. You create the safety no one gave her. She's finally heard — no judgment, no "you should have."</p></div>
+      <div class="step"><div class="n">2</div><h3>Shown</h3><p>You teach what no one taught her: her colors, her cuts, a handful of outfits, her own makeup. The practical magic.</p></div>
+      <div class="step"><div class="n">3</div><h3>Shining</h3><p>She turns to the mirror and there she is — radiant, confident, seen. The reveal that makes women cry in your studio.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>The offer ladder</h2>
+    <ul class="ladder">
+      <li><div><div class="name">The Becoming Session</div><div class="desc">A private half-day in your studio — the listening, the colors &amp; cuts, the outfits, the makeup, the reveal. This is your front door and your testimonial machine.</div></div><div class="price">~$297</div></li>
+      <li><div><div class="name">The 90-Day Becoming</div><div class="desc">The full journey for the woman ready to step all the way into her next chapter. In-person core, with Zoom/phone for the weeks between or for women who live far away.</div></div><div class="price">~$1,997</div></li>
+      <li><div><div class="name">The Becoming Circle &middot; (later)</div><div class="desc">A small group or simple course once you have testimonials — so your wisdom can reach more women without draining you. This is where the "no standing on my feet" dream lives.</div></div><div class="price">future</div></li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h2>The model that fits your actual life</h2>
+    <p class="lead">You told me the truth: <b>three days a week, roughly 10 to 4, no early mornings, no nights, no weekends.</b> Good. That's not a limitation — it's the design. This is a <b>premium, low-volume</b> business. A few deeply-served women at a real price beats a packed calendar at hairdresser prices. In-person is your heart; Zoom is simply the option for the woman who lives too far or whose hours don't line up.</p>
+  </div>
+
+  <div class="block">
+    <h2>Your first three moves</h2>
+    <ol class="moves">
+      <li><b>Collect your proof.</b> Go back to the three women you've already transformed — the one who was overweight, the one whose mom said "ugly," the one no one ever taught — and ask for a few sentences and a photo. You already did the work. Now capture it.</li>
+      <li><b>Run three Becoming Sessions.</b> Start with women you know. The first one or two at a soft price in exchange for an honest testimonial. Get your reps, refine your flow, take before/afters.</li>
+      <li><b>Pick your name &amp; go live.</b> Choose the direction that feels like you (see the two website mockups), and let me build the real page. You don't need everything perfect — you need to begin.</li>
+    </ol>
+  </div>
+
+  <div class="note">A gentle note, because it matters: you're an empath, and that's your superpower — but it's also why you come home empty. Build this <em>for</em> that, not against it. Few women, real prices, firm hours, and a group/course down the road so you're not carrying everyone one-on-one forever. Protect the woman in your mirror, too.</div>
+
+  <div class="ft">
+    <b>Transformations by Karen</b> &nbsp;·&nbsp; Strategy by Jimmy Davis &nbsp;·&nbsp; June 8, 2026<br>
+    <span style="opacity:.7">Pricing is a starting recommendation for the Indianapolis-area market. Testimonials in the mockups are placeholders drawn from your real client stories — to be replaced with real quotes &amp; photos.</span>
+  </div>
+</div>
+</body>
+</html>

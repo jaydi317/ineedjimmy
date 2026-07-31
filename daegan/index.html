@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daegan's Bark & Bump Academy™ - Elite Coaching for Navigationally-Challenged Canines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><path fill="%23ddd" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
+            background-size: cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .floating-dog {
+            position: absolute;
+            font-size: 60px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(10deg); }
+        }
+        
+        .dog1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .dog2 { top: 30%; right: 15%; animation-delay: 2s; }
+        .dog3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            font-size: 24px;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .cta-button:hover {
+            background: #ff5252;
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .features {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 60px;
+            border-radius: 20px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -40px;
+            left: 20px;
+            font-size: 200px;
+            opacity: 0.1;
+        }
+        
+        .bonus-section {
+            background: #fff3cd;
+            border: 3px dashed #ffc107;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+        }
+        
+        .spinning-badge {
+            position: absolute;
+            top: -30px;
+            right: 30px;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            transform: rotate(-15deg);
+            animation: spin 10s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(-15deg); }
+            to { transform: rotate(345deg); }
+        }
+        
+        .warning {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #721c24;
+        }
+        
+        .price-box {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            margin: 40px auto;
+            max-width: 600px;
+            position: relative;
+        }
+        
+        .old-price {
+            font-size: 24px;
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .new-price {
+            font-size: 72px;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .countdown {
+            background: #333;
+            color: #ff6b6b;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            font-family: monospace;
+            margin: 20px 0;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="floating-dog dog1">🦮</div>
+        <div class="floating-dog dog2">🐕‍🦺</div>
+        <div class="floating-dog dog3">🐕</div>
+        
+        <h1>🐾 Daegan's Bark & Bump Academy™ 🐾</h1>
+        <p class="tagline">"Because Every Dog Deserves to Walk Into Things With Confidence!"</p>
+        <a href="#buy" class="cta-button">Start Your Dog's Journey to Professional Wall-Finding!</a>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <h2 style="font-size: 36px; text-align: center; color: #667eea; margin-bottom: 20px;">
+                Is Your Blind Dog Tired of Amateur-Level Furniture Collisions?
+            </h2>
+            <p style="text-align: center; font-size: 20px; margin-bottom: 40px;">
+                Transform your visually-impaired pup from a bumbling beginner to a PROFESSIONAL obstacle navigator!
+            </p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Strategic Snout Positioning</h3>
+                    <p>Learn the ancient art of using your nose as a built-in radar system. No more surprise coffee table encounters!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔊</div>
+                    <h3>Echo-Location Barking</h3>
+                    <p>Master the proprietary "Woof-'t have all the fun!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🗺️</div>
+                    <h3>Mental Mapping Mastery</h3>
+                    <p>Memorize your home layout faster than a GPS updates. Kitchen = left, couch = straight, cat = avoid at all costs!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏃</div>
+                    <h3>Confidence Strut Training</h3>
+                    <p>Walk like you OWN that hallway! Even if you can't see it, make everyone think you can!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Tactical Tail Wagging</h3>
+                    <p>Use your tail as a rear proximity sensor. It's not just for happiness anymore!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>PhD in Paw Placement</h3>
+                    <p>Graduate with honors in stepping over invisible obstacles and finding stairs like a pro!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <h3 style="font-size: 28px; margin-bottom: 20px;">Success Story from Biscuit, Age 7</h3>
+            <p style="font-size: 20px; line-height: 1.8;">
+                "Before Daegan's course, I walked into the same wall 47 times a day. Now? Only 12 times! 
+                That's a 74.5% improvement! My humans are amazed, and the wall appreciates the break. 
+                I even found a new wall I didn't know existed! 5 paws out of 5!"
+            </p>
+            <p style="margin-top: 20px; font-style: italic;">- Dictated but not read (obviously)</p>
+        </div>
+
+        <div class="bonus-section">
+            <div class="spinning-badge">LIMITED TIME!</div>
+            <h2 style="font-size: 32px; color: #ff6b6b; text-align: center; margin-bottom: 30px;">
+                🎁 INSANE BONUSES IF YOU ENROLL TODAY! 🎁
+            </h2>
+            
+            <ul style="font-size: 18px; line-height: 2;">
+                <li><strong>BONUS #1:</strong> "The Seeing-Eye Human Training Manual" - Train YOUR human to be a better guide! ($297 Value)</li>
+                <li><strong>BONUS #2:</strong> Glow-in-the-dark collar with built-in beeper ($197 Value)</li>
+                <li><strong>BONUS #3:</strong> Access to our exclusive "Bump Buddies" support group on Zoom (Bark-to-text enabled) ($497 Value)</li>
+                <li><strong>BONUS #4:</strong> Daegan's personal cell number for emergency "I'm stuck behind the couch" situations (PRICELESS)</li>
+                <li><strong>BONUS #5:</strong> Certificate of Completion suitable for framing (or chewing) ($97 Value)</li>
+            </ul>
+            
+            <p style="text-align: center; font-size: 24px; margin-top: 30px; color: #ff6b6b;">
+                Total Bonus Value: $1,088+ (That's like 7,000 dog years of value!)
+            </p>
+        </div>
+
+        <div class="warning">
+            <h3>⚠️ WARNING FROM DAEGAN:</h3>
+            <p>
+                I can only accept 10 dogs into this month's cohort because my Zoom account has a participant limit, 
+                and last time we had 11 dogs, the barking crashed the server. The IT department still won't talk to me.
+            </p>
+        </div>
+
+        <div class="price-box" id="buy">
+            <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to Transform Your Dog's Life?</h2>
+            <p class="old-price">Regular Price: $2,997</p>
+            <p class="new-price">$497</p>
+            <p style="font-size: 20px; color: #28a745;">You Save $2,500! (That's a lot of dog treats!)</p>
+            
+            <div class="countdown">
+                🕐 OFFER EXPIRES IN: <span id="timer">23:59:47</span>
+            </div>
+            
+            <a href="#" class="cta-button" style="font-size: 28px; padding: 25px 50px;">
+                ENROLL MY DOG NOW! 🐕
+            </a>
+            
+            <p style="margin-top: 20px; font-size: 16px;">
+                💳 Payment plans available (2 easy payments of $3,000 - just kidding, it's still $497)
+            </p>
+        </div>
+
+        <div class="features" style="background: #e3f2fd; margin-top: 60px;">
+            <h2 style="text-align: center; font-size: 32px; margin-bottom: 30px;">
+                Frequently Barked Questions (FBQs)
+            </h2>
+            
+            <div style="font-size: 18px; line-height: 1.8;">
+                <p><strong>Q: My dog isn't fully blind, just needs glasses. Can they still join?</strong><br>
+                A: Absolutely! We have a "Squinters Division" for partially-sighted pups.</p>
+                
+                <p style="margin-top: 20px;"><strong>Q: What if my dog is also deaf?</strong><br>
+                A: We offer a special Helen Keller Honors Program with interpretive tail wagging.</p>
+                
+                <p style="margin-top: 20px;"><strong>Q: Is this course tax-deductible?</strong><br>
+                A: I'm not an accountant, but if you claim your dog as a dependent, anything's possible!</p>
+                
+                <p style="margin-top: 20px;"><strong>Q: Do you offer a money-back guarantee?</strong><br>
+                A: Yes! If your dog doesn't bump into at least 50% fewer things, we'll refund you in Milk-Bones.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p style="font-size: 24px; margin-bottom: 20px;">
+            Daegan's Bark & Bump Academy™ - A Division of Collision Course Industries
+        </p>
+        <p>📧 woof@barkbump.com | 📞 1-800-BONK-LESS</p>
+        
+        <p class="disclaimer">
+            * Results not typical. Most dogs will continue walking into things, but with more style. This website is a parody created for entertainment purposes. 
+            No actual blind dogs were harmed in the making of this website, though several keyboards were drooled on. Daegan Smith is not responsible for 
+            any increase in confidence that leads to your dog attempting to drive your car. Please consult your veterinarian before enrolling your dog in 
+            any online education programs. Side effects may include: excessive tail wagging, improved spatial awareness, and an inexplicable desire to 
+            become a life coach for other blind dogs. If your dog experiences enlightenment lasting more than 4 hours, please contact a animal psychologist immediately.
+        </p>
+    </footer>
+
+    <script>
+        // Countdown timer
+        function updateTimer() {
+            const timer = document.getElementById('timer');
+            let parts = timer.textContent.split(':');
+            let hours = parseInt(parts[0]);
+            let minutes = parseInt(parts[1]);
+            let seconds = parseInt(parts[2]);
+            
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes
+                String(hours).padStart(2, '0') + ':' + 
+                String(minutes).padStart(2, '0') + ':' + 
+                String(seconds).padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+        
+        // Add click handler for CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('WOOF! 🐕 The enrollment system is currently down for maintenance. Our IT dog is working on it!');
+            });
+        });
+    </script>
+</body>
+</html>

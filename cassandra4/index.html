@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Realtime Elite — Competitive Landscape Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1A2E;
+  --navy-light: #132B4A;
+  --navy-mid: #1A3A5C;
+  --gold: #C9A84C;
+  --gold-light: #E8D48B;
+  --gold-dim: rgba(201, 168, 76, 0.15);
+  --cream: #F7F4ED;
+  --white: #FFFFFF;
+  --red: #C0392B;
+  --green: #27AE60;
+  --orange: #E67E22;
+  --text-dark: #1A1A1A;
+  --text-mid: #4A4A5A;
+  --text-light: #7A7A8A;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--cream); color: var(--text-dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ─── COVER ─── */
+.cover {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-mid) 100%);
+  color: var(--white);
+  padding: 80px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::after { content:''; position:absolute; bottom:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold)); }
+.cover-badge { display:inline-block; border:1px solid var(--gold); color:var(--gold); padding:6px 16px; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:600; margin-bottom:40px; }
+.cover h1 { font-family:'Playfair Display',serif; font-size:clamp(36px,5vw,60px); font-weight:900; line-height:1.1; margin-bottom:20px; max-width:800px; }
+.cover h1 em { color:var(--gold); font-style:normal; }
+.cover-sub { font-size:18px; font-weight:300; color:rgba(255,255,255,0.7); max-width:600px; margin-bottom:40px; }
+.cover-meta { font-size:13px; color:rgba(255,255,255,0.5); }
+
+/* ─── LAYOUT ─── */
+.container { max-width:880px; margin:0 auto; padding:0 32px; }
+section { padding:64px 0; border-bottom:1px solid rgba(0,0,0,0.06); }
+section:last-of-type { border-bottom:none; }
+.sn { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--gold); letter-spacing:2px; text-transform:uppercase; font-weight:500; margin-bottom:12px; }
+h2 { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; line-height:1.2; margin-bottom:20px; color:var(--navy); }
+h3 { font-family:'Playfair Display',serif; font-size:22px; font-weight:600; margin-bottom:14px; color:var(--navy); }
+h4 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+p { font-size:16px; line-height:1.75; color:var(--text-mid); margin-bottom:18px; }
+p strong { color:var(--text-dark); }
+
+/* ─── COMPONENTS ─── */
+.exec-card { background:var(--white); border-left:4px solid var(--gold); padding:28px 32px; margin:28px 0; box-shadow:0 2px 16px rgba(0,0,0,0.04); }
+.exec-card p { font-size:17px; color:var(--navy); margin-bottom:0; }
+
+.callout { background:var(--gold-dim); border-left:4px solid var(--gold); padding:22px 26px; margin:24px 0; }
+.callout p { color:var(--navy); font-size:15px; margin-bottom:0; }
+
+/* ─── COMPETITOR CARDS ─── */
+.comp-tier { margin:40px 0 16px; padding:10px 16px; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; display:inline-block; }
+.tier-national { background:var(--navy); color:var(--white); }
+.tier-dc { background:var(--gold); color:var(--navy); }
+.tier-model { background:var(--green); color:var(--white); }
+
+.comp-card {
+  background:var(--white);
+  box-shadow:0 2px 16px rgba(0,0,0,0.04);
+  margin-bottom:20px;
+  overflow:hidden;
+}
+.comp-header {
+  padding:20px 28px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  cursor:pointer;
+  border-left:4px solid var(--navy);
+}
+.comp-header.gold-border { border-left-color:var(--gold); }
+.comp-header.green-border { border-left-color:var(--green); }
+
+.comp-name { font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:var(--navy); }
+.comp-tag { font-size:11px; letter-spacing:1px; text-transform:uppercase; font-weight:600; padding:4px 10px; border-radius:2px; }
+.tag-national { background:rgba(11,26,46,0.08); color:var(--navy); }
+.tag-dc { background:var(--gold-dim); color:var(--gold); }
+.tag-model { background:rgba(39,174,96,0.1); color:var(--green); }
+
+.comp-body { padding:0 28px 24px; }
+.comp-body p { font-size:14px; margin-bottom:12px; }
+
+.comp-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:16px;
+}
+.comp-col h4 { font-size:13px; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.strength { color:var(--green); }
+.weakness { color:var(--red); }
+
+.comp-col ul {
+  list-style:none;
+  padding:0;
+}
+.comp-col li {
+  font-size:14px;
+  color:var(--text-mid);
+  padding:4px 0 4px 18px;
+  position:relative;
+  line-height:1.5;
+}
+.comp-col li::before {
+  content:'';
+  position:absolute;
+  left:0;
+  top:10px;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+}
+.comp-col.pro li::before { background:var(--green); }
+.comp-col.con li::before { background:var(--red); }
+
+/* ─── SERVICES MATRIX ─── */
+.matrix {
+  margin:32px 0;
+  background:var(--white);
+  box-shadow:0 2px 16px rgba(0,0,0,0.04);
+  overflow-x:auto;
+}
+.matrix table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+  min-width:700px;
+}
+.matrix th {
+  background:var(--navy);
+  color:var(--white);
+  padding:14px 12px;
+  text-align:center;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:0.5px;
+}
+.matrix th:first-child { text-align:left; width:180px; }
+.matrix td {
+  padding:12px;
+  text-align:center;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+  color:var(--text-mid);
+}
+.matrix td:first-child { text-align:left; font-weight:600; color:var(--navy); font-size:13px; }
+.matrix tr:last-child td { border-bottom:none; }
+.check { color:var(--green); font-weight:700; font-size:16px; }
+.cross { color:var(--red); font-size:16px; }
+.partial { color:var(--orange); font-size:14px; }
+.matrix .you-col { background:var(--gold-dim); }
+.matrix th.you-col { background:var(--gold); color:var(--navy); font-weight:800; }
+
+/* ─── GAP ANALYSIS ─── */
+.gap-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+  margin:32px 0;
+}
+.gap-card {
+  background:var(--white);
+  padding:24px;
+  box-shadow:0 2px 16px rgba(0,0,0,0.04);
+  border-top:3px solid var(--gold);
+}
+.gap-card .icon { font-size:28px; margin-bottom:12px; }
+.gap-card h4 { font-size:15px; color:var(--navy); margin-bottom:8px; }
+.gap-card p { font-size:14px; color:var(--text-mid); margin-bottom:0; line-height:1.6; }
+
+/* ─── DARK SECTION ─── */
+.dark-section {
+  background:var(--navy);
+  color:var(--white);
+  padding:56px 40px;
+  margin:40px 0;
+}
+.dark-section h3 { color:var(--gold); margin-bottom:16px; }
+.dark-section p { color:rgba(255,255,255,0.75); font-size:15px; }
+
+/* ─── VERDICT BOX ─── */
+.verdict {
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  color:var(--white);
+  padding:56px 40px;
+  text-align:center;
+}
+.verdict::before { content:''; display:block; width:60px; height:3px; background:var(--gold); margin:0 auto 28px; }
+.verdict h2 { color:var(--gold); margin-bottom:20px; }
+.verdict p { color:rgba(255,255,255,0.8); max-width:680px; margin:0 auto 16px; font-size:17px; }
+
+.footer { padding:28px; text-align:center; font-size:12px; color:var(--text-light); }
+
+@media (max-width:640px) {
+  .cover { padding:48px 24px 40px; }
+  .container { padding:0 20px; }
+  section { padding:48px 0; }
+  h2 { font-size:26px; }
+  .comp-grid { grid-template-columns:1fr; }
+  .gap-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ COVER ═══════ -->
+<div class="cover">
+  <div class="cover-badge">Competitive Intelligence Report</div>
+  <h1>Know Your <em>Battlefield</em></h1>
+  <p class="cover-sub">A funnel-hacking analysis of the D.C. court reporting market — who's winning, how they're doing it, and exactly where Realtime Elite fits in.</p>
+  <div class="cover-meta">Prepared for Cassandra Ellis, Realtime Elite — May 2026</div>
+</div>
+
+<div class="container">
+
+<!-- ═══════ INTRO ═══════ -->
+<section>
+  <div class="sn">01 — The Playing Field</div>
+  <h2>Three Tiers of Competition</h2>
+  <p>The Washington D.C. court reporting market breaks into three distinct competitive tiers. Each tier competes differently, wins differently, and is vulnerable differently. Understanding them is the key to finding your lane — and Cassandra, <strong>your lane is wide open.</strong></p>
+
+  <div class="exec-card">
+    <p><strong>The short version:</strong> The nationals compete on scale and technology. The D.C. independents compete on relationships and reputation. Realtime Elite has the credentials to outposition both — by combining world-class specialization, a coordinated family team, and the personal touch that law firms actually prefer. Nobody else in this market offers all three.</p>
+  </div>
+</section>
+
+<!-- ═══════ TIER 1: NATIONAL GIANTS ═══════ -->
+<section>
+  <div class="sn">02 — Tier 1: The National Giants</div>
+  <h2>The Corporate Agencies</h2>
+  <p>These are the 800-pound gorillas — private-equity-backed or large-scale firms with national footprints, technology platforms, and armies of contract reporters. They dominate through volume and convenience, but their size is also their vulnerability.</p>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-name">Veritext Legal Solutions</div>
+      <div class="comp-tag tag-national">Market Leader</div>
+    </div>
+    <div class="comp-body">
+      <p>The largest court reporting company in North America. 40+ state-of-the-art facilities, proprietary technology platform (MyVeritext), HIPAA/PII compliance, remote deposition platform (Veritext Virtual). Handles everything from routine depositions to complex multi-party IP and pharmaceutical litigation. Has dedicated teams for asbestos, medical malpractice, and patent cases. Recently acquired Capital Reporting Company in D.C.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">Where They Win</h4>
+          <ul>
+            <li>Nationwide coverage — one vendor for all offices</li>
+            <li>Proprietary tech platform for scheduling, transcripts, exhibits</li>
+            <li>Brand recognition and inbound volume</li>
+            <li>Conference room facilities in major cities</li>
+            <li>Enterprise-level data security (HIPAA, PII, SSAE 16)</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Where They're Vulnerable</h4>
+          <ul>
+            <li>Impersonal — you get whoever's available, not who's best</li>
+            <li>Reporters are contractors, not vetted team members</li>
+            <li>No relationship continuity across depositions</li>
+            <li>Large bureaucracy = slower response to unique needs</li>
+            <li>Premium pricing without premium personal service</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-name">Lexitas Legal</div>
+      <div class="comp-tag tag-national">National</div>
+    </div>
+    <div class="comp-body">
+      <p>National court reporting and litigation support firm. Offers AI-powered "Deposition Insights" for transcript analysis and summarization. Strong remote deposition platform. Covers international assignments. Heavy technology investment.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">Where They Win</h4>
+          <ul>
+            <li>AI-powered deposition transcript analysis tools</li>
+            <li>National and international coverage</li>
+            <li>Online scheduling and transcript access</li>
+            <li>Full-service: reporting, video, interpreting, process serving</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Where They're Vulnerable</h4>
+          <ul>
+            <li>Same impersonality problem as Veritext</li>
+            <li>Reporters are interchangeable — no continuity guarantee</li>
+            <li>AI tools are a supplement, not a relationship</li>
+            <li>Complex cases still need a human who knows the matter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header">
+      <div class="comp-name">U.S. Legal Support</div>
+      <div class="comp-tag tag-national">National</div>
+    </div>
+    <div class="comp-body">
+      <p>Network of 5,000+ professional court reporters. RemoteDepo Pro platform for remote proceedings. Covers all practice areas. "All-inclusive litigation support company" positioning.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">Where They Win</h4>
+          <ul>
+            <li>Massive reporter network — can staff almost anything</li>
+            <li>Full litigation support suite beyond just reporting</li>
+            <li>Strong D.C. presence for government work</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Where They're Vulnerable</h4>
+          <ul>
+            <li>5,000 reporters = zero guarantee of quality or fit</li>
+            <li>"All-inclusive" = master of none</li>
+            <li>No way to request the same reporter consistently</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The pattern with nationals:</strong> They win on logistics and lose on relationships. Every law firm partner who's ever been burned by a no-show, an inexperienced reporter on a complex patent case, or a transcript that needed heavy corrections knows the pain. <strong>That pain is Realtime Elite's opening.</strong></p>
+  </div>
+</section>
+
+<!-- ═══════ TIER 2: D.C. INDEPENDENTS ═══════ -->
+<section>
+  <div class="sn">03 — Tier 2: The D.C. Independents</div>
+  <h2>The Local Competitors</h2>
+  <p>These are the firms that compete on the same emotional turf Cassandra should own: personal service, local expertise, reputation, and reliability. Studying them reveals what "good" looks like in the independent space — and where Realtime Elite can leapfrog them.</p>
+
+  <div class="comp-card">
+    <div class="comp-header gold-border">
+      <div class="comp-name">Capital Reporting Company</div>
+      <div class="comp-tag tag-dc">D.C. Headquartered</div>
+    </div>
+    <div class="comp-body">
+      <p>Award-winning D.C.-based firm, now partnered with Veritext for technology and national reach. Founded by two trial lawyers and a court reporter — "we understand what you need." Won National Law Journal "Best Court Reporting" three years running. Woman-owned, WBENC certified. Services include reporting, videography, videoconferencing, transcription, interpreting, CART/captioning, exhibit solutions, case management.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">What They Do Right</h4>
+          <ul>
+            <li>Origin story: "founded by people who understand your side"</li>
+            <li>Awards prominently featured as social proof</li>
+            <li>Woman-owned certification (diversity requirements)</li>
+            <li>Government past-performance page (GSA credibility)</li>
+            <li>Strong SEO — multiple city-specific landing pages</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Gaps Cassandra Can Exploit</h4>
+          <ul>
+            <li>Now Veritext-affiliated — lost independent positioning</li>
+            <li>Blog hasn't been updated since 2018</li>
+            <li>No international credentials highlighted</li>
+            <li>Founders are lawyers, not reporters — different trust signal</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header gold-border">
+      <div class="comp-name">Olender Reporting</div>
+      <div class="comp-tag tag-dc">D.C. Independent</div>
+    </div>
+    <div class="comp-body">
+      <p>Founded 1986 as a one-man operation by Thomas W. Olender. Grew to become one of D.C.'s most reputable court reporting firms. Olender personally videotaped the Clinton impeachment depositions (Lewinsky, Jordan, Blumenthal). Certified Legal Videographer. Provides court reporting, videography, and deposition services.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">What They Do Right</h4>
+          <ul>
+            <li>Powerful origin story — one man to institution</li>
+            <li>Clinton impeachment credential = instant authority</li>
+            <li>Dual capability: reporter + videographer</li>
+            <li>Decades of D.C. relationship equity</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Gaps Cassandra Can Exploit</h4>
+          <ul>
+            <li>Founder-dependent — unclear succession plan</li>
+            <li>Website has SSL certificate issues</li>
+            <li>No highlighted international experience</li>
+            <li>Cassandra's institutional credentials (EU, UN, Congress) are comparable or stronger</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comp-card">
+    <div class="comp-header gold-border">
+      <div class="comp-name">Evans Reporting Service</div>
+      <div class="comp-tag tag-dc">Baltimore / D.C.</div>
+    </div>
+    <div class="comp-body">
+      <p>Full-service stenographic reporting agency covering the Baltimore/Washington D.C. corridor and Mid-Atlantic region. Provides depositions, trials, hearings, arbitrations. Experienced realtime reporters. National and international capabilities. Reliable, traditional positioning.</p>
+      <div class="comp-grid">
+        <div class="comp-col pro">
+          <h4 class="strength">What They Do Right</h4>
+          <ul>
+            <li>Clear geographic focus: Baltimore-D.C.-Mid-Atlantic</li>
+            <li>Realtime expertise prominently featured</li>
+            <li>Expedited delivery capability</li>
+          </ul>
+        </div>
+        <div class="comp-col con">
+          <h4 class="weakness">Gaps Cassandra Can Exploit</h4>
+          <ul>
+            <li>No unique origin story or personal brand</li>
+            <li>No videography team — refers out</li>
+            <li>No visible international credentials</li>
+            <li>No family-team coordination advantage</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>The pattern with D.C. independents:</strong> The successful ones all have a strong identity — whether it's an origin story (Olender), an awards collection (Capital), or geographic focus (Evans). <strong>None of them combine international institutional credentials, in-house videography, in-house IT, and complex litigation specialization.</strong> That's the gap.</p>
+  </div>
+</section>
+
+<!-- ═══════ TIER 3: THE MODEL ═══════ -->
+<section>
+  <div class="sn">04 — Tier 3: The Model to Follow</div>
+  <h2>Regal Court Reporting — The Growth Blueprint</h2>
+  <p>Regal isn't a D.C. competitor — they're based in California. They're here because their trajectory is the clearest illustration of what a husband-and-wife court reporting team can build when they pair elite skills with intentional marketing.</p>
+
+  <div class="comp-card">
+    <div class="comp-header green-border">
+      <div class="comp-name">Regal Court Reporting</div>
+      <div class="comp-tag tag-model">Growth Model</div>
+    </div>
+    <div class="comp-body">
+      <p>Founded 2007 by Stephanie Leslie (3 years of reporting experience) and Isaiah Leslie (sales and marketing). Husband-wife team. Now one of the last 100% court reporter-owned, steno-only firms in California. Actively acquiring other independent agencies. Expanded to Florida in 2025. Stephanie served as president of the California Deposition Reporters Association.</p>
+
+      <h4 style="margin-top:20px;">Their Service Stack (What They Built Over Time)</h4>
+      <ul style="list-style:none; padding:0; margin:12px 0; display:grid; grid-template-columns:1fr 1fr; gap:6px;">
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Court Reporting (Depositions & Trial)</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Legal Videography</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Certified Interpreters</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Conference Rooms</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Transcript Summaries</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Deposition Officers</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Trial Technology</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Remote Deposition Suites</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Online Scheduling</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Acquisitions Program</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Student Reporter Program</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:4px 0;">✦ Press / Industry PR</li>
+      </ul>
+
+      <h4 style="margin-top:20px;">Their Marketing Playbook</h4>
+      <ul style="list-style:none; padding:0; margin:12px 0;">
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Origin story front-and-center:</strong> "Partners in Life and Business" — the husband-wife narrative is their brand identity.</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Industry leadership:</strong> Stephanie's CalDRA presidency gives her authority positioning — she's not just running a business, she's shaping the profession.</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Press releases as content marketing:</strong> Regular EINPresswire releases for team hires, expansion, conference appearances — building SEO and credibility simultaneously.</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Acquisitions as growth strategy:</strong> Buying retiring firms — maintaining their client relationships while expanding Regal's footprint.</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Tagline that positions:</strong> "It's always been about people." Family values vs. corporate machinery.</li>
+        <li style="font-size:14px; color:var(--text-mid); padding:6px 0;"><strong>Blog, podcast, social media:</strong> Multi-channel presence that most court reporting firms completely ignore.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="dark-section">
+    <h3>The Regal vs. Realtime Elite Comparison</h3>
+    <p>Stephanie and Isaiah Leslie started Regal with <strong>3 years</strong> of court reporting experience and sales/marketing skills. They had no international credentials, no institutional clients, and no videography capability on Day 1. Everything they have now was built over 18 years.</p>
+    <p style="margin-top:16px;">Cassandra and Joseph Ellis have <strong>30+ years</strong> of court reporting and videography experience. They've reported for Congress, the EU, and the UN. They've covered proceedings across 15+ countries. They have in-house IT capability. Their daughter is a bilingual legal videographer.</p>
+    <p style="margin-top:16px; color:var(--gold); font-weight:600; font-size:17px;">Realtime Elite is starting from a position that took Regal 18 years to reach — and in a higher-value market.</p>
+  </div>
+</section>
+
+<!-- ═══════ SERVICES MATRIX ═══════ -->
+<section>
+  <div class="sn">05 — Service Comparison Matrix</div>
+  <h2>Feature-by-Feature: Who Offers What</h2>
+  <p>This matrix compares the core service offerings across competitors. The column on the right shows what Realtime Elite can offer <strong>today</strong> — with zero additional hiring or investment — versus what competitors offer with large teams and infrastructure.</p>
+
+  <div class="matrix">
+    <table>
+      <thead>
+        <tr>
+          <th>Service / Capability</th>
+          <th>Veritext</th>
+          <th>Olender</th>
+          <th>Evans</th>
+          <th>Regal</th>
+          <th class="you-col">Realtime Elite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stenographic Court Reporting</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Realtime Transcription</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Legal Videography (In-House)</td>
+          <td><span class="partial">Contracted</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>IT / Tech Support (In-House)</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Bilingual Video (Eng/Spanish)</td>
+          <td><span class="partial">Via interpreter</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Complex Patent/Pharma Specialty</td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Some</span></td>
+          <td><span class="partial">Some</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>International Assignment Experience</td>
+          <td><span class="partial">Via partners</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="partial">Limited</span></td>
+          <td><span class="cross">✗</span></td>
+          <td class="you-col"><span class="check" style="font-weight:900;">✓ 15+ countries</span></td>
+        </tr>
+        <tr>
+          <td>Institutional Clients (Gov/UN/EU)</td>
+          <td><span class="partial">Government</span></td>
+          <td><span class="partial">Congress</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="cross">✗</span></td>
+          <td class="you-col"><span class="check" style="font-weight:900;">✓ All three</span></td>
+        </tr>
+        <tr>
+          <td>Family-Owned / Relationship Model</td>
+          <td><span class="cross">✗ Corporate</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="partial">Small firm</span></td>
+          <td><span class="check">✓</span></td>
+          <td class="you-col"><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>Coordinated Team (Reporter + Video + IT)</td>
+          <td><span class="cross">✗ Separate vendors</span></td>
+          <td><span class="partial">Reporter + Video</span></td>
+          <td><span class="cross">✗</span></td>
+          <td><span class="partial">Reporter + Video</span></td>
+          <td class="you-col"><span class="check" style="font-weight:900;">✓ All three</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout">
+    <p><strong>Key finding:</strong> No competitor in the D.C. market offers the combination of in-house stenography, in-house videography, in-house IT support, international experience, institutional credentials (Congress/EU/UN), bilingual video capability, and family-team coordination. <strong>This is Realtime Elite's unfair advantage — and it already exists.</strong> It just needs to be communicated.</p>
+  </div>
+</section>
+
+<!-- ═══════ GAP ANALYSIS ═══════ -->
+<section>
+  <div class="sn">06 — Gap Analysis</div>
+  <h2>What's Missing — And What It Would Take to Fix</h2>
+  <p>Realtime Elite already has the hard-to-replicate assets: expertise, credentials, team, and specialization. What's missing are the easy-to-build marketing and operational elements that every successful competitor has. Here's the gap:</p>
+
+  <div class="gap-grid">
+    <div class="gap-card">
+      <div class="icon">🌐</div>
+      <h4>Professional Website</h4>
+      <p>Current site uses a default WordPress theme with placeholder content and "Hello World!" as the only blog post. Every competitor has a polished, professional web presence. This is the #1 gap — it's the digital front door for every law firm evaluating a new court reporting partner.</p>
+    </div>
+    <div class="gap-card">
+      <div class="icon">📅</div>
+      <h4>Online Scheduling</h4>
+      <p>Regal, Capital, Veritext, and every major competitor offer online deposition scheduling. Realtime Elite has a "Schedule a Deposition" page but it appears non-functional. Law firms expect instant or near-instant booking capability.</p>
+    </div>
+    <div class="gap-card">
+      <div class="icon">⭐</div>
+      <h4>Social Proof</h4>
+      <p>No testimonials, no case studies, no client logos, no awards displayed. Every successful competitor leads with proof. Cassandra's work for the House of Representatives, EU, and UN should be the most prominent thing on the site — it's more impressive than any award.</p>
+    </div>
+    <div class="gap-card">
+      <div class="icon">🔍</div>
+      <h4>SEO & Discoverability</h4>
+      <p>No blog content, no location-specific pages, no practice-area pages. When a D.C. attorney searches "patent deposition court reporter Washington DC," Realtime Elite is invisible. Capital Reporting has 16+ city-specific SEO pages.</p>
+    </div>
+    <div class="gap-card">
+      <div class="icon">📱</div>
+      <h4>LinkedIn Presence</h4>
+      <p>Regal actively publishes on LinkedIn, issues press releases, and positions Stephanie as an industry thought leader. Cassandra's 30+ years of experience represent a goldmine of industry credibility that's not being leveraged on any professional platform.</p>
+    </div>
+    <div class="gap-card">
+      <div class="icon">💰</div>
+      <h4>Clear Service & Pricing Pages</h4>
+      <p>Competitors clearly lay out what they offer with distinct service pages for each capability. Realtime Elite's court reporting page has general language but no specifics about delivery times, realtime capabilities, practice area expertise, or pricing transparency.</p>
+    </div>
+  </div>
+
+  <div class="exec-card">
+    <p><strong>The good news:</strong> Every gap on this list is a <em>marketing</em> problem, not a <em>capability</em> problem. Cassandra doesn't need to learn anything new, hire anyone, or change how she works. She needs a professional web presence, clear service descriptions, and a way for law firms to find and book her. These are solvable problems — and they're the exact problems that, once solved, unlock the full revenue potential of a 30+ year career.</p>
+  </div>
+</section>
+
+</div>
+
+<!-- ═══════ VERDICT ═══════ -->
+<div class="verdict">
+  <h2>The Competitive Verdict</h2>
+  <p>The national giants win on logistics but lose on relationships. The D.C. independents win on relationships but none of them combine international institutional credentials, in-house videography, in-house IT, complex litigation specialization, and bilingual capability in a single family-owned team.</p>
+  <p><strong style="color:var(--gold);">That combination doesn't exist in this market. Until Realtime Elite builds its presence — and then it does.</strong></p>
+  <p style="margin-top:24px; font-size:14px; color:rgba(255,255,255,0.5);">The assets are world-class. The market is desperate. The only missing piece is visibility.</p>
+</div>
+
+<div class="footer">
+  <p>Prepared by Jimmy Davis — iNeedJimmy.com<br>
+  Competitive intelligence sourced from public websites, press releases, and industry data.<br>
+  May 2026 — Confidential</p>
+</div>
+
+</body>
+</html>

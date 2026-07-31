@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Never Miss A Call | AI That Answers Your Phone Better Than Your Best Employee</title>
+<meta name="description" content="Stop losing thousands every month to missed calls. Get an AI receptionist built by direct response marketing experts — not engineers. Free test drive for your business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080e1a;
+  --bg2:#0d1629;
+  --bg3:#111d35;
+  --text:#e8ecf2;
+  --text-dim:#7a8ba8;
+  --gold:#d4a017;
+  --gold-bright:#f0c030;
+  --red:#e03030;
+  --red-glow:rgba(224,48,48,.4);
+  --green:#22c55e;
+  --green-glow:rgba(34,197,94,.35);
+  --blue:#2e75b6;
+  --font-head:'Bebas Neue',Impact,sans-serif;
+  --font-body:'Source Sans 3','Source Sans Pro',sans-serif;
+  --font-hand:'Caveat',cursive;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.7;font-size:18px;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--gold);text-decoration:none}
+
+/* ─── UTILITY ─── */
+.container{max-width:800px;margin:0 auto;padding:0 24px}
+.container-wide{max-width:1060px;margin:0 auto;padding:0 24px}
+.highlight{background:linear-gradient(transparent 55%,rgba(212,160,23,.3) 55%);padding:0 4px}
+.gold{color:var(--gold)}
+.red{color:var(--red)}
+.dim{color:var(--text-dim)}
+.hand{font-family:var(--font-hand)}
+.section{padding:80px 0}
+@media(max-width:640px){.section{padding:56px 0}}
+
+/* ─── HEADLINES ─── */
+h1,h2,h3{font-family:var(--font-head);line-height:1.1;letter-spacing:.02em;text-transform:uppercase}
+h1{font-size:clamp(2.8rem,7vw,5rem);color:#fff}
+h2{font-size:clamp(2rem,5vw,3.2rem);color:#fff}
+h3{font-size:clamp(1.4rem,3vw,1.8rem);color:var(--gold)}
+p+p{margin-top:1.4em}
+
+/* ─── CTA BUTTON ─── */
+.cta-wrap{text-align:center;margin:40px 0}
+.cta{
+  display:inline-block;font-family:var(--font-head);font-size:clamp(1.3rem,3vw,1.7rem);
+  letter-spacing:.06em;text-transform:uppercase;color:#fff;
+  background:linear-gradient(180deg,#e03030 0%,#b81c1c 100%);
+  padding:22px 48px;border-radius:8px;border:none;cursor:pointer;
+  box-shadow:0 0 30px var(--red-glow),0 4px 20px rgba(0,0,0,.4);
+  transition:all .25s ease;text-decoration:none;
+}
+.cta:hover{transform:scale(1.04);box-shadow:0 0 50px var(--red-glow),0 8px 30px rgba(0,0,0,.5)}
+.cta-sub{display:block;font-family:var(--font-body);font-size:.85rem;font-weight:400;letter-spacing:.01em;text-transform:none;margin-top:6px;opacity:.85}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+  padding:120px 24px 80px;position:relative;
+  background:radial-gradient(ellipse at 50% 20%,rgba(46,117,182,.12) 0%,transparent 60%),var(--bg);
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:200px;
+  background:linear-gradient(transparent,var(--bg));pointer-events:none;
+}
+.hero-inner{max-width:880px;position:relative;z-index:1}
+.hero-eyebrow{
+  font-family:var(--font-body);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:24px;font-weight:600;
+}
+.hero h1{margin-bottom:28px}
+.hero h1 .red-line{color:var(--red);display:block}
+.hero-sub{font-size:clamp(1.1rem,2.5vw,1.35rem);color:var(--text-dim);max-width:660px;margin:0 auto 16px;line-height:1.6}
+.hero-arrow{font-family:var(--font-hand);font-size:2.2rem;color:var(--gold);margin-top:8px;display:inline-block;animation:bounce-arrow 1.5s ease infinite}
+@keyframes bounce-arrow{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+/* ─── STAT BAR ─── */
+.stat-bar{background:var(--bg2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.stat-bar-inner{
+  display:flex;justify-content:center;gap:clamp(24px,6vw,80px);padding:32px 24px;
+  max-width:900px;margin:0 auto;flex-wrap:wrap;
+}
+.stat-item{text-align:center}
+.stat-num{font-family:var(--font-head);font-size:clamp(2rem,5vw,3rem);color:var(--red);line-height:1}
+.stat-label{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-top:4px}
+
+/* ─── PAIN SECTION ─── */
+.pain{background:var(--bg)}
+.pain-intro{font-size:clamp(1.15rem,2.5vw,1.35rem);color:var(--text);margin-bottom:36px}
+.pain-block{
+  background:var(--bg2);border-left:4px solid var(--red);border-radius:0 12px 12px 0;
+  padding:32px 28px;margin-bottom:24px;
+}
+.pain-block h3{margin-bottom:12px;text-transform:none;font-family:var(--font-body);font-weight:700;font-size:1.15rem;color:var(--gold)}
+.pain-block p{color:var(--text-dim);font-size:1.02rem;line-height:1.65}
+
+/* ─── HUMANS SECTION ─── */
+.humans{background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%)}
+.humans-text{font-size:clamp(1.05rem,2vw,1.2rem);line-height:1.75;color:var(--text)}
+.humans-text .callout{
+  display:block;font-family:var(--font-head);font-size:clamp(1.5rem,4vw,2.2rem);
+  color:#fff;margin:32px 0;line-height:1.2;letter-spacing:.02em;text-transform:uppercase;
+}
+
+/* ─── VIDEO SECTION ─── */
+.video-section{background:var(--bg2);text-align:center}
+.video-placeholder{
+  max-width:720px;margin:36px auto 0;aspect-ratio:16/9;background:var(--bg3);
+  border-radius:12px;border:2px solid rgba(255,255,255,.08);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:border-color .3s;position:relative;overflow:hidden;
+}
+.video-placeholder:hover{border-color:var(--red)}
+.play-btn{
+  width:80px;height:80px;border-radius:50%;background:var(--red);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px var(--red-glow);transition:transform .3s;
+}
+.play-btn:hover{transform:scale(1.1)}
+.play-btn svg{width:32px;height:32px;fill:#fff;margin-left:4px}
+.video-caption{font-family:var(--font-hand);font-size:1.4rem;color:var(--gold);margin-top:16px}
+
+/* ─── DIFFERENCE SECTION ─── */
+.diff{background:var(--bg)}
+.diff-grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:40px}
+@media(min-width:700px){.diff-grid{grid-template-columns:1fr 1fr}}
+.diff-card{
+  background:var(--bg2);border-radius:12px;padding:32px 28px;
+  border:1px solid rgba(255,255,255,.06);
+}
+.diff-card.bad{border-color:rgba(224,48,48,.25)}
+.diff-card.good{border-color:rgba(34,197,94,.3);background:linear-gradient(180deg,rgba(34,197,94,.06) 0%,var(--bg2) 100%)}
+.diff-card-tag{
+  display:inline-block;font-family:var(--font-head);font-size:.85rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:4px 14px;border-radius:4px;margin-bottom:16px;
+}
+.diff-card.bad .diff-card-tag{background:rgba(224,48,48,.15);color:var(--red)}
+.diff-card.good .diff-card-tag{background:rgba(34,197,94,.15);color:var(--green)}
+.diff-card ul{list-style:none;padding:0}
+.diff-card ul li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.98rem;color:var(--text-dim)}
+.diff-card ul li::before{margin-right:8px;font-weight:700}
+.diff-card.bad ul li::before{content:'✗';color:var(--red)}
+.diff-card.good ul li::before{content:'✓';color:var(--green)}
+
+/* ─── USE CASES ─── */
+.usecases{background:var(--bg2)}
+.usecase{margin-bottom:48px}
+.usecase:last-child{margin-bottom:0}
+.usecase-tag{
+  font-family:var(--font-head);font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:8px;
+}
+.usecase-headline{font-family:var(--font-body);font-weight:700;font-size:clamp(1.2rem,2.5vw,1.5rem);color:#fff;margin-bottom:16px;line-height:1.35}
+.usecase p{color:var(--text-dim);font-size:1.02rem;line-height:1.7}
+.usecase .money{
+  display:inline-block;margin-top:14px;
+  font-family:var(--font-head);font-size:1.5rem;color:var(--red);
+  letter-spacing:.02em;
+}
+
+/* ─── SECRET WEAPON ─── */
+.secret{background:linear-gradient(180deg,var(--bg2) 0%,var(--bg) 100%)}
+.secret-box{
+  background:linear-gradient(135deg,rgba(212,160,23,.08) 0%,rgba(46,117,182,.06) 100%);
+  border:1px solid rgba(212,160,23,.2);border-radius:16px;padding:40px 32px;margin-top:36px;
+}
+.secret-box h3{margin-bottom:16px;text-transform:none;font-family:var(--font-body);font-weight:700;font-size:1.3rem;color:#fff}
+.secret-box p{color:var(--text-dim);font-size:1.02rem}
+
+/* ─── GUARANTEE ─── */
+.guarantee{background:var(--bg2);text-align:center}
+.guarantee-badge{
+  display:inline-flex;align-items:center;gap:20px;
+  background:linear-gradient(135deg,rgba(34,197,94,.08) 0%,rgba(34,197,94,.02) 100%);
+  border:2px solid rgba(34,197,94,.25);border-radius:16px;
+  padding:28px 36px;margin-top:32px;text-align:left;
+}
+.guarantee-circle{
+  flex-shrink:0;width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(180deg,var(--green) 0%,#16a34a 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--font-head);color:#fff;line-height:1;
+}
+.guarantee-circle .num{font-size:1.8rem}
+.guarantee-circle .unit{font-size:.6rem;letter-spacing:.1em}
+.guarantee-text h3{color:#fff;text-transform:none;font-family:var(--font-body);font-weight:700;font-size:1.15rem}
+.guarantee-text p{color:var(--text-dim);font-size:.95rem;margin-top:4px}
+
+/* ─── FAQ ─── */
+.faq{background:var(--bg)}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06)}
+.faq-q{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 0;cursor:pointer;font-weight:600;font-size:1.05rem;color:#fff;
+  transition:color .2s;
+}
+.faq-q:hover{color:var(--gold)}
+.faq-q .toggle{font-size:1.5rem;color:var(--gold);transition:transform .3s;flex-shrink:0;margin-left:12px}
+.faq-q.open .toggle{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;color:var(--text-dim);font-size:.98rem;line-height:1.7}
+.faq-a.open{max-height:400px;padding-bottom:20px}
+
+/* ─── FORM SECTION ─── */
+.form-section{
+  background:radial-gradient(ellipse at 50% 80%,rgba(224,48,48,.08) 0%,transparent 50%),var(--bg2);
+  text-align:center;
+}
+.form-box{
+  max-width:540px;margin:40px auto 0;background:var(--bg3);
+  border-radius:16px;border:1px solid rgba(255,255,255,.08);padding:36px 32px;text-align:left;
+}
+.form-box label{display:block;font-size:.85rem;font-weight:600;color:var(--text-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em}
+.form-box input,.form-box select{
+  width:100%;padding:14px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.1);
+  background:var(--bg);color:#fff;font-family:var(--font-body);font-size:1rem;
+  margin-bottom:20px;transition:border-color .2s;
+}
+.form-box input:focus,.form-box select:focus{outline:none;border-color:var(--gold)}
+.form-box select option{background:var(--bg2);color:#fff}
+.form-box .cta{width:100%;font-size:1.4rem;padding:18px 24px}
+.form-lock{font-size:.8rem;color:var(--text-dim);text-align:center;margin-top:12px}
+
+/* ─── FINAL CLOSE ─── */
+.final{background:var(--bg);text-align:center}
+.final p{max-width:680px;margin:0 auto}
+.sig{font-family:var(--font-hand);font-size:2rem;color:var(--gold);margin-top:32px}
+
+/* ─── FOOTER ─── */
+footer{background:var(--bg2);text-align:center;padding:40px 24px;font-size:.8rem;color:var(--text-dim);border-top:1px solid rgba(255,255,255,.04)}
+
+/* ─── STICKY MOBILE CTA ─── */
+.sticky-cta{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:rgba(8,14,26,.95);backdrop-filter:blur(10px);
+  padding:12px 16px;border-top:1px solid rgba(255,255,255,.08);
+  text-align:center;
+}
+.sticky-cta .cta{padding:14px 32px;font-size:1.1rem;width:100%;max-width:400px}
+@media(max-width:768px){.sticky-cta.show{display:block}}
+
+/* ─── DIVIDER ─── */
+.divider{
+  width:80px;height:3px;background:linear-gradient(90deg,var(--gold),transparent);
+  margin:0 auto 32px;border-radius:2px;
+}
+.divider-left{margin:0 0 32px}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">For Business Owners Who Are Tired Of Losing Money</div>
+    <h1>
+      Your Phone Is Ringing.<br>
+      <span class="red-line">Nobody's Answering.</span>
+    </h1>
+    <p class="hero-sub">And every unanswered call is a customer handing their money to your competitor — <span class="highlight">because they picked up and you didn't.</span></p>
+    <p class="hero-sub" style="font-size:1.05rem;margin-top:8px">We build AI receptionists that answer your phone 24/7 — and sound so real your customers won't know the difference. <strong style="color:#fff">Built by two of the top minds in direct response marketing and human behavior.</strong> Not a tech company. Not a call center. Something better.</p>
+    <div class="cta-wrap" style="margin-top:32px;margin-bottom:0">
+      <a href="#test-drive" class="cta">Get Your Free AI Receptionist Test Drive<span class="cta-sub">We'll build one for YOUR business — free. No obligation.</span></a>
+    </div>
+    <div class="hero-arrow">↓ Keep reading to see how it works</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ STAT BAR ═══════════════════════════════ -->
+<div class="stat-bar">
+  <div class="stat-bar-inner">
+    <div class="stat-item"><div class="stat-num">62%</div><div class="stat-label">of calls go unanswered</div></div>
+    <div class="stat-item"><div class="stat-num">85%</div><div class="stat-label">never call back</div></div>
+    <div class="stat-item"><div class="stat-num">$126K</div><div class="stat-label">lost per year avg.</div></div>
+    <div class="stat-item"><div class="stat-num">78%</div><div class="stat-label">buy from whoever answers first</div></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ VIDEO ═══════════════════════════════ -->
+<section class="video-section section">
+  <div class="container">
+    <h2 style="margin-bottom:8px">Watch What Happened When We Walked<br>Into A Pizza Shop</h2>
+    <p class="dim" style="font-size:1.05rem">We pulled up their menu. Built an AI in 3 minutes. Called it. The owner couldn't believe it.</p>
+    <div class="video-placeholder" onclick="this.innerHTML='<div style=padding:56px;color:var(--text-dim);font-size:1.1rem>Demo video coming soon — ask us for a live demo of YOUR business instead.</div>'">
+      <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+      <div class="video-caption">▶ See the live demo that made an owner lose his mind</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PAIN ═══════════════════════════════ -->
+<section class="pain section">
+  <div class="container">
+    <h2 style="margin-bottom:12px">Let's Be Honest About<br><span class="gold">What's Really Happening</span></h2>
+    <div class="divider-left divider" style="margin-left:0"></div>
+    <p class="pain-intro">You didn't start your business to answer phones all day. But here you are — stuck between helping the customer standing in front of you and the one calling on the phone. And both of them are about to be unhappy.</p>
+
+    <div class="pain-block">
+      <h3>🍕 If You Own A Restaurant…</h3>
+      <p>Your hostess is seating a four-top, making change for a takeout order, and answering a question about gluten-free options — all while the phone rings. She puts the caller on hold. They hang up. They order from the place down the street. That's not her fault. <strong style="color:var(--text)">You gave one human four jobs.</strong> We give you a fifth employee who ONLY answers the phone, knows your entire menu cold, never puts anyone on hold, and never calls in sick on a Friday night. Restaurants miss <strong style="color:var(--red)">43% of calls during dinner rush</strong> — exactly when the orders are worth the most.</p>
+    </div>
+
+    <div class="pain-block">
+      <h3>🔧 If You're In Home Services…</h3>
+      <p>You're elbow-deep in a water heater install. Your phone buzzes in your pocket. You can't answer it. You tell yourself you'll call back. You forget. That was a $3,800 job. The homeowner already called two other plumbers and the first one who picked up got the work. Not because they're better than you. <strong style="color:var(--text)">Because they answered the phone.</strong> Contractors miss up to <strong style="color:var(--red)">74% of inbound calls</strong>, and each one costs roughly $1,200 in lost revenue.</p>
+    </div>
+
+    <div class="pain-block">
+      <h3>🦷 If You Run A Dental or Medical Office…</h3>
+      <p>Your front desk person is checking in Mrs. Johnson, verifying insurance for Mr. Davis, and scheduling a follow-up for someone else — while a brand-new patient is calling for the first time. She lets it ring. That new patient is worth <strong style="color:var(--red)">$15,000 to $25,000</strong> over their lifetime. They don't leave a voicemail. They call the dentist whose Google listing was right below yours. Your average dental practice gets 40-60 calls a day. Your front desk spends 60% of their time on the phone. The math doesn't work.</p>
+    </div>
+
+    <div class="pain-block">
+      <h3>⚖️ If You're A Law Firm…</h3>
+      <p>It's 9 PM on a Tuesday. Someone just got arrested and their wife is frantically Googling criminal defense attorneys. She calls your office. Voicemail. She calls the next firm. They answer. That's a <strong style="color:var(--red)">$10,000+ retainer</strong> you'll never know you lost. One in three calls to US law firms goes unanswered. Some firms miss 400–600 calls per month. Every single one of those is a person who needed help and had money to pay for it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ HUMANS SUCK ═══════════════════════════════ -->
+<section class="humans section">
+  <div class="container">
+    <h2>Here's The Part<br><span class="gold">Nobody Wants To Say Out Loud</span></h2>
+    <div class="divider-left divider" style="margin-left:0"></div>
+    <div class="humans-text">
+      <p>You've trained employees. You've written scripts. You've begged them to answer the phone with a smile and say the right things. And it still doesn't happen the way you want.</p>
+      <p>It's not because they're bad people. It's because they're <em>human.</em></p>
+      <p>Humans get tired. They get distracted. They have bad days. They call in sick. They quit without notice. They answer the phone with an attitude because they just got yelled at by the last customer. They put people on hold and forget about them. They don't upsell because they don't feel like it. And no matter how many times you tell them <em>how</em> to answer the phone… they do it their way.</p>
+      <p>You've felt this. That knot in your stomach when you overhear an employee botch a call. The frustration of knowing that if YOU had answered it, you would've closed that customer. But you can't answer every call. You're one person.</p>
+
+      <span class="callout">What if you could take everything in your head — your standards, your knowledge, your way of treating customers — <span class="gold">and install it into something that never forgets, never has a bad day, and never quits?</span></span>
+
+      <p>That's what we built. And it's not what you think.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ DIFFERENCE ═══════════════════════════════ -->
+<section class="diff section">
+  <div class="container-wide">
+    <div style="text-align:center;max-width:720px;margin:0 auto">
+      <h2>This Is Not Another<br><span class="gold">"AI Phone System"</span></h2>
+      <div class="divider"></div>
+      <p class="dim">The AI phone market is full of robotic, awkward, embarrassing tools built by engineers who've never sold anything in their lives. Ours is different — and you'll hear it in the first 3 seconds.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card bad">
+        <div class="diff-card-tag">Every Other AI Phone System</div>
+        <ul>
+          <li>Built by software engineers with zero sales experience</li>
+          <li>1-2 second pause after every sentence (sounds like a bad overseas call)</li>
+          <li>Robotic voice that makes your business sound cheap</li>
+          <li>Generic scripts that handle questions but can't actually sell</li>
+          <li>Can't read emotion — treats a frustrated caller the same as a happy one</li>
+          <li>Requires you to set it up yourself or hire a developer</li>
+          <li>Makes your customers think "is this a robot?" and hang up</li>
+        </ul>
+      </div>
+      <div class="diff-card good">
+        <div class="diff-card-tag">What We Build For You</div>
+        <ul>
+          <li>Engineered by two of the top minds in direct response &amp; human behavior</li>
+          <li>Responds instantly — no awkward pause, no "thinking" silence</li>
+          <li>Natural voice that sounds like your best employee on their best day</li>
+          <li>Trained to handle objections, upsell, and guide callers to a decision</li>
+          <li>Reads vocal cues — adjusts tone for frustrated, confused, or excited callers</li>
+          <li>We build it FOR you. Custom to YOUR business. Turnkey.</li>
+          <li>Most callers don't realize it's AI until you tell them</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SECRET WEAPON ═══════════════════════════════ -->
+<section class="secret section">
+  <div class="container">
+    <h2>Why This Works When<br><span class="gold">Everything Else Sounds Like A Robot</span></h2>
+    <div class="divider-left divider" style="margin-left:0"></div>
+    <p>Here's what most people don't understand about AI voice technology: <strong style="color:#fff">the technology isn't the hard part. The conversation design is.</strong></p>
+    <p style="margin-top:1.2em">Any developer can plug into an AI voice API. That's table stakes. The question is: what does the AI <em>say?</em> How does it handle the caller who's annoyed they're talking to a machine? How does it guide someone who's confused about your pricing toward actually placing an order? How does it upsell without sounding pushy? How does it make someone feel <em>heard</em> through a phone line?</p>
+    <p style="margin-top:1.2em">Those aren't engineering problems. <span class="highlight">Those are human behavior problems.</span> And that's what we've spent 40+ combined years studying.</p>
+
+    <div class="secret-box">
+      <h3>Here's What You're Actually Getting</h3>
+      <p>You're not getting "AI phone software." You're getting <strong style="color:#fff">a conversion-engineered phone experience</strong> built by people who understand why humans say yes, what makes them trust a voice, how to handle resistance, and how to turn a phone call into revenue. We use the most advanced voice AI on the planet as the delivery mechanism — but the real magic is in the conversation architecture that sits on top of it.</p>
+      <p style="margin-top:1em">Think of it this way: anyone can buy a guitar. But not everyone can play it like Hendrix. <strong style="color:var(--gold)">The instrument is the same. The hands are different.</strong></p>
+    </div>
+
+    <div class="cta-wrap">
+      <a href="#test-drive" class="cta">Get Your Free Test Drive<span class="cta-sub">Hear it answer YOUR phone. Custom built. No charge to try.</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ USE CASES ═══════════════════════════════ -->
+<section class="usecases section">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:8px">What This Looks Like<br><span class="gold">In Your Business</span></h2>
+    <div class="divider"></div>
+    <p style="text-align:center;color:var(--text-dim);max-width:640px;margin:0 auto 48px">Every business is different. Here's what our AI can do for yours — right now, starting this week.</p>
+
+    <div class="usecase">
+      <div class="usecase-tag">Restaurants & Takeout</div>
+      <div class="usecase-headline">Takes orders directly from your menu. Handles modifications, special requests, and upsells sides and drinks — without being told to.</div>
+      <p>Imagine: your phone rings during dinner rush. Instead of your server juggling a phone call while two tables need attention, your AI picks up instantly, greets the caller by your restaurant name, walks them through the menu, handles "no onions, extra cheese, can I substitute the salad?" — and confirms the order back perfectly. Every single time. Even at 11 PM on a Saturday.</p>
+      <div class="money">Restaurants recover an avg. of $27,000/year from missed call revenue.</div>
+    </div>
+
+    <div class="usecase">
+      <div class="usecase-tag">HVAC, Plumbing & Home Services</div>
+      <div class="usecase-headline">Captures job details, triages emergencies, and books service calls — even while you're on a roof.</div>
+      <p>A homeowner's basement is flooding at 7 AM. They're panicking. They call three plumbers. You're already on a job. The first plumber who actually answers gets the $4,000 emergency call. With our AI, your phone is answered instantly, the caller's info and problem is captured, emergencies are flagged immediately to your cell, and the job is on your schedule before your competitor's phone even stops ringing.</p>
+      <div class="money">Contractors lose $50K–$120K/year to missed calls.</div>
+    </div>
+
+    <div class="usecase">
+      <div class="usecase-tag">Dental & Medical Offices</div>
+      <div class="usecase-headline">Schedules appointments, answers insurance questions, and handles the 40-60 daily calls your front desk can't keep up with.</div>
+      <p>Your receptionist is physically incapable of doing four jobs at once. Checking people in, verifying insurance, answering the phone, and keeping the waiting room calm. Something has to give — and it's always the phone. Our AI handles the calls so your front desk can handle the humans standing in front of them. New patients get booked. Existing patients get answers. Nobody waits on hold.</p>
+      <div class="money">Each missed new patient = $15K–$25K in lifetime value.</div>
+    </div>
+
+    <div class="usecase">
+      <div class="usecase-tag">Law Firms</div>
+      <div class="usecase-headline">Captures intake calls 24/7, qualifies leads, and makes sure you never lose a case to voicemail again.</div>
+      <p>Your best cases come in at the worst times — nights, weekends, holidays. When someone needs a lawyer, they call RIGHT NOW. Not Monday morning. Our AI answers at 2 AM with the same professionalism and warmth as your best paralegal at 2 PM. It captures case details, qualifies the lead, and flags hot prospects for immediate callback. The firms using this are capturing every single inquiry that used to die in voicemail.</p>
+      <div class="money">A single missed intake call = $5,000–$50,000+ in case fees.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ GUARANTEE ═══════════════════════════════ -->
+<section class="guarantee section">
+  <div class="container">
+    <h2>Our "Prove It" <span class="gold">Guarantee</span></h2>
+    <p class="dim" style="margin-top:12px">We don't ask you to take our word for it. We ask you to <em>test it.</em></p>
+    <div class="guarantee-badge">
+      <div class="guarantee-circle"><div class="num">48</div><div class="unit">HOUR</div></div>
+      <div class="guarantee-text">
+        <h3>Free 48-Hour Test Drive</h3>
+        <p>We build a custom AI receptionist for YOUR business — with your name, your menu, your services, your way of doing things. You test it for 48 hours. If you don't love it, you owe us nothing. Not a penny. No contracts. No obligations. No "gotcha" fees. We're that confident.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FAQ ═══════════════════════════════ -->
+<section class="faq section">
+  <div class="container">
+    <h2 style="text-align:center;margin-bottom:8px">You're Probably<br><span class="gold">Wondering…</span></h2>
+    <div class="divider"></div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"What if my customers don't like talking to AI?"<span class="toggle">+</span></div>
+      <div class="faq-a">Here's the thing — our AI responds in under 200 milliseconds. It reads emotional cues in the caller's voice. It doesn't have that weird robotic pause that screams "I'm a machine." Most callers genuinely don't realize it's AI. And even the ones who do? They'd rather talk to a great AI than leave a voicemail nobody ever returns. We also build in a "press 0 for a human" option so callers always have a way out. But almost nobody uses it.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"What if the AI says something wrong or makes a mistake?"<span class="toggle">+</span></div>
+      <div class="faq-a">We train the AI exclusively on YOUR verified business information — your actual menu, your real services, your correct hours and pricing. It doesn't make things up. That said, no system is 100% perfect (neither are your employees). For anything complex or unusual, the AI is trained to gracefully hand off: "Let me get someone from the team to help you with that." We also review call transcripts regularly and fine-tune the agent based on real conversations. It gets better every week.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"How long does it take to set up?"<span class="toggle">+</span></div>
+      <div class="faq-a">We can have a working AI receptionist for your business in 24-48 hours. We do all the work — we pull information from your website, menus, and any materials you give us, then we engineer the conversation flows and build the agent. You don't need to configure anything, install anything, or understand anything technical. You just forward your phone line and it's live.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"How much does this cost?"<span class="toggle">+</span></div>
+      <div class="faq-a">We'll cover pricing after we build your free test drive — because the cost depends on your call volume, complexity, and what you need the AI to do. What we can tell you is this: a human receptionist costs $50,000+ per year. Human answering services charge $500-$1,600/month for limited minutes. Our AI answers unlimited calls, 24/7, for a fraction of either. Most of our clients see a positive ROI in the first week from calls that would've gone to voicemail.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"Will this work with my existing phone system?"<span class="toggle">+</span></div>
+      <div class="faq-a">Yes. We set up a dedicated phone number for your AI receptionist and then configure call forwarding from your existing line — either full-time or only when the line is busy/unanswered. Your customers call the same number they always have. Nothing changes on their end. Takes about 5 minutes to activate once the AI is built.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">"What if I want to cancel?"<span class="toggle">+</span></div>
+      <div class="faq-a">Cancel anytime. No long-term contracts. No cancellation fees. No hoops to jump through. If it's not making you money, you shouldn't be paying for it. (But fair warning: once you see the call logs showing all the calls it caught that would've gone to voicemail, you're not going to want to turn it off.)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FORM ═══════════════════════════════ -->
+<section class="form-section section" id="test-drive">
+  <div class="container">
+    <h2>Get Your Free<br><span class="gold">AI Receptionist Test Drive</span></h2>
+    <p class="dim" style="margin-top:12px;max-width:580px;margin-left:auto;margin-right:auto">Fill out the form below. We'll build a custom AI receptionist trained on YOUR business within 24-48 hours. Test it. Call it. Be amazed. No charge. No obligation.</p>
+
+    <div class="form-box">
+      <label for="biz">Business Name</label>
+      <input type="text" id="biz" placeholder="e.g. Maestro Pizza, Smith & Associates Law">
+
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="First and last name">
+
+      <label for="phone">Best Phone Number</label>
+      <input type="tel" id="phone" placeholder="(555) 123-4567">
+
+      <label for="website">Your Website URL</label>
+      <input type="url" id="website" placeholder="https://www.yourbusiness.com">
+
+      <label for="type">Type of Business</label>
+      <select id="type">
+        <option value="">Select your industry…</option>
+        <option>Restaurant / Pizza / Takeout</option>
+        <option>HVAC / Plumbing / Electrical</option>
+        <option>Dental Office</option>
+        <option>Medical Practice</option>
+        <option>Law Firm</option>
+        <option>Salon / Spa</option>
+        <option>Auto Repair / Dealership</option>
+        <option>Real Estate</option>
+        <option>Insurance Agency</option>
+        <option>Other</option>
+      </select>
+
+      <button class="cta" onclick="document.getElementById('form-thanks').style.display='block';this.parentElement.querySelector('.form-fields')?.remove();this.style.display='none'">
+        Build My Free AI Receptionist
+        <span class="cta-sub">100% free. We'll reach out within 24 hours.</span>
+      </button>
+      <div class="form-lock">🔒 Your information is private and will never be shared.</div>
+
+      <div id="form-thanks" style="display:none;text-align:center;padding:32px 0">
+        <h3 style="color:var(--green);text-transform:none;font-family:var(--font-body);font-size:1.3rem">You're In! 🎉</h3>
+        <p style="color:var(--text-dim);margin-top:12px">We're pulling up your website now and building your custom AI receptionist. Expect to hear from us within 24 hours with a phone number you can call to test it yourself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FINAL CLOSE ═══════════════════════════════ -->
+<section class="final section">
+  <div class="container">
+    <h2>One Last Thing</h2>
+    <div class="divider"></div>
+    <p style="color:var(--text-dim);font-size:1.08rem;line-height:1.75">Right now — <em>right now</em> — someone is calling your business. If nobody picks up, there's an 85% chance they'll never call back. They'll call your competitor. And the first business that answers will get their money.</p>
+    <p style="color:var(--text);font-size:1.08rem;line-height:1.75;margin-top:1.2em">You can't be in two places at once. Your employees can't do four jobs simultaneously. That's not a people problem. <strong style="color:#fff">It's a math problem.</strong> And we solved it.</p>
+    <p style="color:var(--text);font-size:1.08rem;line-height:1.75;margin-top:1.2em">Let us prove it — for free. Fill out the form. We'll build your AI receptionist. You test it. If it doesn't blow your mind, you owe us absolutely nothing.</p>
+    <div class="cta-wrap">
+      <a href="#test-drive" class="cta">Get Your Free Test Drive Now<span class="cta-sub">It takes 30 seconds. We do the rest.</span></a>
+    </div>
+    <div class="sig">— Jimmy &amp; Daegan</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <p>&copy; 2026 NeverMissACall.ai — All Rights Reserved</p>
+  <p style="margin-top:8px">Results mentioned on this page are based on industry data and real case studies. Individual results will vary based on business type, call volume, and implementation. AI is not a replacement for humans in all situations — it's a complement designed to catch what humans can't.</p>
+</footer>
+
+<!-- ═══════════════════════════════ STICKY MOBILE CTA ═══════════════════════════════ -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#test-drive" class="cta">Get Your Free Test Drive →</a>
+</div>
+
+<script>
+// FAQ toggles
+function toggleFaq(el) {
+  const a = el.nextElementSibling;
+  const isOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(x => x.classList.remove('open'));
+  if (!isOpen) {
+    a.classList.add('open');
+    el.classList.add('open');
+  }
+}
+
+// Sticky CTA on mobile after scrolling past hero
+const sticky = document.getElementById('stickyCta');
+const formSection = document.getElementById('test-drive');
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY > window.innerHeight;
+  const nearForm = formSection.getBoundingClientRect().top < window.innerHeight;
+  if (scrolled && !nearForm) {
+    sticky.classList.add('show');
+  } else {
+    sticky.classList.remove('show');
+  }
+}, { passive: true });
+</script>
+</body>
+</html>

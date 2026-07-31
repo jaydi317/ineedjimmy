@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosalie Caruso — The Reclamation Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-soft: #1a3450;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --gold-dim: rgba(198,168,85,0.6);
+  --cream: #FAF6EE;
+  --cream-dim: rgba(250,246,238,0.75);
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(11,26,43,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(198,168,85,0.1);
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--gold);
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.82rem;
+  color: rgba(250,246,238,0.55);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--deep) !important;
+  padding: 8px 22px !important;
+  border-radius: 100px;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  padding: 160px 24px 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #07111d 0%, var(--deep) 60%, var(--deep-mid) 100%);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1000px; height: 600px;
+  background: radial-gradient(ellipse, rgba(198,168,85,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--gold);
+  border: 1px solid rgba(198,168,85,0.3);
+  padding: 6px 20px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 24px;
+  max-width: 820px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: 1.1rem;
+  color: var(--cream-dim);
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.8;
+}
+.hero-hook {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--gold-light);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  padding: 14px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.88rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.25);
+}
+.btn-gold:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.35);
+}
+.btn-outline {
+  display: inline-block;
+  color: var(--gold);
+  padding: 14px 36px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.88rem;
+  border: 1.5px solid var(--gold);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--deep);
+}
+
+/* ── SECTION HELPERS ── */
+.section-pad { padding: 80px 24px; }
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.15rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.section-sub {
+  text-align: center;
+  color: rgba(250,246,238,0.55);
+  max-width: 600px;
+  margin: 0 auto 48px;
+  font-size: 1rem;
+}
+.bg-alt { background: var(--deep-mid); }
+.divider { width: 50px; height: 2px; background: var(--gold); margin: 0 auto 40px; }
+
+/* ── PAIN SECTION ── */
+.pain-section {
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--deep-mid), #0a1828, var(--deep));
+  position: relative;
+}
+.pain-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.pain-content {
+  max-width: 740px;
+  margin: 0 auto;
+}
+.pain-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 48px;
+  line-height: 1.35;
+}
+.pain-headline em { color: var(--gold); font-style: italic; }
+.pain-copy {
+  font-size: 1.05rem;
+  color: var(--cream-dim);
+  line-height: 1.9;
+  margin-bottom: 24px;
+}
+.pain-copy strong { color: var(--white); }
+.pain-copy .gold { color: var(--gold); font-weight: 600; }
+.pain-list {
+  list-style: none;
+  margin: 32px 0;
+}
+.pain-list li {
+  padding: 16px 0 16px 28px;
+  border-bottom: 1px solid rgba(198,168,85,0.08);
+  font-size: 1rem;
+  color: var(--cream-dim);
+  line-height: 1.8;
+  position: relative;
+}
+.pain-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 700;
+}
+.pull-quote {
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin: 40px 0;
+  background: rgba(198,168,85,0.04);
+  border-radius: 0 8px 8px 0;
+}
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  line-height: 1.7;
+}
+.pull-quote .attr {
+  font-family: 'DM Sans', sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  color: rgba(250,246,238,0.4);
+  margin-top: 8px;
+}
+
+/* ── DR SHIFT COPY ── */
+.shift-section {
+  padding: 80px 24px;
+  background: var(--deep);
+}
+.shift-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.shift-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--white);
+  margin-bottom: 28px;
+  line-height: 1.35;
+  text-align: center;
+}
+.shift-inner p {
+  font-size: 1.05rem;
+  color: var(--cream-dim);
+  margin-bottom: 20px;
+  line-height: 1.9;
+}
+.shift-inner .bold { color: var(--white); font-weight: 600; }
+
+/* ── METHOD ── */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.method-card {
+  background: linear-gradient(160deg, rgba(19,43,66,0.8), rgba(11,26,43,0.9));
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,0.35);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.3);
+}
+.method-num {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.method-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.method-card p {
+  font-size: 0.88rem;
+  color: rgba(250,246,238,0.55);
+  line-height: 1.7;
+}
+
+/* ── JOURNEY ── */
+.journey-img {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.journey-img img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ── MONEY COPY ── */
+.money-section {
+  padding: 80px 24px;
+  background: linear-gradient(180deg, var(--deep), #0d1f32, var(--deep));
+}
+.money-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.money-inner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--white);
+  margin-bottom: 28px;
+  line-height: 1.35;
+}
+.money-inner p {
+  font-size: 1.05rem;
+  color: var(--cream-dim);
+  margin-bottom: 20px;
+  line-height: 1.9;
+}
+.money-inner .bold { color: var(--white); font-weight: 600; }
+.money-inner .gold-bold { color: var(--gold); font-weight: 700; font-size: 1.15rem; }
+
+/* ── PROGRAMS ── */
+.prog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 940px;
+  margin: 0 auto;
+}
+.prog-card {
+  background: linear-gradient(160deg, var(--deep-mid), var(--deep));
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 14px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+.prog-card.featured { border-color: var(--gold); box-shadow: 0 0 40px rgba(198,168,85,0.08); }
+.prog-badge {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: var(--deep);
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  padding: 4px 16px; border-radius: 100px;
+}
+.prog-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--white); margin-bottom: 8px; margin-top: 8px; }
+.prog-type { font-size: 0.82rem; color: rgba(250,246,238,0.45); margin-bottom: 16px; }
+.prog-price { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); font-weight: 600; }
+
+/* ── ABOUT ── */
+.about-layout {
+  display: flex; gap: 48px; align-items: center;
+  max-width: 860px; margin: 0 auto;
+}
+@media (max-width: 700px) { .about-layout { flex-direction: column; text-align: center; } }
+.about-visual {
+  flex-shrink: 0; width: 220px; height: 280px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--deep); font-weight: 300;
+}
+.about-text h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; color: var(--white); margin-bottom: 16px;
+}
+.about-text p { color: var(--cream-dim); margin-bottom: 16px; line-height: 1.8; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.about-tag {
+  background: rgba(198,168,85,0.1); border: 1px solid rgba(198,168,85,0.2);
+  color: var(--gold-light); padding: 5px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 500;
+}
+
+/* ── BOOK ── */
+.book-layout {
+  display: flex; gap: 48px; align-items: center;
+  max-width: 800px; margin: 0 auto;
+}
+@media (max-width: 700px) { .book-layout { flex-direction: column; text-align: center; } }
+.book-img { flex-shrink: 0; width: 220px; perspective: 800px; }
+.book-img img {
+  width: 100%; border-radius: 4px;
+  transform: rotateY(-12deg);
+  box-shadow: 20px 15px 50px rgba(0,0,0,0.5);
+  transition: transform 0.4s ease;
+}
+.book-img:hover img { transform: rotateY(-4deg); }
+.book-text h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--white); margin-bottom: 12px; }
+.book-text p { color: var(--cream-dim); margin-bottom: 12px; line-height: 1.8; }
+
+/* ── LEAD MAGNET ── */
+.lead-section {
+  padding: 100px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--deep), #0d1f32);
+  position: relative;
+}
+.lead-section::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.lead-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--white); margin-bottom: 12px;
+}
+.lead-section p {
+  color: rgba(250,246,238,0.6);
+  max-width: 520px; margin: 0 auto 32px; font-size: 1rem;
+}
+.lead-form {
+  display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  max-width: 480px; margin: 0 auto;
+}
+.lead-form input {
+  flex: 1; min-width: 200px;
+  padding: 14px 20px;
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 100px;
+  background: rgba(198,168,85,0.06);
+  color: var(--cream); font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif; outline: none;
+}
+.lead-form input::placeholder { color: rgba(250,246,238,0.35); }
+.lead-form input:focus { border-color: var(--gold); }
+.lead-form button {
+  background: var(--gold); color: var(--deep); border: none;
+  padding: 14px 28px; border-radius: 100px;
+  font-weight: 700; font-size: 0.85rem; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+.lead-form button:hover { background: var(--gold-light); }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid rgba(198,168,85,0.08);
+  padding: 32px 24px; text-align: center;
+}
+.footer p { font-size: 0.8rem; color: rgba(250,246,238,0.3); }
+.footer a { color: var(--gold-dim); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV ═══════ -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Rosalie Caruso</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#method">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#start" class="nav-cta">Start Here</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">The Reclamation Method™</div>
+    <h1>She's Still In There.<br>Let's Go <em>Get Her.</em></h1>
+    <p class="hero-sub">For women in midlife who stopped recognizing the woman in the mirror — and are ready to reclaim their identity, their power, and their money.</p>
+    <p class="hero-hook">"You haven't lost yourself. You've outgrown yourself. And the woman on the other side of this is someone you haven't met yet — but she's extraordinary."</p>
+    <div class="hero-buttons">
+      <a href="#start" class="btn-gold">Begin Your Reclamation</a>
+      <a href="#method" class="btn-outline">How It Works</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PAIN — DR COPY ═══════ -->
+<section class="pain-section">
+  <div class="pain-content">
+    <div class="pain-headline">You Used to Know <em>Exactly</em> Who You Were.</div>
+    
+    <p class="pain-copy">You were the one who showed up. The one who handled it. The one everybody counted on. You had a title. A routine. A reason to set your alarm. You walked into rooms and you <strong>belonged</strong> there.</p>
+    
+    <p class="pain-copy">And then something shifted.</p>
+    
+    <p class="pain-copy">Maybe you retired. Maybe you got laid off. Maybe you stepped back to take care of someone — your kids, your parents, your marriage. Maybe you just… stopped one day and realized you'd been running on a treadmill for twenty years and you had no idea where it was going.</p>
+    
+    <p class="pain-copy"><strong>Now the days stretch out in front of you like a blank page you don't know how to fill.</strong></p>
+    
+    <p class="pain-copy">Everyone tells you to "enjoy this time." Your husband says pick up a hobby. Your friends say travel. Your therapist asks how that makes you feel.</p>
+    
+    <p class="pain-copy">But nobody — <span class="gold">NOBODY</span> — is answering the one question that wakes you up at 2am:</p>
+    
+    <div class="pull-quote">
+      <p>"Who am I now?"</p>
+    </div>
+    
+    <ul class="pain-list">
+      <li>You scroll Instagram watching women your age launch businesses and write books and you feel simultaneously inspired and sick to your stomach — because you can't even figure out what to eat for dinner</li>
+      <li>You've got a cart full of things you don't need at Target <em>again</em> — buying your way through 20 minutes of "I made a choice, I chose something, I'm a person who matters enough to buy something"</li>
+      <li>You tried a life coach who kept asking "what do you want?" and you wanted to throw something because IF YOU KNEW WHAT YOU WANTED YOU WOULDN'T BE HERE</li>
+      <li>Your bank account is quietly hemorrhaging and you're the woman who used to manage entire departments, entire budgets — but you can't seem to stop the spending that's become your most expensive coping mechanism</li>
+      <li>The worst part isn't that you're lost. The worst part is that you're starting to wonder if maybe there's nothing to find.</li>
+    </ul>
+    
+    <div class="pull-quote">
+      <p>"I've sat across from hundreds of brilliant, capable women who all said the same devastating sentence: 'I want to be better but I don't know what better is.' That sentence breaks my heart every time — because I know what they don't know yet. They're not lost. They're on the verge of the most important transformation of their lives."</p>
+      <div class="attr">— Rosalie Caruso</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ THE SHIFT — DR COPY ═══════ -->
+<section class="shift-section">
+  <div class="shift-inner">
+    <h2>Here's the Truth That Changes Everything</h2>
+    
+    <p>You're not broken. You're not ungrateful. And you're not having a "crisis" — no matter what your sister-in-law calls it after reading one article in People magazine.</p>
+    
+    <p><span class="bold">You're having an awakening.</span> And the fact that it doesn't FEEL like one? That's because nobody prepared you for the part where the awakening feels like a funeral first.</p>
+    
+    <p>That identity you built — the career woman, the reliable one, the good mother, the person who always handled everything — she served you beautifully. She protected you. She got you through decades of showing up for everyone else. And now she's done.</p>
+    
+    <p>Not because she failed. <span class="bold">Because you outgrew her.</span></p>
+    
+    <p>Your soul is trying to shed a skin that doesn't fit anymore. And instead of listening to it, you've been trying to squeeze back into it with self-help books you don't finish, meditation apps you open twice, and a Target shopping cart you use like an emotional support animal.</p>
+    
+    <p>But here's what I know after working with hundreds of women in exactly your position — and this is the thing that separates my work from every other coach in this space:</p>
+    
+    <p><span class="bold">You cannot THINK your way out of this.</span></p>
+    
+    <p>This isn't a thinking problem. The blocks keeping you stuck aren't in your head — they're in your nervous system. They're in that knot in your chest when someone asks what you do. They're in the shame spiral after another mindless purchase. They're in the guilt you carry like a fifty-pound backpack every time you dare to want something just for yourself.</p>
+    
+    <p>No journal is going to clear that. No affirmation. No gratitude list. <span class="bold">For this, you need a method that goes DEEPER than your brain.</span></p>
+    
+    <p>That's exactly why I created The Reclamation Method.</p>
+  </div>
+</section>
+
+<!-- ═══════ METHOD ═══════ -->
+<section id="method" class="section-pad bg-alt">
+  <div class="container">
+    <div class="section-label">The Reclamation Method™</div>
+    <h2 class="section-title">Four Pillars. One Transformation.</h2>
+    <p class="section-sub">A system that combines life coaching, EFT tapping, and financial sovereignty training into something that works where the blocks actually live — your nervous system.</p>
+    <div class="divider"></div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-num">01</div>
+        <h3>Reveal</h3>
+        <p>Strip away the roles, the titles, the "shoulds." Underneath all that performance is a woman who's been waiting in the dark for someone to come find her. We're going in.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">02</div>
+        <h3>Release</h3>
+        <p>EFT tapping accesses the blocks your brain can't reach — the guilt, the grief, the money patterns wired into your nervous system since childhood. We clear them. For good.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">03</div>
+        <h3>Reclaim</h3>
+        <p>Your self-worth. Your financial power. Your voice. Money is power, and you've been giving yours away. A woman who knows who she is doesn't need to buy permission to exist.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-num">04</div>
+        <h3>Rise</h3>
+        <p>Step into your next chapter with a plan, a purpose, and a sense of identity so solid that nothing — and nobody — can take it from you again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ JOURNEY ═══════ -->
+<section class="section-pad">
+  <div class="container">
+    <div class="section-label">The Proven System</div>
+    <h2 class="section-title">The 9-Step Reclamation Journey™</h2>
+    <p class="section-sub">Every woman follows this exact path. No guesswork. No winging it. A proven system that takes you from "I don't know who I am" to a woman nobody can ignore.</p>
+    <div class="journey-img">
+      <img src="RosalieProcess.png" alt="The 9-Step Reclamation Journey">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MONEY COPY ═══════ -->
+<section class="money-section">
+  <div class="money-inner">
+    <h2>Let's Talk About the Thing Nobody Else Has the Guts to Say to Your Face</h2>
+    
+    <p><span class="bold">Your spending problem and your identity crisis are the same wound.</span></p>
+    
+    <p>I know. That one landed. Good. Stay with me.</p>
+    
+    <p>Every dollar you spend trying to fill the void — the online courses you start on Monday and forget by Wednesday, the clothes you buy to feel like a person who makes decisions, the "treat yourself" purchases that feel more like a cry for help than a celebration — <span class="bold">that's not a willpower problem. That's a power problem.</span></p>
+    
+    <p>Money is power. It has always been power. And a woman who doesn't know who she is hemorrhages money the same way she hemorrhages energy, time, and boundaries — because she has no center to hold it all together. No foundation. No anchor. Every dollar that leaves her account is another piece of herself she's giving away.</p>
+    
+    <p class="gold-bold">Show me your bank statement and I'll show you your identity crisis.</p>
+    
+    <p>That's the conversation nobody else in this space will have with you. Every other coach wants to talk about "finding your passion" and "discovering your purpose" — soft, safe, comfortable words that make you feel good for an hour and change nothing by Tuesday.</p>
+    
+    <p>I'm not here to make you feel good for an hour. <span class="bold">I'm here to make you different forever.</span></p>
+    
+    <p>And here's the beautiful part — when you reclaim your identity, your financial power comes back automatically. Because a woman who knows exactly who she is doesn't hand her credit card over like a permission slip to exist. She holds onto her money the same way she holds onto her power — with both hands and zero apology.</p>
+  </div>
+</section>
+
+<!-- ═══════ PROGRAMS ═══════ -->
+<section id="programs" class="section-pad bg-alt">
+  <div class="container">
+    <div class="section-label">Work With Rosalie</div>
+    <h2 class="section-title">Three Ways Home</h2>
+    <p class="section-sub">Choose the depth of transformation you're ready for. Every path leads to the same place: a woman who never loses herself again.</p>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <h3>5 Signs You're Having an Identity Awakening</h3>
+        <div class="prog-type">Free Guide + EFT Exercise</div>
+        <div class="prog-price">FREE</div>
+      </div>
+      <div class="prog-card featured">
+        <div class="prog-badge">Most Popular</div>
+        <h3>Reclaim Your Life</h3>
+        <div class="prog-type">6-Week Group Coaching</div>
+        <div class="prog-price">$1,997</div>
+      </div>
+      <div class="prog-card">
+        <h3>The Full Reclamation</h3>
+        <div class="prog-type">12-Week Private Intensive</div>
+        <div class="prog-price">$7,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section id="about" class="section-pad">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-visual">RC</div>
+      <div class="about-text">
+        <div class="section-label" style="text-align: left;">Meet Rosalie</div>
+        <h3>I Don't Ask "What Do You Want?" — Because I Know You Can't Answer That Yet.</h3>
+        <p>That's the question that makes you feel like a failure. Every other coach leads with it. I don't. I start with "Who are you?" — and I go deeper than your brain to find the answer.</p>
+        <p>I'm Rosalie Caruso — life coach, EFT practitioner, and creator of The Reclamation Method. I combine DreamBuilder vision work with nervous-system-level tapping to clear blocks that no amount of journaling, goal-setting, or positive thinking can touch.</p>
+        <p>I built this method because the women I work with don't need another motivational speech. They need someone who can see the woman buried underneath twenty years of being useful — and help her come home to herself.</p>
+        <div class="about-tags">
+          <span class="about-tag">Certified Life Coach</span>
+          <span class="about-tag">Mary Morrissey Trained</span>
+          <span class="about-tag">EFT Practitioner</span>
+          <span class="about-tag">Money Block Specialist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BOOK ═══════ -->
+<section id="book" class="section-pad bg-alt">
+  <div class="container">
+    <div class="book-layout">
+      <div class="book-img">
+        <img src="RosalieBook.png" alt="The Reclamation by Rosalie Caruso">
+      </div>
+      <div class="book-text">
+        <div class="section-label" style="text-align: left;">The Book</div>
+        <h3>The Reclamation</h3>
+        <p>How Women in Midlife Can Stop Feeling Lost, Reclaim Their Identity, and Step Into the Most Powerful Chapter of Their Lives.</p>
+        <p>12 chapters. One complete framework. The book that proves the midlife identity crisis isn't a breakdown — it's the doorway to the most powerful version of you that's ever existed.</p>
+        <a href="#start" class="btn-gold" style="margin-top: 8px;">Get Notified at Launch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ LEAD MAGNET ═══════ -->
+<section id="start" class="lead-section">
+  <div class="container">
+    <div style="font-family: 'Caveat', cursive; color: var(--gold); font-size: 1.15rem; margin-bottom: 8px;">Your first step home</div>
+    <h2>5 Signs You're Having an Identity Awakening<br><span style="font-size: 0.65em; color: var(--gold-light); font-weight: 400;">(Not a Breakdown)</span></h2>
+    <p>The free guide that reframes everything you're feeling right now — plus a simple EFT tapping exercise for the #1 block keeping you stuck.</p>
+    <div class="lead-form">
+      <input type="email" placeholder="Your email address">
+      <button>Send My Free Guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <p>&copy; 2026 Rosalie Caruso &bull; The Reclamation Method™ &bull; <a href="#">Privacy</a> &bull; <a href="#">Terms</a></p>
+</footer>
+
+</body>
+</html>

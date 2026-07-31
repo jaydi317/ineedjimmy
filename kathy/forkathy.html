@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathy Potter — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+
+@media(min-width:768px) { .section { padding: 100px 40px; } }
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+.accent { font-family: 'Caveat', cursive; }
+.gold { color: var(--gold); }
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--gold-light); }
+
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 100px 20px 80px;
+  background: linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%);
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 2px;
+  background: var(--gold);
+}
+.hero-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 12px;
+  opacity: 0; animation: fadeUp .8s .2s forwards;
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 20px;
+  opacity: 0; animation: fadeUp .8s .4s forwards;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: 1.05rem;
+  color: rgba(250,246,238,.65);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+  opacity: 0; animation: fadeUp .8s .6s forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(18px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+/* ─── IDENTITY CARD ─── */
+.identity-card {
+  background: linear-gradient(135deg, var(--deep-mid), #0e2236);
+  border: 1px solid rgba(198,168,85,.25);
+  border-radius: 16px;
+  padding: 48px 36px;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 3px;
+  background: var(--gold);
+  border-radius: 0 0 4px 4px;
+}
+.identity-card .card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.identity-card .card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.identity-card .card-pitch {
+  font-size: .97rem;
+  line-height: 1.75;
+  color: rgba(250,246,238,.75);
+  margin-bottom: 28px;
+  max-width: 560px;
+  margin-left: auto; margin-right: auto;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.tag {
+  background: rgba(198,168,85,.1);
+  border: 1px solid rgba(198,168,85,.3);
+  color: var(--gold-light);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: .8rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+}
+
+/* ─── METHOD PILLARS ─── */
+.method-section { text-align: center; }
+.method-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.method-subtitle {
+  font-family: 'Caveat', cursive;
+  font-size: 1.25rem;
+  color: var(--gold);
+  margin-bottom: 50px;
+}
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media(min-width:600px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:900px) { .pillars { grid-template-columns: repeat(4, 1fr); } }
+.pillar {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,.15);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform .3s, border-color .3s;
+}
+.pillar:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+}
+.pillar-num {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar h3 {
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.pillar p {
+  font-size: .88rem;
+  color: rgba(250,246,238,.6);
+  line-height: 1.65;
+}
+
+/* ─── JOURNEY INFOGRAPHIC ─── */
+.journey-section {
+  text-align: center;
+}
+.journey-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.journey-section .method-subtitle { margin-bottom: 40px; }
+.journey-img {
+  width: 100%;
+  max-width: 960px;
+  border-radius: 12px;
+  border: 1px solid rgba(198,168,85,.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+/* ─── WEBSITE PREVIEWS ─── */
+.previews-section { text-align: center; }
+.previews-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.previews-section .method-subtitle { margin-bottom: 40px; }
+.previews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media(min-width:700px) { .previews-grid { grid-template-columns: repeat(2, 1fr); } }
+.preview-card {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(198,168,85,.2);
+  transition: transform .3s, box-shadow .3s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.4);
+}
+.preview-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+  position: relative;
+}
+.preview-thumb-warm {
+  background: linear-gradient(135deg, #FAF6EE 0%, #e8e0d0 30%, #7A9E7E 100%);
+}
+.preview-thumb-dark {
+  background: linear-gradient(135deg, #0B1A2B 0%, #132B42 40%, #C6A855 100%);
+}
+.preview-thumb-inner {
+  position: absolute;
+  inset: 20px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.preview-thumb-warm .preview-thumb-inner {
+  background: rgba(250,246,238,.85);
+  color: #1C2B1E;
+}
+.preview-thumb-dark .preview-thumb-inner {
+  background: rgba(11,26,43,.7);
+  color: var(--cream);
+}
+.preview-thumb-inner .mini-title {
+  font-family: 'Playfair Display', serif;
+  font-size: .95rem;
+  font-weight: 600;
+}
+.preview-thumb-inner .mini-sub {
+  font-size: .7rem;
+  opacity: .6;
+}
+.preview-label {
+  padding: 18px 20px;
+  background: var(--deep-mid);
+  text-align: center;
+}
+.preview-label h4 {
+  font-size: 1rem;
+  color: var(--cream);
+  margin-bottom: 4px;
+}
+.preview-label p {
+  font-size: .8rem;
+  color: var(--gold);
+}
+
+/* ─── BOOK SECTION ─── */
+.book-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+@media(min-width:768px) {
+  .book-section {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+.book-3d {
+  flex-shrink: 0;
+  width: 260px;
+  perspective: 800px;
+}
+.book-3d img {
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-12deg);
+  box-shadow: 20px 15px 50px rgba(0,0,0,.5), 4px 4px 20px rgba(0,0,0,.3);
+  transition: transform .4s;
+}
+.book-3d:hover img {
+  transform: rotateY(-4deg);
+}
+.book-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 16px;
+}
+.book-text p {
+  font-size: .95rem;
+  color: rgba(250,246,238,.7);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.book-note {
+  font-family: 'Caveat', cursive;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+/* ─── INSTAGRAM MOCKUP ─── */
+.insta-section { text-align: center; }
+.insta-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  margin-bottom: 40px;
+}
+.insta-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 28px;
+  max-width: 380px;
+  margin: 0 auto;
+  color: #262626;
+  text-align: center;
+}
+.insta-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--sage));
+  margin: 0 auto 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: white;
+  font-weight: 600;
+}
+.insta-handle {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  color: #262626;
+}
+.insta-stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 16px;
+  font-size: .85rem;
+}
+.insta-stats div { text-align: center; }
+.insta-stats strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #262626;
+}
+.insta-stats span { color: #8e8e8e; }
+.insta-bio {
+  text-align: left;
+  font-size: .85rem;
+  line-height: 1.6;
+  color: #262626;
+}
+.insta-bio .bio-line { margin-bottom: 2px; }
+.insta-bio .bio-link { color: #00376b; font-weight: 600; }
+
+/* ─── PROGRAMS ─── */
+.programs-section { text-align: center; }
+.programs-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.programs-section .method-subtitle { margin-bottom: 50px; }
+.programs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+@media(min-width:700px) { .programs-grid { grid-template-columns: repeat(3, 1fr); } }
+.program-card {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,.15);
+  border-radius: 14px;
+  padding: 36px 24px;
+  transition: transform .3s, border-color .3s;
+}
+.program-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,.4);
+}
+.program-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, var(--deep-mid), rgba(198,168,85,.08));
+  position: relative;
+}
+.featured-badge {
+  position: absolute;
+  top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  padding: 4px 18px;
+  border-radius: 50px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.program-card .card-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.program-card h3 {
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+.program-card .price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.program-card .price-sub {
+  font-size: .8rem;
+  color: rgba(250,246,238,.5);
+}
+.program-card .card-desc {
+  font-size: .85rem;
+  color: rgba(250,246,238,.6);
+  line-height: 1.65;
+}
+
+/* ─── INCOME CALCULATOR ─── */
+.calc-section {
+  text-align: center;
+  background: linear-gradient(180deg, rgba(198,168,85,.05), transparent);
+  border-radius: 20px;
+  padding: 60px 20px;
+  border: 1px solid rgba(198,168,85,.12);
+}
+@media(min-width:768px) { .calc-section { padding: 80px 48px; } }
+.calc-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.calc-section .method-subtitle { margin-bottom: 44px; }
+.calc-sliders {
+  max-width: 500px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+.slider-group {
+  margin-bottom: 28px;
+}
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.slider-label span {
+  font-size: .9rem;
+  color: rgba(250,246,238,.7);
+}
+.slider-label strong {
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+}
+input[type=range] {
+  width: 100%;
+  -webkit-appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--deep-mid);
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--deep);
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+input[type=range]::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--deep);
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+.calc-result-box {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,.2);
+  border-radius: 12px;
+  padding: 24px 16px;
+}
+.calc-result-box .result-label {
+  font-size: .78rem;
+  color: rgba(250,246,238,.5);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+.calc-result-box .result-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ─── REPORT TEASER ─── */
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+@media(min-width:768px) {
+  .report-section { flex-direction: row; align-items: flex-start; gap: 56px; }
+}
+.report-pages {
+  flex-shrink: 0;
+  width: 240px;
+  height: 280px;
+  position: relative;
+}
+.report-page {
+  position: absolute;
+  width: 180px;
+  background: var(--cream);
+  border-radius: 6px;
+  padding: 18px 16px;
+  color: var(--deep);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+}
+.report-page:nth-child(1) { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
+.report-page:nth-child(2) { top: 30px; left: 40px; transform: rotate(2deg); z-index: 2; }
+.report-page:nth-child(3) { top: 60px; left: 16px; transform: rotate(-2deg); z-index: 3; }
+.report-page .rp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: .72rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--deep);
+}
+.report-page .rp-line {
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+.report-page .rp-line.short { width: 60%; }
+.report-page .rp-line.med { width: 80%; }
+.report-page .rp-chart {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 30px;
+  margin-top: 10px;
+}
+.rp-bar {
+  width: 10px;
+  border-radius: 2px 2px 0 0;
+}
+.report-bullets { flex: 1; }
+.report-bullets h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 6px;
+}
+.report-bullets .method-subtitle { margin-bottom: 24px; text-align: left; }
+.bullet-list { list-style: none; }
+.bullet-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 16px;
+  font-size: .92rem;
+  line-height: 1.65;
+  color: rgba(250,246,238,.75);
+}
+.bullet-list li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: .7rem;
+  top: 4px;
+}
+
+/* ─── CTA ─── */
+.cta-section {
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(198,168,85,.06));
+  border-radius: 20px;
+  padding: 70px 20px;
+}
+.cta-section h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: 1rem;
+  color: rgba(250,246,238,.65);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.cta-btn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .02em;
+  transition: background .3s, transform .3s;
+  text-decoration: none;
+}
+.cta-btn:hover {
+  background: var(--gold-light);
+  color: var(--deep);
+  transform: translateY(-2px);
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: .8rem;
+  color: rgba(250,246,238,.35);
+  border-top: 1px solid rgba(198,168,85,.1);
+}
+
+/* ─── DIVIDERS ─── */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 60px;
+  opacity: .5;
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">A Preview Built Just For You</p>
+  <h1>Kathy, Here's a Preview of<br><span>Your Coaching Business</span></h1>
+  <p>This was created by Jimmy Davis's AI Business Design Software — trained on 20+ years of direct response marketing — to show you what's possible when your passion meets a proven framework.</p>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="section">
+  <div class="identity-card">
+    <div class="card-name">Kathy Potter</div>
+    <div class="card-title">Creator of The Reclaim Method™</div>
+    <p class="card-pitch">You spent 20 years making yourself small. You finally got out. Now what? I help midlife women release the trauma their body is still carrying, reconnect with the woman they buried, and build a life so good they'll wonder why they waited so long to claim it.</p>
+    <div class="tags">
+      <span class="tag">EFT Tapping</span>
+      <span class="tag">Mindfulness</span>
+      <span class="tag">Somatic Therapy</span>
+      <span class="tag">Midlife Reinvention</span>
+      <span class="tag">Nervous System Healing</span>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD PILLARS -->
+<section class="section method-section">
+  <h2>The Reclaim Method™</h2>
+  <p class="method-subtitle">Release · Reconnect · Rebuild · Rise</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <h3>Release</h3>
+      <p>Use EFT tapping and somatic therapy to release the trauma, tension, and survival patterns stored in your body from decades of making yourself small.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <h3>Reconnect</h3>
+      <p>Through mindfulness and guided self-discovery, reconnect with your own desires, instincts, and identity — the parts that went underground to keep the peace.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <h3>Rebuild</h3>
+      <p>Construct a new internal foundation — boundaries, self-trust, and the ability to make decisions from desire instead of fear.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <h3>Rise</h3>
+      <p>Step into your next chapter with clarity, confidence, and a life designed around who you actually are — not who you had to be.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="section journey-section">
+  <h2>Your Proven 9-Step Process</h2>
+  <p class="method-subtitle">Every client follows this exact journey</p>
+  <img src="KathyProcess.png" alt="The Reclaim Journey — 9-Step Process" class="journey-img">
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="section previews-section">
+  <h2>Your Website — Two Directions</h2>
+  <p class="method-subtitle">Click either to explore the full mockup</p>
+  <div class="previews-grid">
+    <a href="kathy.html" class="preview-card">
+      <div class="preview-thumb preview-thumb-warm">
+        <div class="preview-thumb-inner">
+          <div class="mini-title">The Reclaim Method™</div>
+          <div class="mini-sub">Warm · Elegant · Editorial</div>
+        </div>
+      </div>
+      <div class="preview-label">
+        <h4>Style 1 — Warm &amp; Elegant</h4>
+        <p>Cream, sage, nature-inspired →</p>
+      </div>
+    </a>
+    <a href="kathy2.html" class="preview-card">
+      <div class="preview-thumb preview-thumb-dark">
+        <div class="preview-thumb-inner">
+          <div class="mini-title">The Reclaim Method™</div>
+          <div class="mini-sub">Bold · Deep · Premium</div>
+        </div>
+      </div>
+      <div class="preview-label">
+        <h4>Style 2 — Bold &amp; Deep</h4>
+        <p>Navy, gold, midnight luxury →</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="section book-section">
+  <div class="book-3d">
+    <img src="KathyBook.png" alt="RECLAIM by Kathy Potter">
+  </div>
+  <div class="book-text">
+    <h2>Your Book: <span class="gold">RECLAIM</span></h2>
+    <p>The Body-Based Guide to Finding Yourself After Leaving — a complete 11-chapter framework that positions you as THE authority in midlife reinvention through body-based healing. This isn't just a book — it's a business card, a credibility engine, and a client-generating machine.</p>
+    <p>Your full outline includes chapters on releasing stored trauma through EFT, reconnecting with buried desires through mindfulness, rebuilding self-trust through somatic practices, and designing a next chapter you chose on purpose.</p>
+    <p class="book-note">✦ Full outline, chapters, and writing support included in the complete Blueprint.</p>
+  </div>
+</section>
+
+<!-- INSTAGRAM MOCKUP -->
+<section class="section insta-section">
+  <h2>Your Instagram Presence</h2>
+  <div class="insta-card">
+    <div class="insta-avatar">KP</div>
+    <div class="insta-handle">@kathypottercoaching</div>
+    <div class="insta-stats">
+      <div><strong>—</strong><span>Posts</span></div>
+      <div><strong>—</strong><span>Followers</span></div>
+      <div><strong>—</strong><span>Following</span></div>
+    </div>
+    <div class="insta-bio">
+      <div class="bio-line">🌿 Creator of The Reclaim Method™</div>
+      <div class="bio-line">🔑 Midlife reinvention after toxic relationships</div>
+      <div class="bio-line">✨ EFT Tapping · Mindfulness · Somatic Therapy</div>
+      <div class="bio-line">📖 Author of RECLAIM</div>
+      <div class="bio-line bio-link">👇 Free guide: 5 Body-Based Practices ⬇️</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section programs-section">
+  <h2>Your Program Suite</h2>
+  <p class="method-subtitle">Three ways to work with you</p>
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="card-label">Free Download</div>
+      <h3>The Reclaim Roadmap</h3>
+      <div class="price">FREE</div>
+      <p class="card-desc">5 Body-Based Practices to Start Releasing What Your Toxic Relationship Left Behind — your lead magnet that brings women into your world.</p>
+    </div>
+    <div class="program-card featured">
+      <span class="featured-badge">Signature Program</span>
+      <div class="card-label">6-Week Group Program</div>
+      <h3>The Reclaim Method</h3>
+      <div class="price">$1,997</div>
+      <p class="card-desc">The complete group transformation experience. Six weeks of live coaching, EFT sessions, mindfulness practices, and somatic work — aligned to the 4 pillars.</p>
+    </div>
+    <div class="program-card">
+      <div class="card-label">Private Coaching</div>
+      <h3>Reclaim &amp; Rise</h3>
+      <div class="price">$7,500</div>
+      <p class="card-desc">12 weeks of one-on-one intensive work with you. Custom EFT protocols, personalized somatic therapy, and a full nervous system overhaul.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<div class="section">
+  <div class="calc-section">
+    <h2>Your Income Potential</h2>
+    <p class="method-subtitle">Adjust the sliders to see what's possible</p>
+    <div class="calc-sliders">
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Women per group round</span>
+          <strong id="groupVal">10</strong>
+        </div>
+        <input type="range" id="groupSlider" min="4" max="25" value="10">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Group rounds per year</span>
+          <strong id="roundsVal">4</strong>
+        </div>
+        <input type="range" id="roundsSlider" min="1" max="8" value="4">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Private clients per year</span>
+          <strong id="privateVal">4</strong>
+        </div>
+        <input type="range" id="privateSlider" min="0" max="12" value="4">
+      </div>
+    </div>
+    <div class="calc-results">
+      <div class="calc-result-box">
+        <div class="result-label">Monthly Revenue</div>
+        <div class="result-num" id="monthlyRev">$9,148</div>
+      </div>
+      <div class="calc-result-box">
+        <div class="result-label">Annual Revenue</div>
+        <div class="result-num" id="annualRev">$109,780</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REPORT TEASER -->
+<section class="section report-section">
+  <div class="report-pages">
+    <div class="report-page">
+      <div class="rp-title">Market Research</div>
+      <div class="rp-line med"></div>
+      <div class="rp-line short"></div>
+      <div class="rp-line med"></div>
+      <div class="rp-line short"></div>
+      <div class="rp-chart">
+        <div class="rp-bar" style="height:12px; background:var(--sage)"></div>
+        <div class="rp-bar" style="height:22px; background:var(--gold)"></div>
+        <div class="rp-bar" style="height:16px; background:var(--sage)"></div>
+        <div class="rp-bar" style="height:28px; background:var(--gold)"></div>
+        <div class="rp-bar" style="height:10px; background:var(--sage)"></div>
+      </div>
+    </div>
+    <div class="report-page">
+      <div class="rp-title">Customer Avatar</div>
+      <div class="rp-line med"></div>
+      <div class="rp-line short"></div>
+      <div class="rp-line med"></div>
+      <div class="rp-line short"></div>
+      <div class="rp-line med"></div>
+    </div>
+    <div class="report-page">
+      <div class="rp-title">Revenue Projections</div>
+      <div class="rp-line short"></div>
+      <div class="rp-line med"></div>
+      <div class="rp-chart">
+        <div class="rp-bar" style="height:10px; background:var(--rose)"></div>
+        <div class="rp-bar" style="height:18px; background:var(--gold)"></div>
+        <div class="rp-bar" style="height:25px; background:var(--sage)"></div>
+        <div class="rp-bar" style="height:14px; background:var(--gold)"></div>
+      </div>
+    </div>
+  </div>
+  <div class="report-bullets">
+    <h2>What the Full Blueprint Reveals</h2>
+    <p class="method-subtitle">Your complete business strategy, research & roadmap</p>
+    <ul class="bullet-list">
+      <li>The exact gap in the midlife coaching market that none of your top 5 competitors are filling — and how The Reclaim Method positions you to own it completely</li>
+      <li>Why the biggest players in your space focus on either trauma recovery OR midlife reinvention but never both — and how your triple-modality approach makes you the only option for women who need BOTH</li>
+      <li>The detailed profile of your ideal client "Diane" — including the 2am fears she hasn't told anyone and the exact language that makes her stop scrolling</li>
+      <li>How Caroline Strawson built a narcissistic abuse recovery empire but left the REINVENTION side wide open — and why that gap is your goldmine</li>
+      <li>The 3-scenario income model showing exactly how you scale from $60K part-time to $314K fully scaled — with the specific numbers for each program at each level</li>
+      <li>Your complete 11-chapter book outline for RECLAIM — structured so each chapter builds authority AND generates coaching inquiries</li>
+      <li>The "Still Bracing" free report strategy that turns cold traffic into women who are already emotionally committed to working with you before the first call</li>
+      <li>Why your combination of EFT + mindfulness + somatic therapy is the most defensible positioning in this market — and the research that proves body-based approaches work where talk therapy stalls</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-section">
+  <h2>Want to Bring This to Life?</h2>
+  <p>Everything you've seen on this page was generated by Jimmy Davis's AI Business Design Software. The complete Blueprint — with your full research, copy, programs, book outline, and implementation roadmap — is ready to walk through together.</p>
+  <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services &amp; Pricing</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundsSlider = document.getElementById('roundsSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundsVal = document.getElementById('roundsVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRev = document.getElementById('monthlyRev');
+const annualRev = document.getElementById('annualRev');
+
+function calc() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundsSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundsVal.textContent = r;
+  privateVal.textContent = p;
+  const annual = (g * r * 1997) + (p * 7500);
+  const monthly = Math.round(annual / 12);
+  annualRev.textContent = '$' + annual.toLocaleString();
+  monthlyRev.textContent = '$' + monthly.toLocaleString();
+}
+
+groupSlider.addEventListener('input', calc);
+roundsSlider.addEventListener('input', calc);
+privateSlider.addEventListener('input', calc);
+calc();
+</script>
+
+</body>
+</html>

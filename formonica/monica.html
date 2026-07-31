@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monica Bourassa — The Spark Circle™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream: #FAF6EE;
+  --cream-dark: #F0EBE0;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --sage-light: #a8c5ab;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --deep: #1C2B1E;
+  --deep-soft: #2a3d2d;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --text: #3a4a3c;
+  --text-light: #6b7a6d;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--deep); }
+.caveat { font-family: 'Caveat', cursive; }
+
+/* ======== NAV ======== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(250,246,238,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(28,43,30,0.06);
+  padding: 0 24px;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--deep);
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-size: 13px;
+  color: var(--text-light);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--sage-dark); }
+.nav-cta {
+  padding: 8px 22px !important;
+  background: var(--sage) !important;
+  color: var(--white) !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  transition: background 0.3s !important;
+}
+.nav-cta:hover { background: var(--sage-dark) !important; }
+@media (max-width: 768px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+}
+
+/* ======== HERO ======== */
+.hero {
+  padding: 140px 24px 80px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-dark) 100%);
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background: linear-gradient(transparent, var(--cream));
+  pointer-events: none;
+}
+.hero-label {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 span { color: var(--sage-dark); }
+.hero p {
+  font-size: 18px;
+  color: var(--text-light);
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+.hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  background: var(--sage);
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-primary:hover { background: var(--sage-dark); transform: translateY(-2px); }
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1.5px solid var(--sage);
+  color: var(--sage-dark);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+.btn-secondary:hover { background: var(--sage); color: var(--white); }
+
+/* ======== PAIN SECTION ======== */
+.pain-section {
+  padding: 80px 24px;
+  background: var(--cream);
+}
+.pain-box {
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pain-box h2 {
+  font-size: clamp(26px, 4vw, 38px);
+  margin-bottom: 12px;
+  font-style: italic;
+}
+.pain-box .sub {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--sage);
+  margin-bottom: 36px;
+}
+.pain-items {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.pain-item {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(28,43,30,0.06);
+  font-size: 16px;
+  color: var(--text);
+  line-height: 1.7;
+  padding-left: 32px;
+  position: relative;
+}
+.pain-item::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 24px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rose);
+}
+
+/* ======== METHOD ======== */
+.method-section {
+  padding: 80px 24px;
+  background: var(--deep);
+  color: var(--cream);
+}
+.method-section h2, .method-section h4 { color: var(--white); }
+.method-section .section-sub { color: var(--cream); opacity: 0.7; }
+.section-center { text-align: center; max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.section-center h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  margin-bottom: 8px;
+}
+.section-sub {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 48px;
+}
+.method-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.method-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  padding: 32px 20px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.method-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+.method-card .num {
+  font-family: 'Caveat', cursive;
+  font-size: 36px;
+  color: var(--gold);
+}
+.method-card h4 { font-size: 19px; margin: 4px 0; }
+.method-card .card-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.method-card p { font-size: 13px; color: var(--cream); opacity: 0.6; }
+
+/* ======== JOURNEY ======== */
+.journey-section {
+  padding: 80px 24px;
+  background: var(--cream-dark);
+}
+.journey-img-wrap {
+  max-width: 550px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(28,43,30,0.08);
+}
+.journey-img-wrap img { width: 100%; display: block; }
+
+/* ======== PROGRAMS ======== */
+.programs-section { padding: 80px 24px; background: var(--cream); }
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) { .programs-grid { grid-template-columns: 1fr; } }
+.prog-card {
+  background: var(--white);
+  border: 1px solid rgba(28,43,30,0.08);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
+.prog-card.featured {
+  border-color: var(--sage);
+  box-shadow: 0 8px 30px rgba(122,158,126,0.15);
+  position: relative;
+}
+.prog-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 4px 16px;
+  background: var(--sage);
+  color: var(--white);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  border-radius: 12px;
+}
+.prog-card h4 { font-size: 20px; margin-bottom: 4px; }
+.prog-card .type {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--sage);
+  margin-bottom: 12px;
+}
+.prog-card .price {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: var(--sage-dark);
+  margin-bottom: 10px;
+}
+.prog-card p { font-size: 13px; color: var(--text-light); }
+
+/* ======== ABOUT ======== */
+.about-section {
+  padding: 80px 24px;
+  background: var(--cream-dark);
+}
+.about-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-inner h2 {
+  font-size: clamp(28px, 4vw, 38px);
+  margin-bottom: 20px;
+}
+.about-inner p {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+}
+.about-tags span {
+  padding: 6px 18px;
+  border: 1px solid var(--sage);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--sage-dark);
+}
+
+/* ======== BOOK ======== */
+.book-section { padding: 80px 24px; background: var(--cream); }
+.book-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) { .book-row { flex-direction: column; text-align: center; } }
+.book-img {
+  flex-shrink: 0;
+  width: 240px;
+  perspective: 800px;
+}
+.book-img-inner {
+  transform: rotateY(-10deg);
+  transition: transform 0.5s;
+  box-shadow: 16px 16px 40px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.book-img:hover .book-img-inner { transform: rotateY(-3deg); }
+.book-img img { width: 100%; display: block; }
+.book-text h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+.book-text p {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+/* ======== LEAD MAGNET ======== */
+.lead-section {
+  padding: 80px 24px;
+  background: var(--sage);
+  color: var(--white);
+  text-align: center;
+}
+.lead-section h2 {
+  color: var(--white);
+  font-size: clamp(26px, 4vw, 36px);
+  margin-bottom: 8px;
+}
+.lead-section p {
+  font-size: 16px;
+  opacity: 0.9;
+  max-width: 500px;
+  margin: 0 auto 28px;
+}
+.lead-form {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  max-width: 440px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.lead-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.lead-form button {
+  padding: 14px 28px;
+  background: var(--deep);
+  color: var(--white);
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.3s;
+}
+.lead-form button:hover { background: #0B1A2B; }
+
+/* ======== FOOTER ======== */
+.footer {
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--deep);
+  color: rgba(250,246,238,0.4);
+  font-size: 13px;
+}
+.footer a { color: var(--gold); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .method-cards { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Monica Bourassa</a>
+    <div class="nav-links">
+      <a href="#method">Method</a>
+      <a href="#programs">Programs</a>
+      <a href="#about">About</a>
+      <a href="#book">Book</a>
+      <a href="#start" class="nav-cta">Find Her Spark</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">✨ The Spark Circle™</div>
+  <h1>Every Girl Has a <span>Spark</span>.<br>Let's Help Her Find It.</h1>
+  <p>Small-group coaching where teen girls discover their superpower, build real boundaries, and find a sisterhood that changes everything.</p>
+  <div class="hero-btns">
+    <a href="#start" class="btn-primary">Apply for The Spark Circle</a>
+    <a href="#method" class="btn-secondary">See the Method</a>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="pain-box">
+    <h2>Does this sound like your daughter?</h2>
+    <div class="sub">You're not imagining it. And you're not alone.</div>
+    <div class="pain-items">
+      <div class="pain-item">She used to tell you everything. Now you get "I'm fine" and a closed door.</div>
+      <div class="pain-item">She changes her outfit four times before school and still hates what she's wearing.</div>
+      <div class="pain-item">She has friends, but comes home from every hangout looking more drained than before.</div>
+      <div class="pain-item">She scrolls her phone for hours, comparing herself to girls who seem to have it all figured out.</div>
+      <div class="pain-item">You've said "just be yourself" a hundred times — but she doesn't know who that is anymore.</div>
+      <div class="pain-item">She's either trying to please everyone until she disappears, or she's pulling away from everyone entirely.</div>
+      <div class="pain-item">You can see her potential. She can't. And that gap is breaking your heart.</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+  <div class="section-center">
+    <div class="section-label">The Method</div>
+    <h2>The Spark Circle™ Method</h2>
+    <div class="section-sub">5 Pillars That Transform How She Sees Herself</div>
+    <div class="method-cards">
+      <div class="method-card">
+        <div class="num">01</div>
+        <h4>Discover</h4>
+        <div class="card-sub">Find Your Spark</div>
+        <p>Who are you when nobody's watching?</p>
+      </div>
+      <div class="method-card">
+        <div class="num">02</div>
+        <h4>Define</h4>
+        <div class="card-sub">Name Your Superpower</div>
+        <p>Put words to what makes you YOU.</p>
+      </div>
+      <div class="method-card">
+        <div class="num">03</div>
+        <h4>Defend</h4>
+        <div class="card-sub">Build Your Shield</div>
+        <p>Protect your energy, set your boundaries.</p>
+      </div>
+      <div class="method-card">
+        <div class="num">04</div>
+        <h4>Connect</h4>
+        <div class="card-sub">Find Your Circle</div>
+        <p>Build friendships that feed your fire.</p>
+      </div>
+      <div class="method-card">
+        <div class="num">05</div>
+        <h4>Ignite</h4>
+        <div class="card-sub">Light It Up</div>
+        <p>Take your superpower into the world.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey-section">
+  <div class="section-center">
+    <div class="section-label" style="color:var(--sage);">The Journey</div>
+    <h2>The 9-Step Transformation</h2>
+    <div class="section-sub">Every girl who enters The Spark Circle follows this exact path — from lost to lit.</div>
+    <div class="journey-img-wrap">
+      <img src="MonicaProcess.png" alt="The Spark Circle 9-Step Journey">
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="section-center">
+    <div class="section-label" style="color:var(--sage);">Programs</div>
+    <h2>Find the Right Fit for Your Daughter</h2>
+    <div class="section-sub">Three ways to work with Monica</div>
+    <div class="programs-grid">
+      <div class="prog-card">
+        <h4>The Spark Starter</h4>
+        <div class="type">Workshop</div>
+        <div class="price">$197</div>
+        <p>A 90-minute group workshop — a taste of the Spark Circle experience</p>
+      </div>
+      <div class="prog-card featured">
+        <h4>The Spark Circle</h4>
+        <div class="type">6-Week Group Program</div>
+        <div class="price">$1,497</div>
+        <p>The full small-group coaching experience with sisterhood, boundaries, and transformation</p>
+      </div>
+      <div class="prog-card">
+        <h4>Spark Circle VIP</h4>
+        <div class="type">12-Week Private + Group</div>
+        <div class="price">$4,997</div>
+        <p>Private coaching, parent sessions, and custom plans for deeper transformation</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <div class="section-label" style="color:var(--sage);">Meet Monica</div>
+    <h2>She Helps Girls Remember Who They Are</h2>
+    <p>Monica Bourassa is a certified life coach and the creator of The Spark Circle™ — a small-group coaching experience where teen girls discover their superpower, learn to protect it with real boundaries, and build a sisterhood that changes everything.</p>
+    <p>Through her proprietary "Mind Up" approach, Monica teaches girls how their brain actually works — in simple, empowering terms — so they can understand why they feel the way they do and take back control. Combined with identity work, boundary training, and the power of a small circle of girls who truly see each other, Monica's method creates the kind of transformation that lasts a lifetime.</p>
+    <p>Her mission: to make sure no girl goes through her teen years thinking she's not enough.</p>
+    <div class="about-tags">
+      <span>Certified Life Coach (FIA)</span>
+      <span>The Spark Circle™ Creator</span>
+      <span>Mind Up™ Brain Science</span>
+      <span>Teen Girl Specialist</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+  <div class="book-row">
+    <div class="book-img">
+      <div class="book-img-inner">
+        <img src="MonicaBook.png" alt="The Spark Inside Her by Monica Bourassa">
+      </div>
+    </div>
+    <div class="book-text">
+      <div class="section-label" style="color:var(--sage);">The Book</div>
+      <h3>The Spark Inside Her</h3>
+      <p>A Mother's Guide to Helping Your Teen Daughter Find Her Superpower, Set Boundaries, and Become Who She Was Meant to Be. 11 chapters covering the teen brain, the complete Spark Circle method, communication scripts, and a full transformation roadmap.</p>
+      <a href="#start" class="btn-primary">Learn More</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="lead-section" id="start">
+  <h2>Is Your Daughter Losing Her Spark?</h2>
+  <p>Download the free guide: <strong>"5 Signs Your Daughter Has Lost Her Spark (And the 1 Question That Reignites It)"</strong></p>
+  <div class="lead-form">
+    <input type="email" placeholder="Enter your email">
+    <button>Get the Free Guide</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 Monica Bourassa · The Spark Circle™ · All Rights Reserved<br>
+  <span style="opacity:0.5; margin-top:4px; display:inline-block;">Website designed by <a href="https://ineedjimmy.com">INeedJimmy.com</a></span>
+</footer>
+
+</body>
+</html>

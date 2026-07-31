@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Intake Questionnaire | iNeedJimmy.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#fff;-webkit-font-smoothing:antialiased;min-height:100vh}
+.header{background:#111;border-bottom:1px solid #252525;padding:20px 24px;text-align:center}
+.header h1{font-size:20px;font-weight:900;letter-spacing:-.5px}.header h1 span{color:#D42B2B}
+.hero-banner{background:linear-gradient(135deg,#1A1A1A,#111);border-bottom:1px solid #252525;padding:60px 24px;text-align:center}
+.hero-banner h2{font-size:clamp(28px,4vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:12px;line-height:1.2}
+.hero-banner h2 em{color:#D42B2B;font-style:normal}
+.hero-banner p{color:#888;font-size:17px;max-width:640px;margin:0 auto 8px;line-height:1.6}
+.hero-banner .time{color:#22C55E;font-size:14px;font-weight:600;margin-top:16px}
+.container{max-width:720px;margin:0 auto;padding:40px 24px 80px}
+.section{margin-bottom:48px}
+.section-header{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #252525}
+.section-num{font-size:12px;color:#D42B2B;text-transform:uppercase;letter-spacing:3px;font-weight:700;margin-bottom:8px}
+.section-header h3{font-size:24px;font-weight:800;letter-spacing:-.5px}
+.section-header p{color:#666;font-size:14px;margin-top:6px;line-height:1.5}
+.field{margin-bottom:24px}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px;color:#ccc}
+.field label .hint{font-weight:400;color:#666;font-size:13px;display:block;margin-top:4px}
+.field input,.field select,.field textarea{width:100%;padding:14px 16px;background:#1A1A1A;border:1px solid #252525;border-radius:10px;color:#fff;font-size:15px;font-family:'Outfit',sans-serif;outline:none;transition:border-color .3s}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#D42B2B}
+.field textarea{min-height:120px;resize:vertical;line-height:1.6}
+.field select{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field select option{background:#1A1A1A;color:#fff}
+.radio-group{display:flex;flex-wrap:wrap;gap:10px}
+.radio-option{flex:1;min-width:140px}
+.radio-option input{display:none}
+.radio-option label{display:block;padding:12px 16px;background:#1A1A1A;border:1px solid #252525;border-radius:10px;text-align:center;cursor:pointer;font-size:14px;font-weight:500;transition:all .3s;color:#888}
+.radio-option input:checked+label{border-color:#D42B2B;background:rgba(212,43,43,.08);color:#fff}
+.radio-option label:hover{border-color:#444}
+.check-group{display:flex;flex-wrap:wrap;gap:8px}
+.check-option{position:relative}
+.check-option input{display:none}
+.check-option label{display:inline-block;padding:10px 18px;background:#1A1A1A;border:1px solid #252525;border-radius:100px;cursor:pointer;font-size:13px;font-weight:500;transition:all .3s;color:#888}
+.check-option input:checked+label{border-color:#D42B2B;background:rgba(212,43,43,.08);color:#fff}
+.check-option label:hover{border-color:#444}
+.callout{background:#1A1A1A;border:1px solid #252525;border-left:3px solid #D42B2B;border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0}
+.callout p{color:#AAA;font-size:14px;line-height:1.6}
+.callout strong{color:#fff}
+.submit-section{text-align:center;padding:40px 0;border-top:1px solid #252525;margin-top:48px}
+.submit-section p{color:#666;font-size:14px;margin-bottom:20px}
+.btn-submit{background:#D42B2B;color:#fff;padding:18px 48px;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;letter-spacing:-.5px}
+.btn-submit:hover{background:#B01E1E;transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,43,43,.25)}
+.progress{position:sticky;top:0;z-index:100;background:#0A0A0A;border-bottom:1px solid #252525;padding:12px 24px}
+.progress-bar{height:4px;background:#252525;border-radius:100px;overflow:hidden;max-width:720px;margin:0 auto}
+.progress-fill{height:100%;background:linear-gradient(90deg,#D42B2B,#ff6b35);border-radius:100px;width:0%;transition:width .3s}
+.progress-text{text-align:center;font-size:11px;color:#666;margin-top:6px;text-transform:uppercase;letter-spacing:1px}
+@media(max-width:600px){.hero-banner{padding:40px 20px}.container{padding:24px 16px 60px}.radio-group{flex-direction:column}.radio-option{min-width:100%}}
+</style>
+</head>
+<body>
+
+<div class="header"><h1>iNeed<span>Jimmy</span>.com</h1></div>
+
+<div class="hero-banner">
+  <h2>Before We Meet, Let's Get<br><em>Your Business on Paper.</em></h2>
+  <p>The more I know going in, the more we can accomplish in our time together. These questions help my AI understand your business so we can hit the ground running.</p>
+  <p class="time">⏱ Takes about 15 minutes</p>
+</div>
+
+<div class="progress">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-text" id="progressText">Section 1 of 6</div>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1: THE BASICS -->
+  <div class="section" data-section="1">
+    <div class="section-header">
+      <div class="section-num">Section 1 of 6</div>
+      <h3>The Basics</h3>
+      <p>Just the facts about your business right now.</p>
+    </div>
+
+    <div class="field">
+      <label>Your full name</label>
+      <input type="text" placeholder="Chase Jack">
+    </div>
+
+    <div class="field">
+      <label>Business name</label>
+      <input type="text" placeholder="The Jack of All Trades">
+    </div>
+
+    <div class="field">
+      <label>How long have you been in business?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="years" id="y1"><label for="y1">Less than 2 years</label></div>
+        <div class="radio-option"><input type="radio" name="years" id="y2"><label for="y2">2-5 years</label></div>
+        <div class="radio-option"><input type="radio" name="years" id="y3"><label for="y3">5-10 years</label></div>
+        <div class="radio-option"><input type="radio" name="years" id="y4"><label for="y4">10+ years</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>How many people work for you? (including yourself)</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="team" id="t1"><label for="t1">Just me</label></div>
+        <div class="radio-option"><input type="radio" name="team" id="t2"><label for="t2">2-3 people</label></div>
+        <div class="radio-option"><input type="radio" name="team" id="t3"><label for="t3">4-8 people</label></div>
+        <div class="radio-option"><input type="radio" name="team" id="t4"><label for="t4">9+ people</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>What areas do you serve?
+        <span class="hint">Cities, neighborhoods, zip codes — whatever you think of as your service area.</span>
+      </label>
+      <textarea placeholder="Indianapolis, Fishers, Carmel, Noblesville..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What services do you offer? (check all that apply)</label>
+      <div class="check-group">
+        <div class="check-option"><input type="checkbox" id="s1"><label for="s1">Kitchen Remodels</label></div>
+        <div class="check-option"><input type="checkbox" id="s2"><label for="s2">Bathroom Remodels</label></div>
+        <div class="check-option"><input type="checkbox" id="s3"><label for="s3">Finish Carpentry</label></div>
+        <div class="check-option"><input type="checkbox" id="s4"><label for="s4">Roofing</label></div>
+        <div class="check-option"><input type="checkbox" id="s5"><label for="s5">Flooring</label></div>
+        <div class="check-option"><input type="checkbox" id="s6"><label for="s6">Painting</label></div>
+        <div class="check-option"><input type="checkbox" id="s7"><label for="s7">Decks/Fences</label></div>
+        <div class="check-option"><input type="checkbox" id="s8"><label for="s8">Electrical</label></div>
+        <div class="check-option"><input type="checkbox" id="s9"><label for="s9">Plumbing</label></div>
+        <div class="check-option"><input type="checkbox" id="s10"><label for="s10">Low Voltage/Security</label></div>
+        <div class="check-option"><input type="checkbox" id="s11"><label for="s11">Handyman/Small Jobs</label></div>
+        <div class="check-option"><input type="checkbox" id="s12"><label for="s12">Other</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Which 2-3 services make you the MOST money?</label>
+      <textarea rows="2" placeholder="Kitchen remodels and bathroom remodels are our biggest revenue..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Which services do you ENJOY doing the most?</label>
+      <textarea rows="2" placeholder="I love doing finish carpentry because..."></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE NUMBERS -->
+  <div class="section" data-section="2">
+    <div class="section-header">
+      <div class="section-num">Section 2 of 6</div>
+      <h3>The Numbers</h3>
+      <p>Don't overthink these. Rough estimates are fine. This helps me understand what's working and where the opportunity is.</p>
+    </div>
+
+    <div class="field">
+      <label>What's your average job size?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="jobsize" id="j1"><label for="j1">Under $1,000</label></div>
+        <div class="radio-option"><input type="radio" name="jobsize" id="j2"><label for="j2">$1,000 - $5,000</label></div>
+        <div class="radio-option"><input type="radio" name="jobsize" id="j3"><label for="j3">$5,000 - $15,000</label></div>
+        <div class="radio-option"><input type="radio" name="jobsize" id="j4"><label for="j4">$15,000 - $50,000</label></div>
+        <div class="radio-option"><input type="radio" name="jobsize" id="j5"><label for="j5">$50,000+</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>How many jobs/projects do you complete per month?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="monthly" id="m1"><label for="m1">1-3</label></div>
+        <div class="radio-option"><input type="radio" name="monthly" id="m2"><label for="m2">4-8</label></div>
+        <div class="radio-option"><input type="radio" name="monthly" id="m3"><label for="m3">9-15</label></div>
+        <div class="radio-option"><input type="radio" name="monthly" id="m4"><label for="m4">15+</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Roughly, what did your business do in revenue last year?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="rev" id="r1"><label for="r1">Under $100K</label></div>
+        <div class="radio-option"><input type="radio" name="rev" id="r2"><label for="r2">$100K - $250K</label></div>
+        <div class="radio-option"><input type="radio" name="rev" id="r3"><label for="r3">$250K - $500K</label></div>
+        <div class="radio-option"><input type="radio" name="rev" id="r4"><label for="r4">$500K - $1M</label></div>
+        <div class="radio-option"><input type="radio" name="rev" id="r5"><label for="r5">$1M+</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Where do most of your customers come from right now?
+        <span class="hint">Rank these if you can. Where do your BEST customers find you?</span>
+      </label>
+      <div class="check-group">
+        <div class="check-option"><input type="checkbox" id="l1"><label for="l1">Word of mouth</label></div>
+        <div class="check-option"><input type="checkbox" id="l2"><label for="l2">Google search</label></div>
+        <div class="check-option"><input type="checkbox" id="l3"><label for="l3">Facebook</label></div>
+        <div class="check-option"><input type="checkbox" id="l4"><label for="l4">Thumbtack</label></div>
+        <div class="check-option"><input type="checkbox" id="l5"><label for="l5">Angi/HomeAdvisor</label></div>
+        <div class="check-option"><input type="checkbox" id="l6"><label for="l6">Yelp</label></div>
+        <div class="check-option"><input type="checkbox" id="l7"><label for="l7">Nextdoor</label></div>
+        <div class="check-option"><input type="checkbox" id="l8"><label for="l8">Repeat customers</label></div>
+        <div class="check-option"><input type="checkbox" id="l9"><label for="l9">Yard signs</label></div>
+        <div class="check-option"><input type="checkbox" id="l10"><label for="l10">Vehicle wrap</label></div>
+        <div class="check-option"><input type="checkbox" id="l11"><label for="l11">Other</label></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Out of every 10 estimates you give, how many turn into a job?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="close" id="c1"><label for="c1">2-3 out of 10</label></div>
+        <div class="radio-option"><input type="radio" name="close" id="c2"><label for="c2">4-5 out of 10</label></div>
+        <div class="radio-option"><input type="radio" name="close" id="c3"><label for="c3">6-7 out of 10</label></div>
+        <div class="radio-option"><input type="radio" name="close" id="c4"><label for="c4">8+ out of 10</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: YOUR STORY -->
+  <div class="section" data-section="3">
+    <div class="section-header">
+      <div class="section-num">Section 3 of 6</div>
+      <h3>Your Story</h3>
+      <p>This is the gold. Your story is what makes people choose YOU over a competitor. Don't hold back — the more detail, the better.</p>
+    </div>
+
+    <div class="field">
+      <label>How did you get into this line of work?
+        <span class="hint">Go back to the beginning. When did you first start building/fixing things? What's the earliest memory?</span>
+      </label>
+      <textarea rows="5" placeholder="I started when I was a kid. My dad..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the moment you KNEW this was your calling?
+        <span class="hint">Was there a specific project, a specific day, a specific compliment from a customer that made it click?</span>
+      </label>
+      <textarea rows="4" placeholder="The moment I knew was when..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the craziest or most challenging project you've ever done?
+        <span class="hint">The one you tell people about at parties. The one that almost broke you but you pulled it off.</span>
+      </label>
+      <textarea rows="4" placeholder="There was this one time..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What makes you different from every other contractor in Indianapolis?
+        <span class="hint">If a homeowner is looking at 3 contractors, why should they pick YOU?</span>
+      </label>
+      <textarea rows="4" placeholder="What sets me apart is..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What do your customers always say about you?
+        <span class="hint">The compliment you hear over and over. The thing they always mention.</span>
+      </label>
+      <textarea rows="3" placeholder="They always say..."></textarea>
+    </div>
+  </div>
+
+  <!-- SECTION 4: YOUR CUSTOMERS -->
+  <div class="section" data-section="4">
+    <div class="section-header">
+      <div class="section-num">Section 4 of 6</div>
+      <h3>Your Customers</h3>
+      <p>Understanding who hires you helps me position your business to attract MORE of the right people.</p>
+    </div>
+
+    <div class="field">
+      <label>Describe your IDEAL customer.
+        <span class="hint">The dream project, the dream homeowner. Who are they? What kind of house? What neighborhood? What budget?</span>
+      </label>
+      <textarea rows="4" placeholder="My ideal customer is a homeowner in..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the #1 reason customers DON'T hire you after getting an estimate?
+        <span class="hint">Price? Timing? They went with someone cheaper? They decided not to do the project?</span>
+      </label>
+      <textarea rows="3" placeholder="Usually it's because..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the biggest fear or frustration homeowners have about hiring a contractor?
+        <span class="hint">What are they worried about before they call you?</span>
+      </label>
+      <textarea rows="3" placeholder="They're usually worried about..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>After a project is done, do you ask for reviews?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="reviews" id="rv1"><label for="rv1">Yes, every time</label></div>
+        <div class="radio-option"><input type="radio" name="reviews" id="rv2"><label for="rv2">Sometimes</label></div>
+        <div class="radio-option"><input type="radio" name="reviews" id="rv3"><label for="rv3">Rarely</label></div>
+        <div class="radio-option"><input type="radio" name="reviews" id="rv4"><label for="rv4">Never</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: OPERATIONS -->
+  <div class="section" data-section="5">
+    <div class="section-header">
+      <div class="section-num">Section 5 of 6</div>
+      <h3>How You Run Things</h3>
+      <p>I want to find the bottlenecks and time-wasters so we can fix them.</p>
+    </div>
+
+    <div class="field">
+      <label>What do you LOVE about running your business?
+        <span class="hint">The parts that don't feel like work. The stuff you'd do for free.</span>
+      </label>
+      <textarea rows="3" placeholder="I love..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What do you HATE about running your business?
+        <span class="hint">The parts that drain you. The stuff you wish someone else would handle.</span>
+      </label>
+      <textarea rows="3" placeholder="I can't stand..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>How do you currently handle estimates/proposals?
+        <span class="hint">Written on paper? App? Email? Text?</span>
+      </label>
+      <textarea rows="2" placeholder="Right now I..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>When a lead comes in, what happens next?
+        <span class="hint">Walk me through the process from first contact to showing up for the estimate.</span>
+      </label>
+      <textarea rows="3" placeholder="When someone calls me, I usually..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Do you use any apps or software for your business?
+        <span class="hint">QuickBooks, Jobber, Housecall Pro, Google Calendar, anything?</span>
+      </label>
+      <textarea rows="2" placeholder="I use..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Do you take photos of your work?</label>
+      <div class="radio-group">
+        <div class="radio-option"><input type="radio" name="photos" id="p1"><label for="p1">Yes, always</label></div>
+        <div class="radio-option"><input type="radio" name="photos" id="p2"><label for="p2">Sometimes</label></div>
+        <div class="radio-option"><input type="radio" name="photos" id="p3"><label for="p3">Rarely</label></div>
+        <div class="radio-option"><input type="radio" name="photos" id="p4"><label for="p4">Never</label></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: GOALS -->
+  <div class="section" data-section="6">
+    <div class="section-header">
+      <div class="section-num">Section 6 of 6</div>
+      <h3>Where You Want to Go</h3>
+      <p>Last section. This helps me prioritize what we work on together.</p>
+    </div>
+
+    <div class="field">
+      <label>If you could wave a magic wand and change ONE thing about your business, what would it be?</label>
+      <textarea rows="3" placeholder="I would change..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Where do you want your business to be in 12 months?
+        <span class="hint">Revenue? Team size? Types of projects? Work-life balance?</span>
+      </label>
+      <textarea rows="4" placeholder="In 12 months I want..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the biggest thing holding you back right now?</label>
+      <textarea rows="3" placeholder="The main thing holding me back is..."></textarea>
+    </div>
+
+    <div class="field">
+      <label>Is there anything else you want me to know before we meet?
+        <span class="hint">Anything about your business, your goals, your frustrations — whatever is on your mind.</span>
+      </label>
+      <textarea rows="4" placeholder="I also want you to know..."></textarea>
+    </div>
+
+    <div class="callout">
+      <p><strong>One last thing:</strong> Before our session, send me as many photos of your best work as you can. Before and after shots are gold. Kitchen remodels, bathroom transformations, deck builds, carpentry details — whatever shows off your craftsmanship. The more photos I have, the more we can do together.</p>
+    </div>
+  </div>
+
+  <div class="submit-section">
+    <p>That's it! When we meet, we'll hit the ground running.</p>
+    <button class="btn-submit" type="button" id="submitBtn">Submit My Answers →</button>
+  </div>
+
+  <!-- Success Modal -->
+  <div id="successModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:999;display:none;align-items:center;justify-content:center;padding:24px">
+    <div style="background:#1A1A1A;border:1px solid #252525;border-radius:20px;padding:40px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto">
+      <div style="text-align:center;margin-bottom:24px">
+        <div style="font-size:48px;margin-bottom:16px">✅</div>
+        <h3 style="font-size:24px;font-weight:800;margin-bottom:8px">Answers Copied!</h3>
+        <p style="color:#888;font-size:15px">Your answers have been copied to your clipboard. Now just paste them in a text or email to Jimmy.</p>
+      </div>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a id="textLink" href="#" style="background:#D42B2B;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px">📱 Text to Jimmy</a>
+        <a id="emailLink" href="#" style="background:#252525;color:#fff;padding:14px 28px;border-radius:10px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid #333">📧 Email to Jimmy</a>
+      </div>
+      <div style="margin-top:24px;text-align:center">
+        <button onclick="document.getElementById('successModal').style.display='none'" style="background:none;border:none;color:#666;font-size:14px;cursor:pointer;font-family:Outfit,sans-serif">Close</button>
+      </div>
+      <div style="margin-top:24px;background:#111;border-radius:10px;padding:16px;max-height:300px;overflow-y:auto">
+        <pre id="answersPreview" style="color:#888;font-size:12px;white-space:pre-wrap;word-wrap:break-word;font-family:Outfit,sans-serif;line-height:1.6;margin:0"></pre>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// CONFIGURATION - Replace with your Formspree URL to get email delivery
+const FORMSPREE_URL = 'https://formspree.io/f/xyklypbz';
+const JIMMY_PHONE = '6263543229'; // Replace with real number
+const JIMMY_EMAIL = 'jimmydavisprivate@gmail.com'; // Replace with real email
+
+// Progress bar
+const fill = document.getElementById('progressFill');
+const ptext = document.getElementById('progressText');
+function updateProgress() {
+  const inputs = document.querySelectorAll('input,textarea,select');
+  let filled = 0;
+  inputs.forEach(i => {
+    if (i.type === 'radio' || i.type === 'checkbox') { if (i.checked) filled++; }
+    else if (i.value.trim()) filled++;
+  });
+  const pct = Math.min(100, Math.round((filled / 30) * 100));
+  fill.style.width = pct + '%';
+  ptext.textContent = pct + '% complete';
+}
+document.querySelectorAll('input,textarea,select').forEach(el => {
+  el.addEventListener('input', updateProgress);
+  el.addEventListener('change', updateProgress);
+});
+
+// Collect all answers
+function collectAnswers() {
+  const sections = [
+    { title: 'THE BASICS', fields: [] },
+    { title: 'THE NUMBERS', fields: [] },
+    { title: 'YOUR STORY', fields: [] },
+    { title: 'YOUR CUSTOMERS', fields: [] },
+    { title: 'HOW YOU RUN THINGS', fields: [] },
+    { title: 'WHERE YOU WANT TO GO', fields: [] }
+  ];
+  
+  document.querySelectorAll('.section').forEach((sec, si) => {
+    sec.querySelectorAll('.field').forEach(field => {
+      const label = field.querySelector('label');
+      if (!label) return;
+      const q = label.childNodes[0].textContent.trim();
+      let a = '';
+      
+      const textarea = field.querySelector('textarea');
+      const input = field.querySelector('input[type="text"]');
+      const select = field.querySelector('select');
+      const radios = field.querySelectorAll('input[type="radio"]');
+      const checks = field.querySelectorAll('input[type="checkbox"]');
+      
+      if (textarea) { a = textarea.value.trim(); }
+      else if (input) { a = input.value.trim(); }
+      else if (select) { a = select.value; }
+      else if (radios.length) {
+        radios.forEach(r => { if (r.checked) { a = r.nextElementSibling.textContent.trim(); } });
+      }
+      else if (checks.length) {
+        const selected = [];
+        checks.forEach(c => { if (c.checked) selected.push(c.nextElementSibling.textContent.trim()); });
+        a = selected.join(', ');
+      }
+      
+      if (a) sections[si].fields.push({ q, a });
+    });
+  });
+  
+  let text = '===== BUSINESS INTAKE: THE JACK OF ALL TRADES =====\n\n';
+  sections.forEach(s => {
+    if (s.fields.length === 0) return;
+    text += '--- ' + s.title + ' ---\n\n';
+    s.fields.forEach(f => {
+      text += f.q + '\n' + f.a + '\n\n';
+    });
+  });
+  return text.trim();
+}
+
+// Submit handler
+document.getElementById('submitBtn').addEventListener('click', async function() {
+  const answers = collectAnswers();
+  
+  if (answers.split('\n').length < 10) {
+    alert('Please fill out more of the questionnaire before submitting.');
+    return;
+  }
+  
+  // Copy to clipboard
+  try {
+    await navigator.clipboard.writeText(answers);
+  } catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = answers;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+  
+  // If Formspree is configured, also submit there
+  if (FORMSPREE_URL) {
+    try {
+      await fetch(FORMSPREE_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ answers: answers, _subject: 'TJOAT Questionnaire Submitted' })
+      });
+    } catch(e) { console.log('Formspree submit failed, clipboard copy still worked'); }
+  }
+  
+  // Set up text/email links
+  const short = answers.substring(0, 1500);
+  document.getElementById('textLink').href = 'sms:' + JIMMY_PHONE + '?body=' + encodeURIComponent('Here are my questionnaire answers:\n\n' + short + '\n\n(Full answers copied to clipboard - I can also email them)');
+  document.getElementById('emailLink').href = 'mailto:' + JIMMY_EMAIL + '?subject=Business%20Intake%20-%20The%20Jack%20of%20All%20Trades&body=' + encodeURIComponent(answers);
+  
+  // Show preview
+  document.getElementById('answersPreview').textContent = answers;
+  
+  // Show modal
+  const modal = document.getElementById('successModal');
+  modal.style.display = 'flex';
+});
+</script>
+
+</body>
+</html>

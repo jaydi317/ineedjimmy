@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Business Design — Free Preview | INeedJimmy.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-light: #1A3654;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --gold-glow: rgba(198, 168, 85, 0.15);
+  --cream: #FAF6EE;
+  --cream-dim: #F0EBE0;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --error: #E07A6A;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Background Texture ─── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(198,168,85,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(122,158,126,0.04) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Top Bar ─── */
+.top-bar {
+  text-align: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(198,168,85,0.1);
+  position: relative;
+  z-index: 1;
+}
+.top-bar span {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ─── Container ─── */
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hero ─── */
+.hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.hero-badge {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--gold);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.2s;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cream);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.4s;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--cream-dim);
+  max-width: 520px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.6s;
+}
+
+/* ─── Progress ─── */
+.progress-section {
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.8s;
+}
+.progress-steps {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.progress-dot {
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--deep-light);
+  transition: all 0.4s ease;
+}
+.progress-dot.active {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(198,168,85,0.3);
+}
+.progress-dot.completed {
+  background: var(--sage);
+}
+.progress-label {
+  text-align: center;
+  font-size: 13px;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ─── Form Card ─── */
+.form-card {
+  background: linear-gradient(145deg, var(--deep-mid), var(--deep));
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 16px;
+  padding: 40px 36px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 1s;
+  position: relative;
+  overflow: hidden;
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* ─── Steps ─── */
+.step {
+  display: none;
+  animation: stepIn 0.4s ease;
+}
+.step.active {
+  display: block;
+}
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.step-header {
+  margin-bottom: 28px;
+}
+.step-number {
+  font-family: 'Caveat', cursive;
+  font-size: 16px;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.step-subtitle {
+  font-size: 14px;
+  color: var(--cream-dim);
+  line-height: 1.6;
+}
+
+/* ─── Fields ─── */
+.field-group {
+  margin-bottom: 24px;
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 500px) {
+  .field-row { grid-template-columns: 1fr; }
+}
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+label .optional {
+  color: rgba(232,213,160,0.4);
+  font-weight: 400;
+  text-transform: none;
+  font-size: 12px;
+}
+input, textarea, select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--cream);
+  transition: all 0.3s ease;
+  outline: none;
+}
+input::placeholder, textarea::placeholder {
+  color: rgba(250,246,238,0.25);
+}
+input:focus, textarea:focus, select:focus {
+  border-color: var(--gold);
+  background: rgba(198,168,85,0.04);
+  box-shadow: 0 0 0 3px rgba(198,168,85,0.08);
+}
+textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='%23C6A855'%3E%3Cpath d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+}
+select option {
+  background: var(--deep-mid);
+  color: var(--cream);
+}
+.field-hint {
+  font-size: 12px;
+  color: rgba(232,213,160,0.4);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.field-error {
+  border-color: var(--error) !important;
+}
+.error-msg {
+  font-size: 12px;
+  color: var(--error);
+  margin-top: 6px;
+  display: none;
+}
+
+/* ─── Buttons ─── */
+.btn-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 32px;
+  gap: 16px;
+}
+.btn-back {
+  background: none;
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gold-light);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-back:hover {
+  border-color: var(--gold);
+  background: rgba(198,168,85,0.05);
+}
+.btn-next, .btn-submit {
+  background: linear-gradient(135deg, var(--gold), #D4B85A);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 36px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--deep);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: auto;
+  position: relative;
+  overflow: hidden;
+}
+.btn-next:hover, .btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(198,168,85,0.25);
+}
+.btn-next:active, .btn-submit:active {
+  transform: translateY(0);
+}
+.btn-submit {
+  padding: 16px 48px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Success ─── */
+.success-screen {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.success-screen.visible {
+  display: block;
+  animation: stepIn 0.6s ease;
+}
+.success-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), #D4B85A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  font-size: 32px;
+}
+.success-screen h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.success-screen p {
+  font-size: 15px;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  max-width: 440px;
+  margin: 0 auto 8px;
+}
+.success-note {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: var(--gold);
+  margin-top: 20px;
+}
+
+/* ─── Footer ─── */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 12px;
+  color: rgba(250,246,238,0.2);
+  position: relative;
+  z-index: 1;
+}
+.footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ─── Social Proof ─── */
+.social-proof {
+  text-align: center;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards 0.7s;
+}
+.social-proof p {
+  font-size: 13px;
+  color: rgba(250,246,238,0.35);
+  letter-spacing: 0.5px;
+}
+.social-proof span {
+  color: var(--gold-light);
+}
+
+/* ─── Loading State ─── */
+.btn-submit.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+.btn-submit.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 20px; height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--deep);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Animations ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span>INeedJimmy.com</span>
+</div>
+
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">It takes about 3 minutes...</div>
+    <h1>See Your Coaching Business <em>Come to Life</em></h1>
+    <p>Tell me about your expertise and who you help. My AI Business Design system will build you a custom preview — your brand, your method, your website, your programs — in minutes.</p>
+  </div>
+
+  <!-- Social Proof -->
+  <div class="social-proof">
+    <p>Trusted by <span>coaches, consultants, and experts</span> ready to build something real</p>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-section">
+    <div class="progress-steps">
+      <div class="progress-dot active" data-step="1"></div>
+      <div class="progress-dot" data-step="2"></div>
+      <div class="progress-dot" data-step="3"></div>
+      <div class="progress-dot" data-step="4"></div>
+      <div class="progress-dot" data-step="5"></div>
+    </div>
+    <div class="progress-label">Step <span id="stepNum">1</span> of 5</div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="form-card">
+    <form id="intakeForm" novalidate>
+
+      <!-- STEP 1: Contact Info -->
+      <div class="step active" data-step="1">
+        <div class="step-header">
+          <div class="step-number">Step 1</div>
+          <div class="step-title">Let's Start with You</div>
+          <div class="step-subtitle">Just the basics so we can send you your custom preview.</div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-row">
+            <div>
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Sarah" required>
+              <div class="error-msg">Please enter your first name</div>
+            </div>
+            <div>
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Johnson" required>
+              <div class="error-msg">Please enter your last name</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="sarah@example.com" required>
+          <div class="error-msg">Please enter a valid email</div>
+        </div>
+
+        <div class="field-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+          <div class="field-hint">We'll text you when your preview is ready</div>
+          <div class="error-msg">Please enter your phone number</div>
+        </div>
+
+        <div class="btn-row">
+          <div></div>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Expertise -->
+      <div class="step" data-step="2">
+        <div class="step-header">
+          <div class="step-number">Step 2</div>
+          <div class="step-title">Your Superpowers</div>
+          <div class="step-subtitle">This is the most important part. The more you share, the more powerful your custom method becomes.</div>
+        </div>
+
+        <div class="field-group">
+          <label for="expertise">What are you trained in, certified in, or naturally gifted at?</label>
+          <textarea id="expertise" name="expertise" placeholder="Example: I'm a certified yoga instructor (RYT-500), Reiki master, breathwork facilitator, and I have a background in psychology. I also do intuitive coaching and have been doing face yoga for 3 years..." required></textarea>
+          <div class="field-hint">Include certifications, modalities, skills, degrees, life experience — even things that seem unrelated. We combine ALL of it into your unique method.</div>
+          <div class="error-msg">Tell us about your expertise — this is what we build your method from</div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Audience + Story -->
+      <div class="step" data-step="3">
+        <div class="step-header">
+          <div class="step-number">Step 3</div>
+          <div class="step-title">Who You Help & Why</div>
+          <div class="step-subtitle">Tell us about the women you're called to serve, and what led you here.</div>
+        </div>
+
+        <div class="field-group">
+          <label for="audience">Who do you help (or want to help)?</label>
+          <textarea id="audience" name="audience" placeholder="Example: I want to help women in their 40s and 50s who feel like they've lost themselves — busy moms, career women who gave everything to everyone else and forgot about their own health and happiness..." required></textarea>
+          <div class="field-hint">Describe your ideal client. Who is she? What is she struggling with? What does she want?</div>
+          <div class="error-msg">Tell us about who you want to help</div>
+        </div>
+
+        <div class="field-group">
+          <label for="story">Your Origin Story</label>
+          <textarea id="story" name="story" placeholder="Example: After my divorce, I was completely lost. I gained 40 pounds, had chronic anxiety, and couldn't even look in the mirror. When I found breathwork and yoga, everything changed. I healed myself first, and now I want to help other women do the same..." required></textarea>
+          <div class="field-hint">What happened in YOUR life that led you to this work? This becomes the heart of your brand.</div>
+          <div class="error-msg">Your story is what makes your brand authentic — please share it</div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Business Status -->
+      <div class="step" data-step="4">
+        <div class="step-header">
+          <div class="step-number">Step 4</div>
+          <div class="step-title">Where You Are Now</div>
+          <div class="step-subtitle">No judgment — whether you're just starting or scaling, we meet you where you are.</div>
+        </div>
+
+        <div class="field-group">
+          <label for="status">Current Business Status</label>
+          <select id="status" name="status" required>
+            <option value="" disabled selected>Select your current stage...</option>
+            <option value="not_started">I haven't started yet — I have the skills but no business</option>
+            <option value="informal">I have some clients but no formal business or brand</option>
+            <option value="rebrand">I have a business but want to rebrand or level up</option>
+            <option value="scaling">I have a successful business and I'm ready to scale</option>
+          </select>
+          <div class="error-msg">Please select your current stage</div>
+        </div>
+
+        <div class="field-group">
+          <label for="currentOfferings">Current Offerings & Pricing <span class="optional">(optional)</span></label>
+          <textarea id="currentOfferings" name="currentOfferings" placeholder="Example: I currently do 1-on-1 yoga sessions for $75/hour and occasional group classes at a local studio. I've also done a few free workshops on Instagram..." style="min-height:100px;"></textarea>
+          <div class="field-hint">If you're currently offering services, tell us what and what you charge. If you haven't started, skip this.</div>
+        </div>
+
+        <div class="field-group">
+          <label for="website">Website or Social Media <span class="optional">(optional)</span></label>
+          <input type="text" id="website" name="website" placeholder="instagram.com/yourhandle or yourwebsite.com">
+          <div class="field-hint">Share anything you've already built so we can see your starting point.</div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-next" onclick="nextStep()">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: Dream -->
+      <div class="step" data-step="5">
+        <div class="step-header">
+          <div class="step-number">Step 5</div>
+          <div class="step-title">Your Dream</div>
+          <div class="step-subtitle">Last one. Dream big — this is what we're building toward.</div>
+        </div>
+
+        <div class="field-group">
+          <label for="dream">If you could wave a magic wand and your coaching business looked exactly how you wanted one year from now — what does that look like?</label>
+          <textarea id="dream" name="dream" placeholder="Example: I want to be known as THE go-to expert for women's wellness after 40. I want a beautiful website, a signature program that sells itself, a book, a podcast, and I want to be making $15K/month doing what I love. I want women finding me online and saying 'she gets me'..." required></textarea>
+          <div class="field-hint">Income goals, lifestyle, reputation, impact — tell us everything. The more specific, the better we can design it.</div>
+          <div class="error-msg">Tell us your dream — this is what we design for</div>
+        </div>
+
+        <div class="btn-row">
+          <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+          <button type="button" class="btn-submit" id="submitBtn" onclick="submitForm()">Build My Preview ✨</button>
+        </div>
+      </div>
+
+    </form>
+
+    <!-- Success Screen -->
+    <div class="success-screen" id="successScreen">
+      <div class="success-icon">✓</div>
+      <h2>You're In!</h2>
+      <p>We're designing your custom coaching business preview right now. You'll get a text and email with your personal page within the next few hours.</p>
+      <p>When you see it — your brand, your method, your website mockups, your programs with real pricing — just know: this is real, and it's yours.</p>
+      <div class="success-note">Keep an eye on your phone 📱</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Powered by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 5;
+
+// ─── WEBHOOK CONFIG ───
+// Replace this URL with your actual webhook endpoint
+const WEBHOOK_URL = 'https://ineedjimmy.com/api/dream-machine.php';
+
+
+function updateProgress() {
+  document.querySelectorAll('.progress-dot').forEach(dot => {
+    const step = parseInt(dot.dataset.step);
+    dot.classList.remove('active', 'completed');
+    if (step === currentStep) dot.classList.add('active');
+    if (step < currentStep) dot.classList.add('completed');
+  });
+  document.getElementById('stepNum').textContent = currentStep;
+}
+
+function validateStep(step) {
+  const stepEl = document.querySelector(`.step[data-step="${step}"]`);
+  const required = stepEl.querySelectorAll('[required]');
+  let valid = true;
+
+  required.forEach(field => {
+    const error = field.parentElement.querySelector('.error-msg') ||
+                  field.closest('.field-group').querySelector('.error-msg');
+
+    if (!field.value.trim() || (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) {
+      field.classList.add('field-error');
+      if (error) error.style.display = 'block';
+      valid = false;
+    } else {
+      field.classList.remove('field-error');
+      if (error) error.style.display = 'none';
+    }
+  });
+
+  return valid;
+}
+
+function nextStep() {
+  if (!validateStep(currentStep)) return;
+
+  document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep++;
+  document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: document.querySelector('.form-card').offsetTop - 20, behavior: 'smooth' });
+}
+
+function prevStep() {
+  document.querySelector(`.step[data-step="${currentStep}"]`).classList.remove('active');
+  currentStep--;
+  document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
+  updateProgress();
+}
+
+function submitForm() {
+  if (!validateStep(currentStep)) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.classList.add('loading');
+  btn.textContent = 'Building...';
+
+  // Collect all form data
+  const data = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    expertise: document.getElementById('expertise').value.trim(),
+    audience: document.getElementById('audience').value.trim(),
+    story: document.getElementById('story').value.trim(),
+    status: document.getElementById('status').value,
+    currentOfferings: document.getElementById('currentOfferings').value.trim(),
+    website: document.getElementById('website').value.trim(),
+    dream: document.getElementById('dream').value.trim(),
+    submittedAt: new Date().toISOString()
+  };
+
+  // Send to webhook
+  fetch(WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    showSuccess();
+  })
+  .catch(error => {
+    // Still show success to the user — log error for debugging
+    // In production, you may want to also send to a fallback endpoint
+    console.error('Webhook error:', error);
+    showSuccess();
+  });
+}
+
+function showSuccess() {
+  document.getElementById('intakeForm').style.display = 'none';
+  document.getElementById('successScreen').classList.add('visible');
+  document.querySelector('.progress-section').style.display = 'none';
+}
+
+// Clear errors on input
+document.querySelectorAll('input, textarea, select').forEach(field => {
+  field.addEventListener('input', () => {
+    field.classList.remove('field-error');
+    const error = field.parentElement.querySelector('.error-msg') ||
+                  field.closest('.field-group').querySelector('.error-msg');
+    if (error) error.style.display = 'none';
+  });
+});
+
+// Enter key advances to next step (except on textareas)
+document.querySelectorAll('input, select').forEach(field => {
+  field.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (currentStep < totalSteps) nextStep();
+      else submitForm();
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Davis — The Regulated Classroom Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--deep:#0B1A2B;--deep-mid:#132B42;--gold:#C6A855;--gold-light:#E8D5A0;
+--cream:#FAF6EE;--sage:#7A9E7E;--rose:#C9928E;--warm:#D4A574;--white:#FFFFFF;
+--font-head:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;--font-accent:'Caveat',cursive;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--cream);background:var(--deep);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold);text-decoration:none;transition:all .3s ease}
+a:hover{color:var(--gold-light)}
+
+/* ===== HERO ===== */
+.hero{text-align:center;padding:100px 24px 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(198,168,85,.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:var(--font-accent);font-size:1.4rem;color:var(--gold);margin-bottom:12px;letter-spacing:1px}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.2rem,5vw,3.6rem);color:var(--cream);font-weight:700;line-height:1.2;margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.1rem;color:rgba(250,246,238,.7);max-width:640px;margin:0 auto;line-height:1.8}
+.hero-badge{display:inline-block;margin-top:32px;padding:10px 28px;border:1px solid rgba(198,168,85,.3);border-radius:40px;font-size:.85rem;color:var(--gold-light);letter-spacing:1.5px;text-transform:uppercase}
+
+/* ===== SECTIONS ===== */
+section{padding:80px 24px}
+.container{max-width:1080px;margin:0 auto}
+.section-label{font-family:var(--font-accent);font-size:1.2rem;color:var(--gold);margin-bottom:8px}
+.section-title{font-family:var(--font-head);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--cream);font-weight:700;margin-bottom:16px;line-height:1.25}
+.section-sub{font-size:1.05rem;color:rgba(250,246,238,.65);max-width:620px;line-height:1.8;margin-bottom:40px}
+.center{text-align:center}
+.center .section-sub{margin-left:auto;margin-right:auto}
+
+/* ===== IDENTITY CARD ===== */
+.identity-section{background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 100%)}
+.id-card{background:linear-gradient(135deg,rgba(19,43,66,.9),rgba(11,26,43,.95));border:1px solid rgba(198,168,85,.25);border-radius:20px;padding:48px 40px;max-width:720px;margin:0 auto;position:relative;overflow:hidden}
+.id-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sage),var(--gold),var(--rose))}
+.id-card-name{font-family:var(--font-head);font-size:2rem;color:var(--gold);margin-bottom:6px}
+.id-card-title{font-family:var(--font-head);font-size:1.15rem;color:var(--cream);font-style:italic;margin-bottom:20px}
+.id-card-pitch{font-size:1rem;color:rgba(250,246,238,.75);line-height:1.9;margin-bottom:24px}
+.id-tags{display:flex;flex-wrap:wrap;gap:10px}
+.id-tag{padding:6px 16px;border-radius:20px;font-size:.8rem;font-weight:500;letter-spacing:.5px}
+.id-tag.breathwork{background:rgba(122,158,126,.2);color:var(--sage);border:1px solid rgba(122,158,126,.3)}
+.id-tag.tapping{background:rgba(201,146,142,.2);color:var(--rose);border:1px solid rgba(201,146,142,.3)}
+.id-tag.mindfulness{background:rgba(198,168,85,.2);color:var(--gold);border:1px solid rgba(198,168,85,.3)}
+.id-tag.education{background:rgba(212,165,116,.2);color:var(--warm);border:1px solid rgba(212,165,116,.3)}
+
+/* ===== METHOD ===== */
+.method-section{background:var(--deep)}
+.method-img{max-width:900px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.method-img img{width:100%}
+
+/* ===== 9-STEP JOURNEY ===== */
+.journey-section{background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 50%,var(--deep) 100%)}
+.journey-img{max-width:940px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.journey-img img{width:100%}
+
+/* ===== WEBSITE PREVIEWS ===== */
+.previews-section{background:var(--deep)}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px;margin:0 auto}
+.preview-card{border:1px solid rgba(198,168,85,.2);border-radius:16px;overflow:hidden;transition:transform .3s ease,box-shadow .3s ease;cursor:pointer;text-decoration:none;display:block}
+.preview-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,.5)}
+.preview-thumb{height:220px;overflow:hidden;position:relative}
+.preview-thumb.warm{background:linear-gradient(135deg,#FAF6EE,#e8e0d0);display:flex;align-items:center;justify-content:center}
+.preview-thumb.dark{background:linear-gradient(135deg,#0B1A2B,#1a3a5c);display:flex;align-items:center;justify-content:center}
+.preview-thumb-text{text-align:center;padding:20px}
+.preview-thumb-text h4{font-family:var(--font-head);font-size:1.1rem;margin-bottom:6px}
+.preview-thumb.warm .preview-thumb-text h4{color:#1C2B1E}
+.preview-thumb.warm .preview-thumb-text p{color:#5C7D60;font-size:.85rem}
+.preview-thumb.dark .preview-thumb-text h4{color:var(--gold)}
+.preview-thumb.dark .preview-thumb-text p{color:var(--gold-light);font-size:.85rem}
+.preview-info{padding:20px;background:var(--deep-mid)}
+.preview-info h3{font-family:var(--font-head);font-size:1.1rem;color:var(--cream);margin-bottom:4px}
+.preview-info p{font-size:.85rem;color:rgba(250,246,238,.6)}
+@media(max-width:640px){.preview-grid{grid-template-columns:1fr}}
+
+/* ===== BOOK ===== */
+.book-section{background:linear-gradient(180deg,var(--deep-mid),var(--deep));overflow:hidden}
+.book-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:900px;margin:0 auto}
+.book-visual{perspective:1200px;display:flex;justify-content:center}
+.book-3d{transform:rotateY(-12deg) rotateX(2deg);transition:transform .5s ease;box-shadow:20px 20px 60px rgba(0,0,0,.5),-2px 0 8px rgba(0,0,0,.3);border-radius:4px;max-width:320px}
+.book-3d:hover{transform:rotateY(-4deg) rotateX(1deg)}
+.book-text .section-sub{margin-bottom:20px}
+.book-note{font-size:.9rem;color:rgba(250,246,238,.5);font-style:italic;margin-top:16px;padding-top:16px;border-top:1px solid rgba(198,168,85,.15)}
+@media(max-width:700px){.book-layout{grid-template-columns:1fr;text-align:center}.book-text .section-sub{margin-left:auto;margin-right:auto}}
+
+/* ===== INSTAGRAM ===== */
+.ig-section{background:var(--deep)}
+.ig-mockup{max-width:400px;margin:0 auto;background:var(--deep-mid);border:1px solid rgba(198,168,85,.15);border-radius:20px;overflow:hidden}
+.ig-header{padding:20px 20px 16px;display:flex;align-items:center;gap:14px;border-bottom:1px solid rgba(250,246,238,.06)}
+.ig-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--gold));display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.4rem;color:var(--deep);font-weight:700}
+.ig-handle{font-weight:600;font-size:.95rem;color:var(--cream)}
+.ig-verified{display:inline-block;width:14px;height:14px;background:var(--sage);border-radius:50%;margin-left:4px;vertical-align:middle}
+.ig-stats{display:flex;justify-content:space-around;padding:18px 20px;border-bottom:1px solid rgba(250,246,238,.06)}
+.ig-stat{text-align:center}
+.ig-stat-num{font-weight:700;font-size:1.1rem;color:var(--cream)}
+.ig-stat-label{font-size:.75rem;color:rgba(250,246,238,.5);margin-top:2px}
+.ig-bio{padding:18px 20px}
+.ig-bio-name{font-weight:700;font-size:.9rem;color:var(--cream);margin-bottom:6px}
+.ig-bio-line{font-size:.85rem;color:rgba(250,246,238,.7);line-height:1.7}
+.ig-bio-link{color:var(--sage);font-weight:500}
+.ig-cta-btn{display:block;margin:0 20px 20px;padding:10px;text-align:center;background:var(--sage);color:var(--deep);font-weight:600;font-size:.85rem;border-radius:10px}
+
+/* ===== PROGRAMS ===== */
+.programs-section{background:linear-gradient(180deg,var(--deep),var(--deep-mid))}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+.program-card{background:rgba(19,43,66,.6);border:1px solid rgba(198,168,85,.15);border-radius:16px;padding:32px 24px;text-align:center;transition:transform .3s ease,border-color .3s ease}
+.program-card:hover{transform:translateY(-4px);border-color:rgba(198,168,85,.4)}
+.program-card.featured{border-color:var(--gold);position:relative}
+.program-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.7rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px}
+.program-icon{font-size:2rem;margin-bottom:16px}
+.program-name{font-family:var(--font-head);font-size:1.15rem;color:var(--cream);margin-bottom:8px}
+.program-desc{font-size:.85rem;color:rgba(250,246,238,.6);margin-bottom:20px;line-height:1.7}
+.program-price{font-family:var(--font-head);font-size:1.6rem;color:var(--gold);font-weight:700}
+.program-price span{font-size:.85rem;font-weight:400;color:rgba(250,246,238,.5)}
+@media(max-width:700px){.programs-grid{grid-template-columns:1fr}}
+
+/* ===== INCOME CALCULATOR ===== */
+.calc-section{background:var(--deep-mid)}
+.calculator{max-width:700px;margin:0 auto;background:rgba(11,26,43,.8);border:1px solid rgba(198,168,85,.2);border-radius:20px;padding:40px 36px}
+.calc-slider-group{margin-bottom:28px}
+.calc-slider-group label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;font-size:.95rem;color:var(--cream)}
+.calc-slider-group label span{font-family:var(--font-head);font-size:1.2rem;color:var(--gold);font-weight:600}
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:rgba(250,246,238,.1);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
+.calc-results{margin-top:32px;padding-top:28px;border-top:1px solid rgba(198,168,85,.2);display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.calc-result{text-align:center;padding:20px;background:rgba(198,168,85,.06);border-radius:12px}
+.calc-result-label{font-size:.8rem;color:rgba(250,246,238,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.calc-result-num{font-family:var(--font-head);font-size:2rem;color:var(--gold);font-weight:700}
+
+/* ===== REPORT TEASER ===== */
+.report-section{background:linear-gradient(180deg,var(--deep-mid),var(--deep))}
+.report-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:960px;margin:0 auto}
+.report-visual{position:relative;height:360px}
+.report-page{position:absolute;width:240px;background:var(--cream);border-radius:8px;padding:24px 20px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.report-page:nth-child(1){top:0;left:20px;transform:rotate(-6deg);z-index:1}
+.report-page:nth-child(2){top:40px;left:60px;transform:rotate(2deg);z-index:2}
+.report-page:nth-child(3){top:80px;left:30px;transform:rotate(-2deg);z-index:3}
+.report-page-title{font-family:var(--font-head);font-size:.85rem;color:var(--deep);font-weight:700;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--gold)}
+.report-line{height:6px;background:rgba(11,26,43,.1);border-radius:3px;margin-bottom:6px}
+.report-line:nth-child(2){width:90%}
+.report-line:nth-child(3){width:75%}
+.report-line:nth-child(4){width:85%}
+.report-line:nth-child(5){width:60%}
+.report-chart{display:flex;align-items:flex-end;gap:4px;margin-top:12px;height:40px}
+.report-bar{width:14px;border-radius:2px 2px 0 0}
+.report-bar:nth-child(1){height:50%;background:var(--sage)}
+.report-bar:nth-child(2){height:75%;background:var(--gold)}
+.report-bar:nth-child(3){height:60%;background:var(--rose)}
+.report-bar:nth-child(4){height:90%;background:var(--sage)}
+.report-bar:nth-child(5){height:45%;background:var(--gold)}
+.report-bullets{list-style:none}
+.report-bullets li{position:relative;padding-left:24px;margin-bottom:16px;font-size:.95rem;color:rgba(250,246,238,.8);line-height:1.7}
+.report-bullets li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700}
+@media(max-width:700px){.report-layout{grid-template-columns:1fr}.report-visual{height:300px;margin-bottom:20px}}
+
+/* ===== CTA ===== */
+.cta-section{background:linear-gradient(180deg,var(--deep),var(--deep-mid));text-align:center;padding:100px 24px}
+.cta-btn{display:inline-block;padding:18px 48px;background:linear-gradient(135deg,var(--gold),#d4b85c);color:var(--deep);font-family:var(--font-head);font-size:1.15rem;font-weight:700;border-radius:50px;transition:all .3s ease;box-shadow:0 8px 24px rgba(198,168,85,.3)}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(198,168,85,.4);color:var(--deep)}
+.cta-note{margin-top:20px;font-size:.85rem;color:rgba(250,246,238,.4)}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(198,168,85,.1)}
+footer p{font-size:.8rem;color:rgba(250,246,238,.35)}
+footer a{color:var(--gold)}
+
+/* ===== DECORATIVE ===== */
+.gold-line{width:60px;height:2px;background:var(--gold);margin:0 auto 20px}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(198,168,85,.2),transparent);margin:0}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero h1,.hero p,.hero-eyebrow,.hero-badge{animation:fadeUp .8s ease forwards;opacity:0}
+.hero-eyebrow{animation-delay:.1s}
+.hero h1{animation-delay:.25s}
+.hero p{animation-delay:.4s}
+.hero-badge{animation-delay:.55s}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+<p class="hero-eyebrow">A Preview Built Just for You</p>
+<h1><span>Jan</span>, Here's a Preview of<br>Your Coaching Business</h1>
+<p>This page was generated by Jimmy Davis's AI Business Design Software — a system that analyzes your unique superpowers, researches your market, and builds a complete coaching business blueprint in hours, not months.</p>
+<div class="hero-badge">The Regulated Classroom Method™</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== IDENTITY CARD ===== -->
+<section class="identity-section">
+<div class="container center">
+<p class="section-label">Your Coaching Identity</p>
+<h2 class="section-title">Meet the Coach</h2>
+<div class="id-card">
+<div class="id-card-name">Jan Davis</div>
+<div class="id-card-title">Creator of The Regulated Classroom Method™</div>
+<p class="id-card-pitch">Jan helps overwhelmed teachers regulate their own nervous systems using breathwork, EFT tapping, and mindfulness — so they can stop surviving the school year and start enjoying it again. Then she equips them to bring those same tools into their classrooms, transforming even the most anxious, ADHD-affected students into focused, calm learners.</p>
+<div class="id-tags">
+<span class="id-tag breathwork">Breathwork</span>
+<span class="id-tag tapping">EFT Tapping</span>
+<span class="id-tag mindfulness">Mindfulness</span>
+<span class="id-tag education">K-8 Education</span>
+<span class="id-tag breathwork">Nervous System Regulation</span>
+<span class="id-tag tapping">ADHD & Anxiety Support</span>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== METHOD VISUAL ===== -->
+<section class="method-section">
+<div class="container center">
+<p class="section-label">Your Signature Method</p>
+<h2 class="section-title">The Regulated Classroom Method™</h2>
+<p class="section-sub">Four integrated pillars that calm YOU first — then transform your entire classroom. One complete system built from three powerful modalities.</p>
+<div class="method-img">
+<img src="JanMethod.png" alt="The Regulated Classroom Method — Reset, Release, Refocus, Ripple">
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== 9-STEP JOURNEY ===== -->
+<section class="journey-section">
+<div class="container center">
+<p class="section-label">Your Proven Process</p>
+<h2 class="section-title">The 9-Step Regulated Classroom Journey™</h2>
+<p class="section-sub">Every client follows this exact journey — from recognizing their own burnout signals to becoming the teacher who changes the culture of an entire school.</p>
+<div class="journey-img">
+<img src="JanProcess.png" alt="The Regulated Classroom Journey — 9 Steps from Regulate You to Radiate">
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== WEBSITE PREVIEWS ===== -->
+<section class="previews-section">
+<div class="container center">
+<p class="section-label">Your Online Presence</p>
+<h2 class="section-title">Two Website Concepts — Designed for You</h2>
+<p class="section-sub">Two complete, scrolling website mockups — each with a different personality. Click to explore the full design.</p>
+<div class="preview-grid">
+<a href="jan.html" class="preview-card">
+<div class="preview-thumb warm">
+<div class="preview-thumb-text">
+<h4>The Regulated Classroom</h4>
+<p>Warm · Sage · Nature-Inspired</p>
+</div>
+</div>
+<div class="preview-info">
+<h3>Style 1 — Warm & Grounded</h3>
+<p>Cream backgrounds, sage accents, editorial warmth</p>
+</div>
+</a>
+<a href="jan2.html" class="preview-card">
+<div class="preview-thumb dark">
+<div class="preview-thumb-text">
+<h4>The Regulated Classroom</h4>
+<p>Deep Navy · Gold · Sophisticated</p>
+</div>
+</div>
+<div class="preview-info">
+<h3>Style 2 — Bold & Deep</h3>
+<p>Dark backgrounds, gold accents, premium feel</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== BOOK ===== -->
+<section class="book-section">
+<div class="container">
+<div class="book-layout">
+<div class="book-visual">
+<img class="book-3d" src="JanBook.png" alt="The Regulated Classroom by Jan Davis — book cover">
+</div>
+<div class="book-text">
+<p class="section-label">Your Book</p>
+<h2 class="section-title">The Regulated Classroom</h2>
+<p class="section-sub">How Breathwork, Tapping, and Mindfulness Can Save Your Teaching Career and Transform Your Students. A complete 13-chapter guide with classroom scripts, breathing protocols, and tapping sequences organized by grade level and situation.</p>
+<p class="book-note">Full outline, chapter structure, and writing support included in the complete Blueprint.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== INSTAGRAM ===== -->
+<section class="ig-section">
+<div class="container center">
+<p class="section-label">Your Social Presence</p>
+<h2 class="section-title">Instagram Profile Preview</h2>
+<p class="section-sub">Here's how your brand could look on social media — professional, clear, and instantly credible.</p>
+<div class="ig-mockup">
+<div class="ig-header">
+<div class="ig-avatar">JD</div>
+<div>
+<div class="ig-handle">@janregulatedclassroom <span class="ig-verified"></span></div>
+</div>
+</div>
+<div class="ig-stats">
+<div class="ig-stat"><div class="ig-stat-num">—</div><div class="ig-stat-label">Posts</div></div>
+<div class="ig-stat"><div class="ig-stat-num">—</div><div class="ig-stat-label">Followers</div></div>
+<div class="ig-stat"><div class="ig-stat-num">—</div><div class="ig-stat-label">Following</div></div>
+</div>
+<div class="ig-bio">
+<div class="ig-bio-name">Jan Davis | The Regulated Classroom™</div>
+<div class="ig-bio-line">Breathwork + Tapping + Mindfulness for Teachers</div>
+<div class="ig-bio-line">Calm yourself first. Then calm your classroom.</div>
+<div class="ig-bio-line">📖 Author of <em>The Regulated Classroom</em></div>
+<div class="ig-bio-line ig-bio-link">👇 Free: The 90-Second Reset Guide</div>
+</div>
+<div class="ig-cta-btn">Get Your Free Guide</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== PROGRAMS ===== -->
+<section class="programs-section">
+<div class="container center">
+<p class="section-label">Your Program Suite</p>
+<h2 class="section-title">Three Ways to Work With Jan</h2>
+<p class="section-sub">A complete value ladder — from free to premium — designed to meet teachers wherever they are on their journey.</p>
+<div class="programs-grid">
+<div class="program-card">
+<div class="program-icon">📄</div>
+<div class="program-name">The 90-Second Reset</div>
+<p class="program-desc">5 science-backed tools overwhelmed teachers can use between classes to go from frazzled to focused.</p>
+<div class="program-price">FREE</div>
+</div>
+<div class="program-card featured">
+<div class="program-icon">🎓</div>
+<div class="program-name">The Regulated Classroom Intensive</div>
+<p class="program-desc">6-week group coaching program walking teachers through all 4 pillars of the Method — with done-for-you classroom scripts.</p>
+<div class="program-price">$1,997</div>
+</div>
+<div class="program-card">
+<div class="program-icon">💎</div>
+<div class="program-name">Private Coaching</div>
+<p class="program-desc">12 weeks of private 1:1 coaching for teachers who want deep personal transformation plus customized classroom integration.</p>
+<div class="program-price">$5,997</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== INCOME CALCULATOR ===== -->
+<section class="calc-section">
+<div class="container center">
+<p class="section-label">Your Revenue Potential</p>
+<h2 class="section-title">Income Calculator</h2>
+<p class="section-sub">Move the sliders to see what's possible — based on your actual program prices.</p>
+<div class="calculator">
+<div class="calc-slider-group">
+<label>Teachers per group round <span id="groupVal">10</span></label>
+<input type="range" id="groupSlider" min="4" max="25" value="10">
+</div>
+<div class="calc-slider-group">
+<label>Group rounds per year <span id="roundsVal">3</span></label>
+<input type="range" id="roundsSlider" min="1" max="8" value="3">
+</div>
+<div class="calc-slider-group">
+<label>Private clients per year <span id="privateVal">4</span></label>
+<input type="range" id="privateSlider" min="0" max="12" value="4">
+</div>
+<div class="calc-results">
+<div class="calc-result">
+<div class="calc-result-label">Monthly Revenue</div>
+<div class="calc-result-num" id="monthlyRev">$6,989</div>
+</div>
+<div class="calc-result">
+<div class="calc-result-label">Annual Revenue</div>
+<div class="calc-result-num" id="annualRev">$83,868</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== REPORT TEASER ===== -->
+<section class="report-section">
+<div class="container">
+<div class="report-layout">
+<div class="report-visual">
+<div class="report-page">
+<div class="report-page-title">Market Research</div>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+<div class="report-chart">
+<div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div>
+</div>
+</div>
+<div class="report-page">
+<div class="report-page-title">Customer Avatar</div>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+</div>
+<div class="report-page">
+<div class="report-page-title">Revenue Projections</div>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+<div class="report-chart">
+<div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div><div class="report-bar"></div>
+</div>
+</div>
+</div>
+<div class="report-text">
+<p class="section-label">Your Full Blueprint</p>
+<h2 class="section-title">What the Complete Report Reveals</h2>
+<ul class="report-bullets">
+<li>The 5 biggest competitors in the teacher wellness coaching space — and the gap NONE of them are filling (that Jan is perfectly positioned to own)</li>
+<li>The exact words overwhelmed teachers use at 2am when they're Googling "should I quit teaching" — and how to speak that language in every piece of copy</li>
+<li>Why 63% of teachers report their job is destroying their mental health — and how that statistic becomes Jan's most powerful marketing hook</li>
+<li>The "Parking Lot Tap" — the 3-minute tapping sequence teachers can do in their car before school that changes their entire nervous system state</li>
+<li>How to position breathwork, tapping, and mindfulness as "professional development" (not "woo") — so school districts pay for it</li>
+<li>The $12,000+ revenue opportunity hiding in school district consulting — and exactly how to pitch it to a superintendent</li>
+<li>The one false belief keeping teachers stuck in burnout ("I just need to try harder") — and how Jan's method shatters it in the first session</li>
+<li>A complete 13-chapter book outline with chapter titles, key points, and reader transformation arcs — ready to start writing tomorrow</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+<p class="section-label">Ready to Make This Real?</p>
+<h2 class="section-title">Want to Bring This to Life?</h2>
+<p class="section-sub" style="margin-left:auto;margin-right:auto">Everything on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint includes your complete market research, sales copy, email sequences, curriculum details, book chapters, and everything you need to launch. This is just the preview.</p>
+<a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing</a>
+<p class="cta-note">INeedJimmy.com — AI-Powered Business Design for Coaches</p>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+<p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const groupSlider=document.getElementById('groupSlider');
+const roundsSlider=document.getElementById('roundsSlider');
+const privateSlider=document.getElementById('privateSlider');
+const groupVal=document.getElementById('groupVal');
+const roundsVal=document.getElementById('roundsVal');
+const privateVal=document.getElementById('privateVal');
+const monthlyRev=document.getElementById('monthlyRev');
+const annualRev=document.getElementById('annualRev');
+function calc(){
+const g=parseInt(groupSlider.value);
+const r=parseInt(roundsSlider.value);
+const p=parseInt(privateSlider.value);
+groupVal.textContent=g;
+roundsVal.textContent=r;
+privateVal.textContent=p;
+const groupRev=g*1997*r;
+const privateRev=p*5997;
+const annual=groupRev+privateRev;
+const monthly=Math.round(annual/12);
+monthlyRev.textContent='$'+monthly.toLocaleString();
+annualRev.textContent='$'+annual.toLocaleString();
+}
+groupSlider.addEventListener('input',calc);
+roundsSlider.addEventListener('input',calc);
+privateSlider.addEventListener('input',calc);
+calc();
+</script>
+</body>
+</html>

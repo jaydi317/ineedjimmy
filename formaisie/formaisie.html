@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maisie Wormser — Your Coaching Business Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --deep:#0B1A2B;
+    --deep-mid:#132B42;
+    --forest:#1C2B1E;
+    --gold:#C6A855;
+    --gold-light:#E8D5A0;
+    --cream:#FAF6EE;
+    --cream-2:#F3ECDD;
+    --sage:#7A9E7E;
+    --sage-dark:#5C7D60;
+    --rose:#C9928E;
+    --warm:#D4A574;
+    --white:#FFFFFF;
+    --ink:#243224;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.15;color:var(--forest);}
+  .script{font-family:'Caveat',cursive;color:var(--gold);}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+  section{padding:84px 0;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;font-size:.72rem;color:var(--gold);margin-bottom:18px;
+  }
+  .btn{
+    display:inline-block;background:var(--gold);color:var(--forest);
+    font-weight:600;font-size:1.02rem;letter-spacing:.01em;text-decoration:none;
+    padding:18px 42px;border-radius:50px;transition:all .3s ease;
+    box-shadow:0 10px 30px rgba(198,168,85,.35);border:none;cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(198,168,85,.45);background:var(--gold-light);}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(160deg,var(--deep) 0%,var(--deep-mid) 55%,var(--forest) 100%);
+    color:var(--cream);text-align:center;padding:120px 0 110px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-30%;right:-10%;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(198,168,85,.22),transparent 70%);border-radius:50%;
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-25%;left:-12%;width:480px;height:480px;
+    background:radial-gradient(circle,rgba(122,158,126,.20),transparent 70%);border-radius:50%;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .script{font-size:1.7rem;display:block;margin-bottom:10px;}
+  .hero h1{color:var(--white);font-size:3.5rem;font-weight:700;margin-bottom:22px;letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--gold-light);}
+  .hero p{font-size:1.18rem;max-width:680px;margin:0 auto;color:rgba(250,246,238,.82);font-weight:300;}
+  .hero .badge{
+    display:inline-block;margin-top:34px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold-light);border:1px solid rgba(198,168,85,.4);padding:9px 22px;border-radius:50px;
+  }
+
+  /* IDENTITY CARD */
+  .identity{background:var(--cream);}
+  .id-card{
+    background:linear-gradient(155deg,var(--deep) 0%,var(--forest) 100%);
+    border-radius:28px;padding:62px 56px;color:var(--cream);position:relative;overflow:hidden;
+    box-shadow:0 40px 80px rgba(11,26,43,.30);border:1px solid rgba(198,168,85,.25);
+  }
+  .id-card::before{
+    content:"";position:absolute;top:0;right:0;width:280px;height:280px;
+    background:radial-gradient(circle at top right,rgba(198,168,85,.18),transparent 70%);
+  }
+  .id-card .script{font-size:1.5rem;}
+  .id-card h2{color:var(--white);font-size:2.9rem;margin:6px 0 4px;}
+  .id-card .method{color:var(--gold-light);font-size:1.25rem;font-style:italic;font-family:'Playfair Display',serif;margin-bottom:24px;}
+  .id-card .pitch{font-size:1.15rem;font-weight:300;max-width:660px;color:rgba(250,246,238,.9);line-height:1.7;}
+  .tags{margin-top:30px;display:flex;flex-wrap:wrap;gap:11px;}
+  .tag{
+    background:rgba(198,168,85,.14);border:1px solid rgba(198,168,85,.45);color:var(--gold-light);
+    font-size:.8rem;font-weight:500;letter-spacing:.04em;padding:8px 18px;border-radius:50px;
+  }
+
+  /* SECTION HEADERS */
+  .sec-head{text-align:center;max-width:760px;margin:0 auto 56px;}
+  .sec-head h2{font-size:2.5rem;margin-bottom:14px;}
+  .sec-head p{font-size:1.12rem;color:#5b6b5b;font-weight:300;}
+
+  /* METHOD VISUAL */
+  .method-sec{background:var(--cream-2);}
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .pillar{
+    background:var(--white);border-radius:20px;padding:38px 26px;text-align:center;
+    border:1px solid rgba(122,158,126,.18);transition:all .35s ease;position:relative;overflow:hidden;
+    box-shadow:0 10px 30px rgba(28,43,30,.06);
+  }
+  .pillar::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);transform:scaleX(0);transition:transform .35s ease;transform-origin:left;}
+  .pillar:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(28,43,30,.14);}
+  .pillar:hover::before{transform:scaleX(1);}
+  .pillar .num{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--gold);font-weight:600;margin-bottom:10px;}
+  .pillar h3{font-size:1.55rem;margin-bottom:12px;color:var(--forest);}
+  .pillar p{font-size:.96rem;color:#5b6b5b;line-height:1.6;}
+
+  /* JOURNEY */
+  .journey-sec{background:var(--cream);}
+  .journey-img{
+    max-width:680px;margin:0 auto;border-radius:20px;overflow:hidden;
+    box-shadow:0 30px 70px rgba(28,43,30,.16);border:1px solid rgba(122,158,126,.2);
+  }
+  .journey-img img{width:100%;display:block;}
+
+  /* WEBSITE PREVIEW */
+  .web-sec{background:var(--deep);color:var(--cream);}
+  .web-sec .sec-head h2{color:var(--white);}
+  .web-sec .sec-head p{color:rgba(250,246,238,.72);}
+  .mockups{display:grid;grid-template-columns:1fr 1fr;gap:30px;}
+  .mockup-card{
+    background:var(--deep-mid);border-radius:20px;overflow:hidden;text-decoration:none;
+    border:1px solid rgba(198,168,85,.22);transition:all .35s ease;display:block;
+  }
+  .mockup-card:hover{transform:translateY(-8px);box-shadow:0 28px 60px rgba(0,0,0,.4);border-color:var(--gold);}
+  .mockup-top{height:230px;position:relative;overflow:hidden;}
+  .mock-warm{background:linear-gradient(150deg,#FAF6EE 0%,#EBE3D2 100%);}
+  .mock-dark{background:linear-gradient(150deg,#0B1A2B 0%,#1C2B1E 100%);}
+  .mini{position:absolute;left:24px;right:24px;}
+  .mini .mtitle{font-family:'Playfair Display',serif;font-size:1.2rem;}
+  .mock-warm .mtitle{color:var(--forest);}
+  .mock-dark .mtitle{color:var(--gold-light);}
+  .mini .mbar{height:7px;border-radius:4px;margin-top:9px;}
+  .mock-warm .mbar{background:rgba(122,158,126,.45);}
+  .mock-dark .mbar{background:rgba(198,168,85,.4);}
+  .mini .mbar.short{width:55%;}
+  .mini .mchip{display:inline-block;margin-top:14px;padding:6px 16px;border-radius:30px;font-size:.7rem;font-weight:600;letter-spacing:.04em;}
+  .mock-warm .mchip{background:var(--sage);color:#fff;}
+  .mock-dark .mchip{background:var(--gold);color:var(--forest);}
+  .mockup-info{padding:24px 26px;}
+  .mockup-info h3{color:var(--white);font-size:1.3rem;margin-bottom:5px;}
+  .mockup-info span{font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .mockup-info .view{display:block;margin-top:12px;color:var(--gold-light);font-size:.92rem;font-weight:500;}
+
+  /* BOOK */
+  .book-sec{background:var(--cream-2);}
+  .book-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .book-stage{display:flex;justify-content:center;perspective:1600px;}
+  .book-3d{
+    transform:rotateY(-22deg) rotateX(4deg);transform-style:preserve-3d;
+    box-shadow:28px 34px 70px rgba(28,43,30,.32);border-radius:4px 8px 8px 4px;
+    transition:transform .6s ease;position:relative;
+  }
+  .book-3d:hover{transform:rotateY(-12deg) rotateX(2deg);}
+  .book-3d img{display:block;width:330px;max-width:100%;border-radius:4px 8px 8px 4px;}
+  .book-3d::after{content:"";position:absolute;top:0;bottom:0;left:0;width:16px;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,0));border-radius:4px 0 0 4px;}
+  .book-copy .eyebrow{color:var(--gold);}
+  .book-copy h2{font-size:2.4rem;margin-bottom:16px;}
+  .book-copy p{color:#5b6b5b;font-size:1.08rem;margin-bottom:18px;}
+  .book-note{
+    background:var(--white);border-left:3px solid var(--gold);padding:18px 22px;border-radius:0 12px 12px 0;
+    font-size:.98rem;color:var(--forest);font-style:italic;
+  }
+
+  /* INSTAGRAM */
+  .ig-sec{background:var(--cream);}
+  .ig-card{
+    max-width:430px;margin:0 auto;background:var(--white);border-radius:24px;
+    box-shadow:0 26px 60px rgba(28,43,30,.14);border:1px solid rgba(122,158,126,.16);overflow:hidden;
+  }
+  .ig-top{padding:26px 26px 18px;display:flex;align-items:center;gap:22px;}
+  .ig-avatar{
+    width:84px;height:84px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(140deg,var(--sage),var(--gold));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-size:2rem;color:#fff;
+    box-shadow:0 0 0 3px #fff,0 0 0 5px var(--gold-light);
+  }
+  .ig-stats{display:flex;gap:24px;flex:1;}
+  .ig-stat{text-align:center;}
+  .ig-stat b{display:block;font-size:1.15rem;color:var(--forest);font-family:'Playfair Display',serif;}
+  .ig-stat span{font-size:.78rem;color:#8a978a;}
+  .ig-handle{padding:0 26px 4px;font-weight:600;font-size:.98rem;color:var(--forest);}
+  .ig-bio{padding:0 26px 22px;font-size:.92rem;color:#3f4d3f;line-height:1.55;}
+  .ig-bio .b-name{font-weight:600;}
+  .ig-bio .b-link{color:var(--sage-dark);font-weight:600;}
+  .ig-btns{display:flex;gap:10px;padding:0 26px 24px;}
+  .ig-btns .igb{flex:1;text-align:center;padding:9px;border-radius:9px;font-size:.85rem;font-weight:600;}
+  .igb.follow{background:var(--sage);color:#fff;}
+  .igb.msg{background:var(--cream-2);color:var(--forest);}
+
+  /* PROGRAMS */
+  .prog-sec{background:var(--deep-mid);color:var(--cream);}
+  .prog-sec .sec-head h2{color:#fff;}
+  .prog-sec .sec-head p{color:rgba(250,246,238,.72);}
+  .progs{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;align-items:stretch;}
+  .prog{
+    background:rgba(250,246,238,.05);border:1px solid rgba(198,168,85,.22);border-radius:20px;
+    padding:38px 30px;text-align:center;transition:all .35s ease;display:flex;flex-direction:column;
+  }
+  .prog:hover{transform:translateY(-8px);border-color:var(--gold);background:rgba(250,246,238,.08);}
+  .prog.featured{background:linear-gradient(160deg,rgba(198,168,85,.16),rgba(122,158,126,.1));border-color:var(--gold);transform:scale(1.04);}
+  .prog.featured:hover{transform:scale(1.04) translateY(-8px);}
+  .prog .ribbon{display:inline-block;background:var(--gold);color:var(--forest);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 16px;border-radius:30px;margin-bottom:16px;}
+  .prog .ptype{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .prog h3{color:#fff;font-size:1.5rem;margin-bottom:14px;line-height:1.25;}
+  .prog .price{font-family:'Playfair Display',serif;font-size:2.5rem;color:var(--gold-light);margin:auto 0 6px;}
+  .prog .price small{font-size:1rem;color:rgba(250,246,238,.6);}
+  .prog .sub{font-size:.86rem;color:rgba(250,246,238,.6);}
+
+  /* CALCULATOR */
+  .calc-sec{background:var(--cream);}
+  .calc{
+    max-width:920px;margin:0 auto;background:var(--white);border-radius:26px;
+    box-shadow:0 30px 70px rgba(28,43,30,.12);border:1px solid rgba(122,158,126,.16);
+    padding:50px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  }
+  .calc-controls .ctrl{margin-bottom:30px;}
+  .calc-controls .ctrl:last-child{margin-bottom:0;}
+  .ctrl label{display:flex;justify-content:space-between;align-items:baseline;font-weight:600;color:var(--forest);font-size:.98rem;margin-bottom:12px;}
+  .ctrl label b{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.4rem;}
+  input[type=range]{
+    -webkit-appearance:none;width:100%;height:6px;border-radius:5px;
+    background:linear-gradient(90deg,var(--sage),var(--gold-light));outline:none;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--gold);
+    cursor:pointer;box-shadow:0 4px 12px rgba(198,168,85,.5);border:3px solid #fff;
+  }
+  input[type=range]::-moz-range-thumb{width:26px;height:26px;border-radius:50%;background:var(--gold);cursor:pointer;border:3px solid #fff;}
+  .calc-result{
+    background:linear-gradient(160deg,var(--deep) 0%,var(--forest) 100%);border-radius:20px;
+    padding:42px 36px;text-align:center;color:var(--cream);
+  }
+  .calc-result .rlabel{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);}
+  .calc-result .annual{font-family:'Playfair Display',serif;font-size:3.4rem;color:#fff;font-weight:700;line-height:1.1;margin:8px 0 4px;}
+  .calc-result .divide{height:1px;background:rgba(198,168,85,.3);margin:24px 0;}
+  .calc-result .monthly{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold-light);}
+  .calc-result .msmall{font-size:.82rem;color:rgba(250,246,238,.6);}
+  .calc-note{text-align:center;margin-top:24px;font-size:.9rem;color:#8a978a;font-style:italic;}
+
+  /* REPORT TEASER */
+  .report-sec{background:var(--cream-2);}
+  .report-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:center;}
+  .report-stack{position:relative;height:440px;}
+  .rpage{
+    position:absolute;width:300px;background:var(--white);border-radius:8px;
+    box-shadow:0 18px 40px rgba(28,43,30,.16);padding:26px 24px;border:1px solid rgba(122,158,126,.14);
+  }
+  .rpage h4{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .rline{height:7px;border-radius:4px;background:#e7e0d0;margin-bottom:9px;}
+  .rline.s1{width:90%;}.rline.s2{width:75%;}.rline.s3{width:85%;}.rline.s4{width:60%;}
+  .rchart{display:flex;align-items:flex-end;gap:8px;height:64px;margin-top:16px;}
+  .rbar{flex:1;background:linear-gradient(180deg,var(--sage),var(--sage-dark));border-radius:4px 4px 0 0;}
+  .rdonut{width:60px;height:60px;border-radius:50%;margin-top:14px;background:conic-gradient(var(--gold) 0 62%,var(--sage) 62% 100%);}
+  .rp1{top:0;left:0;transform:rotate(-6deg);z-index:1;}
+  .rp2{top:60px;left:70px;transform:rotate(3deg);z-index:2;}
+  .rp3{top:150px;left:30px;transform:rotate(-2deg);z-index:3;}
+  .report-copy .eyebrow{color:var(--gold);}
+  .report-copy h2{font-size:2.3rem;margin-bottom:24px;}
+  .fascinations{list-style:none;}
+  .fascinations li{
+    position:relative;padding-left:34px;margin-bottom:16px;font-size:1.02rem;color:#3f4d3f;line-height:1.55;
+  }
+  .fascinations li::before{
+    content:"";position:absolute;left:0;top:7px;width:16px;height:16px;border-radius:50%;
+    background:var(--gold);box-shadow:0 0 0 4px rgba(198,168,85,.18);
+  }
+  .fascinations li b{color:var(--forest);font-weight:600;}
+
+  /* CTA */
+  .cta-sec{
+    background:linear-gradient(160deg,var(--deep) 0%,var(--deep-mid) 55%,var(--forest) 100%);
+    color:var(--cream);text-align:center;position:relative;overflow:hidden;
+  }
+  .cta-sec::before{content:"";position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(198,168,85,.18),transparent 70%);}
+  .cta-sec .wrap{position:relative;z-index:2;}
+  .cta-sec .script{font-size:1.7rem;}
+  .cta-sec h2{color:#fff;font-size:2.9rem;margin:8px 0 20px;}
+  .cta-sec p{max-width:640px;margin:0 auto 16px;color:rgba(250,246,238,.85);font-size:1.1rem;font-weight:300;}
+  .cta-sec .soon{display:inline-block;margin:6px 0 34px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);border:1px solid rgba(198,168,85,.4);padding:9px 22px;border-radius:50px;}
+
+  /* FOOTER */
+  footer{background:var(--forest);color:rgba(250,246,238,.6);text-align:center;padding:40px 0;font-size:.88rem;}
+  footer a{color:var(--gold-light);text-decoration:none;}
+
+  @media(max-width:920px){
+    .hero h1{font-size:2.5rem;}
+    .pillars{grid-template-columns:1fr 1fr;}
+    .progs{grid-template-columns:1fr;}
+    .prog.featured{transform:scale(1);}
+    .prog.featured:hover{transform:translateY(-8px);}
+    .book-grid,.report-grid,.calc,.mockups{grid-template-columns:1fr;gap:40px;}
+    .id-card{padding:44px 32px;}
+    .id-card h2{font-size:2.1rem;}
+    .calc{padding:36px 28px;}
+    .report-stack{height:400px;margin:0 auto;max-width:380px;}
+    .sec-head h2{font-size:2rem;}
+  }
+  @media(max-width:560px){
+    .pillars{grid-template-columns:1fr;}
+    .hero h1{font-size:2.1rem;}
+    .calc-result .annual{font-size:2.6rem;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <span class="script">A custom preview, built just for you</span>
+    <h1>Maisie, Here's a Preview<br>of <em>Your</em> Coaching Business</h1>
+    <p>This is what your business could look like — your method, your book, your programs, your website. Generated by Jimmy Davis's AI Business Design Software to show you what's possible.</p>
+    <span class="badge">The Choice Point Method™ · Certified Quantum Coach + EFT</span>
+  </div>
+</header>
+
+<!-- IDENTITY CARD -->
+<section class="identity">
+  <div class="wrap">
+    <div class="id-card">
+      <span class="script">Meet the coach</span>
+      <h2>Maisie Wormser</h2>
+      <div class="method">Creator of The Choice Point Method™</div>
+      <p class="pitch">"Most midlife women don't need more information — they need an interrupt. I help women who are running on autopilot find their Choice Point: the moment they remember they get to choose. Then I give them the tools to rewire the loop for good."</p>
+      <div class="tags">
+        <span class="tag">Certified Quantum Coach</span>
+        <span class="tag">EFT Tapping Practitioner</span>
+        <span class="tag">NLP Practitioner</span>
+        <span class="tag">Hypnosis &amp; Time Technique</span>
+        <span class="tag">ICF-Accredited Training</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD VISUAL -->
+<section class="method-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Your Signature Framework</div>
+      <h2>The Choice Point Method™</h2>
+      <p>The four-part process that takes a woman from autopilot to choice — built on your full toolbox of subconscious change work.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="num">Pillar One</div>
+        <h3>Pause</h3>
+        <p>Catch the autopilot moment. Awareness is the first interrupt — the instant she realizes she's looping.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">Pillar Two</div>
+        <h3>Pinpoint</h3>
+        <p>Name the loop and the old belief running it underneath, where the real pattern actually lives.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">Pillar Three</div>
+        <h3>Pivot</h3>
+        <p>Release the stuck emotion and rewire the pattern at the subconscious level so the change holds.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">Pillar Four</div>
+        <h3>Pursue</h3>
+        <p>Choose — and take aligned action toward the life and the spark that actually lights her up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The System Underneath the Brand</div>
+      <h2>Your Proven 9-Step Process</h2>
+      <p>Every client follows this exact journey — from spotting the loop to living fully at choice.</p>
+    </div>
+    <div class="journey-img">
+      <img src="MaisieProcess.png" alt="The Choice Point Journey — 9-step client process infographic">
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITE PREVIEW -->
+<section class="web-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Your Website, Two Ways</div>
+      <h2>Pick the Look That Feels Like You</h2>
+      <p>Two complete website designs, both built around your brand. Tap either one to explore the full site.</p>
+    </div>
+    <div class="mockups">
+      <a class="mockup-card" href="maisie.html">
+        <div class="mockup-top mock-warm">
+          <div class="mini" style="top:34px;">
+            <div class="mtitle">The Choice Point Method™</div>
+            <div class="mbar"></div>
+            <div class="mbar short"></div>
+            <span class="mchip">Turn Off the Autopilot →</span>
+          </div>
+        </div>
+        <div class="mockup-info">
+          <span>Style One</span>
+          <h3>Warm &amp; Elegant</h3>
+          <span class="view">Explore this design →</span>
+        </div>
+      </a>
+      <a class="mockup-card" href="maisie2.html">
+        <div class="mockup-top mock-dark">
+          <div class="mini" style="top:34px;">
+            <div class="mtitle">The Choice Point Method™</div>
+            <div class="mbar"></div>
+            <div class="mbar short"></div>
+            <span class="mchip">Turn Off the Autopilot →</span>
+          </div>
+        </div>
+        <div class="mockup-info">
+          <span>Style Two</span>
+          <h3>Bold &amp; Deep</h3>
+          <span class="view">Explore this design →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book-sec">
+  <div class="wrap">
+    <div class="book-grid">
+      <div class="book-stage">
+        <div class="book-3d">
+          <img src="MaisieBook.png" alt="Autopilot Off — book by Maisie Wormser">
+        </div>
+      </div>
+      <div class="book-copy">
+        <div class="eyebrow">Your Signature Book</div>
+        <h2>Autopilot Off</h2>
+        <p><em>How Midlife Women Break the Loops, Reclaim the Controls, and Start Following What Lights Them Up.</em></p>
+        <p>Your book becomes the front door to your whole world — the lead magnet, the authority builder, the thing a woman hands her friend and says "you have to read this."</p>
+        <div class="book-note">Full outline, all 9 chapters, and writing support are included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How You Show Up Online</div>
+      <h2>Your Instagram, Dialed In</h2>
+      <p>A profile that says exactly who you help and how — before they ever read a single post.</p>
+    </div>
+    <div class="ig-card">
+      <div class="ig-top">
+        <div class="ig-avatar">M</div>
+        <div class="ig-stats">
+          <div class="ig-stat"><b>—</b><span>posts</span></div>
+          <div class="ig-stat"><b>—</b><span>followers</span></div>
+          <div class="ig-stat"><b>—</b><span>following</span></div>
+        </div>
+      </div>
+      <div class="ig-handle">@maisiewormser</div>
+      <div class="ig-bio">
+        <span class="b-name">Maisie Wormser</span><br>
+        Creator of The Choice Point Method™ ✨<br>
+        Certified Quantum Coach + EFT<br>
+        Helping midlife women turn off autopilot &amp; follow what lights them up<br>
+        📕 Author of <em>Autopilot Off</em> (coming soon)<br>
+        <span class="b-link">👇 Free: The Autopilot Off-Switch</span>
+      </div>
+      <div class="ig-btns">
+        <div class="igb follow">Follow</div>
+        <div class="igb msg">Message</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="prog-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Your Value Ladder</div>
+      <h2>Programs People Can Actually Buy</h2>
+      <p>A clear path from a free first step all the way to premium private work — each tier a real offer with a real price.</p>
+    </div>
+    <div class="progs">
+      <div class="prog">
+        <div class="ptype">Free Entry Point</div>
+        <h3>The Autopilot Off-Switch</h3>
+        <div class="price">Free</div>
+        <div class="sub">Guide + tapping video lead magnet</div>
+      </div>
+      <div class="prog featured">
+        <div class="ribbon">Signature Offer</div>
+        <div class="ptype">6-Week Group Program</div>
+        <h3>The Choice Point Method™</h3>
+        <div class="price">$1,497</div>
+        <div class="sub">Live group experience</div>
+      </div>
+      <div class="prog">
+        <div class="ptype">12-Week Private Intensive</div>
+        <h3>Lit Up</h3>
+        <div class="price">$6,500</div>
+        <div class="sub">1:1 deep transformation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calc-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">The Numbers</div>
+      <h2>What This Could Earn You</h2>
+      <p>Move the sliders. This uses your real program prices — $1,497 for the group, $6,500 for private clients.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-controls">
+        <div class="ctrl">
+          <label>Women per group round <b id="v-women">8</b></label>
+          <input type="range" id="women" min="4" max="20" value="8">
+        </div>
+        <div class="ctrl">
+          <label>Group rounds per year <b id="v-rounds">3</b></label>
+          <input type="range" id="rounds" min="1" max="6" value="3">
+        </div>
+        <div class="ctrl">
+          <label>Private clients per year <b id="v-private">5</b></label>
+          <input type="range" id="private" min="0" max="15" value="5">
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="rlabel">Projected Annual Revenue</div>
+        <div class="annual" id="annual">$0</div>
+        <div class="divide"></div>
+        <div class="monthly" id="monthly">$0</div>
+        <div class="msmall">per month</div>
+      </div>
+    </div>
+    <p class="calc-note">Just 4 group rounds of 6 women a year clears $35,000 — before a single private client.</p>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-sec">
+  <div class="wrap">
+    <div class="report-grid">
+      <div class="report-stack">
+        <div class="rpage rp1">
+          <h4>Market Research</h4>
+          <div class="rline s1"></div><div class="rline s2"></div><div class="rline s3"></div><div class="rline s4"></div>
+          <div class="rchart"><div class="rbar" style="height:40%"></div><div class="rbar" style="height:70%"></div><div class="rbar" style="height:55%"></div><div class="rbar" style="height:90%"></div><div class="rbar" style="height:65%"></div></div>
+        </div>
+        <div class="rpage rp2">
+          <h4>Customer Avatar</h4>
+          <div class="rline s1"></div><div class="rline s3"></div><div class="rline s2"></div><div class="rline s4"></div>
+          <div class="rdonut"></div>
+        </div>
+        <div class="rpage rp3">
+          <h4>Revenue Projections</h4>
+          <div class="rline s2"></div><div class="rline s1"></div><div class="rline s4"></div>
+          <div class="rchart"><div class="rbar" style="height:35%"></div><div class="rbar" style="height:60%"></div><div class="rbar" style="height:80%"></div><div class="rbar" style="height:100%"></div></div>
+        </div>
+      </div>
+      <div class="report-copy">
+        <div class="eyebrow">The Full Blueprint Reveals</div>
+        <h2>Everything Behind This Preview</h2>
+        <ul class="fascinations">
+          <li>The <b>"2am question"</b> almost every midlife woman asks — and the answer no one ever gave her.</li>
+          <li>Why the woman who <b>"has it all together"</b> is often the most stuck of all (and the hidden cost of being everyone's rock).</li>
+          <li>The <b>3 loops</b> running underneath 90% of midlife stuckness — and which one is running your client.</li>
+          <li>Why <b>insight is a trap</b>: how understanding a pattern can keep her in it even longer.</li>
+          <li>The exact <b>5 competitors</b> in your space — what they charge, what's working, and the gap none of them are filling.</li>
+          <li>The difference between <b>"managing"</b> stuck feelings and actually <b>releasing</b> them for good.</li>
+          <li>What <b>"following what lights you up"</b> really means (hint: it's not quitting the job and moving to Bali).</li>
+          <li>The one belief that, once rewired, makes the daily choice feel <b>effortless</b> instead of exhausting.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="wrap">
+    <span class="script">This is just a preview…</span>
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything you just saw — your method, your book, your programs, your website, your full business blueprint — was generated by Jimmy Davis's AI Business Design Software.</p>
+    <p>The software that builds the whole thing for real is launching soon. The fastest way to make this your actual business is to work with Jimmy directly.</p>
+    <span class="soon">AI Business Design Software · Launching Soon</span>
+    <div>
+      <a class="btn" href="https://ineedjimmy.com/hire">See Jimmy's Services &amp; Pricing</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+</footer>
+
+<script>
+  const GROUP_PRICE = 1497;
+  const PRIVATE_PRICE = 6500;
+  const women = document.getElementById('women');
+  const rounds = document.getElementById('rounds');
+  const priv = document.getElementById('private');
+  const vWomen = document.getElementById('v-women');
+  const vRounds = document.getElementById('v-rounds');
+  const vPrivate = document.getElementById('v-private');
+  const annualEl = document.getElementById('annual');
+  const monthlyEl = document.getElementById('monthly');
+
+  function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function update(){
+    const w = +women.value, r = +rounds.value, p = +priv.value;
+    vWomen.textContent = w;
+    vRounds.textContent = r;
+    vPrivate.textContent = p;
+    const annual = (w * r * GROUP_PRICE) + (p * PRIVATE_PRICE);
+    annualEl.textContent = fmt(annual);
+    monthlyEl.textContent = fmt(annual / 12);
+  }
+  [women, rounds, priv].forEach(el => el.addEventListener('input', update));
+  update();
+</script>
+</body>
+</html>

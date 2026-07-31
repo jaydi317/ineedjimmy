@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unblend: Come Home to Yourself — Maisie Wormser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#14101a;
+    --night-2:#1d1726;
+    --dusk:#3a2b3a;
+    --ember:#e8a93f;
+    --ember-deep:#d27d2c;
+    --clay:#cf9483;
+    --rose:#c98b7a;
+    --parchment:#f4ede2;
+    --parchment-ink:#2a2320;
+    --sage:#9aa091;
+    --line:rgba(232,169,63,.22);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Newsreader',Georgia,serif;
+    background:var(--night);
+    color:#efe7da;
+    line-height:1.65;
+    font-size:19px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 26px}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--ember);font-weight:600;
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
+  .hl{
+    background:linear-gradient(transparent 58%, rgba(232,169,63,.28) 58%);
+    padding:0 .05em;
+  }
+  em{font-style:italic;color:var(--ember)}
+  .btn{
+    display:inline-block;font-family:'Inter',sans-serif;font-weight:600;
+    font-size:16px;letter-spacing:.01em;text-decoration:none;cursor:pointer;
+    background:var(--ember);color:#23170a;border:none;
+    padding:18px 38px;border-radius:2px;
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow:0 0 0 rgba(232,169,63,0);
+  }
+  .btn:hover{transform:translateY(-2px);background:#f2b94f;box-shadow:0 10px 34px rgba(232,169,63,.32)}
+  .btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .btn-sub{display:block;font-family:'Inter',sans-serif;font-size:13px;color:var(--sage);margin-top:12px;letter-spacing:.02em}
+
+  /* ---- bands progress from night -> dawn ---- */
+  .band{padding:92px 0}
+  .b-night{background:var(--night)}
+  .b-night2{background:linear-gradient(180deg,var(--night) 0%, var(--night-2) 100%)}
+  .b-dusk{background:linear-gradient(180deg,var(--night-2) 0%, var(--dusk) 100%)}
+  .b-dawn{background:linear-gradient(180deg,var(--dusk) 0%, #7a5a4e 60%, #b07a55 100%);color:#fbf3e7}
+  .b-warm{background:linear-gradient(180deg,#b07a55 0%, #d99a63 45%, var(--parchment) 100%);color:var(--parchment-ink)}
+  .b-parch{background:var(--parchment);color:var(--parchment-ink)}
+  .b-parch .eyebrow{color:var(--ember-deep)}
+  .b-parch em,.b-warm em{color:var(--ember-deep)}
+
+  /* hero */
+  .hero{min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+        position:relative;padding:120px 0 80px;background:radial-gradient(120% 80% at 50% 0%, #221a2c 0%, var(--night) 60%)}
+  .stars{position:absolute;inset:0;pointer-events:none;opacity:.5}
+  .star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.6;animation:tw 4s ease-in-out infinite}
+  @keyframes tw{0%,100%{opacity:.15}50%{opacity:.7}}
+  .clock{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.4em;color:var(--rose);text-transform:uppercase;margin-bottom:26px}
+  .hero h1{font-size:clamp(34px,6.4vw,62px);margin:8px 0 26px}
+  .hero .lede{font-size:clamp(19px,2.4vw,23px);color:#d9cfc2;max-width:600px}
+  .hero .cta-row{margin-top:42px}
+
+  .kicker{font-size:clamp(24px,3.6vw,34px);margin-bottom:8px}
+  h2.section-h{font-size:clamp(28px,4.4vw,44px);margin:14px 0 28px}
+  p.big{font-size:clamp(20px,2.6vw,26px);line-height:1.5}
+  p+p{margin-top:20px}
+  .lead-p{font-size:22px}
+
+  /* 3am questions */
+  .qgrid{display:grid;gap:14px;margin-top:34px}
+  .q{
+    font-family:'Newsreader',serif;font-style:italic;font-size:20px;
+    padding:18px 22px;border-left:2px solid var(--line);
+    background:rgba(255,255,255,.025);color:#e7dccb;
+  }
+  .q.cold{border-left-color:var(--rose)}
+
+  /* method movements */
+  .moves{margin-top:36px;display:grid;gap:2px;border-top:1px solid rgba(0,0,0,.12)}
+  .move{display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 4px;border-bottom:1px solid rgba(0,0,0,.12)}
+  .move .num{font-family:'Fraunces',serif;font-size:34px;color:var(--ember-deep);line-height:1}
+  .move h3{font-size:24px;margin-bottom:6px}
+  .move p{font-size:18px;opacity:.85}
+  .arc{font-family:'Fraunces',serif;font-style:italic;font-size:26px;text-align:center;margin-top:34px;color:var(--ember-deep)}
+
+  /* bullets */
+  .bul{list-style:none;margin-top:30px;display:grid;gap:18px}
+  .bul li{position:relative;padding-left:38px;font-size:19px}
+  .bul li::before{content:"";position:absolute;left:6px;top:11px;width:9px;height:9px;border-radius:50%;
+    background:radial-gradient(circle,#f2b94f,var(--ember-deep))}
+
+  /* offer card */
+  .offer{background:#fff;border:1px solid #e7dcc8;border-radius:6px;padding:44px 38px;margin-top:30px;
+         box-shadow:0 24px 60px rgba(60,40,20,.12);text-align:center}
+  .price{font-family:'Fraunces',serif;font-size:58px;color:var(--parchment-ink);line-height:1}
+  .price small{display:block;font-family:'Inter',sans-serif;font-size:14px;letter-spacing:.04em;color:#8a7a64;margin-top:10px;font-weight:500}
+  .strike{font-family:'Inter',sans-serif;color:#b09a78;text-decoration:line-through;font-size:18px}
+  .guarantee{border:1px dashed var(--ember-deep);border-radius:6px;padding:26px 28px;margin-top:30px;background:rgba(232,169,63,.07)}
+  .guarantee h3{font-size:22px;color:var(--ember-deep);margin-bottom:8px}
+
+  .spots{font-family:'Inter',sans-serif;font-weight:600;letter-spacing:.04em;color:var(--ember-deep);font-size:15px}
+  .placeholder{border:1px dashed #c9b89a;border-radius:6px;padding:22px;color:#8a7a64;font-style:italic;font-family:'Inter',sans-serif;font-size:14px;text-align:center;margin-top:22px}
+
+  /* faq */
+  .faq{margin-top:24px}
+  .faq details{border-bottom:1px solid rgba(0,0,0,.12);padding:18px 0}
+  .faq summary{font-family:'Fraunces',serif;font-size:21px;cursor:pointer;list-style:none;color:var(--parchment-ink)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::before{content:"+";color:var(--ember-deep);margin-right:12px;font-family:'Inter'}
+  .faq details[open] summary::before{content:"–"}
+  .faq p{margin-top:12px;font-size:18px}
+
+  .ps{font-style:italic;font-size:20px;border-top:1px solid var(--line);padding-top:26px;margin-top:34px;color:#e7dccb}
+  .b-parch .ps{color:var(--parchment-ink);border-top-color:#e0d2ba}
+
+  footer{background:var(--night);color:#6f6557;font-family:'Inter',sans-serif;font-size:12px;text-align:center;padding:44px 20px;line-height:1.8}
+  .sig{font-family:'Fraunces',serif;font-style:italic;font-size:26px;color:var(--ember)}
+
+  @media (max-width:560px){
+    body{font-size:18px}
+    .band{padding:64px 0}
+    .move{grid-template-columns:48px 1fr;gap:14px}
+    .offer{padding:34px 22px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO : 3am, the dark -->
+<section class="hero">
+  <div class="stars" id="stars" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="clock">3:14 AM</div>
+    <span class="eyebrow">For the woman who's done all the work</span>
+    <h1>You've read the books. Done the retreats. Tapped, journaled, surrendered, and <em>"done the work."</em><br>So why are you still awake at 3am, running the same loop?</h1>
+    <p class="lede">If you're a spiritually awake woman, quietly exhausted that knowing the truth hasn't <em>set you free</em> — there's a reason you're still stuck. And it isn't more healing.</p>
+    <div class="cta-row">
+      <a href="#apply" class="btn">Apply for a founding spot</a>
+      <span class="btn-sub">5 spots · founding rate · the door closes when they're gone</span>
+    </div>
+  </div>
+</section>
+
+<!-- THE LEAD -->
+<section class="band b-night2">
+  <div class="wrap">
+    <span class="eyebrow">The thing no one says out loud</span>
+    <p class="lead-p" style="margin-top:18px">Let me say the thing no one in the spiritual world will say.</p>
+    <p class="big" style="margin-top:18px">More information is <em>not</em> your problem. You are not under-healed. You're <span class="hl">over-informed and under-witnessed.</span></p>
+    <p>You've got the books. You can name your attachment style, your nervous-system state, the exact childhood moment it started. You can hold space for anyone. And still — at 3am — you lie there running the same tired loop, wondering why a decade of work hasn't actually moved your life.</p>
+    <p>You don't need another modality. You need someone to <em>witness</em> you until you can finally hear your own knowing — and then choose from it. That's the whole thing. And it's the one thing nobody's been selling you.</p>
+  </div>
+</section>
+
+<!-- PROBLEM AGITATION : the 3am questions -->
+<section class="band b-dusk">
+  <div class="wrap">
+    <span class="eyebrow">What 3am actually sounds like</span>
+    <h2 class="section-h">Be honest about the questions on repeat.</h2>
+    <div class="qgrid">
+      <div class="q">"Why do I know all of this… and I'm <em>still</em> stuck in the same loop?"</div>
+      <div class="q">"Is my 'inner work' just avoidance with better vocabulary?"</div>
+      <div class="q">"Everyone thinks I'm so wise and calm. If they only knew how lost I feel."</div>
+      <div class="q">"Why can I hold space for everyone else and fall apart in my own life?"</div>
+      <div class="q">"I'm so tired of working on myself. When do I get to just <em>live</em>?"</div>
+      <div class="q cold">"What if I run out of time still circling the same drain?"</div>
+    </div>
+    <p style="margin-top:34px">You've been told the answer is <em>more</em> — more practices, more healing, more becoming. So you keep adding. And the loop keeps running. Because adding information to a nervous system stuck in a pattern is like reading a map to someone frozen in the doorway. She doesn't need the map. She needs someone to stand with her until she can move.</p>
+  </div>
+</section>
+
+<!-- ORIGIN STORY -->
+<section class="band b-dawn">
+  <div class="wrap">
+    <span class="eyebrow">Why me</span>
+    <h2 class="section-h">I know this loop because I lived inside it.</h2>
+    <p class="big">A healing drive my whole life — and a lifetime of resistance to go with it. The same cycle, over and over, while I collected every insight there was.</p>
+    <p>What finally cracked it open wasn't another book. It was being <em>witnessed</em> — given space to be seen without being fixed — until I could hear what I already knew underneath the conditioning. That's the work I do now: witnessing, EFT, and Quantum Coaching. Not more to learn. A way to <em>unblend</em> from the conditioning running the show, so you can follow what your own body actually wants.</p>
+  </div>
+</section>
+
+<!-- THE METHOD -->
+<section class="band b-warm">
+  <div class="wrap">
+    <span class="eyebrow">The mechanism</span>
+    <h2 class="section-h">The Unblend Method™</h2>
+    <div class="moves">
+      <div class="move"><div class="num">01</div><div><h3>Witness</h3><p>Be fully seen, with zero fixing. Safety first — this alone brings the first real relief.</p></div></div>
+      <div class="move"><div class="num">02</div><div><h3>Unblend</h3><p>Separate <em>you</em> from your conditioning: "That's the dream. That's a habit. That's not me."</p></div></div>
+      <div class="move"><div class="num">03</div><div><h3>Tune In</h3><p>Drop beneath the noise and feel what your nervous system actually wants.</p></div></div>
+      <div class="move"><div class="num">04</div><div><h3>Choose</h3><p>Make the next move from your own knowing — not your old programming.</p></div></div>
+    </div>
+    <p class="arc">From conditioned… to chosen.</p>
+  </div>
+</section>
+
+<!-- WHAT IT IS + BULLETS -->
+<section class="band b-parch">
+  <div class="wrap">
+    <span class="eyebrow">What it is</span>
+    <h2 class="section-h">Unblend: Come Home to Yourself</h2>
+    <p class="big">A 10-week 1:1 container. No curriculum. No homework pile. No becoming-a-better-project. Just deep, witnessed, body-led work — week after week — until you stop running on autopilot and start living as yourself.</p>
+    <ul class="bul">
+      <li>Why "doing more inner work" quietly became the thing keeping you stuck — and what to do instead.</li>
+      <li>How to tell true surrender from spiritual avoidance (most women never learn this).</li>
+      <li>The reason you can hold space for everyone but yourself — and how to turn the witnessing inward.</li>
+      <li>Why your nervous system overrides everything you "know" — and the body-led way past it.</li>
+      <li>How to hear your own knowing again under a lifetime of "shoulds."</li>
+      <li>What changes when you stop trying to heal and start letting yourself be witnessed.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOUNDING CIRCLE -->
+<section class="band b-parch" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">The founding circle</span>
+    <h2 class="section-h">Five spots. Real stories only.</h2>
+    <p>You won't find a wall of testimonials here yet — because I'd rather show you the real thing than borrow someone else's. Founding clients get my full attention, a founding rate, and the chance to be the first stories this work tells.</p>
+    <div class="placeholder">[ Founding-client words will appear here as they come in — no borrowed proof. ]</div>
+  </div>
+</section>
+
+<!-- OFFER + GUARANTEE + CTA -->
+<section class="band b-parch" id="apply" style="padding-top:0">
+  <div class="wrap">
+    <div class="offer">
+      <span class="eyebrow">The founding offer</span>
+      <div class="price" style="margin-top:14px">$2,000</div>
+      <div class="price" style="font-size:18px;color:#8a7a64;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:.03em">or two payments of $1,100</div>
+      <p style="margin-top:18px;font-size:18px">Ten weeks. One-on-one. <span class="spots">5 founding spots</span> — then the next round opens at full price.</p>
+      <div style="margin-top:26px"><a href="#apply" class="btn">Apply for a founding spot</a></div>
+    </div>
+    <div class="guarantee">
+      <h3>The First-Two-Weeks Promise</h3>
+      <p>If after our first two sessions you don't feel more <em>seen</em> and a little lighter, we part ways and I refund you in full. The work begins with being witnessed — and you'll feel that fast, or you don't pay.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="band b-parch" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Before you decide</span>
+    <h2 class="section-h">Honest answers.</h2>
+    <div class="faq">
+      <details open><summary>I've already done so much work — how is this different?</summary><p>It isn't more work. It's the opposite. Everything you've done was <em>input.</em> This is the witnessing that lets it finally land.</p></details>
+      <details><summary>Is this therapy?</summary><p>No. I don't diagnose or treat. I witness, and I use body-led tools to help you unblend and choose. Many women do both.</p></details>
+      <details><summary>What if I don't even know what I want?</summary><p>That's the most common starting place — and exactly what the work uncovers.</p></details>
+      <details><summary>I'm skeptical of coaches.</summary><p>Good. So am I. That's why there's a two-week refund and only five spots — I'm betting on the work, not on hype.</p></details>
+    </div>
+    <p class="ps"><strong>P.S.</strong> You already know more than enough to change your life. That was never the problem. The problem is you've never had someone witness you long enough to hear it — and then choose. Five spots. Then the door closes.</p>
+    <div style="text-align:center;margin-top:38px"><a href="#apply" class="btn">Apply for a founding spot</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">Maisie Wormser</div>
+  <div style="margin-top:10px">The Unblend Method™ · Witnessing · EFT · Quantum Coaching</div>
+  <div style="margin-top:14px;max-width:540px;margin-left:auto;margin-right:auto">Coaching is not therapy, counseling, or medical care. Results vary. This page is a design mockup — testimonial slots are placeholders to be filled with real client words.</div>
+</footer>
+
+<script>
+  // gentle starfield in the 3am hero only
+  (function(){
+    var s=document.getElementById('stars'); if(!s) return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    for(var i=0;i<46;i++){
+      var d=document.createElement('div');d.className='star';
+      d.style.left=Math.random()*100+'%';d.style.top=Math.random()*100+'%';
+      d.style.animationDelay=(Math.random()*4)+'s';
+      d.style.opacity=(0.2+Math.random()*0.5);
+      s.appendChild(d);
+    }
+  })();
+</script>
+</body>
+</html>

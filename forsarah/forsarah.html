@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah, Here's Your Coaching Business Preview | AI Business Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep: #0B1A2B;
+            --deep-mid: #132B42;
+            --gold: #C6A855;
+            --gold-light: #E8D5A0;
+            --cream: #FAF6EE;
+            --sage: #7A9E7E;
+            --rose: #C9928E;
+            --warm: #D4A574;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--deep);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+        
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--cream);
+            opacity: 0.8;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Identity Card */
+        .identity-card {
+            background: linear-gradient(135deg, var(--deep-mid) 0%, var(--deep) 100%);
+            border: 1px solid rgba(198, 168, 85, 0.2);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .identity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--gold), var(--rose));
+        }
+        
+        .identity-card h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .identity-card .method-title {
+            font-size: 1.75rem;
+            color: var(--sage);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .identity-card .pitch {
+            font-size: 1.25rem;
+            color: var(--cream);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 35px;
+        }
+        
+        .credentials {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .credential-tag {
+            background: rgba(122, 158, 126, 0.15);
+            border: 1px solid var(--sage);
+            color: var(--sage);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Method Visual */
+        .method-visual {
+            background: var(--deep-mid);
+        }
+        
+        .method-visual h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pillar-card {
+            background: var(--deep);
+            border: 1px solid rgba(198, 168, 85, 0.2);
+            border-radius: 15px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(198, 168, 85, 0.2);
+        }
+        
+        .pillar-card h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .pillar-card p {
+            color: var(--cream);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* Journey Section */
+        .journey-section {
+            background: var(--deep);
+            text-align: center;
+        }
+        
+        .journey-section h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .journey-section .subtitle {
+            font-size: 1.25rem;
+            color: var(--gold-light);
+            margin-bottom: 50px;
+        }
+        
+        .infographic-container {
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid rgba(198, 168, 85, 0.3);
+        }
+        
+        .infographic-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Website Preview */
+        .website-preview {
+            background: var(--deep-mid);
+        }
+        
+        .website-preview h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+        
+        .mockup-card {
+            background: var(--deep);
+            border: 2px solid rgba(198, 168, 85, 0.2);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .mockup-card:hover {
+            transform: scale(1.03);
+            border-color: var(--gold);
+            box-shadow: 0 15px 40px rgba(198, 168, 85, 0.3);
+        }
+        
+        .mockup-preview {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .mockup-preview.light {
+            background: linear-gradient(135deg, #FAF6EE 0%, #E8D5A0 100%);
+        }
+        
+        .mockup-preview.dark {
+            background: linear-gradient(135deg, #0B1A2B 0%, #132B42 100%);
+        }
+        
+        .mockup-header {
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-hero {
+            height: 120px;
+            background: rgba(122, 158, 126, 0.2);
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-sections {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .mockup-section {
+            flex: 1;
+            height: 80px;
+            background: rgba(198, 168, 85, 0.15);
+            border-radius: 8px;
+        }
+        
+        .mockup-label {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .mockup-label h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        .mockup-label p {
+            color: var(--cream);
+            font-size: 0.95rem;
+        }
+        
+        /* Book Cover */
+        .book-section {
+            background: var(--deep);
+            text-align: center;
+        }
+        
+        .book-section h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .book-display {
+            perspective: 1500px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .book-cover-3d {
+            position: relative;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.3s ease;
+            box-shadow: 
+                0 20px 60px rgba(0,0,0,0.4),
+                0 0 0 1px rgba(198, 168, 85, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .book-cover-3d:hover {
+            transform: rotateY(-10deg) rotateX(3deg);
+        }
+        
+        .book-cover-3d img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .book-note {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(122, 158, 126, 0.1);
+            border-left: 3px solid var(--sage);
+            border-radius: 8px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .book-note p {
+            color: var(--cream);
+            font-style: italic;
+        }
+        
+        /* Instagram Bio */
+        .instagram-section {
+            background: var(--deep-mid);
+        }
+        
+        .instagram-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .instagram-mockup {
+            max-width: 500px;
+            margin: 0 auto;
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .ig-header {
+            padding: 20px;
+            border-bottom: 1px solid #dbdbdb;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .ig-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sage), var(--gold));
+        }
+        
+        .ig-stats {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .ig-stat {
+            text-align: center;
+        }
+        
+        .ig-stat-number {
+            font-weight: 700;
+            color: #262626;
+            font-size: 1.1rem;
+        }
+        
+        .ig-stat-label {
+            color: #8e8e8e;
+            font-size: 0.9rem;
+        }
+        
+        .ig-profile-info {
+            padding: 20px;
+            color: #262626;
+        }
+        
+        .ig-name {
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        
+        .ig-bio {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+        
+        .ig-handle {
+            padding: 0 20px 15px;
+            color: #8e8e8e;
+            font-size: 0.95rem;
+        }
+        
+        /* Programs */
+        .programs-section {
+            background: var(--deep);
+        }
+        
+        .programs-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: var(--deep-mid);
+            border: 2px solid rgba(198, 168, 85, 0.2);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .program-card.featured {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, var(--deep-mid), var(--deep));
+            transform: scale(1.05);
+        }
+        
+        .program-card.featured::before {
+            content: 'MOST POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--deep);
+            padding: 4px 20px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        
+        .program-card.featured:hover {
+            transform: scale(1.08) translateY(-5px);
+        }
+        
+        .program-card h3 {
+            color: var(--gold);
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+        
+        .program-price {
+            font-size: 2.5rem;
+            color: var(--cream);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .program-price span {
+            font-size: 1rem;
+            color: var(--gold-light);
+            font-weight: 400;
+        }
+        
+        .program-card p {
+            color: var(--cream);
+            opacity: 0.9;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        /* Income Calculator */
+        .calculator-section {
+            background: var(--deep-mid);
+        }
+        
+        .calculator-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .calculator-subtitle {
+            text-align: center;
+            color: var(--gold-light);
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        .calculator-box {
+            background: var(--deep);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .calculator-slider {
+            margin-bottom: 35px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            color: var(--cream);
+            font-weight: 500;
+        }
+        
+        .slider-value {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            background: rgba(198, 168, 85, 0.2);
+            border-radius: 5px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: var(--gold-light);
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            background: var(--gold);
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .calculator-results {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid rgba(198, 168, 85, 0.3);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .result-box {
+            text-align: center;
+            padding: 30px;
+            background: rgba(122, 158, 126, 0.1);
+            border-radius: 15px;
+        }
+        
+        .result-label {
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .result-value {
+            color: var(--gold);
+            font-size: 3rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Report Teaser */
+        .report-section {
+            background: var(--deep);
+        }
+        
+        .report-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 50px;
+        }
+        
+        .report-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .report-preview {
+            position: relative;
+            height: 500px;
+        }
+        
+        .report-page {
+            position: absolute;
+            width: 100%;
+            height: 400px;
+            background: var(--cream);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid rgba(198, 168, 85, 0.2);
+        }
+        
+        .report-page:nth-child(1) {
+            transform: rotate(-3deg) translateY(0);
+            z-index: 3;
+        }
+        
+        .report-page:nth-child(2) {
+            transform: rotate(2deg) translateY(20px);
+            z-index: 2;
+        }
+        
+        .report-page:nth-child(3) {
+            transform: rotate(-1deg) translateY(40px);
+            z-index: 1;
+        }
+        
+        .report-page-title {
+            color: var(--deep);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+        
+        .report-line {
+            height: 10px;
+            background: rgba(11, 26, 43, 0.1);
+            border-radius: 5px;
+            margin-bottom: 12px;
+        }
+        
+        .report-line.short {
+            width: 60%;
+        }
+        
+        .report-chart {
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(122, 158, 126, 0.3) 20%, rgba(198, 168, 85, 0.3) 80%);
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .fascination-bullets {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .fascination-bullets li {
+            margin-bottom: 25px;
+            padding-left: 35px;
+            position: relative;
+            color: var(--cream);
+            line-height: 1.7;
+        }
+        
+        .fascination-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--deep-mid) 0%, var(--deep) 100%);
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.25rem;
+            color: var(--cream);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--deep);
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--gold);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(198, 168, 85, 0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--deep);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(198, 168, 85, 0.2);
+        }
+        
+        .footer p {
+            color: var(--gold-light);
+            font-size: 0.95rem;
+        }
+        
+        .footer a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--gold-light);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .identity-card {
+                padding: 40px 25px;
+            }
+            
+            .identity-card h2 {
+                font-size: 2rem;
+            }
+            
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-preview {
+                height: 400px;
+            }
+            
+            .calculator-results {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-box {
+                padding: 30px 20px;
+            }
+            
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .program-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Sarah, Here's a Preview of Your Coaching Business</h1>
+            <p>Built by Jimmy Davis's AI Business Design Software</p>
+            <p class="hero-subtitle">This is what your business could look like — fully packaged, positioned, and ready to scale.</p>
+        </div>
+    </section>
+
+    <!-- Identity Card -->
+    <section class="section">
+        <div class="container">
+            <div class="identity-card">
+                <h2>Sarah Johnson</h2>
+                <p class="method-title">The Somatic Reclamation Framework™</p>
+                <p class="pitch">I teach women in midlife how to regulate their nervous systems through movement, breath, and energy work — so they can stop living from the neck up and start reclaiming their bodies, their power, and their purpose.</p>
+                <div class="credentials">
+                    <span class="credential-tag">RYT-500 Certified</span>
+                    <span class="credential-tag">Reiki Master</span>
+                    <span class="credential-tag">Trauma-Informed Practitioner</span>
+                    <span class="credential-tag">Nervous System Specialist</span>
+                    <span class="credential-tag">15 Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Visual -->
+    <section class="section method-visual">
+        <div class="container">
+            <h2>Your Signature Method</h2>
+            <p style="text-align: center; color: var(--gold-light); max-width: 700px; margin: 0 auto 40px;">A proven 9-step framework that guides women from survival mode to embodied wisdom</p>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <h3>1. Recognize</h3>
+                    <p>Learn to identify nervous system states and patterns</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>2. Ground</h3>
+                    <p>Establish safety and presence in your body</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>3. Breathe</h3>
+                    <p>Master breathwork as your instant regulation tool</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>4. Move</h3>
+                    <p>Release stored trauma through trauma-informed yoga</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>5. Clear</h3>
+                    <p>Use Reiki to remove blocks and restore flow</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>6. Practice</h3>
+                    <p>Build sustainable daily rituals for regulation</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>7. Speak</h3>
+                    <p>Reclaim your voice from a regulated place</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>8. Embody</h3>
+                    <p>Step into your power and lead from presence</p>
+                </div>
+                <div class="pillar-card">
+                    <h3>9. Thrive</h3>
+                    <p>Live your purpose aligned with body wisdom</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Infographic -->
+    <section class="section journey-section">
+        <div class="container">
+            <h2>Your Proven 9-Step Process</h2>
+            <p class="subtitle">Every client follows this exact journey</p>
+            <div class="infographic-container">
+                <img src="SarahProcess.png" alt="The Somatic Reclamation Framework 9-Step Journey">
+            </div>
+        </div>
+    </section>
+
+    <!-- Website Preview -->
+    <section class="section website-preview">
+        <div class="container">
+            <h2>Your Website Designs</h2>
+            <p style="text-align: center; color: var(--gold-light); margin-bottom: 50px;">Two premium mockups — choose your style or blend both</p>
+            <div class="mockup-grid">
+                <a href="sarah.html" class="mockup-card">
+                    <div class="mockup-preview light">
+                        <div class="mockup-header"></div>
+                        <div class="mockup-hero"></div>
+                        <div class="mockup-sections">
+                            <div class="mockup-section"></div>
+                            <div class="mockup-section"></div>
+                            <div class="mockup-section"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-label">
+                        <h3>Warm & Elegant</h3>
+                        <p>Light, airy, and inviting design</p>
+                    </div>
+                </a>
+                <a href="sarah2.html" class="mockup-card">
+                    <div class="mockup-preview dark">
+                        <div class="mockup-header"></div>
+                        <div class="mockup-hero"></div>
+                        <div class="mockup-sections">
+                            <div class="mockup-section"></div>
+                            <div class="mockup-section"></div>
+                            <div class="mockup-section"></div>
+                        </div>
+                    </div>
+                    <div class="mockup-label">
+                        <h3>Bold & Deep</h3>
+                        <p>Rich, immersive, premium design</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Cover -->
+    <section class="section book-section">
+        <div class="container">
+            <h2>Your Book</h2>
+            <div class="book-display">
+                <div class="book-cover-3d">
+                    <img src="SarahBook.png" alt="Reclaim - A Midlife Woman's Guide to Coming Home to Her Body by Sarah Johnson">
+                </div>
+            </div>
+            <div class="book-note">
+                <p><strong>Full outline, chapter breakdowns, and writing support included in the complete Blueprint.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Bio -->
+    <section class="section instagram-section">
+        <div class="container">
+            <h2>Your Instagram Presence</h2>
+            <div class="instagram-mockup">
+                <div class="ig-handle">@sarah_somaticreclamation</div>
+                <div class="ig-header">
+                    <div class="ig-avatar"></div>
+                    <div class="ig-stats">
+                        <div class="ig-stat">
+                            <div class="ig-stat-number">—</div>
+                            <div class="ig-stat-label">posts</div>
+                        </div>
+                        <div class="ig-stat">
+                            <div class="ig-stat-number">—</div>
+                            <div class="ig-stat-label">followers</div>
+                        </div>
+                        <div class="ig-stat">
+                            <div class="ig-stat-number">—</div>
+                            <div class="ig-stat-label">following</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ig-profile-info">
+                    <div class="ig-name">Sarah Johnson</div>
+                    <div class="ig-bio">Trauma-Informed Yoga + Nervous System Healing for Midlife Women 🌿
+From Survival Mode → Somatic Wisdom
+RYT-500 | Reiki Master | Embodiment Guide
+Reclaim your body. Reclaim your life. ✨</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs -->
+    <section class="section programs-section">
+        <div class="container">
+            <h2>Your Program Lineup</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Free Report</h3>
+                    <p class="program-price">$0</p>
+                    <p>The 5-Minute Nervous System Reset — your lead magnet</p>
+                </div>
+                <div class="program-card featured">
+                    <h3>6-Week Group Program</h3>
+                    <p class="program-price">$1,997</p>
+                    <p>The Somatic Reclamation Method™ — your signature offer</p>
+                </div>
+                <div class="program-card">
+                    <h3>Private Coaching</h3>
+                    <p class="program-price">$8,000</p>
+                    <p>Embody & Rise — 6 months of 1:1 transformation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Income Calculator -->
+    <section class="section calculator-section">
+        <div class="container">
+            <h2>Your Income Potential</h2>
+            <p class="calculator-subtitle">Adjust the sliders to see your revenue projections</p>
+            <div class="calculator-box">
+                <div class="calculator-slider">
+                    <div class="slider-label">
+                        <span>Women per 6-week program round:</span>
+                        <span class="slider-value"><span id="groupClients">10</span> women</span>
+                    </div>
+                    <input type="range" id="groupClientsSlider" min="5" max="30" value="10">
+                </div>
+                
+                <div class="calculator-slider">
+                    <div class="slider-label">
+                        <span>Program rounds per year:</span>
+                        <span class="slider-value"><span id="rounds">4</span> rounds</span>
+                    </div>
+                    <input type="range" id="roundsSlider" min="2" max="12" value="4">
+                </div>
+                
+                <div class="calculator-slider">
+                    <div class="slider-label">
+                        <span>Private coaching clients per year:</span>
+                        <span class="slider-value"><span id="privateClients">6</span> clients</span>
+                    </div>
+                    <input type="range" id="privateClientsSlider" min="2" max="20" value="6">
+                </div>
+                
+                <div class="calculator-results">
+                    <div class="result-box">
+                        <div class="result-label">Monthly Revenue</div>
+                        <div class="result-value" id="monthlyRevenue">$10,664</div>
+                    </div>
+                    <div class="result-box">
+                        <div class="result-label">Annual Revenue</div>
+                        <div class="result-value" id="annualRevenue">$127,968</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Report Teaser -->
+    <section class="section report-section">
+        <div class="container">
+            <h2>Your Complete Business Blueprint</h2>
+            <div class="report-content">
+                <div class="report-preview">
+                    <div class="report-page">
+                        <div class="report-page-title">Market Research</div>
+                        <div class="report-line"></div>
+                        <div class="report-line"></div>
+                        <div class="report-line short"></div>
+                        <div class="report-line"></div>
+                        <div class="report-line"></div>
+                        <div class="report-chart"></div>
+                    </div>
+                    <div class="report-page">
+                        <div class="report-page-title">Customer Avatar</div>
+                        <div class="report-line"></div>
+                        <div class="report-line"></div>
+                        <div class="report-line short"></div>
+                        <div class="report-line"></div>
+                    </div>
+                    <div class="report-page">
+                        <div class="report-page-title">Revenue Projections</div>
+                        <div class="report-line"></div>
+                        <div class="report-line short"></div>
+                        <div class="report-line"></div>
+                    </div>
+                </div>
+                
+                <div>
+                    <ul class="fascination-bullets">
+                        <li>The overlooked positioning angle that sets you apart from Dena McComb and Emmy Marie — and why leading with "yoga first" instead of "trauma first" could capture a wider, less saturated market</li>
+                        
+                        <li>Why the language shift from "recovery" to "reclamation" taps into a $47B wellness market segment that competitors are completely missing</li>
+                        
+                        <li>The hidden revenue opportunity in midlife women building their own practices — and how "coach the coach" could become a $100K+ revenue stream within 18 months</li>
+                        
+                        <li>What your ideal client Rachel is actually Googling at 2am (and the exact content strategy that will make her find YOU first)</li>
+                        
+                        <li>The pricing sweet spot where you're positioned as premium without triggering the "too expensive" objection — based on competitive analysis of 12 similar programs</li>
+                        
+                        <li>Why your RYT-500 + Reiki combo is rarer than you think in the somatic coaching space — and how to leverage it for instant authority positioning</li>
+                        
+                        <li>The one marketing channel where your competitors are completely absent — and how to dominate it in 90 days with zero ad spend</li>
+                        
+                        <li>The unexpected objection that kills most mid-ticket sales in this niche (and the exact reframe that turns it into your biggest selling point)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Want to Bring This to Life?</h2>
+            <p>This preview is just the beginning. The complete AI Business Design Software includes your full business blueprint, marketing strategy, content calendar, and 1:1 implementation support from Jimmy Davis.</p>
+            <a href="https://ineedjimmy.com/hire" class="cta-button">See Jimmy's Services & Pricing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Income Calculator
+        const groupClientsSlider = document.getElementById('groupClientsSlider');
+        const roundsSlider = document.getElementById('roundsSlider');
+        const privateClientsSlider = document.getElementById('privateClientsSlider');
+        
+        const groupClientsDisplay = document.getElementById('groupClients');
+        const roundsDisplay = document.getElementById('rounds');
+        const privateClientsDisplay = document.getElementById('privateClients');
+        
+        const monthlyRevenueDisplay = document.getElementById('monthlyRevenue');
+        const annualRevenueDisplay = document.getElementById('annualRevenue');
+        
+        const MID_TICKET_PRICE = 1997;
+        const HIGH_TICKET_PRICE = 8000;
+        
+        function calculateRevenue() {
+            const groupClients = parseInt(groupClientsSlider.value);
+            const rounds = parseInt(roundsSlider.value);
+            const privateClients = parseInt(privateClientsSlider.value);
+            
+            const groupRevenue = groupClients * rounds * MID_TICKET_PRICE;
+            const privateRevenue = privateClients * HIGH_TICKET_PRICE;
+            const annualRevenue = groupRevenue + privateRevenue;
+            const monthlyRevenue = Math.round(annualRevenue / 12);
+            
+            groupClientsDisplay.textContent = groupClients;
+            roundsDisplay.textContent = rounds;
+            privateClientsDisplay.textContent = privateClients;
+            
+            monthlyRevenueDisplay.textContent = '$' + monthlyRevenue.toLocaleString();
+            annualRevenueDisplay.textContent = '$' + annualRevenue.toLocaleString();
+        }
+        
+        groupClientsSlider.addEventListener('input', calculateRevenue);
+        roundsSlider.addEventListener('input', calculateRevenue);
+        privateClientsSlider.addEventListener('input', calculateRevenue);
+        
+        // Initialize
+        calculateRevenue();
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.pillar-card, .program-card, .mockup-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>

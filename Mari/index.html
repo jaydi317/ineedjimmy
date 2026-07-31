@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NightStar Traffic — Strategic Intake | iNeedJimmy.com</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #f8f6f1;
+    --accent: #c9a227;
+    --accent-dark: #a8861e;
+    --muted: #6b6b7b;
+    --border: #d4d0c8;
+    --section-bg: #ffffff;
+    --success: #2d6a4f;
+    --glow: rgba(201, 162, 39, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 1.5rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--accent));
+  }
+  .header-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .header p {
+    font-size: 0.95rem;
+    color: #a0a0b0;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  /* ── Container ── */
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem 4rem;
+  }
+
+  /* ── Intro ── */
+  .intro {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.92rem;
+    color: var(--muted);
+  }
+  .intro strong { color: var(--ink); }
+
+  /* ── Sections ── */
+  .form-section {
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  .section-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-number {
+    background: var(--accent);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 0.75rem;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+  .section-body { padding: 1.5rem; }
+
+  /* ── Fields ── */
+  .field { margin-bottom: 1.5rem; }
+  .field:last-child { margin-bottom: 0; }
+  .field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+  }
+  .field .hint {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    font-style: italic;
+  }
+  .field textarea,
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="url"] {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.75rem 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: var(--paper);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: vertical;
+  }
+  .field textarea:focus,
+  .field input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--glow);
+  }
+  .field textarea { min-height: 100px; }
+  .field textarea.short { min-height: 65px; }
+
+  /* ── Radio groups ── */
+  .radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .radio-group label {
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .radio-group label:hover { border-color: var(--accent); }
+  .radio-group input[type="radio"] { display: none; }
+  .radio-group input[type="radio"]:checked + span {
+    color: var(--accent-dark);
+  }
+  .radio-group label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--glow);
+  }
+
+  /* ── Checkbox groups ── */
+  .check-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .check-group label {
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .check-group label:hover { border-color: var(--accent); }
+  .check-group input[type="checkbox"] { display: none; }
+  .check-group label:has(input:checked) {
+    border-color: var(--accent);
+    background: var(--glow);
+  }
+
+  /* ── Buttons ── */
+  .actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.92rem;
+    padding: 0.9rem 2rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--ink);
+    flex: 1;
+    min-width: 200px;
+  }
+  .btn-primary:hover { background: var(--accent-dark); color: #fff; }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+  /* ── Output modal ── */
+  .output-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(26,26,46,0.85);
+    z-index: 1000;
+    padding: 1.5rem;
+    overflow-y: auto;
+  }
+  .output-overlay.active { display: flex; align-items: flex-start; justify-content: center; }
+  .output-box {
+    background: var(--paper);
+    border-radius: 8px;
+    max-width: 680px;
+    width: 100%;
+    margin: 2rem auto;
+    overflow: hidden;
+  }
+  .output-header {
+    background: var(--success);
+    color: #fff;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .output-header h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 1.15rem;
+  }
+  .output-body { padding: 1.5rem; }
+  .output-body pre {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem;
+    font-family: 'DM Sans', monospace;
+    font-size: 0.82rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 50vh;
+    overflow-y: auto;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+  .output-actions {
+    padding: 0 1.5rem 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .copy-success {
+    display: none;
+    color: var(--success);
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+  .footer a { color: var(--accent-dark); text-decoration: none; }
+
+  /* ── Progress indicator ── */
+  .progress-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 3px;
+    background: var(--border);
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  @media (max-width: 500px) {
+    .radio-group, .check-group { flex-direction: column; }
+    .actions { flex-direction: column; }
+    .output-actions { flex-direction: column; }
+    .btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="header">
+  <div class="header-badge">Confidential Strategic Intake</div>
+  <h1>NightStar Traffic Solutions</h1>
+  <p>Complete this brief so we can build your Market Opportunity &amp; Strategic Positioning Document.</p>
+</div>
+
+<div class="container">
+
+  <div class="intro">
+    <strong>Hi Mari — </strong> Take your time with this. The more detail you provide, the stronger the strategic document we'll build for you. Everything here is confidential. If you don't have an exact answer, your best estimate works. When you're done, hit "Generate Summary" at the bottom and send the output to Jimmy.
+  </div>
+
+  <!-- ═══════ SECTION 1: CONTACT ═══════ -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2>Your Contact Info</h2>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Full Name</label>
+        <input type="text" id="q_name" value="Mari Glass" />
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="q_email" placeholder="your best email" />
+      </div>
+      <div class="field">
+        <label>Best Phone Number</label>
+        <input type="text" id="q_phone" placeholder="(xxx) xxx-xxxx" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 2: IP & PATENTS ═══════ -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2>Intellectual Property &amp; Patents</h2>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Do you currently hold any issued U.S. patents?</label>
+        <div class="hint">This is the single most important question for your strategic positioning.</div>
+        <div class="radio-group">
+          <label><input type="radio" name="has_patents" value="Yes — issued utility patents"><span>Yes — utility patents</span></label>
+          <label><input type="radio" name="has_patents" value="Yes — design patents"><span>Yes — design patents</span></label>
+          <label><input type="radio" name="has_patents" value="Pending / provisional"><span>Pending / provisional</span></label>
+          <label><input type="radio" name="has_patents" value="No patents filed"><span>No patents filed</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Patent Numbers &amp; Details</label>
+        <div class="hint">List any patent numbers you have. Include: patent number, what it covers, and current status (active, expired, pending). If you're not sure of numbers, describe what each patent protects.</div>
+        <textarea id="q_patents" placeholder="e.g. US Patent #12,345,678 — covers the proprietary lens illumination system — Active through 2035"></textarea>
+      </div>
+      <div class="field">
+        <label>Trademarks</label>
+        <div class="hint">We found NIGHTSTAR, "LIGHTING UP YOUR DRIVING EXPERIENCE...NIGHTSTAR" and SOLARMOON on file with USPTO. Are there others? What is the status of these?</div>
+        <textarea id="q_trademarks" class="short" placeholder="List any additional trademarks or clarify status of existing ones..."></textarea>
+      </div>
+      <div class="field">
+        <label>Trade Secrets &amp; Proprietary Know-How</label>
+        <div class="hint">Beyond patents — do you have proprietary manufacturing processes, formulations, software, or engineering methods that competitors can't easily replicate? Don't reveal details — just describe what categories they fall into.</div>
+        <textarea id="q_trade_secrets" class="short" placeholder="e.g. Proprietary lens formulation, custom firmware for dusk/dawn activation, data collection algorithms..."></textarea>
+      </div>
+      <div class="field">
+        <label>IP Threats</label>
+        <div class="hint">You mentioned wealthy technology people trying to take over the patents. Can you describe what's happening? Are there legal challenges, acquisition attempts, or competitors filing overlapping patents?</div>
+        <textarea id="q_ip_threats" placeholder="Describe the situation in as much detail as you're comfortable sharing..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 3: TECHNOLOGY ═══════ -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2>Technology &amp; Product Status</h2>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>What products are BUILT and have been sold/deployed?</label>
+        <div class="hint">What's actually been manufactured and put out in the real world?</div>
+        <textarea id="q_products_built" placeholder="e.g. Illuminated stop signs deployed in X municipalities, solar-powered versions, etc."></textarea>
+      </div>
+      <div class="field">
+        <label>What's the "next level" you mentioned?</label>
+        <div class="hint">You told Jimmy you're not worried about the copies because you're going to the next level. What is that next level? Tollway signs? Overhead signs? Smart data? V2V communication? Please be specific about what makes it different.</div>
+        <textarea id="q_next_level" placeholder="Describe the advanced technology and what makes it superior to what's on the market now..."></textarea>
+      </div>
+      <div class="field">
+        <label>What stage is the "next level" technology in?</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="tech_stage" value="Working prototype"> Working prototype</label>
+          <label><input type="checkbox" name="tech_stage" value="Tested / validated"> Tested / validated</label>
+          <label><input type="checkbox" name="tech_stage" value="Ready to manufacture"> Ready to manufacture</label>
+          <label><input type="checkbox" name="tech_stage" value="Conceptual / in development"> Conceptual / in development</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>V2V / Vehicle Communication</label>
+        <div class="hint">You mentioned the signs will communicate with vehicles in the future. How does this work? What's the communication method (DSRC, cellular, optical, other)? Is this patented?</div>
+        <textarea id="q_v2v" class="short" placeholder="Describe the vehicle communication capability..."></textarea>
+      </div>
+      <div class="field">
+        <label>Data Collection Capabilities</label>
+        <div class="hint">What data do your smart signs collect? Weather, traffic volume, vehicle speed, sign health, other?</div>
+        <textarea id="q_data" class="short" placeholder="List what data the signs collect and how it's used..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 4: BUSINESS ═══════ -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2>Business &amp; Distribution</h2>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>Distributor Relationships</label>
+        <div class="hint">You mentioned you have distributors. How many? What regions or types of customers do they serve? Are these relationships still active?</div>
+        <textarea id="q_distributors" placeholder="e.g. 5 active distributors covering the Western U.S., primarily selling to state DOTs and municipalities..."></textarea>
+      </div>
+      <div class="field">
+        <label>Notable Customers / Deployments</label>
+        <div class="hint">Any municipal contracts, state DOT projects, tollway authorities, or other government/institutional buyers? Names and project details help tremendously.</div>
+        <textarea id="q_customers" placeholder="List any notable deployments, pilot programs, or contracts..."></textarea>
+      </div>
+      <div class="field">
+        <label>Revenue History (approximate is fine)</label>
+        <div class="hint">Ballpark annual revenue at peak, and current state. This helps position the opportunity correctly.</div>
+        <textarea id="q_revenue" class="short" placeholder="e.g. Peak revenue of $XXXk in 20XX, currently at $XXk..."></textarea>
+      </div>
+      <div class="field">
+        <label>Manufacturing</label>
+        <div class="hint">Do you manufacture in-house or contract manufacture? Where? What's the capacity situation?</div>
+        <textarea id="q_manufacturing" class="short" placeholder="Describe your manufacturing setup..."></textarea>
+      </div>
+      <div class="field">
+        <label>Who are your main competitors?</label>
+        <div class="hint">Who else is in this space? Who copied your illuminated stop signs? We found TAPCO (LegendViz/BlinkerSign) as one competitor.</div>
+        <textarea id="q_competitors" class="short" placeholder="List companies you consider competitors and what they offer..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ SECTION 5: STRATEGIC DIRECTION ═══════ -->
+  <div class="form-section">
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2>Your Strategic Goals</h2>
+    </div>
+    <div class="section-body">
+      <div class="field">
+        <label>If you could wave a magic wand — what happens with NightStar in the next 12 months?</label>
+        <div class="hint">Don't filter yourself. What does the ideal outcome look like?</div>
+        <textarea id="q_ideal_outcome" placeholder="Describe your ideal scenario..."></textarea>
+      </div>
+      <div class="field">
+        <label>Right now, which direction are you leaning?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="direction" value="Restart the company and scale"><span>Restart and scale</span></label>
+          <label><input type="radio" name="direction" value="License the technology to manufacturers"><span>License the technology</span></label>
+          <label><input type="radio" name="direction" value="Sell the entire IP portfolio"><span>Sell the IP</span></label>
+          <label><input type="radio" name="direction" value="Find a strategic partner / joint venture"><span>Strategic partner / JV</span></label>
+          <label><input type="radio" name="direction" value="Not sure yet — need to think"><span>Not sure yet</span></label>
+        </div>
+      </div>
+      <div class="field">
+        <label>What resources do you have available?</label>
+        <div class="hint">Capital, team members, advisors, legal counsel, manufacturing contacts — what can you bring to the table?</div>
+        <textarea id="q_resources" class="short" placeholder="Be honest about what you have and what you need..."></textarea>
+      </div>
+      <div class="field">
+        <label>Is there anything else we should know?</label>
+        <div class="hint">Other inventions, related companies (JoChe, TriNT), other technologies, partnerships, anything relevant.</div>
+        <textarea id="q_other" placeholder="Anything else that might be relevant to building your strategic document..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ ACTIONS ═══════ -->
+  <div class="actions">
+    <button class="btn btn-primary" onclick="generateOutput()">Submit to Jimmy</button>
+    <button class="btn btn-secondary" onclick="saveProgress()">Save Progress</button>
+  </div>
+
+</div>
+
+<!-- ═══════ OUTPUT OVERLAY ═══════ -->
+<div class="output-overlay" id="outputOverlay">
+  <div class="output-box">
+    <div class="output-header">
+      <svg width="22" height="22" fill="none" stroke="#fff" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+      <h3>Submitted Successfully</h3>
+    </div>
+    <div class="output-body">
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:1rem;">Your responses have been sent to Jimmy automatically. You can also copy the text below or email it as a backup.</p>
+      <pre id="outputText"></pre>
+    </div>
+    <div class="output-actions">
+      <button class="btn btn-primary" onclick="copyOutput()">Copy to Clipboard</button>
+      <button class="btn btn-secondary" onclick="emailOutput()">Open in Email</button>
+      <button class="btn btn-secondary" onclick="closeOutput()">Close</button>
+    </div>
+    <div class="copy-success" id="copySuccess" style="padding: 0 1.5rem 1rem;">✓ Copied to clipboard!</div>
+    <div class="copy-success" id="submitStatus" style="padding: 0 1.5rem 1rem; color: var(--success);">✓ Responses sent to Jimmy automatically.</div>
+  </div>
+</div>
+
+<div class="footer">
+  Confidential — Prepared by <a href="https://ineedjimmy.com">iNeedJimmy.com</a><br>
+  Direct Response Marketing &amp; AI Implementation Consulting
+</div>
+
+<script>
+  // ── Progress bar ──
+  function updateProgress() {
+    const fields = document.querySelectorAll('textarea, input[type="text"], input[type="email"], input[type="url"]');
+    const radios = document.querySelectorAll('.radio-group');
+    let filled = 0;
+    let total = fields.length + radios.length;
+    fields.forEach(f => { if (f.value.trim()) filled++; });
+    radios.forEach(g => { if (g.querySelector('input:checked')) filled++; });
+    const pct = Math.round((filled / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+  }
+  document.addEventListener('input', updateProgress);
+  document.addEventListener('change', updateProgress);
+
+  // ── Get radio value ──
+  function getRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '(not answered)';
+  }
+
+  // ── Get checkbox values ──
+  function getChecks(name) {
+    const els = document.querySelectorAll(`input[name="${name}"]:checked`);
+    return els.length ? Array.from(els).map(e => e.value).join(', ') : '(not answered)';
+  }
+
+  // ── Get field value ──
+  function getVal(id) {
+    const el = document.getElementById(id);
+    return el && el.value.trim() ? el.value.trim() : '(not answered)';
+  }
+
+  // ── Generate output ──
+  function generateOutput() {
+    const output = `
+══════════════════════════════════════════════════
+  NIGHTSTAR TRAFFIC SOLUTIONS — STRATEGIC INTAKE
+  Completed by: ${getVal('q_name')}
+  Date: ${new Date().toLocaleDateString('en-US', {year:'numeric', month:'long', day:'numeric'})}
+══════════════════════════════════════════════════
+
+CONTACT
+  Name:  ${getVal('q_name')}
+  Email: ${getVal('q_email')}
+  Phone: ${getVal('q_phone')}
+
+──────────────────────────────────────────────────
+INTELLECTUAL PROPERTY & PATENTS
+──────────────────────────────────────────────────
+
+Patent Status: ${getRadio('has_patents')}
+
+Patent Numbers & Details:
+${getVal('q_patents')}
+
+Trademarks:
+${getVal('q_trademarks')}
+
+Trade Secrets / Proprietary Know-How:
+${getVal('q_trade_secrets')}
+
+IP Threats (who is trying to take what):
+${getVal('q_ip_threats')}
+
+──────────────────────────────────────────────────
+TECHNOLOGY & PRODUCT STATUS
+──────────────────────────────────────────────────
+
+Products Built & Deployed:
+${getVal('q_products_built')}
+
+The "Next Level" Technology:
+${getVal('q_next_level')}
+
+Technology Stage: ${getChecks('tech_stage')}
+
+V2V / Vehicle Communication:
+${getVal('q_v2v')}
+
+Data Collection Capabilities:
+${getVal('q_data')}
+
+──────────────────────────────────────────────────
+BUSINESS & DISTRIBUTION
+──────────────────────────────────────────────────
+
+Distributors:
+${getVal('q_distributors')}
+
+Notable Customers / Deployments:
+${getVal('q_customers')}
+
+Revenue History:
+${getVal('q_revenue')}
+
+Manufacturing:
+${getVal('q_manufacturing')}
+
+Competitors:
+${getVal('q_competitors')}
+
+──────────────────────────────────────────────────
+STRATEGIC DIRECTION
+──────────────────────────────────────────────────
+
+Ideal 12-Month Outcome:
+${getVal('q_ideal_outcome')}
+
+Current Leaning: ${getRadio('direction')}
+
+Available Resources:
+${getVal('q_resources')}
+
+Other Notes:
+${getVal('q_other')}
+
+══════════════════════════════════════════════════
+  Send this to Jimmy Davis at jimmy@team.brittanywatkins.com
+══════════════════════════════════════════════════
+`.trim();
+
+    document.getElementById('outputText').textContent = output;
+    document.getElementById('outputOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+
+    // ── Auto-submit to Formspree ──
+    fetch('https://formspree.io/f/mgoqppzg', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'NightStar Traffic — Strategic Intake from ' + getVal('q_name'),
+        name: getVal('q_name'),
+        email: getVal('q_email'),
+        phone: getVal('q_phone'),
+        message: output
+      })
+    }).then(r => {
+      if (r.ok) {
+        const el = document.getElementById('submitStatus');
+        if (el) { el.textContent = '✓ Responses sent to Jimmy automatically.'; el.style.display = 'block'; }
+      }
+    }).catch(() => {});
+  }
+
+  // ── Copy to clipboard ──
+  function copyOutput() {
+    const text = document.getElementById('outputText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const el = document.getElementById('copySuccess');
+      el.style.display = 'block';
+      setTimeout(() => el.style.display = 'none', 3000);
+    });
+  }
+
+  // ── Email output ──
+  function emailOutput() {
+    const text = document.getElementById('outputText').textContent;
+    const subject = encodeURIComponent('NightStar Traffic — Strategic Intake');
+    const body = encodeURIComponent(text);
+    window.location.href = `mailto:jimmy@team.brittanywatkins.com?subject=${subject}&body=${body}`;
+  }
+
+  // ── Close overlay ──
+  function closeOutput() {
+    document.getElementById('outputOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // ── Save progress to localStorage ──
+  function saveProgress() {
+    const data = {};
+    document.querySelectorAll('textarea, input[type="text"], input[type="email"], input[type="url"]').forEach(el => {
+      data[el.id || el.name] = el.value;
+    });
+    document.querySelectorAll('input[type="radio"]:checked').forEach(el => {
+      data['radio_' + el.name] = el.value;
+    });
+    document.querySelectorAll('input[type="checkbox"]:checked').forEach(el => {
+      if (!data['check_' + el.name]) data['check_' + el.name] = [];
+      data['check_' + el.name].push(el.value);
+    });
+    try {
+      localStorage.setItem('nightstar_intake', JSON.stringify(data));
+      alert('Progress saved! You can close this page and come back later.');
+    } catch(e) {
+      // fallback: copy current state
+      alert('Auto-save not available in this browser. Use "Generate Summary" to capture your answers.');
+    }
+  }
+
+  // ── Restore progress ──
+  function restoreProgress() {
+    try {
+      const raw = localStorage.getItem('nightstar_intake');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      Object.entries(data).forEach(([key, val]) => {
+        if (key.startsWith('radio_')) {
+          const name = key.replace('radio_', '');
+          const el = document.querySelector(`input[name="${name}"][value="${val}"]`);
+          if (el) el.checked = true;
+        } else if (key.startsWith('check_')) {
+          const name = key.replace('check_', '');
+          val.forEach(v => {
+            const el = document.querySelector(`input[name="${name}"][value="${v}"]`);
+            if (el) el.checked = true;
+          });
+        } else {
+          const el = document.getElementById(key);
+          if (el) el.value = val;
+        }
+      });
+      updateProgress();
+    } catch(e) {}
+  }
+  restoreProgress();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karelyn Goins — The Inner Alchemy Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-light: #1a3a55;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --text: rgba(250,246,238,0.85);
+  --text-dim: rgba(250,246,238,0.55);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(11,26,43,0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(198,168,85,0.1);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  background: var(--gold) !important;
+  color: var(--deep) !important;
+  padding: 10px 24px !important;
+  border-radius: 30px;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+.nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* HERO */
+.hero {
+  padding: 160px 24px 120px;
+  text-align: center;
+  position: relative;
+  background: linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 60%, var(--deep) 100%);
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(198,168,85,0.04) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,168,85,0.2), transparent);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.hero-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  color: var(--cream);
+  line-height: 1.12;
+  margin-bottom: 24px;
+}
+.hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 40px;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-gold {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  padding: 15px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(198,168,85,0.25); }
+.btn-outline {
+  display: inline-block;
+  color: var(--gold);
+  padding: 15px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 2px solid rgba(198,168,85,0.4);
+  transition: all 0.3s ease;
+}
+.btn-outline:hover { border-color: var(--gold); background: rgba(198,168,85,0.06); }
+
+.section { padding: 80px 24px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--cream);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.gold-line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 20px 0;
+}
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,168,85,0.2), transparent);
+}
+
+/* PAIN SECTION */
+.pain-section {
+  padding: 80px 24px;
+  background: var(--deep-mid);
+}
+.pain-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--cream);
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 48px;
+  line-height: 1.3;
+}
+.pain-title em { color: var(--rose); font-style: italic; }
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.pain-card {
+  background: rgba(250,246,238,0.03);
+  border-radius: 16px;
+  padding: 28px 24px;
+  border-left: 3px solid var(--rose);
+  line-height: 1.7;
+  font-size: 0.92rem;
+  color: rgba(250,246,238,0.7);
+  font-style: italic;
+  transition: all 0.3s ease;
+  border-top: 1px solid rgba(250,246,238,0.04);
+  border-right: 1px solid rgba(250,246,238,0.04);
+  border-bottom: 1px solid rgba(250,246,238,0.04);
+}
+.pain-card:hover {
+  background: rgba(250,246,238,0.05);
+  transform: translateY(-3px);
+}
+
+/* METHOD */
+.method-section {
+  padding: 80px 24px;
+  background: var(--deep);
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.method-card {
+  background: rgba(250,246,238,0.03);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid rgba(198,168,85,0.1);
+  transition: all 0.3s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,0.3);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  background: rgba(198,168,85,0.04);
+}
+.method-num {
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(198,168,85,0.12);
+  border-radius: 50%;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.method-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.method-card p {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* JOURNEY */
+.journey-section {
+  padding: 80px 24px;
+  background: var(--deep-mid);
+  text-align: center;
+}
+.journey-img {
+  max-width: 650px;
+  width: 100%;
+  border-radius: 16px;
+  margin-top: 40px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* PROGRAMS */
+.programs-section {
+  padding: 80px 24px;
+  background: var(--deep);
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 768px) { .programs-grid { grid-template-columns: 1fr; max-width: 400px; } }
+.prog-card {
+  background: rgba(250,246,238,0.03);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  border: 1px solid rgba(198,168,85,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+.prog-card:hover { transform: translateY(-4px); border-color: rgba(198,168,85,0.2); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.prog-card.featured { border: 2px solid var(--gold); background: rgba(198,168,85,0.04); }
+.prog-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 12px;
+}
+.prog-card .prog-type {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.prog-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.prog-card .prog-desc {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.prog-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ABOUT */
+.about-section {
+  padding: 80px 24px;
+  background: var(--deep-mid);
+}
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) { .about-layout { grid-template-columns: 1fr; } }
+.about-photo {
+  aspect-ratio: 3/4;
+  background: linear-gradient(145deg, rgba(198,168,85,0.08), rgba(122,158,126,0.05));
+  border-radius: 20px;
+  border: 1px solid rgba(198,168,85,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--gold);
+}
+.about-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--cream);
+  margin-bottom: 20px;
+}
+.about-content p {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.about-tag {
+  background: rgba(198,168,85,0.08);
+  border: 1px solid rgba(198,168,85,0.15);
+  color: var(--gold-light);
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+/* BOOK */
+.book-section {
+  padding: 80px 24px;
+  background: var(--deep);
+}
+.book-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+@media (max-width: 768px) { .book-layout { grid-template-columns: 1fr; text-align: center; } }
+.book-3d { perspective: 1000px; display: flex; justify-content: center; }
+.book-3d img {
+  max-width: 260px;
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-10deg);
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.5), 0 0 80px rgba(198,168,85,0.06);
+  transition: transform 0.4s ease;
+}
+.book-3d img:hover { transform: rotateY(-3deg); }
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+.book-info .book-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.book-info p {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+/* LEAD MAGNET */
+.lead-section {
+  padding: 80px 24px;
+  background: linear-gradient(170deg, rgba(198,168,85,0.06) 0%, var(--deep-mid) 50%, var(--deep) 100%);
+  text-align: center;
+  position: relative;
+}
+.lead-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(198,168,85,0.2), transparent);
+}
+.lead-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.lead-section p {
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.lead-form {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  max-width: 480px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+.lead-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 14px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(198,168,85,0.25);
+  background: rgba(250,246,238,0.04);
+  color: var(--cream);
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.lead-input::placeholder { color: rgba(250,246,238,0.3); }
+.lead-input:focus { border-color: var(--gold); }
+.lead-btn {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.3s;
+}
+.lead-btn:hover { background: var(--gold-light); }
+
+/* FOOTER */
+.footer {
+  padding: 48px 24px;
+  text-align: center;
+  background: var(--deep);
+  border-top: 1px solid rgba(198,168,85,0.08);
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.footer p {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Karelyn Goins</a>
+  <ul class="nav-links">
+    <li><a href="#method">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#start" class="nav-cta">Work With Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">The Inner Alchemy Method™</div>
+    <h1>Your Body Has Five<br>Intelligence Channels.<br>It's Time to <em>Open Them All.</em></h1>
+    <p>BodyTalk. EFT. Breathwork. Essential Oils. Crystals. Five ancient healing channels woven into one integrated system — for the spiritual woman who is done collecting modalities and ready to become the Alchemist.</p>
+    <div class="hero-btns">
+      <a href="#start" class="btn-gold">Begin Your Transformation</a>
+      <a href="#method" class="btn-outline">Explore the Method</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+  <h2 class="pain-title">Does this sound like <em>you?</em></h2>
+  <div class="pain-grid">
+    <div class="pain-card">"I've done SO much work on myself — therapy, retreats, courses — and I still feel like something deeper is trying to come through but I can't access it."</div>
+    <div class="pain-card">"I have crystals, oils, tapping apps, breathwork recordings... but I don't know how they work together. It feels like having every ingredient but no recipe."</div>
+    <div class="pain-card">"Every healer I've worked with only knows their one thing. My EFT person doesn't use oils. My crystal healer doesn't do breathwork. Nobody sees the whole picture."</div>
+    <div class="pain-card">"I have breakthroughs that feel incredible for 3 days... then the old patterns creep back. I'm wondering if healing is just an expensive hamster wheel."</div>
+    <div class="pain-card">"My friends nod politely when I talk about energy. My husband doesn't get it. I feel like I'm living between two worlds — too awake for normal life, too normal for the deeply spiritual crowd."</div>
+    <div class="pain-card">"I know I'm meant for something more. I can feel it. But I can't figure out the next level — and I'm tired of collecting modalities hoping the next one will be 'the one.'"</div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">The Solution</div>
+    <h2 class="section-title">The Inner Alchemy Method™</h2>
+    <p style="color:var(--text-dim);max-width:600px;margin:0 auto 8px;line-height:1.7;">Five channels. One precise sequence. The transformation your body has been waiting for.</p>
+    <div class="gold-line" style="margin:16px auto 0;"></div>
+  </div>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-num">1</div>
+      <h3>Awaken</h3>
+      <p>BodyTalk reveals your body's innate priority — the root pattern, not the symptom.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">2</div>
+      <h3>Alchemize</h3>
+      <p>EFT tapping dissolves stored emotional charge from the meridian pathways.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">3</div>
+      <h3>Amplify</h3>
+      <p>Breathwork opens the channel between body and spirit, expanding capacity.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">4</div>
+      <h3>Anoint</h3>
+      <p>Essential oils anchor the shift through the limbic system at a cellular level.</p>
+    </div>
+    <div class="method-card">
+      <div class="method-num">5</div>
+      <h3>Attune</h3>
+      <p>Crystal energy calibrates your new frequency so it becomes your default state.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+  <div class="section-label">The Journey</div>
+  <h2 class="section-title">The Inner Alchemy Journey™</h2>
+  <p style="color:var(--text-dim);max-width:560px;margin:0 auto;">Nine steps. Three phases. One complete transformation from scattered seeker to integrated alchemist.</p>
+  <img src="KarelynProcess.png" alt="The Inner Alchemy Journey - 9 Steps" class="journey-img">
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="container" style="text-align:center;">
+    <div class="section-label">Your Path</div>
+    <h2 class="section-title">Three Ways to Experience Inner Alchemy</h2>
+  </div>
+  <div class="programs-grid">
+    <div class="prog-card">
+      <div class="prog-type">Free Guide</div>
+      <h3>The 5 Channels</h3>
+      <div class="prog-desc">Discover which of your 5 intelligence channels is blocked — and get a practice to start opening it.</div>
+      <div class="prog-price">FREE</div>
+    </div>
+    <div class="prog-card featured">
+      <div class="prog-badge">Most Popular</div>
+      <div class="prog-type">6-Week Group</div>
+      <h3>Sacred Alchemy Circle</h3>
+      <div class="prog-desc">One channel activated per week. Full integration in Week 6. Live sessions, daily practices, and community.</div>
+      <div class="prog-price">$1,997</div>
+    </div>
+    <div class="prog-card">
+      <div class="prog-type">12-Week Private</div>
+      <h3>The Alchemist's Journey</h3>
+      <div class="prog-desc">Deep, private 1:1 transformation. Custom protocols, Voxer access, and a crystal + oil kit.</div>
+      <div class="prog-price">$7,500</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-layout">
+    <div class="about-photo">KG</div>
+    <div class="about-content">
+      <div class="section-label">Meet Karelyn</div>
+      <h2>From Healthcare Professional to Energy Alchemist</h2>
+      <p>I spent years as a dental hygienist — hands inside people's mouths, feeling like something was trying to come through me that had nothing to do with teeth.</p>
+      <p>When I discovered BodyTalk, everything shifted. Then came EFT. Then breathwork. Then oils and crystals. Each one opened a different door — but it wasn't until I learned to open all five at once that the real alchemy began.</p>
+      <p>I created The Inner Alchemy Method because your body isn't five separate systems. It's ONE intelligence. And when you activate all five channels together, the transformation isn't incremental — it's alchemical.</p>
+      <div class="about-tags">
+        <span class="about-tag">Certified BodyTalk Practitioner</span>
+        <span class="about-tag">EFT Practitioner</span>
+        <span class="about-tag">Breathwork Facilitator</span>
+        <span class="about-tag">Essential Oil Specialist</span>
+        <span class="about-tag">Crystal Healer</span>
+        <span class="about-tag">Published Author</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+  <div class="book-layout">
+    <div class="book-3d">
+      <img src="KarelynBook.png" alt="Inner Alchemy by Karelyn Goins">
+    </div>
+    <div class="book-info">
+      <div class="section-label">The Book</div>
+      <h3>Inner Alchemy</h3>
+      <div class="book-sub">The 5-Channel Path to Becoming the Woman Your Soul Already Knows You Are</div>
+      <p>The definitive guide to integrated energy healing. 12 chapters that take you from scattered seeker to embodied alchemist — with practices, stories, and the complete framework behind The Inner Alchemy Method.</p>
+      <p>For the woman who's ready to stop reading about transformation and start LIVING it.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider-glow"></div>
+
+<!-- LEAD MAGNET -->
+<section class="lead-section" id="start">
+  <div class="section-label">Free Guide</div>
+  <h2>Which Channel Is Blocked?</h2>
+  <p>Take the free 5-Channel Assessment and discover which of your body's intelligence channels needs attention first — plus get a practice to start opening it today.</p>
+  <div class="lead-form">
+    <input type="email" class="lead-input" placeholder="Your email address">
+    <button class="lead-btn">Send My Guide</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Karelyn Goins</div>
+  <p>Creator of The Inner Alchemy Method™</p>
+  <p style="margin-top:12px;font-size:0.75rem;color:rgba(250,246,238,0.25);">Website mockup designed by <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+</body>
+</html>

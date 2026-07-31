@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Dog-in-a-Box Membership | Train For As Long As It Takes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a1628;--bg2:#13233f;--bg3:#1a2f52;
+  --text:#ffffff;--muted:#9db1cc;
+  --gold:#d4af37;--green:#22c55e;--green-dark:#15803d;
+  --red:#ef4444;--highlight:#fef08a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--text);font-size:19px;line-height:1.65}
+h1,h2,h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1.15}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+.hl{background:linear-gradient(transparent 55%, rgba(254,240,138,.95) 55%);color:#0a1628;padding:0 .12em;font-weight:700}
+.gold{color:var(--gold)}
+.script{font-family:'Caveat',cursive;color:var(--gold);font-size:1.5em}
+section{padding:70px 0}
+
+/* URGENCY BAR */
+.bar{background:var(--red);text-align:center;padding:11px 16px;font-weight:700;font-size:16px;letter-spacing:.02em}
+
+/* HERO */
+.hero{text-align:center;padding:70px 0 60px;background:radial-gradient(ellipse at top,#16294a 0%,var(--bg) 65%)}
+.pre{font-family:'Oswald',sans-serif;color:var(--gold);text-transform:uppercase;letter-spacing:.18em;font-size:16px;font-weight:600;margin-bottom:22px}
+.hero h1{font-size:clamp(34px,5.4vw,60px);font-weight:700;margin-bottom:24px}
+.hero .sub{font-size:clamp(19px,2.4vw,24px);color:var(--muted);max-width:760px;margin:0 auto 36px}
+.hero .sub b{color:#fff}
+.stars{color:var(--gold);font-size:22px;letter-spacing:3px;margin-bottom:10px}
+.proofline{color:var(--muted);font-size:16px;margin-bottom:34px}
+.btn{display:inline-block;background:var(--green);color:#fff;font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.04em;font-size:21px;padding:20px 44px;border-radius:10px;text-decoration:none;box-shadow:0 7px 0 var(--green-dark);transition:transform .12s}
+.btn:hover{transform:translateY(2px);box-shadow:0 5px 0 var(--green-dark)}
+.btn .small{display:block;font-family:'Source Sans 3',sans-serif;font-size:14px;text-transform:none;letter-spacing:0;font-weight:600;opacity:.9;margin-top:3px}
+.arrow{font-family:'Caveat',cursive;color:var(--gold);font-size:26px;margin-top:14px}
+
+/* LETTER STYLE BODY */
+.letter p{margin-bottom:22px}
+.letter h2{font-size:clamp(26px,3.8vw,38px);color:#fff;margin:50px 0 22px}
+.letter h2:first-child{margin-top:0}
+.divider{text-align:center;color:var(--gold);font-size:24px;letter-spacing:14px;margin:46px 0}
+
+/* X LIST / CHECK LIST */
+ul.x,ul.check{list-style:none;margin:26px 0}
+ul.x li,ul.check li{padding:9px 0 9px 40px;position:relative}
+ul.x li::before{content:"✗";position:absolute;left:4px;color:var(--red);font-weight:800;font-size:22px}
+ul.check li::before{content:"✓";position:absolute;left:4px;color:var(--green);font-weight:800;font-size:22px}
+ul.check li b{color:var(--gold)}
+
+/* CALLOUT */
+.callout{background:var(--bg2);border-left:5px solid var(--gold);padding:26px 30px;border-radius:0 12px 12px 0;margin:34px 0;font-size:20px}
+.callout b{color:var(--gold)}
+
+/* STACK */
+.stackbox{background:var(--bg2);border:2px solid var(--gold);border-radius:18px;padding:44px 38px;margin:40px 0}
+.stackbox h3{font-size:26px;text-align:center;color:var(--gold);margin-bottom:30px}
+.stack-item{display:flex;justify-content:space-between;gap:18px;padding:16px 0;border-bottom:1px dashed #2c4470;font-size:18px}
+.stack-item:last-of-type{border-bottom:2px solid var(--gold)}
+.stack-item .name b{color:#fff}
+.stack-item .name span{display:block;font-size:15px;color:var(--muted)}
+.stack-item .val{font-family:'Oswald',sans-serif;color:var(--gold);white-space:nowrap;font-weight:600}
+.stack-total{display:flex;justify-content:space-between;padding:20px 0 6px;font-family:'Oswald',sans-serif;font-size:22px}
+.stack-total .tv{color:var(--gold);text-decoration:line-through;text-decoration-color:var(--red);text-decoration-thickness:3px}
+.price-reveal{text-align:center;margin-top:26px}
+.price-reveal .yours{font-family:'Oswald',sans-serif;font-size:20px;text-transform:uppercase;color:var(--muted);letter-spacing:.1em}
+.price-reveal .price{font-family:'Oswald',sans-serif;font-size:64px;color:var(--green);font-weight:700;line-height:1.1}
+.price-reveal .perday{font-size:19px;color:var(--muted)}
+.price-reveal .perday b{color:#fff}
+
+/* GUARANTEE */
+.guarantee{background:var(--bg2);border-radius:18px;padding:44px 38px;display:grid;grid-template-columns:130px 1fr;gap:32px;align-items:center;margin:46px 0}
+@media(max-width:640px){.guarantee{grid-template-columns:1fr;text-align:center}}
+.seal{width:130px;height:130px;border-radius:50%;background:var(--gold);color:#0a1628;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;text-align:center;font-size:14px;line-height:1.25;border:5px double #0a1628;margin:0 auto}
+.seal .big{font-size:30px}
+.guarantee h3{color:var(--gold);font-size:24px;margin-bottom:12px}
+
+/* SCARCITY */
+.scarcity{background:#3b1212;border:2px solid var(--red);border-radius:14px;padding:30px;margin:40px 0;text-align:center}
+.scarcity h3{color:var(--red);font-size:24px;margin-bottom:10px}
+
+/* FAQ */
+.faq h2{text-align:center}
+details{background:var(--bg2);border-radius:10px;margin-bottom:14px;overflow:hidden}
+summary{cursor:pointer;padding:20px 24px;font-weight:700;font-size:19px;list-style:none;position:relative;padding-right:50px}
+summary::after{content:"+";position:absolute;right:24px;top:16px;font-size:26px;color:var(--gold)}
+details[open] summary::after{content:"–"}
+details .a{padding:0 24px 22px;color:var(--muted)}
+details .a b{color:#fff}
+
+/* CHOICE CLOSE */
+.choice{background:var(--bg2);text-align:center;border-radius:18px;padding:50px 38px}
+.choice h2{font-size:clamp(26px,3.8vw,36px);margin-bottom:24px}
+.choice .two{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:34px 0;text-align:left}
+@media(max-width:680px){.choice .two{grid-template-columns:1fr}}
+.door{border-radius:12px;padding:28px}
+.door h3{font-size:19px;margin-bottom:10px}
+.door.bad{background:#241627;border:1px solid #4a2530}
+.door.bad h3{color:var(--red)}
+.door.good{background:#12281c;border:1px solid var(--green)}
+.door.good h3{color:var(--green)}
+.door p{font-size:17px;color:var(--muted)}
+
+footer{padding:40px 0;text-align:center;color:#5a7299;font-size:15px}
+footer a{color:#8aa3c7}
+</style>
+</head>
+<body>
+
+<div class="bar">⚠️ CLASSES ARE CAPPED AT 6 DOGS — WHEN A CLASS IS FULL, IT'S FULL. CURRENT AVAILABILITY BELOW.</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="pre">A Message For Every Gloucestershire Dog Owner Whose Training Course "Ended" Before Their Dog Was Actually Trained</p>
+    <h1>What If Your Dog's Training <span class="gold">Never Stopped</span> Until Your Dog Was Actually, Genuinely, Take-Anywhere Trained?</h1>
+    <p class="sub">Introducing the Dog-in-a-Box Class Membership: weekly expert coaching using the <b>P.L.A.Y. Method™</b> — from puppyhood through adolescence and beyond — for <b>less than the price of a coffee a day.</b></p>
+    <div class="stars">★★★★★</div>
+    <p class="proofline">Over 100 five-star reviews from dog owners across Gloucestershire</p>
+    <a class="btn" href="#offer">Yes! I Want a Brilliantly-Behaved Dog<span class="small">See everything that's included ↓ (and our keep-it-simple guarantee)</span></a>
+    <p class="arrow">↓ Read this first — it'll take 3 minutes and could save you years of frustration ↓</p>
+  </div>
+</section>
+
+<!-- THE LETTER -->
+<section class="letter">
+  <div class="wrap">
+    <h2>The Dirty Little Secret of the Dog Training Industry</h2>
+    <p>Dear Frustrated Dog Owner,</p>
+    <p>Here's something most trainers will never admit to you:</p>
+    <p><span class="hl">The standard 6-week training course is designed around the trainer's calendar — not your dog's brain.</span></p>
+    <p>Think about it. Your puppy doesn't graduate from being a puppy in 6 weeks. Adolescence — the phase where 80% of "good puppies" suddenly turn into furry teenagers who've forgotten their own name — lasts up to <b>two years.</b></p>
+    <p>And yet the industry sells you 6 weeks. Then a certificate. Then the car park, where you're on your own again.</p>
+    <p>Sound familiar? You did the course. Your dog was brilliant <i>in the village hall.</i> Then three weeks later the pulling came back, the recall vanished, and you're left wondering whether the problem is the dog… or you.</p>
+    <p><b>It's neither. It's the model.</b></p>
+
+    <h2>We Listened To Our Own Clients — And Tore Up the Model</h2>
+    <p>After years of watching brilliant owners get abandoned at "graduation," we asked our clients what they actually wanted. The answer was nearly unanimous:</p>
+    <p class="script">"We don't want the classes to end."</p>
+    <p>So we built the thing nobody else around here offers: <b>one simple membership that carries you and your dog through every stage</b> — puppy classes, adolescent classes, then on to agility, hoopers and scentwork when the foundations are solid. Same membership. Same price. No rebooking, no waiting lists, no graduation cliff.</p>
+
+    <div class="callout">Most training around Gloucestershire costs <b>£105–£140 for a 6-week course</b> — then you start the booking circus all over again. Members train <b>every single week, all year,</b> and simply move up when their dog is ready.</div>
+
+    <h2>Why Members' Dogs Get Results That Stick (When Courses Failed)</h2>
+    <p>Three reasons — and they're all first principles, not marketing fluff:</p>
+    <ul class="check">
+      <li><b>Repetition builds dogs.</b> Behaviour is a habit, and habits are built weekly, not in a 6-week sprint. Extended training is simply how dog brains work.</li>
+      <li><b>Maximum 6 dogs per class.</b> That's not a class — that's semi-private coaching. Your dog gets seen, every week, by an award-winning certified trainer.</li>
+      <li><b>The P.L.A.Y. Method™.</b> Every skill is taught through games your dog is desperate to play. Praise-Powered. Learn through games. At your dog's pace. Years of good behaviour — not six weeks of it.</li>
+    </ul>
+
+    <div class="divider">🐾 🐾 🐾</div>
+
+    <!-- OFFER STACK -->
+    <h2 id="offer" style="text-align:center">Here's Everything You Get As a Member</h2>
+    <div class="stackbox">
+      <h3>The Dog-in-a-Box Membership</h3>
+      <div class="stack-item"><div class="name"><b>Weekly Training Classes (48 weeks/year)</b><span>Puppy, adolescent, agility, agility foundation, hoopers or scentwork — max 6 dogs per class</span></div><div class="val">£1,056 value</div></div>
+      <div class="stack-item"><div class="name"><b>Seamless Class Progression</b><span>Move from puppy → adolescent → activity classes the moment your dog is ready. No rebooking. No waiting.</span></div><div class="val">Priceless</div></div>
+      <div class="stack-item"><div class="name"><b>Trainer Support Between Classes</b><span>Stuck on Tuesday? Ask. You're never left guessing until next week.</span></div><div class="val">£480 value</div></div>
+      <div class="stack-item"><div class="name"><b>Members-Only Video Library &amp; Resources</b><span>Every game, demonstrated, on demand — train in your living room</span></div><div class="val">£197 value</div></div>
+      <div class="stack-item"><div class="name"><b>Private Members Community</b><span>Friendly, supportive, local — owners on the same journey</span></div><div class="val">£120 value</div></div>
+      <div class="stack-item"><div class="name"><b>Points, Leaderboard &amp; Monthly Prizes</b><span>Training your dog becomes a game YOU want to win too</span></div><div class="val">Fun (and free)</div></div>
+      <div class="stack-item"><div class="name"><b>BONUS: Guaranteed Class Place</b><span>When a class fills, we open another — members never get bumped</span></div><div class="val">£0 stress</div></div>
+      <div class="stack-item"><div class="name"><b>BONUS: Second-Dog Discount</b><span>Big discount on membership for your second dog</span></div><div class="val">Save £££</div></div>
+      <div class="stack-total"><div>Real-World Value:</div><div class="tv">£1,853+ per year</div></div>
+      <div class="price-reveal">
+        <div class="yours">Your Membership:</div>
+        <div class="price">£89/month</div>
+        <div class="perday">That's <b>£2.96 a day</b> — less than the coffee you'll drink while watching your dog behave beautifully. Start within 7 days. Stop any time after 2 months with a month's notice.</div>
+      </div>
+    </div>
+    <div style="text-align:center"><a class="btn" href="#">Claim My Place — Join the Membership<span class="small">Join today, train within 7 days</span></a></div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="seal"><span class="big">100%</span>Try It First<br>Promise</div>
+      <div>
+        <h3>The "See It With Your Own Eyes" Promise</h3>
+        <p>You don't have to take our word for any of this. <b>Come and watch any class — completely free — before you commit a penny.</b> Want to feel it for yourself first? Take a £5 taster in agility or hoopers. If you don't walk away convinced this is the most fun your dog has ever had learning, shake hands, no hard feelings. You risk nothing but an hour of your time.</p>
+      </div>
+    </div>
+
+    <!-- SCARCITY -->
+    <div class="scarcity">
+      <h3>A Word of Honest Warning</h3>
+      <p>We cap every class at <b>6 dogs.</b> Not because it sounds exclusive — because that's the maximum where every dog gets genuinely coached. It also means classes <b>do fill up</b>, and popular time slots go first. If you're thinking "I'll sort it after the summer," you may find yourself on the outside of a full class looking in. Members get guaranteed places. Window-shoppers wait.</p>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2>Your Questions, Answered Straight</h2>
+      <details><summary>My puppy is a maniac. Are you sure you can help?</summary><div class="a">Maniacs are our specialty. The P.L.A.Y. Method was practically <b>built</b> for high-energy dogs — we channel that rocket fuel into games instead of fighting it. The "naughtiest" dogs often become the star pupils.</div></details>
+      <details><summary>What if I can't make my class one week?</summary><div class="a">Life happens. Talk to us — we're a small, friendly local business, not a faceless gym contract. Plus the members' video library means you never fall behind on the games.</div></details>
+      <details><summary>Is this a long contract?</summary><div class="a">No. Complete 2 months, then stop any time with a month's notice. We keep members by being worth it, <b>not by trapping you in small print.</b></div></details>
+      <details><summary>What's "hoopers"?</summary><div class="a">Imagine agility, but with hoops and barrels instead of jumps — low-impact, huge fun, brilliant for dogs of any age (and owners of any fitness level!). It's one of several activity classes included in your membership.</div></details>
+      <details><summary>My dog is reactive / has a specific behaviour problem. Should I join classes?</summary><div class="a">Maybe not yet — and we'll tell you honestly. Some dogs need 1-to-1 work first. <b>Book a free discovery call</b> and Pa will give you a straight answer about the right starting point for your dog.</div></details>
+      <details><summary>I have two dogs.</summary><div class="a">Wonderful — your second dog's membership comes at a big discount. Ask when you join.</div></details>
+    </div>
+
+    <div class="divider">🐾 🐾 🐾</div>
+
+    <!-- CHOICE CLOSE -->
+    <div class="choice">
+      <h2>You're Standing at a Fork in the Lead</h2>
+      <div class="two">
+        <div class="door bad">
+          <h3>Door #1: Change Nothing</h3>
+          <p>Keep wrestling on walks. Keep apologising to strangers. Maybe try another 6-week course that ends right when your dog hits adolescence. Same dog, same frustration, this time next year.</p>
+        </div>
+        <div class="door good">
+          <h3>Door #2: Join the Membership</h3>
+          <p>Start within 7 days. Train weekly with an award-winning coach and 5 other dogs, max. Watch the pulling, the chaos, the embarrassment dissolve into the dog you actually wanted. £2.96 a day.</p>
+        </div>
+      </div>
+      <a class="btn" href="#">I Choose Door #2 — Sign Me Up<span class="small">Watch a class free first, or grab a £5 taster — your call</span></a>
+      <p style="margin-top:22px;color:var(--muted);font-size:17px">Still unsure? <a href="#" style="color:var(--gold)">Book a free 15-minute discovery call</a> and get a straight answer from Pa.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Dog-in-a-Box Training · Longhope, Gloucestershire · 01531 808799 · <a href="#">Terms</a> · <a href="#">Privacy</a></div>
+</footer>
+
+</body>
+</html>

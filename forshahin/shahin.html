@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahin van Harmelen-Mol — The Soul Release Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--cream:#FAF6EE;--sage:#7A9E7E;--sage-dark:#5C7D60;--sage-light:#e4ede5;
+--gold:#C6A855;--gold-light:#E8D5A0;--deep:#1C2B1E;--deep-mid:#2a3d2d;
+--rose:#C9928E;--warm:#D4A574;--white:#fff;--text:#3a4a3e;--text-light:#6a7a6e;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;color:var(--deep)}
+.accent{font-family:'Caveat',cursive}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:768px){section{padding:56px 0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;background:rgba(250,246,238,.92);backdrop-filter:blur(12px);z-index:1000;border-bottom:1px solid rgba(122,158,126,.15);padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--deep);text-decoration:none}
+.nav-brand span{color:var(--sage)}
+.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--text);font-size:.85rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--sage)}
+.nav-cta{background:var(--sage);color:var(--white)!important;padding:8px 20px;border-radius:6px;font-weight:600;transition:background .3s!important}
+.nav-cta:hover{background:var(--sage-dark)!important}
+@media(max-width:768px){.nav-links{display:none}}
+
+/* HERO */
+.hero{background:linear-gradient(170deg,var(--cream) 0%,var(--sage-light) 50%,var(--cream) 100%);padding:140px 0 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-30%;right:-20%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(122,158,126,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-20%;left:-10%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(198,168,85,.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'Caveat',cursive;font-size:1.3rem;color:var(--sage);margin-bottom:12px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);margin-bottom:16px;color:var(--deep)}
+.hero h1 span{color:var(--sage)}
+.hero-sub{font-size:1.1rem;max-width:640px;margin:0 auto 12px;color:var(--text-light);line-height:1.8}
+.hero-bold{font-family:'Playfair Display',serif;font-style:italic;color:var(--deep);font-size:1.15rem;max-width:600px;margin:16px auto 32px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--sage);color:var(--white);padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s;border:2px solid var(--sage)}
+.btn-primary:hover{background:var(--sage-dark);border-color:var(--sage-dark)}
+.btn-secondary{display:inline-block;background:transparent;color:var(--sage);padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s;border:2px solid var(--sage)}
+.btn-secondary:hover{background:var(--sage);color:var(--white)}
+
+/* PAIN SECTION */
+.pain{background:var(--white);position:relative}
+.pain::before{content:'"';position:absolute;top:40px;left:5%;font-family:'Playfair Display',serif;font-size:15rem;color:rgba(122,158,126,.06);line-height:1;pointer-events:none}
+.pain h2{font-size:clamp(1.8rem,4vw,2.6rem);text-align:center;margin-bottom:8px}
+.pain-subtitle{text-align:center;font-family:'Caveat',cursive;color:var(--sage);font-size:1.25rem;margin-bottom:40px}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto}
+@media(max-width:640px){.pain-grid{grid-template-columns:1fr}}
+.pain-item{background:var(--cream);padding:20px 24px;border-radius:10px;border-left:3px solid var(--rose);font-size:.92rem;line-height:1.7;color:var(--text);font-style:italic}
+.pain-closer{text-align:center;margin-top:36px;font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--deep);max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+.pain-closer em{color:var(--sage);font-style:normal;font-weight:600}
+
+/* METHOD */
+.method{background:var(--cream);text-align:center}
+.method h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.method-sub{font-family:'Caveat',cursive;color:var(--sage);font-size:1.25rem;margin-bottom:40px}
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:768px){.method-grid{grid-template-columns:1fr 1fr;gap:16px}}
+@media(max-width:480px){.method-grid{grid-template-columns:1fr}}
+.method-card{background:var(--white);padding:32px 24px;border-radius:14px;border:1px solid rgba(122,158,126,.15);transition:all .3s}
+.method-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(28,43,30,.08);border-color:var(--sage)}
+.method-num{font-family:'Caveat',cursive;font-size:2rem;color:var(--sage);display:block;margin-bottom:4px}
+.method-card h3{font-size:1.1rem;margin-bottom:8px}
+.method-card p{font-size:.88rem;color:var(--text-light);line-height:1.6}
+
+/* JOURNEY */
+.journey{background:var(--deep);color:var(--cream);text-align:center;padding:80px 0}
+.journey h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold-light);margin-bottom:8px}
+.journey-sub{color:rgba(250,246,238,.7);margin-bottom:8px;font-size:1.02rem}
+.journey-hook{font-family:'Caveat',cursive;color:var(--gold);font-size:1.2rem;margin-bottom:36px}
+.journey-img{max-width:680px;width:100%;border-radius:12px;margin:0 auto;display:block}
+
+/* PROGRAMS */
+.programs{background:var(--cream);text-align:center}
+.programs h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+.programs-hook{font-family:'Playfair Display',serif;font-style:italic;color:var(--text-light);font-size:1.05rem;margin-bottom:8px;max-width:600px;margin-left:auto;margin-right:auto}
+.programs-sub{font-family:'Caveat',cursive;color:var(--sage);font-size:1.2rem;margin-bottom:40px}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+@media(max-width:768px){.prog-grid{grid-template-columns:1fr;max-width:400px}}
+.prog-card{background:var(--white);border-radius:14px;padding:32px 24px;border:1px solid rgba(122,158,126,.15);transition:all .3s}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(28,43,30,.08)}
+.prog-card.featured{border:2px solid var(--sage);position:relative}
+.prog-card.featured::before{content:'FLAGSHIP';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--sage);color:var(--white);font-size:.7rem;font-weight:700;padding:4px 16px;border-radius:100px;letter-spacing:1px;white-space:nowrap}
+.prog-card h3{font-size:1.1rem;margin-bottom:6px}
+.prog-card .price{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--sage);display:block;margin-bottom:4px}
+.prog-card .note{font-size:.82rem;color:var(--text-light);margin-bottom:14px;display:block}
+.prog-card p{font-size:.88rem;color:var(--text-light);line-height:1.6}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+.about-img-placeholder{width:100%;aspect-ratio:4/5;background:linear-gradient(135deg,var(--sage-light),var(--cream));border-radius:16px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:4rem;color:var(--sage);opacity:.4}
+.about-content h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:16px}
+.about-lead{font-family:'Playfair Display',serif;font-style:italic;color:var(--sage);font-size:1.1rem;margin-bottom:16px;line-height:1.6}
+.about-content p{margin-bottom:14px;font-size:.95rem;line-height:1.8;color:var(--text)}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+@media(max-width:768px){.about-tags{justify-content:center}}
+.about-tag{background:var(--sage-light);color:var(--sage-dark);padding:6px 14px;border-radius:100px;font-size:.78rem;font-weight:600;letter-spacing:.3px}
+
+/* BOOK */
+.book{background:var(--cream)}
+.book-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center}
+@media(max-width:768px){.book-grid{grid-template-columns:1fr;gap:32px;text-align:center}}
+.book-img-wrap{display:flex;justify-content:center;perspective:600px}
+.book-img{max-width:280px;width:100%;border-radius:4px;box-shadow:16px 16px 48px rgba(28,43,30,.2);transform:rotateY(-6deg);transition:transform .4s}
+.book-img:hover{transform:rotateY(-2deg)}
+.book-content h2{font-size:clamp(1.6rem,3.5vw,2.2rem);margin-bottom:12px}
+.book-content p{margin-bottom:14px;font-size:.95rem;line-height:1.8;color:var(--text)}
+.book-hook{font-family:'Caveat',cursive;color:var(--sage);font-size:1.2rem;margin-top:8px}
+
+/* LEAD MAGNET */
+.magnet{background:var(--sage);color:var(--white);text-align:center;padding:64px 0}
+.magnet h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--white);margin-bottom:8px}
+.magnet-hook{font-family:'Playfair Display',serif;font-style:italic;color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:8px}
+.magnet-sub{color:rgba(255,255,255,.75);margin-bottom:28px;font-size:.95rem}
+.magnet-form{display:flex;gap:12px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.magnet-form input{flex:1;min-width:220px;padding:14px 18px;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.12);color:var(--white);font-size:.95rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .3s}
+.magnet-form input::placeholder{color:rgba(255,255,255,.5)}
+.magnet-form input:focus{border-color:var(--white)}
+.magnet-form button{background:var(--white);color:var(--sage-dark);padding:14px 28px;border:none;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all .3s}
+.magnet-form button:hover{background:var(--cream);transform:translateY(-1px)}
+
+/* FOOTER */
+footer{background:var(--deep);color:rgba(250,246,238,.5);text-align:center;padding:32px 0}
+footer .foot-brand{font-family:'Playfair Display',serif;color:var(--gold-light);font-size:1.1rem;margin-bottom:6px}
+footer p{font-size:.8rem;letter-spacing:.3px}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-inner">
+<a href="#" class="nav-brand">Shahin <span>van Harmelen-Mol</span></a>
+<ul class="nav-links">
+<li><a href="#method">Method</a></li>
+<li><a href="#programs">Programs</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#book">Book</a></li>
+<li><a href="#start" class="nav-cta">Work With Me</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container">
+<p class="hero-eyebrow">✦ Soul Constellation · Reiki Master · EFT Practitioner</p>
+<h1>Stop Managing Your Addiction.<br><span>Release It at the Soul Level.</span></h1>
+<p class="hero-sub">Most recovery teaches you to fight cravings for the rest of your life. The Soul Release Method™ traces your pattern back to its ancestral root — and clears it. So the craving doesn't just quiet down. It loses its grip. For good.</p>
+<p class="hero-bold">"You were never broken. You were carrying something that was never yours."</p>
+<div class="hero-btns">
+<a href="#start" class="btn-primary">Apply for the Next Group</a>
+<a href="#magnet" class="btn-secondary">Get the Free Guide</a>
+</div>
+</div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+<div class="container">
+<h2 class="fade-in">Does This Sound Like You?</h2>
+<p class="pain-subtitle fade-in">Be honest. Nobody's watching.</p>
+<div class="pain-grid">
+<div class="pain-item fade-in">"I don't even know why I do it. I just... can't stop. By 8pm something takes over and I lose the fight before it even starts."</div>
+<div class="pain-item fade-in">"I've done Dry January, the cleanse, the therapist, the app. Nothing sticks. I'm starting to think this is just who I am."</div>
+<div class="pain-item fade-in">"I feel like there's this hole in me and nothing fills it. Food, wine, pills — they work for an hour and then the emptiness is worse."</div>
+<div class="pain-item fade-in">"My mom was the same way. My grandmother too. Sometimes I wonder if it's just... in my blood."</div>
+<div class="pain-item fade-in">"Nobody knows. I smile at school pickup. I crush it at work. Nobody sees what happens after 8pm."</div>
+<div class="pain-item fade-in">"I'm so tired of hating myself every morning. I just want to feel normal. I want one day without the battle in my head."</div>
+</div>
+<p class="pain-closer fade-in">If you felt something reading that, it's because these aren't made-up scenarios. They're the exact words women say — to themselves, in the dark, when nobody's listening.<br><br>And here's what nobody's told you yet: <em>the pattern isn't yours. It was passed down. And it can be cleared.</em></p>
+</div>
+</section>
+
+<!-- METHOD -->
+<section class="method" id="method">
+<div class="container">
+<h2 class="fade-in">The Soul Release Method™</h2>
+<p class="method-sub fade-in">4 Pillars. One Transformation. Complete Liberation.</p>
+<div class="method-grid">
+<div class="method-card fade-in">
+<span class="method-num">01</span>
+<h3>Reveal</h3>
+<p>Soul Constellation to trace your addictive pattern back to its ancestral and energetic root — the moment the cycle truly began.</p>
+</div>
+<div class="method-card fade-in">
+<span class="method-num">02</span>
+<h3>Release</h3>
+<p>Reiki energy healing to clear inherited trauma, grief, and blocked energy stored in your body and your family line.</p>
+</div>
+<div class="method-card fade-in">
+<span class="method-num">03</span>
+<h3>Rewire</h3>
+<p>EFT tapping to reprogram the nervous system triggers and dissolve cravings at the neurological level — in real time.</p>
+</div>
+<div class="method-card fade-in">
+<span class="method-num">04</span>
+<h3>Reignite</h3>
+<p>Reconnect to the joy, enthusiasm, and aliveness that the pattern buried. Fall back in love with being alive.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey" id="journey">
+<div class="container">
+<h2 class="fade-in">The 9-Step Soul Release Journey™</h2>
+<p class="journey-sub fade-in">Every client follows this exact path — from inherited pattern to complete liberation.</p>
+<p class="journey-hook fade-in">"9 steps. 3 phases. One woman who finally comes alive."</p>
+<img src="ShahinProcess.png" alt="The Soul Release Journey — 9 Steps" class="journey-img fade-in">
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs" id="programs">
+<div class="container">
+<h2 class="fade-in">Choose Your Path to Freedom</h2>
+<p class="programs-hook fade-in">There's no wrong entry point — only the one that feels right for where you are right now.</p>
+<p class="programs-sub fade-in">Every program uses The Soul Release Method™</p>
+<div class="prog-grid">
+<div class="prog-card fade-in">
+<h3>"Why Willpower Doesn't Work"</h3>
+<span class="price">FREE</span>
+<span class="note">Downloadable Guide</span>
+<p>The 3 hidden reasons you can't break free using willpower alone — and the soul-level shift that changes everything. Start here.</p>
+</div>
+<div class="prog-card featured fade-in">
+<h3>"Soul Release" 6-Week Program</h3>
+<span class="price">$2,497</span>
+<span class="note">Live Group Coaching · Limited to 12 Women</span>
+<p>Six weeks of live group coaching through all 4 pillars. Soul constellation, Reiki clearings, EFT protocols, community, and lifetime access to recordings.</p>
+</div>
+<div class="prog-card fade-in">
+<h3>"Total Liberation" Intensive</h3>
+<span class="price">$7,500</span>
+<span class="note">12 Weeks · 1-on-1 · Application Only</span>
+<p>Private deep-dive with Shahin. Complete ancestral pattern clearing, custom protocols, Voxer access, and full identity transformation.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-img-placeholder fade-in">S</div>
+<div class="about-content fade-in">
+<h2>Meet Shahin</h2>
+<p class="about-lead">"I don't help women manage their addictions. I help them dissolve the invisible chains they didn't know they were wearing."</p>
+<p>Shahin van Harmelen-Mol is a Soul Constellation facilitator, Reiki Master, and certified EFT practitioner who has dedicated her life to helping women break free from cycles of addiction — not through willpower or clinical protocols, but through deep ancestral healing and energetic clearing.</p>
+<p>What makes her different? She doesn't just treat symptoms. She traces every pattern back to its origin — often revealing inherited wounds that have been running in a woman's family for generations. And she does it with a warmth, enthusiasm, and genuine joy that makes the healing process feel like coming home, not going to war.</p>
+<p>Her clients don't just "recover." They come alive. They rediscover enthusiasm, spontaneity, and a love for life that the pattern had been suffocating for years.</p>
+<div class="about-tags">
+<span class="about-tag">Soul Constellation</span>
+<span class="about-tag">Reiki Master</span>
+<span class="about-tag">EFT Practitioner</span>
+<span class="about-tag">Ancestral Healing</span>
+<span class="about-tag">Addiction Recovery</span>
+<span class="about-tag">Energy Work</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+<div class="container">
+<div class="book-grid">
+<div class="book-img-wrap fade-in">
+<img src="ShahinBook.png" alt="The Soul Release — Book by Shahin van Harmelen-Mol" class="book-img">
+</div>
+<div class="book-content fade-in">
+<h2>The Book: "The Soul Release"</h2>
+<p>Break Free from Addiction by Healing What You Inherited. A 10-chapter guide that walks you through the entire Soul Release Method™ — from tracing your ancestral pattern to clearing it at the energetic level to reigniting your love for life.</p>
+<p>This isn't a self-help book that gives you more things to try. It's the book that finally explains <em>why nothing else worked</em> — and gives you the path that will.</p>
+<p class="book-hook">✦ "The book that tells the truth recovery programs are afraid to say."</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="magnet" id="magnet">
+<div class="container">
+<h2 class="fade-in">Why Willpower Doesn't Work</h2>
+<p class="magnet-hook fade-in">The 3 Hidden Reasons You Can't Break Free — And What to Do Instead</p>
+<p class="magnet-sub fade-in">Free guide · Instant download · No spam, just liberation</p>
+<div class="magnet-form fade-in">
+<input type="email" placeholder="Your email address">
+<button type="button">Send Me the Guide</button>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container">
+<div class="foot-brand">Shahin van Harmelen-Mol</div>
+<p>Creator of The Soul Release Method™ · Soul Constellation · Reiki Master · EFT</p>
+<p style="margin-top:8px;font-size:.75rem">Website designed by <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</div>
+</footer>
+
+<script>
+const observer=new IntersectionObserver((entries)=>{
+entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}})
+},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>

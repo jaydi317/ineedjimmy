@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidneyRelief.Life — Dr. Priya Visweswaran Balakrishnan, MD</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --deep-teal: #0C4B5E;
+    --teal: #1A7A8A;
+    --warm-gold: #C8963E;
+    --gold-light: #E8C77B;
+    --cream: #FDF8F0;
+    --warm-white: #FFFDF9;
+    --dark: #1A1A1A;
+    --text: #2D2D2D;
+    --text-light: #5A5A5A;
+    --coral: #D4605A;
+    --coral-dark: #B8443E;
+    --success-green: #2E7D4F;
+    --light-teal-bg: #F0F7F8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Sans 3', Georgia, serif;
+    color: var(--text);
+    background: var(--warm-white);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* UTILITY */
+  .container { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .container-wide { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+
+  /* URGENCY BAR */
+  .urgency-bar {
+    background: var(--coral-dark);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .urgency-bar span { color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(170deg, var(--deep-teal) 0%, #0A3A4A 60%, #071E28 100%);
+    color: white;
+    padding: 60px 24px 70px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 20%, rgba(200,150,62,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(26,122,138,0.15) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .hero-credential {
+    display: inline-block;
+    border: 1px solid rgba(200,150,62,0.5);
+    padding: 6px 20px;
+    border-radius: 2px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 30px;
+    font-weight: 600;
+  }
+  .hero-pre {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    font-weight: 900;
+    max-width: 800px;
+    margin: 0 auto 24px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 19px;
+    max-width: 640px;
+    margin: 0 auto 36px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-proof {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-proof-item {
+    text-align: center;
+  }
+  .hero-proof-item .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold-light);
+    display: block;
+  }
+  .hero-proof-item .label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* CTA BUTTON */
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--warm-gold), #D4A94A);
+    color: var(--dark);
+    font-size: 17px;
+    font-weight: 700;
+    padding: 18px 44px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(200,150,62,0.4);
+    transition: all 0.3s;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(200,150,62,0.5);
+  }
+  .cta-btn-sub {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: rgba(255,255,255,0.6);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 70px 24px;
+  }
+  .section-dark {
+    background: var(--deep-teal);
+    color: white;
+  }
+  .section-cream {
+    background: var(--cream);
+  }
+  .section-light {
+    background: var(--light-teal-bg);
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.25;
+    margin-bottom: 20px;
+    color: var(--deep-teal);
+    font-weight: 700;
+  }
+  .section-dark h2 { color: white; }
+  h2 em { color: var(--warm-gold); font-style: italic; }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--deep-teal);
+    font-weight: 700;
+  }
+
+  p { margin-bottom: 18px; font-size: 17px; }
+
+  /* LETTER STYLE */
+  .letter {
+    background: var(--cream);
+    border: 1px solid #E8DFD0;
+    padding: 50px 44px;
+    max-width: 720px;
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+  }
+  .letter::before {
+    content: '"';
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: rgba(200,150,62,0.15);
+    line-height: 1;
+  }
+  .letter p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.8;
+    color: var(--text);
+  }
+  .letter .signature {
+    margin-top: 30px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--deep-teal);
+  }
+  .letter .sig-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    color: var(--text-light);
+    font-style: normal;
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  /* PROBLEM AGITATION */
+  .problem-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+  }
+  .problem-list li {
+    padding: 14px 0 14px 36px;
+    position: relative;
+    font-size: 17px;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .problem-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--coral);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  /* SOLUTION CHECKMARKS */
+  .solution-list {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+  }
+  .solution-list li {
+    padding: 14px 0 14px 36px;
+    position: relative;
+    font-size: 17px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .section-dark .solution-list li {
+    border-bottom-color: rgba(255,255,255,0.08);
+  }
+  .solution-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--gold-light);
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  /* TESTIMONIAL CARDS */
+  .testimonial {
+    background: white;
+    border-left: 4px solid var(--warm-gold);
+    padding: 30px 32px;
+    margin: 30px 0;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  }
+  .testimonial p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-style: italic;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .testimonial .numbers {
+    display: inline-block;
+    background: var(--light-teal-bg);
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--deep-teal);
+    font-style: normal;
+    margin-bottom: 12px;
+  }
+  .testimonial .attribution {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    color: var(--text-light);
+    font-style: normal;
+    font-weight: 600;
+  }
+  .testimonial .attribution span {
+    font-weight: 400;
+  }
+
+  /* 3 PHASE BOXES */
+  .phase {
+    border: 2px solid;
+    padding: 36px;
+    margin: 28px 0;
+    border-radius: 4px;
+    position: relative;
+  }
+  .phase-number {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: var(--warm-white);
+    padding: 0 12px;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .phase-rescue { border-color: var(--coral); }
+  .phase-rescue .phase-number { color: var(--coral); }
+  .phase-regen { border-color: var(--teal); }
+  .phase-regen .phase-number { color: var(--teal); }
+  .phase-thrive { border-color: var(--warm-gold); }
+  .phase-thrive .phase-number { color: var(--warm-gold); }
+  .phase h3 { margin-top: 4px; }
+
+  /* STACK / OFFER */
+  .stack-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 17px;
+  }
+  .stack-item .value {
+    color: var(--gold-light);
+    font-weight: 700;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+  .stack-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 22px;
+    font-weight: 700;
+    border-top: 2px solid var(--warm-gold);
+    margin-top: 10px;
+  }
+  .stack-total .value {
+    color: var(--gold-light);
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+  }
+  .price-reveal {
+    text-align: center;
+    margin: 40px 0 10px;
+  }
+  .price-reveal .old-price {
+    font-size: 28px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: line-through;
+    margin-bottom: 8px;
+  }
+  .price-reveal .new-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--gold-light);
+  }
+  .price-reveal .per {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  /* GUARANTEE BOX */
+  .guarantee {
+    border: 2px solid var(--warm-gold);
+    padding: 36px;
+    text-align: center;
+    border-radius: 4px;
+    margin: 40px 0;
+    background: rgba(200,150,62,0.03);
+  }
+  .guarantee-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--warm-gold);
+    margin-bottom: 12px;
+  }
+
+  /* CREDENTIAL STRIP */
+  .credentials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    margin: 30px 0;
+  }
+  .credential-item {
+    text-align: center;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-light);
+    font-weight: 600;
+  }
+  .credential-item strong {
+    display: block;
+    font-size: 16px;
+    color: var(--deep-teal);
+    margin-bottom: 2px;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding: 22px 0;
+  }
+  .faq-item h3 {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--deep-teal);
+    margin-bottom: 8px;
+  }
+  .faq-item p {
+    font-size: 16px;
+    color: var(--text-light);
+    margin-bottom: 0;
+  }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: linear-gradient(170deg, var(--deep-teal) 0%, #071E28 100%);
+    color: white;
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .final-cta h2 { color: white; }
+  .final-cta p { color: rgba(255,255,255,0.8); }
+
+  /* CALLOUT BOX */
+  .callout {
+    background: var(--cream);
+    border-left: 4px solid var(--warm-gold);
+    padding: 24px 28px;
+    margin: 30px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout p { margin-bottom: 0; font-weight: 500; }
+
+  /* HIGHLIGHT TEXT */
+  .highlight {
+    background: linear-gradient(to top, rgba(200,150,62,0.2) 0%, rgba(200,150,62,0.2) 40%, transparent 40%);
+    padding: 0 2px;
+  }
+
+  .text-gold { color: var(--warm-gold); }
+  .text-coral { color: var(--coral); }
+  .text-teal { color: var(--teal); }
+  .text-center { text-align: center; }
+  .mb-0 { margin-bottom: 0; }
+  .mt-40 { margin-top: 40px; }
+  .small { font-size: 14px; color: var(--text-light); }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--warm-gold);
+    margin: 30px auto;
+  }
+
+  @media (max-width: 600px) {
+    .letter { padding: 30px 24px; }
+    .hero { padding: 40px 20px 50px; }
+    .phase { padding: 24px 20px; }
+    .hero-proof { gap: 24px; }
+    .credentials { gap: 16px; }
+    .stack-item { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  Dr. Priya is accepting only <span>12 new patients</span> this month — <span>4 spots remaining</span>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container-wide">
+    <div class="hero-credential">Board-Certified Nephrologist &bull; Published Researcher &bull; USPTO Patent Holder</div>
+    <p class="hero-pre">Attention: Women with Stage 3, 4, or 5 Kidney Disease</p>
+    <h1>"My Colleagues Told Me My Kidneys Were <em>Finished.</em><br>I Proved Them Wrong — And I Can Show You How."</h1>
+    <p class="hero-sub">A board-certified nephrologist who reversed her <strong>own</strong> kidney failure reveals the patented 3-phase method that has helped patients improve their GFR, lower their creatinine, and <strong>avoid dialysis</strong> — even after being told there was no hope.</p>
+    <a href="#offer" class="cta-btn">
+      Get Your Free Kidney Revival Consultation
+      <span class="cta-btn-sub">No cost. No pressure. Just an honest conversation with my team about your options.</span>
+    </a>
+    <div class="hero-proof">
+      <div class="hero-proof-item">
+        <span class="number">32</span>
+        <span class="label">Years of Practice</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="number">5,000+</span>
+        <span class="label">Lives Saved</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="number">2</span>
+        <span class="label">U.S. Patents</span>
+      </div>
+      <div class="hero-proof-item">
+        <span class="number">JASN</span>
+        <span class="label">Published Research</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PERSONAL LETTER -->
+<div class="section">
+  <div class="container">
+    <div class="letter">
+      <p>Dear Friend,</p>
+      <p>If you're reading this, chances are you've been given a diagnosis that has turned your world upside down. Chronic Kidney Disease. Stage 3. Stage 4. Maybe Stage 5. And the doctor who told you — probably someone you trust — may have said something like:</p>
+      <p><strong>"We'll monitor it. When it gets worse, we'll start dialysis."</strong></p>
+      <p>Not <em>if</em> it gets worse. <em>When.</em></p>
+      <p>I know exactly how that feels. Because in 2007, I was the patient. I was lying in a hospital bed — <em>my own hospital</em> — with multi-organ failure and bilateral kidney scarring. My colleagues, the doctors I had trained alongside, were preparing me for dialysis. My son Sambhu was five years old. He was at home, waiting for me to come back.</p>
+      <p>And I made a decision that changed everything: <strong>I refused to accept that my kidneys were finished.</strong></p>
+      <p>I am a board-certified nephrologist. I trained at the University of Texas. I was Chief Medical Resident — the only woman chosen from 300 doctors. I have spent my entire career studying kidneys. And I knew, deep in my bones, that the medical establishment was wrong about one critical thing:</p>
+      <p><strong>Your kidneys can heal. If you know how to activate the system that heals them.</strong></p>
+      <p>I reversed my own kidney failure. I published the protocol in the Journal of the American Society of Nephrology. I was awarded two U.S. patents for the method. And for the last 17 years, I have been helping patients like you do exactly what I did.</p>
+      <p>This page will show you how.</p>
+      <p class="signature">— Dr. Priya Visweswaran Balakrishnan, MD</p>
+      <p class="sig-title">Board-Certified Nephrologist & Internist<br>Nephrology Fellowship, University of Texas Medical School<br>Principal Investigator, The Immortality Institute</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM AGITATION -->
+<div class="section section-cream">
+  <div class="container">
+    <h2>If Any of This Sounds Like You, <em>Keep Reading.</em></h2>
+    <p>You're not just dealing with a diagnosis. You're dealing with a <strong>broken system</strong> that has already decided your future for you.</p>
+    <ul class="problem-list">
+      <li>Your nephrologist talks about <strong>"managing"</strong> your decline — never about <em>reversing</em> it</li>
+      <li>You've been handed a "kidney diet" that's so restrictive you can barely eat — and your numbers are <strong>still getting worse</strong></li>
+      <li>You've tried supplements from Amazon that promised the world and delivered <strong>nothing</strong> (or worse — made things worse because they were never designed for CKD patients)</li>
+      <li>You lie awake at 2am Googling <em>"can kidney disease be reversed"</em> and getting <strong>100 conflicting answers</strong></li>
+      <li>You feel <strong>exhausted all the time</strong> — not just physically, but emotionally — and you wonder if anyone really understands what you're going through</li>
+      <li>Your family is scared. Your friends don't understand. And your doctor's answer is always the same: <strong>"Just wait."</strong></li>
+      <li>You're being told to prepare for dialysis — a treatment that costs <strong>$100,000+ per year</strong>, requires 3-4 sessions per week, and dramatically changes your quality of life</li>
+    </ul>
+    <div class="callout">
+      <p><strong>Here's what nobody has told you:</strong> The reason your kidneys keep declining isn't because they <em>can't</em> heal. It's because nothing you've been given has activated the system that <em>does</em> the healing.</p>
+    </div>
+  </div>
+</div>
+
+<!-- THE BIG IDEA -->
+<div class="section">
+  <div class="container">
+    <h2>The Discovery That Changes <em>Everything</em> About Kidney Disease</h2>
+    <p>Most doctors — even most nephrologists — treat your kidneys like they're <strong>just a filter.</strong> A filter that wears out. A filter you can't replace. A filter that just... fails.</p>
+    <p><strong>They're wrong.</strong></p>
+    <p>After my own near-death experience, I dedicated years of research to understanding something the medical establishment had overlooked: your kidneys are not just filters. They are the <span class="highlight">lead organ of your body's regenerative system.</span></p>
+    <p>I call this system the <strong>REGENEROS</strong> — the regenerative organ system. It's the network that triggers the creation of new healing cells, repairs damaged tissue, and restores function throughout your body. And the kidney is its command center.</p>
+    <p>When your kidneys are compromised, your <em>entire</em> regenerative system shuts down. That's why CKD patients don't just have kidney problems — they have fatigue, heart problems, bone loss, immune dysfunction. It's all connected.</p>
+    <p>But here's the breakthrough: <strong>when you reactivate the REGENEROS, your kidneys can begin to heal themselves.</strong></p>
+    <p>I named this approach <strong>Regeneretics.</strong> I published it. I patented it. And I've spent 17 years proving it works.</p>
+
+    <div class="credentials">
+      <div class="credential-item">
+        <strong>Published</strong>
+        Journal of the American<br>Society of Nephrology
+      </div>
+      <div class="credential-item">
+        <strong>Patented</strong>
+        2 USPTO Patents on<br>Regenerative Protocol
+      </div>
+      <div class="credential-item">
+        <strong>Endorsed</strong>
+        Jack Canfield<br>Author, Chicken Soup for the Soul
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROOF / TESTIMONIALS -->
+<div class="section section-cream">
+  <div class="container">
+    <h2>Real Patients. Real Lab Numbers. <em>Real Hope.</em></h2>
+    <p>These aren't vague testimonials about "feeling better." These are <strong>clinically measurable improvements</strong> — the same numbers your nephrologist tracks.</p>
+
+    <div class="testimonial">
+      <div class="numbers">Creatinine: 2.5 → 2.2 &nbsp;|&nbsp; BUN: 65 → 40 &nbsp;|&nbsp; GFR: ~10 → ~35</div>
+      <p>"We were devastated. My son's nephrologist said dialysis was needed immediately — his GFR was 13. We found Dr. Priya during Hurricane Harvey, and even with Houston flooded, she took the time to listen to everything. After 40 days on her protocol, his labs shocked everyone. His creatinine dropped, his BUN was cut nearly in half, and the doctor calculated his GFR had jumped to approximately 35. No dialysis. Thank God."</p>
+      <p><strong>The nephrologist's exact words: "No need for dialysis at this stage."</strong></p>
+      <div class="attribution">— Father of a CKD patient, <span>Houston, TX</span></div>
+    </div>
+
+    <div class="testimonial">
+      <p>"I had already been to 15 doctors before finding Dr. Priya. Fifteen. She was the first one who actually took the time to hear every symptom, every medication, every herb I had tried. She zeroed in on the root cause, got me the right treatment, and I finally started to get better. I wish I had found her first — I would have saved thousands of dollars and years of suffering."</p>
+      <div class="attribution">— Shaquila G., <span>CKD Patient</span></div>
+    </div>
+
+    <div class="testimonial">
+      <p>"The doctors in my community told me to buy Tylenol and come back when my breathing got so bad I'd need a ventilator. I was scared, angry, and frustrated. Dr. Priya changed my life. She treated me, created a regimen to rebuild my strength, and because of her, I am alive to write this today. It's very hard to find a doctor who cares. Dr. Priya is a rare gem."</p>
+      <div class="attribution">— Shaquila G., <span>COVID & CKD Patient</span></div>
+    </div>
+
+    <div class="testimonial">
+      <p>"Dr. Balakrishnan really listens and knows what to do to help. I wondered if telemedicine would work — it did. It was so convenient and effective. She wanted to get all the necessary information before making a decision on treatment, but she also had a sense of urgency to solve my health issues. Smart, attentive, reliable, and understanding — she helped when other doctors failed."</p>
+      <div class="attribution">— Linda E., <span>Telemedicine Patient</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- THE METHOD -->
+<div class="section">
+  <div class="container">
+    <p class="text-center small" style="text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; font-weight:600; color:var(--warm-gold);">Introducing</p>
+    <h2 class="text-center">The Kidney Revival Method™</h2>
+    <p class="text-center" style="max-width:600px; margin: 0 auto 40px; color:var(--text-light);">The 3-Phase Protocol That Has Helped Patients Improve Their Kidney Function, Lower Their Creatinine, and Avoid Dialysis</p>
+
+    <div class="phase phase-rescue">
+      <div class="phase-number">Phase 1 — Weeks 1-4</div>
+      <h3 style="color:var(--coral);">RESCUE: Stop the Decline</h3>
+      <p>Before your kidneys can heal, we have to stop the damage that's happening <em>right now.</em> In the first four weeks, we identify exactly what's attacking your kidneys — the wrong foods, the wrong supplements, the hidden toxins, the cortisol overload — and we eliminate them. We establish your true baseline with a comprehensive lab analysis, start you on a kidney-safe supplement protocol, and give your body the breathing room it needs to begin recovery.</p>
+      <p class="mb-0"><strong>Your milestone:</strong> Stabilized labs. Reduced burden on your kidneys. The decline stops.</p>
+    </div>
+
+    <div class="phase phase-regen">
+      <div class="phase-number">Phase 2 — Weeks 5-12</div>
+      <h3 style="color:var(--teal);">REGENERATE: Activate Your Healing System</h3>
+      <p>This is where Regeneretics does its work. Now that the damage has stopped, we activate your REGENEROS — your body's built-in regenerative system — through targeted nutrition, a plant-based kidney protocol, and the specific biochemical support your kidneys need to begin producing new healing cells. You'll follow the Kidney Kitchen meal system, track your labs every two weeks, and start to see your numbers move in the right direction.</p>
+      <p class="mb-0"><strong>Your milestone:</strong> Measurable improvement in GFR, creatinine, and BUN. Energy returns. Hope becomes evidence.</p>
+    </div>
+
+    <div class="phase phase-thrive">
+      <div class="phase-number">Phase 3 — Weeks 13+</div>
+      <h3 style="color:var(--warm-gold);">THRIVE: Lock In the Gains</h3>
+      <p>Recovery isn't a one-time event — it's a lifestyle. In Phase 3, we lock in your progress with a long-term maintenance protocol, ongoing supplement optimization, monthly lab reviews, and a community of women who understand exactly what you've been through. You don't just survive your diagnosis. You <em>transcend</em> it.</p>
+      <p class="mb-0"><strong>Your milestone:</strong> Sustained kidney function. Dialysis off the table. A new relationship with your health.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY HER -->
+<div class="section section-light">
+  <div class="container">
+    <h2>Why Dr. Priya? Because <em>Nobody Else</em> Has What She Has.</h2>
+    <p>There are naturopaths selling kidney courses online. There are supplement companies making kidney pills in a factory. There are even dialysis companies offering "education" — funded by the same industry that profits $100 billion a year when your kidneys fail.</p>
+    <p><strong>Dr. Priya is none of those things.</strong></p>
+
+    <ul class="solution-list">
+      <li style="color:var(--text);"><strong>She is the ONLY board-certified nephrologist</strong> offering a kidney reversal program online — her competitors are naturopaths, dietitians, and supplement companies without medical credentials</li>
+      <li style="color:var(--text);"><strong>She reversed her OWN kidney failure</strong> — she's not teaching theory, she's teaching what saved her life</li>
+      <li style="color:var(--text);"><strong>She published her protocol</strong> in the Journal of the American Society of Nephrology — the most respected nephrology journal in the world</li>
+      <li style="color:var(--text);"><strong>She holds 2 U.S. patents</strong> on her regenerative method — this isn't generic advice, it's proprietary, protected science</li>
+      <li style="color:var(--text);"><strong>She has 32 years of clinical experience</strong> and has saved over 5,000 lives as a hospitalist</li>
+      <li style="color:var(--text);"><strong>She was Chief Medical Resident</strong> at UT Houston — the only woman selected from 300 doctors</li>
+      <li style="color:var(--text);"><strong>She does this through telemedicine</strong> — so it doesn't matter where you live, you get access to one of the most credentialed kidney specialists in the country</li>
+    </ul>
+
+    <div class="callout">
+      <p>Jack Canfield, bestselling author of <em>Chicken Soup for the Soul</em>, personally received Dr. Priya's protocols and said: <strong>"I will be the healthiest guy on the planet, glowing with vitality."</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- THE OFFER / STACK -->
+<div class="section section-dark" id="offer">
+  <div class="container">
+    <h2 class="text-center">Here's Everything You Get When You Join<br><em>The Kidney Revival Method™</em></h2>
+    <p class="text-center" style="color:rgba(255,255,255,0.7); max-width:600px; margin: 0 auto 40px;">This is the complete system — not a book, not a course, not a bottle of pills. It's a doctor-supervised protocol designed to give your kidneys the best possible chance to heal.</p>
+
+    <div class="stack-item">
+      <span>The Kidney Revival Method — Complete 12-Week Protocol (3 Phases)</span>
+      <span class="value">$2,997</span>
+    </div>
+    <div class="stack-item">
+      <span>Dr. Priya's Kidney-Safe Supplement Protocol Guide</span>
+      <span class="value">$497</span>
+    </div>
+    <div class="stack-item">
+      <span>The Kidney Kitchen — 90-Day Meal Plans, Recipes & Shopping Lists</span>
+      <span class="value">$297</span>
+    </div>
+    <div class="stack-item">
+      <span>Lab Interpretation Masterclass — Read Your Numbers Like a Nephrologist</span>
+      <span class="value">$497</span>
+    </div>
+    <div class="stack-item">
+      <span>The Kidney Score Card — Personal Lab Tracking System</span>
+      <span class="value">$97</span>
+    </div>
+    <div class="stack-item">
+      <span>Stress-Kidney Connection — Cortisol Management for CKD</span>
+      <span class="value">$197</span>
+    </div>
+    <div class="stack-item">
+      <span>Private Community Access — Connect with Other Kidney Warriors</span>
+      <span class="value">$497</span>
+    </div>
+    <div class="stack-item">
+      <span>Monthly Group Q&A Calls with Dr. Priya (12 months access)</span>
+      <span class="value">$1,200</span>
+    </div>
+    <div class="stack-item">
+      <span><strong>BONUS:</strong> "The 5 Kidney-Killing Mistakes" Report</span>
+      <span class="value">$97</span>
+    </div>
+    <div class="stack-item">
+      <span><strong>BONUS:</strong> The Regeneretics Quick-Start Audio Guide</span>
+      <span class="value">$197</span>
+    </div>
+    <div class="stack-total">
+      <span>Total Value:</span>
+      <span class="value">$6,573</span>
+    </div>
+
+    <div class="price-reveal">
+      <div class="old-price">$6,573</div>
+      <div class="new-price">$997</div>
+      <div class="per">One-time investment &bull; Lifetime access to all materials</div>
+    </div>
+
+    <div class="text-center mt-40">
+      <a href="#" class="cta-btn">
+        Schedule Your Free Kidney Revival Consultation
+        <span class="cta-btn-sub">We'll review your labs and determine if this method is right for you. No pressure.</span>
+      </a>
+    </div>
+
+    <p class="text-center small" style="color:rgba(255,255,255,0.5); margin-top: 30px;">Or ask about our High-Touch Private Patient Program with 1-on-1 access to Dr. Priya — limited to 5 patients per quarter.</p>
+  </div>
+</div>
+
+<!-- GUARANTEE -->
+<div class="section">
+  <div class="container">
+    <div class="guarantee">
+      <div class="guarantee-badge">⬥</div>
+      <h3 style="margin-bottom: 16px; font-size: 24px;">Dr. Priya's "See It In Your Labs" Promise</h3>
+      <p style="max-width: 580px; margin: 0 auto;">Follow the Kidney Revival Method for 90 days. Track your labs. If you don't see measurable improvement in at least one key kidney marker — GFR, creatinine, or BUN — Dr. Priya's team will personally review your case and work with you on an adjusted protocol at no additional cost. She didn't accept "no hope" for herself, and she won't accept it for you.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COST COMPARISON -->
+<div class="section section-cream">
+  <div class="container">
+    <h2>Let's Talk About What This <em>Really</em> Costs</h2>
+    <p>Dialysis costs <strong>$89,000 to $120,000 per year.</strong> It requires 3-4 sessions per week. Each session takes 3-4 hours. You're hooked up to a machine while your blood is filtered outside your body. For the rest of your life.</p>
+    <p>A kidney transplant — if you can even find a donor — costs <strong>$400,000+</strong> and requires a lifetime of immunosuppressant drugs at <strong>$2,000-$5,000 per month.</strong></p>
+    <p>The Kidney Revival Method costs less than <strong>one month</strong> of post-transplant medication. It costs less than <strong>five days</strong> of dialysis.</p>
+    <p>And it gives you something dialysis never will: <span class="highlight">the chance that your kidneys might actually get <em>better.</em></span></p>
+
+    <div class="callout">
+      <p><strong>The real question isn't "Can I afford this?"</strong><br>The real question is: "Can I afford NOT to try — when the alternative is dialysis?"</p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section">
+  <div class="container">
+    <h2>Questions You Might Have</h2>
+
+    <div class="faq-item">
+      <h3>"Is this safe to do alongside my current treatment?"</h3>
+      <p>Yes. The Kidney Revival Method is designed to complement — not replace — your existing medical care. Dr. Priya is a board-certified physician. She would never ask you to stop working with your nephrologist. In fact, many of her patients bring their improved lab results to their regular doctors, who are often amazed at the progress.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"I'm Stage 4 (or Stage 5). Is it too late for me?"</h3>
+      <p>Dr. Priya's most dramatic results have come from patients in advanced stages — including one patient whose GFR was approximately 10 (near-dialysis) and improved to approximately 35. Was it too late for her when she was lying in the hospital with multi-organ failure? She didn't think so. And she doesn't think so for you, either. The consultation is free — let her team assess your specific situation.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"How is this different from Kidney Coach or other programs online?"</h3>
+      <p>Kidney Coach is run by naturopaths. Amazon kidney supplements are made in factories by people who've never treated a kidney patient. Dr. Priya is a board-certified nephrologist with published research and U.S. patents who reversed her own kidney failure. With respect to anyone else working in this space — nobody else has these credentials. Period.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"I live far from Houston. Can I still work with Dr. Priya?"</h3>
+      <p>Absolutely. Dr. Priya has been treating patients via telemedicine for years. Her patients span the entire country. All you need is a phone or computer and access to a lab for your bloodwork. Geography is not a barrier.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"What if my doctor doesn't believe in this?"</h3>
+      <p>Your doctor doesn't have to believe in it. Your lab numbers will speak for themselves. When your GFR improves and your creatinine drops, the numbers don't lie. Many of Dr. Priya's patients have had the deeply satisfying experience of bringing improved labs to a skeptical doctor. The science is the science.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>"What if it doesn't work for me?"</h3>
+      <p>Dr. Priya offers her "See It In Your Labs" promise. If you follow the protocol for 90 days and don't see measurable improvement, her team will personally review your case and adjust your protocol at no extra charge. She's been doing this for 17 years. She knows what works. And she's not going to give up on you — because nobody gave up on her.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="container">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--gold-light); margin-bottom:20px;">"I refused to accept that my kidneys were finished. And I refuse to accept it for you."</p>
+    <h2>Your Kidneys Are Waiting.<br><em>Let's Wake Them Up.</em></h2>
+    <p style="max-width:600px; margin:0 auto 30px;">Schedule your free Kidney Revival Consultation today. Dr. Priya's team will review your lab numbers, learn about your specific situation, and tell you honestly whether The Kidney Revival Method can help. No pressure. No obligation. Just answers.</p>
+    <a href="#" class="cta-btn">
+      Schedule Your Free Consultation Now
+      <span class="cta-btn-sub">Only 4 spots remaining this month.</span>
+    </a>
+    <p style="margin-top:40px; font-size:14px; color:rgba(255,255,255,0.4);">KidneyRelief.Life &bull; Dr. Priya Visweswaran Balakrishnan, MD &bull; Houston, TX<br>Board-Certified Nephrologist & Internist &bull; Nephrology Fellowship, UT Houston Medical School</p>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div style="padding:30px 24px; background:#f5f5f0; font-size:12px; color:#999; text-align:center; line-height:1.6;">
+  <div class="container">
+    <p style="font-size:12px; margin-bottom:8px;">MEDICAL DISCLAIMER: This website is for educational purposes only and does not constitute medical advice. Individual results vary. The information provided is not intended to diagnose, treat, cure, or prevent any disease. Always consult with your healthcare provider before making changes to your treatment plan. The testimonials on this page represent individual experiences and are not guaranteed outcomes. Dr. Priya Visweswaran Balakrishnan, MD, is a licensed physician. All medical services are provided through The Immortality Institute, Houston, TX.</p>
+    <p style="font-size:12px; margin-bottom:0;">© 2026 KidneyRelief.Life — All Rights Reserved</p>
+  </div>
+</div>
+
+</body>
+</html>

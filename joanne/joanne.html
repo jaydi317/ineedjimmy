@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joanne Cunningham — Creator of The Safe to Shine Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--cream:#FAF6EE;--cream-dark:#EDE5D5;--sage:#7A9E7E;--sage-dark:#5C7D60;
+--sage-deep:#3D5A40;--gold:#C6A855;--deep:#1C2B1E;--rose:#C9928E;
+--warm:#D4A574;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--deep);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.25}
+.accent{font-family:'Caveat',cursive}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:768px){section{padding:56px 0}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(250,246,238,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(122,158,126,.12);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--deep)}
+nav .nav-links{display:flex;gap:28px;align-items:center}
+nav .nav-links a{text-decoration:none;color:var(--sage-dark);font-size:.85rem;font-weight:500;transition:color .3s}
+nav .nav-links a:hover{color:var(--deep)}
+.nav-cta{background:var(--sage);color:var(--white)!important;padding:10px 22px;border-radius:30px;font-weight:600!important;transition:all .3s!important}
+.nav-cta:hover{background:var(--sage-dark)!important}
+@media(max-width:768px){nav .nav-links a:not(.nav-cta){display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;background:linear-gradient(180deg,var(--cream) 0%,rgba(122,158,126,.06) 100%);position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse at 80% 50%,rgba(122,158,126,.08) 0%,transparent 60%)}
+.hero-content{max-width:600px}
+.hero-badge{display:inline-block;font-family:'Caveat',cursive;font-size:1.1rem;color:var(--sage);margin-bottom:16px}
+.hero h1{font-size:clamp(2.4rem,5vw,3.8rem);color:var(--deep);margin-bottom:20px;line-height:1.15}
+.hero h1 em{font-style:italic;color:var(--sage-dark)}
+.hero p{font-size:1.1rem;color:rgba(28,43,30,.65);max-width:480px;margin-bottom:32px;line-height:1.9}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--sage);color:var(--white);padding:16px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s;box-shadow:0 4px 16px rgba(122,158,126,.25)}
+.btn-primary:hover{background:var(--sage-dark);transform:translateY(-2px)}
+.btn-secondary{display:inline-block;border:2px solid var(--sage);color:var(--sage-dark);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;transition:all .3s}
+.btn-secondary:hover{background:var(--sage);color:var(--white)}
+
+/* PAIN SECTION */
+.pain-section{background:var(--white);border-top:1px solid rgba(122,158,126,.08);border-bottom:1px solid rgba(122,158,126,.08)}
+.pain-section .container{max-width:800px;text-align:center}
+.section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--sage);margin-bottom:10px}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:16px}
+.section-subtitle{color:rgba(28,43,30,.6);font-size:1rem;margin-bottom:40px}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left}
+@media(max-width:600px){.pain-grid{grid-template-columns:1fr}}
+.pain-item{background:var(--cream);border-radius:12px;padding:24px;border-left:3px solid var(--rose);font-size:.92rem;color:rgba(28,43,30,.75);font-style:italic;line-height:1.8}
+
+/* METHOD SECTION */
+.method-section{background:linear-gradient(180deg,var(--cream) 0%,rgba(122,158,126,.04) 100%)}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+@media(max-width:900px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.pillars-grid{grid-template-columns:1fr}}
+.pillar{background:var(--white);border:1px solid rgba(122,158,126,.12);border-radius:16px;padding:32px 24px;text-align:center;transition:all .35s}
+.pillar:hover{border-color:var(--sage);transform:translateY(-4px);box-shadow:0 8px 24px rgba(122,158,126,.1)}
+.pillar-num{font-family:'Caveat',cursive;font-size:2rem;color:var(--sage);margin-bottom:8px}
+.pillar h3{font-size:1.2rem;color:var(--deep);margin-bottom:10px}
+.pillar p{font-size:.85rem;color:rgba(28,43,30,.6);line-height:1.7}
+
+/* JOURNEY SECTION */
+.journey-section{background:var(--white);text-align:center}
+.journey-img{max-width:700px;width:100%;margin:0 auto;border-radius:16px;box-shadow:0 12px 40px rgba(28,43,30,.08)}
+
+/* PROGRAMS SECTION */
+.programs-section{}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+@media(max-width:800px){.programs-grid{grid-template-columns:1fr}}
+.prog-card{background:var(--white);border:1px solid rgba(122,158,126,.12);border-radius:16px;padding:32px;text-align:center;transition:all .35s;position:relative}
+.prog-card:hover{border-color:var(--sage);transform:translateY(-3px)}
+.prog-card.featured{border:2px solid var(--sage);background:rgba(122,158,126,.03)}
+.prog-card.featured::before{content:'SIGNATURE';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--sage);color:var(--white);font-size:.65rem;font-weight:700;letter-spacing:2px;padding:4px 16px;border-radius:12px}
+.prog-card h3{font-size:1.1rem;margin-bottom:8px}
+.prog-card .price{font-family:'Playfair Display',serif;font-size:2rem;color:var(--sage-dark);margin-bottom:6px}
+.prog-card .note{font-size:.8rem;color:rgba(28,43,30,.5);margin-bottom:12px}
+.prog-card p{font-size:.85rem;color:rgba(28,43,30,.6);line-height:1.7}
+
+/* ABOUT */
+.about-section{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-text h2{margin-bottom:16px}
+.about-text p{color:rgba(28,43,30,.7);font-size:.95rem;line-height:1.9;margin-bottom:16px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.about-tag{background:rgba(122,158,126,.08);border:1px solid rgba(122,158,126,.2);color:var(--sage-dark);padding:6px 14px;border-radius:20px;font-size:.78rem}
+.about-visual{display:flex;align-items:center;justify-content:center}
+.about-quote{background:var(--cream);border-radius:20px;padding:40px;border-left:4px solid var(--sage);font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--deep);line-height:1.6;font-style:italic}
+.about-quote cite{display:block;margin-top:16px;font-family:'Inter',sans-serif;font-size:.85rem;font-style:normal;color:var(--sage)}
+
+/* BOOK SECTION */
+.book-section{text-align:center}
+.book-display{display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:40px}
+.book-img{width:260px;border-radius:8px;box-shadow:12px 12px 40px rgba(28,43,30,.15);transform:rotateY(-8deg);transition:transform .4s}
+.book-img:hover{transform:rotateY(-2deg)}
+.book-text{text-align:left;max-width:400px}
+.book-text h3{font-size:1.4rem;margin-bottom:12px;color:var(--deep)}
+.book-text p{font-size:.9rem;color:rgba(28,43,30,.65);line-height:1.8;margin-bottom:12px}
+@media(max-width:700px){.book-display{flex-direction:column}.book-text{text-align:center}}
+
+/* LEAD MAGNET */
+.lead-section{background:var(--sage-deep);color:var(--cream);text-align:center}
+.lead-section .section-label{color:var(--gold)}
+.lead-section .section-title{color:var(--cream)}
+.lead-section p{color:rgba(250,246,238,.7);max-width:500px;margin:0 auto 28px}
+.lead-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:500px;margin:0 auto}
+.lead-form input{flex:1;min-width:200px;padding:14px 20px;border-radius:50px;border:none;font-family:'Inter',sans-serif;font-size:.95rem;background:rgba(250,246,238,.12);color:var(--cream)}
+.lead-form input::placeholder{color:rgba(250,246,238,.4)}
+.lead-form button{background:var(--gold);color:var(--deep);border:none;padding:14px 28px;border-radius:50px;font-family:'Inter',sans-serif;font-weight:700;font-size:.9rem;cursor:pointer;transition:all .3s}
+.lead-form button:hover{background:var(--cream);color:var(--deep)}
+
+/* FOOTER */
+footer{background:var(--deep);color:rgba(250,246,238,.5);text-align:center;padding:40px 24px;font-size:.8rem}
+footer a{color:var(--gold);text-decoration:none}
+.footer-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--cream);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">Joanne Cunningham</div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#method">Method</a>
+<a href="#programs">Programs</a>
+<a href="#book">Book</a>
+<a href="#contact" class="nav-cta">Work With Me</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-content">
+<div class="hero-badge">✨ Creator of The Safe to Shine Method™</div>
+<h1>You don't need another diet. You need to feel <em>safe enough</em> to let the weight go.</h1>
+<p>I help women release the emotional weight they've been carrying — so the physical weight can finally let go too. No meal plans. No calorie counting. Just freedom.</p>
+<div class="hero-btns">
+<a href="#contact" class="btn-primary">Book a Free Discovery Call</a>
+<a href="#method" class="btn-secondary">Learn the Method</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PAIN SECTION -->
+<section class="pain-section">
+<div class="container">
+<div class="section-label">Does this sound like you?</div>
+<h2 class="section-title">You Know It's Not About the Food</h2>
+<p class="section-subtitle">You've tried every diet. You've lost the weight and gained it back — plus more. Something deeper is going on.</p>
+<div class="pain-grid">
+<div class="pain-item">"I know what I should be eating. I just can't seem to stick to it — and I don't know why."</div>
+<div class="pain-item">"I eat my feelings. I know I do. I just can't stop the cycle no matter how hard I try."</div>
+<div class="pain-item">"I start every Monday with good intentions, and by Wednesday I've caved. Every single time."</div>
+<div class="pain-item">"I feel like I'm broken — like everyone else can eat normally and I just... can't."</div>
+<div class="pain-item">"I hide food. I eat in secret. Nobody knows how bad it really is."</div>
+<div class="pain-item">"Part of me is terrified of losing the weight. What happens then?"</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+<div class="container">
+<div class="section-label">The Method</div>
+<h2 class="section-title">The Safe to Shine Method™</h2>
+<p class="section-subtitle">A 4-pillar healing framework that addresses emotional eating at every level — using 7 powerful modalities working together.</p>
+<div class="pillars-grid">
+<div class="pillar">
+<div class="pillar-num">01</div>
+<h3>See</h3>
+<p>Uncover the hidden emotional drivers and childhood patterns that created your relationship with food.</p>
+</div>
+<div class="pillar">
+<div class="pillar-num">02</div>
+<h3>Shed</h3>
+<p>Release the stored trauma, limiting beliefs, and subconscious programming keeping the armour in place.</p>
+</div>
+<div class="pillar">
+<div class="pillar-num">03</div>
+<h3>Shift</h3>
+<p>Restore your body's natural energy, calm your nervous system, and reconnect to your physical wisdom.</p>
+</div>
+<div class="pillar">
+<div class="pillar-num">04</div>
+<h3>Shine</h3>
+<p>Step into visibility. Express who you really are. Let the world see YOU — not the armour.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+<div class="container">
+<div class="section-label">The Journey</div>
+<h2 class="section-title">The 9-Step Safe to Shine Journey™</h2>
+<p class="section-subtitle">Every client follows this proven process — from awareness to transformation.</p>
+<img src="JoanneProcess.png" alt="The 9-Step Safe to Shine Journey" class="journey-img">
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+<div class="container">
+<div class="section-label">Work With Me</div>
+<h2 class="section-title">Choose Your Path</h2>
+<p class="section-subtitle">Whether you're just starting or ready for deep transformation, there's a way to work together.</p>
+<div class="programs-grid">
+<div class="prog-card">
+<h3>Free Report</h3>
+<div class="price">FREE</div>
+<div class="note">Instant Download</div>
+<p>"Why Diets Don't Work (And What Your Body Is Really Trying to Tell You)" — The 5 hidden emotional reasons you can't stop eating.</p>
+</div>
+<div class="prog-card featured">
+<h3>Safe to Shine</h3>
+<div class="price">£997</div>
+<div class="note">6-Week Group Programme</div>
+<p>The complete emotional weight release programme. Live sessions, guided audios, community support, and personalised tools.</p>
+</div>
+<div class="prog-card">
+<h3>The Full Transformation</h3>
+<div class="price">£5,000</div>
+<div class="note">12-Week Private Intensive</div>
+<p>Deep, personalised 1:1 work using all 7 modalities. The most profound transformation available.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-text">
+<div class="section-label">About Joanne</div>
+<h2>I Know What It's Like to Hide Behind the Weight</h2>
+<p>I grew up in Belfast during the Troubles — the eldest of four in a working-class family. I learned very early that it was safer to be invisible. So I hid. In my shyness. In my silence. And behind my weight.</p>
+<p>I spent decades gaining weight to protect myself from a world that felt dangerous — and then decades hating myself for it. I tried every diet. I qualified as a counsellor. I studied art therapy, Reiki, hypnosis, NLP, mindfulness. I collected every tool I could find.</p>
+<p>But nothing changed until I discovered the one truth that set me free: <strong>the weight was never the problem. It was the armour.</strong> And the moment I felt safe enough to take it off, everything shifted.</p>
+<div class="about-tags">
+<span class="about-tag">Certified EFT Professional</span>
+<span class="about-tag">NLP Practitioner</span>
+<span class="about-tag">Hypnotherapist</span>
+<span class="about-tag">Qualified Counsellor</span>
+<span class="about-tag">Reiki Healer</span>
+<span class="about-tag">Art Therapist</span>
+<span class="about-tag">30+ Years Experience</span>
+</div>
+</div>
+<div class="about-visual">
+<blockquote class="about-quote">
+"We are a bowl of light, born containing the radiance of heaven. It is only the rocks of fear, self-doubt, and worry that hide this light."
+<cite>— Hawaiian Spiritual Tradition</cite>
+</blockquote>
+</div>
+</div>
+</div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+<div class="container">
+<div class="section-label">The Book</div>
+<h2 class="section-title">Safe to Shine</h2>
+<div class="book-display">
+<img src="JoanneBook.png" alt="Safe to Shine by Joanne Cunningham" class="book-img">
+<div class="book-text">
+<h3>How I Lost the Armour, Found My Light, and Discovered the Real Reason Women Can't Stop Eating</h3>
+<p>Part memoir, part method — this book takes you inside Joanne's transformation and gives you the complete Safe to Shine framework to begin your own.</p>
+<p>11 chapters covering the science of emotional eating, the 4 pillars, the 9-step journey, and real client stories of women who finally found freedom.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="lead-section" id="contact">
+<div class="container">
+<div class="section-label">Free Guide</div>
+<h2 class="section-title">Why Diets Don't Work</h2>
+<p>Download the free report and discover the 5 hidden emotional reasons you can't stop eating — and the one shift that changes everything.</p>
+<div class="lead-form">
+<input type="email" placeholder="Your email address">
+<button type="button">Get the Free Guide</button>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-name">Joanne Cunningham</div>
+<p>Creator of The Safe to Shine Method™ · Belfast, Northern Ireland</p>
+<p style="margin-top:8px">© 2026 Healing Transformation. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

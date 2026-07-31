@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elk Kovaricek — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-light: #1A3654;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --gold-dim: rgba(198,168,85,0.15);
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+  --text-muted: #8BA4BE;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- UTILITY ---- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 100px 0; }
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 650px;
+}
+.gold-line {
+  width: 60px; height: 2px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+
+/* ---- HERO ---- */
+.hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  background: linear-gradient(180deg, #070F1A 0%, var(--deep) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(198,168,85,0.07) 0%, transparent 70%);
+  top: -100px; left: 50%; transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(198,168,85,0.3);
+  padding: 8px 20px;
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero h1 .name-highlight {
+  color: var(--gold);
+}
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ---- IDENTITY CARD ---- */
+.identity-section { padding: 0 0 100px; }
+.identity-card {
+  background: linear-gradient(135deg, var(--deep-mid) 0%, #0E2035 100%);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 16px;
+  padding: 50px 44px;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--sage), var(--gold), var(--warm));
+}
+.identity-card .coach-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.identity-card .method-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.identity-card .pitch {
+  font-size: 1.05rem;
+  color: var(--cream);
+  line-height: 1.75;
+  max-width: 750px;
+  margin-bottom: 28px;
+  opacity: 0.9;
+}
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.credential-tag {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 20px;
+  color: var(--gold-light);
+  background: rgba(198,168,85,0.06);
+}
+
+/* ---- METHOD PILLARS ---- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.pillar-card {
+  background: linear-gradient(160deg, var(--deep-mid), #0D1F33);
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 14px;
+  padding: 36px 28px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pillar-card:hover {
+  border-color: rgba(198,168,85,0.35);
+  transform: translateY(-4px);
+}
+.pillar-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+.pillar-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.pillar-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ---- 9-STEP JOURNEY ---- */
+.journey-section { text-align: center; }
+.journey-image {
+  margin-top: 40px;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(198,168,85,0.15);
+}
+
+/* ---- WEBSITE PREVIEWS ---- */
+.previews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+.preview-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(198,168,85,0.12);
+  background: var(--deep-mid);
+  transition: border-color 0.3s, transform 0.3s;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.preview-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+}
+.preview-mockup {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+.preview-mockup iframe {
+  width: 200%;
+  height: 200%;
+  transform: scale(0.5);
+  transform-origin: top left;
+  border: none;
+  pointer-events: none;
+}
+.preview-label {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+.preview-label h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+.preview-label p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ---- BOOK SECTION ---- */
+.book-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+.book-3d {
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+}
+.book-3d img {
+  max-width: 320px;
+  width: 100%;
+  border-radius: 6px;
+  transform: rotateY(-12deg) rotateX(3deg);
+  box-shadow: 20px 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(198,168,85,0.08);
+  transition: transform 0.4s;
+}
+.book-3d img:hover {
+  transform: rotateY(-4deg) rotateX(1deg);
+}
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+.book-info .book-subtitle-text {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 18px;
+  font-style: italic;
+}
+.book-info p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.book-note {
+  font-size: 0.85rem;
+  color: var(--gold-light);
+  padding: 14px 20px;
+  background: var(--gold-dim);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  margin-top: 10px;
+}
+
+/* ---- INSTAGRAM BIO ---- */
+.insta-section { text-align: center; }
+.insta-card {
+  background: linear-gradient(160deg, var(--deep-mid), #0D1F33);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 40px auto 0;
+  padding: 32px 28px;
+  text-align: center;
+}
+.insta-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--sage));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--deep);
+}
+.insta-handle {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.insta-stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(198,168,85,0.1);
+}
+.insta-stat { text-align: center; }
+.insta-stat .num { font-weight: 700; font-size: 1rem; }
+.insta-stat .lbl { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
+.insta-bio {
+  text-align: left;
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--cream);
+  opacity: 0.9;
+}
+.insta-bio .bio-highlight { color: var(--gold); }
+
+/* ---- PROGRAMS ---- */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+.program-card {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,0.12);
+  border-radius: 14px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+}
+.program-card:hover {
+  border-color: rgba(198,168,85,0.3);
+  transform: translateY(-4px);
+}
+.program-card.featured {
+  border-color: var(--gold);
+  background: linear-gradient(160deg, #162D45, var(--deep-mid));
+}
+.program-card.featured::before {
+  content: 'MOST POPULAR';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--deep);
+  padding: 4px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+.program-type {
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.program-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.program-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+/* ---- INCOME CALCULATOR ---- */
+.calculator-section {
+  background: linear-gradient(180deg, var(--deep) 0%, #0A1520 100%);
+}
+.calc-container {
+  background: linear-gradient(160deg, var(--deep-mid), #0D1F33);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  padding: 48px 40px;
+  margin-top: 40px;
+}
+.calc-sliders {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 36px;
+  margin-bottom: 40px;
+}
+.calc-slider-group label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.calc-slider-group .slider-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.calc-slider-group input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--deep);
+  outline: none;
+}
+.calc-slider-group input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+  box-shadow: 0 0 10px rgba(198,168,85,0.3);
+}
+.calc-slider-group input[type=range]::-moz-range-thumb {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: 3px solid var(--deep);
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+.calc-result-box {
+  text-align: center;
+  padding: 28px;
+  background: rgba(198,168,85,0.05);
+  border-radius: 12px;
+}
+.calc-result-box .result-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.calc-result-box .result-value {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* ---- REPORT TEASER ---- */
+.report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: center;
+  margin-top: 40px;
+}
+.report-pages {
+  position: relative;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.report-page {
+  position: absolute;
+  width: 220px;
+  background: var(--cream);
+  border-radius: 8px;
+  padding: 24px 18px;
+  color: var(--deep);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+}
+.report-page:nth-child(1) { transform: rotate(-8deg) translateX(-30px); z-index: 1; }
+.report-page:nth-child(2) { transform: rotate(2deg) translateX(10px) translateY(-20px); z-index: 2; }
+.report-page:nth-child(3) { transform: rotate(6deg) translateX(40px) translateY(10px); z-index: 3; }
+.report-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+.report-page-line {
+  height: 6px;
+  background: #E0D8CC;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
+.report-page-line.short { width: 65%; }
+.report-page-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 40px;
+  margin-top: 12px;
+}
+.report-page-chart span {
+  flex: 1;
+  background: var(--gold);
+  border-radius: 2px 2px 0 0;
+  opacity: 0.6;
+}
+.fascination-bullets { list-style: none; }
+.fascination-bullets li {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+  padding-left: 28px;
+  position: relative;
+  color: var(--cream);
+  opacity: 0.92;
+}
+.fascination-bullets li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 0.8rem;
+}
+
+/* ---- CTA ---- */
+.cta-section {
+  text-align: center;
+  padding: 100px 24px;
+  background: linear-gradient(180deg, var(--deep) 0%, #070F1A 100%);
+  position: relative;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(198,168,85,0.06) 0%, transparent 70%);
+  bottom: -100px; left: 50%; transform: translateX(-50%);
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+.cta-section p {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 550px;
+  margin: 0 auto 36px;
+  line-height: 1.7;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 18px 44px;
+  background: var(--gold);
+  color: var(--deep);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.25);
+}
+.cta-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.35);
+}
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid rgba(198,168,85,0.08);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+footer a { color: var(--gold); text-decoration: none; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+  .section { padding: 70px 0; }
+  .identity-card { padding: 32px 24px; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .previews-grid { grid-template-columns: 1fr; }
+  .book-grid { grid-template-columns: 1fr; text-align: center; }
+  .book-3d img { max-width: 260px; }
+  .calc-sliders { grid-template-columns: 1fr; gap: 24px; }
+  .calc-results { grid-template-columns: 1fr; }
+  .report-grid { grid-template-columns: 1fr; }
+  .report-pages { height: 280px; transform: scale(0.85); }
+  .programs-grid { grid-template-columns: 1fr; }
+  .calc-container { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">AI Business Design Preview</div>
+    <h1><span class="name-highlight">Elk</span>, Here's a Preview of Your Coaching Business</h1>
+    <p>What you're about to see was designed by Jimmy Davis's AI Business Design software — a complete business blueprint built around your unique superpowers.</p>
+  </div>
+</section>
+
+<!-- ============ IDENTITY CARD ============ -->
+<section class="identity-section">
+  <div class="container">
+    <div class="identity-card">
+      <div class="coach-name">Elk Kovaricek</div>
+      <div class="method-title">Creator of The Radiant Return™ Method</div>
+      <p class="pitch">I help spiritual women who've done years of inner work but still feel stuck — the ones who've read every book, been to every retreat, and had breakthroughs that never lasted. Through The Radiant Return method, I take them underneath the modalities they've already tried to the subconscious root of the pattern, using a fusion of clinical hypnotherapy, NLP, and ancient practices like shamanic healing and Vipassana meditation. They stop seeking and start living — from genuine wholeness, not performed wellness.</p>
+      <div class="credential-tags">
+        <span class="credential-tag">Master NLP Practitioner</span>
+        <span class="credential-tag">Clinical Hypnotherapist</span>
+        <span class="credential-tag">Vipassana Practitioner</span>
+        <span class="credential-tag">EFT Certified</span>
+        <span class="credential-tag">Shamanic Practitioner</span>
+        <span class="credential-tag">Authentic Education Certified</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ METHOD PILLARS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Your Signature Method</div>
+    <div class="section-title">The Radiant Return™ — 4 Pillars</div>
+    <div class="section-subtitle">A complete system that goes underneath the healing you've already done — to where the real transformation lives.</div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <div class="pillar-name">Reveal</div>
+        <div class="pillar-desc">Uncover the subconscious root pattern underneath the intellectual awareness — the one that's been recycling through every modality you've tried.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <div class="pillar-name">Release</div>
+        <div class="pillar-desc">Discharge the stored emotional charge that talk therapy couldn't touch — using EFT, somatic release, and shamanic clearing.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <div class="pillar-name">Rewire</div>
+        <div class="pillar-desc">Install new neural and energetic pathways so the old pattern can't reinstall — through NLP belief change and subconscious anchoring.</div>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <div class="pillar-name">Radiate</div>
+        <div class="pillar-desc">Integrate the transformation into daily life through Vipassana-rooted practices so the breakthrough becomes the baseline — permanently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9-STEP JOURNEY ============ -->
+<section class="section journey-section">
+  <div class="container">
+    <div class="section-label">Your Proven Process</div>
+    <div class="section-title">The 9-Step Radiant Return Journey</div>
+    <div class="section-subtitle" style="margin: 0 auto 10px;">Every client follows this exact transformation path — from mapping the pattern that's kept them stuck, through the deep subconscious work that breaks it, to the integration that makes it permanent.</div>
+    <img src="ElkProcess.png" alt="The Radiant Return 9-Step Journey" class="journey-image">
+  </div>
+</section>
+
+<!-- ============ WEBSITE PREVIEWS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Your Online Presence</div>
+    <div class="section-title">Two Website Concepts — Designed for You</div>
+    <div class="section-subtitle">Click either preview to see the full website mockup. Both are custom-built around your brand, your method, and your voice.</div>
+    <div class="previews-grid">
+      <a href="elk.html" class="preview-card">
+        <div class="preview-mockup" style="background: linear-gradient(135deg, #FAF6EE 0%, #E8E2D6 50%, #d4cfbf 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #1C2B1E; font-weight: 600;">Warm &amp; Elegant</span>
+          <span style="font-size: 0.85rem; color: #5C7D60; letter-spacing: 2px; text-transform: uppercase;">Cream · Sage · Nature</span>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #FAF6EE; border: 2px solid #ccc;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #7A9E7E;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #1C2B1E;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #C6A855;"></span>
+          </div>
+        </div>
+        <div class="preview-label">
+          <h3>Style 1 — Warm &amp; Elegant</h3>
+          <p>Cream, sage green, nature-inspired. Think Brené Brown meets a high-end wellness brand.</p>
+        </div>
+      </a>
+      <a href="elk2.html" class="preview-card">
+        <div class="preview-mockup" style="background: linear-gradient(135deg, #0B1A2B 0%, #132B42 50%, #1A3654 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px;">
+          <span style="font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #C6A855; font-weight: 600;">Bold &amp; Deep</span>
+          <span style="font-size: 0.85rem; color: #8BA4BE; letter-spacing: 2px; text-transform: uppercase;">Navy · Gold · Luxury</span>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #0B1A2B; border: 2px solid #2a4a6a;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #C6A855;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #FAF6EE;"></span>
+            <span style="width: 32px; height: 32px; border-radius: 50%; background: #C9928E;"></span>
+          </div>
+        </div>
+        <div class="preview-label">
+          <h3>Style 2 — Bold &amp; Deep</h3>
+          <p>Navy, gold, sophisticated. Think midnight luxury meets conscious healing.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Your Book</div>
+    <div class="section-title">The Radiant Return</div>
+    <div class="book-grid">
+      <div class="book-3d">
+        <img src="ElkBook.png" alt="The Radiant Return by Elk Kovaricek">
+      </div>
+      <div class="book-info">
+        <h3>The Radiant Return</h3>
+        <div class="book-subtitle-text">How to Stop Seeking and Start Living After Years of Inner Work</div>
+        <p>A 10-chapter guide that takes readers through the complete Radiant Return framework — from understanding why their breakthroughs haven't stuck, through the 4-pillar method, to building a life from wholeness instead of wound management.</p>
+        <p>Positions you as the definitive voice in this space. Serves as both a lead generation tool and a credibility anchor for speaking, podcasting, and premium programs.</p>
+        <div class="book-note">Full chapter outline, writing support, and publishing strategy included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSTAGRAM BIO ============ -->
+<section class="section insta-section">
+  <div class="container">
+    <div class="section-label">Your Social Presence</div>
+    <div class="section-title">Instagram Profile Preview</div>
+    <div class="insta-card">
+      <div class="insta-avatar">E</div>
+      <div class="insta-handle">@elkkovaricek</div>
+      <div class="insta-stats">
+        <div class="insta-stat"><div class="num">—</div><div class="lbl">Posts</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="lbl">Followers</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="lbl">Following</div></div>
+      </div>
+      <div class="insta-bio">
+        <strong>Elk Kovaricek</strong><br>
+        <span class="bio-highlight">Creator of The Radiant Return™</span><br>
+        Helping spiritual women stop seeking &amp; start living<br>
+        NLP Master · Hypnotherapist · Shamanic Practitioner<br>
+        Vipassana devotee · Authentic Education Certified<br>
+        <span class="bio-highlight">↓ Free guide: Why Your Breakthrough Didn't Stick</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMS ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Your Programs</div>
+    <div class="section-title" style="text-align:center;">Three Ways to Work With You</div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-type">Free Resource</div>
+        <div class="program-name">Why Your Breakthrough Didn't Stick</div>
+        <div class="program-price">FREE</div>
+        <div class="program-desc">The 3 Layers of Healing every spiritual woman needs to know — and the hidden subconscious pattern recycling your pain.</div>
+      </div>
+      <div class="program-card featured">
+        <div class="program-type">6-Week Group Journey</div>
+        <div class="program-name">The Radiant Return — Group</div>
+        <div class="program-price">$2,497</div>
+        <div class="program-desc">Six weeks of guided transformation through all 4 pillars with a community of women who understand the healing loop.</div>
+      </div>
+      <div class="program-card">
+        <div class="program-type">12-Week Private Intensive</div>
+        <div class="program-name">The Radiant Return — Private</div>
+        <div class="program-price">$8,500</div>
+        <div class="program-desc">Deep 1:1 transformation with full hypnotherapy, NLP, shamanic work, and personalized integration protocol.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCOME CALCULATOR ============ -->
+<section class="section calculator-section">
+  <div class="container">
+    <div class="section-label" style="text-align:center;">Your Income Potential</div>
+    <div class="section-title" style="text-align:center;">See What's Possible</div>
+    <div class="section-subtitle" style="text-align:center; margin: 0 auto;">Adjust the sliders below using your actual program pricing to see conservative, full-time, and thriving income scenarios.</div>
+    <div class="calc-container">
+      <div class="calc-sliders">
+        <div class="calc-slider-group">
+          <label>Women Per Group Round</label>
+          <div class="slider-val" id="groupVal">8</div>
+          <input type="range" min="4" max="20" value="8" id="groupSlider">
+        </div>
+        <div class="calc-slider-group">
+          <label>Group Rounds Per Year</label>
+          <div class="slider-val" id="roundsVal">3</div>
+          <input type="range" min="1" max="8" value="3" id="roundsSlider">
+        </div>
+        <div class="calc-slider-group">
+          <label>Private Clients Per Year</label>
+          <div class="slider-val" id="privateVal">3</div>
+          <input type="range" min="0" max="12" value="3" id="privateSlider">
+        </div>
+      </div>
+      <div class="calc-results">
+        <div class="calc-result-box">
+          <div class="result-label">Monthly Revenue</div>
+          <div class="result-value" id="monthlyRev">$7,121</div>
+        </div>
+        <div class="calc-result-box">
+          <div class="result-label">Annual Revenue</div>
+          <div class="result-value" id="annualRev">$85,452</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REPORT TEASER ============ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Your Full Blueprint</div>
+    <div class="section-title">What the Complete Report Reveals</div>
+    <div class="report-grid">
+      <div class="report-pages">
+        <div class="report-page">
+          <div class="report-page-title">Market Research</div>
+          <div class="report-page-line"></div>
+          <div class="report-page-line short"></div>
+          <div class="report-page-line"></div>
+          <div class="report-page-line short"></div>
+          <div class="report-page-chart">
+            <span style="height: 50%;"></span>
+            <span style="height: 80%;"></span>
+            <span style="height: 35%;"></span>
+            <span style="height: 65%;"></span>
+            <span style="height: 90%;"></span>
+          </div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Customer Avatar</div>
+          <div class="report-page-line"></div>
+          <div class="report-page-line"></div>
+          <div class="report-page-line short"></div>
+          <div class="report-page-line"></div>
+          <div class="report-page-line short"></div>
+          <div class="report-page-line"></div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Revenue Projections</div>
+          <div class="report-page-line short"></div>
+          <div class="report-page-line"></div>
+          <div class="report-page-chart">
+            <span style="height: 30%;"></span>
+            <span style="height: 55%;"></span>
+            <span style="height: 70%;"></span>
+            <span style="height: 45%;"></span>
+            <span style="height: 95%;"></span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <ul class="fascination-bullets">
+          <li>Why coaches like Kerri Coaching and Rachel Lauren are leaving money on the table by NOT having a branded method — and how your Radiant Return™ instantly positions you above 80% of the trauma recovery market</li>
+          <li>The exact "3 Layers of Healing" framework that explains why Caroline Strawson's $500K+ program works for narcissistic abuse but misses the woman who can't name her abuser — and how you fill that gap</li>
+          <li>The specific audience segment that's spent $15,000-$50,000 on personal development and is desperately searching for someone who can go DEEPER — and why they'll pay premium prices without hesitation</li>
+          <li>How combining clinical NLP with shamanic healing puts you in a category of ONE — a position no competitor in the research can claim</li>
+          <li>The "healing loop" revenue model: why women in the spiritual development space have the highest lifetime customer value of any coaching demographic</li>
+          <li>The exact words your ideal client uses at 2am — and how to turn those words into social media posts, email sequences, and sales pages that make her feel like you're reading her mind</li>
+          <li>Why Vipassana meditation is your secret positioning weapon — and how it separates you from every "meditation coach" on Instagram</li>
+          <li>The income math that shows how 11 clients per year generates a full-time income — and the specific funnel that fills those spots on autopilot</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything on this page was generated by Jimmy Davis's AI Business Design software. The full Blueprint includes your complete copy, curriculum, marketing plan, and launch strategy — everything you need to turn this vision into a real, revenue-generating business.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services &amp; Pricing</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a>
+  </div>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundsSlider = document.getElementById('roundsSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundsVal = document.getElementById('roundsVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRev = document.getElementById('monthlyRev');
+const annualRev = document.getElementById('annualRev');
+
+function calc() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundsSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundsVal.textContent = r;
+  privateVal.textContent = p;
+  const annual = (g * r * 2497) + (p * 8500);
+  const monthly = Math.round(annual / 12);
+  annualRev.textContent = '$' + annual.toLocaleString();
+  monthlyRev.textContent = '$' + monthly.toLocaleString();
+}
+
+groupSlider.addEventListener('input', calc);
+roundsSlider.addEventListener('input', calc);
+privateSlider.addEventListener('input', calc);
+calc();
+</script>
+
+</body>
+</html>

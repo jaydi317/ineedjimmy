@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joanne Cunningham — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--deep:#0B1A2B;--deep-mid:#132B42;--gold:#C6A855;--gold-light:#E8D5A0;
+--cream:#FAF6EE;--sage:#7A9E7E;--rose:#C9928E;--warm:#D4A574;--white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--cream);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.25}
+.accent{font-family:'Caveat',cursive}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:768px){section{padding:56px 0}}
+
+/* HERO */
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:100px 24px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(198,168,85,.12) 0%,transparent 70%)}
+.hero-badge{display:inline-block;font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(198,168,85,.3);padding:8px 20px;border-radius:30px;margin-bottom:28px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);color:var(--cream);margin-bottom:20px}
+.hero h1 span{color:var(--gold)}
+.hero p{font-size:1.1rem;max-width:640px;margin:0 auto;color:rgba(250,246,238,.7);line-height:1.8}
+
+/* IDENTITY CARD */
+.id-card-section{padding:60px 0}
+.id-card{background:linear-gradient(135deg,var(--deep-mid) 0%,#0e2236 100%);border:1px solid rgba(198,168,85,.2);border-radius:20px;padding:48px;max-width:800px;margin:0 auto;position:relative;overflow:hidden}
+.id-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:radial-gradient(circle,rgba(198,168,85,.08) 0%,transparent 70%);border-radius:50%}
+.id-card h2{font-size:2rem;color:var(--gold);margin-bottom:6px}
+.id-card .method-title{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--gold-light);margin-bottom:20px}
+.id-card .pitch{font-size:1.05rem;color:rgba(250,246,238,.8);line-height:1.9;margin-bottom:24px;font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:10px}
+.tag{background:rgba(198,168,85,.1);border:1px solid rgba(198,168,85,.25);color:var(--gold-light);padding:6px 16px;border-radius:20px;font-size:.8rem;letter-spacing:.5px}
+
+/* METHOD PILLARS */
+.pillars-section{background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 100%)}
+.section-label{font-size:.75rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.section-title{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--cream);margin-bottom:12px}
+.section-subtitle{color:rgba(250,246,238,.6);font-size:1rem;margin-bottom:48px;max-width:600px}
+.pillars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media(max-width:900px){.pillars-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.pillars-grid{grid-template-columns:1fr}}
+.pillar-card{background:rgba(250,246,238,.03);border:1px solid rgba(198,168,85,.12);border-radius:16px;padding:32px 24px;text-align:center;transition:all .35s ease}
+.pillar-card:hover{border-color:rgba(198,168,85,.4);transform:translateY(-4px);background:rgba(250,246,238,.06)}
+.pillar-icon{font-size:2.2rem;margin-bottom:16px}
+.pillar-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--gold);margin-bottom:10px}
+.pillar-card p{font-size:.9rem;color:rgba(250,246,238,.65);line-height:1.7}
+
+/* 9-STEP JOURNEY */
+.journey-section{text-align:center}
+.journey-img{max-width:680px;width:100%;margin:0 auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+
+/* WEBSITE PREVIEWS */
+.previews-section{background:var(--deep-mid)}
+.previews-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:40px}
+@media(max-width:700px){.previews-grid{grid-template-columns:1fr}}
+.preview-card{border-radius:16px;overflow:hidden;border:1px solid rgba(198,168,85,.15);transition:all .35s ease;cursor:pointer;text-decoration:none;display:block}
+.preview-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.preview-thumb{width:100%;height:220px;object-fit:cover;object-position:top}
+.preview-info{padding:20px;background:rgba(11,26,43,.8)}
+.preview-info h3{color:var(--gold);font-size:1.1rem;margin-bottom:4px}
+.preview-info p{color:rgba(250,246,238,.6);font-size:.85rem}
+.preview-placeholder{width:100%;height:220px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:rgba(250,246,238,.4)}
+.preview-warm{background:linear-gradient(135deg,#FAF6EE 0%,#e8e0d0 50%,#d4ccbc 100%)}
+.preview-dark{background:linear-gradient(135deg,#0B1A2B 0%,#132B42 50%,#1a3550 100%)}
+.preview-warm .preview-inner,.preview-dark .preview-inner{padding:24px;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.preview-warm h4{font-family:'Playfair Display',serif;color:#1C2B1E;font-size:1.1rem;margin-bottom:8px}
+.preview-warm p{color:#5C7D60;font-size:.75rem}
+.preview-dark h4{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.1rem;margin-bottom:8px}
+.preview-dark p{color:rgba(250,246,238,.5);font-size:.75rem}
+
+/* BOOK */
+.book-section{text-align:center}
+.book-wrapper{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;margin-top:40px}
+.book-3d{perspective:800px;flex-shrink:0}
+.book-3d img{width:280px;border-radius:8px;box-shadow:20px 20px 60px rgba(0,0,0,.5),-5px -5px 20px rgba(198,168,85,.08);transform:rotateY(-12deg) rotateX(2deg);transition:transform .4s ease}
+.book-3d:hover img{transform:rotateY(-4deg) rotateX(1deg)}
+.book-info{text-align:left;max-width:420px}
+.book-info h3{font-size:1.6rem;color:var(--gold);margin-bottom:12px}
+.book-info p{color:rgba(250,246,238,.7);font-size:.95rem;line-height:1.8;margin-bottom:16px}
+.book-note{font-size:.85rem;color:var(--gold-light);font-style:italic;background:rgba(198,168,85,.08);padding:14px 20px;border-radius:10px;border-left:3px solid var(--gold)}
+@media(max-width:700px){.book-wrapper{flex-direction:column}.book-info{text-align:center}}
+
+/* INSTAGRAM BIO */
+.insta-section{background:var(--deep-mid)}
+.insta-mockup{max-width:400px;margin:40px auto 0;background:rgba(250,246,238,.04);border:1px solid rgba(198,168,85,.15);border-radius:20px;padding:32px;text-align:center}
+.insta-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--warm));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--deep);font-weight:700}
+.insta-handle{font-weight:600;color:var(--cream);font-size:1rem;margin-bottom:16px}
+.insta-stats{display:flex;justify-content:center;gap:32px;margin-bottom:16px}
+.insta-stat{text-align:center}
+.insta-stat .num{font-weight:700;color:var(--cream);font-size:1rem}
+.insta-stat .label{font-size:.75rem;color:rgba(250,246,238,.5)}
+.insta-bio{text-align:left;font-size:.85rem;color:rgba(250,246,238,.8);line-height:1.7}
+.insta-bio strong{color:var(--gold)}
+
+/* PROGRAMS */
+.programs-section{}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+@media(max-width:800px){.programs-grid{grid-template-columns:1fr}}
+.program-card{background:rgba(250,246,238,.03);border:1px solid rgba(198,168,85,.12);border-radius:16px;padding:32px;text-align:center;transition:all .35s ease;position:relative}
+.program-card:hover{border-color:rgba(198,168,85,.35);transform:translateY(-3px)}
+.program-card.featured{border-color:var(--gold);background:rgba(198,168,85,.06)}
+.program-card.featured::before{content:'MOST POPULAR';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.65rem;font-weight:700;letter-spacing:2px;padding:4px 16px;border-radius:12px}
+.program-card h3{font-size:1.15rem;color:var(--gold);margin-bottom:8px}
+.program-card .price{font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);margin-bottom:6px}
+.program-card .price-note{font-size:.8rem;color:rgba(250,246,238,.5);margin-bottom:16px}
+.program-card p{font-size:.85rem;color:rgba(250,246,238,.6);line-height:1.7}
+
+/* INCOME CALCULATOR */
+.calc-section{background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 100%)}
+.calculator{max-width:700px;margin:40px auto 0;background:rgba(250,246,238,.04);border:1px solid rgba(198,168,85,.15);border-radius:20px;padding:40px}
+.calc-row{margin-bottom:28px}
+.calc-row label{display:flex;justify-content:space-between;align-items:center;color:var(--cream);font-size:.95rem;margin-bottom:10px}
+.calc-row label span{color:var(--gold);font-weight:600;font-size:1.1rem}
+input[type=range]{-webkit-appearance:none;width:100%;height:6px;border-radius:3px;background:rgba(250,246,238,.1);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 2px 8px rgba(198,168,85,.4)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
+.calc-results{background:rgba(198,168,85,.08);border-radius:14px;padding:28px;text-align:center;margin-top:8px}
+.calc-results h3{font-family:'Caveat',cursive;font-size:1.3rem;color:var(--gold-light);margin-bottom:16px}
+.calc-numbers{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.calc-num{text-align:center}
+.calc-num .amount{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);font-weight:700}
+.calc-num .period{font-size:.8rem;color:rgba(250,246,238,.5);margin-top:2px}
+
+/* REPORT TEASER */
+.report-section{background:var(--deep-mid)}
+.report-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px}
+@media(max-width:768px){.report-grid{grid-template-columns:1fr}}
+.report-stack{position:relative;height:320px;display:flex;align-items:center;justify-content:center}
+.report-page{position:absolute;width:220px;background:var(--cream);border-radius:8px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.report-page:nth-child(1){transform:rotate(-8deg) translateX(-20px);z-index:1}
+.report-page:nth-child(2){transform:rotate(2deg) translateY(-10px);z-index:2}
+.report-page:nth-child(3){transform:rotate(6deg) translateX(20px) translateY(10px);z-index:3}
+.report-page h4{font-size:.7rem;color:var(--deep);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-family:'Inter',sans-serif;font-weight:700}
+.report-line{height:6px;background:rgba(11,26,43,.08);border-radius:3px;margin-bottom:6px}
+.report-line:nth-child(2){width:90%}
+.report-line:nth-child(3){width:75%}
+.report-line:nth-child(4){width:85%}
+.report-line:nth-child(5){width:60%}
+.report-chart{width:100%;height:40px;margin-top:10px;background:linear-gradient(90deg,var(--sage) 30%,var(--gold) 30% 55%,var(--rose) 55%);border-radius:4px;opacity:.3}
+.fascination-list{list-style:none;padding:0}
+.fascination-list li{position:relative;padding:10px 0 10px 24px;color:rgba(250,246,238,.8);font-size:.92rem;line-height:1.7;border-bottom:1px solid rgba(250,246,238,.05)}
+.fascination-list li::before{content:'→';position:absolute;left:0;color:var(--gold);font-weight:700}
+
+/* CTA */
+.cta-section{text-align:center;padding:100px 24px;background:radial-gradient(ellipse at 50% 50%,rgba(198,168,85,.08) 0%,transparent 70%)}
+.cta-section h2{font-size:clamp(2rem,4vw,2.8rem);color:var(--cream);margin-bottom:16px}
+.cta-section p{color:rgba(250,246,238,.65);max-width:560px;margin:0 auto 36px;font-size:1.05rem;line-height:1.8}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--deep);font-family:'Inter',sans-serif;font-weight:700;font-size:1rem;padding:18px 40px;border-radius:50px;text-decoration:none;letter-spacing:.5px;transition:all .3s ease;box-shadow:0 4px 20px rgba(198,168,85,.3)}
+.cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 30px rgba(198,168,85,.4)}
+
+/* FOOTER */
+footer{text-align:center;padding:40px 24px;border-top:1px solid rgba(198,168,85,.1);font-size:.8rem;color:rgba(250,246,238,.35)}
+footer a{color:var(--gold);text-decoration:none}
+
+/* DIVIDER */
+.section-divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 40px}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<div class="hero-badge">AI Business Design Preview</div>
+<h1><span>Joanne</span>, Here's a Preview of<br>Your Coaching Business</h1>
+<p>What you're about to see was generated by Jimmy Davis's AI Business Design Software — a complete coaching business blueprint, brand identity, and website preview built from your unique superpowers.</p>
+</div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="id-card-section">
+<div class="container">
+<div class="id-card">
+<h2>Joanne Cunningham</h2>
+<div class="method-title">Creator of The Safe to Shine Method™</div>
+<p class="pitch">"I help women who've tried every diet stop fighting their bodies and finally release the emotional weight they've been carrying — using 7 powerful healing modalities — so the physical weight can let go too."</p>
+<div class="tags">
+<span class="tag">EFT / Tapping</span>
+<span class="tag">NLP</span>
+<span class="tag">Hypnotherapy</span>
+<span class="tag">Certified Counsellor</span>
+<span class="tag">Mindfulness</span>
+<span class="tag">Reiki</span>
+<span class="tag">Art Therapy</span>
+<span class="tag">30+ Years Experience</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD PILLARS -->
+<section class="pillars-section">
+<div class="container">
+<div class="section-label">The Method</div>
+<h2 class="section-title">The Safe to Shine Method™</h2>
+<p class="section-subtitle">A 4-pillar framework that addresses emotional eating at every level — mind, body, emotions, energy, creativity, subconscious, and spirit.</p>
+<div class="pillars-grid">
+<div class="pillar-card">
+<div class="pillar-icon">👁️</div>
+<h3>See</h3>
+<p>Uncover the hidden emotional drivers and childhood patterns that created your relationship with food.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-icon">🦋</div>
+<h3>Shed</h3>
+<p>Release the stored trauma, limiting beliefs, and subconscious programming keeping the armour in place.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-icon">🌿</div>
+<h3>Shift</h3>
+<p>Restore your body's natural energy, calm your nervous system, and reconnect to your physical wisdom.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-icon">✨</div>
+<h3>Shine</h3>
+<p>Step into visibility. Express who you really are. Let the world see YOU — not the armour.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+<div class="container">
+<div class="section-label">Your Proven System</div>
+<h2 class="section-title">The 9-Step Safe to Shine Journey™</h2>
+<p class="section-subtitle">Every client follows this exact journey — from hiding behind the armour to stepping into the light.</p>
+<div class="section-divider"></div>
+<img src="JoanneProcess.png" alt="The 9-Step Safe to Shine Journey" class="journey-img">
+</div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="previews-section">
+<div class="container">
+<div class="section-label">Your Brand, Two Ways</div>
+<h2 class="section-title">Website Mockups</h2>
+<p class="section-subtitle">Two complete, scrolling website designs — same content, completely different aesthetics. Click to preview each.</p>
+<div class="previews-grid">
+<a href="joanne.html" class="preview-card">
+<div class="preview-warm preview-thumb">
+<div class="preview-inner">
+<h4>Joanne Cunningham</h4>
+<p>Creator of The Safe to Shine Method™</p>
+<p style="margin-top:12px;font-size:.7rem;color:#7A9E7E;letter-spacing:1px;text-transform:uppercase">Warm & Elegant</p>
+</div>
+</div>
+<div class="preview-info">
+<h3>Style 1 — Warm & Elegant</h3>
+<p>Light, airy, nature-inspired. Think Brené Brown meets a high-end wellness brand.</p>
+</div>
+</a>
+<a href="joanne2.html" class="preview-card">
+<div class="preview-dark preview-thumb">
+<div class="preview-inner">
+<h4>Joanne Cunningham</h4>
+<p>Creator of The Safe to Shine Method™</p>
+<p style="margin-top:12px;font-size:.7rem;color:var(--gold);letter-spacing:1px;text-transform:uppercase">Bold & Deep</p>
+</div>
+</div>
+<div class="preview-info">
+<h3>Style 2 — Bold & Deep</h3>
+<p>Dark, immersive, sophisticated. Think midnight luxury meets conscious healing.</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- BOOK COVER -->
+<section class="book-section">
+<div class="container">
+<div class="section-label">Your Book</div>
+<h2 class="section-title">Your Authority Platform</h2>
+<div class="section-divider"></div>
+<div class="book-wrapper">
+<div class="book-3d">
+<img src="JoanneBook.png" alt="Safe to Shine by Joanne Cunningham">
+</div>
+<div class="book-info">
+<h3>"Safe to Shine"</h3>
+<p>How I Lost the Armour, Found My Light, and Discovered the Real Reason Women Can't Stop Eating</p>
+<p>11 chapters. Your story. Your method. Your framework for helping women release emotional weight — turned into a published book that positions you as the authority in this space.</p>
+<div class="book-note">Full outline, chapter structure, and writing support included in the complete Blueprint.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta-section">
+<div class="container">
+<div class="section-label">Your Social Presence</div>
+<h2 class="section-title">Instagram Bio Preview</h2>
+<div class="section-divider"></div>
+<div class="insta-mockup">
+<div class="insta-avatar">JC</div>
+<div class="insta-handle">@joannecunningham.coaching</div>
+<div class="insta-stats">
+<div class="insta-stat"><div class="num">—</div><div class="label">Posts</div></div>
+<div class="insta-stat"><div class="num">—</div><div class="label">Followers</div></div>
+<div class="insta-stat"><div class="num">—</div><div class="label">Following</div></div>
+</div>
+<div class="insta-bio">
+<strong>Joanne Cunningham</strong><br>
+✨ Creator of The Safe to Shine Method™<br>
+🦋 Helping women release emotional weight<br>
+🧠 EFT · NLP · Hypnosis · 7 Modalities<br>
+📖 Author of <em>Safe to Shine</em><br>
+👇 Free guide: Why Diets Don't Work
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section">
+<div class="container">
+<div class="section-label">Your Programs</div>
+<h2 class="section-title">Your Coaching Offerings</h2>
+<p class="section-subtitle">A complete value ladder — from free lead magnet to premium private coaching.</p>
+<div class="programs-grid">
+<div class="program-card">
+<h3>Free Report</h3>
+<div class="price">FREE</div>
+<div class="price-note">Lead Magnet</div>
+<p>"Why Diets Don't Work (And What Your Body Is Really Trying to Tell You)"</p>
+</div>
+<div class="program-card featured">
+<h3>Safe to Shine</h3>
+<div class="price">£997</div>
+<div class="price-note">6-Week Group Programme</div>
+<p>The complete emotional weight release programme. 6 live sessions, guided audios, community, and workbook.</p>
+</div>
+<div class="program-card">
+<h3>The Full Transformation</h3>
+<div class="price">£5,000</div>
+<div class="price-note">12-Week Private Intensive</div>
+<p>Deep, personalised 1:1 transformation using all 7 modalities. Weekly sessions + unlimited support.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calc-section">
+<div class="container">
+<div class="section-label">Your Revenue Potential</div>
+<h2 class="section-title">Income Calculator</h2>
+<p class="section-subtitle">Adjust the sliders to see what's possible with your programmes.</p>
+<div class="calculator">
+<div class="calc-row">
+<label>Women per Group Round <span id="groupVal">8</span></label>
+<input type="range" id="groupSlider" min="4" max="20" value="8">
+</div>
+<div class="calc-row">
+<label>Group Rounds per Year <span id="roundVal">4</span></label>
+<input type="range" id="roundSlider" min="1" max="8" value="4">
+</div>
+<div class="calc-row">
+<label>Private Clients per Year <span id="privateVal">6</span></label>
+<input type="range" id="privateSlider" min="0" max="20" value="6">
+</div>
+<div class="calc-results">
+<h3>Your Projected Revenue</h3>
+<div class="calc-numbers">
+<div class="calc-num">
+<div class="amount" id="monthlyRev">£0</div>
+<div class="period">per month</div>
+</div>
+<div class="calc-num">
+<div class="amount" id="annualRev">£0</div>
+<div class="period">per year</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-section">
+<div class="container">
+<div class="section-label">Your Full Blueprint</div>
+<h2 class="section-title">What the Complete Report Reveals</h2>
+<div class="section-divider"></div>
+<div class="report-grid">
+<div class="report-stack">
+<div class="report-page">
+<h4>Market Research</h4>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+<div class="report-chart"></div>
+</div>
+<div class="report-page">
+<h4>Customer Avatar</h4>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+<div class="report-chart" style="background:linear-gradient(90deg,var(--rose) 40%,var(--gold) 40% 70%,var(--sage) 70%)"></div>
+</div>
+<div class="report-page">
+<h4>Revenue Projections</h4>
+<div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div><div class="report-line"></div>
+<div class="report-chart" style="background:linear-gradient(90deg,var(--gold) 50%,var(--warm) 50% 75%,var(--sage) 75%)"></div>
+</div>
+</div>
+<ul class="fascination-list">
+<li>Why the 5 biggest coaches in the emotional eating space are ALL missing the same thing — and how Joanne's 7-modality approach fills the gap they can't</li>
+<li>The exact profile of the woman most likely to pay £5,000 for private coaching — including what she's already tried and why she's ready NOW</li>
+<li>Why Joanne's origin story (growing up during the Troubles) is worth more than any marketing budget — and how to tell it so it closes sales</li>
+<li>The pricing blind spot that's leaving thousands on the table — and the simple restructure that could double revenue without a single new client</li>
+<li>Why "weight as armour" is the positioning statement that no competitor can copy — and how it makes Joanne the ONLY choice for women who resonate</li>
+<li>The 3-step email sequence that turns free report downloads into Discovery Call bookings at 20-30% conversion</li>
+<li>How one book chapter (already outlined) could be repurposed into 47 pieces of content — enough for 6 months of social media without writing anything new</li>
+<li>The UK/Ireland market gap that means Joanne could own this space before any US competitor expands — and the exact timeline to get there</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+<div class="container">
+<h2>Want to Bring This to Life?</h2>
+<p>Everything you've seen on this page — the method, the programs, the book, the website, the brand — can be fully built, launched, and live within weeks. Jimmy's AI Business Design Software created this preview. His team makes it real.</p>
+<a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const groupSlider=document.getElementById('groupSlider');
+const roundSlider=document.getElementById('roundSlider');
+const privateSlider=document.getElementById('privateSlider');
+const groupVal=document.getElementById('groupVal');
+const roundVal=document.getElementById('roundVal');
+const privateVal=document.getElementById('privateVal');
+const monthlyRev=document.getElementById('monthlyRev');
+const annualRev=document.getElementById('annualRev');
+function calc(){
+const g=parseInt(groupSlider.value);
+const r=parseInt(roundSlider.value);
+const p=parseInt(privateSlider.value);
+groupVal.textContent=g;
+roundVal.textContent=r;
+privateVal.textContent=p;
+const groupRev=g*r*997;
+const privRev=p*5000;
+const annual=groupRev+privRev;
+const monthly=Math.round(annual/12);
+monthlyRev.textContent='£'+monthly.toLocaleString();
+annualRev.textContent='£'+annual.toLocaleString();
+}
+groupSlider.addEventListener('input',calc);
+roundSlider.addEventListener('input',calc);
+privateSlider.addEventListener('input',calc);
+calc();
+</script>
+</body>
+</html>

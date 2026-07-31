@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaw & Associates — Mockup 2: Modern Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0C1117;
+  --surface:#151B23;
+  --surface-2:#1C232D;
+  --surface-3:#242C38;
+  --teal:#3DD8C5;
+  --teal-dim:#2BA899;
+  --teal-glow:rgba(61,216,197,0.15);
+  --amber:#E8B84B;
+  --amber-dim:#C49A3A;
+  --white:#F4F4F5;
+  --gray:#8B919A;
+  --gray-light:#B0B5BC;
+  --border:rgba(255,255,255,0.06);
+  --border-hover:rgba(255,255,255,0.12);
+  --glass:rgba(21,27,35,0.7);
+  --radius:12px;
+  --radius-lg:20px;
+  --radius-xl:28px;
+  --shadow:0 8px 32px rgba(0,0,0,0.3);
+  --shadow-lg:0 16px 64px rgba(0,0,0,0.4);
+  --shadow-teal:0 8px 32px rgba(61,216,197,0.15);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Outfit',sans-serif;color:var(--white);background:var(--bg);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Instrument Serif',serif;font-weight:400}
+
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);padding:8px 16px;border-radius:100px;background:var(--teal-glow);border:1px solid rgba(61,216,197,0.2)}
+.tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0}
+nav .nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-pill{display:flex;align-items:center;gap:32px;background:var(--glass);backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:100px;padding:8px 8px 8px 24px}
+.logo{font-family:'Instrument Serif',serif;font-size:20px;color:var(--white);text-decoration:none;white-space:nowrap}
+.logo span{color:var(--teal)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--gray);padding:8px 16px;border-radius:100px;transition:all 0.2s}
+.nav-links a:hover{color:var(--white);background:var(--surface-3)}
+.nav-cta{background:var(--teal)!important;color:var(--bg)!important;font-weight:600!important;padding:10px 24px!important}
+.nav-cta:hover{background:var(--teal-dim)!important;transform:scale(1.02)}
+
+/* HERO */
+.hero{padding:160px 0 100px;position:relative;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,var(--teal-glow) 0%,transparent 60%);pointer-events:none}
+.hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-tag{margin-bottom:24px;position:relative;z-index:1}
+.hero h1{font-size:clamp(48px,6vw,72px);line-height:1.05;margin-bottom:20px;position:relative;z-index:1}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--teal),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:18px;color:var(--gray);max-width:560px;margin:0 auto 40px;position:relative;z-index:1;line-height:1.7}
+.hero-actions{display:flex;justify-content:center;gap:16px;position:relative;z-index:1;flex-wrap:wrap}
+.btn-glow{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--bg);padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;transition:all 0.3s;border:none;cursor:pointer;box-shadow:var(--shadow-teal)}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(61,216,197,0.25)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--white);padding:16px 36px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;border:1.5px solid var(--border-hover);transition:all 0.3s}
+.btn-outline:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px)}
+
+/* DASHBOARD */
+.dashboard{padding:0 0 80px;margin-top:-20px;position:relative;z-index:2}
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.dash-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px 24px;text-decoration:none;color:var(--white);transition:all 0.3s;position:relative;overflow:hidden}
+.dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transition:opacity 0.3s;opacity:0}
+.dash-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:var(--shadow)}
+.dash-card:hover::before{opacity:1}
+.dash-card:nth-child(1)::before{background:var(--teal)}
+.dash-card:nth-child(2)::before{background:var(--amber)}
+.dash-card:nth-child(3)::before{background:#7B93FF}
+.dash-card:nth-child(4)::before{background:#E87B7B}
+.dash-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.dash-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.di-1{background:var(--teal-glow)}
+.di-2{background:rgba(232,184,75,0.15)}
+.di-3{background:rgba(123,147,255,0.15)}
+.di-4{background:rgba(232,123,123,0.15)}
+.dash-arrow{font-size:14px;color:var(--gray);transition:all 0.3s;opacity:0}
+.dash-card:hover .dash-arrow{opacity:1;transform:translate(4px,-4px)}
+.dash-card h3{font-family:'Outfit',sans-serif;font-size:16px;font-weight:600;margin-bottom:6px}
+.dash-card p{font-size:13px;color:var(--gray);line-height:1.5}
+.dash-label{text-align:center;margin-bottom:20px}
+.dash-label span{font-size:12px;font-weight:500;color:var(--gray);text-transform:uppercase;letter-spacing:2px;background:var(--surface);padding:6px 20px;border-radius:100px;border:1px solid var(--border)}
+
+/* SERVICES */
+.services{padding:80px 0}
+.section-header{margin-bottom:48px}
+.section-header.center{text-align:center;max-width:600px;margin-left:auto;margin-right:auto}
+.section-header h2{font-size:clamp(36px,4.5vw,48px);margin-bottom:12px}
+.section-header p{color:var(--gray);font-size:16px}
+
+.services-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.svc{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px 32px;transition:all 0.3s;position:relative;overflow:hidden}
+.svc:hover{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.svc-badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:6px;margin-bottom:20px}
+.sb-1{background:var(--teal-glow);color:var(--teal)}
+.sb-2{background:rgba(232,184,75,0.15);color:var(--amber)}
+.sb-3{background:rgba(123,147,255,0.15);color:#7B93FF}
+.svc h3{font-size:24px;margin-bottom:12px}
+.svc p{font-size:14px;color:var(--gray);line-height:1.7}
+.svc-features{margin-top:20px;display:flex;flex-direction:column;gap:8px}
+.svc-feat{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-light)}
+.svc-feat::before{content:'✓';color:var(--teal);font-weight:700;font-size:12px}
+
+/* FAQ / HELP CENTER */
+.help{padding:80px 0}
+.help-layout{display:grid;grid-template-columns:320px 1fr;gap:32px}
+.help-sidebar{position:sticky;top:100px;align-self:start}
+.help-sidebar h2{font-size:36px;margin-bottom:12px}
+.help-sidebar p{color:var(--gray);font-size:15px;margin-bottom:24px;line-height:1.6}
+.help-search{position:relative;margin-bottom:24px}
+.help-search input{width:100%;padding:14px 16px 14px 44px;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);color:var(--white);font-size:14px;font-family:'Outfit',sans-serif;outline:none;transition:all 0.3s}
+.help-search input:focus{border-color:var(--teal)}
+.help-search input::placeholder{color:var(--gray)}
+.help-search .si{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:16px}
+.help-cats{display:flex;flex-direction:column;gap:4px}
+.help-cat{padding:10px 16px;border-radius:var(--radius);font-size:14px;font-weight:500;color:var(--gray);cursor:pointer;transition:all 0.2s;border:none;background:none;text-align:left;font-family:'Outfit',sans-serif}
+.help-cat:hover,.help-cat.active{background:var(--surface);color:var(--teal)}
+
+.help-main{display:flex;flex-direction:column;gap:12px}
+.help-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:all 0.3s}
+.help-item:hover{border-color:var(--border-hover)}
+.help-item.active{border-color:var(--teal)}
+.help-q{padding:20px 24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:500;font-size:15px;transition:all 0.2s}
+.help-q:hover{color:var(--teal)}
+.help-chevron{font-size:12px;color:var(--gray);transition:transform 0.3s}
+.help-item.active .help-chevron{transform:rotate(180deg);color:var(--teal)}
+.help-ans{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+.help-item.active .help-ans{max-height:300px}
+.help-ans-inner{padding:0 24px 20px;font-size:14px;color:var(--gray-light);line-height:1.7;border-top:1px solid var(--border);padding-top:16px}
+
+/* ABOUT */
+.about{padding:80px 0}
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{position:relative}
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--teal),var(--amber))}
+.tl-item{position:relative;margin-bottom:32px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--teal);border:3px solid var(--bg)}
+.tl-item:nth-child(2)::before{background:var(--teal-dim)}
+.tl-item:nth-child(3)::before{background:var(--amber)}
+.tl-year{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.tl-item:nth-child(3) .tl-year{color:var(--amber)}
+.tl-title{font-family:'Instrument Serif',serif;font-size:20px;margin-bottom:6px}
+.tl-desc{font-size:14px;color:var(--gray);line-height:1.6}
+.about-text h2{font-size:clamp(36px,4vw,44px);margin-bottom:16px}
+.about-text p{color:var(--gray);margin-bottom:16px;line-height:1.7;font-size:15px}
+.about-values{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:24px}
+.av{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 16px;text-align:center}
+.av-icon{font-size:24px;margin-bottom:8px}
+.av-label{font-size:13px;font-weight:600;color:var(--teal);text-transform:uppercase;letter-spacing:1px}
+
+/* CTA */
+.cta{padding:80px 0}
+.cta-card{background:linear-gradient(135deg,var(--surface),var(--surface-2));border:1px solid var(--border);border-radius:var(--radius-xl);padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.cta-card::before{content:'';position:absolute;top:-50%;right:-20%;width:400px;height:400px;background:radial-gradient(circle,var(--teal-glow),transparent);pointer-events:none}
+.cta-left h2{font-size:40px;margin-bottom:12px}
+.cta-left p{color:var(--gray);font-size:16px;margin-bottom:28px;line-height:1.7}
+.contact-pills{display:flex;flex-direction:column;gap:12px}
+.cp{display:flex;align-items:center;gap:12px;font-size:15px}
+.cp-icon{width:40px;height:40px;border-radius:10px;background:var(--surface-3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.cta-right{background:var(--surface-3);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border)}
+.cta-right h3{font-family:'Instrument Serif',serif;font-size:24px;margin-bottom:16px}
+.hours-list{display:flex;flex-direction:column;gap:16px}
+.hour-block{padding-bottom:16px;border-bottom:1px solid var(--border)}
+.hour-block:last-child{border:none;padding-bottom:0}
+.hour-season{font-weight:600;font-size:14px;color:var(--teal);margin-bottom:4px}
+.hour-dates{font-size:12px;color:var(--gray);margin-bottom:4px}
+.hour-time{font-size:14px;color:var(--gray-light)}
+
+/* FOOTER */
+footer{padding:48px 0 24px;border-top:1px solid var(--border)}
+.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.foot-brand p{color:var(--gray);font-size:14px;margin-top:12px;line-height:1.6}
+.foot-col h4{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gray);margin-bottom:16px;font-family:'Outfit',sans-serif;font-weight:600}
+.foot-col a{display:block;color:rgba(255,255,255,0.6);text-decoration:none;font-size:14px;margin-bottom:10px;transition:color 0.2s}
+.foot-col a:hover{color:var(--teal)}
+.foot-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:var(--gray)}
+
+/* CHAT WIDGET */
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:var(--shadow-teal);transition:all 0.3s}
+.chat-fab:hover{transform:scale(1.08);box-shadow:0 12px 40px rgba(61,216,197,0.3)}
+.chat-fab.active{border-radius:16px;width:60px;height:60px;background:var(--surface-3);border:1px solid var(--border)}
+.chat-panel{position:fixed;bottom:96px;right:24px;width:380px;max-height:520px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);overflow:hidden;z-index:200;display:none;flex-direction:column;box-shadow:var(--shadow-lg);animation:chatIn 0.3s ease}
+.chat-panel.open{display:flex}
+@keyframes chatIn{from{opacity:0;transform:translateY(16px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.chat-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:var(--teal-glow);display:flex;align-items:center;justify-content:center;font-size:16px}
+.chat-header-text h4{font-family:'Outfit',sans-serif;font-size:15px;font-weight:600}
+.chat-header-text p{font-size:12px;color:var(--gray)}
+.chat-body{flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:12px;min-height:280px}
+.chat-msg{padding:12px 16px;border-radius:16px;font-size:14px;line-height:1.5;max-width:85%}
+.chat-bot{background:var(--surface-3);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-user{background:var(--teal);color:var(--bg);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.chat-suggestions{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.chat-sug{background:none;border:1px solid var(--border);color:var(--gray-light);padding:10px 14px;border-radius:12px;font-size:13px;cursor:pointer;transition:all 0.2s;text-align:left;font-family:'Outfit',sans-serif}
+.chat-sug:hover{border-color:var(--teal);color:var(--teal);background:var(--teal-glow)}
+.chat-input{display:flex;gap:8px;padding:16px 20px;border-top:1px solid var(--border)}
+.chat-input input{flex:1;padding:10px 16px;border-radius:100px;border:1px solid var(--border);background:var(--surface-3);color:var(--white);font-size:14px;font-family:'Outfit',sans-serif;outline:none}
+.chat-input input:focus{border-color:var(--teal)}
+.chat-input input::placeholder{color:var(--gray)}
+.chat-input button{width:36px;height:36px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;color:var(--bg);font-size:16px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0}
+.chat-input button:hover{background:var(--teal-dim)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-actions{flex-direction:column;align-items:center}
+  .dash-grid{grid-template-columns:1fr 1fr}
+  .services-row{grid-template-columns:1fr}
+  .help-layout{grid-template-columns:1fr}
+  .help-sidebar{position:static}
+  .about-split,.cta-card,.footer-inner{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .nav-pill{padding:12px 20px}
+  .chat-panel{right:12px;left:12px;width:auto}
+}
+
+.mockup-label{position:fixed;bottom:20px;left:20px;background:var(--surface);color:var(--teal);padding:12px 24px;border-radius:100px;font-size:13px;font-weight:600;z-index:300;box-shadow:var(--shadow);border:1px solid var(--border);letter-spacing:0.5px}
+</style>
+</head>
+<body>
+
+<div class="mockup-label">Mockup 2 — Modern Command Center</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-pill">
+      <a href="#" class="logo">Shaw <span>&</span> Associates</a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#help">Help Center</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag">
+      <span class="tag">Vacaville, CA — Trusted Since 2002</span>
+    </div>
+    <h1>Your Taxes.<br><em>Handled.</em></h1>
+    <p>Personal, year-round tax and accounting services for individuals, businesses, estates, and non-profits — from a family-owned firm that never outsources your work.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-glow">Book a Free Consultation →</a>
+      <a href="#dashboard" class="btn-outline">I'm an Existing Client</a>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT DASHBOARD -->
+<section class="dashboard" id="dashboard">
+  <div class="container">
+    <div class="dash-label"><span>⚡ Client Quick Access</span></div>
+    <div class="dash-grid">
+      <a href="https://shawtax.smartvault.com/" class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon di-1">📁</div>
+          <span class="dash-arrow">↗</span>
+        </div>
+        <h3>Client Portal</h3>
+        <p>Upload documents, message your preparer, review & sign returns</p>
+      </a>
+      <a href="https://secure.cpacharge.com/pages/shawtax/payments" class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon di-2">💳</div>
+          <span class="dash-arrow">↗</span>
+        </div>
+        <h3>Secure Payments</h3>
+        <p>Pay invoices quickly and securely through CPACharge</p>
+      </a>
+      <a href="#" class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon di-3">📊</div>
+          <span class="dash-arrow">↗</span>
+        </div>
+        <h3>Refund Tracker</h3>
+        <p>Track your federal or state refund status in real time</p>
+      </a>
+      <a href="#" class="dash-card">
+        <div class="dash-top">
+          <div class="dash-icon di-4">📨</div>
+          <span class="dash-arrow">↗</span>
+        </div>
+        <h3>SafeSend Returns</h3>
+        <p>Review, sign, and submit e-file authorizations from any device</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header center">
+      <span class="tag" style="margin-bottom:16px">What We Do</span>
+      <h2>Areas of Practice</h2>
+      <p>Everything done in-house by credentialed professionals. Never outsourced.</p>
+    </div>
+    <div class="services-row">
+      <div class="svc">
+        <div class="svc-badge sb-1">Tax</div>
+        <h3>Tax Preparation & Planning</h3>
+        <p>Complete individual and business tax services with year-round planning guidance.</p>
+        <div class="svc-features">
+          <span class="svc-feat">Individuals & families</span>
+          <span class="svc-feat">Small businesses & corporations</span>
+          <span class="svc-feat">Estates, trusts & non-profits</span>
+          <span class="svc-feat">Year-round tax planning</span>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-badge sb-2">Business</div>
+        <h3>Business Services</h3>
+        <p>Full-range support to keep your business running smoothly and compliantly.</p>
+        <div class="svc-features">
+          <span class="svc-feat">Bookkeeping</span>
+          <span class="svc-feat">Sales tax management</span>
+          <span class="svc-feat">Strategic tax planning</span>
+          <span class="svc-feat">Business advisory</span>
+        </div>
+      </div>
+      <div class="svc">
+        <div class="svc-badge sb-3">Representation</div>
+        <h3>Audit Representation</h3>
+        <p>Got a letter from the IRS or FTB? You don't have to deal with it alone.</p>
+        <div class="svc-features">
+          <span class="svc-feat">IRS audit representation</span>
+          <span class="svc-feat">State taxing authorities</span>
+          <span class="svc-feat">Decades of experience</span>
+          <span class="svc-feat">Stress-free resolution</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HELP CENTER / FAQ -->
+<section class="help" id="help">
+  <div class="container">
+    <div class="help-layout">
+      <div class="help-sidebar">
+        <span class="tag" style="margin-bottom:16px">Help Center</span>
+        <h2>Got Questions?</h2>
+        <p>Search or browse the topics below. Can't find what you need? Use the chat widget in the corner.</p>
+        <div class="help-search">
+          <span class="si">🔍</span>
+          <input type="text" placeholder="Search for answers..." id="helpSearch" oninput="filterHelp()">
+        </div>
+        <div class="help-cats">
+          <button class="help-cat active" onclick="filterCat('all',this)">All Topics</button>
+          <button class="help-cat" onclick="filterCat('documents',this)">Documents & Deadlines</button>
+          <button class="help-cat" onclick="filterCat('process',this)">Process & Timing</button>
+          <button class="help-cat" onclick="filterCat('access',this)">Access & Delivery</button>
+        </div>
+      </div>
+      <div class="help-main" id="helpMain">
+        <div class="help-item" data-cat="process" data-text="how long complete tax return processing time">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">How long does it take to complete my return? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">A typical return (Federal + State) takes about 14 business days from drop-off to completion. Missing documents or returns requiring additional forms can extend this. Returns are processed first-in, first-out — earlier submissions get faster turnaround.</div></div>
+        </div>
+        <div class="help-item" data-cat="documents" data-text="what documents need submit taxes forms w2 1099">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">What documents do I need to provide? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">Generally: W-2s, all 1099 forms, Schedule K-1s, Form 1095 for health insurance, and records for HSA/IRA contributions, charitable donations, child care, and clean energy credits. Don't have everything yet? Send what you have — we'll let you know if anything's missing.</div></div>
+        </div>
+        <div class="help-item" data-cat="documents" data-text="when turn in deadline submit tax documents march">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">When should I turn in my documents? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">As soon as you have them! After the 3rd week of March, we can't guarantee filing by the deadline and will file an extension ($50 fee). Remember: extensions extend the filing deadline, not the payment deadline. Pay any amount owed by the original deadline to avoid penalties.</div></div>
+        </div>
+        <div class="help-item" data-cat="access" data-text="appointment drop off upload portal send documents">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">Do I need an appointment to drop off documents? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">Nope! Drop by anytime during business hours — no appointment needed. You can also upload through our secure Client Portal, mail them, or use the after-hours drop slot on our 2nd floor hallway door.</div></div>
+        </div>
+        <div class="help-item" data-cat="access" data-text="email tax documents secure portal safe send">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">Can I email my tax documents? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">For security reasons, no — we don't accept documents via email. Please use our secure Client Portal to upload everything digitally, or drop off / mail physical copies.</div></div>
+        </div>
+        <div class="help-item" data-cat="process" data-text="refund status check track where">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">How do I check my refund status? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">Use our Refund Tracker in the Client Quick Access section at the top of this page. It links directly to the IRS and state tracking tools so you can check anytime.</div></div>
+        </div>
+        <div class="help-item" data-cat="process" data-text="extension late miss deadline penalty payment">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">What happens if I miss the filing deadline? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">We'll file an extension on your behalf ($50 fee). But important: an extension only extends the time to file — NOT the time to pay. Submit any estimated payments by the original deadline to avoid late fees and penalties.</div></div>
+        </div>
+        <div class="help-item" data-cat="access" data-text="after hours outside business weekend drop off">
+          <div class="help-q" onclick="toggleHelp(this.parentElement)">What if I can't come during business hours? <span class="help-chevron">▼</span></div>
+          <div class="help-ans"><div class="help-ans-inner">We have a secure after-hours drop slot at our 2nd floor hallway door, clearly marked with signage. You can also upload documents 24/7 through the Client Portal.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-split">
+      <div class="about-visual">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">2002</div>
+            <div class="tl-title">Larry Shaw Opens the Doors</div>
+            <div class="tl-desc">Founded with a radical idea for accounting: no stuffiness. His dog Buddy joined him at the office daily. Many original clients are still with the firm today.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2005–2016</div>
+            <div class="tl-title">Lauren Joins & Grows</div>
+            <div class="tl-desc">Larry's daughter Lauren joined the team (with her dog, Harley). She earned her Enrolled Agent license in 2008 and CPA in 2016, building her own practice.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">Today</div>
+            <div class="tl-title">Same Values, Modern Tools</div>
+            <div class="tl-desc">Video, phone, or in-person — we meet you wherever you are. Secure portal, digital signing, real-time refund tracking. Same personal care, better convenience.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="tag" style="margin-bottom:16px">Our Story</span>
+        <h2>Family-Run Since Day One</h2>
+        <p>Shaw & Associates was built on a simple belief: tax and accounting services should feel comfortable — not intimidating. No suits, no pretense. Just experienced professionals who take the time to know you.</p>
+        <p>From Larry's founding vision to Lauren carrying the practice forward, this has always been a firm where relationships matter more than formality. That's why many of our original clients from 2002 are still with us.</p>
+        <div class="about-values">
+          <div class="av"><div class="av-icon">🤝</div><div class="av-label">Accessible</div></div>
+          <div class="av"><div class="av-icon">💬</div><div class="av-label">Approachable</div></div>
+          <div class="av"><div class="av-icon">✅</div><div class="av-label">Accountable</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-left">
+        <span class="tag" style="margin-bottom:16px">Get Started</span>
+        <h2>Let's Talk</h2>
+        <p>Complimentary consultations, prior-year return reviews, and fee estimates for prospective clients. No pressure, no jargon.</p>
+        <div class="contact-pills">
+          <div class="cp"><span class="cp-icon">📍</span> 555 Mason St, Suite 260, Vacaville, CA 95688</div>
+          <div class="cp"><span class="cp-icon">📞</span> (707) 448-8451</div>
+          <div class="cp"><span class="cp-icon">✉️</span> office@shawtax.net</div>
+        </div>
+        <a href="mailto:office@shawtax.net" class="btn-glow" style="margin-top:28px">Contact Us →</a>
+      </div>
+      <div class="cta-right">
+        <h3>Business Hours</h3>
+        <div class="hours-list">
+          <div class="hour-block">
+            <div class="hour-season">Tax Season</div>
+            <div class="hour-dates">February 1 – April 15</div>
+            <div class="hour-time">Monday – Friday, 9am – 5pm</div>
+          </div>
+          <div class="hour-block">
+            <div class="hour-season">Off Season</div>
+            <div class="hour-dates">April 16 – January 31</div>
+            <div class="hour-time">Monday – Thursday, 9am – 5pm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="foot-brand">
+        <a href="#" class="logo">Shaw <span>&</span> Associates</a>
+        <p>Family-owned tax & accounting professionals in Vacaville, CA. Accessible, approachable, and accountable — since 2002.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <a href="#">Tax Preparation</a>
+        <a href="#">Tax Planning</a>
+        <a href="#">Business Services</a>
+        <a href="#">Audit Representation</a>
+      </div>
+      <div class="foot-col">
+        <h4>Client Resources</h4>
+        <a href="https://shawtax.smartvault.com/">Client Portal</a>
+        <a href="https://secure.cpacharge.com/pages/shawtax/payments">Secure Payments</a>
+        <a href="#">Refund Tracker</a>
+        <a href="#">SafeSend Returns</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Help Center</a>
+        <a href="#">Due Dates</a>
+        <a href="#">Newsletter</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Shaw & Associates. All rights reserved.</span>
+      <span>Privacy Policy</span>
+    </div>
+  </div>
+</footer>
+
+<!-- CHAT WIDGET -->
+<button class="chat-fab" id="chatFab" onclick="toggleChat()">💬</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">🏛️</div>
+    <div class="chat-header-text">
+      <h4>Shaw & Associates</h4>
+      <p>Quick answers to common questions</p>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody">
+    <div class="chat-msg chat-bot">
+      Hi there! 👋 I can help you find quick answers. What would you like to know?
+    </div>
+    <div class="chat-suggestions" id="chatSugs">
+      <button class="chat-sug" onclick="askQ('docs')">What documents do I need?</button>
+      <button class="chat-sug" onclick="askQ('timeline')">How long does my return take?</button>
+      <button class="chat-sug" onclick="askQ('deadline')">When is the filing deadline?</button>
+      <button class="chat-sug" onclick="askQ('portal')">How do I access the portal?</button>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input type="text" placeholder="Type a question..." id="chatInput" onkeypress="if(event.key==='Enter')sendChat()">
+    <button onclick="sendChat()">→</button>
+  </div>
+</div>
+
+<script>
+// FAQ
+function toggleHelp(el){
+  const wasActive=el.classList.contains('active');
+  document.querySelectorAll('.help-item').forEach(i=>i.classList.remove('active'));
+  if(!wasActive) el.classList.add('active');
+}
+function filterHelp(){
+  const q=document.getElementById('helpSearch').value.toLowerCase();
+  document.querySelectorAll('.help-item').forEach(item=>{
+    const text=item.getAttribute('data-text')+' '+item.textContent.toLowerCase();
+    item.style.display=text.includes(q)?'':'none';
+  });
+}
+function filterCat(cat,btn){
+  document.querySelectorAll('.help-cat').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.help-item').forEach(item=>{
+    item.style.display=(cat==='all'||item.getAttribute('data-cat')===cat)?'':'none';
+  });
+}
+
+// Chat Widget
+function toggleChat(){
+  const panel=document.getElementById('chatPanel');
+  const fab=document.getElementById('chatFab');
+  if(panel.classList.contains('open')){
+    panel.classList.remove('open');
+    fab.classList.remove('active');
+    fab.innerHTML='💬';
+  } else {
+    panel.classList.add('open');
+    fab.classList.add('active');
+    fab.innerHTML='✕';
+  }
+}
+const answers={
+  docs:"You'll need W-2s, all 1099 forms, K-1s, health insurance forms (1095), and records for HSA/IRA contributions, charitable donations, child care, and clean energy credits. Send what you have — we'll ask if anything's missing!",
+  timeline:"A typical return takes about 14 business days. Missing documents or complex returns may take longer. Returns are processed first-in, first-out.",
+  deadline:"Submit documents by mid-March for guaranteed on-time filing. After the 3rd week of March, we'll file an extension ($50). Remember: extensions don't extend payment deadlines!",
+  portal:"Head to the Client Portal through the quick access cards above. You can upload documents, message your preparer, and review/sign returns — all from your phone, tablet, or computer.",
+  refund:"Use our Refund Tracker in the quick access section at the top of the page. It links to both IRS and state tracking tools.",
+  email:"For security, we don't accept documents via email. Please use the Client Portal to upload digitally, or drop off / mail physical copies.",
+  hours:"Tax Season (Feb 1–Apr 15): Mon–Fri, 9am–5pm. Off Season (Apr 16–Jan 31): Mon–Thu, 9am–5pm.",
+  appointment:"No appointment needed for document drop-off! Come by during business hours, use the portal, or use the after-hours drop slot on the 2nd floor."
+};
+function askQ(key){
+  const body=document.getElementById('chatBody');
+  const sugs=document.getElementById('chatSugs');
+  const labels={docs:"What documents do I need?",timeline:"How long does my return take?",deadline:"When is the filing deadline?",portal:"How do I access the portal?",refund:"How do I check my refund?",email:"Can I email my documents?",hours:"What are your hours?",appointment:"Do I need an appointment?"};
+  if(sugs) sugs.remove();
+  body.innerHTML+=`<div class="chat-msg chat-user">${labels[key]||key}</div>`;
+  setTimeout(()=>{
+    body.innerHTML+=`<div class="chat-msg chat-bot">${answers[key]||"Great question! For the best answer, please call us at (707) 448-8451 or email office@shawtax.net."}</div>`;
+    addFollowUps(key);
+    body.scrollTop=body.scrollHeight;
+  },600);
+}
+function addFollowUps(lastKey){
+  const body=document.getElementById('chatBody');
+  const followUps={docs:['timeline','portal'],timeline:['deadline','docs'],deadline:['docs','portal'],portal:['docs','refund'],refund:['portal','deadline'],email:['portal','docs'],hours:['appointment','portal'],appointment:['hours','portal']};
+  const labels={docs:"What documents do I need?",timeline:"How long does my return take?",deadline:"When is the filing deadline?",portal:"How do I access the portal?",refund:"Check my refund status",email:"Can I email documents?",hours:"What are your hours?",appointment:"Do I need an appointment?"};
+  const keys=followUps[lastKey]||['docs','portal'];
+  let html='<div class="chat-suggestions">';
+  keys.forEach(k=>{html+=`<button class="chat-sug" onclick="askQ('${k}')">${labels[k]}</button>`});
+  html+='</div>';
+  body.innerHTML+=html;
+}
+function sendChat(){
+  const input=document.getElementById('chatInput');
+  const val=input.value.trim().toLowerCase();
+  if(!val) return;
+  const body=document.getElementById('chatBody');
+  body.innerHTML+=`<div class="chat-msg chat-user">${input.value}</div>`;
+  input.value='';
+  let matchKey=null;
+  if(val.match(/document|w-?2|1099|need|submit|provide/)) matchKey='docs';
+  else if(val.match(/how long|time|processing|take/)) matchKey='timeline';
+  else if(val.match(/deadline|march|extension|late|miss/)) matchKey='deadline';
+  else if(val.match(/portal|upload|log\s?in|sign/)) matchKey='portal';
+  else if(val.match(/refund|track|status|check/)) matchKey='refund';
+  else if(val.match(/email|e-?mail|send/)) matchKey='email';
+  else if(val.match(/hour|open|close|business hour/)) matchKey='hours';
+  else if(val.match(/appointment|drop off|walk.?in/)) matchKey='appointment';
+  setTimeout(()=>{
+    body.innerHTML+=`<div class="chat-msg chat-bot">${matchKey?answers[matchKey]:"That's a great question! For the most accurate answer, please reach out to our team at (707) 448-8451 or office@shawtax.net — we're happy to help!"}</div>`;
+    if(matchKey) addFollowUps(matchKey);
+    body.scrollTop=body.scrollHeight;
+  },600);
+}
+</script>
+</body>
+</html>

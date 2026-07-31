@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathy Potter — The Reclaim Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --deep-light: #1A3654;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+a { color: var(--gold); text-decoration: none; }
+
+.section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+@media(min-width:768px) { .section { padding: 100px 40px; } }
+
+/* ─── NAV ─── */
+.nav2 {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(11,26,43,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(198,168,85,.08);
+  padding: 0 20px;
+}
+.nav2-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.nav2-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+.nav2-links {
+  display: none;
+  gap: 28px;
+  list-style: none;
+}
+@media(min-width:768px) { .nav2-links { display: flex; } }
+.nav2-links a {
+  font-size: .85rem;
+  color: var(--cream);
+  opacity: .5;
+  transition: opacity .3s;
+  font-weight: 500;
+}
+.nav2-links a:hover { opacity: 1; }
+.nav2-cta {
+  background: var(--gold);
+  color: var(--deep) !important;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: .85rem;
+  font-weight: 600;
+  transition: background .3s;
+  display: inline-block;
+}
+.nav2-cta:hover { background: var(--gold-light); color: var(--deep) !important; }
+
+/* ─── HERO ─── */
+.hero2 {
+  padding: 160px 20px 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(198,168,85,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero2-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  opacity: 0; animation: fadeIn .8s .2s forwards;
+}
+.hero2 h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 24px;
+  opacity: 0; animation: fadeIn .8s .4s forwards;
+}
+.hero2 h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero2-sub {
+  font-size: 1.08rem;
+  color: rgba(250,246,238,.55);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+  opacity: 0; animation: fadeIn .8s .6s forwards;
+}
+.hero2-btns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0; animation: fadeIn .8s .8s forwards;
+}
+.btn2-primary {
+  background: var(--gold);
+  color: var(--deep);
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: .95rem;
+  transition: background .3s, transform .3s;
+  display: inline-block;
+}
+.btn2-primary:hover { background: var(--gold-light); color: var(--deep); transform: translateY(-2px); }
+.btn2-secondary {
+  background: transparent;
+  color: var(--cream);
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: .95rem;
+  border: 1.5px solid rgba(250,246,238,.2);
+  transition: border-color .3s, transform .3s;
+  display: inline-block;
+}
+.btn2-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pillars-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 52px;
+  opacity: 0; animation: fadeIn .8s 1s forwards;
+}
+.pill-item {
+  background: rgba(198,168,85,.08);
+  border: 1px solid rgba(198,168,85,.2);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: .83rem;
+  font-weight: 500;
+  color: var(--gold-light);
+}
+
+/* ─── PAIN ─── */
+.pain2 {
+  background: var(--deep-mid);
+  padding: 80px 20px;
+}
+@media(min-width:768px) { .pain2 { padding: 100px 40px; } }
+.pain2-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.pain2-inner h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  margin-bottom: 12px;
+}
+.pain2-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 44px;
+}
+.pain2-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  text-align: left;
+}
+@media(min-width:600px) { .pain2-grid { grid-template-columns: 1fr 1fr; } }
+.pain2-item {
+  background: rgba(250,246,238,.03);
+  border: 1px solid rgba(250,246,238,.06);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 10px 10px 0;
+  padding: 22px 20px;
+  font-size: .9rem;
+  line-height: 1.7;
+  color: rgba(250,246,238,.7);
+  font-style: italic;
+  transition: background .3s;
+}
+.pain2-item:hover { background: rgba(198,168,85,.04); }
+
+/* ─── METHOD ─── */
+.method2 { text-align: center; }
+.method2 h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  margin-bottom: 8px;
+}
+.method2 .m2-sub {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+}
+.m2-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media(min-width:600px) { .m2-grid { grid-template-columns: repeat(2, 1fr); } }
+@media(min-width:900px) { .m2-grid { grid-template-columns: repeat(4, 1fr); } }
+.m2-card {
+  background: linear-gradient(180deg, var(--deep-mid), rgba(198,168,85,.03));
+  border: 1px solid rgba(198,168,85,.12);
+  border-radius: 14px;
+  padding: 32px 22px;
+  text-align: center;
+  transition: transform .3s, border-color .3s;
+}
+.m2-card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.m2-card .mc2-num {
+  font-family: 'Caveat', cursive;
+  font-size: 2.2rem;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.m2-card h3 {
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.m2-card p {
+  font-size: .86rem;
+  color: rgba(250,246,238,.55);
+  line-height: 1.65;
+}
+
+/* ─── JOURNEY ─── */
+.journey2 {
+  text-align: center;
+  background: rgba(198,168,85,.04);
+  padding: 80px 20px;
+  border-top: 1px solid rgba(198,168,85,.08);
+  border-bottom: 1px solid rgba(198,168,85,.08);
+}
+@media(min-width:768px) { .journey2 { padding: 100px 40px; } }
+.journey2 h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.journey2 .j2-sub {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+.journey2 .j2-desc {
+  font-size: .95rem;
+  color: rgba(250,246,238,.55);
+  max-width: 600px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+.journey2 img {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  border: 1px solid rgba(198,168,85,.15);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+/* ─── PROGRAMS ─── */
+.programs2 { text-align: center; }
+.programs2 h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 8px;
+}
+.programs2 .p2-sub {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+}
+.p2-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+@media(min-width:700px) { .p2-grid { grid-template-columns: repeat(3, 1fr); } }
+.p2-card {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,.1);
+  border-radius: 14px;
+  padding: 36px 22px;
+  transition: transform .3s, border-color .3s;
+}
+.p2-card:hover { transform: translateY(-4px); border-color: rgba(198,168,85,.3); }
+.p2-card.p2-feat {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, var(--deep-mid), rgba(198,168,85,.06));
+  position: relative;
+}
+.p2-badge {
+  position: absolute;
+  top: -12px; left: 50%; transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  padding: 4px 18px;
+  border-radius: 50px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.p2-card .p2-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.p2-card h3 { font-size: 1.15rem; margin-bottom: 8px; color: var(--cream); }
+.p2-card .p2-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.p2-card .p2-desc {
+  font-size: .85rem;
+  color: rgba(250,246,238,.5);
+  line-height: 1.65;
+}
+
+/* ─── ABOUT ─── */
+.about2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+}
+@media(min-width:768px) { .about2 { flex-direction: row; text-align: left; } }
+.about2-photo {
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: var(--deep);
+  font-weight: 600;
+}
+.about2-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 16px;
+}
+.about2-text p {
+  font-size: .95rem;
+  color: rgba(250,246,238,.6);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+.about2-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+@media(max-width:767px) { .about2-tags { justify-content: center; } }
+.about2-tag {
+  background: rgba(198,168,85,.1);
+  border: 1px solid rgba(198,168,85,.2);
+  color: var(--gold-light);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: .78rem;
+  font-weight: 500;
+}
+
+/* ─── BOOK ─── */
+.book2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  text-align: center;
+  background: rgba(198,168,85,.04);
+  padding: 80px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(198,168,85,.08);
+}
+@media(min-width:768px) { .book2 { flex-direction: row; text-align: left; padding: 80px 56px; } }
+.book2-img {
+  flex-shrink: 0;
+  width: 220px;
+  perspective: 800px;
+}
+.book2-img img {
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-10deg);
+  box-shadow: 18px 14px 48px rgba(0,0,0,.5);
+  transition: transform .4s;
+}
+.book2-img:hover img { transform: rotateY(-3deg); }
+.book2-text h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 16px;
+}
+.book2-text h2 span { color: var(--gold); }
+.book2-text p {
+  font-size: .95rem;
+  color: rgba(250,246,238,.6);
+  line-height: 1.75;
+  margin-bottom: 14px;
+}
+
+/* ─── LEAD MAGNET ─── */
+.lead2 {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, transparent, rgba(198,168,85,.04));
+}
+.lead2 h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  margin-bottom: 8px;
+}
+.lead2 .l2-sub {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 32px;
+}
+.lead2-form {
+  display: flex;
+  gap: 12px;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.lead2-form input {
+  flex: 1;
+  min-width: 220px;
+  padding: 14px 20px;
+  border: 1.5px solid rgba(198,168,85,.2);
+  border-radius: 50px;
+  font-size: .95rem;
+  background: var(--deep-mid);
+  color: var(--cream);
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color .3s;
+}
+.lead2-form input::placeholder { color: rgba(250,246,238,.35); }
+.lead2-form input:focus { border-color: var(--gold); }
+.lead2-form button {
+  background: var(--gold);
+  color: var(--deep);
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: .95rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background .3s;
+}
+.lead2-form button:hover { background: var(--gold-light); }
+
+/* ─── FOOTER ─── */
+.footer2 {
+  border-top: 1px solid rgba(198,168,85,.08);
+  padding: 48px 20px;
+  text-align: center;
+}
+.footer2 .f2-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.footer2 p { font-size: .82rem; color: rgba(250,246,238,.35); line-height: 1.6; }
+.footer2 .f2-links {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 16px;
+  list-style: none;
+}
+.footer2 .f2-links a {
+  font-size: .82rem;
+  color: rgba(250,246,238,.3);
+  transition: color .3s;
+}
+.footer2 .f2-links a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav2">
+  <div class="nav2-inner">
+    <div class="nav2-logo">Kathy Potter</div>
+    <ul class="nav2-links">
+      <li><a href="#method2">Method</a></li>
+      <li><a href="#journey2">Journey</a></li>
+      <li><a href="#programs2">Programs</a></li>
+      <li><a href="#about2">About</a></li>
+      <li><a href="#book2">Book</a></li>
+    </ul>
+    <a href="#lead2" class="nav2-cta">Free Guide</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero2">
+  <p class="hero2-eyebrow">EFT Tapping · Mindfulness · Somatic Therapy</p>
+  <h1>She spent 20 years<br>making herself small.<br>Then she decided to <em>Reclaim.</em></h1>
+  <p class="hero2-sub">The Reclaim Method™ helps midlife women release what their body is still carrying after a toxic relationship — so they can stop surviving and start building a life that's finally theirs.</p>
+  <div class="hero2-btns">
+    <a href="#programs2" class="btn2-primary">Work With Me</a>
+    <a href="#lead2" class="btn2-secondary">Get the Free Guide</a>
+  </div>
+  <div class="pillars-row">
+    <div class="pill-item">Release</div>
+    <div class="pill-item">Reconnect</div>
+    <div class="pill-item">Rebuild</div>
+    <div class="pill-item">Rise</div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain2">
+  <div class="pain2-inner">
+    <h2>Does This Sound Like You?</h2>
+    <p class="pain2-sub">You're not broken. Your body is still holding on.</p>
+    <div class="pain2-grid">
+      <div class="pain2-item">I know I should feel happy, but I just feel... empty. Everyone says I'm so strong, but I'm falling apart inside.</div>
+      <div class="pain2-item">I spent so long keeping the peace that I forgot what I actually want. I don't even know my own taste in music anymore.</div>
+      <div class="pain2-item">My body won't calm down. My shoulders are always up, my stomach clenches every time I have to make a decision alone.</div>
+      <div class="pain2-item">Everyone says 'this is your time' and I nod and smile, but inside I'm thinking — my time for WHAT?</div>
+      <div class="pain2-item">I tried therapy and it helped me understand what happened — but understanding isn't the same as feeling different in my body.</div>
+      <div class="pain2-item">I'm scared I used up all my good years on someone who didn't even see me. What if it's too late to start over?</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="section method2" id="method2">
+  <h2>The Reclaim Method™</h2>
+  <p class="m2-sub">Four pillars to take back what was always yours</p>
+  <div class="m2-grid">
+    <div class="m2-card">
+      <div class="mc2-num">01</div>
+      <h3>Release</h3>
+      <p>Use EFT tapping and somatic therapy to release the trauma, tension, and survival patterns your body has been carrying for decades.</p>
+    </div>
+    <div class="m2-card">
+      <div class="mc2-num">02</div>
+      <h3>Reconnect</h3>
+      <p>Through mindfulness, reconnect with your own desires, instincts, and identity — the parts that went underground to keep the peace.</p>
+    </div>
+    <div class="m2-card">
+      <div class="mc2-num">03</div>
+      <h3>Rebuild</h3>
+      <p>Construct a new internal foundation — boundaries, self-trust, and the ability to make decisions from desire instead of fear.</p>
+    </div>
+    <div class="m2-card">
+      <div class="mc2-num">04</div>
+      <h3>Rise</h3>
+      <p>Step into your next chapter with clarity, confidence, and a life designed around who you actually are — not who you had to be.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey2" id="journey2">
+  <h2>The 9-Step Reclaim Journey</h2>
+  <p class="j2-sub">A proven path from surviving to thriving</p>
+  <p class="j2-desc">Every client follows this exact 9-step process — from the moment she realizes her body is still carrying the past, to the moment she steps into a life she chose on purpose.</p>
+  <img src="KathyProcess.png" alt="The Reclaim Journey — 9-Step Process">
+</section>
+
+<!-- PROGRAMS -->
+<section class="section programs2" id="programs2">
+  <h2>Ways to Work Together</h2>
+  <p class="p2-sub">Start wherever you are — go as deep as you're ready</p>
+  <div class="p2-grid">
+    <div class="p2-card">
+      <div class="p2-label">Free Download</div>
+      <h3>The Reclaim Roadmap</h3>
+      <div class="p2-price">FREE</div>
+      <p class="p2-desc">5 Body-Based Practices to Start Releasing What Your Toxic Relationship Left Behind.</p>
+    </div>
+    <div class="p2-card p2-feat">
+      <span class="p2-badge">Most Popular</span>
+      <div class="p2-label">6-Week Group Program</div>
+      <h3>The Reclaim Method</h3>
+      <div class="p2-price">$1,997</div>
+      <p class="p2-desc">The complete transformation experience — live coaching, EFT sessions, mindfulness practices, and somatic work over 6 powerful weeks.</p>
+    </div>
+    <div class="p2-card">
+      <div class="p2-label">Private Coaching</div>
+      <h3>Reclaim &amp; Rise</h3>
+      <div class="p2-price">$7,500</div>
+      <p class="p2-desc">12 weeks of one-on-one intensive work. Custom EFT protocols, personalized somatic therapy, and a full nervous system overhaul.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about2" id="about2">
+  <div class="about2-photo">KP</div>
+  <div class="about2-text">
+    <h2>Meet Kathy</h2>
+    <p>I know what it feels like to make yourself small for so long that you forget who you were before. I know the silence after leaving — the one that's supposed to feel like freedom but feels more like floating.</p>
+    <p>I also know what it feels like when your body finally lets go. When the tension drops. When you feel a "yes" in your gut for the first time in years. When you look in the mirror and don't flinch.</p>
+    <p>I created The Reclaim Method because I believe every woman who found the courage to leave deserves more than survival. She deserves a life that's finally, unapologetically hers.</p>
+    <div class="about2-tags">
+      <span class="about2-tag">EFT Tapping Practitioner</span>
+      <span class="about2-tag">Somatic Therapist</span>
+      <span class="about2-tag">Mindfulness Guide</span>
+      <span class="about2-tag">Author of RECLAIM</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<div class="section" id="book2">
+  <div class="book2">
+    <div class="book2-img">
+      <img src="KathyBook.png" alt="RECLAIM by Kathy Potter">
+    </div>
+    <div class="book2-text">
+      <h2>The Book: <span>RECLAIM</span></h2>
+      <p>The Body-Based Guide to Finding Yourself After Leaving — an 11-chapter journey through the exact process that has helped hundreds of women release what their body was still carrying and step into the most powerful chapter of their lives.</p>
+      <p>Part memoir, part method, part manual — this isn't another self-help book that sits on the shelf. It's a body-based experience you can feel while you read.</p>
+    </div>
+  </div>
+</div>
+
+<!-- LEAD MAGNET -->
+<section class="lead2" id="lead2">
+  <h2>Start Your Reclaim Journey</h2>
+  <p class="l2-sub">Download the free guide — 5 practices you can try today</p>
+  <div class="lead2-form">
+    <input type="email" placeholder="Your best email">
+    <button type="button">Send My Free Guide</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer2">
+  <div class="f2-logo">Kathy Potter</div>
+  <p>Creator of The Reclaim Method™ · EFT Tapping · Mindfulness · Somatic Therapy</p>
+  <ul class="f2-links">
+    <li><a href="#method2">Method</a></li>
+    <li><a href="#programs2">Programs</a></li>
+    <li><a href="#about2">About</a></li>
+    <li><a href="#book2">Book</a></li>
+    <li><a href="#lead2">Free Guide</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>

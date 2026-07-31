@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karen — Trauma Therapist & Coach | The Root & Rise Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0B1A2B;--deep-mid:#132B42;--deep-light:#1A3050;
+  --gold:#C6A855;--gold-light:#E8D5A0;--gold-dim:rgba(198,168,85,0.15);
+  --cream:#FAF6EE;--sage:#7A9E7E;--rose:#C9928E;--warm:#D4A574;
+  --text-primary:rgba(250,246,238,0.92);--text-secondary:rgba(250,246,238,0.6);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:var(--deep);color:var(--text-primary);}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(11,26,43,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(198,168,85,0.08);padding:0 24px;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold);text-decoration:none;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{text-decoration:none;color:var(--text-secondary);font-size:0.88rem;font-weight:500;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold) !important;color:var(--deep) !important;padding:10px 24px;border-radius:100px;font-weight:600 !important;transition:all 0.3s !important;}
+.nav-cta:hover{background:var(--gold-light) !important;}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none;}}
+
+/* HERO */
+.hero{padding:160px 24px 120px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 50%,var(--deep) 100%);}
+.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%,rgba(198,168,85,0.06) 0%,transparent 60%);}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:200px;background:linear-gradient(180deg,transparent,var(--deep));}
+.hero .eyebrow{font-family:'Caveat',cursive;color:var(--gold);font-size:1.4rem;margin-bottom:16px;letter-spacing:1px;}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);color:var(--cream);line-height:1.1;margin-bottom:24px;font-weight:700;position:relative;z-index:2;}
+.hero h1 em{font-style:italic;color:var(--gold);}
+.hero p{color:var(--text-secondary);font-size:1.1rem;max-width:560px;margin:0 auto 40px;line-height:1.7;position:relative;z-index:2;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;}
+.btn-gold{display:inline-block;padding:16px 40px;background:var(--gold);color:var(--deep);border-radius:100px;text-decoration:none;font-weight:700;font-size:1rem;transition:all 0.3s;box-shadow:0 4px 24px rgba(198,168,85,0.3);}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 32px rgba(198,168,85,0.4);}
+.btn-ghost{display:inline-block;padding:16px 40px;background:transparent;color:var(--gold);border:1.5px solid rgba(198,168,85,0.4);border-radius:100px;text-decoration:none;font-weight:600;font-size:1rem;transition:all 0.3s;}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(198,168,85,0.08);}
+
+/* SECTIONS */
+.container{max-width:1100px;margin:0 auto;padding:0 24px;}
+section{padding:100px 24px;}
+.section-header{text-align:center;margin-bottom:56px;}
+.section-header .eyebrow{font-family:'Caveat',cursive;color:var(--gold);font-size:1.2rem;margin-bottom:8px;}
+.section-header h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--cream);margin-bottom:14px;}
+.section-header p{color:var(--text-secondary);max-width:560px;margin:0 auto;line-height:1.7;}
+.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:0 auto 48px;}
+
+/* PAIN */
+.pain{background:var(--deep-mid);}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;margin:0 auto;}
+.pain-item{padding:24px;border-radius:12px;background:rgba(198,168,85,0.04);border:1px solid rgba(198,168,85,0.08);border-left:3px solid var(--rose);font-size:0.93rem;line-height:1.7;color:var(--text-primary);font-style:italic;}
+@media(max-width:600px){.pain-grid{grid-template-columns:1fr;}}
+
+/* METHOD */
+.method-section{background:var(--deep);}
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;max-width:1000px;margin:0 auto;}
+.pillar{background:var(--deep-mid);border-radius:16px;padding:36px 28px;text-align:center;border:1px solid rgba(198,168,85,0.08);transition:all 0.4s;position:relative;overflow:hidden;}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--sage));opacity:0;transition:opacity 0.3s;}
+.pillar:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.3);border-color:rgba(198,168,85,0.2);}
+.pillar:hover::before{opacity:1;}
+.pillar .num{font-family:'Caveat',cursive;color:var(--gold);font-size:2.5rem;font-weight:700;line-height:1;margin-bottom:8px;}
+.pillar h3{font-size:1.15rem;margin-bottom:10px;color:var(--cream);}
+.pillar p{font-size:0.88rem;color:var(--text-secondary);line-height:1.6;}
+
+/* JOURNEY */
+.journey{background:var(--deep-mid);}
+.journey-img{display:block;max-width:650px;margin:0 auto;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.4);border:1px solid rgba(198,168,85,0.1);}
+
+/* PROGRAMS */
+.programs{background:var(--deep);}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1000px;margin:0 auto;}
+.prog-card{background:var(--deep-mid);border-radius:16px;padding:36px 28px;text-align:center;border:1px solid rgba(198,168,85,0.08);transition:all 0.3s;}
+.prog-card.feat{background:linear-gradient(145deg,rgba(198,168,85,0.1),rgba(198,168,85,0.03));border:2px solid var(--gold);transform:scale(1.03);}
+.prog-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3);}
+.prog-card.feat:hover{transform:scale(1.03) translateY(-4px);}
+.prog-card .label{font-family:'Caveat',cursive;font-size:1.1rem;color:var(--sage);margin-bottom:4px;}
+.prog-card.feat .label{color:var(--gold);}
+.prog-card h3{font-size:1.25rem;margin-bottom:8px;color:var(--cream);}
+.prog-card .price{font-size:2rem;font-weight:700;color:var(--gold);margin-bottom:10px;}
+.prog-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.5;}
+
+/* ABOUT */
+.about{background:var(--deep-mid);}
+.about-wrap{display:flex;gap:48px;max-width:900px;margin:0 auto;align-items:center;}
+.about-photo{flex:0 0 200px;height:200px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--sage));display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(198,168,85,0.2);}
+.about-photo span{font-family:'Playfair Display',serif;font-size:4rem;color:var(--deep);font-weight:700;}
+.about-text h2{font-size:1.8rem;margin-bottom:16px;color:var(--cream);}
+.about-text p{color:var(--text-secondary);line-height:1.8;margin-bottom:16px;font-size:0.95rem;}
+.about-text em{color:var(--gold);font-style:italic;}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+.about-tags span{background:rgba(198,168,85,0.08);color:var(--gold);border:1px solid rgba(198,168,85,0.15);padding:6px 14px;border-radius:100px;font-size:0.8rem;font-weight:500;}
+@media(max-width:700px){.about-wrap{flex-direction:column;text-align:center;}.about-photo{flex:none;margin:0 auto;}}
+
+/* BOOK */
+.book{background:var(--deep);}
+.book-wrap{display:flex;gap:48px;max-width:900px;margin:0 auto;align-items:center;}
+.book-img{flex:0 0 240px;perspective:800px;}
+.book-img img{width:240px;border-radius:4px;box-shadow:12px 12px 40px rgba(0,0,0,0.4);transform:rotateY(-10deg);transition:transform 0.4s;}
+.book-img img:hover{transform:rotateY(-3deg);}
+.book-text h2{font-size:1.8rem;margin-bottom:6px;color:var(--cream);}
+.book-text .sub{color:var(--gold);font-style:italic;margin-bottom:16px;}
+.book-text p{color:var(--text-secondary);line-height:1.7;margin-bottom:12px;font-size:0.95rem;}
+@media(max-width:700px){.book-wrap{flex-direction:column;text-align:center;}.book-img{flex:none;}}
+
+/* LEAD */
+.lead{background:linear-gradient(135deg,var(--deep-mid),var(--deep-light));padding:80px 24px;text-align:center;border-top:1px solid rgba(198,168,85,0.1);border-bottom:1px solid rgba(198,168,85,0.1);}
+.lead h2{color:var(--cream);font-size:2rem;margin-bottom:12px;}
+.lead p{color:var(--text-secondary);max-width:500px;margin:0 auto 28px;line-height:1.6;}
+.lead-form{display:flex;gap:12px;justify-content:center;max-width:440px;margin:0 auto;flex-wrap:wrap;}
+.lead-form input{flex:1;min-width:200px;padding:14px 20px;border:1.5px solid rgba(198,168,85,0.2);background:rgba(198,168,85,0.05);border-radius:100px;color:var(--cream);font-size:0.95rem;outline:none;transition:border-color 0.3s;}
+.lead-form input:focus{border-color:var(--gold);}
+.lead-form input::placeholder{color:var(--text-secondary);}
+.lead-form button{padding:14px 28px;background:var(--gold);color:var(--deep);border:none;border-radius:100px;font-weight:700;font-size:0.95rem;cursor:pointer;transition:all 0.3s;}
+.lead-form button:hover{background:var(--gold-light);}
+
+/* FOOTER */
+footer{background:var(--deep);padding:48px 24px;text-align:center;border-top:1px solid rgba(198,168,85,0.06);}
+footer p{color:rgba(250,246,238,0.3);font-size:0.82rem;margin-bottom:8px;}
+footer a{color:var(--gold);text-decoration:none;opacity:0.6;}
+footer .tagline{font-family:'Caveat',cursive;color:var(--gold);font-size:1.1rem;margin-bottom:16px;opacity:0.6;}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-inner">
+<a href="#" class="nav-logo">Karen</a>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#method">Method</a>
+<a href="#programs">Programs</a>
+<a href="#book">Book</a>
+<a href="#contact" class="nav-cta">Work With Me</a>
+</div>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<p class="eyebrow">Trauma Therapist &amp; Coach for Women</p>
+<h1>Beneath Every Symptom<br>Is <em>One Root</em>.</h1>
+<p>Anxiety. Depression. Food struggles. They're not separate problems — they're echoes of the same unresolved trauma. I help women heal the root so the echoes finally stop.</p>
+<div class="hero-btns">
+<a href="#contact" class="btn-gold">Begin Your Healing</a>
+<a href="#method" class="btn-ghost">Explore The Method</a>
+</div>
+</div>
+</section>
+
+<section class="pain">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Does This Sound Like You?</p>
+<h2>You've Tried Everything. Nothing Has Changed.</h2>
+<p>These aren't character flaws. They're signals from a nervous system that never got to heal.</p>
+</div>
+<div class="pain-grid">
+<div class="pain-item">"I can't turn my brain off at night. I replay every conversation, every mistake, every worst-case scenario on a loop."</div>
+<div class="pain-item">"I know I shouldn't eat this way, but food is the only thing that makes me feel calm. Then the shame spiral starts."</div>
+<div class="pain-item">"I've done therapy for years. I understand my patterns. But understanding hasn't changed how I FEEL."</div>
+<div class="pain-item">"I'm exhausted from pretending I'm fine. Everyone thinks I have it together, but inside I'm drowning."</div>
+<div class="pain-item">"I feel anxious in my own body. Like I'm bracing for something terrible, all the time."</div>
+<div class="pain-item">"I push people away before they can hurt me, and then I wonder why I feel so alone."</div>
+</div>
+</div>
+</section>
+
+<section class="method-section" id="method">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">The Root &amp; Rise Method™</p>
+<h2>Heal the Root. Transform Everything.</h2>
+<p>A clinically-backed framework that goes beneath the symptoms — to the one thing driving all of them.</p>
+</div>
+<div class="pillars">
+<div class="pillar"><div class="num">01</div><h3>Safe Ground</h3><p>Creating radical safety for your nervous system. Before we go deep, you learn to feel safe — in your body, in the room, and with me.</p></div>
+<div class="pillar"><div class="num">02</div><h3>Root Work</h3><p>Going beneath the surface to the original trauma using EMDR, Accelerated Resolution Therapy, and Internal Family Systems.</p></div>
+<div class="pillar"><div class="num">03</div><h3>Release</h3><p>Processing and releasing trauma at the neurological level using EFT, somatic work, and inner child healing. Your body lets go.</p></div>
+<div class="pillar"><div class="num">04</div><h3>Rise</h3><p>Integration, identity reclamation, and stepping into the woman you were always meant to be. Not managing — truly living.</p></div>
+</div>
+</div>
+</section>
+
+<section class="journey">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Transformation Roadmap</p>
+<h2>The 9-Step Root &amp; Rise Journey</h2>
+<p>Every client follows this proven path — from first discovery through full reclamation.</p>
+</div>
+<img src="KarenProcess.png" alt="The 9-Step Root &amp; Rise Journey" class="journey-img" width="650">
+</div>
+</section>
+
+<section class="programs" id="programs">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Work With Karen</p>
+<h2>Three Paths to Healing</h2>
+</div>
+<div class="prog-grid">
+<div class="prog-card">
+<div class="label">Free Resource</div>
+<h3>The Hidden Root Report</h3>
+<div class="price" style="color:var(--sage);">FREE</div>
+<p>Discover why your anxiety, depression &amp; food struggles share a single root — and what to do about it.</p>
+</div>
+<div class="prog-card feat">
+<div class="label">6-Week Group Program</div>
+<h3>The Root &amp; Rise Collective</h3>
+<div class="price">$2,497</div>
+<p>A guided group experience through all 4 pillars with weekly coaching, community, and breakthroughs.</p>
+</div>
+<div class="prog-card">
+<div class="label">Private 1:1</div>
+<h3>Root &amp; Rise Private</h3>
+<div class="price">$7,500</div>
+<p>12 weeks of deep, personalized therapy &amp; coaching with full access to all 7 clinical modalities.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="container">
+<div class="about-wrap">
+<div class="about-photo"><span>K</span></div>
+<div class="about-text">
+<p class="eyebrow" style="font-family:'Caveat',cursive;color:var(--gold);font-size:1.2rem;">Meet Karen</p>
+<h2>I Didn't Just Study Trauma.<br>I Survived It.</h2>
+<p>For years, I fought my own anxiety, my own depression, my own complicated relationship with food — believing they were separate battles. It wasn't until I discovered that every single one was rooted in unresolved trauma that everything changed.</p>
+<p>Now I help women do the same — using 7 evidence-based modalities inside a container that is deeply, radically safe. My clients tell me other therapists understand them intellectually. With me, they feel <em>held</em>.</p>
+<div class="about-tags">
+<span>EMDR</span><span>Accelerated Resolution Therapy</span><span>EFT / Tapping</span><span>CBT</span><span>ACT</span><span>Internal Family Systems</span><span>Inner Child Work</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="book" id="book">
+<div class="container">
+<div class="book-wrap">
+<div class="book-img"><img src="KarenBook.png" alt="The Hidden Root by Karen"></div>
+<div class="book-text">
+<p class="eyebrow" style="font-family:'Caveat',cursive;color:var(--gold);font-size:1.2rem;">The Book</p>
+<h2>The Hidden Root</h2>
+<p class="sub">Why Your Anxiety, Depression &amp; Food Struggles All Lead Back to One Thing</p>
+<p>Part memoir, part clinical guide, part permission slip — this book takes women on a journey from symptom management to root-cause healing. Written in the warm, direct voice Karen's clients know and trust.</p>
+<a href="#contact" class="btn-gold" style="margin-top:16px;">Get Notified When It Launches</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="lead" id="contact">
+<h2>Download The Hidden Root Report</h2>
+<p>Discover why everything you've tried hasn't worked — and the one shift that changes everything.</p>
+<div class="lead-form">
+<input type="email" placeholder="Your email address">
+<button>Send My Free Guide</button>
+</div>
+</section>
+
+<footer>
+<p class="tagline">Healing the root. Rising into wholeness.</p>
+<p>&copy; 2026 Karen — The Root &amp; Rise Method™ | All Rights Reserved</p>
+<p style="margin-top:12px;font-size:0.75rem;">Website designed by <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+</body>
+</html>

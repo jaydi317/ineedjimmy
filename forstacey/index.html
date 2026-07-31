@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stacey McCutchan — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--deep); color:var(--cream); font-family:'Inter',sans-serif; line-height:1.6; overflow-x:hidden; }
+h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+.accent { font-family:'Caveat',cursive; }
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+
+/* Hero */
+.hero { padding:80px 0 60px; text-align:center; background:linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%); position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:600px; height:600px; background:radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%); pointer-events:none; }
+.hero-eyebrow { font-family:'Caveat',cursive; color:var(--gold); font-size:1.4rem; margin-bottom:12px; letter-spacing:1px; }
+.hero h1 { font-size:clamp(2rem,5vw,3.2rem); font-weight:700; color:var(--cream); line-height:1.2; margin-bottom:16px; }
+.hero h1 span { color:var(--gold); }
+.hero p { font-size:1.05rem; color:rgba(250,246,238,0.7); max-width:640px; margin:0 auto; line-height:1.7; }
+.hero-badge { display:inline-block; margin-top:24px; padding:8px 20px; border:1px solid var(--gold); border-radius:30px; font-size:0.8rem; color:var(--gold); letter-spacing:2px; text-transform:uppercase; }
+
+/* Identity Card */
+.identity-section { padding:60px 0; }
+.identity-card { background:linear-gradient(135deg, var(--deep-mid), #1a3654); border:1px solid rgba(198,168,85,0.25); border-radius:16px; padding:48px; position:relative; overflow:hidden; }
+.identity-card::after { content:''; position:absolute; top:0; right:0; width:200px; height:200px; background:radial-gradient(circle, rgba(198,168,85,0.1) 0%, transparent 70%); }
+.identity-card h2 { font-size:2rem; color:var(--gold); margin-bottom:4px; font-weight:700; }
+.identity-card .method-title { font-family:'Caveat',cursive; font-size:1.5rem; color:var(--gold-light); margin-bottom:20px; }
+.identity-card .pitch { font-size:1.05rem; color:var(--cream); line-height:1.8; max-width:700px; margin-bottom:24px; }
+.credential-tags { display:flex; flex-wrap:wrap; gap:10px; }
+.credential-tags span { padding:6px 16px; background:rgba(198,168,85,0.12); border:1px solid rgba(198,168,85,0.3); border-radius:20px; font-size:0.78rem; color:var(--gold-light); letter-spacing:0.5px; }
+
+/* Section headers */
+.section-header { text-align:center; margin-bottom:48px; }
+.section-header .eyebrow { font-family:'Caveat',cursive; color:var(--gold); font-size:1.3rem; margin-bottom:8px; }
+.section-header h2 { font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); font-weight:700; margin-bottom:12px; }
+.section-header p { color:rgba(250,246,238,0.6); max-width:600px; margin:0 auto; font-size:0.95rem; }
+
+/* Method Pillars */
+.method-section { padding:60px 0; }
+.pillars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.pillar-card { background:linear-gradient(135deg, var(--deep-mid), #162d45); border:1px solid rgba(198,168,85,0.15); border-radius:14px; padding:32px 24px; text-align:center; transition:transform 0.3s, border-color 0.3s; }
+.pillar-card:hover { transform:translateY(-4px); border-color:var(--gold); }
+.pillar-icon { font-size:2rem; margin-bottom:12px; }
+.pillar-card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--gold); margin-bottom:8px; }
+.pillar-card p { font-size:0.88rem; color:rgba(250,246,238,0.65); line-height:1.6; }
+
+/* Journey Infographic */
+.journey-section { padding:60px 0; }
+.journey-image-wrapper { max-width:700px; margin:0 auto; border-radius:16px; overflow:hidden; border:1px solid rgba(198,168,85,0.2); }
+.journey-image-wrapper img { width:100%; display:block; }
+
+/* Website Previews */
+.preview-section { padding:60px 0; }
+.preview-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.preview-card { border-radius:14px; overflow:hidden; border:1px solid rgba(198,168,85,0.2); transition:transform 0.3s, box-shadow 0.3s; cursor:pointer; text-decoration:none; display:block; }
+.preview-card:hover { transform:translateY(-6px); box-shadow:0 20px 60px rgba(0,0,0,0.4); }
+.preview-thumb { width:100%; height:220px; object-fit:cover; object-position:top; }
+.preview-info { padding:20px; background:var(--deep-mid); }
+.preview-info h3 { font-size:1rem; color:var(--gold); margin-bottom:4px; }
+.preview-info p { font-size:0.82rem; color:rgba(250,246,238,0.5); }
+.preview-placeholder { width:100%; height:220px; display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:rgba(250,246,238,0.4); }
+.preview-placeholder.warm { background:linear-gradient(135deg, #FAF6EE, #e8e0d0); color:#5C7D60; }
+.preview-placeholder.bold { background:linear-gradient(135deg, #0B1A2B, #132B42); color:var(--gold); }
+
+/* Book Section */
+.book-section { padding:60px 0; }
+.book-layout { display:flex; align-items:center; gap:48px; }
+.book-3d { flex:0 0 280px; perspective:1200px; }
+.book-3d img { width:280px; border-radius:8px; box-shadow:20px 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(198,168,85,0.1); transform:rotateY(-12deg); transition:transform 0.4s; }
+.book-3d:hover img { transform:rotateY(-4deg); }
+.book-info h3 { font-size:1.6rem; color:var(--cream); margin-bottom:12px; line-height:1.3; }
+.book-info p { font-size:0.95rem; color:rgba(250,246,238,0.6); line-height:1.7; margin-bottom:16px; }
+.book-note { font-size:0.82rem; color:var(--gold); font-style:italic; padding:12px 16px; border-left:3px solid var(--gold); background:rgba(198,168,85,0.06); border-radius:0 8px 8px 0; }
+
+/* Instagram Bio */
+.insta-section { padding:60px 0; }
+.insta-mockup { max-width:400px; margin:0 auto; background:var(--white); border-radius:16px; padding:28px 24px; color:#262626; }
+.insta-header { display:flex; align-items:center; gap:16px; margin-bottom:20px; }
+.insta-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, var(--sage), var(--gold)); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:var(--white); font-family:'Playfair Display',serif; font-weight:700; }
+.insta-handle { font-weight:700; font-size:1rem; }
+.insta-stats { display:flex; gap:24px; margin-bottom:16px; text-align:center; }
+.insta-stats div span { display:block; }
+.insta-stats div span:first-child { font-weight:700; font-size:1.1rem; }
+.insta-stats div span:last-child { font-size:0.75rem; color:#8e8e8e; }
+.insta-bio { font-size:0.85rem; line-height:1.6; }
+.insta-bio strong { display:block; margin-bottom:4px; }
+.insta-bio .blue { color:#00376B; }
+
+/* Programs */
+.programs-section { padding:60px 0; }
+.programs-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.program-card { background:var(--deep-mid); border:1px solid rgba(198,168,85,0.15); border-radius:14px; padding:32px 24px; text-align:center; transition:transform 0.3s, border-color 0.3s; position:relative; }
+.program-card:hover { transform:translateY(-4px); border-color:var(--gold); }
+.program-card.featured { border-color:var(--gold); background:linear-gradient(135deg, var(--deep-mid), #1a3654); }
+.program-card.featured::before { content:'SIGNATURE PROGRAM'; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--deep); font-size:0.65rem; font-weight:700; padding:4px 14px; border-radius:20px; letter-spacing:1.5px; }
+.program-card .program-type { font-family:'Caveat',cursive; color:var(--gold); font-size:1.1rem; margin-bottom:8px; }
+.program-card h3 { font-size:1.15rem; color:var(--cream); margin-bottom:12px; line-height:1.3; }
+.program-card .price { font-size:1.8rem; font-weight:700; color:var(--gold); font-family:'Playfair Display',serif; }
+.program-card .price-note { font-size:0.78rem; color:rgba(250,246,238,0.5); margin-top:4px; }
+
+/* Income Calculator */
+.calculator-section { padding:60px 0; background:linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 50%, var(--deep) 100%); }
+.calculator { max-width:700px; margin:0 auto; background:linear-gradient(135deg, var(--deep-mid), #1a3654); border:1px solid rgba(198,168,85,0.2); border-radius:16px; padding:40px 36px; }
+.slider-group { margin-bottom:28px; }
+.slider-group label { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:0.9rem; color:var(--cream); }
+.slider-group label span { color:var(--gold); font-weight:700; font-size:1.1rem; }
+input[type=range] { -webkit-appearance:none; width:100%; height:6px; background:rgba(198,168,85,0.2); border-radius:3px; outline:none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--gold); cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.3); }
+input[type=range]::-moz-range-thumb { width:22px; height:22px; border-radius:50%; background:var(--gold); cursor:pointer; border:none; }
+.calc-results { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; padding-top:28px; border-top:1px solid rgba(198,168,85,0.2); }
+.calc-result { text-align:center; padding:20px; background:rgba(198,168,85,0.06); border-radius:12px; }
+.calc-result .label { font-size:0.78rem; color:rgba(250,246,238,0.5); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+.calc-result .amount { font-size:1.8rem; font-weight:700; color:var(--gold); font-family:'Playfair Display',serif; }
+
+/* Report Teaser */
+.report-section { padding:60px 0; }
+.report-layout { display:flex; gap:48px; align-items:flex-start; }
+.report-pages { flex:0 0 280px; position:relative; height:340px; }
+.report-page { position:absolute; width:220px; background:var(--white); border-radius:8px; padding:20px 18px; box-shadow:0 8px 30px rgba(0,0,0,0.3); }
+.report-page:nth-child(1) { top:0; left:0; transform:rotate(-6deg); z-index:1; }
+.report-page:nth-child(2) { top:30px; left:30px; transform:rotate(-2deg); z-index:2; }
+.report-page:nth-child(3) { top:60px; left:60px; transform:rotate(3deg); z-index:3; }
+.report-page h4 { font-size:0.75rem; color:var(--deep); margin-bottom:8px; font-family:'Playfair Display',serif; }
+.report-page .fake-line { height:4px; background:#e0ddd4; border-radius:2px; margin-bottom:6px; }
+.report-page .fake-line.short { width:70%; }
+.report-page .fake-line.medium { width:85%; }
+.report-page .fake-chart { width:100%; height:40px; margin-top:10px; background:linear-gradient(90deg, var(--sage), var(--gold)); border-radius:4px; opacity:0.3; }
+.report-bullets { flex:1; }
+.report-bullets h3 { font-size:1.4rem; color:var(--cream); margin-bottom:20px; }
+.report-bullets ul { list-style:none; padding:0; }
+.report-bullets ul li { padding:10px 0; border-bottom:1px solid rgba(198,168,85,0.1); font-size:0.9rem; color:rgba(250,246,238,0.75); line-height:1.6; position:relative; padding-left:24px; }
+.report-bullets ul li::before { content:'→'; position:absolute; left:0; color:var(--gold); }
+
+/* CTA */
+.cta-section { padding:80px 0; text-align:center; background:linear-gradient(180deg, var(--deep) 0%, var(--deep-mid) 100%); position:relative; }
+.cta-section::before { content:''; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:500px; height:300px; background:radial-gradient(circle, rgba(198,168,85,0.06) 0%, transparent 70%); }
+.cta-section h2 { font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); margin-bottom:16px; }
+.cta-section p { color:rgba(250,246,238,0.6); max-width:520px; margin:0 auto 28px; font-size:0.95rem; line-height:1.7; }
+.cta-btn { display:inline-block; padding:16px 40px; background:var(--gold); color:var(--deep); font-weight:700; font-size:1rem; border-radius:8px; text-decoration:none; transition:background 0.3s, transform 0.2s; letter-spacing:0.5px; }
+.cta-btn:hover { background:var(--gold-light); transform:translateY(-2px); }
+
+/* Footer */
+.footer { padding:32px 0; text-align:center; border-top:1px solid rgba(198,168,85,0.1); }
+.footer p { font-size:0.78rem; color:rgba(250,246,238,0.35); }
+.footer a { color:var(--gold); text-decoration:none; }
+
+/* Responsive */
+@media(max-width:768px) {
+  .book-layout { flex-direction:column; text-align:center; }
+  .book-3d { flex:none; }
+  .book-3d img { width:220px; }
+  .preview-grid { grid-template-columns:1fr; }
+  .programs-grid { grid-template-columns:1fr; }
+  .report-layout { flex-direction:column; }
+  .report-pages { flex:none; width:100%; height:300px; margin-bottom:20px; }
+  .calc-results { grid-template-columns:1fr; }
+  .identity-card { padding:28px 20px; }
+  .calculator { padding:28px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">A Preview Built Just For You</p>
+    <h1><span>Stacey</span>, Here's a Preview of<br>Your Coaching Business</h1>
+    <p>What you're about to see was created by Jimmy Davis's AI Business Design Software — a system that analyzed your unique strengths, your ideal audience, and your market opportunity to build a complete coaching business blueprint.</p>
+    <div class="hero-badge">AI Business Design Preview</div>
+  </div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity-section">
+  <div class="container">
+    <div class="identity-card">
+      <h2>Stacey McCutchan, MA, LPC-S</h2>
+      <div class="method-title">Creator of The Still & Strong Method™</div>
+      <p class="pitch">I help high-achieving Christian women who look put-together on the outside but feel anxious, overwhelmed, and exhausted on the inside. Using The Still & Strong Method™ — which combines EMDR, nervous system science, and faith-rooted healing — I help them stop performing strength and start actually feeling it.</p>
+      <div class="credential-tags">
+        <span>Licensed Professional Counselor</span>
+        <span>LPC Supervisor</span>
+        <span>EMDR Trained</span>
+        <span>ETT Certified</span>
+        <span>16+ Years Experience</span>
+        <span>Certified Teacher</span>
+        <span>School Counselor</span>
+        <span>Trauma Specialist</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD PILLARS -->
+<section class="method-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Signature Framework</p>
+      <h2>The Still & Strong Method™</h2>
+      <p>A 4-pillar framework integrating clinical neuroscience, evidence-based trauma healing, and faith-rooted principles.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-icon">🌊</div>
+        <h3>Still</h3>
+        <p>Nervous system regulation — learning to calm the body that's been stuck in survival mode and create genuine physiological safety.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">👁️</div>
+        <h3>Seen</h3>
+        <p>Trauma processing — naming and feeling what's been buried, with evidence-based tools and compassionate support.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🔄</div>
+        <h3>Shift</h3>
+        <p>Belief rewiring — replacing the core lies that drive perfectionism, people-pleasing, and anxiety with truth that lands in the body.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🌳</div>
+        <h3>Strong</h3>
+        <p>Identity rebuilding — stepping into who she really is beneath the armor, with deep roots and genuine strength.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Proven System</p>
+      <h2>The 9-Step Still & Strong Journey™</h2>
+      <p>Every client follows this exact path — from survival mode to genuine, rooted wholeness.</p>
+    </div>
+    <div class="journey-image-wrapper">
+      <img src="StaceyProcess.png" alt="The Still & Strong 9-Step Journey Infographic">
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="preview-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Online Presence</p>
+      <h2>Two Website Concepts — Designed for You</h2>
+      <p>Two distinct design directions. Both built around your brand, your method, and your ideal client.</p>
+    </div>
+    <div class="preview-grid">
+      <a href="stacey.html" class="preview-card">
+        <div class="preview-placeholder warm">
+          <span>✦ Warm & Elegant — Click to Preview ✦</span>
+        </div>
+        <div class="preview-info">
+          <h3>Concept 1: Warm & Elegant</h3>
+          <p>Cream, sage greens, nature-inspired. Editorial warmth meets clinical credibility.</p>
+        </div>
+      </a>
+      <a href="stacey2.html" class="preview-card">
+        <div class="preview-placeholder bold">
+          <span>✦ Bold & Deep — Click to Preview ✦</span>
+        </div>
+        <div class="preview-info">
+          <h3>Concept 2: Bold & Deep</h3>
+          <p>Deep navy, gold accents, premium sophistication. Midnight luxury meets conscious healing.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="book-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Authority Builder</p>
+      <h2>Your Book</h2>
+    </div>
+    <div class="book-layout">
+      <div class="book-3d">
+        <img src="StaceyBook.png" alt="Still & Strong Book Cover">
+      </div>
+      <div class="book-info">
+        <h3>Still & Strong: Why High-Achieving Women Stay Stuck in Survival Mode</h3>
+        <p>A 13-chapter guide that walks readers from understanding their nervous system to living fully present, deeply rooted, and genuinely strong. This book positions you as the go-to authority at the intersection of faith, neuroscience, and trauma healing for women.</p>
+        <div class="book-note">Full outline, chapter summaries, and writing support included in the complete Blueprint.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Social Presence</p>
+      <h2>Your Instagram Profile</h2>
+    </div>
+    <div class="insta-mockup">
+      <div class="insta-header">
+        <div class="insta-avatar">SM</div>
+        <div>
+          <div class="insta-handle">@staceymccutchan_lpc</div>
+        </div>
+      </div>
+      <div class="insta-stats">
+        <div><span>—</span><span>Posts</span></div>
+        <div><span>—</span><span>Followers</span></div>
+        <div><span>—</span><span>Following</span></div>
+      </div>
+      <div class="insta-bio">
+        <strong>Stacey McCutchan, MA, LPC-S</strong>
+        Creator of The Still & Strong Method™<br>
+        Helping high-achieving women heal trauma & anxiety<br>
+        🌿 EMDR + Faith + Nervous System Science<br>
+        📖 Author of <em>Still & Strong</em><br>
+        <span class="blue">⬇️ Free guide: Are You Stuck in Survival Mode?</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Revenue Streams</p>
+      <h2>Your Program Suite</h2>
+      <p>Three tiers designed to meet women where they are — and move them toward transformation.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-type">Free Lead Magnet</div>
+        <h3>"Am I Stuck in Survival Mode?" Assessment</h3>
+        <div class="price">FREE</div>
+        <div class="price-note">PDF Download / Quiz</div>
+      </div>
+      <div class="program-card featured">
+        <div class="program-type">6-Week Group Program</div>
+        <h3>The Still & Strong Experience</h3>
+        <div class="price">$2,497</div>
+        <div class="price-note">or 3 payments of $897</div>
+      </div>
+      <div class="program-card">
+        <div class="program-type">12-Week Private Coaching</div>
+        <h3>"Rooted" Private Container</h3>
+        <div class="price">$7,500</div>
+        <div class="price-note">Application Required</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calculator-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Your Income Potential</p>
+      <h2>See What's Possible</h2>
+      <p>Adjust the sliders to explore your revenue potential with The Still & Strong Method™.</p>
+    </div>
+    <div class="calculator">
+      <div class="slider-group">
+        <label>Women per group cohort <span id="groupVal">8</span></label>
+        <input type="range" id="groupSize" min="4" max="15" value="8">
+      </div>
+      <div class="slider-group">
+        <label>Group cohorts per year <span id="cohortsVal">3</span></label>
+        <input type="range" id="cohorts" min="1" max="8" value="3">
+      </div>
+      <div class="slider-group">
+        <label>Private coaching clients per year <span id="privateVal">4</span></label>
+        <input type="range" id="privateClients" min="0" max="20" value="4">
+      </div>
+      <div class="slider-group">
+        <label>VIP Intensive clients per year <span id="vipVal">1</span></label>
+        <input type="range" id="vipClients" min="0" max="8" value="1">
+      </div>
+      <div class="calc-results">
+        <div class="calc-result">
+          <div class="label">Monthly Revenue</div>
+          <div class="amount" id="monthlyRev">$0</div>
+        </div>
+        <div class="calc-result">
+          <div class="label">Annual Revenue</div>
+          <div class="amount" id="annualRev">$0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-section">
+  <div class="container">
+    <div class="section-header">
+      <p class="eyebrow">Inside the Full Blueprint</p>
+      <h2>What Your Complete Report Reveals</h2>
+    </div>
+    <div class="report-layout">
+      <div class="report-pages">
+        <div class="report-page">
+          <h4>Market Research Analysis</h4>
+          <div class="fake-line"></div>
+          <div class="fake-line medium"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line"></div>
+          <div class="fake-chart"></div>
+        </div>
+        <div class="report-page">
+          <h4>Customer Avatar Profile</h4>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line medium"></div>
+          <div class="fake-line"></div>
+          <div class="fake-chart" style="background:linear-gradient(90deg, var(--rose), var(--warm));"></div>
+        </div>
+        <div class="report-page">
+          <h4>Revenue Projections</h4>
+          <div class="fake-line medium"></div>
+          <div class="fake-line"></div>
+          <div class="fake-line short"></div>
+          <div class="fake-line medium"></div>
+          <div class="fake-chart" style="background:linear-gradient(90deg, var(--gold), var(--sage));"></div>
+        </div>
+      </div>
+      <div class="report-bullets">
+        <h3>The full report includes...</h3>
+        <ul>
+          <li>Why most faith-based trauma coaches lack clinical licensing — and how this single credential positions Stacey to dominate the fastest-growing niche in women's coaching</li>
+          <li>The 5 competitors already profiting in this space (including their pricing, positioning, and the critical gap none of them fill) — and how "The Still & Strong Method™" sits at the exact intersection the market is begging for</li>
+          <li>The exact words, phrases, and midnight confessions your ideal client uses to describe her pain — so every piece of copy you write feels like you're reading her diary</li>
+          <li>The "Good Girl Contract" messaging framework — a single concept that will make high-achieving Christian women stop scrolling and say "that's ME" every single time</li>
+          <li>How a simple nervous system quiz can build a list of 500+ qualified leads in 90 days — without paid ads, without dancing on Reels, and without a single cold DM</li>
+          <li>The 3-scenario income model showing exactly how Stacey reaches $79K, $239K, or $399K per year — with the specific number of clients needed for each level</li>
+          <li>A 13-chapter book outline designed to position Stacey as THE authority at the intersection of faith, neuroscience, and trauma healing for women — the book that doesn't exist yet in this market</li>
+          <li>The complete 9-step client journey map that turns "I help women with anxiety" into "I take every client through my proven Still & Strong Journey™" — the difference between a therapist and a brand</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything you've seen on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint — including all the strategy, copy, programs, and implementation — is available when you're ready.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+  </div>
+</footer>
+
+<script>
+const groupSize = document.getElementById('groupSize');
+const cohorts = document.getElementById('cohorts');
+const privateClients = document.getElementById('privateClients');
+const vipClients = document.getElementById('vipClients');
+
+function calculate() {
+  const g = parseInt(groupSize.value);
+  const c = parseInt(cohorts.value);
+  const p = parseInt(privateClients.value);
+  const v = parseInt(vipClients.value);
+  document.getElementById('groupVal').textContent = g;
+  document.getElementById('cohortsVal').textContent = c;
+  document.getElementById('privateVal').textContent = p;
+  document.getElementById('vipVal').textContent = v;
+  const annual = (g * c * 2497) + (p * 7500) + (v * 15000);
+  const monthly = Math.round(annual / 12);
+  document.getElementById('annualRev').textContent = '$' + annual.toLocaleString();
+  document.getElementById('monthlyRev').textContent = '$' + monthly.toLocaleString();
+}
+
+groupSize.addEventListener('input', calculate);
+cohorts.addEventListener('input', calculate);
+privateClients.addEventListener('input', calculate);
+vipClients.addEventListener('input', calculate);
+calculate();
+</script>
+</body>
+</html>

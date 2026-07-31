@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosalie Caruso — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--deep);
+  color: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 80px 24px 60px;
+  background: linear-gradient(180deg, #0a1520 0%, var(--deep) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-block;
+  font-family: 'Caveat', cursive;
+  font-size: 1.15rem;
+  color: var(--gold);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 600;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
+.hero p {
+  font-size: 1.05rem;
+  color: rgba(250,246,238,0.7);
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+.hero-line {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 30px auto 0;
+}
+
+/* ── IDENTITY CARD ── */
+.identity-section { padding: 60px 24px; }
+.identity-card {
+  background: linear-gradient(135deg, var(--deep-mid) 0%, #0e2233 100%);
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.identity-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.identity-card .method-title {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.identity-card .pitch {
+  font-size: 1.05rem;
+  color: rgba(250,246,238,0.8);
+  max-width: 600px;
+  margin: 0 auto 24px;
+  font-style: italic;
+  line-height: 1.8;
+}
+.credential-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.credential-tag {
+  background: rgba(198,168,85,0.12);
+  border: 1px solid rgba(198,168,85,0.3);
+  color: var(--gold-light);
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ── SECTION TITLES ── */
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-subtitle {
+  text-align: center;
+  color: rgba(250,246,238,0.6);
+  font-size: 1rem;
+  margin-bottom: 48px;
+}
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+/* ── METHOD PILLARS ── */
+.method-section { padding: 60px 24px; }
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.pillar-card {
+  background: linear-gradient(160deg, var(--deep-mid), #0e2030);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 14px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(198,168,85,0.4);
+}
+.pillar-number {
+  font-family: 'Caveat', cursive;
+  font-size: 2.4rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.pillar-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+.pillar-card p {
+  font-size: 0.9rem;
+  color: rgba(250,246,238,0.65);
+  line-height: 1.7;
+}
+
+/* ── 9-STEP JOURNEY ── */
+.journey-section {
+  padding: 60px 24px;
+  background: linear-gradient(180deg, transparent, rgba(19,43,66,0.3), transparent);
+}
+.journey-image {
+  max-width: 700px;
+  margin: 0 auto;
+  display: block;
+}
+.journey-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* ── WEBSITE PREVIEWS ── */
+.previews-section { padding: 60px 24px; }
+.previews-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) { .previews-grid { grid-template-columns: 1fr; } }
+.preview-card {
+  background: var(--deep-mid);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+.preview-mockup {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+.preview-mockup-warm {
+  background: linear-gradient(135deg, #FAF6EE, #e8e0d0);
+}
+.preview-mockup-dark {
+  background: linear-gradient(135deg, var(--deep), #1a2d40);
+}
+.preview-mockup-inner {
+  padding: 20px;
+  text-align: center;
+}
+.preview-mockup-inner .mock-nav {
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+.preview-mockup-warm .mock-nav { color: #1C2B1E; }
+.preview-mockup-dark .mock-nav { color: var(--gold-light); }
+.preview-mockup-inner .mock-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+.preview-mockup-warm .mock-title { color: #1C2B1E; }
+.preview-mockup-dark .mock-title { color: var(--white); }
+.preview-mockup-inner .mock-sub {
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+.preview-mockup-warm .mock-sub { color: #1C2B1E; }
+.preview-mockup-dark .mock-sub { color: var(--cream); }
+.preview-mockup-inner .mock-btn {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 100px;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 12px;
+}
+.preview-mockup-warm .mock-btn {
+  background: var(--sage);
+  color: white;
+}
+.preview-mockup-dark .mock-btn {
+  background: var(--gold);
+  color: var(--deep);
+}
+.preview-info {
+  padding: 20px 24px;
+}
+.preview-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.preview-info p {
+  font-size: 0.82rem;
+  color: rgba(250,246,238,0.5);
+}
+
+/* ── BOOK SECTION ── */
+.book-section { padding: 60px 24px; }
+.book-layout {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .book-layout { flex-direction: column; text-align: center; }
+}
+.book-3d {
+  flex-shrink: 0;
+  width: 240px;
+  perspective: 800px;
+}
+.book-3d img {
+  width: 100%;
+  border-radius: 4px;
+  transform: rotateY(-12deg);
+  box-shadow: 20px 15px 50px rgba(0,0,0,0.5), 5px 5px 20px rgba(0,0,0,0.3);
+  transition: transform 0.4s ease;
+}
+.book-3d:hover img { transform: rotateY(-4deg); }
+.book-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+.book-info p {
+  color: rgba(250,246,238,0.7);
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+.book-note {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.1rem;
+}
+
+/* ── INSTAGRAM BIO ── */
+.ig-section { padding: 60px 24px; }
+.ig-card {
+  background: var(--white);
+  border-radius: 16px;
+  max-width: 420px;
+  margin: 0 auto;
+  overflow: hidden;
+  color: #262626;
+}
+.ig-header {
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.ig-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--white);
+  font-weight: 600;
+}
+.ig-handle {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.ig-verified {
+  color: #3897f0;
+  font-size: 0.8rem;
+}
+.ig-stats {
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 24px;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+.ig-stat { text-align: center; }
+.ig-stat strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #262626;
+}
+.ig-stat span {
+  font-size: 0.75rem;
+  color: #8e8e8e;
+}
+.ig-bio {
+  padding: 16px 24px;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+.ig-bio strong { display: block; margin-bottom: 4px; }
+.ig-bio .ig-link {
+  color: #00376b;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ── PROGRAMS ── */
+.programs-section {
+  padding: 60px 24px;
+  background: linear-gradient(180deg, transparent, rgba(19,43,66,0.2), transparent);
+}
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.program-card {
+  background: linear-gradient(160deg, var(--deep-mid), #0e2030);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 14px;
+  padding: 36px 28px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+.program-card:hover { transform: translateY(-4px); }
+.program-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px rgba(198,168,85,0.1);
+}
+.program-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 16px;
+  border-radius: 100px;
+}
+.program-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--white);
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+.program-type {
+  font-size: 0.8rem;
+  color: rgba(250,246,238,0.5);
+  margin-bottom: 16px;
+}
+.program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.program-price span {
+  font-size: 0.85rem;
+  color: rgba(250,246,238,0.5);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+/* ── INCOME CALCULATOR ── */
+.calc-section { padding: 60px 24px; }
+.calc-card {
+  background: linear-gradient(135deg, var(--deep-mid), #0e2233);
+  border: 1px solid rgba(198,168,85,0.2);
+  border-radius: 16px;
+  padding: 48px 40px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+@media (max-width: 600px) { .calc-card { padding: 32px 20px; } }
+.slider-group { margin-bottom: 28px; }
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+.slider-label span:first-child { color: rgba(250,246,238,0.8); }
+.slider-value {
+  color: var(--gold);
+  font-weight: 600;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+}
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(250,246,238,0.1);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.calc-divider {
+  height: 1px;
+  background: rgba(198,168,85,0.15);
+  margin: 32px 0;
+}
+.calc-results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+.calc-result label {
+  font-size: 0.8rem;
+  color: rgba(250,246,238,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 4px;
+}
+.calc-result .amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+@media (max-width: 500px) {
+  .calc-result .amount { font-size: 1.5rem; }
+}
+
+/* ── REPORT TEASER ── */
+.report-section { padding: 60px 24px; }
+.report-layout {
+  display: flex;
+  gap: 48px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .report-layout { flex-direction: column; }
+}
+.report-pages {
+  flex-shrink: 0;
+  width: 220px;
+  height: 280px;
+  position: relative;
+}
+.report-page {
+  position: absolute;
+  width: 180px;
+  height: 230px;
+  background: var(--white);
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+.report-page:nth-child(1) {
+  top: 0; left: 0;
+  transform: rotate(-6deg);
+  z-index: 1;
+}
+.report-page:nth-child(2) {
+  top: 10px; left: 20px;
+  transform: rotate(2deg);
+  z-index: 2;
+}
+.report-page:nth-child(3) {
+  top: 20px; left: 40px;
+  transform: rotate(7deg);
+  z-index: 3;
+}
+.report-page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.7rem;
+  color: var(--deep);
+  font-weight: 600;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--gold);
+}
+.report-fake-line {
+  height: 4px;
+  background: #e5e5e5;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+.report-fake-line.short { width: 60%; }
+.report-fake-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+  margin-top: 12px;
+}
+.report-fake-bar {
+  width: 12px;
+  border-radius: 2px 2px 0 0;
+  background: var(--gold);
+  opacity: 0.6;
+}
+.report-bullets {
+  flex: 1;
+}
+.report-bullets ul {
+  list-style: none;
+}
+.report-bullets li {
+  font-size: 0.92rem;
+  color: rgba(250,246,238,0.8);
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.6;
+  border-bottom: 1px solid rgba(198,168,85,0.08);
+}
+.report-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 80px 24px;
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(19,43,66,0.3));
+}
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+.cta-section p {
+  color: rgba(250,246,238,0.7);
+  max-width: 550px;
+  margin: 0 auto 32px;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.cta-button {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--deep);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 16px 40px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.3);
+}
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.4);
+  background: var(--gold-light);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 40px 24px;
+  border-top: 1px solid rgba(198,168,85,0.1);
+  font-size: 0.8rem;
+  color: rgba(250,246,238,0.35);
+}
+.footer a { color: var(--gold); text-decoration: none; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+.fade-in:nth-child(2) { animation-delay: 0.1s; }
+.fade-in:nth-child(3) { animation-delay: 0.2s; }
+.fade-in:nth-child(4) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">✦ AI Business Design Preview ✦</div>
+    <h1><span>Rosalie</span>, Here's a Preview of<br>Your Coaching Business</h1>
+    <p>What you're about to see was designed by Jimmy Davis's AI Business Design software — a complete coaching business blueprint built around YOUR unique superpowers, YOUR ideal client, and YOUR story.</p>
+    <div class="hero-line"></div>
+  </div>
+</section>
+
+<!-- ═══════ IDENTITY CARD ═══════ -->
+<section class="identity-section">
+  <div class="container">
+    <div class="identity-card">
+      <h2>Rosalie Caruso</h2>
+      <div class="method-title">Creator of The Reclamation Method™</div>
+      <p class="pitch">"I help women in midlife who've lost themselves — to their career, their roles, their responsibilities — find out who they really are, clear the emotional and financial blocks keeping them stuck, and step into the most powerful chapter of their lives."</p>
+      <div class="credential-tags">
+        <span class="credential-tag">Certified Life Coach</span>
+        <span class="credential-tag">Mary Morrissey Trained</span>
+        <span class="credential-tag">EFT Practitioner</span>
+        <span class="credential-tag">Money Block Specialist</span>
+        <span class="credential-tag">DreamBuilder™ Methodology</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ METHOD PILLARS ═══════ -->
+<section class="method-section">
+  <div class="container">
+    <div class="section-label">Your Signature Method</div>
+    <h2 class="section-title">The Reclamation Method™</h2>
+    <p class="section-subtitle">Four pillars that take her from "I don't know who I am" to unstoppable</p>
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <div class="pillar-number">01</div>
+        <h3>Reveal</h3>
+        <p>Uncover who she really is beneath the roles, titles, and expectations — the identity that's been waiting in the dark.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">02</div>
+        <h3>Release</h3>
+        <p>Use EFT tapping to clear the emotional blocks, money patterns, and limiting beliefs stored in her nervous system.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">03</div>
+        <h3>Reclaim</h3>
+        <p>Rebuild her sense of self-worth, financial power, and personal authority. Money is power — stop giving it away.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-number">04</div>
+        <h3>Rise</h3>
+        <p>Step into her next chapter with clarity, purpose, and an unshakable sense of who she is and where she's going.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ 9-STEP JOURNEY ═══════ -->
+<section class="journey-section">
+  <div class="container">
+    <div class="section-label">Your Proven System</div>
+    <h2 class="section-title">The 9-Step Reclamation Journey™</h2>
+    <p class="section-subtitle">Every client follows this exact path — from lost to liberated</p>
+    <div class="journey-image">
+      <img src="RosalieProcess.png" alt="The 9-Step Reclamation Journey by Rosalie Caruso">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ WEBSITE PREVIEWS ═══════ -->
+<section class="previews-section">
+  <div class="container">
+    <div class="section-label">Your Online Presence</div>
+    <h2 class="section-title">Two Website Concepts — Your Style</h2>
+    <p class="section-subtitle">Click either to explore the full scrolling mockup</p>
+    <div class="previews-grid">
+      <a href="rosalie.html" class="preview-card">
+        <div class="preview-mockup preview-mockup-warm">
+          <div class="preview-mockup-inner">
+            <div class="mock-nav">HOME &nbsp;&bull;&nbsp; ABOUT &nbsp;&bull;&nbsp; PROGRAMS &nbsp;&bull;&nbsp; BOOK</div>
+            <div class="mock-title">The Reclamation Method™</div>
+            <div class="mock-sub">You're Not Lost. You're Awakening.</div>
+            <div class="mock-btn">Begin Your Reclamation</div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Warm & Elegant</h3>
+          <p>Cream, sage, nature-inspired — warm and editorial</p>
+        </div>
+      </a>
+      <a href="rosalie2.html" class="preview-card">
+        <div class="preview-mockup preview-mockup-dark">
+          <div class="preview-mockup-inner">
+            <div class="mock-nav">HOME &nbsp;&bull;&nbsp; ABOUT &nbsp;&bull;&nbsp; PROGRAMS &nbsp;&bull;&nbsp; BOOK</div>
+            <div class="mock-title">The Reclamation Method™</div>
+            <div class="mock-sub">Reclaim Who You Really Are.</div>
+            <div class="mock-btn">Start Here</div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Bold & Deep</h3>
+          <p>Navy, gold, sophisticated — premium and immersive</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BOOK ═══════ -->
+<section class="book-section">
+  <div class="container">
+    <div class="section-label">Your Authority Builder</div>
+    <h2 class="section-title" style="margin-bottom: 40px;">The Book</h2>
+    <div class="book-layout">
+      <div class="book-3d">
+        <img src="RosalieBook.png" alt="The Reclamation by Rosalie Caruso">
+      </div>
+      <div class="book-info">
+        <h3>The Reclamation</h3>
+        <p>How Women in Midlife Can Stop Feeling Lost, Reclaim Their Identity, and Step Into the Most Powerful Chapter of Their Lives</p>
+        <p>12 chapters. A complete framework. The book that positions you as THE authority in midlife identity transformation.</p>
+        <div class="book-note">✦ Full outline, chapter breakdowns, and writing support included in the complete Blueprint</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INSTAGRAM BIO ═══════ -->
+<section class="ig-section">
+  <div class="container">
+    <div class="section-label">Your Social Presence</div>
+    <h2 class="section-title" style="margin-bottom: 40px;">Instagram Preview</h2>
+    <div class="ig-card">
+      <div class="ig-header">
+        <div class="ig-avatar">RC</div>
+        <div>
+          <div class="ig-handle">rosaliecaruso.coaching <span class="ig-verified">✓</span></div>
+          <div style="font-size: 0.8rem; color: #8e8e8e;">Life Coach &bull; Author &bull; Speaker</div>
+        </div>
+      </div>
+      <div class="ig-stats">
+        <div class="ig-stat"><strong>—</strong><span>Posts</span></div>
+        <div class="ig-stat"><strong>—</strong><span>Followers</span></div>
+        <div class="ig-stat"><strong>—</strong><span>Following</span></div>
+      </div>
+      <div class="ig-bio">
+        <strong>Rosalie Caruso</strong>
+        🔑 Creator of The Reclamation Method™<br>
+        🪞 Helping midlife women reclaim who they REALLY are<br>
+        💡 Life Coach | EFT Practitioner | Money Block Specialist<br>
+        📖 Author of <em>The Reclamation</em><br>
+        👇 Free guide: "5 Signs You're Having an Identity Awakening"<br>
+        <a href="#" class="ig-link">rosaliecaruso.com/free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROGRAMS ═══════ -->
+<section class="programs-section">
+  <div class="container">
+    <div class="section-label">Your Revenue Streams</div>
+    <h2 class="section-title">Your Programs</h2>
+    <p class="section-subtitle">Three tiers. Three transformation levels. One powerful brand.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <h3>5 Signs You're Having an Identity Awakening</h3>
+        <div class="program-type">Free Lead Magnet</div>
+        <div class="program-price">FREE</div>
+      </div>
+      <div class="program-card featured">
+        <div class="program-badge">Most Popular</div>
+        <h3>Reclaim Your Life</h3>
+        <div class="program-type">6-Week Group Coaching</div>
+        <div class="program-price">$1,997</div>
+      </div>
+      <div class="program-card">
+        <h3>The Full Reclamation</h3>
+        <div class="program-type">12-Week Private Intensive</div>
+        <div class="program-price">$7,500</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ INCOME CALCULATOR ═══════ -->
+<section class="calc-section">
+  <div class="container">
+    <div class="section-label">Your Revenue Potential</div>
+    <h2 class="section-title">Income Calculator</h2>
+    <p class="section-subtitle">Adjust the sliders to see what's possible</p>
+    <div class="calc-card">
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Women per Group Round</span>
+          <span class="slider-value" id="groupVal">8</span>
+        </div>
+        <input type="range" id="groupSlider" min="4" max="15" value="8">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Group Rounds per Year</span>
+          <span class="slider-value" id="roundsVal">4</span>
+        </div>
+        <input type="range" id="roundsSlider" min="1" max="8" value="4">
+      </div>
+      <div class="slider-group">
+        <div class="slider-label">
+          <span>Private Clients per Year</span>
+          <span class="slider-value" id="privateVal">4</span>
+        </div>
+        <input type="range" id="privateSlider" min="0" max="12" value="4">
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-results">
+        <div class="calc-result">
+          <label>Monthly Revenue</label>
+          <div class="amount" id="monthlyRevenue">$9,155</div>
+        </div>
+        <div class="calc-result">
+          <label>Annual Revenue</label>
+          <div class="amount" id="annualRevenue">$109,860</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ REPORT TEASER ═══════ -->
+<section class="report-section">
+  <div class="container">
+    <div class="section-label">Inside Your Full Blueprint</div>
+    <h2 class="section-title">The Complete Business Design Report</h2>
+    <p class="section-subtitle">What the full report reveals — built specifically for Rosalie</p>
+    <div class="report-layout">
+      <div class="report-pages">
+        <div class="report-page">
+          <div class="report-page-title">Market Research</div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line short"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line short"></div>
+          <div class="report-fake-chart">
+            <div class="report-fake-bar" style="height: 18px;"></div>
+            <div class="report-fake-bar" style="height: 30px;"></div>
+            <div class="report-fake-bar" style="height: 24px;"></div>
+            <div class="report-fake-bar" style="height: 36px;"></div>
+            <div class="report-fake-bar" style="height: 20px;"></div>
+          </div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Customer Avatar</div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line short"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line short"></div>
+          <div class="report-fake-line"></div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-title">Revenue Projections</div>
+          <div class="report-fake-line short"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-chart">
+            <div class="report-fake-bar" style="height: 14px;"></div>
+            <div class="report-fake-bar" style="height: 22px;"></div>
+            <div class="report-fake-bar" style="height: 32px;"></div>
+            <div class="report-fake-bar" style="height: 28px;"></div>
+            <div class="report-fake-bar" style="height: 40px;"></div>
+          </div>
+          <div class="report-fake-line" style="margin-top: 10px;"></div>
+        </div>
+      </div>
+      <div class="report-bullets">
+        <ul>
+          <li>The one positioning gap in the midlife coaching space that NO competitor currently owns — and how Rosalie can claim it before anyone else</li>
+          <li>Why 5 of the top midlife coaches are losing clients to a blind spot Rosalie's EFT training solves automatically</li>
+          <li>The exact language her ideal client uses at 2am when she can't sleep — and the 3 phrases that stop her mid-scroll</li>
+          <li>How "money is power" becomes the most disruptive coaching message in a sea of "find your passion" advice</li>
+          <li>The identity-to-income connection that turns a $1,997 group program into a $190K/year business with just 4 rounds</li>
+          <li>Why women who say "I want to be better" are actually the HIGHEST-value coaching clients — and how to reach them first</li>
+          <li>The 12-chapter book outline that positions Rosalie as the definitive authority in midlife identity transformation</li>
+          <li>A complete 6-week curriculum, 12-week private framework, and 5 lead magnet options — ready to launch</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything you've seen on this page was generated by Jimmy Davis's AI Business Design Software. The full blueprint — complete programs, sales copy, email sequences, book outline, and launch strategy — is ready to build.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-button">See Jimmy's Services & Pricing</a>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundsSlider = document.getElementById('roundsSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundsVal = document.getElementById('roundsVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRevenue = document.getElementById('monthlyRevenue');
+const annualRevenue = document.getElementById('annualRevenue');
+
+function calculate() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundsSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundsVal.textContent = r;
+  privateVal.textContent = p;
+  const groupIncome = g * r * 1997;
+  const privateIncome = p * 7500;
+  const annual = groupIncome + privateIncome;
+  const monthly = Math.round(annual / 12);
+  monthlyRevenue.textContent = '$' + monthly.toLocaleString();
+  annualRevenue.textContent = '$' + annual.toLocaleString();
+}
+
+groupSlider.addEventListener('input', calculate);
+roundsSlider.addEventListener('input', calculate);
+privateSlider.addEventListener('input', calculate);
+calculate();
+</script>
+
+</body>
+</html>

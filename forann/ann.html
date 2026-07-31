@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ann Krake — The Inner Compass Method</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #7A9E7E;
+    --sage-dark: #5C7D60;
+    --sage-light: #E8F0E9;
+    --gold: #C6A855;
+    --gold-light: #E8D5A0;
+    --cream: #FAF6EE;
+    --warm-cream: #F5EFE3;
+    --deep: #1C2B1E;
+    --deep-mid: #2C3E2E;
+    --text: #2C3E2E;
+    --text-light: #6B7F6D;
+    --white: #FFFFFF;
+    --rose: #C9928E;
+    --warm: #D4A574;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250,246,238,0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--deep);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-light);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--sage-dark); }
+
+  .nav-cta {
+    background: var(--sage) !important;
+    color: white !important;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 600 !important;
+    transition: background 0.3s !important;
+  }
+
+  .nav-cta:hover { background: var(--sage-dark) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(122,158,126,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: 10%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+  }
+
+  .hero-text .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 5vw, 60px);
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--deep);
+    margin-bottom: 24px;
+  }
+
+  .hero-text h1 em {
+    color: var(--sage-dark);
+    font-style: italic;
+  }
+
+  .hero-text p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 40px;
+    max-width: 480px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary {
+    background: var(--sage);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--sage-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(122,158,126,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid rgba(0,0,0,0.15);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--sage);
+    color: var(--sage-dark);
+  }
+
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .compass-hero {
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    border: 2px solid rgba(122,158,126,0.2);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .compass-hero::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(122,158,126,0.1);
+  }
+
+  .compass-center {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sage-light) 0%, var(--white) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    box-shadow: 0 8px 40px rgba(122,158,126,0.15);
+  }
+
+  .compass-point {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
+
+  .point-n { top: -10px; left: 50%; transform: translateX(-50%); background: var(--sage); }
+  .point-e { right: -10px; top: 50%; transform: translateY(-50%); background: var(--warm); }
+  .point-s { bottom: -10px; left: 50%; transform: translateX(-50%); background: var(--rose); }
+  .point-w { left: -10px; top: 50%; transform: translateY(-50%); background: var(--deep); }
+
+  .point-label {
+    position: absolute;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    white-space: nowrap;
+  }
+
+  .point-n .point-label { top: -28px; left: 50%; transform: translateX(-50%); }
+  .point-e .point-label { right: -90px; top: 50%; transform: translateY(-50%); }
+  .point-s .point-label { bottom: -28px; left: 50%; transform: translateX(-50%); }
+  .point-w .point-label { left: -80px; top: 50%; transform: translateY(-50%); }
+
+  /* PAIN SECTION */
+  .pain-section {
+    padding: 100px 40px;
+    background: var(--white);
+  }
+
+  .pain-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pain-content .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .pain-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--deep);
+    margin-bottom: 40px;
+  }
+
+  .pain-content h2 em { font-style: italic; color: var(--sage-dark); }
+
+  .pain-list {
+    text-align: left;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .pain-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text-light);
+  }
+
+  .pain-marker {
+    flex-shrink: 0;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rose);
+    margin-top: 8px;
+  }
+
+  .handwritten {
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    color: var(--sage-dark);
+    margin-top: 48px;
+    font-weight: 600;
+  }
+
+  /* METHOD SECTION */
+  .method-section {
+    padding: 100px 40px;
+    background: var(--cream);
+  }
+
+  .method-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 64px;
+  }
+
+  .method-header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .method-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .method-header p {
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .method-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .method-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 36px 28px;
+    border: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .method-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  }
+
+  .method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+  }
+
+  .method-card:nth-child(1)::before { background: var(--sage); }
+  .method-card:nth-child(2)::before { background: var(--warm); }
+  .method-card:nth-child(3)::before { background: var(--rose); }
+  .method-card:nth-child(4)::before { background: var(--deep); }
+
+  .method-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .method-card:nth-child(1) .method-letter { color: var(--sage); }
+  .method-card:nth-child(2) .method-letter { color: var(--warm); }
+  .method-card:nth-child(3) .method-letter { color: var(--rose); }
+  .method-card:nth-child(4) .method-letter { color: var(--deep); }
+
+  .method-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .method-tool {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 16px;
+  }
+
+  .method-desc {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* PROGRAMS */
+  .programs-section {
+    padding: 100px 40px;
+    background: var(--white);
+  }
+
+  .programs-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 64px;
+  }
+
+  .programs-header .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .programs-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .programs-header p {
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .programs-row {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .prog-card {
+    border-radius: 20px;
+    padding: 40px 28px;
+    text-align: center;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: var(--cream);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .prog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+  }
+
+  .prog-card.highlight {
+    background: var(--deep);
+    border-color: var(--deep);
+  }
+
+  .prog-card.highlight * { color: rgba(255,255,255,0.7); }
+  .prog-card.highlight .prog-name { color: var(--white); }
+  .prog-card.highlight .prog-price { color: var(--gold-light); }
+  .prog-card.highlight .prog-cta { background: var(--gold); color: var(--deep); }
+
+  .prog-emoji { font-size: 36px; margin-bottom: 20px; }
+
+  .prog-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 8px;
+  }
+
+  .prog-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  .prog-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--deep);
+    margin-bottom: 4px;
+  }
+
+  .prog-note {
+    font-size: 13px;
+    color: var(--text-light);
+    margin-bottom: 28px;
+  }
+
+  .prog-cta {
+    display: inline-block;
+    padding: 14px 28px;
+    border-radius: 10px;
+    background: var(--sage);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  .prog-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(122,158,126,0.3);
+  }
+
+  /* ABOUT */
+  .about-section {
+    padding: 100px 40px;
+    background: var(--cream);
+  }
+
+  .about-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about-content .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 32px;
+  }
+
+  .about-text {
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.9;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .about-creds {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .about-cred {
+    background: var(--white);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    color: var(--text-light);
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+
+  /* BOOK SECTION */
+  .book-section {
+    padding: 100px 40px;
+    background: var(--white);
+    text-align: center;
+  }
+
+  .book-section .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  .book-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 500;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .book-section > p {
+    max-width: 560px;
+    margin: 0 auto 48px;
+    font-size: 17px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  .book-feature {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .book-cover {
+    flex-shrink: 0;
+    width: 240px;
+    height: 360px;
+    background: linear-gradient(145deg, #2C3E2E 0%, var(--deep) 100%);
+    border-radius: 4px 14px 14px 4px;
+    box-shadow: -6px 6px 24px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    position: relative;
+    transform: perspective(600px) rotateY(-5deg);
+  }
+
+  .book-cover::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--gold), var(--gold-light));
+    border-radius: 4px 0 0 4px;
+  }
+
+  .book-cover .bc-icon { font-size: 28px; margin-bottom: 20px; }
+  .book-cover .bc-title {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .book-cover .bc-sub {
+    color: var(--gold-light);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 170px;
+  }
+  .book-cover .bc-author {
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .book-details {
+    text-align: left;
+  }
+
+  .book-details h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--deep);
+    margin-bottom: 16px;
+  }
+
+  .book-details p {
+    font-size: 16px;
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .book-details .btn { font-size: 13px; padding: 14px 28px; }
+
+  /* LEAD MAGNET CTA */
+  .leadmag-section {
+    padding: 80px 40px;
+    background: var(--sage);
+    text-align: center;
+  }
+
+  .leadmag-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3.5vw, 36px);
+    color: white;
+    font-weight: 500;
+    margin-bottom: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .leadmag-section p {
+    color: rgba(255,255,255,0.8);
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .leadmag-form {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .leadmag-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    background: rgba(255,255,255,0.95);
+  }
+
+  .leadmag-btn {
+    padding: 16px 28px;
+    background: var(--deep);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .leadmag-btn:hover {
+    background: #0a1520;
+    transform: translateY(-2px);
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 60px 40px;
+    background: var(--deep);
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 14px;
+  }
+
+  footer .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  footer p { margin-bottom: 8px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; }
+    .hero-text p { margin-left: auto; margin-right: auto; }
+    .hero-buttons { justify-content: center; }
+    .hero-visual { margin-top: 40px; }
+    .compass-hero { width: 280px; height: 280px; }
+    .compass-hero::before { width: 240px; height: 240px; }
+    .compass-center { width: 90px; height: 90px; font-size: 36px; }
+    .compass-point { width: 48px; height: 48px; font-size: 15px; }
+    .method-grid { grid-template-columns: 1fr 1fr; }
+    .programs-row { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .book-feature { flex-direction: column; }
+    .book-details { text-align: center; }
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .method-grid { grid-template-columns: 1fr; }
+    .hero { padding: 100px 20px 60px; }
+    .leadmag-form { flex-direction: column; }
+    section, .pain-section, .method-section, .programs-section, .about-section, .book-section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-brand">Ann Krake</a>
+  <ul class="nav-links">
+    <li><a href="#method">Method</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#book">Book</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#start" class="nav-cta">Begin Your Journey</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="label">The Inner Compass Method™</div>
+      <h1>Find Your Way <em>Home</em> to Yourself</h1>
+      <p>For women who look fine on the outside but feel lost on the inside — a 4-direction healing framework that goes deeper than therapy ever could.</p>
+      <div class="hero-buttons">
+        <a href="#start" class="btn btn-primary">Take the Free Assessment →</a>
+        <a href="#method" class="btn btn-outline">Learn the Method</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="compass-hero">
+        <div class="compass-center">🧭</div>
+        <div class="compass-point point-n">N<span class="point-label">Notice</span></div>
+        <div class="compass-point point-e">E<span class="point-label">Expand</span></div>
+        <div class="compass-point point-s">S<span class="point-label">Speak</span></div>
+        <div class="compass-point point-w">W<span class="point-label">Weather</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="pain-content">
+    <div class="label">Does This Sound Like You?</div>
+    <h2>You've done <em>the work</em>. So why do you still feel stuck?</h2>
+    <div class="pain-list">
+      <div class="pain-item">
+        <div class="pain-marker"></div>
+        <div>You understand your childhood, your attachment style, your triggers — but understanding hasn't changed the <strong>feeling</strong>.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-marker"></div>
+        <div>Everyone thinks you have it together. If they only knew how exhausting it is to hold up that mask every single day.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-marker"></div>
+        <div>You've read the books, tried the meditation apps, maybe even the medication — but you still feel like you're watching your life from the outside.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-marker"></div>
+        <div>There's a wall inside you that you can't get past. You want to connect deeply — with your partner, your friends, even yourself — but something won't let you.</div>
+      </div>
+      <div class="pain-item">
+        <div class="pain-marker"></div>
+        <div>You're starting to wonder if this is just who you are. If maybe you missed your window. If maybe you're just... broken.</div>
+      </div>
+    </div>
+    <div class="handwritten">You're not broken. You're protected. And I can show you the difference.</div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+  <div class="method-header">
+    <div class="label">The Framework</div>
+    <h2>The Inner Compass Method™</h2>
+    <p>Four directions. One journey. A complete system for women who are ready to stop performing and start living.</p>
+  </div>
+  <div class="method-grid">
+    <div class="method-card">
+      <div class="method-letter">N</div>
+      <div class="method-name">Notice</div>
+      <div class="method-tool">IFS Parts Awareness</div>
+      <div class="method-desc">Meet the parts of you that have been running the show. Develop curiosity about your inner world instead of waging war against it.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-letter">E</div>
+      <div class="method-name">Expand</div>
+      <div class="method-tool">Psychedelic-Informed Exploration</div>
+      <div class="method-desc">Open the doors your mind has kept locked. Access the wisdom that lives deeper than your thinking — through breathwork, somatic practices, and guided exploration.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-letter">S</div>
+      <div class="method-name">Speak</div>
+      <div class="method-tool">Compassionate Communication</div>
+      <div class="method-desc">Give voice to what's been silent. Learn to communicate with your inner parts and your outer relationships from empathy, not judgment.</div>
+    </div>
+    <div class="method-card">
+      <div class="method-letter">W</div>
+      <div class="method-name">Weather</div>
+      <div class="method-tool">Crisis Resilience & EFT</div>
+      <div class="method-desc">Learn to stay steady in any storm. Build emotional resilience so deep healing feels safe — and so your breakthroughs actually stick.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+  <div class="programs-header">
+    <div class="label">Work With Ann</div>
+    <h2>Your Journey, Your Pace</h2>
+    <p>Whether you're just beginning or ready to go deep, there's a path designed for where you are right now.</p>
+  </div>
+  <div class="programs-row">
+    <div class="prog-card">
+      <div class="prog-emoji">🌱</div>
+      <div class="prog-name">Find Your True North</div>
+      <div class="prog-desc">5-Day Self-Paced Activation — a taste of each compass direction</div>
+      <div class="prog-price">$197</div>
+      <div class="prog-note">Instant access</div>
+      <a href="#" class="prog-cta">Learn More</a>
+    </div>
+    <div class="prog-card highlight">
+      <div class="prog-emoji">🌿</div>
+      <div class="prog-name">The Inner Compass Journey</div>
+      <div class="prog-desc">6-Week Group Coaching — full immersion into the method with a community of women</div>
+      <div class="prog-price">$2,497</div>
+      <div class="prog-note">or 3 payments of $897</div>
+      <a href="#" class="prog-cta">Apply Now</a>
+    </div>
+    <div class="prog-card">
+      <div class="prog-emoji">🔥</div>
+      <div class="prog-name">The Deep Navigation</div>
+      <div class="prog-desc">3-Month Private Coaching — for women ready for intensive, personalized transformation</div>
+      <div class="prog-price">$6,000</div>
+      <div class="prog-note">Application required</div>
+      <a href="#" class="prog-cta">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-content">
+    <div class="label">About Ann</div>
+    <h2>I Know What It's Like to Look Fine and Feel Lost</h2>
+    <p class="about-text">For years, I was the woman who had it all together on the outside while quietly falling apart on the inside. I tried therapy. I tried self-help. I tried being more positive, more disciplined, more everything. None of it touched what was really going on beneath the surface.</p>
+    <p class="about-text">My journey through Internal Family Systems, psychedelic exploration, compassionate communication, and deep crisis work didn't just help me understand myself — it brought me <em>home</em> to myself. I discovered that healing isn't about fixing what's broken. It's about meeting what's been hidden with compassion, and building a relationship with the parts of you that have been protecting you all along.</p>
+    <p class="about-text">Today, I bring 25+ combined years of experience in the healing arts to guide women through the same transformation. My approach isn't surface-level, and it isn't for everyone. But if you're a woman who has tried everything and knows something deeper needs to shift — you're in the right place.</p>
+    <div class="about-creds">
+      <span class="about-cred">IFS Informed</span>
+      <span class="about-cred">Psychedelic Integration Guide</span>
+      <span class="about-cred">15 Years Compassionate Communication</span>
+      <span class="about-cred">10 Years Crisis Peer Support</span>
+      <span class="about-cred">EFT Practitioner</span>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+  <div class="label">The Book</div>
+  <h2>Coming Soon</h2>
+  <p>Ann's debut book — the complete guide to The Inner Compass Method for women who are ready to stop performing and start living.</p>
+  <div class="book-feature">
+    <div class="book-cover" style="padding: 0;">
+      <img src="AnnBook.png" alt="Come Home by Ann Krake" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px 14px 14px 4px;">
+    </div>
+    <div class="book-details">
+      <h3>Come Home</h3>
+      <p>Part memoir, part method, part guide — this book walks women through all four directions of the Inner Compass, with practical exercises, real stories, and the permission to finally stop fighting themselves and start listening.</p>
+      <a href="#" class="btn btn-primary">Get Notified When It Launches</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="leadmag-section" id="start">
+  <h2>Download the Free Inner Compass Guide</h2>
+  <p>5 questions that reveal why you're still stuck — even after years of trying.</p>
+  <div class="leadmag-form">
+    <input type="email" class="leadmag-input" placeholder="Your email address">
+    <button class="leadmag-btn">Send My Guide</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Ann Krake</div>
+  <p>Creator of The Inner Compass Method™</p>
+  <p style="margin-top: 16px; font-size: 12px; opacity: 0.5;">© 2026 Ann Krake. All rights reserved. | This is a website concept mockup.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Logical Chain of Beliefs™ — Daegan Smith</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Caveat:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-card: #1a2332;
+    --bg-dark: #060a12;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-body: #cbd5e1;
+    --accent-gold: #d4a844;
+    --accent-gold-light: #f0d078;
+    --cta-green: #22c55e;
+    --cta-green-hover: #16a34a;
+    --cta-red: #ef4444;
+    --cta-red-dark: #cc2222;
+    --highlight-yellow: #fef08a;
+    --border-subtle: rgba(212,168,68,0.2);
+    --font-headline: 'Oswald', sans-serif;
+    --font-body: 'Source Sans Pro', sans-serif;
+    --font-script: 'Caveat', cursive;
+    --font-marker: 'Permanent Marker', cursive;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-body);
+    font-size: 19px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== RUSSELL BRUNSON COPY FORMATTING ===== */
+  .hl {
+    background: linear-gradient(transparent 55%, rgba(254,240,138,0.35) 55%);
+    padding: 0 4px;
+    color: var(--accent-gold-light);
+    font-weight: 700;
+  }
+  .hl-red {
+    background: linear-gradient(transparent 55%, rgba(239,68,68,0.2) 55%);
+    padding: 0 4px;
+    color: var(--cta-red);
+    font-weight: 700;
+  }
+  .ul { text-decoration: underline; text-decoration-color: var(--accent-gold); text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .ul-red { text-decoration: underline; text-decoration-color: var(--cta-red); text-underline-offset: 4px; text-decoration-thickness: 3px; }
+  .ul-white { text-decoration: underline; text-decoration-color: #fff; text-underline-offset: 4px; text-decoration-thickness: 2px; }
+  .red { color: var(--cta-red); font-weight: 700; }
+  .gold { color: var(--accent-gold); }
+  .gold-bold { color: var(--accent-gold-light); font-weight: 700; }
+  .white { color: #fff; }
+  .wb { color: #fff; font-weight: 900; }
+  .big { font-size: 1.2em; font-weight: 700; color: #fff; }
+  .bigger { font-size: 1.35em; font-weight: 900; color: #fff; line-height: 1.4; }
+  .strike { text-decoration: line-through; color: var(--text-secondary); opacity: 0.7; }
+  .caps { text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+  .small-caps { font-variant: small-caps; font-weight: 600; }
+  .italic { font-style: italic; }
+
+  /* Handwritten annotations */
+  .hand {
+    font-family: var(--font-script);
+    color: var(--accent-gold-light);
+    font-size: 26px;
+    display: inline-block;
+  }
+  .hand-red {
+    font-family: var(--font-script);
+    color: var(--cta-red);
+    font-size: 26px;
+    display: inline-block;
+  }
+  .hand-big {
+    font-family: var(--font-script);
+    color: var(--accent-gold-light);
+    font-size: 32px;
+    display: block;
+    margin: 8px 0;
+  }
+  .marker {
+    font-family: var(--font-marker);
+    color: var(--cta-red);
+  }
+
+  /* Callout boxes */
+  .callout {
+    background: rgba(212,168,68,0.06);
+    border-left: 4px solid var(--accent-gold);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 20px;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.6;
+  }
+  .callout-red {
+    background: rgba(239,68,68,0.06);
+    border-left: 4px solid var(--cta-red);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 20px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  .callout-green {
+    background: rgba(34,197,94,0.06);
+    border-left: 4px solid var(--cta-green);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 20px;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  .box-center {
+    background: var(--bg-card);
+    border: 2px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 40px auto;
+    text-align: center;
+    max-width: 650px;
+  }
+  .box-red-center {
+    background: rgba(239,68,68,0.05);
+    border: 2px solid var(--cta-red);
+    border-radius: 12px;
+    padding: 32px;
+    margin: 40px auto;
+    text-align: center;
+    max-width: 650px;
+  }
+
+  /* Separator styles */
+  .sep { width: 60px; height: 3px; background: var(--accent-gold); margin: 40px auto; }
+  .sep-red { width: 100%; max-width: 300px; height: 3px; background: var(--cta-red); margin: 40px auto; }
+  .sep-dots { text-align: center; color: var(--accent-gold); letter-spacing: 12px; margin: 32px 0; font-size: 20px; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(180deg, #050810 0%, var(--bg-primary) 100%);
+    padding: 60px 20px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(212,168,68,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-pre {
+    font-family: var(--font-headline);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 14px;
+    color: var(--accent-gold);
+    margin-bottom: 24px;
+    display: inline-block;
+    border: 1px solid var(--border-subtle);
+    padding: 8px 24px;
+  }
+  .hero h1 {
+    font-family: var(--font-headline);
+    font-size: clamp(34px, 6vw, 68px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.1;
+    max-width: 920px;
+    margin: 0 auto 16px;
+    text-transform: uppercase;
+  }
+  .hero h1 .gold { color: var(--accent-gold); }
+  .hero h1 .red { color: var(--cta-red); font-weight: 700; }
+  .hero .hero-sub {
+    font-size: clamp(18px, 2.5vw, 24px);
+    color: var(--text-secondary);
+    max-width: 740px;
+    margin: 0 auto 16px;
+    line-height: 1.5;
+  }
+  .hero .hero-sub em {
+    color: var(--accent-gold-light);
+    font-style: normal;
+    font-weight: 700;
+  }
+  .hero .hero-hand {
+    font-family: var(--font-script);
+    font-size: 28px;
+    color: var(--accent-gold-light);
+    margin-bottom: 32px;
+    display: block;
+  }
+
+  /* ===== CTA BUTTON ===== */
+  .cta-btn {
+    display: inline-block;
+    background: linear-gradient(180deg, #22c55e 0%, #16a34a 100%);
+    color: #fff;
+    font-family: var(--font-headline);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 22px 52px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 0 30px rgba(34,197,94,0.4);
+    transition: all 0.3s ease;
+    animation: ctaPulse 2s infinite;
+    position: relative;
+  }
+  .cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 50px rgba(34,197,94,0.6);
+  }
+  .cta-btn .sub {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    margin-top: 6px;
+    opacity: 0.9;
+  }
+  .cta-arrow {
+    font-family: var(--font-script);
+    color: var(--accent-gold-light);
+    font-size: 22px;
+    display: block;
+    margin-top: 12px;
+    animation: bounce 1.5s infinite;
+  }
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(34,197,94,0.4); }
+    50% { box-shadow: 0 0 40px rgba(34,197,94,0.7); }
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* ===== SECTIONS ===== */
+  .section {
+    padding: 80px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .section-wide {
+    padding: 80px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .section-dark { background: var(--bg-secondary); }
+  .section-darker { background: var(--bg-dark); }
+  .section-accent {
+    background: linear-gradient(180deg, rgba(212,168,68,0.05) 0%, rgba(212,168,68,0.02) 100%);
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .section-red-accent {
+    background: linear-gradient(180deg, rgba(239,68,68,0.04) 0%, transparent 100%);
+    border-top: 2px solid rgba(239,68,68,0.3);
+    border-bottom: 2px solid rgba(239,68,68,0.3);
+  }
+
+  h2 {
+    font-family: var(--font-headline);
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: var(--font-headline);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  p { margin-bottom: 22px; }
+  
+  .lead { font-size: 22px; line-height: 1.6; color: var(--text-primary); }
+
+  /* ===== STORY LETTER ===== */
+  .letter { font-size: 19px; line-height: 1.85; }
+  .letter p { margin-bottom: 18px; }
+  .letter .salutation {
+    font-family: var(--font-script);
+    font-size: 30px;
+    color: var(--accent-gold);
+    margin-bottom: 28px;
+  }
+
+  /* ===== INLINE INFOGRAPHIC CONTAINER ===== */
+  .infographic {
+    margin: 48px auto;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .infographic svg { width: 100%; height: auto; display: block; }
+
+  /* ===== STAT CALLOUT ROW ===== */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 48px 0;
+  }
+  .stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-card .number {
+    font-family: var(--font-headline);
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-card .label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ===== COMPARISON TABLE ===== */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+  }
+  .compare-table th {
+    font-family: var(--font-headline);
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 16px;
+    text-align: center;
+  }
+  .compare-table th:first-child { text-align: left; }
+  .compare-table th.bad { color: var(--cta-red); background: rgba(239,68,68,0.08); }
+  .compare-table th.good { color: var(--cta-green); background: rgba(34,197,94,0.08); }
+  .compare-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 16px;
+  }
+  .compare-table td:first-child { color: #fff; font-weight: 600; }
+  .compare-table td.bad { text-align: center; color: var(--cta-red); }
+  .compare-table td.good { text-align: center; color: var(--cta-green); font-weight: 600; }
+
+  /* ===== BULLET STACK ===== */
+  .bullet-stack { list-style: none; padding: 0; margin: 32px 0; }
+  .bullet-stack li {
+    padding: 14px 0 14px 40px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 18px;
+  }
+  .bullet-stack li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--cta-green);
+    font-weight: 700;
+    font-size: 22px;
+    top: 14px;
+  }
+  .bullet-stack li strong { color: #fff; }
+
+  /* ===== OFFER STACK ===== */
+  .offer-box {
+    background: var(--bg-card);
+    border: 2px solid var(--accent-gold);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 40px auto;
+    max-width: 600px;
+  }
+  .offer-header {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #b8942e 100%);
+    padding: 20px;
+    text-align: center;
+  }
+  .offer-header h3 { color: var(--bg-primary); margin: 0; font-size: 24px; }
+  .offer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .offer-item .name { font-weight: 600; color: #fff; }
+  .offer-item .value { color: var(--text-secondary); text-decoration: line-through; font-size: 15px; }
+  .offer-item .free-tag { color: var(--cta-green); font-weight: 700; margin-left: 8px; }
+  .offer-total {
+    padding: 24px;
+    text-align: center;
+    background: rgba(34,197,94,0.05);
+  }
+  .offer-total .total-value { font-size: 20px; color: var(--text-secondary); text-decoration: line-through; margin-bottom: 4px; }
+  .offer-total .your-price { font-family: var(--font-headline); font-size: 36px; color: var(--cta-green); font-weight: 700; }
+
+  /* ===== FAQ ===== */
+  .faq-item {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 18px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    color: #fff;
+    font-size: 17px;
+    background: var(--bg-card);
+    transition: background 0.2s;
+  }
+  .faq-q:hover { background: rgba(212,168,68,0.08); }
+  .faq-q .icon { font-size: 24px; color: var(--accent-gold); transition: transform 0.3s; }
+  .faq-a {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    color: var(--text-body);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 16px 24px 20px; }
+  .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+
+  /* ===== TWO PATHS ===== */
+  .two-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 40px 0; }
+  .path-card { padding: 28px; border-radius: 12px; text-align: center; }
+  .path-bad { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
+  .path-good { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); }
+  .path-card h4 { font-family: var(--font-headline); font-size: 18px; text-transform: uppercase; margin-bottom: 12px; }
+  .path-bad h4 { color: var(--cta-red); }
+  .path-good h4 { color: var(--cta-green); }
+
+  /* ===== GUARANTEE ===== */
+  .guarantee-box {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: rgba(34,197,94,0.06);
+    border: 2px solid rgba(34,197,94,0.3);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 40px 0;
+  }
+  .guarantee-badge {
+    flex-shrink: 0;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--cta-green) 0%, #16a34a 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: #fff;
+  }
+  .guarantee-badge .number { font-family: var(--font-headline); font-size: 32px; font-weight: 700; line-height: 1; }
+  .guarantee-badge .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer a { color: var(--text-secondary); }
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky-cta { display: none; }
+  @media (max-width: 768px) {
+    .sticky-cta {
+      display: block;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 12px 16px;
+      background: rgba(10,15,26,0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--border-subtle);
+      z-index: 100;
+      text-align: center;
+    }
+    .sticky-cta .cta-btn { font-size: 16px; padding: 14px 28px; width: 100%; animation: none; }
+    body { padding-bottom: 80px; }
+  }
+
+  /* ===== CTA SECTION ===== */
+  .cta-section {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(180deg, rgba(34,197,94,0.04) 0%, transparent 100%);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .section, .section-wide { padding: 50px 16px; }
+    .hero { padding: 40px 16px 60px; }
+    .two-paths { grid-template-columns: 1fr; }
+    .stat-row { grid-template-columns: 1fr; }
+    .guarantee-box { flex-direction: column; text-align: center; }
+    .cta-btn { font-size: 18px; padding: 18px 32px; }
+    .letter { font-size: 17px; }
+    .compare-table { font-size: 14px; }
+    .compare-table td, .compare-table th { padding: 10px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-pre">Warning: This Changes Everything</div>
+  <h1>The Secret <span class="gold">$25,000 Framework</span> That Makes Any Business <span class="red">Sell More</span> — <span class="gold">Instantly</span></h1>
+  <p class="hero-sub">
+    Discover the <em>Logical Chain of Beliefs™</em> — the <span class="ul">same persuasion system</span> that has generated <em>millions in sales</em> across hundreds of niches.
+  </p>
+  <span class="hero-hand">↳ Now available as a free tool you can use in any business TODAY.</span>
+  <a href="https://ineedjimmy.com/daegan" class="cta-btn">
+    Try The Tool Free Now
+    <span class="sub">Instant Access — No Credit Card Required</span>
+  </a>
+  <span class="cta-arrow">↓ click here to get started ↓</span>
+</section>
+
+<!-- ===== OPENING LETTER ===== -->
+<div class="section letter">
+  <p class="salutation">Dear Business Owner, Marketer, or Closer,</p>
+
+  <p>I'm going to give you a <span class="hl">FREE tool</span> that you could <span class="ul">literally use <span class="wb">today</span></span> — walk into <em>any</em> business — and help them make <span class="hl">WAY more money.</span></p>
+
+  <p>This isn't a gimmick.<br>
+  This isn't some AI widget to get you more LinkedIn followers.<br>
+  This isn't another "hack" that <span class="strike">stops working next month</span>.</p>
+
+  <p class="bigger">This is a <span class="ul-red">fundamental shift</span> in how you think about selling.</p>
+
+  <p>And once you see it… <span class="hand">you can never unsee it.</span></p>
+
+  <div class="sep"></div>
+
+  <p>If you remember <em>Game of Thrones</em>…</p>
+  <p><em>"A Lannister always pays his debts."</em></p>
+  <p>There's something similar about me.</p>
+
+  <div class="box-center">
+    <p style="margin:0; font-size: 22px;"><span class="wb">When Daegan Smith makes a bold statement</span><br>
+    <span class="red">Daegan Smith backs it up.</span></p>
+  </div>
+
+  <p>For those who remember my name — <span class="ul">you already know this.</span></p>
+
+  <p>For those who <em>don't</em>? That tells me <span class="wb">one of two things:</span></p>
+
+  <p>➊ You're relatively new to marketing <em>(within the last 10 years)</em>…<br>
+  ➋ …or you've never been deep in the <span class="hl">direct response</span> world.</p>
+
+  <p>Either way — here's what you need to know:</p>
+
+  <p>Over 15 years ago, I <span class="ul">fell in love</span> with marketing. To me it was like a puzzle. A game. An obsession.</p>
+
+  <p>I kept pulling on threads. Kept testing. Kept iterating. Kept <span class="wb">asking questions nobody else was asking.</span></p>
+
+  <p>And <span class="hl-red">that's the part that matters…</span></p>
+
+  <p class="hand-big">↳ The questions.</p>
+</div>
+
+<!-- ========================================= -->
+<!-- INFOGRAPHIC 1: THE WRONG vs RIGHT QUESTION -->
+<!-- ========================================= -->
+<div class="section-red-accent">
+  <div class="section">
+    <h2>Everybody Is Still Asking <span class="red">The Wrong Questions</span></h2>
+
+    <p class="lead">Like Tony Robbins says — <span class="italic">"life shows up by the questions you ask."</span></p>
+
+    <p>I've been out of the public game for over 15 years. And here's what <span class="ul-red">blows my mind:</span></p>
+
+    <p class="bigger"><span class="red">Everyone is STILL asking the same broken questions.</span></p>
+
+    <!-- INLINE SVG INFOGRAPHIC: Wrong vs Right Questions -->
+    <div class="infographic">
+      <svg viewBox="0 0 760 420" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect width="760" height="420" rx="16" fill="#0d1117" stroke="#1e1c16" stroke-width="1"/>
+        
+        <!-- Title -->
+        <text x="380" y="38" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" fill="#94a3b8" letter-spacing="3" text-transform="uppercase" font-weight="600">WHAT QUESTION ARE YOU ASKING?</text>
+        
+        <!-- LEFT: Wrong Questions -->
+        <rect x="20" y="56" width="350" height="340" rx="10" fill="#110a0a" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+        <rect x="20" y="56" width="350" height="40" rx="10" fill="rgba(239,68,68,0.12)"/>
+        <rect x="20" y="86" width="350" height="10" rx="0" fill="rgba(239,68,68,0.12)"/>
+        <text x="195" y="82" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#ef4444" font-weight="700" letter-spacing="2">✕ WRONG QUESTIONS</text>
+        
+        <text x="195" y="126" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="14.5" fill="rgba(255,255,255,0.55)" font-style="italic">"How can we get AI to increase conversions?"</text>
+        <text x="195" y="170" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="14.5" fill="rgba(255,255,255,0.55)" font-style="italic">"How do we increase our click-through rate?"</text>
+        <text x="195" y="214" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="14.5" fill="rgba(255,255,255,0.55)" font-style="italic">"What should I put on my landing page?"</text>
+        <text x="195" y="258" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="14.5" fill="rgba(255,255,255,0.55)" font-style="italic">"What's the best subject line formula?"</text>
+        
+        <!-- Divider line in left box -->
+        <line x1="60" y1="290" x2="330" y2="290" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+        
+        <text x="195" y="320" text-anchor="middle" font-family="Oswald, sans-serif" font-size="13" fill="rgba(239,68,68,0.7)" letter-spacing="1" font-weight="600">THESE ARE TACTICAL QUESTIONS</text>
+        <text x="195" y="345" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.35)">They optimize symptoms.</text>
+        <text x="195" y="365" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.35)">They never fix the root cause.</text>
+        <text x="195" y="385" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(239,68,68,0.5)" font-weight="700">→ Diminishing returns. Always.</text>
+
+        <!-- RIGHT: Right Question -->
+        <rect x="390" y="56" width="350" height="340" rx="10" fill="#080f07" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+        <rect x="390" y="56" width="350" height="40" rx="10" fill="rgba(34,197,94,0.1)"/>
+        <rect x="390" y="86" width="350" height="10" rx="0" fill="rgba(34,197,94,0.1)"/>
+        <text x="565" y="82" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#22c55e" font-weight="700" letter-spacing="2">✓ THE RIGHT QUESTION</text>
+        
+        <text x="565" y="136" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="18" fill="#fff" font-weight="700">"What does my customer</text>
+        <text x="565" y="162" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="18" fill="#22c55e" font-weight="700">need to BELIEVE</text>
+        <text x="565" y="188" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="18" fill="#fff" font-weight="700">before they'll buy?"</text>
+        
+        <!-- Divider -->
+        <line x1="430" y1="210" x2="700" y2="210" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
+        
+        <text x="565" y="240" text-anchor="middle" font-family="Oswald, sans-serif" font-size="13" fill="rgba(34,197,94,0.7)" letter-spacing="1" font-weight="600">THIS IS A STRATEGIC QUESTION</text>
+        <text x="565" y="268" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13.5" fill="rgba(255,255,255,0.55)">It changes everything downstream.</text>
+        <text x="565" y="294" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13.5" fill="rgba(255,255,255,0.55)">Your ads get better. Your pages convert.</text>
+        <text x="565" y="320" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="13.5" fill="rgba(255,255,255,0.55)">Your sales calls close. Your emails sell.</text>
+
+        <text x="565" y="365" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="14" fill="#22c55e" font-weight="700">→ Compounding returns. Forever.</text>
+        <text x="565" y="388" text-anchor="middle" font-family="Caveat, cursive" font-size="18" fill="rgba(212,168,68,0.8)">↳ This is the question Daegan asks.</text>
+      </svg>
+    </div>
+
+    <p>Those tactical questions aren't <em>bad</em> questions. They're just <span class="red">small</span> questions. They're <span class="strike">tactical questions</span> when what you need is a <span class="hl">strategic breakthrough.</span></p>
+
+    <p>Back in the day, everyone was asking <em>"what should I put on my landing page to make more money?"</em></p>
+
+    <p><span class="wb">I asked a different question entirely.</span></p>
+
+    <p>That led to <span class="hl"><span class="ul">one tweak</span></span> that the <span class="wb">entire industry copied.</span> One small change that outperformed everything else anyone was testing. <span class="hand-red">It spread like wildfire.</span></p>
+
+    <p>Then came the <span class="wb">Invisible Funnel</span> — a concept my friend <span class="ul">Russell Brunson</span> and I developed together. Same pattern. <em>A different question led to a different result.</em></p>
+
+    <div class="callout-red">
+      <p style="margin:0;"><span class="wb" style="font-size:22px;">While everyone else is optimizing buttons and headlines…</span><br>
+      <span class="red" style="font-size:22px;">I'm rewriting the rules of <span class="ul-red">WHY people buy.</span></span></p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== THE BIG IDEA ===== -->
+<div class="section">
+  <h2>The <span class="gold">Real</span> Reason People <span class="red">Don't Buy</span></h2>
+
+  <p>If a business wants to make more money, it's simple. <span class="hand-red">Not easy — but simple.</span></p>
+
+  <p>It goes back to a principle I used to teach my students — one that <span class="ul">sounds obvious</span> but that <span class="hl-red">almost nobody actually implements:</span></p>
+
+  <div class="box-center">
+    <p style="margin:0; font-size: 24px; font-style: italic; color: var(--accent-gold-light);">"You have to enter the conversation that's <span class="ul">already happening</span> in somebody's head."</p>
+  </div>
+
+  <p><span class="wb">Let me prove it to you right now.</span></p>
+
+  <p>Think about something you <span class="hl">changed your mind on</span> in the last 10, 20, 30 years.</p>
+
+  <p>Something you used to believe — <em>deeply</em> — that you <span class="ul">no longer believe.</span></p>
+
+  <p>Maybe it's political. Maybe it's about health. Maybe it's about money. <em>Doesn't matter.</em></p>
+
+  <p><span class="wb">You used to hold Belief A. Now you hold Belief B.</span></p>
+
+  <p>Here's my question:</p>
+
+  <p class="bigger"><span class="red">Did you change your mind in 30 seconds?</span></p>
+
+  <p>Did someone hand you a <span class="strike">bullet-point list of "facts"</span> and — <em>poof</em> — you suddenly saw the light?</p>
+
+  <p class="bigger"><span class="marker">OF COURSE NOT.</span></p>
+
+  <p>You had your <em>own</em> set of aha moments. Your own life circumstances. Your own <span class="ul">slow unraveling</span> of one belief and the <span class="ul">gradual construction</span> of another.</p>
+
+  <p>It happened through <span class="hl">stories. Experiences. Emotional shifts.</span></p>
+
+  <p><span class="red">Not data dumps.</span></p>
+
+  <div class="callout">
+    <p style="margin:0;"><span class="wb" style="font-size: 21px;">And yet — that's EXACTLY what 99% of businesses do.</span><br><br>
+    They list features. They present facts. They explain why their product is great. And then they wonder why <span class="red">nobody buys.</span></p>
+  </div>
+
+  <div class="sep-red"></div>
+
+  <h3>The <span class="gold">Ultimate Solution</span> To Selling Is Learning How To <span class="ul-red">Change Beliefs</span></h3>
+
+  <p><span class="wb">That's it. That's the whole game.</span></p>
+
+  <p>If you can change what somebody <span class="hl">believes</span>… you can change what they <span class="hl">do.</span></p>
+
+  <p>And beliefs don't change through logic. They change through <span class="hl"><span class="ul">stories.</span></span></p>
+
+  <p class="big"><span class="gold-bold">Story Selling.</span></p>
+
+  <p>But here's the part <span class="ul-red">nobody talks about…</span></p>
+</div>
+
+<!-- ================================================ -->
+<!-- INFOGRAPHIC 2: THE BELIEF DOMINO CHAIN (BIG ONE) -->
+<!-- ================================================ -->
+<div class="section-dark">
+  <div class="section-wide">
+    <h2 style="text-align:center;">Beliefs Are <span class="gold">Dominos</span></h2>
+
+    <p class="lead" style="text-align:center; max-width:700px; margin:0 auto 16px;">You can't just change one belief and call it a day. Beliefs fall <span class="ul">in a sequence</span> — like dominos.</p>
+    <p style="text-align:center;">You have to change <span class="wb">Belief A</span>… then <span class="wb">Belief B</span>… then <span class="wb">Belief C</span>… <span class="hl-red">in the right order.</span></p>
+
+    <p style="text-align:center; margin-top:8px;"><span class="hand">↳ Here's what it looks like for a $5,000 weight loss coaching offer:</span></p>
+
+    <!-- BELIEF CHAIN SVG INFOGRAPHIC -->
+    <div class="infographic">
+      <svg viewBox="0 0 760 540" xmlns="http://www.w3.org/2000/svg">
+        <rect width="760" height="540" rx="16" fill="#0d1117" stroke="#1e1c16" stroke-width="1"/>
+        
+        <!-- Title Bar -->
+        <rect x="0" y="0" width="760" height="4" rx="2" fill="#cc2222"/>
+        <text x="380" y="36" text-anchor="middle" font-family="Oswald, sans-serif" font-size="16" fill="#fff" letter-spacing="3" font-weight="700">THE LOGICAL CHAIN OF BELIEFS™</text>
+        <text x="380" y="56" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="#94a3b8">Example: $5,000 Weight Loss Coaching Offer</text>
+
+        <!-- ROW 1 -->
+        <rect x="20" y="76" width="230" height="60" rx="8" fill="#111009" stroke="#8a6018" stroke-width="1.5"/>
+        <text x="30" y="92" font-family="Oswald, sans-serif" font-size="9" fill="#c9973a" letter-spacing="1" font-weight="600">01 ★ GATE BELIEF</text>
+        <text x="30" y="111" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">"My weight is a real problem</text>
+        <text x="30" y="127" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">I need to solve NOW."</text>
+
+        <text x="263" y="110" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="278" y="76" width="205" height="60" rx="8" fill="#111009" stroke="#1e1c14" stroke-width="1"/>
+        <text x="288" y="92" font-family="Oswald, sans-serif" font-size="9" fill="rgba(255,255,255,0.25)" letter-spacing="1">02</text>
+        <text x="288" y="111" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">"This is costing me my</text>
+        <text x="288" y="127" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">health, confidence, & life."</text>
+
+        <text x="496" y="110" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="511" y="76" width="230" height="60" rx="8" fill="#111009" stroke="#8a6018" stroke-width="1.5"/>
+        <text x="521" y="92" font-family="Oswald, sans-serif" font-size="9" fill="#c9973a" letter-spacing="1" font-weight="600">03 ★ GATE BELIEF</text>
+        <text x="521" y="111" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">"Diets and willpower alone</text>
+        <text x="521" y="127" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">DON'T work for me."</text>
+
+        <!-- Row 1→2 connector -->
+        <text x="380" y="156" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" fill="rgba(201,151,58,0.4)">▼</text>
+
+        <!-- ROW 2 -->
+        <rect x="20" y="170" width="230" height="60" rx="8" fill="#111009" stroke="#1e1c14" stroke-width="1"/>
+        <text x="30" y="186" font-family="Oswald, sans-serif" font-size="9" fill="rgba(255,255,255,0.25)" letter-spacing="1">04</text>
+        <text x="30" y="205" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">"I've tried everything.</text>
+        <text x="30" y="221" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">Nothing has worked long-term."</text>
+
+        <text x="263" y="204" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="278" y="170" width="205" height="60" rx="8" fill="#111009" stroke="#8a6018" stroke-width="1.5"/>
+        <text x="288" y="186" font-family="Oswald, sans-serif" font-size="9" fill="#c9973a" letter-spacing="1" font-weight="600">05 ★ GATE BELIEF</text>
+        <text x="288" y="205" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">"I need outside help —</text>
+        <text x="288" y="221" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">a coach, a system, a guide."</text>
+
+        <text x="496" y="204" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="511" y="170" width="230" height="60" rx="8" fill="#111009" stroke="#1e1c14" stroke-width="1"/>
+        <text x="521" y="186" font-family="Oswald, sans-serif" font-size="9" fill="rgba(255,255,255,0.25)" letter-spacing="1">06</text>
+        <text x="521" y="205" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">"Other people like me have</text>
+        <text x="521" y="221" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">gotten results this way."</text>
+
+        <!-- Row 2→3 connector -->
+        <text x="380" y="250" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" fill="rgba(201,151,58,0.4)">▼</text>
+
+        <!-- ROW 3 -->
+        <rect x="20" y="264" width="230" height="60" rx="8" fill="#111009" stroke="#8a6018" stroke-width="1.5"/>
+        <text x="30" y="280" font-family="Oswald, sans-serif" font-size="9" fill="#c9973a" letter-spacing="1" font-weight="600">07 ★ GATE BELIEF</text>
+        <text x="30" y="299" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">"THIS coach has the right</text>
+        <text x="30" y="315" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">method for ME."</text>
+
+        <text x="263" y="298" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="278" y="264" width="205" height="60" rx="8" fill="#111009" stroke="#1e1c14" stroke-width="1"/>
+        <text x="288" y="280" font-family="Oswald, sans-serif" font-size="9" fill="rgba(255,255,255,0.25)" letter-spacing="1">08</text>
+        <text x="288" y="299" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">"The risk is low. I have</text>
+        <text x="288" y="315" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">nothing to lose by trying."</text>
+
+        <text x="496" y="298" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#c9973a">→</text>
+
+        <rect x="511" y="264" width="230" height="60" rx="8" fill="#111009" stroke="#1e1c14" stroke-width="1"/>
+        <text x="521" y="280" font-family="Oswald, sans-serif" font-size="9" fill="rgba(255,255,255,0.25)" letter-spacing="1">09</text>
+        <text x="521" y="299" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">"$5,000 is worth it for a</text>
+        <text x="521" y="315" font-family="Source Sans Pro, sans-serif" font-size="13" fill="rgba(255,255,255,0.6)">permanent transformation."</text>
+
+        <!-- Row 3→4 connector -->
+        <text x="380" y="344" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="16" fill="rgba(201,151,58,0.4)">▼</text>
+
+        <!-- ROW 4 — GATE + RESULT -->
+        <rect x="100" y="358" width="280" height="60" rx="8" fill="#111009" stroke="#8a6018" stroke-width="1.5"/>
+        <text x="110" y="374" font-family="Oswald, sans-serif" font-size="9" fill="#c9973a" letter-spacing="1" font-weight="600">10 ★ GATE BELIEF</text>
+        <text x="110" y="393" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">"Now is the right time.</text>
+        <text x="110" y="409" font-family="Source Sans Pro, sans-serif" font-size="13" fill="#fff" font-weight="600">I'm ready to commit."</text>
+
+        <text x="393" y="392" font-family="Source Sans Pro, sans-serif" font-size="16" fill="#22c55e">→</text>
+
+        <rect x="408" y="358" width="250" height="60" rx="8" fill="rgba(34,197,94,0.08)" stroke="#22c55e" stroke-width="2"/>
+        <text x="418" y="374" font-family="Oswald, sans-serif" font-size="9" fill="#22c55e" letter-spacing="1" font-weight="600">RESULT</text>
+        <text x="418" y="396" font-family="Oswald, sans-serif" font-size="18" fill="#22c55e" font-weight="700">💰 THEY BUY.</text>
+
+        <!-- Bottom annotation -->
+        <rect x="60" y="440" width="640" height="56" rx="10" fill="rgba(34,197,94,0.04)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
+        <text x="380" y="464" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12.5" fill="rgba(255,255,255,0.5)">★ = Gate Belief — non-negotiable. Skip one and the chain BREAKS.</text>
+        <text x="380" y="484" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12.5" fill="rgba(255,255,255,0.5)">The sale becomes inevitable when every belief falls in order.</text>
+
+        <!-- Bottom bar -->
+        <rect x="0" y="510" width="760" height="30" rx="0" fill="rgba(201,151,58,0.06)"/>
+        <text x="380" y="530" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="rgba(201,151,58,0.5)" letter-spacing="2">THE LOGICAL CHAIN OF BELIEFS™ — DAEGAN SMITH</text>
+      </svg>
+    </div>
+
+    <p>You can't just <span class="strike">tell someone "you need a coach"</span>. <span class="red">That doesn't work.</span></p>
+
+    <p>You have to walk them through the chain — <span class="hl"><span class="ul">one belief at a time</span></span> — using stories that make them <span class="wb">conclude it themselves.</span></p>
+
+    <div class="box-center">
+      <p style="margin:0 0 8px; font-family: var(--font-headline); font-size: 28px; color: #fff; text-transform: uppercase;">I Call This</p>
+      <p style="margin:0; font-family: var(--font-headline); font-size: 36px; color: var(--accent-gold); text-transform: uppercase;">The Logical Chain of Beliefs™</p>
+    </div>
+
+    <p>And for years, I charged <span class="hl"><span class="bigger">$25,000</span></span> to sit with a business owner for <span class="ul">two full days</span> and map this out.</p>
+
+    <p>When they walked out of that room, they had something <span class="ul-red">most businesses NEVER get…</span></p>
+
+    <div class="callout-green">
+      <p style="margin:0;"><span class="wb" style="font-size:20px;">The keys to the kingdom.</span> A <span class="ul">complete map</span> of every belief their customer needed to hold before they would buy. <span class="hl">In the right order.</span> With the right stories to trigger each one.</p>
+    </div>
+
+    <p><span class="wb">Once you have that map?</span></p>
+
+    <p class="bigger" style="text-align:center;"><span class="gold-bold">Everything becomes easy.</span></p>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- INFOGRAPHIC 3: WHERE YOU APPLY IT (USE CASES) -->
+<!-- ============================================= -->
+<div class="section">
+  <h2>Once You Have The Chain, <span class="gold">You Can Apply It <span class="ul">Anywhere</span></span></h2>
+
+  <div class="infographic">
+    <svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg">
+      <rect width="760" height="380" rx="16" fill="#0d1117" stroke="#1e1c16" stroke-width="1"/>
+      
+      <!-- Center hub -->
+      <circle cx="380" cy="190" r="65" fill="rgba(201,151,58,0.1)" stroke="#c9973a" stroke-width="2"/>
+      <text x="380" y="180" text-anchor="middle" font-family="Oswald, sans-serif" font-size="12" fill="#c9973a" letter-spacing="1.5" font-weight="600">YOUR</text>
+      <text x="380" y="198" text-anchor="middle" font-family="Oswald, sans-serif" font-size="14" fill="#fff" font-weight="700">BELIEF</text>
+      <text x="380" y="214" text-anchor="middle" font-family="Oswald, sans-serif" font-size="14" fill="#fff" font-weight="700">CHAIN</text>
+
+      <!-- Spokes and nodes -->
+      <!-- Top left: Webinars -->
+      <line x1="330" y1="140" x2="170" y2="60" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="70" y="30" width="190" height="60" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="80" y="52" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">WEBINARS</text>
+      <text x="80" y="72" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Each slide = one belief knocked</text>
+      <text x="80" y="84" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">down. 7-figure webinars start here.</text>
+
+      <!-- Top right: Sales Calls -->
+      <line x1="430" y1="140" x2="590" y2="60" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="500" y="30" width="190" height="60" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="510" y="52" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">SALES CALLS</text>
+      <text x="510" y="72" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">70% of beliefs knocked down</text>
+      <text x="510" y="84" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">BEFORE the call. Closers finish.</text>
+
+      <!-- Left: Email Sequences -->
+      <line x1="316" y1="190" x2="210" y2="190" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="20" y="154" width="185" height="68" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="30" y="176" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">EMAIL SEQUENCES</text>
+      <text x="30" y="196" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Each email targets the NEXT</text>
+      <text x="30" y="210" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">belief. Strategic, not random.</text>
+
+      <!-- Right: Sales Pages -->
+      <line x1="444" y1="190" x2="550" y2="190" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="555" y="154" width="185" height="68" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="565" y="176" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">SALES PAGES</text>
+      <text x="565" y="196" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Structure top-to-bottom as a</text>
+      <text x="565" y="210" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">journey through the full chain.</text>
+
+      <!-- Bottom left: Ads -->
+      <line x1="330" y1="240" x2="170" y2="310" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="60" y="285" width="190" height="68" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="70" y="307" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">ADS &amp; CONTENT</text>
+      <text x="70" y="327" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Target each ad to the specific</text>
+      <text x="70" y="341" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">belief your prospect is stuck on.</text>
+
+      <!-- Bottom right: Sales Teams -->
+      <line x1="430" y1="240" x2="590" y2="310" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <rect x="510" y="285" width="190" height="68" rx="8" fill="#111009" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="520" y="307" font-family="Oswald, sans-serif" font-size="12" fill="#22c55e" letter-spacing="1" font-weight="600">SALES TEAMS</text>
+      <text x="520" y="327" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">Give them the chain. No more</text>
+      <text x="520" y="341" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">winging it. Repeatable system.</text>
+    </svg>
+  </div>
+
+  <p>No matter where your leads come from — <em>cold traffic, referrals, social media, podcast, JV partners</em> — you can figure out <span class="hl">where they are in the chain</span> and <span class="ul">knock the rest down.</span></p>
+
+  <p><span class="hand">↳ This is the single most powerful sales tool I've ever created.</span></p>
+</div>
+
+<!-- ===== CTA BREAK ===== -->
+<div class="cta-section">
+  <h2>Ready To Build Your <span class="gold">Logical Chain Of Beliefs?</span></h2>
+  <p style="max-width: 640px; margin: 0 auto 32px; font-size: 20px;">Try the free tool now and discover the <span class="ul">exact belief sequence</span> your customers need to go through <span class="hl">before they buy.</span></p>
+  <a href="https://ineedjimmy.com/daegan" class="cta-btn">
+    Try The Tool Free Now
+    <span class="sub">Instant Access — Start In 60 Seconds</span>
+  </a>
+  <span class="cta-arrow">↓ yes, it's really free ↓</span>
+</div>
+
+<!-- ===================================================== -->
+<!-- INFOGRAPHIC 4: OLD WAY vs NEW WAY COMPARISON TABLE    -->
+<!-- ===================================================== -->
+<div class="section-accent">
+  <div class="section">
+    <h2>Why This Is <span class="gold">Different</span> From <span class="red">Everything Else</span></h2>
+
+    <p>Look — there's no shortage of marketing advice out there. Every "guru" has a framework. Every AI tool promises <span class="strike">more conversions</span>.</p>
+
+    <p>But here's what <span class="ul-red">they all get wrong:</span></p>
+
+    <p class="bigger"><span class="wb">They start with the tactic.</span> <span class="gold-bold">I start with the psychology.</span></p>
+
+    <table class="compare-table">
+      <tr>
+        <th></th>
+        <th class="bad">❌ What Everyone Else Does</th>
+        <th class="good">✓ The Logical Chain Of Beliefs</th>
+      </tr>
+      <tr>
+        <td>Starting Point</td>
+        <td class="bad">Tactics & tools</td>
+        <td class="good">Customer psychology</td>
+      </tr>
+      <tr>
+        <td>Approach</td>
+        <td class="bad">List features & facts</td>
+        <td class="good">Change beliefs with stories</td>
+      </tr>
+      <tr>
+        <td>Copy Strategy</td>
+        <td class="bad">Random "value" content</td>
+        <td class="good">Strategic belief shifting</td>
+      </tr>
+      <tr>
+        <td>Sales Calls</td>
+        <td class="bad">Winging it / scripts</td>
+        <td class="good">Diagnose → knock down remaining beliefs</td>
+      </tr>
+      <tr>
+        <td>Email Sequences</td>
+        <td class="bad">Random tips & stories</td>
+        <td class="good">Each email = one belief in order</td>
+      </tr>
+      <tr>
+        <td>Result Over Time</td>
+        <td class="bad">Diminishing returns</td>
+        <td class="good">Compounding returns</td>
+      </tr>
+      <tr>
+        <td>Transferable?</td>
+        <td class="bad">Platform-dependent</td>
+        <td class="good">Works on ANY platform, ANY medium</td>
+      </tr>
+    </table>
+
+    <p>Funnels, ads, email sequences, webinars — those are all just <span class="strike">delivery mechanisms</span>.</p>
+
+    <p>The Logical Chain of Beliefs is the <span class="hl"><span class="ul">engine inside every one of them.</span></span></p>
+
+    <div class="callout">
+      <p style="margin:0;"><span class="wb">Without it,</span> your funnel is just a series of pages. Your webinar is just a presentation. Your sales call is just a conversation.<br><br>
+      <span class="wb">With it?</span> Every touchpoint becomes a <span class="hl">precision tool for changing what people believe</span> — which changes what they do — which changes <span class="red">how much money you make.</span></p>
+    </div>
+
+    <div class="sep"></div>
+
+    <p><span class="wb">Daegan Smith didn't just study this.</span> He <span class="ul">lived it</span>. He <span class="ul">built it</span>. He <span class="ul">proved it</span> across hundreds of businesses.</p>
+
+    <p>And now — <span class="hl">for the first time</span> — he's making the core framework available as a tool <span class="ul-red">anyone can use.</span></p>
+  </div>
+</div>
+
+<!-- ===== STAT CALLOUT ROW ===== -->
+<div class="section-darker">
+  <div class="section-wide">
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="number">$25K</div>
+        <div class="label">What Daegan Charged<br>For 2 Days Of This</div>
+      </div>
+      <div class="stat-card">
+        <div class="number" style="color: var(--cta-green);">FREE</div>
+        <div class="label">What You Pay<br>To Use The Tool Today</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">60s</div>
+        <div class="label">To Start Building<br>Your Belief Chain</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================= -->
+<!-- INFOGRAPHIC 5: HOW THE TOOL WORKS (3 STEPS)  -->
+<!-- ============================================= -->
+<div class="section">
+  <h2>How The Tool <span class="gold">Works</span></h2>
+  <p><span class="hand">↳ It's stupid simple. Here's the whole process:</span></p>
+
+  <div class="infographic">
+    <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="760" height="200" rx="16" fill="#0d1117" stroke="#1e1c16" stroke-width="1"/>
+      
+      <!-- Step 1 -->
+      <rect x="20" y="20" width="220" height="160" rx="10" fill="#111009" stroke="rgba(204,34,34,0.3)" stroke-width="1.5"/>
+      <text x="130" y="56" text-anchor="middle" font-family="Oswald, sans-serif" font-size="38" fill="#cc2222" font-weight="700">1</text>
+      <text x="130" y="82" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">DESCRIBE YOUR</text>
+      <text x="130" y="100" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">BUSINESS</text>
+      <text x="130" y="126" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">Answer 5 questions about</text>
+      <text x="130" y="142" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">your offer, customer, and</text>
+      <text x="130" y="158" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">the transformation you deliver.</text>
+      
+      <!-- Arrow 1→2 -->
+      <text x="262" y="105" font-family="Source Sans Pro, sans-serif" font-size="28" fill="#c9973a">→</text>
+
+      <!-- Step 2 -->
+      <rect x="280" y="20" width="200" height="160" rx="10" fill="#111009" stroke="rgba(201,151,58,0.3)" stroke-width="1.5"/>
+      <text x="380" y="56" text-anchor="middle" font-family="Oswald, sans-serif" font-size="38" fill="#c9973a" font-weight="700">2</text>
+      <text x="380" y="82" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">AI BUILDS</text>
+      <text x="380" y="100" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">YOUR CHAIN</text>
+      <text x="380" y="126" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">20+ beliefs mapped in</text>
+      <text x="380" y="142" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">sequence with gate beliefs</text>
+      <text x="380" y="158" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">flagged and copy notes.</text>
+
+      <!-- Arrow 2→3 -->
+      <text x="502" y="105" font-family="Source Sans Pro, sans-serif" font-size="28" fill="#c9973a">→</text>
+
+      <!-- Step 3 -->
+      <rect x="520" y="20" width="220" height="160" rx="10" fill="#080f07" stroke="rgba(34,197,94,0.3)" stroke-width="1.5"/>
+      <text x="630" y="56" text-anchor="middle" font-family="Oswald, sans-serif" font-size="38" fill="#22c55e" font-weight="700">3</text>
+      <text x="630" y="82" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">DEPLOY IN</text>
+      <text x="630" y="100" text-anchor="middle" font-family="Oswald, sans-serif" font-size="15" fill="#fff" font-weight="700" letter-spacing="0.5">EVERYTHING</text>
+      <text x="630" y="126" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">Use it in emails, ads, sales</text>
+      <text x="630" y="142" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">calls, pages — every word</text>
+      <text x="630" y="158" text-anchor="middle" font-family="Source Sans Pro, sans-serif" font-size="12" fill="rgba(255,255,255,0.4)">mapped to a belief.</text>
+    </svg>
+  </div>
+</div>
+
+<!-- ===== WHAT YOU GET + OFFER STACK ===== -->
+<div class="section-dark">
+  <div class="section">
+    <h2>What You Get With <span class="gold">The Logical Chain of Beliefs™ Tool</span></h2>
+
+    <ul class="bullet-stack">
+      <li><span class="wb">The complete belief-mapping framework</span> — the <span class="ul">same system</span> Daegan charged <span class="hl">$25,000</span> to deliver in person, now guided step-by-step so <span class="ul">you can do it yourself</span></li>
+      <li><span class="wb">Your custom belief chain</span> — mapped out for <span class="caps red">YOUR</span> specific business, <span class="caps red">YOUR</span> offer, <span class="caps red">YOUR</span> customer — <span class="strike">not some generic template</span></li>
+      <li><span class="wb">The "domino sequence"</span> — the exact order your beliefs need to fall in so the sale becomes the <span class="hl">logical, inevitable conclusion</span></li>
+      <li><span class="wb">Story prompts for each belief</span> — so you know exactly <span class="ul">what kind of story, example, or proof point</span> to use to knock down each domino</li>
+      <li><span class="wb">Application guides</span> — how to plug your chain into webinars, sales pages, email sequences, phone scripts, and ads</li>
+      <li><span class="wb">The "where are they now?" diagnostic</span> — figure out exactly <span class="hl">where any lead is in the chain</span> so you can meet them where they are and move them forward</li>
+    </ul>
+
+    <div class="offer-box">
+      <div class="offer-header">
+        <h3>Here's Everything You Get Today</h3>
+      </div>
+      <div class="offer-item">
+        <span class="name">Logical Chain of Beliefs™ Tool</span>
+        <span><span class="value">$25,000</span><span class="free-tag">FREE</span></span>
+      </div>
+      <div class="offer-item">
+        <span class="name">Belief Mapping Framework</span>
+        <span><span class="value">$2,500</span><span class="free-tag">FREE</span></span>
+      </div>
+      <div class="offer-item">
+        <span class="name">Story Selling Prompts</span>
+        <span><span class="value">$1,500</span><span class="free-tag">FREE</span></span>
+      </div>
+      <div class="offer-item">
+        <span class="name">Application Playbook</span>
+        <span><span class="value">$1,000</span><span class="free-tag">FREE</span></span>
+      </div>
+      <div class="offer-total">
+        <div class="total-value">Total Value: $30,000</div>
+        <div class="your-price">FREE</div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 32px;">
+      <a href="https://ineedjimmy.com/daegan" class="cta-btn">
+        Yes! Give Me The Tool — FREE
+        <span class="sub">No Credit Card — Instant Access</span>
+      </a>
+      <span class="cta-arrow">↓ click here — it takes 60 seconds ↓</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TWO PATHS ===== -->
+<div class="section">
+  <h2 style="text-align: center;">You Have <span class="gold">Two Choices</span> Right Now</h2>
+
+  <div class="two-paths">
+    <div class="path-card path-bad">
+      <h4>❌ Path 1: Do Nothing</h4>
+      <p>Close this page. Go back to <span class="strike">guessing</span>. Keep writing copy that lists features instead of shifting beliefs. Keep wondering why your conversion rate is stuck. Keep <span class="red">losing sales</span> to competitors who figured this out.</p>
+    </div>
+    <div class="path-card path-good">
+      <h4>✓ Path 2: Try The Tool</h4>
+      <p>Click the button. <span class="ul">Map out your Logical Chain of Beliefs</span> in minutes. See — for the first time — the <span class="wb">exact sequence of beliefs</span> your customer needs before they'll ever say "yes." Then <span class="hl">apply it everywhere.</span></p>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin-top: 20px;" class="bigger"><span class="wb">The tool is free.</span> <span class="gold-bold">The insight could be worth millions.</span></p>
+
+  <div style="text-align: center; margin-top: 32px;">
+    <a href="https://ineedjimmy.com/daegan" class="cta-btn">
+      Yes — I Want To Build My Belief Chain
+      <span class="sub">Free Instant Access</span>
+    </a>
+  </div>
+</div>
+
+<!-- ===== FAQ ===== -->
+<div class="section-accent">
+  <div class="section">
+    <h2 style="text-align: center;">Frequently Asked Questions</h2>
+    <div style="margin-top: 32px;">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"Will this work for MY business?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <strong>Yes.</strong> The Logical Chain of Beliefs works for any business that sells anything — coaching, consulting, SaaS, ecommerce, real estate, health, finance, B2B services. If your customer has to <em>believe</em> something before they buy (hint: they always do), this tool will help you map that out and use it to sell more.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"Is this really free? What's the catch?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          The tool is <strong>genuinely free.</strong> Daegan is re-entering the marketing world and wants to prove the power of this framework to a new generation. The best way to do that is to let you <em>use it</em> and see the results for yourself. If you want to go deeper — advanced training, done-for-you services — those options exist. But the core tool is free, no credit card required.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"Who is Daegan Smith?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          Daegan is an <strong>OG in the direct response world.</strong> He pioneered concepts like the Invisible Funnel alongside Russell Brunson, built a reputation for being one of the most strategic marketing minds in the industry, and quietly generated millions in sales for himself and his clients. He's been out of the spotlight for 15+ years — but he's back, and this tool is his flagship framework.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"I've tried other marketing frameworks. How is this different?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          Most frameworks focus on <em>tactics</em> — what to put on your sales page, how to write an email, how to structure a funnel. The Logical Chain of Beliefs focuses on the <strong>psychology underneath all of that.</strong> It's not a tactic — it's the strategic foundation that makes every tactic work better. Once you have your chain, you can apply it to any medium, any platform, any sales process.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"How long does it take to build my chain?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          The tool guides you step by step. Most people map out their core belief chain in <strong>30-60 minutes.</strong> Daegan used to take 2 full days doing this at $25,000 — the tool gives you a streamlined version you can complete in a fraction of the time.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+          <span>"Do I need to be a marketer to use this?"</span>
+          <span class="icon">+</span>
+        </div>
+        <div class="faq-a">
+          <strong>No.</strong> If you sell something — anything — this tool is for you. Business owners, coaches, consultants, sales teams, copywriters, agencies. Anyone who needs people to say "yes" will benefit from understanding the belief chain that leads to that yes.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== FINAL CTA ===== -->
+<div class="section" style="text-align: center;">
+  <h2>The Tool Is <span class="gold">Free.</span><br>The Framework Is <span class="gold">Proven.</span><br>The Only Question Is…</h2>
+
+  <p class="bigger" style="margin: 24px 0;">Are you going to <span class="red">keep guessing</span>?<br>Or are you going to <span class="hl">map the chain?</span></p>
+
+  <a href="https://ineedjimmy.com/daegan" class="cta-btn" style="font-size: 24px; padding: 24px 56px;">
+    Build My Logical Chain Of Beliefs — Free
+    <span class="sub">Join Thousands Of Marketers Who've Already Mapped Their Chain</span>
+  </a>
+
+  <span class="cta-arrow">↓ click here — free instant access ↓</span>
+
+  <p style="margin-top: 20px; color: var(--text-secondary); font-size: 15px;"><span class="hand" style="font-size:20px;">No credit card required. Instant access. Start in 60 seconds.</span></p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>&copy; 2026 Daegan Smith. All Rights Reserved.</p>
+  <p style="margin-top: 8px;">
+    <a href="#">Privacy Policy</a> &nbsp;|&nbsp; <a href="#">Terms of Service</a> &nbsp;|&nbsp; <a href="#">Contact</a>
+  </p>
+  <p style="margin-top: 16px; max-width: 600px; margin-left: auto; margin-right: auto;">
+    Results vary. We make no earnings claims or guarantees. The Logical Chain of Beliefs™ is a framework for understanding customer psychology. Results depend on implementation and individual circumstances.
+  </p>
+</footer>
+
+<!-- ===== STICKY MOBILE CTA ===== -->
+<div class="sticky-cta">
+  <a href="https://ineedjimmy.com/daegan" class="cta-btn">
+    Try The Tool Free
+  </a>
+</div>
+
+</body>
+</html>

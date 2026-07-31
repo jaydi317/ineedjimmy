@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jan Davis — The Regulated Classroom | Bold & Deep</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--deep:#0B1A2B;--deep-mid:#132B42;--deep-light:#1a3a5c;--gold:#C6A855;--gold-light:#E8D5A0;
+--cream:#FAF6EE;--sage:#7A9E7E;--rose:#C9928E;--warm:#D4A574;--white:#FFFFFF;
+--font-head:'Playfair Display',Georgia,serif;--font-body:'Inter',sans-serif;--font-accent:'Caveat',cursive;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--cream);background:var(--deep);line-height:1.7;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;transition:all .3s ease}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,26,43,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(198,168,85,.1)}
+.nav-name{font-family:var(--font-head);font-size:1.15rem;color:var(--gold);font-weight:700}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:.85rem;color:rgba(250,246,238,.7);font-weight:500;letter-spacing:.5px}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--deep) !important;padding:10px 24px;border-radius:30px;font-weight:600;font-size:.85rem}
+.nav-cta:hover{background:var(--gold-light);color:var(--deep) !important}
+@media(max-width:768px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 32px 80px;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--deep) 0%,var(--deep-mid) 60%,var(--deep) 100%)}
+.hero::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(198,168,85,.06),transparent 70%);pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%}
+.hero-eyebrow{font-family:var(--font-accent);font-size:1.5rem;color:var(--gold);margin-bottom:16px}
+.hero h1{font-family:var(--font-head);font-size:clamp(2.6rem,5.5vw,4rem);color:var(--cream);font-weight:700;line-height:1.15;margin-bottom:24px;max-width:780px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-sub{font-size:1.15rem;color:rgba(250,246,238,.6);max-width:580px;line-height:1.9;margin-bottom:36px}
+.hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:16px 36px;background:linear-gradient(135deg,var(--gold),#d4b85c);color:var(--deep);font-family:var(--font-head);font-size:1rem;font-weight:600;border-radius:40px;box-shadow:0 6px 20px rgba(198,168,85,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(198,168,85,.35);color:var(--deep)}
+.btn-secondary{display:inline-block;padding:16px 36px;border:1.5px solid var(--gold);color:var(--gold);font-family:var(--font-head);font-size:1rem;font-weight:600;border-radius:40px}
+.btn-secondary:hover{background:rgba(198,168,85,.1);color:var(--gold-light)}
+
+/* ===== SHARED ===== */
+section{padding:100px 32px}
+.container{max-width:1080px;margin:0 auto}
+.section-label{font-family:var(--font-accent);font-size:1.3rem;color:var(--gold);margin-bottom:8px}
+.section-title{font-family:var(--font-head);font-size:clamp(1.9rem,4vw,2.8rem);color:var(--cream);font-weight:700;margin-bottom:16px;line-height:1.2}
+.section-sub{font-size:1.05rem;color:rgba(250,246,238,.55);max-width:600px;line-height:1.85;margin-bottom:48px}
+.center{text-align:center}
+.center .section-sub{margin-left:auto;margin-right:auto}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(198,168,85,.15),transparent)}
+
+/* ===== PAIN SECTION ===== */
+.pain-section{background:var(--deep-mid)}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto}
+.pain-card{background:rgba(11,26,43,.6);border-radius:14px;padding:28px 24px;border-left:3px solid var(--rose);position:relative}
+.pain-card p{font-size:.95rem;color:rgba(250,246,238,.7);line-height:1.8;font-style:italic}
+.pain-card p::before{content:'"';font-family:var(--font-head);font-size:2.5rem;color:var(--rose);position:absolute;top:12px;left:16px;opacity:.3}
+@media(max-width:640px){.pain-grid{grid-template-columns:1fr}}
+
+/* ===== METHOD ===== */
+.method-section{background:var(--deep)}
+.method-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
+.method-card{background:rgba(19,43,66,.5);border:1px solid rgba(198,168,85,.12);border-radius:16px;padding:32px 24px;text-align:center;transition:transform .3s ease,border-color .3s ease}
+.method-card:hover{transform:translateY(-4px);border-color:rgba(198,168,85,.3)}
+.method-card-icon{width:56px;height:56px;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.method-card:nth-child(1) .method-card-icon{background:rgba(122,158,126,.15)}
+.method-card:nth-child(2) .method-card-icon{background:rgba(201,146,142,.15)}
+.method-card:nth-child(3) .method-card-icon{background:rgba(198,168,85,.15)}
+.method-card:nth-child(4) .method-card-icon{background:rgba(232,213,160,.1)}
+.method-card h3{font-family:var(--font-head);font-size:1.15rem;color:var(--cream);margin-bottom:4px}
+.method-card .pillar-sub{font-size:.8rem;color:var(--gold);font-weight:500;margin-bottom:10px}
+.method-card p{font-size:.9rem;color:rgba(250,246,238,.55);line-height:1.7}
+@media(max-width:700px){.method-cards{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.method-cards{grid-template-columns:1fr}}
+
+/* ===== JOURNEY ===== */
+.journey-section{background:linear-gradient(180deg,var(--deep-mid),var(--deep))}
+.journey-img{max-width:900px;margin:0 auto;border-radius:14px;overflow:hidden;box-shadow:0 16px 48px rgba(0,0,0,.4)}
+
+/* ===== PROGRAMS ===== */
+.programs-section{background:var(--deep)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+.prog-card{background:rgba(19,43,66,.5);border:1px solid rgba(198,168,85,.12);border-radius:16px;padding:36px 28px;text-align:center;transition:transform .3s ease,border-color .3s ease}
+.prog-card:hover{transform:translateY(-4px);border-color:rgba(198,168,85,.25)}
+.prog-card.featured{border:2px solid var(--gold);position:relative}
+.prog-card.featured::before{content:'SIGNATURE PROGRAM';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);font-size:.7rem;font-weight:700;padding:4px 16px;border-radius:20px;letter-spacing:1px;white-space:nowrap}
+.prog-icon{font-size:2rem;margin-bottom:16px}
+.prog-name{font-family:var(--font-head);font-size:1.15rem;color:var(--cream);margin-bottom:8px}
+.prog-desc{font-size:.85rem;color:rgba(250,246,238,.55);margin-bottom:20px;line-height:1.7}
+.prog-price{font-family:var(--font-head);font-size:1.6rem;color:var(--gold);font-weight:700}
+@media(max-width:700px){.programs-grid{grid-template-columns:1fr}}
+
+/* ===== ABOUT ===== */
+.about-section{background:var(--deep-mid)}
+.about-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:center;max-width:960px;margin:0 auto}
+.about-placeholder{background:linear-gradient(135deg,rgba(198,168,85,.06),rgba(122,158,126,.06));border-radius:20px;height:400px;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(198,168,85,.15)}
+.about-placeholder span{font-family:var(--font-accent);font-size:1.3rem;color:rgba(250,246,238,.25)}
+.about-text .section-sub{margin-bottom:20px}
+.about-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.about-tag{padding:6px 14px;border-radius:20px;font-size:.78rem;font-weight:500;background:rgba(198,168,85,.08);color:var(--gold-light);border:1px solid rgba(198,168,85,.2)}
+@media(max-width:700px){.about-layout{grid-template-columns:1fr}.about-placeholder{height:260px}}
+
+/* ===== BOOK ===== */
+.book-section{background:var(--deep);overflow:hidden}
+.book-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center;max-width:900px;margin:0 auto}
+.book-visual{perspective:1200px;display:flex;justify-content:center}
+.book-3d{transform:rotateY(-10deg);transition:transform .5s ease;box-shadow:20px 20px 60px rgba(0,0,0,.5);border-radius:4px;max-width:280px}
+.book-3d:hover{transform:rotateY(-3deg)}
+@media(max-width:700px){.book-layout{grid-template-columns:1fr;text-align:center}}
+
+/* ===== LEAD MAGNET ===== */
+.lead-section{background:linear-gradient(135deg,var(--deep-mid),var(--deep-light));text-align:center;padding:80px 32px;border-top:1px solid rgba(198,168,85,.15);border-bottom:1px solid rgba(198,168,85,.15)}
+.lead-form{display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.lead-input{flex:1;min-width:200px;padding:14px 20px;border:1px solid rgba(198,168,85,.2);border-radius:30px;font-size:1rem;font-family:var(--font-body);background:rgba(250,246,238,.05);color:var(--cream)}
+.lead-input::placeholder{color:rgba(250,246,238,.4)}
+.lead-btn{padding:14px 32px;border:none;border-radius:30px;background:linear-gradient(135deg,var(--gold),#d4b85c);color:var(--deep);font-family:var(--font-head);font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s ease}
+.lead-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(198,168,85,.3)}
+.lead-note{margin-top:12px;font-size:.8rem;color:rgba(250,246,238,.35)}
+
+/* ===== FOOTER ===== */
+footer{text-align:center;padding:48px 32px;border-top:1px solid rgba(198,168,85,.1)}
+footer .footer-name{font-family:var(--font-head);font-size:1.2rem;color:var(--gold);margin-bottom:8px}
+footer p{font-size:.85rem;color:rgba(250,246,238,.4);margin-bottom:4px}
+footer a{color:var(--gold)}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero h1,.hero-sub,.hero-eyebrow,.hero-buttons{animation:fadeUp .8s ease forwards;opacity:0}
+.hero-eyebrow{animation-delay:.1s}
+.hero h1{animation-delay:.2s}
+.hero-sub{animation-delay:.35s}
+.hero-buttons{animation-delay:.5s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="nav-name">Jan Davis</div>
+<div class="nav-links">
+<a href="#method">Method</a>
+<a href="#programs">Programs</a>
+<a href="#about">About</a>
+<a href="#book">Book</a>
+<a href="#start" class="nav-cta">Get Started</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<p class="hero-eyebrow">The Regulated Classroom Method™</p>
+<h1>Your Nervous System<br>Is Running <em>Your Classroom.</em></h1>
+<p class="hero-sub">It's time to take back the wheel. The Regulated Classroom Method™ combines breathwork, EFT tapping, and mindfulness into one system that calms you first — then transforms every student in your room.</p>
+<div class="hero-buttons">
+<a href="#start" class="btn-primary">Download the Free Guide</a>
+<a href="#programs" class="btn-secondary">See Programs</a>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAIN SECTION -->
+<section class="pain-section" id="pain">
+<div class="container center">
+<p class="section-label">The Truth Nobody Talks About</p>
+<h2 class="section-title">Does This Sound Like You?</h2>
+<p class="section-sub">You didn't burn out because you stopped caring. You burned out because you never stopped.</p>
+<div class="pain-grid">
+<div class="pain-card"><p>By 10am I'm already running on fumes. I haven't eaten, I've broken up two fights, and a parent just emailed me about homework I haven't graded.</p></div>
+<div class="pain-card"><p>I have a kid who can't stop moving and one who won't speak, and I'm supposed to differentiate instruction for both while hitting state standards.</p></div>
+<div class="pain-card"><p>I go home and my own kids get the worst version of me. I snap at them over nothing and cry about it later.</p></div>
+<div class="pain-card"><p>Everyone says 'take care of yourself' but WHEN? I have 27 kids, 3 IEPs, and a meeting with the principal about test scores.</p></div>
+<div class="pain-card"><p>I dread Sunday nights. Actual stomach-in-knots dread. That's not normal and I know it.</p></div>
+<div class="pain-card"><p>I used to be the fun teacher. Now I'm just the tired teacher.</p></div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+<div class="container center">
+<p class="section-label">The System</p>
+<h2 class="section-title">The Regulated Classroom Method™</h2>
+<p class="section-sub">Four pillars. Three modalities. One complete system that heals the teacher and transforms the classroom.</p>
+<div class="method-cards">
+<div class="method-card">
+<div class="method-card-icon">🌬️</div>
+<h3>Reset</h3>
+<div class="pillar-sub">Breathwork</div>
+<p>Regulate your nervous system in 90 seconds flat — before the morning bell, between classes, or in the parking lot.</p>
+</div>
+<div class="method-card">
+<div class="method-card-icon">🔓</div>
+<h3>Release</h3>
+<div class="pillar-sub">EFT Tapping</div>
+<p>Clear the guilt, resentment, and Sunday-night dread. Tap through the patterns keeping you stuck in survival mode.</p>
+</div>
+<div class="method-card">
+<div class="method-card-icon">🎯</div>
+<h3>Refocus</h3>
+<div class="pillar-sub">Mindfulness</div>
+<p>Train your attention to stay present instead of spiraling. Eyes-open practices for people who can't sit still.</p>
+</div>
+<div class="method-card">
+<div class="method-card-icon">🌊</div>
+<h3>Ripple</h3>
+<div class="pillar-sub">Classroom Integration</div>
+<p>Bring these tools to your students. Age-appropriate scripts that transform classroom culture from chaotic to calm.</p>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- JOURNEY -->
+<section class="journey-section">
+<div class="container center">
+<p class="section-label">The Transformation</p>
+<h2 class="section-title">The 9-Step Regulated Classroom Journey™</h2>
+<p class="section-sub">Every teacher follows this exact path — from recognizing burnout signals to becoming the educator who changes the culture.</p>
+<div class="journey-img">
+<img src="JanProcess.png" alt="The Regulated Classroom Journey — 9 Steps">
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROGRAMS -->
+<section class="programs-section" id="programs">
+<div class="container center">
+<p class="section-label">Your Path Forward</p>
+<h2 class="section-title">Three Ways to Work With Jan</h2>
+<p class="section-sub">Whether you need a quick reset or a full transformation — there's a way in.</p>
+<div class="programs-grid">
+<div class="prog-card">
+<div class="prog-icon">📄</div>
+<div class="prog-name">The 90-Second Reset</div>
+<p class="prog-desc">5 breathwork and tapping tools you can use between classes. Instant relief, no fluff.</p>
+<div class="prog-price">FREE</div>
+</div>
+<div class="prog-card featured">
+<div class="prog-icon">🎓</div>
+<div class="prog-name">The Regulated Classroom Intensive</div>
+<p class="prog-desc">6 weeks of live group coaching through all 4 pillars — with classroom scripts, audio sessions, and community support.</p>
+<div class="prog-price">$1,997</div>
+</div>
+<div class="prog-card">
+<div class="prog-icon">💎</div>
+<div class="prog-name">Private Coaching</div>
+<p class="prog-desc">12 weeks of 1:1 deep-dive coaching. Personal regulation + customized classroom transformation.</p>
+<div class="prog-price">$5,997</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+<div class="container">
+<div class="about-layout">
+<div class="about-placeholder"><span>Jan's Photo Here</span></div>
+<div class="about-text">
+<p class="section-label">Meet Jan</p>
+<h2 class="section-title">I Know What Burnout<br>Feels Like From the Inside</h2>
+<p class="section-sub">I spent years pouring everything I had into helping others — until I had nothing left. What saved me wasn't another productivity hack or self-care checklist. It was learning to regulate my own nervous system using breathwork, EFT tapping, and mindfulness. Those tools didn't just help me survive — they helped me become the version of myself I'd always wanted to be. Now I teach educators to do the same.</p>
+<div class="about-tags">
+<span class="about-tag">EFT Tapping Practitioner</span>
+<span class="about-tag">Breathwork Facilitator</span>
+<span class="about-tag">Mindfulness Teacher</span>
+<span class="about-tag">The Regulated Classroom Method™</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BOOK -->
+<section class="book-section" id="book">
+<div class="container">
+<div class="book-layout">
+<div class="book-visual">
+<img class="book-3d" src="JanBook.png" alt="The Regulated Classroom by Jan Davis">
+</div>
+<div class="book-text">
+<p class="section-label">The Book</p>
+<h2 class="section-title">The Regulated Classroom</h2>
+<p class="section-sub">How Breathwork, Tapping, and Mindfulness Can Save Your Teaching Career and Transform Your Students. A complete guide with classroom-ready scripts, breathing protocols, and tapping sequences for every grade and every situation.</p>
+<a href="#start" class="btn-primary">Get Notified When It Launches</a>
+</div>
+</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEAD MAGNET -->
+<section class="lead-section" id="start">
+<div class="container">
+<p class="section-label" style="color:var(--gold)">Start Here</p>
+<h2 class="section-title">Get the Free 90-Second Reset Guide</h2>
+<p class="section-sub" style="margin-left:auto;margin-right:auto">5 science-backed tools overwhelmed teachers can use between classes. Takes 2 minutes to read. Works in 90 seconds.</p>
+<div class="lead-form">
+<input type="email" class="lead-input" placeholder="Your email address">
+<button class="lead-btn">Send My Free Guide</button>
+</div>
+<p class="lead-note">No spam. Unsubscribe anytime. Your nervous system will thank you.</p>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-name">Jan Davis</div>
+<p>Creator of The Regulated Classroom Method™</p>
+<p style="margin-top:12px;font-size:.75rem">Website concept by <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+</body>
+</html>

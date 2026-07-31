@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laney's Inner Circle Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #11212D;
+  --gold: #D4A853;
+  --teal: #206179;
+  --coral: #CB496B;
+  --cream: #FDF8F4;
+  --warm-white: #FFFDF9;
+  --soft-gray: #F5F0EB;
+  --text: #2C2C2C;
+  --text-light: #5A5A5A;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  font-size: 19px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 50px 20px 40px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+  border-radius: 0 0 30px 30px;
+  margin-bottom: 30px;
+}
+
+.hero-handwriting {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: white;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: rgba(255,255,255,0.85);
+  font-size: 18px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── NEXT MEETING BANNER ── */
+.next-meeting {
+  background: white;
+  border: 3px solid var(--gold);
+  border-radius: 18px;
+  padding: 28px 24px;
+  text-align: center;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+
+.next-meeting-label {
+  font-family: 'Caveat', cursive;
+  color: var(--coral);
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.next-meeting-date {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 28px;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.next-meeting-time {
+  font-size: 22px;
+  color: var(--teal);
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+/* ── BIG BUTTONS ── */
+.big-btn {
+  display: block;
+  width: 100%;
+  padding: 22px 24px;
+  border-radius: 14px;
+  font-size: 21px;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-bottom: 14px;
+}
+
+.big-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+.big-btn:active { transform: translateY(0); }
+
+.btn-zoom {
+  background: #2D8CFF;
+  color: white;
+}
+
+.btn-zoom::before {
+  content: "📹 ";
+  font-size: 24px;
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: white;
+}
+
+.btn-whatsapp::before {
+  content: "💬 ";
+  font-size: 24px;
+}
+
+/* ── SECTIONS ── */
+.section {
+  background: white;
+  border-radius: 18px;
+  padding: 28px 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  color: var(--navy);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* ── CALENDAR ── */
+.cal-month-label {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  color: var(--teal);
+  margin-top: 18px;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--soft-gray);
+}
+
+.cal-month-label:first-child { margin-top: 0; }
+
+.cal-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  font-size: 18px;
+}
+
+.cal-row.early { background: #EEF7FA; }
+.cal-row.late { background: #FFF8EE; }
+.cal-row.past { opacity: 0.45; }
+.cal-row.next-up { border: 2px solid var(--gold); background: #FFFDF5; }
+
+.cal-date { font-weight: 600; color: var(--navy); min-width: 140px; }
+.cal-time { font-weight: 600; color: var(--teal); white-space: nowrap; }
+.cal-time.late-time { color: var(--coral); }
+
+.cal-legend {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 14px;
+  font-size: 15px;
+  color: var(--text-light);
+  flex-wrap: wrap;
+}
+
+.cal-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.legend-early::before { background: #EEF7FA; border: 1px solid #B8DDE8; }
+.legend-late::before { background: #FFF8EE; border: 1px solid #F0D9A8; }
+
+/* ── TODO STEPS ── */
+.step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--soft-gray);
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-content { flex: 1; }
+.step-title { font-weight: 600; color: var(--navy); margin-bottom: 4px; font-size: 19px; }
+.step-desc { color: var(--text-light); font-size: 17px; line-height: 1.6; }
+
+.step-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 30px 20px 40px;
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+.footer-heart {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--coral);
+  margin-bottom: 6px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  .hero h1 { font-size: 28px; }
+  .hero-handwriting { font-size: 24px; }
+  .next-meeting-date { font-size: 24px; }
+  .next-meeting-time { font-size: 20px; }
+  .big-btn { font-size: 19px; padding: 20px; }
+  .cal-row { padding: 12px; font-size: 16px; }
+  .cal-date { min-width: 110px; }
+  body { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-handwriting">Welcome, Laney ✨</div>
+  <h1>Your Inner Circle<br>Home Base</h1>
+  <p>Everything you need, all in one place. Bookmark this page!</p>
+</div>
+
+<div class="container">
+
+<!-- NEXT MEETING -->
+<div class="next-meeting">
+  <div class="next-meeting-label">Your Next Meeting</div>
+  <div class="next-meeting-date" id="next-date">Monday, April 13th</div>
+  <div class="next-meeting-time" id="next-time">11:00 AM (your time)</div>
+  <a href="https://us02web.zoom.us/j/82508092497" target="_blank" class="big-btn btn-zoom" style="margin-top:14px; margin-bottom:0;">Join the Zoom Call</a>
+</div>
+
+<!-- QUICK LINKS -->
+<div style="margin-bottom: 24px;">
+  <a href="https://chat.whatsapp.com/FwIziCT69oG83AMZqBxj4h" target="_blank" class="big-btn btn-whatsapp">Join the WhatsApp Group</a>
+</div>
+
+<!-- CALENDAR -->
+<div class="section">
+  <div class="section-title">📅 Your Meeting Calendar</div>
+  <p style="font-size:17px; color:var(--text-light); margin-bottom:14px;">
+    Every Monday for 90 days. All times are Pacific Time (your time zone).
+  </p>
+  <div class="cal-legend">
+    <span class="legend-early">11:00 AM meeting</span>
+    <span class="legend-late">3:00 PM meeting</span>
+  </div>
+
+  <div class="cal-month-label">April</div>
+  <div class="cal-row early next-up">
+    <span class="cal-date">Mon, April 13</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, April 20</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, April 27</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+
+  <div class="cal-month-label">May</div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, May 4</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, May 11</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, May 18</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, May 25</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+
+  <div class="cal-month-label">June</div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, June 1</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, June 8</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, June 15</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, June 22</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+  <div class="cal-row late">
+    <span class="cal-date">Mon, June 29</span>
+    <span class="cal-time late-time">3:00 PM 🌅</span>
+  </div>
+
+  <div class="cal-month-label">July</div>
+  <div class="cal-row early">
+    <span class="cal-date">Mon, July 6</span>
+    <span class="cal-time">11:00 AM ☀️</span>
+  </div>
+</div>
+
+<!-- BEFORE YOU BEGIN -->
+<div class="section">
+  <div class="section-title">✅ Before April 13th — Your 3 Steps</div>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-content">
+      <div class="step-title">Join the WhatsApp Group</div>
+      <div class="step-desc">Introduce yourself: where you're from, your intention for these 90 days, and your Misogi (your big bold goal for the year).</div>
+      <a href="https://chat.whatsapp.com/FwIziCT69oG83AMZqBxj4h" target="_blank" class="step-link">Join WhatsApp →</a>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-content">
+      <div class="step-title">Write Your "Before Snapshot"</div>
+      <div class="step-desc">Write an honest, private letter to yourself about where you are right now — your life, food, body, thoughts, relationships, and patterns. Don't polish it. Write the real version. You'll read it in 90 days and be amazed at how much has changed.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-content">
+      <div class="step-title">Show Up on April 13th</div>
+      <div class="step-desc">Bring your letter and your Misogi to the first call. Brittany will guide you from there. That's it — just show up.</div>
+      <a href="https://us02web.zoom.us/j/82508092497" target="_blank" class="step-link">Zoom Link →</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-heart">Made with love for you, Laney 💛</div>
+  <p>Bookmark this page so you can always find it.<br>Works on your phone and computer.</p>
+</div>
+
+</div>
+
+<script>
+// Auto-highlight next upcoming meeting
+(function() {
+  const meetings = [
+    new Date('2026-04-13T11:00:00-07:00'),
+    new Date('2026-04-20T15:00:00-07:00'),
+    new Date('2026-04-27T11:00:00-07:00'),
+    new Date('2026-05-04T15:00:00-07:00'),
+    new Date('2026-05-11T11:00:00-07:00'),
+    new Date('2026-05-18T15:00:00-07:00'),
+    new Date('2026-05-25T11:00:00-07:00'),
+    new Date('2026-06-01T15:00:00-07:00'),
+    new Date('2026-06-08T11:00:00-07:00'),
+    new Date('2026-06-15T15:00:00-07:00'),
+    new Date('2026-06-22T11:00:00-07:00'),
+    new Date('2026-06-29T15:00:00-07:00'),
+    new Date('2026-07-06T11:00:00-07:00'),
+  ];
+
+  const labels = [
+    'Monday, April 13th', 'Monday, April 20th', 'Monday, April 27th',
+    'Monday, May 4th', 'Monday, May 11th', 'Monday, May 18th',
+    'Monday, May 25th', 'Monday, June 1st', 'Monday, June 8th',
+    'Monday, June 15th', 'Monday, June 22nd', 'Monday, June 29th',
+    'Monday, July 6th'
+  ];
+
+  const times = [
+    '11:00 AM', '3:00 PM', '11:00 AM', '3:00 PM',
+    '11:00 AM', '3:00 PM', '11:00 AM', '3:00 PM',
+    '11:00 AM', '3:00 PM', '11:00 AM', '3:00 PM', '11:00 AM'
+  ];
+
+  const now = new Date();
+  const rows = document.querySelectorAll('.cal-row');
+
+  let nextIdx = -1;
+  for (let i = 0; i < meetings.length; i++) {
+    if (meetings[i] > now) { nextIdx = i; break; }
+  }
+
+  rows.forEach((row, i) => {
+    row.classList.remove('next-up', 'past');
+    if (nextIdx >= 0 && i < nextIdx) row.classList.add('past');
+    if (i === nextIdx) row.classList.add('next-up');
+  });
+
+  if (nextIdx >= 0) {
+    document.getElementById('next-date').textContent = labels[nextIdx];
+    document.getElementById('next-time').textContent = times[nextIdx] + ' (your time)';
+  }
+})();
+</script>
+</body>
+</html>

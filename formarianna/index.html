@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marianna Lios — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--deep); color:var(--cream); font-family:'DM Sans',sans-serif; overflow-x:hidden; }
+.section { padding:80px 24px; max-width:1100px; margin:0 auto; }
+@media(min-width:768px){ .section { padding:100px 40px; } }
+
+/* HERO */
+.hero { text-align:center; padding:100px 24px 80px; position:relative; }
+.hero::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:200px; height:200px; background:radial-gradient(circle, rgba(198,168,85,0.15) 0%, transparent 70%); border-radius:50%; pointer-events:none; }
+.hero-eyebrow { font-family:'Caveat',cursive; font-size:1.3rem; color:var(--gold); margin-bottom:12px; letter-spacing:1px; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.2rem); color:var(--cream); line-height:1.2; margin-bottom:20px; }
+.hero h1 span { color:var(--gold); }
+.hero p { font-size:1.05rem; color:var(--gold-light); max-width:620px; margin:0 auto 10px; line-height:1.7; opacity:0.85; }
+.hero-sub { font-size:0.85rem; color:var(--warm); opacity:0.7; margin-top:20px; }
+
+/* IDENTITY CARD */
+.id-card-wrap { display:flex; justify-content:center; padding:0 24px; }
+.id-card { background: linear-gradient(135deg, var(--deep-mid), #0e2236); border:1px solid rgba(198,168,85,0.25); border-radius:16px; padding:48px 40px; max-width:680px; width:100%; text-align:center; position:relative; overflow:hidden; }
+.id-card::before { content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px; background:radial-gradient(circle, rgba(198,168,85,0.12) 0%, transparent 70%); border-radius:50%; }
+.id-card h2 { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--gold); margin-bottom:6px; }
+.id-card .title { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--cream); font-style:italic; margin-bottom:20px; }
+.id-card .pitch { font-size:0.95rem; color:var(--gold-light); line-height:1.7; margin-bottom:24px; opacity:0.9; }
+.tags { display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.tag { background:rgba(198,168,85,0.12); border:1px solid rgba(198,168,85,0.3); color:var(--gold-light); font-size:0.75rem; padding:6px 14px; border-radius:20px; letter-spacing:0.5px; text-transform:uppercase; }
+
+/* METHOD SECTION */
+.method-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); text-align:center; margin-bottom:8px; }
+.method-section .sub { text-align:center; color:var(--gold); font-family:'Caveat',cursive; font-size:1.2rem; margin-bottom:50px; }
+.method-img-wrap { text-align:center; margin-bottom:20px; }
+.method-img-wrap img { max-width:600px; width:100%; border-radius:12px; }
+.pillars { display:grid; grid-template-columns:1fr; gap:20px; margin-top:40px; }
+@media(min-width:600px){ .pillars { grid-template-columns:1fr 1fr; } }
+.pillar { background:linear-gradient(135deg, var(--deep-mid), #0e2236); border:1px solid rgba(198,168,85,0.15); border-radius:12px; padding:30px 24px; transition:border-color 0.3s, transform 0.3s; }
+.pillar:hover { border-color:var(--gold); transform:translateY(-3px); }
+.pillar-num { font-family:'Caveat',cursive; font-size:1.4rem; color:var(--gold); margin-bottom:4px; }
+.pillar h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--cream); margin-bottom:8px; }
+.pillar p { font-size:0.88rem; color:var(--gold-light); line-height:1.6; opacity:0.8; }
+
+/* JOURNEY SECTION */
+.journey-section { text-align:center; }
+.journey-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); margin-bottom:8px; }
+.journey-section .sub { color:var(--gold); font-family:'Caveat',cursive; font-size:1.2rem; margin-bottom:40px; }
+.journey-section img { max-width:700px; width:100%; border-radius:12px; border:1px solid rgba(198,168,85,0.15); }
+
+/* WEBSITE PREVIEW */
+.preview-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); text-align:center; margin-bottom:8px; }
+.preview-section .sub { text-align:center; color:var(--gold-light); font-size:0.95rem; margin-bottom:40px; opacity:0.8; }
+.previews { display:grid; grid-template-columns:1fr; gap:24px; }
+@media(min-width:600px){ .previews { grid-template-columns:1fr 1fr; } }
+.preview-card { background:var(--deep-mid); border:1px solid rgba(198,168,85,0.15); border-radius:12px; overflow:hidden; transition:border-color 0.3s, transform 0.3s; cursor:pointer; text-decoration:none; display:block; }
+.preview-card:hover { border-color:var(--gold); transform:translateY(-4px); }
+.preview-thumb { height:200px; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:1.1rem; padding:20px; text-align:center; line-height:1.4; }
+.preview-thumb.warm { background:linear-gradient(135deg, #FAF6EE, #e8e0d0); color:#1C2B1E; }
+.preview-thumb.bold { background:linear-gradient(135deg, #0B1A2B, #1a3a5c); color:var(--gold); }
+.preview-info { padding:20px; }
+.preview-info h3 { font-family:'Playfair Display',serif; color:var(--cream); font-size:1rem; margin-bottom:4px; }
+.preview-info p { font-size:0.82rem; color:var(--gold-light); opacity:0.7; }
+
+/* BOOK SECTION */
+.book-section { display:flex; flex-direction:column; align-items:center; gap:40px; }
+@media(min-width:700px){ .book-section { flex-direction:row; align-items:center; } }
+.book-visual { flex-shrink:0; perspective:800px; }
+.book-3d { width:240px; transform:rotateY(-12deg) rotateX(2deg); box-shadow: 20px 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(198,168,85,0.1); border-radius:4px; transition:transform 0.4s; }
+.book-3d:hover { transform:rotateY(-4deg) rotateX(1deg); }
+.book-text h2 { font-family:'Playfair Display',serif; font-size:clamp(1.5rem,3.5vw,2rem); color:var(--cream); margin-bottom:12px; }
+.book-text p { font-size:0.92rem; color:var(--gold-light); line-height:1.7; opacity:0.85; margin-bottom:16px; }
+.book-note { font-size:0.8rem; color:var(--warm); font-style:italic; opacity:0.7; }
+
+/* INSTAGRAM BIO MOCKUP */
+.insta-section { display:flex; justify-content:center; }
+.insta-card { background:var(--white); border-radius:16px; padding:32px 28px; max-width:380px; width:100%; text-align:center; }
+.insta-avatar { width:80px; height:80px; border-radius:50%; background:linear-gradient(135deg, var(--gold), var(--warm)); margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; color:var(--deep); font-size:1.8rem; font-weight:700; }
+.insta-handle { font-weight:700; color:#262626; font-size:0.95rem; margin-bottom:8px; }
+.insta-stats { display:flex; justify-content:center; gap:28px; margin-bottom:14px; }
+.insta-stat { text-align:center; }
+.insta-stat .num { font-weight:700; color:#262626; font-size:0.95rem; }
+.insta-stat .label { font-size:0.72rem; color:#8e8e8e; }
+.insta-bio { font-size:0.82rem; color:#262626; line-height:1.5; text-align:left; }
+.insta-bio strong { font-weight:600; }
+
+/* PROGRAMS */
+.programs-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); text-align:center; margin-bottom:8px; }
+.programs-section .sub { text-align:center; color:var(--gold-light); font-size:0.95rem; margin-bottom:40px; opacity:0.8; }
+.programs { display:grid; grid-template-columns:1fr; gap:20px; }
+@media(min-width:700px){ .programs { grid-template-columns:1fr 1fr 1fr; } }
+.program { background:linear-gradient(135deg, var(--deep-mid), #0e2236); border:1px solid rgba(198,168,85,0.15); border-radius:12px; padding:32px 24px; text-align:center; transition:border-color 0.3s, transform 0.3s; }
+.program.featured { border-color:var(--gold); background:linear-gradient(135deg, #162d45, #1a3a5c); position:relative; }
+.program.featured::before { content:'MOST POPULAR'; position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--deep); font-size:0.65rem; font-weight:700; padding:4px 14px; border-radius:10px; letter-spacing:1px; }
+.program:hover { border-color:var(--gold); transform:translateY(-3px); }
+.program h3 { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--cream); margin-bottom:6px; }
+.program .price { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold); margin-bottom:8px; }
+.program .desc { font-size:0.82rem; color:var(--gold-light); opacity:0.75; line-height:1.5; }
+
+/* INCOME CALCULATOR */
+.calc-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); text-align:center; margin-bottom:8px; }
+.calc-section .sub { text-align:center; color:var(--gold-light); font-size:0.95rem; margin-bottom:40px; opacity:0.8; }
+.calculator { background:linear-gradient(135deg, var(--deep-mid), #0e2236); border:1px solid rgba(198,168,85,0.2); border-radius:16px; padding:40px 32px; max-width:700px; margin:0 auto; }
+.slider-group { margin-bottom:28px; }
+.slider-label { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+.slider-label span { font-size:0.9rem; color:var(--gold-light); }
+.slider-label .val { font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--gold); font-weight:600; }
+input[type=range] { width:100%; -webkit-appearance:none; background:rgba(198,168,85,0.2); height:6px; border-radius:3px; outline:none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:22px; height:22px; border-radius:50%; background:var(--gold); cursor:pointer; border:2px solid var(--deep); }
+.calc-results { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:32px; padding-top:28px; border-top:1px solid rgba(198,168,85,0.15); }
+.calc-result { text-align:center; }
+.calc-result .label { font-size:0.8rem; color:var(--gold-light); opacity:0.7; margin-bottom:4px; text-transform:uppercase; letter-spacing:0.5px; }
+.calc-result .amount { font-family:'Playfair Display',serif; font-size:clamp(1.4rem,3vw,2rem); color:var(--gold); }
+
+/* REPORT TEASER */
+.report-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); text-align:center; margin-bottom:8px; }
+.report-section .sub { text-align:center; color:var(--gold-light); font-size:0.95rem; margin-bottom:40px; opacity:0.8; }
+.report-layout { display:grid; grid-template-columns:1fr; gap:40px; }
+@media(min-width:700px){ .report-layout { grid-template-columns:1fr 1fr; align-items:center; } }
+.report-pages { position:relative; height:260px; }
+.report-page { position:absolute; width:200px; height:160px; background:var(--cream); border-radius:6px; padding:16px; box-shadow:0 8px 30px rgba(0,0,0,0.3); }
+.report-page:nth-child(1) { top:0; left:0; transform:rotate(-6deg); }
+.report-page:nth-child(2) { top:30px; left:60px; transform:rotate(2deg); }
+.report-page:nth-child(3) { top:60px; left:30px; transform:rotate(-2deg); }
+.report-page h4 { font-family:'Playfair Display',serif; font-size:0.7rem; color:var(--deep); margin-bottom:8px; }
+.fake-line { height:4px; background:rgba(11,26,43,0.1); border-radius:2px; margin-bottom:4px; }
+.fake-line.short { width:60%; }
+.fake-chart { width:100%; height:40px; margin-top:8px; display:flex; align-items:flex-end; gap:3px; }
+.fake-bar { width:12%; border-radius:2px 2px 0 0; }
+.bullets li { font-size:0.9rem; color:var(--gold-light); line-height:1.7; margin-bottom:12px; list-style:none; padding-left:24px; position:relative; }
+.bullets li::before { content:'→'; position:absolute; left:0; color:var(--gold); }
+
+/* CTA */
+.cta-section { text-align:center; padding:80px 24px; position:relative; }
+.cta-section::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:400px; height:400px; background:radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%); border-radius:50%; pointer-events:none; }
+.cta-section h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4.5vw,2.6rem); color:var(--cream); margin-bottom:16px; }
+.cta-section p { font-size:1rem; color:var(--gold-light); max-width:560px; margin:0 auto 32px; line-height:1.7; opacity:0.85; }
+.btn { display:inline-block; background:var(--gold); color:var(--deep); font-family:'DM Sans',sans-serif; font-weight:600; font-size:0.95rem; padding:16px 40px; border-radius:8px; text-decoration:none; letter-spacing:0.5px; transition:background 0.3s, transform 0.3s; }
+.btn:hover { background:var(--gold-light); transform:translateY(-2px); }
+
+/* FOOTER */
+.footer { text-align:center; padding:40px 24px; border-top:1px solid rgba(198,168,85,0.1); }
+.footer p { font-size:0.78rem; color:var(--gold-light); opacity:0.5; }
+
+/* DIVIDER */
+.divider { width:60px; height:2px; background:linear-gradient(90deg, transparent, var(--gold), transparent); margin:0 auto 60px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow">A preview built just for you</p>
+  <h1>Marianna, Here's a Preview of<br><span>Your Coaching Business</span></h1>
+  <p>Jimmy Davis's AI Business Design Software analyzed your expertise, your market, and your ideal audience — then built this preview of what your coaching brand could look like.</p>
+  <p class="hero-sub">Everything below was designed specifically for you. This is your business — reimagined.</p>
+</section>
+
+<!-- IDENTITY CARD -->
+<div class="id-card-wrap section">
+  <div class="id-card">
+    <h2>Marianna Lios</h2>
+    <div class="title">Creator of The Soul Spark Method™</div>
+    <p class="pitch">I help women in their 40s and 50s who've spent years on autopilot — being the perfect mom, the reliable employee, the one who holds everything together — finally reconnect with what THEY want. Through my proven system, I guide women from feeling invisible and unfulfilled to designing and living a life that lights them up from the inside.</p>
+    <div class="tags">
+      <span class="tag">Certified DreamBuilder Coach</span>
+      <span class="tag">Life Mastery Consultant</span>
+      <span class="tag">Transformational Speaker</span>
+      <span class="tag">Women's Empowerment</span>
+      <span class="tag">Midlife Reinvention</span>
+    </div>
+  </div>
+</div>
+
+<!-- METHOD VISUAL -->
+<section class="section method-section">
+  <h2>The Soul Spark Method™</h2>
+  <p class="sub">Your proven 4-pillar framework for reigniting lives</p>
+  <div class="method-img-wrap">
+    <img src="MariannaMethod.png" alt="The Soul Spark Method - 4 Pillars: Awaken, Envision, Ignite, Embody">
+  </div>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">01</div>
+      <h3>Awaken</h3>
+      <p>Break through the autopilot. Identify the invisible beliefs keeping her small. Reconnect with what she actually wants.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">02</div>
+      <h3>Envision</h3>
+      <p>Design her soul-aligned vision. Map the life she'd love across relationships, vocation, health, and freedom.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">03</div>
+      <h3>Ignite</h3>
+      <p>Build the bridge from where she is to where she wants to be. Create the action blueprint and take bold steps.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">04</div>
+      <h3>Embody</h3>
+      <p>Make the new her a daily reality. Integrate the mindset, habits, and practices that keep the spark alive permanently.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="section journey-section">
+  <h2>Your Proven 9-Step Process</h2>
+  <p class="sub">Every client follows this exact journey</p>
+  <img src="MariannaProcess.png" alt="The Soul Spark Journey - 9 Steps to Reigniting Your Life">
+</section>
+
+<!-- WEBSITE PREVIEW -->
+<section class="section preview-section">
+  <h2>Your Website — Two Directions</h2>
+  <p class="sub">Two complete website mockups, designed and ready to bring to life</p>
+  <div class="previews">
+    <a href="marianna.html" class="preview-card">
+      <div class="preview-thumb warm">Warm & Luminous<br><small style="font-family:'Caveat',cursive; font-size:1.1rem;">Soft, editorial, nature-inspired</small></div>
+      <div class="preview-info">
+        <h3>Style A — Warm & Elegant</h3>
+        <p>Cream backgrounds, sage accents, editorial feel. Think Brené Brown meets a luxury wellness brand.</p>
+      </div>
+    </a>
+    <a href="marianna2.html" class="preview-card">
+      <div class="preview-thumb bold">Deep & Radiant<br><small style="font-family:'Caveat',cursive; font-size:1.1rem;">Premium, immersive, powerful</small></div>
+      <div class="preview-info">
+        <h3>Style B — Bold & Deep</h3>
+        <p>Deep navy canvas, gold fire accents, midnight luxury. Sophisticated and unforgettable.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="section book-section">
+  <div class="book-visual">
+    <img src="MariannaBook.png" alt="Spark by Marianna Lios" class="book-3d">
+  </div>
+  <div class="book-text">
+    <h2>Your Book: <em>Spark</em></h2>
+    <p>A complete book concept with full chapter outline, designed to establish you as THE voice for women in midlife reinvention. "Spark: Reigniting the Life You Were Always Meant to Live" positions you as an author, a thought leader, and the go-to expert in your space.</p>
+    <p>This isn't just a book — it's a business card, a credibility builder, and a client magnet all in one.</p>
+    <p class="book-note">Full outline, chapters, and writing support included in the complete Blueprint.</p>
+  </div>
+</section>
+
+<!-- INSTAGRAM BIO MOCKUP -->
+<section class="section" style="text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); color:var(--cream); margin-bottom:40px;">Your Instagram — Reimagined</h2>
+  <div style="display:flex; justify-content:center;">
+    <div class="insta-card">
+      <div class="insta-avatar">ML</div>
+      <div class="insta-handle">@mariannalios</div>
+      <div class="insta-stats">
+        <div class="insta-stat"><div class="num">—</div><div class="label">Posts</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="label">Followers</div></div>
+        <div class="insta-stat"><div class="num">—</div><div class="label">Following</div></div>
+      </div>
+      <div class="insta-bio">
+        <strong>Marianna Lios</strong><br>
+        ✨ Creator of The Soul Spark Method™<br>
+        🔥 Helping women 40+ stop disappearing & start living<br>
+        📖 Author of <em>Spark</em><br>
+        🎙️ Host of Soul Spark Sessions<br>
+        ⬇️ Take the free Soul Spark Quiz
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section programs-section">
+  <h2>Your Programs & Pricing</h2>
+  <p class="sub">A complete value ladder designed for your audience</p>
+  <div class="programs">
+    <div class="program">
+      <h3>The 5 Invisible Chains</h3>
+      <div class="price">FREE</div>
+      <div class="desc">Lead magnet report — your email list builder and first touch with future clients</div>
+    </div>
+    <div class="program featured">
+      <h3>The Soul Spark Experience</h3>
+      <div class="price">$2,497</div>
+      <div class="desc">6-week group coaching program — your bread-and-butter offer for 8-12 women per round</div>
+    </div>
+    <div class="program">
+      <h3>Soul Spark Private Intensive</h3>
+      <div class="price">$7,500</div>
+      <div class="desc">12-week 1:1 deep-dive coaching — the white-glove transformation experience</div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="section calc-section">
+  <h2>Your Income Potential</h2>
+  <p class="sub">Move the sliders to see what's possible with your programs</p>
+  <div class="calculator">
+    <div class="slider-group">
+      <div class="slider-label"><span>Women per group round</span><span class="val" id="groupVal">10</span></div>
+      <input type="range" id="groupSlider" min="4" max="20" value="10">
+    </div>
+    <div class="slider-group">
+      <div class="slider-label"><span>Group rounds per year</span><span class="val" id="roundVal">4</span></div>
+      <input type="range" id="roundSlider" min="1" max="8" value="4">
+    </div>
+    <div class="slider-group">
+      <div class="slider-label"><span>Private clients per year</span><span class="val" id="privateVal">4</span></div>
+      <input type="range" id="privateSlider" min="0" max="12" value="4">
+    </div>
+    <div class="calc-results">
+      <div class="calc-result">
+        <div class="label">Monthly Revenue</div>
+        <div class="amount" id="monthlyRev">$10,815</div>
+      </div>
+      <div class="calc-result">
+        <div class="label">Annual Revenue</div>
+        <div class="amount" id="annualRev">$129,780</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="section report-section">
+  <h2>What the Full Blueprint Reveals</h2>
+  <p class="sub">Your complete AI-generated business design report includes everything above — plus:</p>
+  <div class="report-layout">
+    <div class="report-pages">
+      <div class="report-page">
+        <h4>Market Research Report</h4>
+        <div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div>
+        <div class="fake-chart">
+          <div class="fake-bar" style="height:20px; background:var(--sage);"></div>
+          <div class="fake-bar" style="height:32px; background:var(--gold);"></div>
+          <div class="fake-bar" style="height:18px; background:var(--rose);"></div>
+          <div class="fake-bar" style="height:40px; background:var(--warm);"></div>
+          <div class="fake-bar" style="height:28px; background:var(--sage);"></div>
+        </div>
+      </div>
+      <div class="report-page">
+        <h4>Customer Avatar Profile</h4>
+        <div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div><div class="fake-line short"></div>
+        <div class="fake-line"></div>
+      </div>
+      <div class="report-page">
+        <h4>Revenue Projections</h4>
+        <div class="fake-line short"></div><div class="fake-line"></div>
+        <div class="fake-chart">
+          <div class="fake-bar" style="height:14px; background:var(--gold);"></div>
+          <div class="fake-bar" style="height:22px; background:var(--gold);"></div>
+          <div class="fake-bar" style="height:34px; background:var(--gold);"></div>
+          <div class="fake-bar" style="height:44px; background:var(--gold);"></div>
+        </div>
+      </div>
+    </div>
+    <ul class="bullets">
+      <li>The exact words your ideal client uses at 2am when she can't sleep — and how to use them in your marketing so she feels like you're reading her mind</li>
+      <li>The 5 competitors already in your space — what they're doing right, what they're missing, and the gap only YOU can fill</li>
+      <li>Why women in midlife are the fastest-growing coaching market — and the specific positioning that puts you ahead of 90% of coaches</li>
+      <li>The "Terror Barrier" framework that most coaches don't know about — and why it's the secret weapon that keeps YOUR clients from quitting</li>
+      <li>The complete 6-week curriculum for The Soul Spark Experience — every session mapped, every exercise designed, ready to deliver</li>
+      <li>How to hit $7,000/month with just 23 clients per year — the "reality check" math that proves this business model works even part-time</li>
+      <li>Your complete sales copy — headlines, hooks, fascination bullets, and CTAs written in Dan Kennedy direct-response style</li>
+      <li>The 12-chapter book outline that positions you as the definitive voice in midlife reinvention for women — with a title publishers would fight over</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Want to Bring This to Life?</h2>
+  <p>Everything you've seen on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint — including your complete market research, sales copy, curriculum, email sequences, and implementation roadmap — is available when you work with Jimmy.</p>
+  <a href="https://ineedjimmy.com/hire" class="btn">See Jimmy's Services & Pricing</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>This preview was generated by Jimmy Davis's AI Business Design Software — INeedJimmy.com</p>
+</footer>
+
+<script>
+const groupSlider = document.getElementById('groupSlider');
+const roundSlider = document.getElementById('roundSlider');
+const privateSlider = document.getElementById('privateSlider');
+const groupVal = document.getElementById('groupVal');
+const roundVal = document.getElementById('roundVal');
+const privateVal = document.getElementById('privateVal');
+const monthlyRev = document.getElementById('monthlyRev');
+const annualRev = document.getElementById('annualRev');
+
+function calculate() {
+  const g = parseInt(groupSlider.value);
+  const r = parseInt(roundSlider.value);
+  const p = parseInt(privateSlider.value);
+  groupVal.textContent = g;
+  roundVal.textContent = r;
+  privateVal.textContent = p;
+  const annual = (g * r * 2497) + (p * 7500);
+  const monthly = Math.round(annual / 12);
+  annualRev.textContent = '$' + annual.toLocaleString();
+  monthlyRev.textContent = '$' + monthly.toLocaleString();
+}
+groupSlider.addEventListener('input', calculate);
+roundSlider.addEventListener('input', calculate);
+privateSlider.addEventListener('input', calculate);
+calculate();
+</script>
+</body>
+</html>

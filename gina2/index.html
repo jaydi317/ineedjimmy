@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNA Cosmetic Energy Healing® | Gina Smith | Santa Barbara</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0D0A06;
+  --dark-brown: #1A120A;
+  --warm-brown: #3D2B1A;
+  --gold: #B8923A;
+  --gold-light: #D4A84B;
+  --gold-pale: #F5ECD5;
+  --cream: #FDFAF4;
+  --warm-white: #FAF6EE;
+  --muted: #6B5744;
+  --rule: #C8B89A;
+  --accent-red: #8B1A1A;
+}
+
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+/* MASTHEAD */
+.masthead {
+  background: var(--ink);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 60px;
+  border-bottom: 1px solid rgba(184,146,58,0.2);
+}
+
+.masthead-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.6);
+}
+
+.masthead-phone {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+}
+
+.masthead-main {
+  padding: 70px 60px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 88vh;
+  align-items: stretch;
+}
+
+.masthead-left {
+  padding: 30px 60px 80px 0;
+  border-right: 1px solid rgba(184,146,58,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.masthead-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.masthead-eyebrow::before,
+.masthead-eyebrow::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(184,146,58,0.3);
+}
+
+.masthead-left h1 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--warm-white);
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.masthead-left h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-light);
+}
+
+.masthead-deck {
+  font-family: 'EB Garamond', serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: rgba(250,246,238,0.65);
+  margin-bottom: 44px;
+  font-style: italic;
+  max-width: 480px;
+}
+
+.masthead-cta {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 18px 40px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-gold:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.btn-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(250,246,238,0.3);
+  text-transform: uppercase;
+}
+
+.masthead-right {
+  padding: 30px 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.featured-testimonial {
+  background: rgba(184,146,58,0.07);
+  border-left: 3px solid var(--gold);
+  padding: 32px 36px;
+  margin-bottom: 32px;
+}
+
+.featured-testimonial p {
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(250,246,238,0.85);
+  margin-bottom: 16px;
+}
+
+.featured-testimonial .attribution {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.masthead-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(184,146,58,0.1);
+  border: 1px solid rgba(184,146,58,0.1);
+}
+
+.fact-cell {
+  background: rgba(255,255,255,0.02);
+  padding: 22px 24px;
+  text-align: center;
+}
+
+.fact-cell .num {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  display: block;
+}
+
+.fact-cell .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(250,246,238,0.3);
+  margin-top: 6px;
+  display: block;
+}
+
+.masthead-bottom-bar {
+  padding: 20px 60px;
+  background: rgba(184,146,58,0.08);
+  border-top: 1px solid rgba(184,146,58,0.15);
+  display: flex;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.bottom-bar-item {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.55);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bottom-bar-item span { color: rgba(184,146,58,0.85); }
+
+/* EDITORIAL BODY */
+.editorial-container {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 80px 60px;
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* Main column */
+.main-column {}
+
+.drop-cap-section {
+  margin-bottom: 60px;
+}
+
+.drop-cap-section > p:first-of-type::first-letter {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 72px;
+  font-weight: 700;
+  float: left;
+  line-height: 0.8;
+  margin: 8px 12px 0 0;
+  color: var(--gold);
+}
+
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 48px 0 32px;
+}
+
+.section-rule h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 26px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-rule::before { max-width: 30px; }
+
+.main-column p {
+  font-size: 18px;
+  line-height: 1.85;
+  color: #2A1E14;
+  margin-bottom: 20px;
+}
+
+.pull-quote {
+  border-top: 3px double var(--gold);
+  border-bottom: 3px double var(--gold);
+  padding: 28px 0;
+  margin: 44px 0;
+  text-align: center;
+}
+
+.pull-quote p {
+  font-family: 'EB Garamond', serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--warm-brown);
+  margin: 0;
+}
+
+.process-editorial {
+  margin: 44px 0;
+}
+
+.process-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 24px 0;
+}
+
+.process-item:first-child { border-top: 1px solid var(--rule); }
+
+.process-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 1px;
+  padding-top: 4px;
+  font-weight: 500;
+}
+
+.process-content h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+
+.process-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Sidebar */
+.sidebar {}
+
+.sidebar-box {
+  background: var(--ink);
+  color: var(--warm-white);
+  padding: 36px 32px;
+  margin-bottom: 32px;
+}
+
+.sidebar-box h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+  color: var(--gold-light);
+}
+
+.sidebar-box p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(250,246,238,0.75);
+  margin-bottom: 16px;
+}
+
+.sidebar-price-display {
+  text-align: center;
+  border-top: 1px solid rgba(184,146,58,0.3);
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.sidebar-price-display .was {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-decoration: line-through;
+  color: rgba(250,246,238,0.3);
+  letter-spacing: 1px;
+}
+
+.sidebar-price-display .now {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: block;
+  line-height: 1.1;
+}
+
+.sidebar-price-display .note {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(250,246,238,0.35);
+  margin-top: 6px;
+}
+
+.sidebar-box .btn-gold {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-size: 11px;
+}
+
+.sidebar-comparison {
+  background: var(--gold-pale);
+  border: 1px solid var(--rule);
+  padding: 30px;
+  margin-bottom: 32px;
+}
+
+.sidebar-comparison h3 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--ink);
+  text-align: center;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 4px;
+}
+
+.compare-row .compare-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  grid-column: 1 / -1;
+  padding: 10px 0 4px;
+  border-bottom: 1px solid rgba(184,146,58,0.3);
+  margin-bottom: 6px;
+}
+
+.compare-bad {
+  font-size: 14px;
+  color: #999;
+  padding: 4px 8px 4px 0;
+  text-decoration: line-through;
+}
+
+.compare-good {
+  font-size: 14px;
+  color: var(--accent-red);
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.sidebar-testimonial {
+  background: white;
+  border-left: 3px solid var(--gold);
+  padding: 28px;
+  margin-bottom: 32px;
+}
+
+.sidebar-testimonial p {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.sidebar-testimonial .attr {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* OFFER SECTION */
+.offer-section {
+  background: var(--warm-brown);
+  padding: 80px 60px;
+}
+
+.offer-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.offer-section h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 700;
+  color: var(--gold-pale);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.offer-section h2 em { color: var(--gold-light); font-style: italic; }
+
+.offer-section > .offer-inner > p {
+  font-size: 18px;
+  color: rgba(245,236,213,0.7);
+  line-height: 1.8;
+  margin-bottom: 40px;
+  max-width: 680px;
+}
+
+.offer-stack {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(184,146,58,0.3);
+  padding: 48px;
+}
+
+.stack-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.stack-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(184,146,58,0.1);
+  gap: 20px;
+}
+
+.stack-item:last-of-type { border-bottom: none; }
+
+.stack-item .item-name {
+  font-size: 16px;
+  color: rgba(245,236,213,0.85);
+}
+
+.stack-item .item-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.stack-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0 0;
+  border-top: 2px solid rgba(184,146,58,0.4);
+  margin-top: 20px;
+}
+
+.stack-total .total-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(245,236,213,0.5);
+}
+
+.stack-total .total-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  text-decoration: line-through;
+  color: rgba(245,236,213,0.4);
+}
+
+.stack-ask {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0 0;
+  margin-top: 16px;
+}
+
+.stack-ask .ask-label {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--gold-pale);
+}
+
+.stack-ask .ask-price {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+.offer-guarantee {
+  background: rgba(184,146,58,0.1);
+  border: 1px solid rgba(184,146,58,0.2);
+  padding: 28px 32px;
+  margin-top: 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.guarantee-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+.offer-guarantee p {
+  font-size: 16px;
+  color: rgba(245,236,213,0.75);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.offer-guarantee strong { color: var(--gold-light); }
+
+/* BIO EDITORIAL */
+.bio-editorial {
+  padding: 80px 60px;
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.bio-text-col {}
+
+.bio-text-col h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.bio-text-col h2 em { color: var(--gold); font-style: italic; }
+
+.bio-title-line {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  display: block;
+}
+
+.bio-text-col p {
+  font-size: 17px;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.bio-facts-col {}
+
+.credential-block {
+  border: 1px solid var(--rule);
+  margin-bottom: 0;
+}
+
+.cred-header {
+  background: var(--ink);
+  padding: 14px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.cred-list {
+  list-style: none;
+}
+
+.cred-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gold-pale);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.cred-list li:last-child { border-bottom: none; }
+
+.cred-list li::before {
+  content: '—';
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.testimonials-editorial {
+  background: var(--gold-pale);
+  padding: 80px 60px;
+  border-top: 3px solid var(--gold);
+}
+
+.testimonials-editorial h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 48px;
+  color: var(--ink);
+}
+
+.testimonials-editorial h2 em { font-style: italic; color: var(--gold); }
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
+.testi-cell {
+  background: var(--cream);
+  padding: 36px;
+}
+
+.testi-cell .quote-mark {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 60px;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+
+.testi-cell p {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.testi-cell .testi-attr {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.testi-cell .testi-stars {
+  color: var(--gold);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* FINAL CTA */
+.final-editorial-cta {
+  background: var(--ink);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+}
+
+.final-editorial-cta::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+}
+
+.final-editorial-cta h2 {
+  font-family: 'Libre Baskerville', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--gold-pale);
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+
+.final-editorial-cta h2 em { color: var(--gold-light); font-style: italic; font-weight: 400; }
+
+.final-editorial-cta p {
+  font-size: 19px;
+  font-style: italic;
+  color: rgba(245,236,213,0.6);
+  max-width: 640px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+}
+
+.call-box {
+  display: inline-block;
+  border: 1px solid rgba(184,146,58,0.4);
+  padding: 40px 60px;
+  margin-bottom: 24px;
+}
+
+.call-box .call-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.5);
+  margin-bottom: 12px;
+}
+
+.call-box .call-number {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+}
+
+.call-box .call-hours {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.4);
+  margin-top: 8px;
+}
+
+.final-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+
+/* FOOTER */
+footer {
+  background: #070503;
+  padding: 40px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(184,146,58,0.4);
+  text-decoration: none;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(184,146,58,0.25);
+  width: 100%;
+  text-align: center;
+  padding-top: 16px;
+  border-top: 1px solid rgba(184,146,58,0.08);
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .masthead-main { grid-template-columns: 1fr; }
+  .masthead-right { padding: 0 0 60px; }
+  .masthead-left { padding-right: 0; border-right: none; border-bottom: 1px solid rgba(184,146,58,0.2); padding-bottom: 48px; }
+  .masthead-top, .masthead-main, .masthead-bottom-bar { padding-left: 30px; padding-right: 30px; }
+  .editorial-grid { grid-template-columns: 1fr; }
+  .editorial-container { padding: 60px 30px; }
+  .bio-editorial { grid-template-columns: 1fr; gap: 40px; padding: 60px 30px; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .offer-section { padding: 60px 30px; }
+  .testimonials-editorial { padding: 60px 30px; }
+  .final-editorial-cta { padding: 80px 30px; }
+  footer { padding: 30px; flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-top">
+    <div class="masthead-tag">Santa Barbara, California · Cosmetic Energy Healing®</div>
+    <div class="masthead-phone">(805) 570-0168</div>
+  </div>
+
+  <div class="masthead-main">
+    <div class="masthead-left">
+      <div class="masthead-eyebrow">The Only Practice of Its Kind</div>
+      <h1>
+        You Don't Need<br>
+        a Surgeon.<br>
+        You Need <em>Energy.</em>
+      </h1>
+      <p class="masthead-deck">
+        A former pharmacist with 50 years of medical expertise now offers the most extraordinary alternative to Botox, fillers, and surgery that Santa Barbara — and perhaps the world — has ever seen.
+      </p>
+      <div class="masthead-cta">
+        <a href="tel:8055700168" class="btn-gold">Claim Your $125 Intro Session</a>
+        <span class="btn-note">First-time clients only · Limited availability</span>
+      </div>
+    </div>
+
+    <div class="masthead-right">
+      <div class="featured-testimonial">
+        <p>"I consulted with a plastic surgeon — the work I needed was too expensive and scary. I went on this way for a while and didn't know what to do anymore. After Gina, I'm turning back the hands of time."</p>
+        <div class="attribution">D.T. · Santa Ynez, CA · Age 54 at time of treatment</div>
+      </div>
+
+      <div class="masthead-facts">
+        <div class="fact-cell">
+          <span class="num">50</span>
+          <span class="label">Years Medical Knowledge</span>
+        </div>
+        <div class="fact-cell">
+          <span class="num">CEH®</span>
+          <span class="label">Certified & Trademarked</span>
+        </div>
+        <div class="fact-cell">
+          <span class="num">$0</span>
+          <span class="label">Side Effects</span>
+        </div>
+        <div class="fact-cell">
+          <span class="num">∞</span>
+          <span class="label">Surgical Alternative</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="masthead-bottom-bar">
+    <div class="bottom-bar-item">Non-Surgical · <span>Zero Risk</span></div>
+    <div class="bottom-bar-item">DNA & Cellular Healing · <span>Proprietary Method</span></div>
+    <div class="bottom-bar-item">Facelift Without the Scalpel · <span>No Recovery Time</span></div>
+    <div class="bottom-bar-item">Ancestral & Past Life Clearing · <span>Deep Transformation</span></div>
+    <div class="bottom-bar-item">Energetic Plastic Surgery · <span>No Anesthesia</span></div>
+    <div class="bottom-bar-item">Non-Surgical · <span>Zero Risk</span></div>
+    <div class="bottom-bar-item">DNA & Cellular Healing · <span>Proprietary Method</span></div>
+    <div class="bottom-bar-item">Facelift Without the Scalpel · <span>No Recovery Time</span></div>
+  </div>
+</header>
+
+<!-- EDITORIAL BODY -->
+<div class="editorial-container">
+  <div class="editorial-grid">
+
+    <!-- MAIN COLUMN -->
+    <div class="main-column">
+      <div class="drop-cap-section">
+        <div class="section-rule"><h2>The Problem No One Is Solving</h2></div>
+
+        <p>Every year, millions of women sit across from plastic surgeons, listen to the options, hear the prices, and then quietly decide they can't afford it — or won't risk it. They go home, buy another serum, and try to make peace with what they see in the mirror.</p>
+
+        <p>Others go through with it. They spend $15,000 to $40,000, endure general anesthesia, take two to four weeks off their lives, and emerge looking — not younger, exactly, but different. Sometimes right. Sometimes not.</p>
+
+        <p>There is almost no conversation about a third option. Until now.</p>
+
+        <div class="pull-quote">
+          <p>"What if the reason your face looks the way it looks has less to do with collagen — and everything to do with energy that has been stuck for decades?"</p>
+        </div>
+
+        <p>Gina Smith spent 50 years as a licensed pharmacist. She knows the body at the molecular level. She knows what medications do — and don't do. She watched patients manage diseases for decades without ever getting better. She began to understand that Western medicine is extraordinary at treating symptoms and poor at addressing roots.</p>
+
+        <p>Then she discovered Cosmetic Energy Healing® — an ancient spiritual healing art, now codified and trademarked — and her entire understanding of what is possible for the human body changed.</p>
+      </div>
+
+      <div class="section-rule"><h2>The 5-Step Cosmetic Energy Reset Protocol™</h2></div>
+
+      <p>Every session Gina conducts follows a proprietary protocol developed through the International Association of Cosmetic Healing Arts, refined by 50 years of pharmacological and physiological mastery, and guided by intuitive gifts Gina has carried since childhood.</p>
+
+      <div class="process-editorial">
+        <div class="process-item">
+          <div class="process-num">01.</div>
+          <div class="process-content">
+            <h3>Intention & Spiritual Preparation</h3>
+            <p>Gina enters every session through prayer and conscious intention-setting. This calibrates her healing energy to the specific client and conditions present that day. The session begins before any hands are raised.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">02.</div>
+          <div class="process-content">
+            <h3>Energy Body Synchronization</h3>
+            <p>She reads and synchronizes with the client's personal Energy Body — identifying flow, stagnation, and the precise locations and causes of disruption. This is the diagnostic phase. No blood test, no scan, no guesswork.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">03.</div>
+          <div class="process-content">
+            <h3>Deep Energetic Detox & Release</h3>
+            <p>Stagnant energy — held in the face, body, or cells for months or decades — is systematically cleared. Clients often describe feeling lighter, more spacious, and more authentically themselves during the session itself.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">04.</div>
+          <div class="process-content">
+            <h3>DNA & Cellular Reprogramming</h3>
+            <p>Using advanced techniques, Gina addresses the cellular code that drives how your body looks and functions. Irregular cell division, aging DNA, and inherited patterns are redirected toward health and vitality at the source.</p>
+          </div>
+        </div>
+        <div class="process-item">
+          <div class="process-num">05.</div>
+          <div class="process-content">
+            <h3>Ancestral & Spiritual Integration</h3>
+            <p>Where the root of the physical presentation is ancestral or past-life in origin, Gina addresses it at that depth. Science is beginning to understand epigenetics — the idea that our ancestors' traumas affect our gene expression. Gina has been clearing this for years.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        <p>"A rhinoplasty in Santa Barbara costs $8,000 to $15,000 and requires general anesthesia. Our 10-session Energetic Nose Contouring program costs $2,700 — no anesthesia, no recovery, no risk."</p>
+      </div>
+
+      <div class="section-rule"><h2>What Results Look Like</h2></div>
+
+      <p>D.T. from Santa Ynez was 54 years old when she came to Gina. She had been watching herself age in the mirror and avoiding it. She consulted with a plastic surgeon. The cost was too high. The risk was too real. She had no idea what to do and had begun to accept that this was simply her new face.</p>
+
+      <p>After working with Gina: more of her natural hair color returned. Her skin became smoother. Her eyes looked refreshed. She described it as "turning back the hands of time" — and said she would recommend it to anyone who is "suffering, or who just wants to look refreshed."</p>
+
+      <p>H.C., also from Santa Ynez, described feeling like she was "in a meditative state" during her session. The areas worked on were "toned and youthful, even a week afterward." She noted that Gina explained how this work is about "being open to integrating the changes" and "allowing old patterns to drop away."</p>
+
+      <p>This is not a facial. This is not a wellness treatment. This is transformation — physical, emotional, and spiritual — from a woman with the scientific credentials to understand what is happening at the cellular level and the spiritual gifts to make it happen.</p>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <div class="sidebar-box">
+        <h3>Begin With One Session — $125</h3>
+        <p>For first-time clients only. A 30-minute Introductory Healing Session where you experience Cosmetic Energy Healing® firsthand — with zero obligation to continue.</p>
+        <div class="sidebar-price-display">
+          <div class="was">Regular rate: $200/session</div>
+          <div class="now">$125</div>
+          <div class="note">First visit only · Limited spots</div>
+        </div>
+        <a href="tel:8055700168" class="btn-gold">Call (805) 570-0168</a>
+      </div>
+
+      <div class="sidebar-comparison">
+        <h3>The Honest Comparison</h3>
+
+        <div class="compare-row">
+          <span class="compare-label">Surgical Facelift Cost</span>
+          <span class="compare-bad">$15,000–$40,000</span>
+          <span class="compare-good">vs. $2,700</span>
+        </div>
+
+        <div class="compare-row">
+          <span class="compare-label">Recovery Time</span>
+          <span class="compare-bad">2–4 weeks</span>
+          <span class="compare-good">vs. None</span>
+        </div>
+
+        <div class="compare-row">
+          <span class="compare-label">Botox (Annual Cost)</span>
+          <span class="compare-bad">$2,000–$4,000/yr</span>
+          <span class="compare-good">vs. $2,700 total</span>
+        </div>
+
+        <div class="compare-row">
+          <span class="compare-label">Side Effects</span>
+          <span class="compare-bad">Significant</span>
+          <span class="compare-good">vs. Zero</span>
+        </div>
+
+        <div class="compare-row">
+          <span class="compare-label">Guaranteed Results</span>
+          <span class="compare-bad">No</span>
+          <span class="compare-good">vs. Yes</span>
+        </div>
+      </div>
+
+      <div class="sidebar-testimonial">
+        <p>"She has a pure energy that flows into the area where she's working, and those spots ended up being toned and youthful even a week afterward."</p>
+        <div class="attr">H.C. · Santa Ynez, CA</div>
+      </div>
+
+      <div class="sidebar-testimonial">
+        <p>"Gina is very knowledgeable and always willing to answer questions. I have total confidence in her. She always makes me feel good about myself."</p>
+        <div class="attr">D.J. · Santa Ynez, CA</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- OFFER SECTION -->
+<section class="offer-section">
+  <div class="offer-inner">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px;opacity:0.6;">The Investment</div>
+    <h2>The <em>10-Session Energetic Transformation</em> Program</h2>
+    <p>Everything you need to look and feel 10 years younger — from the inside out — with a guarantee that makes saying no feel irrational.</p>
+
+    <div class="offer-stack">
+      <div class="stack-title">What's Included — Full Value Breakdown</div>
+
+      <div class="stack-item">
+        <span class="item-name">10 × 60-minute Cosmetic Energy Healing® Sessions</span>
+        <span class="item-value">$3,000 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">DNA & Cellular Healing Protocol (applied as needed)</span>
+        <span class="item-value">$500 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">Ancestral Lineage Clearing (applied as needed)</span>
+        <span class="item-value">$500 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">Personalized Anti-Inflammatory Nutrition Plan</span>
+        <span class="item-value">$800 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">Email support between sessions</span>
+        <span class="item-value">$300 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">Session 5 Results Assessment & course-correction</span>
+        <span class="item-value">$200 value</span>
+      </div>
+      <div class="stack-item">
+        <span class="item-name">BONUS: 1 Distance Healing session (sign up this week)</span>
+        <span class="item-value">$200 value</span>
+      </div>
+
+      <div class="stack-total">
+        <span class="total-label">Total Value</span>
+        <span class="total-value">$5,500</span>
+      </div>
+
+      <div class="stack-ask">
+        <span class="ask-label">Your Investment</span>
+        <span class="ask-price">$2,700</span>
+      </div>
+
+      <div class="offer-guarantee">
+        <div class="guarantee-icon">⚖</div>
+        <p><strong>Our Guarantee:</strong> If you complete your 10-session program and do not see a visible, meaningful improvement in the area we've targeted together, we will continue providing sessions at no additional charge until you do. We have never had to honor this guarantee — and we offer it anyway.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIO EDITORIAL -->
+<div class="bio-editorial">
+  <div class="bio-text-col">
+    <span class="section-label" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px;">About Gina</span>
+    <h2><em>Gina Smith</em></h2>
+    <span class="bio-title-line">R.Ph. · Certified Cosmetic Energy Healing® Practitioner · Santa Barbara</span>
+
+    <p>Gina grew up with a deep sensitivity and empathy for others — gifts she shared with her mother. As her life progressed, she valued the role of chemistry and scientific precision in solving problems. She became a pharmacist. She consulted with patients for five decades.</p>
+
+    <p>And then she realized that almost no one was actually getting healed.</p>
+
+    <p>She began blessing prescriptions. She explored every healing modality she could find. And she discovered Cosmetic Energy Healing® through the International Association of Cosmetic Healing Arts, studying under founder Lily Chandra and achieving dual certification.</p>
+
+    <p>Today Gina occupies a category of exactly one: a woman with the scientific rigor of a 50-year pharmacist and the spiritual gifts of a healer who can access the energetic, ancestral, and cellular roots of physical imbalance. There is no one else in Santa Barbara — or likely the world — quite like her.</p>
+  </div>
+
+  <div class="bio-facts-col">
+    <div class="credential-block">
+      <div class="cred-header">Credentials & Training</div>
+      <ul class="cred-list">
+        <li>Licensed Pharmacist — 50 years active practice</li>
+        <li>Certified in Cosmetic Energy Healing® — IACHA</li>
+        <li>Trained under Lily Chandra, IACHA founder</li>
+        <li>Dual certified — Beauty & Bodywork + Wellness</li>
+        <li>Medical Intuitive — trained practitioner</li>
+        <li>Ancestral & Past Life Healing practitioner</li>
+        <li>Distance Healing specialist</li>
+        <li>Nutrition & Wellness Coaching certification</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS EDITORIAL -->
+<section class="testimonials-editorial">
+  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:12px;">In Their Own Words</div>
+  <h2>What Happens When Women Say<br><em>"I'll Just Try One Session"</em></h2>
+
+  <div class="testi-grid">
+    <div class="testi-cell">
+      <div class="testi-stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p>I was becoming self-conscious and gradually less outgoing. I consulted with a plastic surgeon, but the work I needed was too expensive and scary. After Gina: more of my natural hair color, smoother skin, and my eyes look and feel refreshed. I'm turning back the hands of time!</p>
+      <div class="testi-attr">D.T. · Santa Ynez · Age 54</div>
+    </div>
+    <div class="testi-cell">
+      <div class="testi-stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p>My personal experience with Gina was very healing. I felt like I was in a meditative state. She has a pure energy that flows into the area she's working on, and those spots ended up toned and youthful — even a week afterward. I like getting results now AND later.</p>
+      <div class="testi-attr">H.C. · Santa Ynez</div>
+    </div>
+    <div class="testi-cell">
+      <div class="testi-stars">★★★★★</div>
+      <div class="quote-mark">"</div>
+      <p>Gina is very knowledgeable and always willing to answer questions about healing. She always gives an explanation so I have total confidence in her. She is a very talented healer. I recommend this to anyone who is suffering, or who just wants to look refreshed.</p>
+      <div class="testi-attr">D.J. · Santa Ynez</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-editorial-cta">
+  <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:rgba(184,146,58,0.4);margin-bottom:24px;">The Only Question Remaining</div>
+  <h2>How Much Longer Will You<br>Look in the Mirror and <em>Wait?</em></h2>
+  <p>Every day that passes is a day you could have begun the process of looking 10 years younger — without surgery, without needles, without risk. The intro session is $125. The transformation lasts a lifetime.</p>
+
+  <div class="call-box">
+    <div class="call-label">Call or Text to Schedule</div>
+    <div class="call-number">(805) 570-0168</div>
+    <div class="call-hours">Santa Barbara, California · By Appointment</div>
+  </div>
+
+  <div class="final-btn-group">
+    <a href="tel:8055700168" class="btn-gold" style="font-size:11px;padding:16px 36px;">Book Intro Session — $125</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Gina Smith · Cosmetic Energy Healing®</div>
+  <div class="footer-links">
+    <a href="#">Home</a>
+    <a href="#">Services</a>
+    <a href="#">About</a>
+    <a href="#">Testimonials</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Gina Smith · DNA Cosmetic Energy Healing® · Santa Barbara, CA · Cosmetic Energy Healing® is a registered trademark · Individual results vary</div>
+</footer>
+
+</body>
+</html>

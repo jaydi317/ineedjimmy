@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Johnson | The Somatic Reclamation Framework™</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF6EE;
+            --sage: #7A9E7E;
+            --sage-dark: #5C7D60;
+            --gold: #C6A855;
+            --deep: #1C2B1E;
+            --white: #FFFFFF;
+            --rose: #C9928E;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--deep);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 246, 238, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(122, 158, 126, 0.2);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--sage-dark);
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--deep);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--sage);
+        }
+        
+        .nav-cta {
+            background: var(--sage);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: var(--sage-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Hero */
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(135deg, var(--cream) 0%, #E8D5A0 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(122, 158, 126, 0.1) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--sage-dark);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--deep);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-visual {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--gold) 100%);
+            border-radius: 50%;
+            margin: 40px auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(122, 158, 126, 0.3);
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--sage);
+            color: var(--white);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: var(--sage-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(122, 158, 126, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--sage-dark);
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--sage);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--sage);
+            color: var(--white);
+        }
+        
+        /* Pain Section */
+        .pain-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .pain-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 60px;
+        }
+        
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .pain-item {
+            padding: 30px;
+            background: var(--cream);
+            border-left: 4px solid var(--rose);
+            border-radius: 10px;
+            line-height: 1.8;
+            font-style: italic;
+            color: var(--deep);
+        }
+        
+        /* Method Section */
+        .method-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .method-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 60px;
+        }
+        
+        .method-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .method-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .method-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--sage);
+            box-shadow: 0 10px 30px rgba(122, 158, 126, 0.2);
+        }
+        
+        .method-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--sage), var(--gold));
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .method-card h3 {
+            color: var(--sage-dark);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .method-card p {
+            color: var(--deep);
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* Journey Section */
+        .journey-section {
+            padding: 100px 0;
+            background: var(--white);
+            text-align: center;
+        }
+        
+        .journey-section h2 {
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 20px;
+        }
+        
+        .journey-section .intro {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1rem;
+            color: var(--deep);
+            opacity: 0.9;
+        }
+        
+        .infographic-display {
+            max-width: 100%;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(122, 158, 126, 0.2);
+        }
+        
+        .infographic-display img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Programs Section */
+        .programs-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .programs-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 60px;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .program-card {
+            background: var(--white);
+            padding: 50px 35px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid var(--sage);
+            transition: all 0.3s ease;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(122, 158, 126, 0.3);
+        }
+        
+        .program-card h3 {
+            color: var(--sage-dark);
+            font-size: 1.75rem;
+            margin-bottom: 15px;
+        }
+        
+        .program-price {
+            font-size: 2.5rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .program-card p {
+            color: var(--deep);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .program-card .btn-primary {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 30px;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--deep);
+            margin-bottom: 20px;
+        }
+        
+        .credentials-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 30px;
+        }
+        
+        .credential-badge {
+            background: var(--sage);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--sage) 0%, var(--gold) 100%);
+            border-radius: 20px;
+        }
+        
+        /* Book Section */
+        .book-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        
+        .book-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .book-cover-container {
+            perspective: 1500px;
+        }
+        
+        .book-cover {
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.3s ease;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .book-cover:hover {
+            transform: rotateY(-10deg) rotateX(3deg);
+        }
+        
+        .book-cover img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .book-info h2 {
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 15px;
+        }
+        
+        .book-subtitle {
+            font-size: 1.25rem;
+            color: var(--gold);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .book-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--deep);
+            margin-bottom: 30px;
+        }
+        
+        /* Lead Magnet Section */
+        .lead-magnet-section {
+            padding: 100px 0;
+            background: var(--sage-dark);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .lead-magnet-section h2 {
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        
+        .lead-magnet-section p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+        
+        .email-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .email-form input {
+            flex: 1;
+            padding: 16px 25px;
+            border-radius: 50px;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .email-form button {
+            background: var(--gold);
+            color: var(--white);
+            padding: 16px 35px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .email-form button:hover {
+            background: var(--cream);
+            color: var(--sage-dark);
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .testimonials-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--sage-dark);
+            margin-bottom: 60px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .testimonial-card {
+            background: var(--cream);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--deep);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--sage-dark);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: var(--deep);
+            color: var(--cream);
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(122, 158, 126, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--sage);
+        }
+        
+        .copyright {
+            color: var(--cream);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .about-content,
+            .book-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .email-form {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">Sarah Johnson</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#method">Method</a>
+                <a href="#programs">Programs</a>
+                <a href="#book">Book</a>
+                <a href="#contact">Contact</a>
+                <a href="#programs" class="nav-cta">Start Your Journey</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>The Somatic Reclamation Framework™</h1>
+            <p class="subtitle">Reconnect with your body, regulate your nervous system, and reclaim your life</p>
+            <div class="hero-visual"></div>
+            <div class="hero-ctas">
+                <a href="#programs" class="btn-primary">Explore Programs</a>
+                <a href="#method" class="btn-secondary">Learn the Method</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pain Section -->
+    <section class="pain-section">
+        <div class="container">
+            <h2>Does This Sound Like You?</h2>
+            <div class="pain-grid">
+                <div class="pain-item">
+                    "I can't turn off. Even when I have time to rest, my body stays wired. I lie in bed at night replaying conversations, planning tomorrow, feeling my heart race for no reason."
+                </div>
+                <div class="pain-item">
+                    "I'm invisible to myself. I look in the mirror and see a stranger. I feel absent from my own body, like I've been living from the neck up for years."
+                </div>
+                <div class="pain-item">
+                    "I have nothing left to give at the end of the day. I show up for everyone else, but by the time I get home, I'm a shell."
+                </div>
+                <div class="pain-item">
+                    "My body hurts all the time. Tight shoulders. Clenched jaw. Lower back pain. Doctors say it's stress, but knowing that doesn't make it stop."
+                </div>
+                <div class="pain-item">
+                    "I don't know who I am anymore. My body feels foreign. I'm terrified that when the dust settles, there won't be a 'me' left underneath."
+                </div>
+                <div class="pain-item">
+                    "I've tried everything — therapy, meditation apps, yoga classes — and nothing has given me lasting change. I'm starting to think I'm just broken."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Section -->
+    <section id="method" class="method-section">
+        <div class="container">
+            <h2>The Somatic Reclamation Framework™</h2>
+            <div class="method-cards">
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Recognize</h3>
+                    <p>Learn to identify your nervous system states and patterns — understanding where you hold tension and stress.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Ground</h3>
+                    <p>Establish safety and presence in your body through somatic practices that create a foundation of regulation.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Breathe</h3>
+                    <p>Master breathwork as your instant regulation tool — shifting from stress to safety in minutes.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Move</h3>
+                    <p>Release stored trauma through trauma-informed yoga and somatic movement that honors your body's wisdom.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Clear</h3>
+                    <p>Use Reiki energy healing to remove energetic blocks and restore natural flow throughout your system.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Practice</h3>
+                    <p>Build sustainable daily rituals that keep you regulated, grounded, and connected to your body.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Speak</h3>
+                    <p>Reclaim your voice and set boundaries from a regulated place — speaking your truth with clarity and calm.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Embody</h3>
+                    <p>Step into your power and lead from presence — moving through the world from your center.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-icon"></div>
+                    <h3>Thrive</h3>
+                    <p>Live your purpose aligned with your body's wisdom — creating a life that honors who you truly are.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Journey Section -->
+    <section class="journey-section">
+        <div class="container">
+            <h2>The 9-Step Journey</h2>
+            <p class="intro">Every client follows this proven path from survival mode to somatic wisdom. This isn't theory — it's a complete system for nervous system transformation.</p>
+            <div class="infographic-display">
+                <img src="SarahProcess.png" alt="The Somatic Reclamation Framework 9-Step Journey">
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs-section">
+        <div class="container">
+            <h2>Work With Me</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h3>Free Report</h3>
+                    <p class="program-price">$0</p>
+                    <p>The 5-Minute Nervous System Reset — start regulating today</p>
+                    <a href="#contact" class="btn-primary">Download Now</a>
+                </div>
+                <div class="program-card">
+                    <h3>6-Week Program</h3>
+                    <p class="program-price">$1,997</p>
+                    <p>The complete Somatic Reclamation Method™ in a supportive group setting</p>
+                    <a href="#contact" class="btn-primary">Join the Next Round</a>
+                </div>
+                <div class="program-card">
+                    <h3>Private Coaching</h3>
+                    <p class="program-price">$8,000</p>
+                    <p>6 months of personalized 1:1 transformation and support</p>
+                    <a href="#contact" class="btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Meet Sarah</h2>
+                    <p>At 42, I found myself divorced and completely disconnected from my body. I had spent decades taking care of everyone else — and somewhere along the way, I forgot to take care of myself.</p>
+                    <p>Yoga saved my life. Not the fitness-focused classes at the gym, but trauma-informed, nervous-system-centered movement that taught me how to feel safe in my own skin again.</p>
+                    <p>Now, with 15 years of experience and deep training in yoga, Reiki, and somatic practices, I guide other midlife women through the same transformation. You don't have to stay stuck. Your body is waiting to welcome you home.</p>
+                    <div class="credentials-list">
+                        <span class="credential-badge">RYT-500 Certified</span>
+                        <span class="credential-badge">Reiki Master</span>
+                        <span class="credential-badge">Trauma-Informed</span>
+                        <span class="credential-badge">Nervous System Specialist</span>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Section -->
+    <section id="book" class="book-section">
+        <div class="container">
+            <div class="book-content">
+                <div class="book-cover-container">
+                    <div class="book-cover">
+                        <img src="SarahBook.png" alt="Reclaim - A Midlife Woman's Guide to Coming Home to Her Body by Sarah Johnson">
+                    </div>
+                </div>
+                <div class="book-info">
+                    <h2>Reclaim</h2>
+                    <p class="book-subtitle">A Midlife Woman's Guide to Coming Home to Her Body</p>
+                    <p class="book-description">This book is for every woman who has felt disconnected from herself. Who has spent years living from the neck up, taking care of everyone else, and forgotten what it feels like to truly inhabit her body. Through personal stories, practical tools, and the complete Somatic Reclamation Framework™, you'll learn how to regulate your nervous system, release stored trauma, and reclaim your life.</p>
+                    <a href="#contact" class="btn-primary">Get Your Copy</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lead Magnet Section -->
+    <section id="contact" class="lead-magnet-section">
+        <div class="container">
+            <h2>Start Your Journey Today</h2>
+            <p>Get instant access to "The 5-Minute Nervous System Reset" — a simple practice you can use anywhere to shift from stress to safety.</p>
+            <form class="email-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Get Free Guide</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2>Client Experiences</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Your client testimonials will go here — stories of transformation, nervous system healing, and lives reclaimed."</p>
+                    <p class="testimonial-author">— Client Name</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Your client testimonials will go here — stories of transformation, nervous system healing, and lives reclaimed."</p>
+                    <p class="testimonial-author">— Client Name</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Your client testimonials will go here — stories of transformation, nervous system healing, and lives reclaimed."</p>
+                    <p class="testimonial-author">— Client Name</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#method">Method</a>
+                <a href="#programs">Programs</a>
+                <a href="#book">Book</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="social-icons">
+                <div class="social-icon"></div>
+                <div class="social-icon"></div>
+                <div class="social-icon"></div>
+            </div>
+            <p class="copyright">© 2024 Sarah Johnson. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

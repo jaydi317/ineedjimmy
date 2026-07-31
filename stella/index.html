@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stella Rose — The OWL Method™</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,400&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --midnight: #0D2B2B;
+  --deep: #091E1E;
+  --gold: #D4A855;
+  --gold-light: #E8C97A;
+  --sage: #A8B5A0;
+  --sage-muted: rgba(168, 181, 160, 0.15);
+  --warm-white: #F5F0E8;
+  --sienna: #C65D3E;
+  --font-head: 'Fraunces', serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-script: 'Caveat', cursive;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--deep);
+  color: var(--warm-white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ============ TEXTURE OVERLAY ============ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============ NAV ============ */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 1.2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(9, 30, 30, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 168, 85, 0.1);
+}
+
+.logo {
+  font-family: var(--font-head);
+  font-size: 1.4rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.logo span { color: var(--sage); font-weight: 300; }
+
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  color: var(--warm-white);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: all 0.3s;
+}
+.nav-links a:hover { opacity: 1; color: var(--gold); }
+
+.nav-cta {
+  background: var(--sienna) !important;
+  color: var(--warm-white) !important;
+  padding: 0.6rem 1.5rem !important;
+  border-radius: 2px;
+  opacity: 1 !important;
+  font-weight: 500 !important;
+  transition: all 0.3s !important;
+}
+.nav-cta:hover { background: #d4694a !important; transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 8rem 3rem 4rem;
+  background: 
+    radial-gradient(ellipse at 20% 50%, rgba(212, 168, 85, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(168, 181, 160, 0.04) 0%, transparent 50%),
+    var(--deep);
+}
+
+.hero-content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-script);
+  color: var(--gold);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s forwards;
+}
+
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.5s forwards;
+}
+
+.hero h1 .highlight {
+  color: var(--gold);
+  font-style: italic;
+  position: relative;
+}
+
+.hero h1 .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.3;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  color: rgba(245, 240, 232, 0.7);
+  line-height: 1.8;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s forwards;
+}
+
+.hero-cta-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+
+.btn-primary {
+  background: var(--sienna);
+  color: var(--warm-white);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-primary:hover { background: #d4694a; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(198, 93, 62, 0.3); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--gold);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(212, 168, 85, 0.3);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn-ghost:hover { border-color: var(--gold); background: rgba(212, 168, 85, 0.08); }
+
+.owl-symbol {
+  margin-top: 4rem;
+  opacity: 0;
+  animation: fadeUp 1s 1.1s forwards;
+}
+
+.owl-symbol svg { width: 60px; height: 60px; }
+
+/* ============ PAIN SECTION ============ */
+.pain-section {
+  padding: 7rem 3rem;
+  background:
+    radial-gradient(ellipse at 70% 0%, rgba(168, 181, 160, 0.05) 0%, transparent 50%),
+    var(--midnight);
+}
+
+.pain-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-tag {
+  font-family: var(--font-script);
+  color: var(--sage);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 500;
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+.pain-grid {
+  display: grid;
+  gap: 1px;
+  background: rgba(212, 168, 85, 0.1);
+}
+
+.pain-item {
+  background: var(--midnight);
+  padding: 2rem 2.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+.pain-item:hover { background: rgba(212, 168, 85, 0.03); }
+
+.pain-marker {
+  font-family: var(--font-head);
+  color: var(--gold);
+  font-size: 1.1rem;
+  opacity: 0.4;
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+
+.pain-text {
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.8);
+  font-style: italic;
+}
+
+.pain-callout {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(212, 168, 85, 0.04);
+}
+
+.pain-callout p {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold-light);
+  line-height: 1.6;
+}
+
+/* ============ METHOD SECTION ============ */
+.method-section {
+  padding: 7rem 3rem;
+  background: var(--deep);
+  position: relative;
+}
+
+.method-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.method-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.method-badge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--midnight);
+  background: var(--gold);
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.owl-meaning {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--sage);
+  font-style: italic;
+  margin-top: 1rem;
+  font-weight: 300;
+}
+
+.method-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(212, 168, 85, 0.15);
+  margin-bottom: 3rem;
+}
+
+.phase {
+  background: var(--deep);
+  padding: 3rem 2rem;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s;
+}
+.phase:hover { background: rgba(212, 168, 85, 0.04); }
+
+.phase-number {
+  font-family: var(--font-head);
+  font-size: 4rem;
+  color: var(--gold);
+  opacity: 0.15;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  line-height: 1;
+}
+
+.phase-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.phase h3 {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.phase-tagline {
+  font-family: var(--font-script);
+  color: var(--sage);
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.phase p {
+  font-size: 0.95rem;
+  color: rgba(245, 240, 232, 0.65);
+  line-height: 1.8;
+}
+
+.phase-tools {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.tool-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(168, 181, 160, 0.2);
+  color: var(--sage);
+}
+
+/* ============ TRANSFORMATION ============ */
+.transform-section {
+  padding: 5rem 3rem;
+  background: var(--midnight);
+}
+
+.transform-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.transform-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.from-col, .to-col { text-align: left; }
+
+.transform-label {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 1.5rem;
+}
+
+.transform-item {
+  padding: 0.8rem 0;
+  font-size: 0.95rem;
+  color: rgba(245, 240, 232, 0.6);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.06);
+}
+
+.to-col .transform-item {
+  color: var(--gold-light);
+  font-weight: 400;
+}
+
+.arrow-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.7rem;
+  padding-top: 2rem;
+}
+
+.arrow-col span {
+  color: var(--gold);
+  font-size: 1.2rem;
+  opacity: 0.4;
+}
+
+/* ============ ABOUT ============ */
+.about-section {
+  padding: 7rem 3rem;
+  background:
+    radial-gradient(ellipse at 30% 80%, rgba(198, 93, 62, 0.05) 0%, transparent 50%),
+    var(--deep);
+}
+
+.about-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-photo {
+  width: 200px;
+  height: 260px;
+  background: linear-gradient(135deg, rgba(212, 168, 85, 0.2), rgba(168, 181, 160, 0.1));
+  border: 1px solid rgba(212, 168, 85, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-script);
+  color: var(--sage);
+  font-size: 1.2rem;
+}
+
+.about-text h3 {
+  font-family: var(--font-head);
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.about-text p {
+  color: rgba(245, 240, 232, 0.7);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.about-text .credentials {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.credential {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(212, 168, 85, 0.2);
+  padding: 0.4rem 1rem;
+}
+
+/* ============ CTA SECTION ============ */
+.cta-section {
+  padding: 7rem 3rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(212, 168, 85, 0.08) 0%, transparent 60%),
+    var(--midnight);
+  position: relative;
+}
+
+.cta-inner { max-width: 650px; margin: 0 auto; }
+
+.cta-section h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.cta-section .subtitle {
+  font-family: var(--font-script);
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.cta-section p {
+  color: rgba(245, 240, 232, 0.65);
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+}
+
+.free-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(198, 93, 62, 0.15);
+  color: var(--sienna);
+  padding: 0.4rem 1rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(198, 93, 62, 0.2);
+}
+
+/* ============ FOOTER ============ */
+footer {
+  padding: 3rem;
+  text-align: center;
+  border-top: 1px solid rgba(212, 168, 85, 0.08);
+  background: var(--deep);
+}
+
+footer p {
+  font-size: 0.8rem;
+  color: rgba(245, 240, 232, 0.3);
+  letter-spacing: 0.05em;
+}
+
+footer .footer-logo {
+  font-family: var(--font-head);
+  color: var(--gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  opacity: 0.5;
+}
+
+/* ============ ANIMATIONS ============ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 7rem 1.5rem 4rem; }
+  .pain-section, .method-section, .transform-section, .about-section, .cta-section { padding: 4rem 1.5rem; }
+  .method-phases { grid-template-columns: 1fr; }
+  .phase-number { font-size: 3rem; }
+  .transform-grid { grid-template-columns: 1fr; gap: 0; }
+  .arrow-col { flex-direction: row; padding: 1rem 0; }
+  .about-content { grid-template-columns: 1fr; }
+  .about-photo { width: 150px; height: 200px; margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Stella Rose <span>| The OWL Method™</span></div>
+  <div class="nav-links">
+    <a href="#method">Method</a>
+    <a href="#about">About</a>
+    <a href="#start" class="nav-cta">Start Here</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">For the woman who knows she's meant for more</p>
+    <h1>You're Not Blocked.<br>You're <span class="highlight">Buried.</span><br>Let's Clear the Field.</h1>
+    <p class="hero-sub">You have a message to share, a gift to give, a life to fully live — but something invisible keeps holding you back. It's not a mindset problem. <strong>It's energetic debris.</strong> And it's time to clear it.</p>
+    <div class="hero-cta-group">
+      <a href="#start" class="btn-primary">Clear Your Field</a>
+      <a href="#method" class="btn-ghost">Explore the Method</a>
+    </div>
+    <div class="owl-symbol">
+      <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="24" r="8" stroke="#D4A855" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="38" cy="24" r="8" stroke="#D4A855" stroke-width="1.5" opacity="0.4"/>
+        <circle cx="22" cy="24" r="3" fill="#D4A855" opacity="0.6"/>
+        <circle cx="38" cy="24" r="3" fill="#D4A855" opacity="0.6"/>
+        <path d="M14 20 Q30 8 46 20" stroke="#D4A855" stroke-width="1.5" fill="none" opacity="0.3"/>
+        <path d="M30 32 L27 40 L30 38 L33 40 Z" fill="#D4A855" opacity="0.3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN POINTS -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <p class="section-tag">Does this sound like you?</p>
+    <h2 class="section-title">The Quiet Struggle No One Talks About</h2>
+    <div class="pain-grid">
+      <div class="pain-item">
+        <span class="pain-marker">01</span>
+        <p class="pain-text">"I know I'm meant for more, but I can't seem to get it out of me."</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-marker">02</span>
+        <p class="pain-text">"I've done the courses, read the books, tried the affirmations — and I'm still stuck."</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-marker">03</span>
+        <p class="pain-text">"I feel disconnected from my creativity and my joy — like I lost myself somewhere."</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-marker">04</span>
+        <p class="pain-text">"I'm terrified of being truly seen — and simultaneously desperate for it."</p>
+      </div>
+      <div class="pain-item">
+        <span class="pain-marker">05</span>
+        <p class="pain-text">"Something energetic is blocking me and I can't think my way past it."</p>
+      </div>
+    </div>
+    <div class="pain-callout">
+      <p>The problem isn't you. It isn't your effort, your intelligence, or your worthiness. The problem is the debris — the accumulated energetic junk that's clogging your field and muffling your voice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section" id="method">
+  <div class="method-inner">
+    <div class="method-header">
+      <div class="method-badge">The Proprietary Framework</div>
+      <h2 class="section-title">The OWL Method™</h2>
+      <p class="owl-meaning">OWL — Organism With Life. Because that's what you are. And life is ready to move through you again.</p>
+    </div>
+    <div class="method-phases">
+      <div class="phase">
+        <span class="phase-number">1</span>
+        <div class="phase-icon">🦉</div>
+        <h3>Observe</h3>
+        <p class="phase-tagline">See what's really there</p>
+        <p>The owl sees in the dark. Before you can clear the field, you have to see what's actually in it — the inherited patterns, the creative wounds, the armor you built to survive.</p>
+        <div class="phase-tools">
+          <span class="tool-tag">Energy Assessment</span>
+          <span class="tool-tag">Creative Mapping</span>
+          <span class="tool-tag">Breathwork</span>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-number">2</span>
+        <div class="phase-icon">🌊</div>
+        <h3>Welcome</h3>
+        <p class="phase-tagline">Let it move through you</p>
+        <p>You don't clear debris by fighting it. You clear it by letting it be seen, held, and released — through shamanic healing, breathwork, and creative expression.</p>
+        <div class="phase-tools">
+          <span class="tool-tag">Shamanic Healing</span>
+          <span class="tool-tag">Breathwork Journeys</span>
+          <span class="tool-tag">Art as Release</span>
+        </div>
+      </div>
+      <div class="phase">
+        <span class="phase-number">3</span>
+        <div class="phase-icon">🔥</div>
+        <h3>Liberate</h3>
+        <p class="phase-tagline">Step into full expression</p>
+        <p>With the debris cleared, your voice doesn't need to be found — it needs to be freed. This is where joy returns, creativity ignites, and you finally share your gift.</p>
+        <div class="phase-tools">
+          <span class="tool-tag">Creative Activation</span>
+          <span class="tool-tag">Visibility Work</span>
+          <span class="tool-tag">Joy Practices</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATION -->
+<section class="transform-section">
+  <div class="transform-inner">
+    <p class="section-tag">The shift</p>
+    <h2 class="section-title">From Buried to Fully Expressed</h2>
+    <div class="transform-grid">
+      <div class="from-col">
+        <div class="transform-label">Where You Are</div>
+        <div class="transform-item">Screaming underwater</div>
+        <div class="transform-item">Creatively shut down</div>
+        <div class="transform-item">Performing your life</div>
+        <div class="transform-item">Joy feels rare</div>
+        <div class="transform-item">Invisible despite trying</div>
+      </div>
+      <div class="arrow-col">
+        <span>→</span><span>→</span><span>→</span><span>→</span><span>→</span>
+      </div>
+      <div class="to-col">
+        <div class="transform-label">Where You're Going</div>
+        <div class="transform-item">Speaking with clear power</div>
+        <div class="transform-item">Creating freely and boldly</div>
+        <div class="transform-item">Living as yourself</div>
+        <div class="transform-item">Joy is your daily state</div>
+        <div class="transform-item">Seen, heard, and fully alive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about-inner">
+    <p class="section-tag">Meet your guide</p>
+    <div class="about-content">
+      <div class="about-photo">Photo Here</div>
+      <div class="about-text">
+        <h3>Stella Rose</h3>
+        <p>Stella Rose is a shamanic energy healer, breathwork facilitator, life coach, and artist who helps women clear the energetic debris that blocks their voice, their joy, and their full expression.</p>
+        <p>She created The OWL Method™ after witnessing the same pattern again and again: brilliant, creative, spiritually-aware women who had something powerful to say — but couldn't get their message out. Not because they lacked strategy. Because there was a <em>distortion in the field</em>.</p>
+        <p>Through a unique integration of shamanic energy healing, breathwork, creativity, and coaching, Stella helps women see what's really blocking them, release it at the root, and step into the full, joyful expression they were always meant for.</p>
+        <div class="credentials">
+          <span class="credential">Shamanic Healer</span>
+          <span class="credential">Breathwork</span>
+          <span class="credential">Life Coach</span>
+          <span class="credential">Artist</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="start">
+  <div class="cta-inner">
+    <div class="free-badge">Free Assessment</div>
+    <h2>What's Really Blocking Your Voice?</h2>
+    <p class="subtitle">Take the OWL Field Assessment</p>
+    <p>Discover which type of energetic debris is most active in your field — and what it will take to clear it. This isn't another personality quiz. It's the first step to getting your message out.</p>
+    <a href="#" class="btn-primary">Download Your Free Assessment</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Stella Rose</div>
+  <p>&copy; 2026 Stella Rose | The OWL Method™ | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

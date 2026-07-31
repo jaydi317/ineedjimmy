@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformations by Karen — Be Seen Again</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4EF;--paper:#fff;--mauve:#9C6B82;--mauve-d:#7d5269;--rose:#D9A7B2;--blush:#F3E2E6;
+    --gold:#BC9446;--ink:#3A2A32;--muted:#7C6670;--line:#ECDCD7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Mulish',sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+  .serif{font-family:'Fraunces',serif}
+  /* nav */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:22px 26px;max-width:1080px;margin:0 auto}
+  .logo{font-family:'Fraunces';font-weight:500;font-size:22px;letter-spacing:-.01em}
+  .logo span{font-style:italic;color:var(--mauve)}
+  .nav-cta{font-family:'Mulish';font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--mauve);padding:11px 22px;border-radius:50px;text-decoration:none}
+  /* hero */
+  .hero{position:relative;text-align:center;padding:60px 0 70px}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 0%,rgba(217,167,178,.35),transparent 70%);z-index:-1}
+  .eyebrow{font-family:'Mulish';font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--mauve)}
+  .hero h1{font-family:'Fraunces';font-weight:500;font-size:clamp(38px,6.5vw,72px);line-height:1.04;margin:18px auto 8px;max-width:16ch;letter-spacing:-.015em}
+  .hero h1 em{font-style:italic;color:var(--mauve)}
+  .hero p.sub{font-family:'Fraunces';font-style:italic;font-size:clamp(18px,2.4vw,23px);color:var(--muted);max-width:40ch;margin:0 auto 30px}
+  .btn{display:inline-block;font-family:'Mulish';font-weight:700;font-size:16px;letter-spacing:.02em;color:#fff;background:var(--mauve);padding:17px 38px;border-radius:50px;text-decoration:none;box-shadow:0 16px 34px -14px rgba(156,107,130,.75);transition:transform .2s,box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 22px 40px -14px rgba(156,107,130,.8)}
+  .btn.ghost{background:transparent;color:var(--mauve);box-shadow:none;border:1.5px solid var(--rose)}
+  .undr{display:block;margin-top:12px;font-family:'Fraunces';font-style:italic;font-size:15px;color:var(--muted)}
+  /* before-after band */
+  .mirror{display:grid;grid-template-columns:1fr 1fr;max-width:760px;margin:50px auto 0;border-radius:18px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(58,42,50,.6);border:1px solid var(--line)}
+  .mirror div{padding:46px 30px;text-align:center}
+  .mirror .b{background:#efe7e2}
+  .mirror .a{background:linear-gradient(160deg,var(--mauve),var(--mauve-d));color:#fff}
+  .mirror .lbl{font-family:'Mulish';font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px;opacity:.7;margin-bottom:14px}
+  .mirror .word{font-family:'Fraunces';font-style:italic;font-size:clamp(22px,3.4vw,34px);line-height:1.25}
+  .mirror .a .lbl{opacity:.85}
+  /* sections */
+  section{padding:70px 0}
+  .center{text-align:center}
+  h2.h{font-family:'Fraunces';font-weight:500;font-size:clamp(28px,4.2vw,46px);line-height:1.1;letter-spacing:-.01em;max-width:20ch}
+  .center h2.h{margin:0 auto}
+  h2.h em{font-style:italic;color:var(--mauve)}
+  .kick{font-family:'Mulish';font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px;color:var(--gold);margin-bottom:14px}
+  .lede{font-size:18px;color:var(--muted);max-width:58ch;margin:18px auto 0}
+  /* story */
+  .story{background:var(--blush);border-radius:24px;padding:56px clamp(26px,5vw,64px);margin-top:10px}
+  .story p{font-family:'Fraunces';font-size:clamp(19px,2.4vw,24px);line-height:1.5;margin-bottom:20px;color:var(--ink)}
+  .story p:last-child{margin-bottom:0}
+  .story .big{font-style:italic;color:var(--mauve-d)}
+  /* method */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:46px}
+  .scard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:34px 26px;text-align:center;position:relative}
+  .scard .num{font-family:'Fraunces';font-style:italic;font-size:18px;color:var(--gold);letter-spacing:.05em}
+  .scard h3{font-family:'Fraunces';font-weight:600;font-size:30px;color:var(--mauve);margin:6px 0 12px}
+  .scard p{font-size:15px;color:var(--muted)}
+  /* testimonials */
+  .tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+  .tcard{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:30px 26px;box-shadow:0 24px 50px -40px rgba(58,42,50,.5)}
+  .tcard .stars{color:var(--gold);letter-spacing:3px;font-size:14px}
+  .tcard p{font-family:'Fraunces';font-size:18px;line-height:1.45;margin:14px 0 18px}
+  .who{display:flex;align-items:center;gap:12px}
+  .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(150deg,var(--rose),var(--mauve));color:#fff;display:grid;place-items:center;font-family:'Fraunces';font-weight:600;font-size:18px}
+  .who .nm{font-weight:700;font-size:14px}
+  .who .rl{font-size:13px;color:var(--muted)}
+  /* offer */
+  .offer{background:linear-gradient(165deg,var(--mauve),var(--mauve-d));color:#fff;border-radius:26px;padding:56px clamp(26px,5vw,60px);text-align:center;position:relative;overflow:hidden}
+  .offer::after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.07);top:-120px;right:-80px}
+  .offer h2{font-family:'Fraunces';font-weight:500;font-size:clamp(26px,3.6vw,40px);line-height:1.12;max-width:22ch;margin:0 auto 8px}
+  .offer .price{font-family:'Fraunces';font-size:64px;font-weight:600;line-height:1;margin:24px 0 4px}
+  .offer .price s{opacity:.5;font-size:30px;font-weight:400;margin-right:12px}
+  .incl{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;max-width:620px;margin:28px auto 30px;text-align:left}
+  .incl li{list-style:none;position:relative;padding-left:28px;font-size:15.5px}
+  .incl li::before{content:"✦";position:absolute;left:0;color:#f2d79a}
+  .offer .btn{background:#fff;color:var(--mauve-d);box-shadow:0 16px 34px -14px rgba(0,0,0,.4)}
+  .guar{font-family:'Fraunces';font-style:italic;font-size:15px;opacity:.9;margin-top:16px}
+  /* about */
+  .about{display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:center}
+  .portrait{aspect-ratio:4/5;border-radius:20px;background:linear-gradient(160deg,var(--blush),var(--rose));display:grid;place-items:center;border:1px solid var(--line);box-shadow:0 30px 60px -40px rgba(58,42,50,.5)}
+  .portrait span{font-family:'Fraunces';font-style:italic;font-size:26px;color:var(--mauve-d);text-align:center;padding:0 20px;opacity:.85}
+  .about p{font-size:17px;margin-bottom:16px;color:#4a3a42}
+  /* final */
+  .final{text-align:center;background:var(--blush);border-radius:24px;padding:64px 26px}
+  /* footer */
+  footer{padding:40px 26px;text-align:center;color:var(--muted);font-size:13px}
+  footer .logo{font-size:20px;margin-bottom:8px;display:inline-block}
+  .note{max-width:700px;margin:0 auto;font-size:12px;opacity:.7}
+  @media(max-width:760px){.steps,.tgrid,.about,.incl,.mirror{grid-template-columns:1fr}.about .portrait{max-width:320px;margin:0 auto}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Transformations <span>by Karen</span></div>
+  <a href="#book" class="nav-cta">Book a Session</a>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">For the woman who stopped being seen</div>
+    <h1>It's not too late to <em>recognize her</em> in the mirror.</h1>
+    <p class="sub">A private, inside-out transformation for women who were told they weren't the pretty one — and quietly believed it.</p>
+    <a href="#book" class="btn">Yes, I'm Ready To Be Seen<span class="undr">A few private sessions open each week</span></a>
+
+    <div class="mirror">
+      <div class="b"><div class="lbl">Before</div><div class="word">"Why bother changing?<br>Nobody's looking anyway."</div></div>
+      <div class="a"><div class="lbl">After</div><div class="word">"There she is.<br>Comfortable in her own skin."</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="story">
+      <p>Somewhere along the way, you stopped.</p>
+      <p>Maybe it was one word from a parent who should have known better. Maybe it was years of being overlooked, of the same safe outfit, of catching your reflection and looking away.</p>
+      <p class="big">But the radiant, magnetic woman you were always meant to be didn't go anywhere. She got covered up — by the comments, the caretaking, the "maybe later."</p>
+      <p>I've spent twenty years helping women uncover her again. Not by changing who they are. By finally showing them how to <em>see</em> her.</p>
+    </div>
+  </div>
+</section>
+
+<section class="center">
+  <div class="wrap">
+    <div class="kick">How it works</div>
+    <h2 class="h">Three simple movements <em>back to yourself</em></h2>
+    <div class="steps">
+      <div class="scard"><div class="num">Movement One</div><h3>Seen</h3><p>Before we touch a thing, I listen. No judgment, no "you should have." Just a woman finally being heard — the part most of my clients have never had.</p></div>
+      <div class="scard"><div class="num">Movement Two</div><h3>Shown</h3><p>I teach you what no one ever did: your colors, your cuts, the outfits that flatter the body you have right now, and how to do your own makeup in five minutes.</p></div>
+      <div class="scard"><div class="num">Movement Three</div><h3>Shine</h3><p>You turn to the mirror — and there she is. Joyful. Confident. Seen. This is the moment that makes women cry in my studio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="center">
+  <div class="wrap">
+    <div class="kick">Real women, real becomings</div>
+    <h2 class="h">They didn't change their size. <em>They changed how they see themselves.</em></h2>
+    <div class="tgrid">
+      <div class="tcard"><div class="stars">★★★★★</div><p>"I carried my mom's voice — 'you're ugly' — for fifty years. I set it down in Karen's studio. I don't carry it anymore."</p><div class="who"><div class="av">R</div><div><div class="nm">Ruth, 61</div><div class="rl">Becoming Session</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>"I came in sure I was 'the heavy one' who'd given up. I left standing six inches taller. Same body. Completely different woman."</p><div class="who"><div class="av">D</div><div><div class="nm">Donna, 54</div><div class="rl">The 90-Day Becoming</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><p>"My mother never taught me any of this. Karen did — gently. Now I'm teaching my own daughters. That's everything."</p><div class="who"><div class="av">M</div><div><div class="nm">Maria, 48</div><div class="rl">Becoming Session</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="offer">
+      <h2>Your Becoming Session — a private half-day, just the two of us</h2>
+      <ul class="incl">
+        <li>The Listening — we start with you, not your closet</li>
+        <li>Your personal color &amp; cut map (yours to keep)</li>
+        <li>A photographed lookbook of real outfits</li>
+        <li>Your five-minute-face makeup lesson</li>
+        <li>Before &amp; after photos of your reveal</li>
+        <li>A simple shopping list — no overwhelm</li>
+      </ul>
+      <div class="price"><s>$1,050 value</s>$297</div>
+      <a href="#" class="btn">Book My Becoming Session</a>
+      <div class="guar">See her in the mirror, or you don't pay. That's my promise.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="about">
+      <div class="portrait"><span>Karen, in her studio<br>— pink, gold &amp; mauve —</span></div>
+      <div>
+        <div class="kick">Meet Karen</div>
+        <h2 class="h" style="font-size:clamp(26px,3.6vw,38px)">I'm not a therapist. I'm something rarer.</h2>
+        <p>For over two decades, women have sat inches from me and told me the truth they tell no one else. I learned that the outside and the inside are the same conversation — you can't change one without touching the other.</p>
+        <p>I'm the woman who makes you feel safe enough to be honest, and who actually knows how to do something about it. And I built this for a few women at a time — three days a week — because I'd rather pour deeply into you than rush.</p>
+        <p style="font-family:'Fraunces';font-style:italic;font-size:20px;color:var(--mauve)">"Somebody's looking. You just stopped letting yourself be seen. Let's change that."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="final">
+      <div class="kick">One afternoon</div>
+      <h2 class="h center" style="margin:0 auto 18px">A year from now, you'll be a year older either way. <em>The only question is whether you'll be visible.</em></h2>
+      <a href="#" class="btn">I'm Ready — Book My Session</a>
+      <span class="undr" style="color:var(--muted)">Too far to visit? We can do your Becoming over Zoom.</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">Transformations <span style="color:var(--mauve);font-style:italic">by Karen</span></div>
+  <div class="note">Mockup prepared by Jimmy Davis · June 2026. Testimonials shown are placeholders drawn from Karen's real client stories, to be replaced with real quotes and photos with permission.</div>
+</footer>
+</body>
+</html>

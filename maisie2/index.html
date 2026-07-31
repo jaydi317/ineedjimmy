@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unblend: Come Home to Yourself — Maisie Wormser</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=Caveat:wght@500;600&family=Spectral:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --oat:#ece6da;
+    --oat-2:#e3dccd;
+    --paper:#f6f2e9;
+    --forest:#1e2a24;
+    --forest-2:#2c3a32;
+    --ember:#c2562f;
+    --ember-2:#a8451f;
+    --teal:#2f5d57;
+    --clay:#d8a98f;
+    --ink:#22271f;
+    --muted:#5d6258;
+    --line:#cfc6b4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--oat);color:var(--ink);
+    line-height:1.62;font-size:18px;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  .narrow{max-width:720px}
+  h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;line-height:1.02;letter-spacing:-.02em}
+  .eyebrow{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ember);font-weight:600}
+  .teal{color:var(--teal)}
+  em{font-style:normal;color:var(--ember)}
+  .hl{background:linear-gradient(transparent 60%, rgba(194,86,47,.22) 60%)}
+
+  .confess{font-family:'Caveat',cursive;color:var(--ember-2);font-size:25px;line-height:1.25;transform:rotate(-2deg)}
+
+  .btn{display:inline-block;font-family:'Inter';font-weight:600;font-size:16px;text-decoration:none;cursor:pointer;
+    background:var(--ember);color:#fff;border:none;padding:18px 40px;border-radius:50px;
+    transition:transform .2s ease,background .2s ease,box-shadow .2s ease}
+  .btn:hover{transform:translateY(-2px);background:var(--ember-2);box-shadow:0 12px 30px rgba(168,69,31,.28)}
+  .btn:focus-visible{outline:3px solid var(--forest);outline-offset:3px}
+  .btn.ghost{background:transparent;color:var(--forest);border:1.5px solid var(--forest)}
+  .btn.ghost:hover{background:var(--forest);color:var(--paper)}
+  .sub{display:block;font-size:13px;color:var(--muted);margin-top:12px}
+
+  section{padding:96px 0}
+  .dark{background:var(--forest);color:#e8e3d6}
+  .dark .eyebrow{color:var(--clay)}
+  .dark em{color:var(--clay)}
+  .dark .hl{background:linear-gradient(transparent 60%, rgba(216,169,143,.25) 60%)}
+  .paper{background:var(--paper)}
+
+  /* HERO + unblend motif */
+  .hero{padding:120px 0 90px;position:relative}
+  .hero .eyebrow{margin-bottom:24px;display:block}
+  .blendword{position:relative;display:inline-block;font-family:'Bricolage Grotesque';font-weight:800;
+    font-size:clamp(56px,12vw,140px);line-height:.9;color:var(--forest);letter-spacing:-.03em}
+  .blendword .ghost1,.blendword .ghost2{position:absolute;left:0;top:0;color:var(--ember);opacity:.0}
+  .unblending .ghost1{animation:drift1 2.4s ease forwards}
+  .unblending .ghost2{animation:drift2 2.4s ease forwards}
+  @keyframes drift1{0%{opacity:.5;transform:translate(8px,-6px);filter:blur(3px)}100%{opacity:0;transform:translate(0,0);filter:blur(0)}}
+  @keyframes drift2{0%{opacity:.45;transform:translate(-7px,7px);filter:blur(4px);color:var(--teal)}100%{opacity:0;transform:translate(0,0);filter:blur(0)}}
+  .hero h1{font-size:clamp(30px,5vw,52px);margin:22px 0 0;max-width:880px}
+  .hero h1 .small{font-family:'Bricolage Grotesque';font-weight:600;font-size:clamp(22px,3vw,30px);display:block;margin-top:18px;color:var(--muted);letter-spacing:-.01em}
+  .hero .lede{font-family:'Spectral',serif;font-size:clamp(19px,2.3vw,23px);color:var(--forest-2);max-width:620px;margin-top:28px;line-height:1.5}
+  .hero .cta-row{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+  .kbig{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(26px,4vw,42px);line-height:1.06;letter-spacing:-.02em}
+  h2.sh{font-size:clamp(28px,4.2vw,46px);margin-bottom:26px}
+  p.big{font-size:clamp(20px,2.4vw,25px);line-height:1.45}
+  p+p{margin-top:18px}
+
+  .leadgrid{display:grid;grid-template-columns:1fr 230px;gap:48px;align-items:start}
+  @media(max-width:820px){.leadgrid{grid-template-columns:1fr}}
+  .marginnote{border-left:2px solid var(--clay);padding-left:18px}
+
+  /* 3am questions as cards */
+  .qwrap{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:36px}
+  .qcard{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:24px;
+    font-family:'Spectral',serif;font-style:italic;font-size:19px}
+  .qcard.hot{border-color:var(--clay);background:rgba(216,169,143,.08)}
+  @media(max-width:680px){.qwrap{grid-template-columns:1fr}}
+
+  /* method */
+  .moves{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  @media(max-width:820px){.moves{grid-template-columns:1fr 1fr}}
+  @media(max-width:480px){.moves{grid-template-columns:1fr}}
+  .move{background:var(--paper);border-radius:12px;padding:28px 24px;border:1px solid var(--line)}
+  .move .step{font-family:'Bricolage Grotesque';font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+  .move h3{font-size:24px;margin:14px 0 8px;color:var(--forest)}
+  .move p{font-size:16px;color:var(--muted);line-height:1.5}
+  .arc{font-family:'Spectral',serif;font-style:italic;font-size:clamp(22px,3vw,30px);text-align:center;margin-top:40px;color:var(--teal)}
+
+  /* bullets */
+  .bul{list-style:none;margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:18px 36px}
+  @media(max-width:680px){.bul{grid-template-columns:1fr}}
+  .bul li{position:relative;padding-left:34px;font-size:18px}
+  .bul li::before{content:"→";position:absolute;left:0;top:0;color:var(--ember);font-weight:700;font-family:'Bricolage Grotesque'}
+
+  /* offer */
+  .offerband{background:var(--forest);color:#e8e3d6}
+  .offercard{background:var(--paper);color:var(--ink);border-radius:16px;padding:48px;max-width:640px;margin:0 auto;text-align:center;
+    box-shadow:0 30px 70px rgba(0,0,0,.3)}
+  .price{font-family:'Bricolage Grotesque';font-weight:800;font-size:66px;color:var(--forest);line-height:1}
+  .price .alt{display:block;font-family:'Inter';font-weight:500;font-size:15px;color:var(--muted);margin-top:10px}
+  .spots{display:inline-block;font-family:'Bricolage Grotesque';font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ember);background:rgba(194,86,47,.1);padding:7px 16px;border-radius:50px;margin-top:18px}
+  .guarantee{max-width:640px;margin:26px auto 0;border:1.5px dashed var(--clay);border-radius:14px;padding:28px;text-align:center}
+  .guarantee h3{font-size:22px;margin-bottom:8px}
+
+  .placeholder{border:1.5px dashed var(--line);border-radius:12px;padding:28px;color:var(--muted);font-family:'Spectral',serif;font-style:italic;text-align:center;margin-top:24px}
+
+  /* faq */
+  .faq{margin-top:24px;max-width:760px}
+  .faq details{border-bottom:1px solid var(--line);padding:20px 0}
+  .faq summary{font-family:'Bricolage Grotesque';font-weight:600;font-size:20px;cursor:pointer;list-style:none;color:var(--forest);display:flex;justify-content:space-between;gap:16px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--ember);font-size:24px;line-height:1}
+  .faq details[open] summary::after{content:"–"}
+  .faq p{margin-top:12px;color:var(--muted);font-size:17px}
+
+  .ps{font-family:'Spectral',serif;font-style:italic;font-size:21px;max-width:760px;margin:40px auto 0;padding:28px;border:1px solid rgba(255,255,255,.12);border-radius:12px}
+
+  footer{background:#171f1a;color:#7d837a;font-size:12px;text-align:center;padding:48px 24px;line-height:1.8}
+  .sig{font-family:'Caveat',cursive;font-size:34px;color:var(--clay)}
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+    .blendword .ghost1,.blendword .ghost2{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero paper">
+  <div class="wrap">
+    <span class="eyebrow">For spiritually awake women who are still — secretly —</span>
+    <div class="blendword" id="bw" aria-label="stuck">
+      <span class="ghost1" aria-hidden="true">stuck</span>
+      <span class="ghost2" aria-hidden="true">stuck</span>
+      <span class="real">stuck.</span>
+    </div>
+    <h1>You've read the books. Done the retreats. Tapped, journaled, surrendered, <em>"done the work."</em>
+      <span class="small">So why are you still awake at 3am, running the same loop you swore you'd outgrown?</span>
+    </h1>
+    <p class="lede">Here's the reason — and it isn't that you need to heal more. It's that you've never been <em>witnessed</em> long enough to hear what you already know.</p>
+    <div class="cta-row">
+      <a href="#apply" class="btn">Apply for a founding spot</a>
+      <span class="sub">5 spots · founding rate · then the door closes</span>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD -->
+<section class="dark">
+  <div class="wrap leadgrid">
+    <div>
+      <span class="eyebrow">The thing no one says out loud</span>
+      <p class="kbig" style="margin-top:20px">More information is <em>not</em> your problem. You are not under-healed. You're <span class="hl">over-informed and under-witnessed.</span></p>
+      <p style="margin-top:22px">You can name your attachment style, your nervous-system state, the exact childhood moment it started. You can hold space for anyone. And still — at 3am — you lie there running the same tired loop, wondering why a decade of work hasn't moved your life.</p>
+      <p>You don't need another modality. You need someone to <em>witness</em> you until you can finally hear your own knowing — and then choose from it. That's the whole thing. And it's the one thing nobody's been selling you.</p>
+    </div>
+    <div class="marginnote">
+      <p class="confess">"is my 'inner work'<br>just avoidance with<br>better vocabulary?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3AM QUESTIONS -->
+<section class="dark" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">What 3am actually sounds like</span>
+    <h2 class="sh" style="margin-top:14px">The questions on repeat.</h2>
+    <div class="qwrap">
+      <div class="qcard">"Why do I know all of this… and I'm <em>still</em> stuck in the same loop?"</div>
+      <div class="qcard">"Everyone thinks I'm so wise. If they only knew how lost I feel."</div>
+      <div class="qcard">"Why can I hold space for everyone else and fall apart in my own life?"</div>
+      <div class="qcard">"I'm so tired of working on myself. When do I get to just <em>live</em>?"</div>
+      <div class="qcard hot">"What if I run out of time still circling the same drain?"</div>
+      <div class="qcard hot">"There's a truer version of me under all this. Why can't I reach her?"</div>
+    </div>
+    <p style="margin-top:34px;max-width:760px">You've been told the answer is <em>more</em>. So you keep adding. And the loop keeps running. Adding information to a nervous system stuck in a pattern is like reading a map to someone frozen in the doorway. She doesn't need the map. She needs someone to stand with her until she can move.</p>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section class="paper">
+  <div class="wrap leadgrid">
+    <div>
+      <span class="eyebrow">Why me</span>
+      <h2 class="sh" style="margin-top:14px">I know this loop because I lived inside it.</h2>
+      <p class="big">A healing drive my whole life — and a lifetime of resistance to go with it. The same cycle, over and over, while I collected every insight there was.</p>
+      <p style="margin-top:18px">What cracked it open wasn't another book. It was being <em>witnessed</em> — seen without being fixed — until I could hear what I already knew underneath the conditioning. That's the work I do now: witnessing, EFT, and Quantum Coaching. Not more to learn. A way to <em>unblend</em> from the conditioning running the show.</p>
+    </div>
+    <div class="marginnote">
+      <p class="confess">"I know better.<br>so why do I keep<br>choosing the thing<br>I don't want?"</p>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="paper" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">The mechanism</span>
+    <h2 class="sh" style="margin-top:14px">The Unblend Method™</h2>
+    <div class="moves">
+      <div class="move"><div class="step">Step 01</div><h3>Witness</h3><p>Be fully seen, with zero fixing. This alone brings the first real relief.</p></div>
+      <div class="move"><div class="step">Step 02</div><h3>Unblend</h3><p>Separate <em>you</em> from your conditioning. "That's the dream. Not me."</p></div>
+      <div class="move"><div class="step">Step 03</div><h3>Tune In</h3><p>Drop beneath the noise and feel what your nervous system wants.</p></div>
+      <div class="move"><div class="step">Step 04</div><h3>Choose</h3><p>Move from your own knowing — not your old programming.</p></div>
+    </div>
+    <p class="arc">From conditioned… to chosen.</p>
+  </div>
+</section>
+
+<!-- WHAT IT IS -->
+<section class="oat2" style="background:var(--oat-2)">
+  <div class="wrap">
+    <span class="eyebrow">What it is</span>
+    <h2 class="sh" style="margin-top:14px">Unblend: Come Home to Yourself</h2>
+    <p class="big" style="max-width:820px">A 10-week 1:1 container. No curriculum. No homework pile. No becoming-a-better-project. Deep, witnessed, body-led work — until you stop running on autopilot and start living as yourself.</p>
+    <ul class="bul">
+      <li>Why "doing more inner work" became the thing keeping you stuck.</li>
+      <li>How to tell true surrender from spiritual avoidance.</li>
+      <li>Why you can hold space for everyone but yourself — and how to turn it inward.</li>
+      <li>Why your nervous system overrides everything you "know."</li>
+      <li>How to hear your own knowing under a lifetime of "shoulds."</li>
+      <li>What changes when you stop trying to heal and start being witnessed.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOUNDING CIRCLE -->
+<section class="paper">
+  <div class="wrap narrow" style="margin:0 auto">
+    <span class="eyebrow">The founding circle</span>
+    <h2 class="sh" style="margin-top:14px">Five spots. Real stories only.</h2>
+    <p>No wall of testimonials here yet — because I'd rather show you the real thing than borrow someone else's. Founding clients get my full attention, a founding rate, and the chance to be the first stories this work tells.</p>
+    <div class="placeholder">Founding-client words will appear here as they come in — no borrowed proof.</div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offerband" id="apply">
+  <div class="wrap">
+    <div class="offercard">
+      <span class="eyebrow">The founding offer</span>
+      <div class="price" style="margin-top:16px">$2,000<span class="alt">or two payments of $1,100</span></div>
+      <p style="margin-top:16px;color:var(--muted)">Ten weeks · one-on-one</p>
+      <div class="spots">5 founding spots — then full price</div>
+      <div style="margin-top:28px"><a href="#apply" class="btn">Apply for a founding spot</a></div>
+    </div>
+    <div class="guarantee">
+      <h3 class="teal" style="color:var(--clay)">The First-Two-Weeks Promise</h3>
+      <p>If after our first two sessions you don't feel more <em>seen</em> and a little lighter, we part ways and I refund you in full. You'll feel it fast — or you don't pay.</p>
+    </div>
+    <p class="ps"><strong>P.S.</strong> You already know more than enough to change your life. That was never the problem. You've just never had someone witness you long enough to hear it — and then choose. Five spots. Then the door closes.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="paper">
+  <div class="wrap">
+    <span class="eyebrow">Before you decide</span>
+    <h2 class="sh" style="margin-top:14px">Honest answers.</h2>
+    <div class="faq">
+      <details open><summary>I've already done so much work — how is this different?</summary><p>It isn't more work. It's the opposite. Everything you've done was input. This is the witnessing that lets it land.</p></details>
+      <details><summary>Is this therapy?</summary><p>No. I don't diagnose or treat. I witness, and use body-led tools to help you unblend and choose. Many women do both.</p></details>
+      <details><summary>What if I don't even know what I want?</summary><p>That's the most common starting place — and exactly what the work uncovers.</p></details>
+      <details><summary>I'm skeptical of coaches.</summary><p>Good. So am I. That's why there's a two-week refund and only five spots — I'm betting on the work, not on hype.</p></details>
+    </div>
+    <div style="text-align:center;margin-top:42px"><a href="#apply" class="btn">Apply for a founding spot</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="sig">Maisie Wormser</div>
+  <div style="margin-top:8px">The Unblend Method™ · Witnessing · EFT · Quantum Coaching</div>
+  <div style="margin-top:14px;max-width:540px;margin-left:auto;margin-right:auto">Coaching is not therapy, counseling, or medical care. Results vary. This page is a design mockup — testimonial slots are placeholders to be filled with real client words.</div>
+</footer>
+
+<script>
+  (function(){
+    var bw=document.getElementById('bw'); if(!bw) return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    setTimeout(function(){bw.classList.add('unblending');},450);
+  })();
+</script>
+</body>
+</html>

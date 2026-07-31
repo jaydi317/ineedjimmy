@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karen — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Inter',sans-serif; background:var(--cream); color:var(--deep); }
+h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+.accent { font-family:'Caveat',cursive; }
+.container { max-width:1100px; margin:0 auto; padding:0 24px; }
+
+/* HERO */
+.hero { background:linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%); padding:80px 24px 60px; text-align:center; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; top:-50%; right:-20%; width:600px; height:600px; background:radial-gradient(circle, rgba(198,168,85,0.08) 0%, transparent 70%); }
+.hero::after { content:''; position:absolute; bottom:-30%; left:-10%; width:400px; height:400px; background:radial-gradient(circle, rgba(122,158,126,0.06) 0%, transparent 70%); }
+.hero-eyebrow { font-family:'Caveat',cursive; color:var(--gold); font-size:1.3rem; margin-bottom:12px; letter-spacing:1px; }
+.hero h1 { color:var(--cream); font-size:clamp(2rem,5vw,3.2rem); font-weight:700; line-height:1.15; margin-bottom:16px; }
+.hero h1 span { color:var(--gold); }
+.hero p { color:var(--gold-light); font-size:1.05rem; max-width:600px; margin:0 auto; line-height:1.6; opacity:0.9; }
+
+/* IDENTITY CARD */
+.identity { padding:60px 24px; }
+.id-card { background:linear-gradient(145deg, var(--deep) 0%, var(--deep-mid) 100%); border-radius:20px; padding:48px 40px; max-width:800px; margin:0 auto; position:relative; overflow:hidden; border:1px solid rgba(198,168,85,0.2); }
+.id-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--gold), var(--sage), var(--gold)); }
+.id-card h2 { color:var(--cream); font-size:2.2rem; margin-bottom:4px; }
+.id-card .method-title { color:var(--gold); font-family:'Caveat',cursive; font-size:1.5rem; margin-bottom:20px; }
+.id-card .pitch { color:var(--gold-light); font-size:1.05rem; line-height:1.7; margin-bottom:24px; font-style:italic; opacity:0.9; }
+.id-tags { display:flex; flex-wrap:wrap; gap:10px; }
+.id-tags span { background:rgba(198,168,85,0.12); color:var(--gold); border:1px solid rgba(198,168,85,0.25); padding:6px 16px; border-radius:100px; font-size:0.82rem; font-weight:500; letter-spacing:0.5px; text-transform:uppercase; }
+
+/* SECTION HEADERS */
+.section-header { text-align:center; margin-bottom:48px; }
+.section-header .eyebrow { font-family:'Caveat',cursive; color:var(--sage); font-size:1.2rem; margin-bottom:8px; }
+.section-header h2 { font-size:clamp(1.8rem,4vw,2.5rem); color:var(--deep); margin-bottom:12px; }
+.section-header p { color:#5a6a70; max-width:600px; margin:0 auto; line-height:1.6; }
+
+/* METHOD PILLARS */
+.method { padding:80px 24px; background:var(--white); }
+.pillars { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
+.pillar-card { background:var(--cream); border-radius:16px; padding:32px 24px; text-align:center; border:1px solid rgba(11,26,43,0.06); transition:all 0.3s ease; position:relative; }
+.pillar-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(11,26,43,0.08); }
+.pillar-num { font-family:'Caveat',cursive; color:var(--gold); font-size:2.5rem; font-weight:700; line-height:1; margin-bottom:8px; }
+.pillar-card h3 { color:var(--deep); font-size:1.2rem; margin-bottom:10px; }
+.pillar-card p { color:#5a6a70; font-size:0.9rem; line-height:1.6; }
+
+/* JOURNEY */
+.journey { padding:80px 24px; }
+.journey-img { max-width:700px; margin:0 auto; display:block; border-radius:16px; box-shadow:0 20px 60px rgba(11,26,43,0.12); }
+
+/* WEBSITE PREVIEW */
+.previews { padding:80px 24px; background:var(--white); }
+.preview-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; max-width:900px; margin:0 auto; }
+.preview-card { border-radius:16px; overflow:hidden; border:1px solid rgba(11,26,43,0.08); transition:all 0.3s ease; cursor:pointer; text-decoration:none; color:inherit; }
+.preview-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(11,26,43,0.12); }
+.preview-thumb { height:220px; position:relative; overflow:hidden; }
+.preview-thumb.warm { background:linear-gradient(135deg, var(--cream), #e8e4d8); display:flex; align-items:center; justify-content:center; }
+.preview-thumb.bold { background:linear-gradient(135deg, var(--deep), var(--deep-mid)); display:flex; align-items:center; justify-content:center; }
+.preview-thumb span { font-family:'Playfair Display',serif; font-size:1.1rem; opacity:0.5; }
+.preview-thumb.warm span { color:var(--deep); }
+.preview-thumb.bold span { color:var(--gold); }
+.preview-info { padding:20px; background:var(--cream); }
+.preview-info h3 { font-size:1.1rem; margin-bottom:6px; }
+.preview-info p { font-size:0.85rem; color:#5a6a70; }
+@media(max-width:600px) { .preview-grid { grid-template-columns:1fr; } }
+
+/* BOOK */
+.book-section { padding:80px 24px; }
+.book-wrap { display:flex; align-items:center; gap:48px; max-width:900px; margin:0 auto; }
+.book-3d { flex:0 0 260px; perspective:800px; }
+.book-3d img { width:260px; border-radius:4px; box-shadow:12px 12px 40px rgba(11,26,43,0.25); transform:rotateY(-12deg); transition:transform 0.4s ease; }
+.book-3d img:hover { transform:rotateY(-4deg); }
+.book-info h2 { font-size:1.8rem; margin-bottom:12px; }
+.book-info .subtitle { color:var(--sage); font-size:1rem; margin-bottom:16px; font-style:italic; }
+.book-info p { color:#5a6a70; line-height:1.7; margin-bottom:12px; }
+.book-info .note { font-size:0.85rem; color:var(--gold); font-weight:500; background:rgba(198,168,85,0.08); padding:12px 16px; border-radius:8px; border-left:3px solid var(--gold); }
+@media(max-width:700px) { .book-wrap { flex-direction:column; text-align:center; } .book-3d { flex:none; } }
+
+/* INSTAGRAM */
+.insta { padding:80px 24px; background:var(--white); }
+.insta-mock { max-width:400px; margin:0 auto; background:var(--white); border-radius:16px; border:1px solid #e0dcd4; overflow:hidden; }
+.insta-header { padding:20px 24px; display:flex; align-items:center; gap:16px; }
+.insta-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, var(--sage), var(--gold)); display:flex; align-items:center; justify-content:center; color:var(--white); font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:700; }
+.insta-stats { display:flex; gap:24px; }
+.insta-stat { text-align:center; }
+.insta-stat strong { display:block; font-size:1.1rem; color:var(--deep); }
+.insta-stat span { font-size:0.75rem; color:#888; }
+.insta-bio { padding:0 24px 24px; }
+.insta-bio .name { font-weight:700; font-size:0.95rem; margin-bottom:4px; }
+.insta-bio .category { color:#888; font-size:0.82rem; margin-bottom:8px; }
+.insta-bio p { font-size:0.88rem; line-height:1.6; color:#333; }
+.insta-bio .link { color:var(--sage-dark); font-weight:600; }
+.insta-btn { display:block; margin:0 24px 20px; padding:8px; background:var(--sage); color:var(--white); border-radius:8px; text-align:center; font-weight:600; font-size:0.9rem; }
+
+/* PROGRAMS */
+.programs { padding:80px 24px; }
+.program-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; max-width:1000px; margin:0 auto; }
+.program-card { border-radius:16px; padding:32px 28px; text-align:center; border:1px solid rgba(11,26,43,0.08); transition:all 0.3s ease; background:var(--white); }
+.program-card.featured { background:linear-gradient(145deg, var(--deep) 0%, var(--deep-mid) 100%); border:2px solid var(--gold); transform:scale(1.03); }
+.program-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(11,26,43,0.1); }
+.program-card.featured:hover { transform:scale(1.03) translateY(-4px); }
+.program-card .type { font-family:'Caveat',cursive; font-size:1.1rem; margin-bottom:4px; }
+.program-card .type.free { color:var(--sage); }
+.program-card.featured .type { color:var(--gold); }
+.program-card h3 { font-size:1.3rem; margin-bottom:8px; }
+.program-card.featured h3 { color:var(--cream); }
+.program-card .price { font-size:2rem; font-weight:700; color:var(--gold); margin-bottom:8px; }
+.program-card .desc { font-size:0.88rem; color:#5a6a70; line-height:1.5; }
+.program-card.featured .desc { color:var(--gold-light); opacity:0.8; }
+
+/* CALCULATOR */
+.calculator { padding:80px 24px; background:linear-gradient(145deg, var(--deep), var(--deep-mid)); }
+.calculator .section-header h2 { color:var(--cream); }
+.calculator .section-header .eyebrow { color:var(--gold); }
+.calculator .section-header p { color:var(--gold-light); opacity:0.8; }
+.calc-wrap { max-width:700px; margin:0 auto; }
+.calc-slider { margin-bottom:32px; }
+.calc-slider label { display:flex; justify-content:space-between; color:var(--cream); font-size:0.95rem; margin-bottom:10px; }
+.calc-slider label strong { color:var(--gold); font-size:1.2rem; }
+.calc-slider input[type=range] { width:100%; -webkit-appearance:none; height:6px; border-radius:3px; background:rgba(198,168,85,0.2); outline:none; }
+.calc-slider input[type=range]::-webkit-slider-thumb { -webkit-appearance:none; width:24px; height:24px; border-radius:50%; background:var(--gold); cursor:pointer; box-shadow:0 2px 8px rgba(198,168,85,0.4); }
+.calc-results { background:rgba(198,168,85,0.08); border:1px solid rgba(198,168,85,0.2); border-radius:16px; padding:32px; text-align:center; }
+.calc-results .monthly { color:var(--gold-light); font-size:1rem; margin-bottom:4px; }
+.calc-results .monthly span { color:var(--gold); font-size:1.8rem; font-weight:700; font-family:'Playfair Display',serif; }
+.calc-results .annual { color:var(--cream); font-size:1.3rem; margin-top:12px; }
+.calc-results .annual span { color:var(--gold); font-size:2.5rem; font-weight:700; font-family:'Playfair Display',serif; display:block; margin-top:4px; }
+
+/* REPORT TEASER */
+.report { padding:80px 24px; }
+.report-wrap { display:flex; gap:48px; max-width:1000px; margin:0 auto; align-items:flex-start; }
+.report-visual { flex:0 0 280px; position:relative; height:360px; }
+.report-page { position:absolute; width:200px; background:var(--white); border-radius:8px; padding:20px; box-shadow:0 8px 30px rgba(11,26,43,0.1); border:1px solid rgba(11,26,43,0.06); }
+.report-page:nth-child(1) { top:0; left:0; transform:rotate(-5deg); z-index:3; }
+.report-page:nth-child(2) { top:40px; left:40px; transform:rotate(2deg); z-index:2; }
+.report-page:nth-child(3) { top:80px; left:20px; transform:rotate(-1deg); z-index:1; }
+.report-page h4 { font-size:0.75rem; color:var(--deep); margin-bottom:8px; letter-spacing:0.5px; text-transform:uppercase; }
+.report-page .fake-line { height:3px; background:rgba(11,26,43,0.06); border-radius:2px; margin-bottom:6px; }
+.report-page .fake-line.short { width:60%; }
+.report-page .fake-chart { height:40px; margin-top:8px; display:flex; align-items:flex-end; gap:4px; }
+.report-page .fake-bar { width:16px; border-radius:3px 3px 0 0; }
+.report-bullets { flex:1; }
+.report-bullets h2 { font-size:1.8rem; margin-bottom:24px; }
+.report-bullets ul { list-style:none; }
+.report-bullets li { padding:10px 0; border-bottom:1px solid rgba(11,26,43,0.06); font-size:0.95rem; line-height:1.6; color:#3a4a50; position:relative; padding-left:24px; }
+.report-bullets li::before { content:'→'; position:absolute; left:0; color:var(--gold); font-weight:700; }
+@media(max-width:700px) { .report-wrap { flex-direction:column; } .report-visual { flex:none; width:100%; height:240px; } }
+
+/* CTA */
+.cta { padding:80px 24px; background:linear-gradient(145deg, var(--deep), var(--deep-mid)); text-align:center; }
+.cta h2 { color:var(--cream); font-size:clamp(1.8rem,4vw,2.5rem); margin-bottom:16px; }
+.cta p { color:var(--gold-light); max-width:550px; margin:0 auto 32px; line-height:1.7; opacity:0.9; }
+.cta-btn { display:inline-block; padding:18px 40px; background:var(--gold); color:var(--deep); font-weight:700; font-size:1.05rem; border-radius:100px; text-decoration:none; letter-spacing:0.5px; transition:all 0.3s ease; box-shadow:0 4px 20px rgba(198,168,85,0.3); }
+.cta-btn:hover { background:var(--gold-light); transform:translateY(-2px); box-shadow:0 8px 30px rgba(198,168,85,0.4); }
+
+/* FOOTER */
+footer { padding:32px 24px; text-align:center; background:var(--deep); }
+footer p { color:rgba(250,246,238,0.4); font-size:0.82rem; }
+footer a { color:var(--gold); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<p class="hero-eyebrow">A Preview Built Just for You</p>
+<h1><span>Karen</span>, Here's a Preview of<br>Your Coaching Business</h1>
+<p>Built by Jimmy Davis's AI Business Design Software — combining 20+ years of direct response marketing methodology with the power of AI to show you exactly what your business could look like.</p>
+</div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity">
+<div class="container">
+<div class="id-card">
+<h2>Karen</h2>
+<div class="method-title">Creator of The Root &amp; Rise Method™</div>
+<p class="pitch">"I help women heal the ONE root cause behind their anxiety, depression, and food struggles — unresolved trauma — using a clinically-backed process that goes deeper, works faster, and feels safer than anything else out there."</p>
+<div class="id-tags">
+<span>EMDR Trained</span>
+<span>Accelerated Resolution Therapy</span>
+<span>EFT / Tapping</span>
+<span>CBT &amp; ACT</span>
+<span>Internal Family Systems</span>
+<span>Inner Child Work</span>
+<span>Trauma Survivor</span>
+<span>Licensed Therapist</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD PILLARS -->
+<section class="method">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Signature Framework</p>
+<h2>The Root &amp; Rise Method™</h2>
+<p>A 4-pillar clinical framework that goes beneath the symptoms to heal what's really driving the anxiety, depression, and food struggles.</p>
+</div>
+<div class="pillars">
+<div class="pillar-card">
+<div class="pillar-num">01</div>
+<h3>Safe Ground</h3>
+<p>Creating the radical safety that allows real healing to begin. Nervous system regulation and trust-building.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-num">02</div>
+<h3>Root Work</h3>
+<p>Going beneath the symptoms to the original trauma using EMDR, ART, and IFS. Healing the source, not the surface.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-num">03</div>
+<h3>Release</h3>
+<p>Processing and releasing trauma at the neurological level. The body lets go of what the mind has been carrying.</p>
+</div>
+<div class="pillar-card">
+<div class="pillar-num">04</div>
+<h3>Rise</h3>
+<p>Integration, identity reclamation, and becoming the woman you were always meant to be. Not managing — living.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Proven Process</p>
+<h2>The 9-Step Root &amp; Rise Journey</h2>
+<p>Every client follows this exact transformation journey — from first discovery through full reclamation.</p>
+</div>
+<img src="KarenProcess.png" alt="The Root &amp; Rise Method 9-Step Journey" class="journey-img" width="700">
+</div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="previews">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Online Presence</p>
+<h2>Two Website Directions</h2>
+<p>Two completely different design directions — both built around your brand, your method, and your story.</p>
+</div>
+<div class="preview-grid">
+<a href="karen.html" class="preview-card">
+<div class="preview-thumb warm"><span>Warm &amp; Elegant — Preview →</span></div>
+<div class="preview-info">
+<h3>Style 1: Warm &amp; Elegant</h3>
+<p>Sage greens, cream backgrounds, editorial warmth. Think Brené Brown meets a high-end wellness brand.</p>
+</div>
+</a>
+<a href="karen2.html" class="preview-card">
+<div class="preview-thumb bold"><span>Bold &amp; Deep — Preview →</span></div>
+<div class="preview-info">
+<h3>Style 2: Bold &amp; Deep</h3>
+<p>Deep navy, gold accents, sophisticated immersion. Midnight luxury meets conscious healing.</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- BOOK COVER -->
+<section class="book-section">
+<div class="container">
+<div class="book-wrap">
+<div class="book-3d">
+<img src="KarenBook.png" alt="The Hidden Root by Karen">
+</div>
+<div class="book-info">
+<p class="eyebrow accent" style="color:var(--sage);font-size:1.2rem;">Your Book Concept</p>
+<h2>The Hidden Root</h2>
+<p class="subtitle">Why Your Anxiety, Depression &amp; Food Struggles All Lead Back to One Thing</p>
+<p>A transformational book that takes readers on a journey from symptom management to root-cause healing — combining Karen's personal story with clinical insights and the Root &amp; Rise framework.</p>
+<p class="note">Full chapter outline, writing support, and publishing strategy included in the complete Blueprint.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Social Presence</p>
+<h2>Instagram Bio Preview</h2>
+</div>
+<div class="insta-mock">
+<div class="insta-header">
+<div class="insta-avatar">K</div>
+<div class="insta-stats">
+<div class="insta-stat"><strong>—</strong><span>Posts</span></div>
+<div class="insta-stat"><strong>—</strong><span>Followers</span></div>
+<div class="insta-stat"><strong>—</strong><span>Following</span></div>
+</div>
+</div>
+<div class="insta-bio">
+<div class="name">Karen | Trauma Therapist &amp; Coach</div>
+<div class="category">Therapist / Coach</div>
+<p>
+🌿 Creator of The Root &amp; Rise Method™<br>
+🧠 EMDR · ART · IFS · EFT · Inner Child<br>
+📖 Author of "The Hidden Root"<br>
+💛 Healing the ONE root behind anxiety, depression &amp; food struggles<br>
+<span class="link">↓ Free guide: The Hidden Root Report</span>
+</p>
+</div>
+<div class="insta-btn">Book a Consultation</div>
+</div>
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Program Suite</p>
+<h2>Three Ways to Work With You</h2>
+</div>
+<div class="program-grid">
+<div class="program-card">
+<div class="type free">Free Resource</div>
+<h3>The Hidden Root Report</h3>
+<div class="price" style="color:var(--sage);">FREE</div>
+<p class="desc">A powerful PDF guide revealing why anxiety, depression &amp; food struggles are symptoms of one deeper issue.</p>
+</div>
+<div class="program-card featured">
+<div class="type">6-Week Group Program</div>
+<h3>The Root &amp; Rise Collective</h3>
+<div class="price">$2,497</div>
+<p class="desc">A guided group experience walking through all 4 pillars of The Root &amp; Rise Method with weekly coaching calls.</p>
+</div>
+<div class="program-card">
+<div class="type" style="color:var(--warm);">Private 1:1 Coaching</div>
+<h3>Root &amp; Rise Private</h3>
+<div class="price">$7,500</div>
+<p class="desc">12 weeks of deep, personalized 1:1 therapy &amp; coaching with full clinical modality access.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calculator">
+<div class="container">
+<div class="section-header">
+<p class="eyebrow">Your Revenue Potential</p>
+<h2>Income Calculator</h2>
+<p>See what's possible when you fill your programs with women who need your help.</p>
+</div>
+<div class="calc-wrap">
+<div class="calc-slider">
+<label>Women per Collective round <strong id="groupVal">8</strong></label>
+<input type="range" id="groupSlider" min="4" max="20" value="8" oninput="calcIncome()">
+</div>
+<div class="calc-slider">
+<label>Collective rounds per year <strong id="roundVal">4</strong></label>
+<input type="range" id="roundSlider" min="2" max="8" value="4" oninput="calcIncome()">
+</div>
+<div class="calc-slider">
+<label>Private clients per year <strong id="privateVal">6</strong></label>
+<input type="range" id="privateSlider" min="0" max="20" value="6" oninput="calcIncome()">
+</div>
+<div class="calc-results">
+<div class="monthly">Monthly Revenue: <span id="monthlyRev">$0</span></div>
+<div class="annual">Annual Revenue<span id="annualRev">$0</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report">
+<div class="container">
+<div class="report-wrap">
+<div class="report-visual">
+<div class="report-page">
+<h4>Market Research</h4>
+<div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div>
+<div class="fake-chart">
+<div class="fake-bar" style="height:20px;background:var(--sage);"></div>
+<div class="fake-bar" style="height:32px;background:var(--gold);"></div>
+<div class="fake-bar" style="height:24px;background:var(--sage);"></div>
+<div class="fake-bar" style="height:38px;background:var(--gold);"></div>
+</div>
+</div>
+<div class="report-page">
+<h4>Customer Avatar</h4>
+<div class="fake-line"></div><div class="fake-line short"></div><div class="fake-line"></div>
+<div class="fake-chart">
+<div class="fake-bar" style="height:28px;background:var(--rose);"></div>
+<div class="fake-bar" style="height:18px;background:var(--warm);"></div>
+<div class="fake-bar" style="height:36px;background:var(--rose);"></div>
+</div>
+</div>
+<div class="report-page">
+<h4>Revenue Projections</h4>
+<div class="fake-line"></div><div class="fake-line"></div><div class="fake-line short"></div>
+<div class="fake-chart">
+<div class="fake-bar" style="height:14px;background:var(--gold);"></div>
+<div class="fake-bar" style="height:22px;background:var(--gold);"></div>
+<div class="fake-bar" style="height:34px;background:var(--gold);"></div>
+<div class="fake-bar" style="height:40px;background:var(--gold);"></div>
+</div>
+</div>
+</div>
+<div class="report-bullets">
+<h2>What's Inside the Full Blueprint</h2>
+<ul>
+<li>The 3 competitors in the trauma coaching space charging $7,500+ — and the positioning gap that makes Karen's approach more compelling than all of them</li>
+<li>Why women with "unexplained anxiety" are the highest-converting audience for trauma work — and exactly how to speak their language</li>
+<li>The specific reason 83% of women in therapy feel "understood but unchanged" — and how Karen's 7-modality toolkit solves the problem nobody else can</li>
+<li>How one reframe — "You don't have 5 problems, you have 1" — can collapse a prospect's resistance in under 60 seconds</li>
+<li>The income math behind a $200K+ practice using only group programs and 6 private clients per year</li>
+<li>Why "safety" is the most underpriced superpower in the trauma space — and how to make it the centerpiece of Karen's brand</li>
+<li>The exact 9-step client journey that turns a skeptical first call into a $7,500 private coaching enrollment</li>
+<li>A complete book outline, chapter-by-chapter, designed to position Karen as THE authority on root-cause trauma healing for women</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="container">
+<h2>Want to Bring This to Life?</h2>
+<p>Everything you've seen on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint includes your complete marketing strategy, sales copy, email sequences, and implementation roadmap.</p>
+<a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services &amp; Pricing</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</footer>
+
+<script>
+function calcIncome(){
+  const g=document.getElementById('groupSlider').value;
+  const r=document.getElementById('roundSlider').value;
+  const p=document.getElementById('privateSlider').value;
+  document.getElementById('groupVal').textContent=g;
+  document.getElementById('roundVal').textContent=r;
+  document.getElementById('privateVal').textContent=p;
+  const groupRev=g*r*2497;
+  const privateRev=p*7500;
+  const annual=groupRev+privateRev;
+  const monthly=Math.round(annual/12);
+  document.getElementById('monthlyRev').textContent='$'+monthly.toLocaleString();
+  document.getElementById('annualRev').textContent='$'+annual.toLocaleString();
+}
+calcIncome();
+</script>
+</body>
+</html>

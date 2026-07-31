@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog-in-a-Box | Finally — A Dog You Can Actually Take Anywhere</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --forest:#1E3D2F;
+  --forest-deep:#142B21;
+  --parchment:#FAF6EE;
+  --parchment-dark:#F1EADB;
+  --gold:#E0A93E;
+  --cta:#D9482B;
+  --cta-dark:#B83A21;
+  --ink:#23291F;
+  --muted:#5C6657;
+  --highlight:#FCE588;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;color:var(--ink);background:var(--parchment);line-height:1.65;font-size:18px}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.12}
+.hl{background:linear-gradient(transparent 58%, var(--highlight) 58%);padding:0 .1em}
+.script{font-family:'Caveat',cursive;color:var(--cta);font-size:1.4em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.narrow{max-width:780px;margin:0 auto;padding:0 24px}
+
+/* TOP BAR */
+.topbar{background:var(--forest-deep);color:#fff;text-align:center;padding:10px 16px;font-size:15px;font-weight:700;letter-spacing:.02em}
+.topbar span{color:var(--gold)}
+
+/* NAV */
+nav{background:var(--parchment);border-bottom:1px solid var(--parchment-dark);padding:16px 0;position:sticky;top:0;z-index:50}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Fraunces',serif;font-weight:800;font-size:24px;color:var(--forest);text-decoration:none}
+.logo em{color:var(--cta);font-style:normal}
+.nav-links{display:flex;gap:26px;align-items:center;font-size:16px;font-weight:700}
+.nav-links a{color:var(--forest);text-decoration:none}
+.nav-cta{background:var(--cta);color:#fff !important;padding:10px 20px;border-radius:8px}
+@media(max-width:840px){.nav-links a:not(.nav-cta){display:none}}
+
+/* HERO */
+.hero{background:var(--forest);color:var(--parchment);padding:80px 0 70px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(224,169,62,.18),transparent 70%)}
+.hero .eyebrow{display:inline-block;background:rgba(224,169,62,.16);border:1px solid var(--gold);color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:99px;margin-bottom:26px}
+.hero h1{font-size:clamp(34px,5.2vw,58px);font-weight:800;max-width:850px;margin-bottom:22px}
+.hero h1 .gold{color:var(--gold)}
+.hero .sub{font-size:clamp(18px,2.2vw,22px);max-width:740px;color:#D9E3D6;margin-bottom:36px}
+.btn{display:inline-block;background:var(--cta);color:#fff;font-weight:800;font-size:19px;padding:18px 36px;border-radius:10px;text-decoration:none;box-shadow:0 6px 0 var(--cta-dark);transition:transform .12s}
+.btn:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--cta-dark)}
+.btn-sub{display:block;font-size:14px;font-weight:600;opacity:.85;margin-top:4px}
+.hero .micro{margin-top:18px;font-size:15px;color:#B8C7B4}
+.hero .micro b{color:var(--gold)}
+
+/* PROOF BAR */
+.proofbar{background:var(--parchment-dark);padding:22px 0;text-align:center}
+.proofbar .wrap{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;font-weight:800;color:var(--forest);font-size:16px}
+.proofbar span{color:var(--gold)}
+
+/* PROBLEM */
+.section{padding:80px 0}
+.kicker{font-family:'Caveat',cursive;font-size:30px;color:var(--cta);display:block;margin-bottom:8px}
+.section h2{font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--forest);margin-bottom:24px}
+.problem p{margin-bottom:20px;font-size:19px}
+.problem .list{margin:28px 0;padding-left:0;list-style:none}
+.problem .list li{padding:10px 0 10px 38px;position:relative;font-size:19px}
+.problem .list li::before{content:"✗";position:absolute;left:0;color:var(--cta);font-weight:800;font-size:22px}
+
+/* METHOD */
+.method{background:var(--forest);color:var(--parchment)}
+.method h2{color:#fff}
+.method .lead{font-size:20px;color:#D9E3D6;max-width:760px;margin-bottom:46px}
+.play-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.play-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.play-grid{grid-template-columns:1fr}}
+.play-card{background:rgba(255,255,255,.06);border:1px solid rgba(224,169,62,.35);border-radius:14px;padding:28px 22px}
+.play-card .letter{font-family:'Fraunces',serif;font-size:54px;font-weight:800;color:var(--gold);line-height:1}
+.play-card h3{font-size:20px;margin:12px 0 8px;color:#fff}
+.play-card p{font-size:16px;color:#C5D2C1}
+
+/* PATHS */
+.paths .lead{font-size:19px;max-width:760px;margin-bottom:40px}
+.path-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:22px}
+@media(max-width:900px){.path-grid{grid-template-columns:1fr}}
+.path{background:#fff;border:1px solid var(--parchment-dark);border-radius:16px;padding:34px 28px;display:flex;flex-direction:column}
+.path.featured{border:3px solid var(--gold);position:relative;box-shadow:0 12px 36px rgba(30,61,47,.12)}
+.path.featured .badge{position:absolute;top:-16px;left:28px;background:var(--gold);color:var(--forest-deep);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:99px}
+.path h3{font-size:24px;color:var(--forest);margin-bottom:10px}
+.path .for{font-size:15px;font-weight:800;color:var(--cta);text-transform:uppercase;letter-spacing:.04em;margin-bottom:14px}
+.path p{font-size:17px;color:var(--muted);margin-bottom:18px}
+.path ul{list-style:none;margin-bottom:24px;flex-grow:1}
+.path ul li{padding:6px 0 6px 30px;position:relative;font-size:16px}
+.path ul li::before{content:"✓";position:absolute;left:0;color:var(--forest);font-weight:800}
+.path .btn{text-align:center;font-size:17px;padding:15px 24px}
+.path .btn.ghost{background:#fff;color:var(--cta);border:2px solid var(--cta);box-shadow:none}
+
+/* PA */
+.pa{background:var(--parchment-dark)}
+.pa .grid{display:grid;grid-template-columns:380px 1fr;gap:50px;align-items:center}
+@media(max-width:860px){.pa .grid{grid-template-columns:1fr}}
+.pa .photo{background:linear-gradient(135deg,var(--forest),var(--forest-deep));border-radius:18px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;color:var(--gold);font-family:'Fraunces',serif;font-size:22px;text-align:center;padding:20px;border:6px solid #fff;box-shadow:0 14px 40px rgba(30,61,47,.18)}
+.pa p{margin-bottom:18px;font-size:19px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr}}
+.testi{background:#fff;border-radius:14px;padding:28px;border:1px solid var(--parchment-dark)}
+.testi .stars{color:var(--gold);font-size:20px;letter-spacing:2px;margin-bottom:12px}
+.testi p{font-size:16px;font-style:italic;margin-bottom:16px}
+.testi .who{font-weight:800;color:var(--forest);font-size:15px}
+
+/* LEAD MAGNET */
+.magnet{background:var(--cta);color:#fff;padding:80px 0}
+.magnet .grid{display:grid;grid-template-columns:300px 1fr;gap:50px;align-items:center}
+@media(max-width:860px){.magnet .grid{grid-template-columns:1fr}}
+.report{background:#fff;border-radius:8px;aspect-ratio:3/4;transform:rotate(-4deg);box-shadow:14px 14px 0 rgba(0,0,0,.18);padding:28px 22px;color:var(--forest);display:flex;flex-direction:column;justify-content:space-between}
+.report .rtitle{font-family:'Fraunces',serif;font-weight:800;font-size:21px;line-height:1.25}
+.report .rband{background:var(--gold);color:var(--forest-deep);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em;padding:6px 10px;border-radius:4px;align-self:flex-start}
+.report .rfoot{font-size:13px;font-weight:700;color:var(--muted)}
+.magnet h2{color:#fff;font-size:clamp(28px,4vw,40px);margin-bottom:18px}
+.magnet p{font-size:19px;margin-bottom:26px;color:#FFE3DB}
+.magnet form{display:flex;gap:12px;flex-wrap:wrap}
+.magnet input{flex:1;min-width:220px;padding:16px 18px;border-radius:10px;border:none;font-size:17px;font-family:inherit}
+.magnet .btn{background:var(--forest-deep);box-shadow:0 6px 0 #0A1812}
+.magnet .micro{font-size:14px;margin-top:14px;color:#FFD3C7;margin-bottom:0}
+
+/* FINAL CTA */
+.final{background:var(--forest-deep);color:var(--parchment);text-align:center;padding:90px 0}
+.final h2{color:#fff;font-size:clamp(30px,4.5vw,46px);margin-bottom:18px}
+.final p{font-size:20px;max-width:680px;margin:0 auto 34px;color:#C5D2C1}
+
+/* FOOTER */
+footer{background:#0E1F17;color:#8FA38B;padding:40px 0;font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:18px}
+footer a{color:#C5D2C1;text-decoration:none;margin-left:22px}
+</style>
+</head>
+<body>
+
+<div class="topbar">⭐ Over <span>100 five-star reviews</span> from Gloucestershire dog owners &nbsp;•&nbsp; Classes limited to just <span>6 dogs</span> &nbsp;•&nbsp; Start within 7 days</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#">Dog<em>·in·a·</em>Box</a>
+    <div class="nav-links">
+      <a href="#method">The P.L.A.Y. Method</a>
+      <a href="#paths">Training Options</a>
+      <a href="#pa">Meet Pa</a>
+      <a href="#" class="nav-cta">Book a Free Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO: problem-first, prospect's conversation -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">For Gloucestershire dog owners at the end of their lead</span>
+    <h1>Finally — A Dog You Can Take <span class="gold">Anywhere</span>, Without the Pulling, the Barking, or the Embarrassment</h1>
+    <p class="sub">If walks feel like a wrestling match, recall is a polite suggestion your dog ignores, or your puppy treats your hands like a chew toy… it's <b>not your fault — and it's not your dog's fault either.</b> Nobody ever showed you a training method that actually works in real life. Until now.</p>
+    <a class="btn" href="#magnet">Get the Free Report: The 7 Costly Mistakes →<span class="btn-sub">Instant download • No obligation • Fix the first mistake tonight</span></a>
+    <p class="micro">Or skip ahead: <b>book a free 15-minute discovery call</b> with Pa and get a straight answer about your dog — no sales pitch, no jargon.</p>
+  </div>
+</section>
+
+<div class="proofbar">
+  <div class="wrap">
+    <div>⭐⭐⭐⭐⭐ <span>100+</span> Five-Star Reviews</div>
+    <div>🏆 Award-Winning Certified Trainer</div>
+    <div>🐾 Force-Free, Games-Based Methods</div>
+    <div>📍 Longhope, Gloucestershire</div>
+  </div>
+</div>
+
+<!-- PROBLEM AGITATION -->
+<section class="section problem">
+  <div class="narrow">
+    <span class="kicker">Let's be honest for a minute…</span>
+    <h2>You Didn't Get a Dog to Feel Like This</h2>
+    <p>You got a dog for the companionship. The countryside walks. The cosy evenings. What you actually got was:</p>
+    <ul class="list">
+      <li>Walks you secretly <b>dread</b> — arm yanked out of its socket, apologising to strangers</li>
+      <li>A recall that works perfectly… <b>until there's a squirrel, another dog, or literally anything interesting</b></li>
+      <li>Visitors greeted like a rugby tackle</li>
+      <li>That sinking feeling when you leave the house, wondering what you'll come home to</li>
+      <li>YouTube videos, conflicting advice, maybe even another trainer — <b>and nothing stuck</b></li>
+    </ul>
+    <p>Here's the truth most trainers won't tell you: <span class="hl"><b>your dog isn't naughty — your dog is untrained for the real world.</b></span> Drilling "sit" in a quiet village hall doesn't fix a dog that loses its mind in a field. You need a method built for real life. That's exactly what we do.</p>
+  </div>
+</section>
+
+<!-- UNIQUE MECHANISM -->
+<section class="section method" id="method">
+  <div class="wrap">
+    <span class="kicker" style="color:var(--gold)">Our unique approach</span>
+    <h2>The P.L.A.Y. Method™ — Training So Fun, Your Dog Won't Know It's Training</h2>
+    <p class="lead">Dogs don't learn from lectures. They learn from <b>games</b>. The P.L.A.Y. Method turns every behaviour you want — calm walking, lightning recall, polite greetings — into a game your dog is desperate to win. No shouting. No yanking. No gadgets. Just results that stick for life.</p>
+    <div class="play-grid">
+      <div class="play-card"><div class="letter">P</div><h3>Praise-Powered</h3><p>100% force-free and reward-based. Your dog works <i>with</i> you because they want to — not because they're scared not to.</p></div>
+      <div class="play-card"><div class="letter">L</div><h3>Learn Through Games</h3><p>Every skill is taught through a game your dog loves. Five minutes of play beats an hour of drills.</p></div>
+      <div class="play-card"><div class="letter">A</div><h3>At Your Dog's Pace</h3><p>No cookie-cutter timelines. Shy rescue or rocket-fuelled spaniel — we meet your dog where they are.</p></div>
+      <div class="play-card"><div class="letter">Y</div><h3>Years of Good Behaviour</h3><p>We build habits, not party tricks. The dog you train this year is the dog you'll enjoy for the next decade.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PATHS: one featured default -->
+<section class="section paths" id="paths">
+  <div class="wrap">
+    <span class="kicker">Choose your path (or let us choose for you)</span>
+    <h2>Three Ways to Train With Us — Most Owners Start Here ↓</h2>
+    <p class="lead">Not sure which is right? That's exactly what the free discovery call is for. Tell Pa about your dog, and she'll tell you straight which option fits — even if the answer is "you don't need us yet."</p>
+    <div class="path-grid">
+      <div class="path featured">
+        <span class="badge">★ Most Popular — Start Here</span>
+        <h3>The Class Membership</h3>
+        <p class="for">For puppies, teenage tearaways &amp; dogs that need consistency</p>
+        <p>Weekly training classes that never "end" after 6 weeks and abandon you. Train as long as you need — puppy to adolescent to agility, hoopers &amp; scentwork — all under one simple membership.</p>
+        <ul>
+          <li>Weekly classes, <b>max 6 dogs</b> — real coaching, not crowd control</li>
+          <li>Move between class types as your dog grows — no rebooking</li>
+          <li>Members-only community, videos &amp; trainer support between classes</li>
+          <li><b>Start within 7 days</b> — no month-long waiting lists</li>
+        </ul>
+        <a class="btn" href="#">See Membership Details →</a>
+      </div>
+      <div class="path">
+        <h3>1-to-1 Training</h3>
+        <p class="for">For specific problems: reactivity, recall, separation anxiety</p>
+        <p>Private sessions in the real-world places your dog struggles — because that's where it has to work.</p>
+        <ul>
+          <li>A plan built for <b>your</b> dog's exact issue</li>
+          <li>Training where the problem actually happens</li>
+          <li>Support between sessions — you're never left guessing</li>
+        </ul>
+        <a class="btn ghost" href="#">Book a Free Discovery Call</a>
+      </div>
+      <div class="path">
+        <h3>£5 Taster Sessions</h3>
+        <p class="for">For the curious (and the sceptical)</p>
+        <p>Try agility or hoopers — fun obstacle-course sports that burn off your dog's wild energy — for a fiver. Watch any class free before you commit a penny.</p>
+        <ul>
+          <li>£5. One session. No commitment.</li>
+          <li>See the P.L.A.Y. Method with your own eyes</li>
+          <li>If it's not for you, you've lost the price of a coffee</li>
+        </ul>
+        <a class="btn ghost" href="#">Grab a £5 Taster Spot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET PA -->
+<section class="section pa" id="pa">
+  <div class="wrap">
+    <div class="grid">
+      <div class="photo">[ Photo of Pa with a very<br>happy dog goes here ]</div>
+      <div>
+        <span class="kicker">Your trainer</span>
+        <h2>Meet Pa — The Trainer Whose Owners Leave Smiling Too</h2>
+        <p>Pa (short for Phillipa) is an award-winning, certified professional dog trainer — but more importantly, she's the trainer Gloucestershire owners <b>actually enjoy learning from.</b> Great sense of humour, zero judgement, and a knack for explaining things so they finally click.</p>
+        <p>Her one goal: <span class="hl"><b>a beautifully-behaved dog that fits your family and your life</b></span> — trained with modern, kind, games-based methods that you can actually keep up at home.</p>
+        <p class="script">"It's not just the dogs that leave with wagging tails!"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="section">
+  <div class="wrap">
+    <span class="kicker">Don't take our word for it</span>
+    <h2>What Gloucestershire Dog Owners Are Saying</h2>
+    <div class="testi-grid">
+      <div class="testi"><div class="stars">★★★★★</div><p>"[Pull real review from Google: e.g. recall transformation story — specific before/after]"</p><div class="who">— Sarah M., Longhope</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>"[Pull real review: puppy class experience, what changed at home]"</p><div class="who">— James &amp; Bella the Spaniel</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><p>"[Pull real review: nervous/reactive dog progress story]"</p><div class="who">— Claire T., Gloucester</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET -->
+<section class="magnet" id="magnet">
+  <div class="wrap">
+    <div class="grid">
+      <div class="report">
+        <span class="rband">Free Report</span>
+        <div class="rtitle">The 7 Costly Mistakes Gloucestershire Dog Owners Make That Turn Good Dogs Into Problem Dogs</div>
+        <div class="rfoot">…and the 5-minute games that fix every one. By Pa Boon, Dog-in-a-Box Training</div>
+      </div>
+      <div>
+        <h2>Not Ready to Book? Start With This (It's Free)</h2>
+        <p>Chances are you're making at least 3 of these 7 mistakes right now — everyone does, because everyone was taught wrong. This free report shows you what they are and gives you a <b>5-minute game to fix each one, starting tonight.</b></p>
+        <form onsubmit="return false">
+          <input type="text" placeholder="Your first name">
+          <input type="email" placeholder="Your best email">
+          <a class="btn" href="#">Send My Free Report →</a>
+        </form>
+        <p class="micro">We'll also send you Pa's best weekly training games. Unsubscribe any time — no hard feelings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Imagine the Walk You'll Take 8 Weeks From Now</h2>
+    <p>Loose lead. Dog trotting beside you. Recall that works <i>even with squirrels.</i> Visitors greeted politely. That dog exists — it's your dog, with the right training. Classes are capped at 6 dogs and they do fill. The only question is whether you start now or keep wrestling.</p>
+    <a class="btn" href="#">Book Your Free 15-Minute Discovery Call →<span class="btn-sub">Talk to Pa. Get a straight answer. No pressure, ever.</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Dog-in-a-Box Training · Longhope, Gloucestershire · 01531 808799</div>
+    <div><a href="#">Customer Charter</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

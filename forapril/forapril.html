@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>April Azizi — Your Coaching Business Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--deep:#0B1A2B;--deep-mid:#132B42;--gold:#C6A855;--gold-light:#E8D5A0;
+--cream:#FAF6EE;--sage:#7A9E7E;--sage-dark:#5C7D60;--rose:#C9928E;
+--warm:#D4A574;--white:#FFFFFF;--forest:#1C2B1E;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--cream);background:var(--deep);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:600;line-height:1.25}
+.accent{font-family:'Caveat',cursive}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+.gold{color:var(--gold)}
+.sage{color:var(--sage)}
+.section{padding:80px 0}
+@media(max-width:768px){.section{padding:56px 0}}
+
+/* ===== HERO ===== */
+.hero{padding:100px 0 80px;text-align:center;background:linear-gradient(180deg,var(--deep) 0%,var(--deep-mid) 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(198,168,85,0.08) 0%,transparent 70%);pointer-events:none}
+.hero-eyebrow{font-family:'Caveat',cursive;color:var(--gold);font-size:1.3rem;margin-bottom:12px;letter-spacing:0.5px}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);color:var(--cream);margin-bottom:20px}
+.hero h1 span{color:var(--gold);font-weight:700}
+.hero-sub{font-size:1.05rem;color:rgba(250,246,238,0.7);max-width:600px;margin:0 auto 12px;line-height:1.8}
+.hero-note{font-size:0.85rem;color:rgba(250,246,238,0.45);margin-top:24px;font-style:italic}
+.gold-line{width:60px;height:2px;background:var(--gold);margin:28px auto 0;border-radius:2px}
+
+/* ===== IDENTITY CARD ===== */
+.identity-section{padding:60px 0 80px}
+.id-card{background:linear-gradient(135deg,var(--deep-mid),#0d2236);border:1px solid rgba(198,168,85,0.25);border-radius:16px;padding:48px 44px;max-width:750px;margin:0 auto;position:relative;overflow:hidden}
+.id-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.id-card-name{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--gold);font-weight:700;margin-bottom:6px}
+.id-card-title{font-family:'Caveat',cursive;font-size:1.35rem;color:var(--sage);margin-bottom:20px}
+.id-card-pitch{font-size:1rem;color:rgba(250,246,238,0.8);line-height:1.85;margin-bottom:28px}
+.id-tags{display:flex;flex-wrap:wrap;gap:10px}
+.id-tag{background:rgba(198,168,85,0.1);border:1px solid rgba(198,168,85,0.25);color:var(--gold-light);padding:6px 16px;border-radius:100px;font-size:0.8rem;font-weight:500;letter-spacing:0.3px}
+
+/* ===== METHOD ===== */
+.method-section{background:var(--deep);padding:80px 0}
+.section-eyebrow{font-family:'Caveat',cursive;color:var(--gold);font-size:1.2rem;text-align:center;margin-bottom:8px}
+.section-title{text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);color:var(--cream);margin-bottom:12px}
+.section-sub{text-align:center;color:rgba(250,246,238,0.6);max-width:600px;margin:0 auto 48px;font-size:0.95rem}
+.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:900px){.method-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.method-grid{grid-template-columns:1fr}}
+.method-card{background:linear-gradient(160deg,var(--deep-mid),rgba(19,43,66,0.6));border:1px solid rgba(198,168,85,0.15);border-radius:14px;padding:32px 24px;text-align:center;transition:transform 0.3s,border-color 0.3s}
+.method-card:hover{transform:translateY(-4px);border-color:rgba(198,168,85,0.4)}
+.method-card-num{font-family:'Caveat',cursive;font-size:2.2rem;color:var(--gold);line-height:1}
+.method-card h3{font-size:1.15rem;color:var(--cream);margin:10px 0 12px}
+.method-card p{font-size:0.85rem;color:rgba(250,246,238,0.6);line-height:1.7}
+
+/* ===== 9-STEP JOURNEY ===== */
+.journey-section{padding:80px 0;background:linear-gradient(180deg,var(--deep-mid),var(--deep))}
+.journey-img-wrap{max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.journey-img-wrap img{width:100%;height:auto;display:block}
+
+/* ===== WEBSITE PREVIEWS ===== */
+.previews-section{padding:80px 0;background:var(--deep)}
+.previews-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:900px;margin:0 auto}
+@media(max-width:700px){.previews-grid{grid-template-columns:1fr}}
+.preview-card{border-radius:14px;overflow:hidden;border:1px solid rgba(198,168,85,0.15);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;text-decoration:none}
+.preview-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.4)}
+.preview-thumb{width:100%;height:280px;overflow:hidden;position:relative}
+.preview-thumb-warm{background:linear-gradient(135deg,#FAF6EE,#d4e8d0,#FAF6EE);display:flex;align-items:center;justify-content:center}
+.preview-thumb-bold{background:linear-gradient(135deg,#0B1A2B,#132B42,#0B1A2B);display:flex;align-items:center;justify-content:center}
+.preview-thumb-text{font-family:'Playfair Display',serif;font-size:1.6rem;text-align:center;padding:20px}
+.preview-thumb-warm .preview-thumb-text{color:var(--forest)}
+.preview-thumb-bold .preview-thumb-text{color:var(--gold)}
+.preview-label{padding:18px 20px;background:var(--deep-mid);display:flex;justify-content:space-between;align-items:center}
+.preview-label span{color:var(--cream);font-size:0.9rem;font-weight:500}
+.preview-label .arrow{color:var(--gold);font-size:1.1rem}
+
+/* ===== BOOK ===== */
+.book-section{padding:80px 0;background:linear-gradient(180deg,var(--deep),var(--deep-mid))}
+.book-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:center;max-width:900px;margin:0 auto}
+@media(max-width:700px){.book-layout{grid-template-columns:1fr;text-align:center}}
+.book-3d{perspective:800px;display:flex;justify-content:center}
+.book-3d img{width:280px;max-width:100%;border-radius:6px;box-shadow:12px 12px 40px rgba(0,0,0,0.5);transform:rotateY(-8deg);transition:transform 0.4s}
+.book-3d img:hover{transform:rotateY(0deg)}
+.book-info h2{font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--cream);margin-bottom:16px}
+.book-info p{color:rgba(250,246,238,0.7);margin-bottom:16px;font-size:0.95rem;line-height:1.8}
+.book-note{font-size:0.85rem;color:var(--gold-light);font-style:italic;background:rgba(198,168,85,0.08);border-left:3px solid var(--gold);padding:14px 18px;border-radius:0 8px 8px 0;margin-top:8px}
+
+/* ===== INSTAGRAM BIO ===== */
+.insta-section{padding:80px 0;background:var(--deep)}
+.insta-mock{max-width:420px;margin:0 auto;background:var(--deep-mid);border-radius:18px;border:1px solid rgba(198,168,85,0.15);overflow:hidden}
+.insta-header{padding:24px 24px 16px;display:flex;align-items:center;gap:18px}
+.insta-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--deep);font-weight:700}
+.insta-stats{display:flex;gap:24px;text-align:center}
+.insta-stats div span{display:block}
+.insta-stats .num{font-size:1.1rem;font-weight:700;color:var(--cream)}
+.insta-stats .label{font-size:0.7rem;color:rgba(250,246,238,0.5);text-transform:uppercase;letter-spacing:0.5px}
+.insta-body{padding:0 24px 24px}
+.insta-handle{font-weight:700;color:var(--cream);font-size:0.95rem;margin-bottom:10px}
+.insta-bio{font-size:0.85rem;color:rgba(250,246,238,0.8);line-height:1.8}
+.insta-bio .gold-text{color:var(--gold)}
+
+/* ===== PROGRAMS ===== */
+.programs-section{padding:80px 0;background:linear-gradient(180deg,var(--deep-mid),var(--deep))}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:960px;margin:0 auto}
+@media(max-width:800px){.programs-grid{grid-template-columns:1fr}}
+.program-card{background:var(--deep-mid);border:1px solid rgba(198,168,85,0.12);border-radius:14px;padding:36px 28px;text-align:center;transition:transform 0.3s,border-color 0.3s}
+.program-card:hover{transform:translateY(-4px);border-color:rgba(198,168,85,0.3)}
+.program-card.featured{border-color:var(--gold);background:linear-gradient(160deg,var(--deep-mid),rgba(198,168,85,0.08))}
+.program-card.featured::before{content:'MOST POPULAR';display:block;font-size:0.65rem;font-weight:700;letter-spacing:2px;color:var(--deep);background:var(--gold);padding:4px 14px;border-radius:100px;width:fit-content;margin:0 auto 20px}
+.program-card h3{font-size:1.25rem;color:var(--cream);margin-bottom:8px}
+.program-card .price{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin:12px 0 8px}
+.program-card .price-note{font-size:0.75rem;color:rgba(250,246,238,0.45)}
+.program-card .desc{font-size:0.85rem;color:rgba(250,246,238,0.6);margin-top:12px;line-height:1.7}
+
+/* ===== INCOME CALCULATOR ===== */
+.calc-section{padding:80px 0;background:var(--deep)}
+.calc-box{max-width:700px;margin:0 auto;background:linear-gradient(160deg,var(--deep-mid),rgba(19,43,66,0.7));border:1px solid rgba(198,168,85,0.2);border-radius:18px;padding:44px 40px}
+@media(max-width:600px){.calc-box{padding:32px 20px}}
+.calc-slider-group{margin-bottom:32px}
+.calc-slider-group label{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:0.9rem;color:rgba(250,246,238,0.8)}
+.calc-slider-group label span{color:var(--gold);font-weight:600;font-size:1rem}
+input[type="range"]{-webkit-appearance:none;width:100%;height:6px;border-radius:4px;background:rgba(250,246,238,0.1);outline:none}
+input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 2px 8px rgba(198,168,85,0.4)}
+input[type="range"]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--gold);cursor:pointer;border:none}
+.calc-results{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;padding-top:32px;border-top:1px solid rgba(198,168,85,0.15)}
+@media(max-width:500px){.calc-results{grid-template-columns:1fr}}
+.calc-result-box{text-align:center;padding:20px;background:rgba(198,168,85,0.06);border-radius:12px}
+.calc-result-box .label{font-size:0.8rem;color:rgba(250,246,238,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.calc-result-box .amount{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.2rem);color:var(--gold);font-weight:700}
+
+/* ===== REPORT TEASER ===== */
+.report-section{padding:80px 0;background:linear-gradient(180deg,var(--deep),var(--deep-mid))}
+.report-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center;max-width:960px;margin:0 auto}
+@media(max-width:768px){.report-layout{grid-template-columns:1fr}}
+.report-pages{position:relative;height:300px;display:flex;justify-content:center;align-items:center}
+.report-page{position:absolute;width:200px;background:var(--cream);border-radius:8px;padding:20px 18px;box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.report-page:nth-child(1){transform:rotate(-8deg) translateX(-30px);z-index:1}
+.report-page:nth-child(2){transform:rotate(2deg) translateX(0);z-index:2}
+.report-page:nth-child(3){transform:rotate(10deg) translateX(30px);z-index:3}
+.report-page h4{font-size:0.7rem;color:var(--deep);font-family:'Inter',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--gold)}
+.report-line{height:5px;background:rgba(11,26,43,0.1);border-radius:3px;margin-bottom:5px}
+.report-line:nth-child(odd){width:100%}.report-line:nth-child(even){width:70%}
+.report-chart{display:flex;gap:4px;align-items:flex-end;height:30px;margin-top:10px}
+.report-bar{width:14px;border-radius:3px 3px 0 0}
+.fascination-list{list-style:none}
+.fascination-list li{padding:10px 0;border-bottom:1px solid rgba(198,168,85,0.08);font-size:0.9rem;color:rgba(250,246,238,0.8);line-height:1.7;padding-left:24px;position:relative}
+.fascination-list li::before{content:'✦';position:absolute;left:0;color:var(--gold);font-size:0.75rem;top:12px}
+
+/* ===== CTA ===== */
+.cta-section{padding:80px 0;background:var(--deep);text-align:center}
+.cta-section h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--cream);margin-bottom:16px}
+.cta-section p{color:rgba(250,246,238,0.7);max-width:560px;margin:0 auto 32px;font-size:0.95rem;line-height:1.8}
+.cta-btn{display:inline-block;background:var(--gold);color:var(--deep);padding:16px 40px;border-radius:100px;text-decoration:none;font-weight:600;font-size:1rem;letter-spacing:0.5px;transition:background 0.3s,transform 0.3s,box-shadow 0.3s}
+.cta-btn:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(198,168,85,0.3)}
+
+/* ===== FOOTER ===== */
+.footer{padding:32px 0;text-align:center;border-top:1px solid rgba(198,168,85,0.1)}
+.footer p{font-size:0.8rem;color:rgba(250,246,238,0.35)}
+.footer a{color:var(--gold);text-decoration:none}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero h1,.hero-eyebrow,.hero-sub,.id-card,.section-title,.section-eyebrow{animation:fadeUp 0.7s ease-out both}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container">
+<p class="hero-eyebrow">A Preview Built Just for You</p>
+<h1><span>April</span>, Here's a Preview of<br>Your Coaching Business</h1>
+<p class="hero-sub">Jimmy's AI Business Design software analyzed your unique gifts, your audience, and your market — and built this preview of what your brand could look like.</p>
+<p class="hero-note">Everything on this page was designed around your specific superpowers and expertise.</p>
+<div class="gold-line"></div>
+</div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="identity-section">
+<div class="container">
+<div class="id-card">
+<div class="id-card-name">April Azizi</div>
+<div class="id-card-title">Creator of The Love Reclaimed Method™</div>
+<p class="id-card-pitch">I help accomplished women in midlife who look like they have it all together on the outside — but feel stuck, heavy, and disconnected on the inside. Using Family Constellation therapy and intuitive energy work, I find the hidden limiting beliefs and inherited wounds they've been carrying — sometimes for generations — clear them from their energy field, and replace them with Love. My clients don't just feel better — they come home to themselves.</p>
+<div class="id-tags">
+<span class="id-tag">Family Constellation Facilitator</span>
+<span class="id-tag">Intuitive Energy Healer</span>
+<span class="id-tag">Creative Arts Therapist</span>
+<span class="id-tag">Former Educator (13+ Years)</span>
+<span class="id-tag">Portland, OR</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- METHOD -->
+<section class="method-section section">
+<div class="container">
+<p class="section-eyebrow">Your Signature Framework</p>
+<h2 class="section-title">The Love Reclaimed Method™</h2>
+<p class="section-sub">A 4-step process for releasing inherited burdens and coming home to yourself</p>
+<div class="method-grid">
+<div class="method-card">
+<div class="method-card-num">01</div>
+<h3>Reveal</h3>
+<p>Tune into the energy field to discover the hidden limiting belief or inherited wound that's keeping you stuck.</p>
+</div>
+<div class="method-card">
+<div class="method-card-num">02</div>
+<h3>Release</h3>
+<p>Use Family Constellation work and energy clearing to untangle the generational pattern from the body.</p>
+</div>
+<div class="method-card">
+<div class="method-card-num">03</div>
+<h3>Replace</h3>
+<p>Fill the space where the wound lived with Love — not as an affirmation, but as an energetic rewiring.</p>
+</div>
+<div class="method-card">
+<div class="method-card-num">04</div>
+<h3>Reclaim</h3>
+<p>Step into the woman you were always meant to be. Reconnect with your creativity, voice, and purpose.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="journey-section section">
+<div class="container">
+<p class="section-eyebrow">The Complete Transformation</p>
+<h2 class="section-title">Your Proven 9-Step Process</h2>
+<p class="section-sub">Every client follows this exact journey — from invisible weight to unstoppable freedom</p>
+<div class="journey-img-wrap">
+<img src="AprilProcess.png" alt="The Love Reclaimed Journey — 9-Step Transformational Process by April Azizi">
+</div>
+</div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="previews-section section">
+<div class="container">
+<p class="section-eyebrow">Your Online Presence</p>
+<h2 class="section-title">Two Website Concepts — Designed for You</h2>
+<p class="section-sub">Click either to see the full scrolling mockup</p>
+<div class="previews-grid">
+<a class="preview-card" href="april.html">
+<div class="preview-thumb preview-thumb-warm">
+<div class="preview-thumb-text">Warm & Elegant<br><span style="font-family:'Caveat',cursive;font-size:1.1rem;color:var(--sage-dark)">Sage · Cream · Nature</span></div>
+</div>
+<div class="preview-label"><span>Style 1 — Warm & Elegant</span><span class="arrow">→</span></div>
+</a>
+<a class="preview-card" href="april2.html">
+<div class="preview-thumb preview-thumb-bold">
+<div class="preview-thumb-text">Bold & Deep<br><span style="font-family:'Caveat',cursive;font-size:1.1rem;color:var(--gold-light)">Navy · Gold · Premium</span></div>
+</div>
+<div class="preview-label"><span>Style 2 — Bold & Deep</span><span class="arrow">→</span></div>
+</a>
+</div>
+</div>
+</section>
+
+<!-- BOOK -->
+<section class="book-section section">
+<div class="container">
+<div class="book-layout">
+<div class="book-3d">
+<img src="AprilBook.png" alt="Love Reclaimed by April Azizi — Book Cover">
+</div>
+<div class="book-info">
+<p class="section-eyebrow" style="text-align:left">Your Book</p>
+<h2>Love Reclaimed</h2>
+<p>How to Free Yourself from the Invisible Burdens You Were Never Meant to Carry</p>
+<p>A complete book concept with 13 chapters across 4 parts — designed to establish you as the definitive voice in ancestral healing for midlife women.</p>
+<div class="book-note">Full chapter outline, writing support, and publishing strategy included in the complete Blueprint.</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="insta-section section">
+<div class="container">
+<p class="section-eyebrow">Your Social Presence</p>
+<h2 class="section-title" style="margin-bottom:36px">Instagram Bio Preview</h2>
+<div class="insta-mock">
+<div class="insta-header">
+<div class="insta-avatar">AA</div>
+<div class="insta-stats">
+<div><span class="num">—</span><span class="label">Posts</span></div>
+<div><span class="num">—</span><span class="label">Followers</span></div>
+<div><span class="num">—</span><span class="label">Following</span></div>
+</div>
+</div>
+<div class="insta-body">
+<div class="insta-handle">@aprilazizi</div>
+<div class="insta-bio">
+<span class="gold-text">✦</span> Creator of The Love Reclaimed Method™<br>
+<span class="gold-text">✦</span> Family Constellations · Energy Healing · Creative Arts<br>
+<span class="gold-text">✦</span> Helping midlife women release what was never theirs to carry<br>
+<span class="gold-text">✦</span> Portland, OR 🌿<br>
+📖 Author of <em>Love Reclaimed</em><br>
+<span class="gold-text">↓</span> Free guide: "The Invisible Weight"
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="programs-section section">
+<div class="container">
+<p class="section-eyebrow">Your Offers</p>
+<h2 class="section-title">Three Ways to Work With April</h2>
+<p class="section-sub">A clear path from first step to full transformation</p>
+<div class="programs-grid">
+<div class="program-card">
+<h3>The Invisible Weight</h3>
+<div class="price">FREE</div>
+<p class="price-note">Digital Guide</p>
+<p class="desc">5 Signs You're Carrying a Burden That Isn't Yours — and the one shift that changes everything.</p>
+</div>
+<div class="program-card featured">
+<h3>Love Reclaimed:<br>The Awakening</h3>
+<div class="price">$2,800</div>
+<p class="price-note">6-Month Group Program</p>
+<p class="desc">An intimate group journey through The Love Reclaimed Method™. Capped at 8 women. In-person + virtual.</p>
+</div>
+<div class="program-card">
+<h3>The Love Reclaimed<br>Journey</h3>
+<div class="price">$6,000</div>
+<p class="price-note">6-Month Private 1:1</p>
+<p class="desc">Deep private transformation. 12 sessions, Family Constellation work, energy clearing, and ongoing support.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="calc-section section">
+<div class="container">
+<p class="section-eyebrow">The Numbers</p>
+<h2 class="section-title">Your Income Potential</h2>
+<p class="section-sub">Adjust the sliders to see what's possible with your programs</p>
+<div class="calc-box">
+<div class="calc-slider-group">
+<label>Women per group round <span id="groupVal">6</span></label>
+<input type="range" id="groupSlider" min="4" max="8" value="6" step="1">
+</div>
+<div class="calc-slider-group">
+<label>Group rounds per year <span id="roundVal">2</span></label>
+<input type="range" id="roundSlider" min="1" max="4" value="2" step="1">
+</div>
+<div class="calc-slider-group">
+<label>Private 1:1 clients per year <span id="privateVal">4</span></label>
+<input type="range" id="privateSlider" min="1" max="12" value="4" step="1">
+</div>
+<div class="calc-slider-group">
+<label>Premium clients per year <span id="premiumVal">1</span></label>
+<input type="range" id="premiumSlider" min="0" max="6" value="1" step="1">
+</div>
+<div class="calc-results">
+<div class="calc-result-box">
+<div class="label">Monthly Revenue</div>
+<div class="amount" id="monthlyRev">$0</div>
+</div>
+<div class="calc-result-box">
+<div class="label">Annual Revenue</div>
+<div class="amount" id="annualRev">$0</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="report-section section">
+<div class="container">
+<p class="section-eyebrow">Inside Your Full Blueprint</p>
+<h2 class="section-title">What the Complete Report Reveals</h2>
+<p class="section-sub">Your personalized business design goes much deeper than this preview</p>
+<div class="report-layout">
+<div class="report-pages">
+<div class="report-page" style="top:20px">
+<h4>Market Research</h4>
+<div class="report-line" style="width:100%"></div>
+<div class="report-line" style="width:80%"></div>
+<div class="report-line" style="width:92%"></div>
+<div class="report-line" style="width:65%"></div>
+<div class="report-chart">
+<div class="report-bar" style="height:12px;background:var(--sage)"></div>
+<div class="report-bar" style="height:20px;background:var(--sage)"></div>
+<div class="report-bar" style="height:28px;background:var(--gold)"></div>
+<div class="report-bar" style="height:16px;background:var(--sage)"></div>
+<div class="report-bar" style="height:24px;background:var(--sage)"></div>
+</div>
+</div>
+<div class="report-page" style="top:10px">
+<h4>Customer Avatar</h4>
+<div class="report-line" style="width:100%"></div>
+<div class="report-line" style="width:73%"></div>
+<div class="report-line" style="width:88%"></div>
+<div class="report-line" style="width:60%"></div>
+<div class="report-line" style="width:95%"></div>
+<div class="report-line" style="width:50%"></div>
+</div>
+<div class="report-page" style="top:0">
+<h4>Revenue Projections</h4>
+<div class="report-line" style="width:100%"></div>
+<div class="report-line" style="width:85%"></div>
+<div class="report-chart">
+<div class="report-bar" style="height:10px;background:var(--gold)"></div>
+<div class="report-bar" style="height:18px;background:var(--gold)"></div>
+<div class="report-bar" style="height:30px;background:var(--gold)"></div>
+</div>
+<div class="report-line" style="width:70%;margin-top:8px"></div>
+<div class="report-line" style="width:90%"></div>
+</div>
+</div>
+<div>
+<ul class="fascination-list">
+<li>The 5 coaches already serving your exact audience — what they're charging, what's working, and the massive gap none of them are filling (hint: it's your superpower)</li>
+<li>The exact words your ideal client uses at 2am when she can't sleep — and how to use that language in every piece of content you create</li>
+<li>Why women who "have everything" are secretly the most underserved market in the coaching industry — and the $192K revenue model built around serving them</li>
+<li>The inherited belief pattern that keeps more midlife women stuck than any other — and why no one in your competitive landscape is addressing it</li>
+<li>A complete 6-week curriculum that turns your Family Constellation expertise into a group program women will pay $2,800 to join</li>
+<li>The "silent loyalty" positioning angle that differentiates you from every energy healer, life coach, and therapist in the Pacific Northwest</li>
+<li>Your full 13-chapter book outline — how "Love Reclaimed" becomes the authority-building asset that makes you the go-to expert in ancestral healing for women</li>
+<li>The sales copy framework (headlines, hooks, and fascination bullets) built specifically for the woman who Googles "why do I feel stuck when my life is fine"</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section section">
+<div class="container">
+<p class="section-eyebrow">Ready?</p>
+<h2>Want to Bring This to Life?</h2>
+<p>Jimmy's AI Business Design Software created this preview in minutes. The complete Blueprint — with full copy, curriculum, launch strategy, and implementation support — is how we turn this vision into your reality.</p>
+<a class="cta-btn" href="https://ineedjimmy.com/hire">See Jimmy's Services & Pricing</a>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<p>This preview was generated by Jimmy Davis's AI Business Design Software — <a href="https://ineedjimmy.com">INeedJimmy.com</a></p>
+</div>
+</footer>
+
+<script>
+const groupSlider=document.getElementById('groupSlider');
+const roundSlider=document.getElementById('roundSlider');
+const privateSlider=document.getElementById('privateSlider');
+const premiumSlider=document.getElementById('premiumSlider');
+const groupVal=document.getElementById('groupVal');
+const roundVal=document.getElementById('roundVal');
+const privateVal=document.getElementById('privateVal');
+const premiumVal=document.getElementById('premiumVal');
+const monthlyRev=document.getElementById('monthlyRev');
+const annualRev=document.getElementById('annualRev');
+function calc(){
+const g=parseInt(groupSlider.value);
+const r=parseInt(roundSlider.value);
+const p=parseInt(privateSlider.value);
+const pr=parseInt(premiumSlider.value);
+groupVal.textContent=g;
+roundVal.textContent=r;
+privateVal.textContent=p;
+premiumVal.textContent=pr;
+const annual=(g*r*2800)+(p*6000)+(pr*12000);
+const monthly=Math.round(annual/12);
+annualRev.textContent='$'+annual.toLocaleString();
+monthlyRev.textContent='$'+monthly.toLocaleString();
+}
+groupSlider.addEventListener('input',calc);
+roundSlider.addEventListener('input',calc);
+privateSlider.addEventListener('input',calc);
+premiumSlider.addEventListener('input',calc);
+calc();
+</script>
+</body>
+</html>

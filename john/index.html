@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0E1116; --panel:#161B22; --panel2:#1C2230; --border:#2A3240;
+    --text:#E6EAF0; --muted:#8A94A6; --amber:#FFB000; --amber-dim:#9c6f12;
+    --up:#2ECC71; --down:#FF5C5C; --blue:#5B8DEF;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --disp:'Space Grotesk',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--disp);-webkit-font-smoothing:antialiased}
+  body{padding:20px;max-width:1180px;margin:0 auto}
+  a{color:var(--amber)}
+  .hdr{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:18px;flex-wrap:wrap;gap:10px}
+  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand h1{font-size:22px;font-weight:700;letter-spacing:-0.5px;margin:0}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);align-self:center}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px}
+  .ticker{font-family:var(--mono);font-size:13px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+  .ticker b{color:var(--text);font-weight:500}
+  .grid{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:start}
+  @media(max-width:840px){.grid{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .panel h2{font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-family:var(--mono);margin:0 0 14px;font-weight:500}
+  .field{margin-bottom:16px}
+  .field>label{display:block;font-size:12px;color:var(--muted);margin-bottom:7px;font-family:var(--mono);letter-spacing:.5px}
+  .seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .seg.three{grid-template-columns:1fr 1fr 1fr}
+  .seg button{font-family:var(--mono);font-size:11px;padding:8px 4px;background:var(--panel2);color:var(--muted);border:1px solid var(--border);border-radius:6px;cursor:pointer;transition:.12s}
+  .seg button:hover{color:var(--text);border-color:#3a4555}
+  .seg button[aria-pressed="true"]{background:var(--amber);color:#1a1205;border-color:var(--amber);font-weight:700}
+  .strat{width:100%;font-family:var(--mono);font-size:13px;padding:9px 10px;background:var(--panel2);color:var(--text);border:1px solid var(--border);border-radius:6px;cursor:pointer}
+  .slider-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .slider-row .val{font-family:var(--mono);font-size:12px;color:var(--amber)}
+  input[type=range]{width:100%;accent-color:var(--amber);cursor:pointer}
+  .chk{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:12px;color:var(--muted);cursor:pointer;user-select:none}
+  .chk input{accent-color:var(--amber);width:15px;height:15px;cursor:pointer}
+  .btns{display:flex;flex-direction:column;gap:9px;margin-top:4px}
+  .btn{font-family:var(--disp);font-weight:700;font-size:13px;padding:11px;border-radius:7px;cursor:pointer;border:1px solid var(--border);transition:.12s}
+  .btn.primary{background:var(--amber);color:#1a1205;border-color:var(--amber)}
+  .btn.primary:hover{filter:brightness(1.08)}
+  .btn.ghost{background:var(--panel2);color:var(--text)}
+  .btn.ghost:hover{border-color:#3a4555}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .main{display:flex;flex-direction:column;gap:18px;min-width:0}
+  .chartwrap{position:relative}
+  canvas{display:block;width:100%;border-radius:6px}
+  .legend{display:flex;gap:16px;font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px;flex-wrap:wrap}
+  .legend span{display:flex;align-items:center;gap:6px}
+  .swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:13px}
+  .stat .k{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .stat .v{font-family:var(--mono);font-size:21px;font-weight:700;letter-spacing:-.5px}
+  .v.up{color:var(--up)} .v.down{color:var(--down)} .v.neutral{color:var(--text)}
+  .mc-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+  .mc-summary{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+  .mc-summary b{color:var(--text)}
+  .mc-summary .hl{color:var(--amber)}
+  .footnote{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.6;margin-top:18px;border-top:1px solid var(--border);padding-top:14px}
+  .pill{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--amber);border:1px solid var(--amber-dim);border-radius:20px;padding:2px 9px}
+</style>
+</head>
+<body>
+  <div class="hdr">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>Strategy Lab</h1>
+      <span class="tag">market sandbox</span>
+    </div>
+    <div class="ticker" id="ticker">
+      <span>SIM &middot; <b id="t-regime">BULL</b></span>
+      <span>LAST <b id="t-last">—</b></span>
+      <span>1Y CHG <b id="t-chg">—</b></span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- CONTROLS -->
+    <div class="panel">
+      <h2>Controls</h2>
+
+      <div class="field">
+        <label>Strategy</label>
+        <select class="strat" id="strat" aria-label="Strategy">
+          <option value="bh">Buy &amp; Hold</option>
+          <option value="sma" selected>Moving-Average Crossover</option>
+          <option value="rsi">RSI Mean Reversion</option>
+        </select>
+      </div>
+
+      <div class="field" id="sma-params">
+        <div class="slider-row"><label style="margin:0">Fast average</label><span class="val" id="fast-v">20d</span></div>
+        <input type="range" id="fast" min="3" max="50" value="20" aria-label="Fast moving average length">
+        <div class="slider-row" style="margin-top:12px"><label style="margin:0">Slow average</label><span class="val" id="slow-v">100d</span></div>
+        <input type="range" id="slow" min="20" max="200" value="100" aria-label="Slow moving average length">
+      </div>
+
+      <div class="field" id="rsi-params" style="display:none">
+        <div class="slider-row"><label style="margin:0">Buy below RSI</label><span class="val" id="ob-v">30</span></div>
+        <input type="range" id="oversold" min="10" max="45" value="30" aria-label="RSI oversold threshold">
+        <div class="slider-row" style="margin-top:12px"><label style="margin:0">Sell above RSI</label><span class="val" id="os-v">70</span></div>
+        <input type="range" id="overbought" min="55" max="90" value="70" aria-label="RSI overbought threshold">
+      </div>
+
+      <div class="field">
+        <label class="chk"><input type="checkbox" id="stop"> Stop-loss exit</label>
+        <div id="stop-row" style="display:none;margin-top:9px">
+          <div class="slider-row"><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">Exit if down</span><span class="val" id="stop-v">8%</span></div>
+          <input type="range" id="stopval" min="2" max="25" value="8" aria-label="Stop-loss percent">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Market type</label>
+        <div class="seg three">
+          <button data-regime="bull" aria-pressed="true">Bull</button>
+          <button data-regime="bear" aria-pressed="false">Bear</button>
+          <button data-regime="choppy" aria-pressed="false">Choppy</button>
+        </div>
+        <div class="seg" style="margin-top:6px">
+          <button data-regime="volatile" aria-pressed="false">Volatile</button>
+          <button data-regime="random" aria-pressed="false">Surprise me</button>
+        </div>
+      </div>
+
+      <div class="btns">
+        <button class="btn ghost" id="newmkt">New market &#8635;</button>
+        <button class="btn primary" id="montecarlo">Run 200 markets</button>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+      <div class="panel">
+        <h2 id="chart-title">Price &amp; signals</h2>
+        <div class="chartwrap"><canvas id="price" height="320"></canvas></div>
+        <div class="legend" id="legend">
+          <span><i class="swatch" style="background:#E6EAF0"></i>Price</span>
+          <span><i class="swatch" style="background:#FFB000"></i>Fast avg</span>
+          <span><i class="swatch" style="background:#5B8DEF"></i>Slow avg</span>
+          <span><i class="swatch" style="background:#2ECC71"></i>Buy</span>
+          <span><i class="swatch" style="background:#FF5C5C"></i>Sell</span>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <div class="panel">
+        <h2 id="eq-title">Account value &middot; strategy vs. buy &amp; hold</h2>
+        <div class="chartwrap"><canvas id="equity" height="200"></canvas></div>
+        <div class="legend">
+          <span><i class="swatch" style="background:#FFB000"></i>Strategy</span>
+          <span><i class="swatch" style="background:#8A94A6"></i>Buy &amp; hold</span>
+        </div>
+      </div>
+
+      <div class="panel" id="mc-panel" style="display:none">
+        <div class="mc-head">
+          <h2 style="margin:0">Stress test &middot; <span id="mc-n">200</span> simulated markets <span class="pill">monte carlo</span></h2>
+        </div>
+        <div class="chartwrap"><canvas id="mc" height="180"></canvas></div>
+        <p class="mc-summary" id="mc-summary"></p>
+      </div>
+
+      <p class="footnote">
+        <b style="color:var(--amber)">How to read this:</b> prices are generated by a market simulator (geometric Brownian motion), not a live feed &mdash; so the same strategy can be tested against hundreds of <i>possible</i> futures, which a single real price history can't show you. Account starts at $10,000. Returns ignore fees, slippage and taxes. This is a thinking tool, not trading advice.
+      </p>
+    </div>
+  </div>
+
+<script>
+/* ---------- seeded RNG ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function gauss(rng){let u=0,v=0;while(u===0)u=rng();while(v===0)v=rng();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+
+/* ---------- market generator ---------- */
+const REGIMES={
+  bull:{drift:0.18,vol:0.16,label:'BULL'},
+  bear:{drift:-0.12,vol:0.22,label:'BEAR'},
+  choppy:{drift:0.02,vol:0.12,label:'CHOPPY'},
+  volatile:{drift:0.07,vol:0.42,label:'VOLATILE'}
+};
+const N=252, START_EQ=10000;
+function genMarket(regimeKey,seed){
+  let key=regimeKey;
+  if(key==='random'){const keys=['bull','bear','choppy','volatile'];key=keys[Math.floor(mulberry32(seed*7+13)()*keys.length)]}
+  const r=REGIMES[key], rng=mulberry32(seed);
+  const close=[100];
+  for(let i=1;i<N;i++){
+    const ret=r.drift/252 + r.vol/Math.sqrt(252)*gauss(rng);
+    close.push(Math.max(1,close[i-1]*(1+ret)));
+  }
+  return {close,regimeLabel:r.label,regimeKey:key};
+}
+
+/* ---------- indicators ---------- */
+function sma(close,p){const out=Array(close.length).fill(null);let sum=0;for(let i=0;i<close.length;i++){sum+=close[i];if(i>=p)sum-=close[i-p];if(i>=p-1)out[i]=sum/p}return out}
+function rsi(close,p){
+  const out=Array(close.length).fill(null);let g=0,l=0;
+  for(let i=1;i<close.length;i++){
+    const ch=close[i]-close[i-1];const up=Math.max(ch,0),dn=Math.max(-ch,0);
+    if(i<=p){g+=up;l+=dn;if(i===p){const ag=g/p,al=l/p;out[i]=al===0?100:100-100/(1+ag/al)}}
+    else{g=(g*(p-1)+up)/p;l=(l*(p-1)+dn)/p;out[i]=l===0?100:100-100/(1+g/l)}
+  }
+  return out;
+}
+
+/* ---------- backtest ---------- */
+function backtest(close,cfg){
+  const n=close.length;
+  let fastLine=null, slowLine=null, rsiLine=null;
+  function rawSignal(i){
+    if(cfg.strat==='bh')return 1;
+    if(cfg.strat==='sma'){if(fastLine[i]==null||slowLine[i]==null)return 0;return fastLine[i]>slowLine[i]?1:0}
+    if(cfg.strat==='rsi'){if(rsiLine[i]==null)return cfg._held||0;if(rsiLine[i]<cfg.oversold)return 1;if(rsiLine[i]>cfg.overbought)return 0;return cfg._held||0}
+    return 0;
+  }
+  if(cfg.strat==='sma'){fastLine=sma(close,cfg.fast);slowLine=sma(close,cfg.slow)}
+  if(cfg.strat==='rsi'){rsiLine=rsi(close,14)}
+
+  const pos=Array(n).fill(0);
+  let inPos=false, entryPrice=0, held=0;
+  for(let i=0;i<n;i++){
+    cfg._held=held;
+    let sig=rawSignal(i);
+    if(inPos){
+      if(cfg.stop && close[i]<=entryPrice*(1-cfg.stopPct)){inPos=false;sig=0}
+      else if(sig===0){inPos=false}
+    }else{
+      if(sig===1){inPos=true;entryPrice=close[i]}
+    }
+    pos[i]=inPos?1:0; held=pos[i];
+  }
+
+  // equity: yesterday's position earns today's return (no lookahead)
+  const eq=[START_EQ], bh=[START_EQ];
+  const dret=[];
+  for(let i=1;i<n;i++){
+    const r=close[i]/close[i-1]-1;
+    dret.push(pos[i-1]*r);
+    eq.push(eq[i-1]*(1+pos[i-1]*r));
+    bh.push(bh[i-1]*(1+r));
+  }
+
+  // trades + markers
+  const markers=[];let entries=0,wins=0,entryIdx=-1;
+  for(let i=0;i<n;i++){
+    const prev=i>0?pos[i-1]:0;
+    if(pos[i]===1&&prev===0){markers.push({i,type:'buy'});entries++;entryIdx=i}
+    if(pos[i]===0&&prev===1){markers.push({i,type:'sell'});if(entryIdx>=0&&close[i]>close[entryIdx])wins++;entryIdx=-1}
+  }
+  if(entryIdx>=0&&close[n-1]>close[entryIdx])wins++; // open winning trade at end
+
+  // stats
+  const totRet=eq[n-1]/START_EQ-1;
+  const bhRet=bh[n-1]/START_EQ-1;
+  let peak=eq[0],mdd=0;for(const v of eq){if(v>peak)peak=v;const dd=v/peak-1;if(dd<mdd)mdd=dd}
+  const mean=dret.reduce((a,b)=>a+b,0)/dret.length;
+  const sd=Math.sqrt(dret.reduce((a,b)=>a+(b-mean)*(b-mean),0)/dret.length)||1e-9;
+  const sharpe=mean/sd*Math.sqrt(252);
+  const timeIn=pos.reduce((a,b)=>a+b,0)/n;
+  const winRate=entries>0?wins/entries:0;
+
+  return {pos,eq,bh,fastLine,slowLine,rsiLine,markers,
+    totRet,bhRet,mdd,sharpe,timeIn,winRate,trades:entries,end:eq[n-1]};
+}
+
+/* ---------- drawing helpers ---------- */
+function setup(canvas){
+  const dpr=window.devicePixelRatio||1;
+  const w=canvas.clientWidth, h=canvas.height;
+  canvas.width=w*dpr; canvas.height=h*dpr;
+  const ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.clearRect(0,0,w,h);
+  return {ctx,w,h};
+}
+function drawGrid(ctx,w,h,pad){
+  ctx.strokeStyle='#222a35';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=pad+(h-2*pad)*i/4;ctx.beginPath();ctx.moveTo(pad,y);ctx.lineTo(w-pad,y);ctx.stroke()}
+}
+function line(ctx,data,toX,toY,color,width){
+  ctx.strokeStyle=color;ctx.lineWidth=width;ctx.beginPath();let started=false;
+  for(let i=0;i<data.length;i++){if(data[i]==null){started=false;continue}const x=toX(i),y=toY(data[i]);if(!started){ctx.moveTo(x,y);started=true}else ctx.lineTo(x,y)}
+  ctx.stroke();
+}
+
+/* ---------- render price + equity ---------- */
+function renderPrice(res,close){
+  const c=document.getElementById('price');const {ctx,w,h}=setup(c);const pad=24;
+  let lo=Infinity,hi=-Infinity;
+  for(const v of close){if(v<lo)lo=v;if(v>hi)hi=v}
+  for(const a of [res.fastLine,res.slowLine])if(a)for(const v of a)if(v!=null){if(v<lo)lo=v;if(v>hi)hi=v}
+  const padv=(hi-lo)*0.08;lo-=padv;hi+=padv;
+  const toX=i=>pad+(w-2*pad)*i/(close.length-1);
+  const toY=v=>h-pad-(h-2*pad)*(v-lo)/(hi-lo);
+  drawGrid(ctx,w,h,pad);
+  line(ctx,close,toX,toY,'#E6EAF0',1.6);
+  if(res.fastLine)line(ctx,res.fastLine,toX,toY,'#FFB000',1.3);
+  if(res.slowLine)line(ctx,res.slowLine,toX,toY,'#5B8DEF',1.3);
+  for(const m of res.markers){
+    const x=toX(m.i),y=toY(close[m.i]);
+    ctx.fillStyle=m.type==='buy'?'#2ECC71':'#FF5C5C';
+    ctx.beginPath();
+    if(m.type==='buy'){ctx.moveTo(x,y+9);ctx.lineTo(x-5,y+17);ctx.lineTo(x+5,y+17)}
+    else{ctx.moveTo(x,y-9);ctx.lineTo(x-5,y-17);ctx.lineTo(x+5,y-17)}
+    ctx.closePath();ctx.fill();
+  }
+}
+function renderEquity(res){
+  const c=document.getElementById('equity');const {ctx,w,h}=setup(c);const pad=24;
+  let lo=Infinity,hi=-Infinity;
+  for(const a of [res.eq,res.bh])for(const v of a){if(v<lo)lo=v;if(v>hi)hi=v}
+  const padv=(hi-lo)*0.08||1;lo-=padv;hi+=padv;
+  const toX=i=>pad+(w-2*pad)*i/(res.eq.length-1);
+  const toY=v=>h-pad-(h-2*pad)*(v-lo)/(hi-lo);
+  drawGrid(ctx,w,h,pad);
+  // baseline at start equity
+  const y0=toY(START_EQ);ctx.strokeStyle='#3a4555';ctx.setLineDash([4,4]);ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(pad,y0);ctx.lineTo(w-pad,y0);ctx.stroke();ctx.setLineDash([]);
+  line(ctx,res.bh,toX,toY,'#8A94A6',1.4);
+  line(ctx,res.eq,toX,toY,'#FFB000',2);
+}
+
+/* ---------- monte carlo ---------- */
+function renderMC(returns,cfg){
+  const c=document.getElementById('mc');const {ctx,w,h}=setup(c);const pad=24;
+  const lo=Math.min(...returns),hi=Math.max(...returns);
+  const bins=24, counts=Array(bins).fill(0);
+  for(const r of returns){let b=Math.floor((r-lo)/(hi-lo+1e-9)*bins);if(b>=bins)b=bins-1;counts[b]++}
+  const maxc=Math.max(...counts);
+  const bw=(w-2*pad)/bins;
+  const zeroX=pad+(w-2*pad)*(0-lo)/(hi-lo+1e-9);
+  // zero line
+  if(0>=lo&&0<=hi){ctx.strokeStyle='#3a4555';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(zeroX,pad-4);ctx.lineTo(zeroX,h-pad);ctx.stroke();ctx.setLineDash([])}
+  for(let i=0;i<bins;i++){
+    const binLo=lo+(hi-lo)*i/bins;
+    const bh=(h-2*pad)*counts[i]/maxc;
+    ctx.fillStyle=binLo<0?'rgba(255,92,92,.75)':'rgba(46,204,113,.75)';
+    ctx.fillRect(pad+i*bw+1,h-pad-bh,bw-2,bh);
+  }
+  // x labels
+  ctx.fillStyle='#8A94A6';ctx.font='11px JetBrains Mono';ctx.textAlign='center';
+  ctx.fillText((lo*100).toFixed(0)+'%',pad+bw,h-6);
+  ctx.fillText((hi*100).toFixed(0)+'%',w-pad-bw,h-6);
+  if(0>=lo&&0<=hi){ctx.fillStyle='#8A94A6';ctx.fillText('break even',zeroX,h-6)}
+}
+
+/* ---------- UI state ---------- */
+const state={regime:'bull',seed:Math.floor(Math.random()*1e9)};
+function cfg(){
+  return {
+    strat:document.getElementById('strat').value,
+    fast:+document.getElementById('fast').value,
+    slow:+document.getElementById('slow').value,
+    oversold:+document.getElementById('oversold').value,
+    overbought:+document.getElementById('overbought').value,
+    stop:document.getElementById('stop').checked,
+    stopPct:+document.getElementById('stopval').value/100
+  };
+}
+function fmtPct(x){return (x>=0?'+':'')+(x*100).toFixed(1)+'%'}
+function cls(x){return x>0?'up':x<0?'down':'neutral'}
+
+function run(){
+  const mkt=genMarket(state.regime,state.seed);
+  document.getElementById('t-regime').textContent=mkt.regimeLabel;
+  const res=backtest(mkt.close,cfg());
+  renderPrice(res,mkt.close);
+  renderEquity(res);
+
+  const last=mkt.close[mkt.close.length-1];
+  document.getElementById('t-last').textContent='$'+last.toFixed(2);
+  const chg=last/mkt.close[0]-1;
+  const chgEl=document.getElementById('t-chg');chgEl.textContent=fmtPct(chg);chgEl.style.color=chg>=0?'var(--up)':'var(--down)';
+
+  const beat=res.totRet-res.bhRet;
+  const stats=[
+    {k:'Strategy return',v:fmtPct(res.totRet),c:cls(res.totRet)},
+    {k:'vs Buy & Hold',v:fmtPct(beat),c:cls(beat)},
+    {k:'Ending value',v:'$'+Math.round(res.end).toLocaleString(),c:cls(res.totRet)},
+    {k:'Max drawdown',v:fmtPct(res.mdd),c:'down'},
+    {k:'Sharpe ratio',v:res.sharpe.toFixed(2),c:cls(res.sharpe)},
+    {k:'Win rate',v:(res.winRate*100).toFixed(0)+'%',c:'neutral'},
+    {k:'Trades',v:res.trades,c:'neutral'},
+    {k:'Time in market',v:(res.timeIn*100).toFixed(0)+'%',c:'neutral'}
+  ];
+  document.getElementById('stats').innerHTML=stats.map(s=>
+    `<div class="stat"><div class="k">${s.k}</div><div class="v ${s.c}">${s.v}</div></div>`).join('');
+
+  // chart title reflects strategy
+  const names={bh:'Buy & hold',sma:'Moving-average crossover',rsi:'RSI mean reversion'};
+  document.getElementById('chart-title').textContent='Price & signals \u00b7 '+names[cfg().strat];
+}
+
+function runMonteCarlo(){
+  const COUNT=200;const c=cfg();const returns=[];let beat=0,profit=0,worst=1,best=-1,ddsum=0;
+  for(let s=0;s<COUNT;s++){
+    const mkt=genMarket(state.regime, (state.seed+s*2654435761)>>>0);
+    const res=backtest(mkt.close,c);
+    returns.push(res.totRet);
+    if(res.totRet>res.bhRet)beat++;
+    if(res.totRet>0)profit++;
+    if(res.totRet<worst)worst=res.totRet;
+    if(res.totRet>best)best=res.totRet;
+    ddsum+=res.mdd;
+  }
+  returns.sort((a,b)=>a-b);
+  const median=returns[Math.floor(COUNT/2)];
+  document.getElementById('mc-panel').style.display='block';
+  renderMC(returns,c);
+  const names={bh:'Buy & hold',sma:'the moving-average crossover',rsi:'the RSI strategy'};
+  document.getElementById('mc-summary').innerHTML=
+    `Across <b>200</b> different simulated markets of this type, ${names[c.strat]} `+
+    `finished profitable <span class="hl">${(profit/COUNT*100).toFixed(0)}%</span> of the time and `+
+    `beat buy &amp; hold <span class="hl">${(beat/COUNT*100).toFixed(0)}%</span> of the time.<br>`+
+    `Median outcome <b>${fmtPct(median)}</b> &nbsp;\u00b7&nbsp; best <b>${fmtPct(best)}</b> &nbsp;\u00b7&nbsp; worst <b>${fmtPct(worst)}</b> `+
+    `&nbsp;\u00b7&nbsp; average max drawdown <b>${fmtPct(ddsum/COUNT)}</b>.`;
+  document.getElementById('mc-panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* ---------- wire up ---------- */
+function syncParamPanels(){
+  const s=document.getElementById('strat').value;
+  document.getElementById('sma-params').style.display=s==='sma'?'block':'none';
+  document.getElementById('rsi-params').style.display=s==='rsi'?'block':'none';
+}
+document.getElementById('strat').addEventListener('change',()=>{syncParamPanels();run()});
+['fast','slow','oversold','overbought','stopval'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',e=>{
+    const map={fast:'fast-v',slow:'slow-v',oversold:'ob-v',overbought:'os-v',stopval:'stop-v'};
+    const suffix=id==='stopval'?'%':(id==='fast'||id==='slow'?'d':'');
+    document.getElementById(map[id]).textContent=e.target.value+suffix;
+    run();
+  });
+});
+document.getElementById('stop').addEventListener('change',e=>{
+  document.getElementById('stop-row').style.display=e.target.checked?'block':'none';run();
+});
+document.querySelectorAll('.seg button[data-regime]').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.seg button[data-regime]').forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    state.regime=b.dataset.regime;state.seed=Math.floor(Math.random()*1e9);
+    document.getElementById('mc-panel').style.display='none';run();
+  });
+});
+document.getElementById('newmkt').addEventListener('click',()=>{state.seed=Math.floor(Math.random()*1e9);document.getElementById('mc-panel').style.display='none';run()});
+document.getElementById('montecarlo').addEventListener('click',runMonteCarlo);
+window.addEventListener('resize',()=>{run();if(document.getElementById('mc-panel').style.display==='block'){}});
+
+syncParamPanels();run();
+</script>
+</body>
+</html>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miller Family Eye Care — Noblesville's Most Trusted Eye Doctor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1B4332;
+  --sage: #2D6A4F;
+  --mint: #40916C;
+  --cream: #FEFCF3;
+  --linen: #F7F3ED;
+  --warm-white: #FFF8F0;
+  --copper: #B87333;
+  --copper-light: #D4944C;
+  --text-dark: #1A1A1A;
+  --text-body: #444444;
+  --text-muted: #777777;
+  --border: #E8E2D8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--text-body);
+  background: var(--cream);
+}
+
+/* TOP RIBBON */
+.ribbon {
+  background: var(--forest);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 12px 24px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+.ribbon-item { display: flex; align-items: center; gap: 6px; }
+.ribbon-item strong { color: var(--copper-light); }
+
+/* NAV */
+nav {
+  background: var(--cream);
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+}
+.nav-brand-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--forest);
+  text-decoration: none;
+  line-height: 1;
+}
+.nav-brand-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.nav-menu { display: flex; gap: 28px; align-items: center; }
+.nav-menu a {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-menu a:hover { color: var(--sage); }
+.nav-book {
+  background: var(--copper) !important;
+  color: white !important;
+  padding: 12px 28px !important;
+  border-radius: 100px;
+  transition: background 0.2s !important;
+}
+.nav-book:hover { background: var(--copper-light) !important; }
+
+/* HERO - STORY STYLE */
+.hero {
+  padding: 80px 60px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--linen);
+  border: 1px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sage);
+  margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  color: var(--forest);
+  line-height: 1.15;
+  margin-bottom: 24px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--copper);
+}
+.hero-story {
+  font-size: 19px;
+  color: var(--text-body);
+  line-height: 1.8;
+  max-width: 680px;
+  margin: 0 auto 36px;
+}
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.btn-warm {
+  background: var(--copper);
+  color: white;
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-warm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(184,115,51,0.3);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--forest);
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 17px;
+  text-decoration: none;
+  border: 2px solid var(--forest);
+  transition: background 0.2s;
+}
+.btn-outline:hover { background: var(--linen); }
+
+/* MEMBERSHIP BANNER */
+.membership-banner {
+  background: var(--forest);
+  border-radius: 24px;
+  padding: 48px 56px;
+  margin: 0 60px 60px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.membership-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.membership-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: white;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 1;
+}
+.membership-banner h2 em { color: var(--copper-light); font-style: italic; }
+.membership-banner p {
+  color: rgba(255,255,255,0.8);
+  font-size: 17px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+.membership-banner .btn-warm { position: relative; z-index: 1; align-self: center; justify-self: center; }
+
+/* STATS ROW */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  padding: 0 60px 72px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stat-card {
+  text-align: center;
+  padding: 32px 20px;
+  background: var(--warm-white);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--forest);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* SECTION STYLING */
+.content-section {
+  padding: 72px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.full-width-section {
+  padding: 72px 60px;
+}
+.section-header {
+  margin-bottom: 48px;
+}
+.section-header .label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--copper);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  color: var(--forest);
+  line-height: 1.2;
+}
+.section-header p {
+  font-size: 17px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 12px;
+  max-width: 640px;
+}
+
+/* STORY SECTION */
+.story-section {
+  background: var(--linen);
+}
+.story-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.story-image {
+  width: 100%;
+  height: 450px;
+  background: linear-gradient(135deg, var(--forest) 0%, var(--sage) 100%);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 80px;
+  position: relative;
+}
+.story-image .caption {
+  position: absolute;
+  bottom: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+.story-text h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: var(--forest);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.story-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-body);
+  margin-bottom: 16px;
+}
+.story-text .signature {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--forest);
+  font-style: italic;
+  margin-top: 24px;
+}
+
+/* SERVICES — ALTERNATING LAYOUT */
+.services-list { display: flex; flex-direction: column; gap: 20px; }
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+  padding: 28px 32px;
+  background: var(--warm-white);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  transition: transform 0.15s;
+}
+.service-row:hover { transform: translateX(6px); }
+.service-num {
+  width: 56px;
+  height: 56px;
+  background: var(--forest);
+  color: white;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.service-row h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--forest);
+  margin-bottom: 6px;
+}
+.service-row p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* TESTIMONIALS — EDITORIAL */
+.testimonials-section {
+  background: var(--forest);
+}
+.testimonials-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.review-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 36px;
+  position: relative;
+}
+.review-card .quote-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  color: var(--copper-light);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.review-card p {
+  color: rgba(255,255,255,0.85);
+  font-size: 16px;
+  line-height: 1.75;
+  font-style: italic;
+}
+.review-meta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--copper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+.review-meta-text .name {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+.review-meta-text .source {
+  color: rgba(255,255,255,0.4);
+  font-size: 12px;
+}
+.review-stars { color: var(--copper-light); font-size: 14px; margin-top: 4px; }
+
+/* TECH SPOTLIGHT */
+.tech-spotlight {
+  background: var(--warm-white);
+  border-radius: 24px;
+  padding: 56px;
+  border: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.tech-badge {
+  display: inline-block;
+  background: var(--forest);
+  color: var(--copper-light);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.tech-spotlight h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: var(--forest);
+  margin-bottom: 16px;
+}
+.tech-spotlight p {
+  font-size: 16px;
+  color: var(--text-body);
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+.tech-highlight {
+  background: var(--linen);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+}
+.tech-highlight .big-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--copper);
+  line-height: 1;
+}
+.tech-highlight .big-desc {
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+.tech-visual-2 {
+  background: linear-gradient(135deg, #1a3a2a, var(--sage));
+  border-radius: 20px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.3);
+  font-size: 72px;
+}
+
+/* FAQ ACCORDION */
+.faq-container {
+  max-width: 780px;
+  margin: 0 auto;
+}
+.faq-item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  background: var(--warm-white);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+.faq-q {
+  padding: 22px 28px;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--forest);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-q::after {
+  content: '+';
+  font-size: 24px;
+  color: var(--copper);
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+.faq-q.active::after { content: '−'; }
+.faq-a {
+  padding: 0 28px 22px;
+  font-size: 15px;
+  color: var(--text-body);
+  line-height: 1.7;
+  display: none;
+}
+.faq-a.open { display: block; }
+
+/* INSURANCE SIMPLE */
+.insurance-simple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+.ins-card {
+  background: var(--warm-white);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: border-color 0.2s;
+}
+.ins-card:hover { border-color: var(--sage); }
+.ins-card .ins-icon {
+  font-size: 36px;
+  margin-bottom: 12px;
+}
+.ins-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--forest);
+  margin-bottom: 10px;
+}
+.ins-card p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.ins-card .ins-what {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage);
+}
+
+/* BOOKING CTA */
+.booking-cta {
+  background: linear-gradient(135deg, var(--forest) 0%, #2D5540 100%);
+  padding: 80px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.booking-cta::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(184,115,51,0.1) 0%, transparent 70%);
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.booking-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 44px;
+  color: white;
+  margin-bottom: 16px;
+  position: relative;
+}
+.booking-cta h2 em { color: var(--copper-light); font-style: italic; }
+.booking-cta > p {
+  color: rgba(255,255,255,0.7);
+  font-size: 18px;
+  margin-bottom: 40px;
+  position: relative;
+}
+.booking-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  position: relative;
+}
+.booking-method {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+}
+.booking-method .bm-icon { font-size: 32px; margin-bottom: 12px; }
+.booking-method h4 { color: white; font-size: 18px; margin-bottom: 6px; }
+.booking-method p { color: rgba(255,255,255,0.6); font-size: 14px; }
+.booking-method a {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--copper-light);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.hours-simple {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+  position: relative;
+}
+.hours-simple span { font-weight: 600; color: rgba(255,255,255,0.8); }
+
+/* FOOTER */
+footer {
+  background: #0D2818;
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 13px;
+}
+footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* CHATBOT */
+.chat-widget {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 999;
+}
+.chat-btn {
+  width: 60px;
+  height: 60px;
+  background: var(--copper);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+  font-size: 26px;
+  box-shadow: 0 6px 20px rgba(184,115,51,0.4);
+  transition: transform 0.2s;
+}
+.chat-btn:hover { transform: scale(1.08); }
+.chat-prompt {
+  position: absolute;
+  bottom: 72px;
+  right: 0;
+  background: white;
+  padding: 12px 18px;
+  border-radius: 14px 14px 4px 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+  white-space: nowrap;
+  animation: fadeUp 0.5s ease 2.5s both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* PATIENT EDUCATION CTA */
+.education-banner {
+  background: var(--linen);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 40px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 0 60px 60px;
+}
+.education-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+.education-banner p {
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.edu-topics {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.edu-topic {
+  background: var(--warm-white);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sage);
+}
+
+@media (max-width: 900px) {
+  .hero h1 { font-size: 34px; }
+  .hero { padding: 48px 24px; }
+  nav { padding: 16px 24px; }
+  .nav-menu { display: none; }
+  .membership-banner, .education-banner { margin: 0 24px 40px; grid-template-columns: 1fr; padding: 32px; }
+  .stats-row, .services-list, .testimonials-scroll, .insurance-simple, .booking-methods, .tech-spotlight { grid-template-columns: 1fr; }
+  .content-section, .full-width-section { padding: 48px 24px; }
+  .story-layout { grid-template-columns: 1fr; }
+  .section-header h2 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP RIBBON -->
+<div class="ribbon">
+  <div class="ribbon-item">📍 Inside Noblesville Costco — 146th & SR 37</div>
+  <div class="ribbon-item">📞 <strong>(463) 238-2028</strong></div>
+  <div class="ribbon-item">⭐ <strong>No Costco Membership Required</strong></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <a href="#" class="nav-brand-name">Miller Family Eye Care</a>
+    <span class="nav-brand-sub">Est. 1998 • Noblesville, Indiana</span>
+  </div>
+  <div class="nav-menu">
+    <a href="#story">Our Story</a>
+    <a href="#services">Services</a>
+    <a href="#technology">Technology</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#book" class="nav-book">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">👁️ Family Eye Care Since 1998</div>
+  <h1>The Eye Doctor Noblesville Families Have Trusted for <em>Three Decades</em></h1>
+  <p class="hero-story">Dr. Mark Miller is the son of an optometrist. He's been caring for eyes since before most websites existed. Now with state-of-the-art technology inside Noblesville's new Costco — and no, you don't need a membership.</p>
+  <div class="hero-actions">
+    <a href="#book" class="btn-warm">Book Your Eye Exam →</a>
+    <a href="tel:4632382028" class="btn-outline">📞 Call (463) 238-2028</a>
+  </div>
+</section>
+
+<!-- NO MEMBERSHIP BANNER -->
+<div class="membership-banner">
+  <div>
+    <h2>Wait — I Don't Need a Costco Membership <em>to See You?</em></h2>
+    <p>Nope. Our eye care practice is independent. We just happen to be inside Costco. Anyone can walk in and get an exam. You'll get a prescription you can take anywhere. And if you do want Costco's optical (which is excellent), a membership gets you access to their frames and lenses at incredible prices.</p>
+  </div>
+  <a href="#book" class="btn-warm">Book Now →</a>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-number">39</div>
+    <div class="stat-label">Years of Experience</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">4.8</div>
+    <div class="stat-label">Star Rating</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">2</div>
+    <div class="stat-label">Experienced Doctors</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-number">185°</div>
+    <div class="stat-label">Retinal Coverage</div>
+  </div>
+</div>
+
+<!-- OUR STORY -->
+<section class="full-width-section story-section" id="story">
+  <div class="story-layout">
+    <div class="story-image">
+      👨‍⚕️
+      <span class="caption">Dr. Mark Miller, O.D. — Photo placeholder</span>
+    </div>
+    <div class="story-text">
+      <h2>Born Into Eye Care.<br>Built for Noblesville.</h2>
+      <p>Dr. Mark Miller didn't just choose optometry — he was raised in it. The son of an optometrist, he grew up in the family practice before attending the IU School of Optometry, graduating in 1987.</p>
+      <p>His career has spanned private practice in Terre Haute, ophthalmology on Hilton Head Island, a post at the Hunter Army Medical Hospital in Savannah, and finally — home. He's been right here in Noblesville since 1998.</p>
+      <p>Alongside Dr. Nikki Suskovich (IU Optometry '94, Beta Sigma Kappa Honor Society, and international eye care mission veteran), they bring a combined 65+ years of clinical experience to every exam.</p>
+      <div class="signature">— Dr. Mark D. Miller, O.D.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="content-section" id="services">
+  <div class="section-header">
+    <div class="label">Our Services</div>
+    <h2>Everything Your Eyes Need, Under One Roof</h2>
+    <p>From your child's first eye exam to managing diabetic retinopathy, we provide thorough care with advanced diagnostic technology.</p>
+  </div>
+  <div class="services-list">
+    <div class="service-row">
+      <div class="service-num">01</div>
+      <div>
+        <h3>Comprehensive Eye Exams</h3>
+        <p>Complete evaluations for adults and children. Thorough, unhurried, and using the latest diagnostic equipment to get your prescription exactly right.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">02</div>
+      <div>
+        <h3>Contact Lens Fitting & Follow-Up</h3>
+        <p>We take the time to find contacts that actually feel comfortable. Trial lenses, follow-up visits, and ongoing adjustments until they're perfect.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">03</div>
+      <div>
+        <h3>Diabetic Eye Exams</h3>
+        <p>Specialized retinal screening using Optos ultra-widefield imaging. Critical for monitoring diabetic retinopathy and preserving your vision long-term.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">04</div>
+      <div>
+        <h3>Red Eye & Urgent Care Visits</h3>
+        <p>Pink eye, foreign body removal, infections, sudden vision changes — we handle urgent eye problems quickly so you don't have to wait for a specialist.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">05</div>
+      <div>
+        <h3>LASIK & Cataract Co-Management</h3>
+        <p>Pre-operative evaluation and post-surgical care, coordinated with your surgeon. We make sure your recovery stays on track.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-num">06</div>
+      <div>
+        <h3>Ultra-Widefield Retinal Imaging</h3>
+        <p>Our Optos Daytona captures 185° of your retina — 4x more than traditional cameras — for the earliest possible detection of disease.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY SPOTLIGHT -->
+<section class="content-section" id="technology">
+  <div class="section-header">
+    <div class="label">Our Technology</div>
+    <h2>Why We See What Others Miss</h2>
+  </div>
+  <div class="tech-spotlight">
+    <div>
+      <div class="tech-badge">Featured Equipment</div>
+      <h3>Optos Daytona Ultra-Widefield Imaging</h3>
+      <p>Traditional retinal cameras capture about 45° of the back of your eye — like looking through a keyhole. Our Optos Daytona captures over 185° in a single, comfortable image.</p>
+      <p>This means we can detect conditions like diabetic retinopathy, retinal tears, macular degeneration, and glaucoma earlier — often before you notice any symptoms at all.</p>
+      <div class="tech-highlight">
+        <div class="big-num">4×</div>
+        <div class="big-desc">More retinal coverage than traditional cameras. That's the difference between seeing the whole picture and guessing.</div>
+      </div>
+    </div>
+    <div class="tech-visual-2">🔬</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="full-width-section testimonials-section" id="reviews">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    <div class="section-header">
+      <div class="label" style="color: var(--copper-light);">Patient Reviews</div>
+      <h2 style="color: white;">Don't Take Our Word For It</h2>
+    </div>
+    <div class="testimonials-scroll">
+      <div class="review-card">
+        <div class="quote-mark">"</div>
+        <p>My wife and I have used Dr. Miller for 7+ years. He is very pleasant and focused on the patient's wellbeing. He does a very thorough job and isn't trying to sell you on buying Costco's glasses or contacts.</p>
+        <div class="review-meta">
+          <div class="review-avatar">P</div>
+          <div class="review-meta-text">
+            <div class="name">Verified Patient</div>
+            <div class="source">Birdeye Review</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="quote-mark">"</div>
+        <p>Dr. Miller is the greatest! After a pit-bull attack damaged my eye, he treated me with compassion and reassured me. My insurance is not in his network but I won't change. I pay out of pocket. He is worth it!</p>
+        <div class="review-meta">
+          <div class="review-avatar">A</div>
+          <div class="review-meta-text">
+            <div class="name">Amy L.</div>
+            <div class="source">Healthgrades</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="quote-mark">"</div>
+        <p>He has been our optometrist for years. Great to work with. I look forward to our annual exams each year. The glasses from Costco's optical are excellent quality for a very fair price too.</p>
+        <div class="review-meta">
+          <div class="review-avatar">V</div>
+          <div class="review-meta-text">
+            <div class="name">Verified Patient</div>
+            <div class="source">Healthgrades</div>
+            <div class="review-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PATIENT EDUCATION BANNER -->
+<div style="padding-top: 60px;">
+  <div class="education-banner">
+    <div>
+      <h3>📚 Patient Education Center</h3>
+      <p>Understanding your eye health helps you make better decisions. Explore our library of educational resources written in plain English.</p>
+      <div class="edu-topics">
+        <span class="edu-topic">Understanding Your Prescription</span>
+        <span class="edu-topic">Diabetic Eye Disease</span>
+        <span class="edu-topic">Children's Vision</span>
+        <span class="edu-topic">Contact Lens Care</span>
+        <span class="edu-topic">When to Get Checked</span>
+      </div>
+    </div>
+    <a href="#" class="btn-warm" style="flex-shrink: 0;">Browse Articles →</a>
+  </div>
+</div>
+
+<!-- INSURANCE -->
+<section class="content-section" id="insurance">
+  <div class="section-header" style="text-align: center;">
+    <div class="label">Insurance</div>
+    <h2>We File Claims on Your Behalf</h2>
+    <p style="margin: 12px auto 0;">Just bring your information and we handle the rest. Not sure if we take yours? Call us.</p>
+  </div>
+  <div class="insurance-simple">
+    <div class="ins-card">
+      <div class="ins-icon">🛡️</div>
+      <h3>VSP</h3>
+      <p>Most VSP plans accepted. We'll verify your benefits before your exam.</p>
+      <div class="ins-what">We need: Name, DOB, last 4 SSN</div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-icon">🏥</div>
+      <h3>Spectera / UHC</h3>
+      <p>United Healthcare and Spectera vision plans accepted.</p>
+      <div class="ins-what">We need: ID# or Name + DOB</div>
+    </div>
+    <div class="ins-card">
+      <div class="ins-icon">🏪</div>
+      <h3>Costco Employees</h3>
+      <p>Employee vision benefits accepted. Simplest of all!</p>
+      <div class="ins-what">We need: Name + DOB</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content-section" id="faq">
+  <div class="section-header" style="text-align: center;">
+    <div class="label">Questions?</div>
+    <h2>Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-container">
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Do I need a Costco membership to get an eye exam?</div><div class="faq-a">Absolutely not. Our practice is independent — we just happen to be inside Costco. Anyone can walk in. You only need a membership to purchase glasses from Costco's optical department.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">What insurance plans do you accept?</div><div class="faq-a">We accept VSP, Spectera/United Healthcare, and Costco employee plans. If you're not sure about yours, give us a call at (463) 238-2028 and we'll check for you.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Can I just walk in without an appointment?</div><div class="faq-a">Walk-ins are welcome when our schedule allows. For guaranteed availability, we recommend booking online or calling ahead. If you need to cancel, we ask for 24 hours notice.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">What should I bring to my appointment?</div><div class="faq-a">Your insurance card and photo ID, any current glasses or contacts, and a list of medications you take. For VSP patients: the primary insurer's name, DOB, and last 4 of their SSN.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">What is the ultra-widefield retinal imaging?</div><div class="faq-a">It's our Optos Daytona camera that captures 185° of the back of your eye — about 4x more than traditional cameras. It helps us catch diseases like diabetic retinopathy and glaucoma much earlier. It's quick, comfortable, and often reduces the need for dilation drops.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">How often should I get my eyes checked?</div><div class="faq-a">Most adults should have a comprehensive exam every 1-2 years. Annual exams are recommended for contact lens wearers, diabetics, and anyone with a family history of eye disease. Kids should start at 6 months, then age 3, then before first grade.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Can I take my prescription to another optical shop?</div><div class="faq-a">Of course. At the end of every exam, we provide you with your full prescription. You're free to fill it anywhere you'd like. That said, Costco Optical offers excellent quality at very competitive prices.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggle(this)">Do you see children?</div><div class="faq-a">Yes! We provide comprehensive pediatric eye exams. Early detection of vision problems is crucial for children's development and learning.</div></div>
+  </div>
+</section>
+
+<!-- BOOKING CTA -->
+<section class="booking-cta" id="book">
+  <h2>Your Eyes Deserve <em>the Best</em></h2>
+  <p>Three ways to book. Pick whichever is easiest for you.</p>
+  <div class="booking-methods">
+    <div class="booking-method">
+      <div class="bm-icon">🖥️</div>
+      <h4>Book Online</h4>
+      <p>Request an appointment anytime through our scheduling system.</p>
+      <a href="https://web.opticalpos.com/site/!appt_req?sid=8B28F941C661293FE16A6E7FFD2D8911" target="_blank">Schedule Now →</a>
+    </div>
+    <div class="booking-method">
+      <div class="bm-icon">📞</div>
+      <h4>Call Us</h4>
+      <p>Speak with our staff directly during office hours.</p>
+      <a href="tel:4632382028">(463) 238-2028</a>
+    </div>
+    <div class="booking-method">
+      <div class="bm-icon">🚶</div>
+      <h4>Walk In</h4>
+      <p>Stop by during office hours — we'll fit you in if we can.</p>
+      <a href="https://maps.google.com/?q=14775+N+Pointe+Blvd+Noblesville+IN" target="_blank">Get Directions →</a>
+    </div>
+  </div>
+  <div class="hours-simple">
+    <div><span>Mon–Thu</span> 10am–6pm</div>
+    <div><span>Fri</span> 10am–5pm</div>
+    <div><span>Sat</span> 10am–4pm</div>
+    <div><span>Sun</span> Closed</div>
+  </div>
+  <p style="margin-top: 24px; color: rgba(255,255,255,0.4); font-size: 14px; position: relative;">14775 N Pointe Blvd, Noblesville, IN 46060 — Inside the Noblesville Costco near 146th & SR 37</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Dr. Mark D. Miller Optometry — Noblesville, Indiana</span>
+  <a href="tel:4632382028">(463) 238-2028</a>
+</footer>
+
+<!-- CHAT WIDGET -->
+<div class="chat-widget">
+  <div class="chat-prompt">Need help? Ask me anything 💬</div>
+  <div class="chat-btn" onclick="alert('AI Chatbot: Answers insurance questions, books appointments, provides hours & directions — 24/7, even when the office is closed.')">💬</div>
+</div>
+
+<script>
+function toggle(el) {
+  const a = el.nextElementSibling;
+  const wasOpen = a.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(x => x.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(x => x.classList.remove('active'));
+  if (!wasOpen) {
+    a.classList.add('open');
+    el.classList.add('active');
+  }
+}
+</script>
+</body>
+</html>

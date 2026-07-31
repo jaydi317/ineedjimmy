@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elizabeth Mayle — Sacred Skin Method™ | AI Business Design Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0B1A2B;
+  --deep-mid: #132B42;
+  --gold: #C6A855;
+  --gold-light: #E8D5A0;
+  --cream: #FAF6EE;
+  --sage: #7A9E7E;
+  --sage-dark: #5C7D60;
+  --rose: #C9928E;
+  --warm: #D4A574;
+  --white: #FFFFFF;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--cream);
+  color: var(--deep);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1,h2,h3,h4,h5 { font-family: 'Playfair Display', serif; }
+.accent-font { font-family: 'Caveat', cursive; }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 50%, #1a3a5c 100%);
+  padding: 80px 24px 70px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 40%, rgba(198,168,85,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 60%, rgba(122,158,126,0.06) 0%, transparent 50%);
+  animation: shimmer 15s ease-in-out infinite;
+}
+@keyframes shimmer { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-2%,-1%)} }
+.hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+.hero-eyebrow {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+.hero h1 {
+  color: var(--cream);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.hero h1 span { color: var(--gold); }
+.hero-sub {
+  color: var(--gold-light);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+  line-height: 1.7;
+}
+.hero-badge {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 28px;
+  border: 1px solid rgba(198,168,85,0.4);
+  border-radius: 50px;
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* SECTION STYLES */
+.section { padding: 80px 24px; }
+.section-dark { background: var(--deep); color: var(--cream); }
+.section-mid { background: var(--deep-mid); color: var(--cream); }
+.section-cream { background: var(--cream); }
+.section-sage { background: #f0f5f0; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.section-subtitle {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 48px;
+  opacity: 0.8;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* IDENTITY CARD */
+.identity-card {
+  background: linear-gradient(145deg, var(--deep), var(--deep-mid));
+  border: 1px solid rgba(198,168,85,0.25);
+  border-radius: 20px;
+  padding: 48px 40px;
+  max-width: 750px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.identity-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.identity-name {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--cream);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.identity-title {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.identity-pitch {
+  color: var(--gold-light);
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 28px;
+  font-style: italic;
+}
+.identity-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.identity-tag {
+  padding: 6px 18px;
+  border: 1px solid rgba(198,168,85,0.35);
+  border-radius: 50px;
+  font-size: 0.78rem;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* METHOD CARDS */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 48px;
+}
+.method-card {
+  background: rgba(198,168,85,0.06);
+  border: 1px solid rgba(198,168,85,0.15);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+.method-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold);
+  background: rgba(198,168,85,0.1);
+}
+.method-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-size: 1.5rem;
+}
+.method-card h3 {
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+.method-card .method-sub {
+  font-family: 'Caveat', cursive;
+  color: var(--sage);
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+.method-card p {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+/* 9-STEP JOURNEY */
+.journey-image {
+  max-width: 700px;
+  margin: 0 auto;
+  display: block;
+}
+.journey-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(11,26,43,0.15);
+}
+
+/* WEBSITE PREVIEWS */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.preview-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(198,168,85,0.2);
+  transition: all 0.4s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+.preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(11,26,43,0.15);
+  border-color: var(--gold);
+}
+.preview-frame {
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+}
+.preview-frame iframe {
+  width: 200%;
+  height: 200%;
+  border: none;
+  transform: scale(0.5);
+  transform-origin: top left;
+  pointer-events: none;
+}
+.preview-info {
+  padding: 20px 24px;
+  background: var(--white);
+}
+.preview-info h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.preview-info p { font-size: 0.85rem; opacity: 0.7; }
+.preview-style-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--cream);
+  border-radius: 50px;
+  font-size: 0.72rem;
+  color: var(--sage-dark);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+/* BOOK SECTION */
+.book-section {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.book-mockup {
+  flex: 0 0 280px;
+  perspective: 1000px;
+}
+.book-inner {
+  transform: rotateY(-12deg) rotateX(3deg);
+  transition: transform 0.6s ease;
+  box-shadow: 20px 20px 60px rgba(11,26,43,0.3), 8px 8px 20px rgba(11,26,43,0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.book-mockup:hover .book-inner {
+  transform: rotateY(-5deg) rotateX(1deg);
+}
+.book-inner img { width: 100%; display: block; }
+.book-info { flex: 1; min-width: 280px; }
+.book-info h2 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+.book-info .book-author {
+  font-family: 'Caveat', cursive;
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+}
+.book-info p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+.book-note {
+  padding: 16px 20px;
+  background: rgba(198,168,85,0.08);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--sage-dark);
+}
+
+/* INSTAGRAM BIO */
+.insta-mockup {
+  max-width: 400px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 32px 28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+}
+.insta-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.insta-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sage), var(--gold));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 700;
+}
+.insta-stats {
+  display: flex;
+  gap: 20px;
+}
+.insta-stat { text-align: center; }
+.insta-stat-num { font-weight: 700; font-size: 1.1rem; color: var(--deep); }
+.insta-stat-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+.insta-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+.insta-bio { font-size: 0.85rem; color: #333; line-height: 1.6; }
+.insta-bio .gold { color: var(--sage-dark); font-weight: 600; }
+.insta-link { color: #00376b; font-size: 0.85rem; font-weight: 600; margin-top: 4px; }
+.insta-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 8px;
+  background: #0095f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: default;
+}
+
+/* PROGRAMS */
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+.program-card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid #e8e2d8;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.program-card.featured {
+  border-color: var(--gold);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.15);
+  transform: scale(1.03);
+}
+.program-card.featured::before {
+  content: 'FLAGSHIP';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--deep);
+  padding: 4px 16px;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.program-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.program-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+.program-type {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--sage-dark);
+  margin-bottom: 12px;
+}
+.program-card h3 { font-size: 1.2rem; margin-bottom: 8px; }
+.program-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+.program-desc { font-size: 0.85rem; opacity: 0.7; line-height: 1.6; }
+
+/* INCOME CALCULATOR */
+.calc-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, var(--deep), var(--deep-mid));
+  border-radius: 20px;
+  padding: 48px 40px;
+  border: 1px solid rgba(198,168,85,0.2);
+}
+.calc-row {
+  margin-bottom: 32px;
+}
+.calc-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+.calc-label span { color: var(--cream); font-size: 0.95rem; }
+.calc-label strong { color: var(--gold); font-size: 1.3rem; font-family: 'Playfair Display', serif; }
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(198,168,85,0.2);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(198,168,85,0.4);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  border: none;
+}
+.calc-results {
+  background: rgba(198,168,85,0.08);
+  border-radius: 12px;
+  padding: 28px;
+  text-align: center;
+  border: 1px solid rgba(198,168,85,0.2);
+}
+.calc-results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.calc-result-item label {
+  display: block;
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 4px;
+}
+.calc-result-item .calc-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* REPORT TEASER */
+.report-layout {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.report-pages {
+  flex: 0 0 320px;
+  position: relative;
+  height: 380px;
+}
+.report-page {
+  position: absolute;
+  width: 260px;
+  background: var(--white);
+  border-radius: 8px;
+  padding: 24px 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e8e2d8;
+}
+.report-page:nth-child(1) { top: 0; left: 0; transform: rotate(-4deg); z-index: 1; }
+.report-page:nth-child(2) { top: 40px; left: 40px; transform: rotate(2deg); z-index: 2; }
+.report-page:nth-child(3) { top: 80px; left: 20px; transform: rotate(-1deg); z-index: 3; }
+.report-page-header {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--deep);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold);
+}
+.report-fake-line {
+  height: 6px;
+  background: #e8e2d8;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+.report-fake-line:nth-child(even) { width: 75%; }
+.report-fake-line:nth-child(odd) { width: 90%; }
+.report-mini-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 50px;
+  margin-top: 16px;
+}
+.report-bar {
+  flex: 1;
+  background: linear-gradient(to top, var(--sage), var(--gold));
+  border-radius: 3px 3px 0 0;
+  opacity: 0.6;
+}
+.report-bullets { flex: 1; min-width: 280px; }
+.report-bullets h3 {
+  font-size: 1.4rem;
+  margin-bottom: 24px;
+  color: var(--deep);
+}
+.report-bullet {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(11,26,43,0.08);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--deep);
+}
+.report-bullet::before {
+  content: '✦';
+  color: var(--gold);
+  margin-right: 10px;
+  font-size: 0.8rem;
+}
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  padding: 80px 24px;
+  background: linear-gradient(135deg, var(--deep) 0%, var(--deep-mid) 100%);
+  position: relative;
+}
+.cta-section h2 {
+  color: var(--cream);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin-bottom: 16px;
+}
+.cta-section p {
+  color: var(--gold-light);
+  max-width: 550px;
+  margin: 0 auto 32px;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+.cta-btn {
+  display: inline-block;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, var(--gold), var(--warm));
+  color: var(--deep);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(198,168,85,0.3);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(198,168,85,0.4);
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  background: var(--deep);
+  color: rgba(250,246,238,0.4);
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(198,168,85,0.1);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 60px 20px 50px; }
+  .section { padding: 60px 20px; }
+  .identity-card { padding: 32px 24px; }
+  .book-section { flex-direction: column; text-align: center; gap: 40px; }
+  .book-mockup { flex: none; }
+  .calc-container { padding: 32px 20px; }
+  .calc-results-grid { grid-template-columns: 1fr; }
+  .report-layout { flex-direction: column; align-items: center; }
+  .report-pages { transform: scale(0.85); flex: none; }
+  .method-grid { grid-template-columns: 1fr 1fr; }
+  .programs-grid { grid-template-columns: 1fr; }
+  .program-card.featured { transform: none; }
+  .program-card.featured:hover { transform: translateY(-4px); }
+}
+@media (max-width: 480px) {
+  .method-grid { grid-template-columns: 1fr; }
+  .preview-grid { grid-template-columns: 1fr; }
+  .insta-header { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">A preview built just for you</p>
+    <h1><span>Elizabeth</span>, Here's a Preview of Your Coaching Business</h1>
+    <p class="hero-sub">Using AI Business Design software, we've assembled a complete blueprint for your coaching brand — your method, your programs, your book, your website, and your revenue model. Everything you see below was built specifically for you.</p>
+    <div class="hero-badge">AI Business Design Preview</div>
+  </div>
+</section>
+
+<!-- IDENTITY CARD -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-label">Your Brand Identity</div>
+    <div class="identity-card">
+      <h2 class="identity-name">Elizabeth Mayle</h2>
+      <p class="identity-title">Creator of The Sacred Skin Method™</p>
+      <p class="identity-pitch">"I help women who've experienced sexual abuse come home to their bodies. Through massage, yoga, energy medicine, and sound healing, I guide women through a body-based healing journey that helps them release what's been stored, reconnect with their own skin, and finally feel safe from the inside out."</p>
+      <div class="identity-tags">
+        <span class="identity-tag">Licensed Massage Therapist</span>
+        <span class="identity-tag">Yoga Teacher</span>
+        <span class="identity-tag">Entheos Energy Medicine Seer</span>
+        <span class="identity-tag">Sound Healing Practitioner</span>
+        <span class="identity-tag">Spirit Medicine Academy Trained</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD VISUAL -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-label">Your Signature Framework</div>
+    <h2 class="section-title" style="color:var(--cream)">The Sacred Skin Method™</h2>
+    <p class="section-subtitle">Four pathways home — because healing from sexual trauma happens through the body, not just the mind.</p>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon">🤲</div>
+        <h3>Release</h3>
+        <p class="method-sub">Massage & Bodywork</p>
+        <p>Unlocking trauma stored in the tissues through safe, intentional therapeutic touch. Your body held on to protect you — now it learns to let go.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🧘</div>
+        <h3>Reconnect</h3>
+        <p class="method-sub">Yoga & Movement</p>
+        <p>Coming home to your body through breath, gentle movement, and embodied awareness. Learning your body is a place of safety, not pain.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">✨</div>
+        <h3>Restore</h3>
+        <p class="method-sub">Energy Medicine</p>
+        <p>Clearing the invisible patterns beneath the surface — energetic wounds, disrupted fields, and inherited imprints that therapy can't reach.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon">🔔</div>
+        <h3>Resound</h3>
+        <p class="method-sub">Sound Therapy</p>
+        <p>Using vibrational frequencies to reset the nervous system, dissolve hypervigilance, and create safety that goes deeper than words.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9-STEP JOURNEY -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-label">Your Proven Process</div>
+    <h2 class="section-title">The Sacred Skin Journey™</h2>
+    <p class="section-subtitle">Every client follows this exact 9-step path — from survival to sovereignty. Three phases. Nine steps. One transformation.</p>
+    <div class="journey-image">
+      <img src="ElizabethProcess.png" alt="The Sacred Skin Journey - 9-Step Healing Path by Elizabeth Mayle">
+    </div>
+  </div>
+</section>
+
+<!-- WEBSITE PREVIEWS -->
+<section class="section section-mid">
+  <div class="container">
+    <div class="section-label">Your Website — Two Directions</div>
+    <h2 class="section-title" style="color:var(--cream)">Choose Your Look</h2>
+    <p class="section-subtitle">Two complete website designs — both fully built, both professionally crafted. Click either to explore the full mockup.</p>
+    <div class="preview-grid">
+      <a href="elizabeth.html" class="preview-card">
+        <div class="preview-frame" style="background: linear-gradient(135deg, #FAF6EE, #f0f5f0); display:flex; align-items:center; justify-content:center; flex-direction:column;">
+          <div style="font-family:'Playfair Display',serif; font-size:1.8rem; color:#1C2B1E; margin-bottom:8px;">Sacred Skin</div>
+          <div style="font-family:'Caveat',cursive; color:#7A9E7E; font-size:1.1rem;">Warm & Elegant</div>
+          <div style="margin-top:20px; display:flex; gap:12px;">
+            <div style="width:50px; height:50px; border-radius:50%; background:#7A9E7E;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#C6A855;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#FAF6EE; border:1px solid #ddd;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#1C2B1E;"></div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Warm & Elegant</h3>
+          <p>Light, airy, nature-inspired. Think Brené Brown meets high-end wellness.</p>
+          <span class="preview-style-tag">Style A — Sage & Cream</span>
+        </div>
+      </a>
+      <a href="elizabeth2.html" class="preview-card">
+        <div class="preview-frame" style="background: linear-gradient(135deg, #0B1A2B, #132B42); display:flex; align-items:center; justify-content:center; flex-direction:column;">
+          <div style="font-family:'Playfair Display',serif; font-size:1.8rem; color:#C6A855; margin-bottom:8px;">Sacred Skin</div>
+          <div style="font-family:'Caveat',cursive; color:#E8D5A0; font-size:1.1rem;">Bold & Deep</div>
+          <div style="margin-top:20px; display:flex; gap:12px;">
+            <div style="width:50px; height:50px; border-radius:50%; background:#0B1A2B; border:1px solid #C6A855;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#C6A855;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#132B42;"></div>
+            <div style="width:50px; height:50px; border-radius:50%; background:#C9928E;"></div>
+          </div>
+        </div>
+        <div class="preview-info">
+          <h3>Bold & Deep</h3>
+          <p>Dark, immersive, sophisticated. Midnight luxury meets conscious healing.</p>
+          <span class="preview-style-tag">Style B — Navy & Gold</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK SECTION -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-label">Your Book</div>
+    <div class="book-section">
+      <div class="book-mockup">
+        <div class="book-inner">
+          <img src="ElizabethBook.png" alt="Sacred Skin by Elizabeth Mayle — Book Cover">
+        </div>
+      </div>
+      <div class="book-info">
+        <h2>Sacred Skin</h2>
+        <p class="book-author">by Elizabeth Mayle</p>
+        <p>A Body-Based Path to Healing After Sexual Abuse — How Touch, Movement, Energy, and Sound Can Bring You Home to Your Body.</p>
+        <p>A 10-chapter journey through the Sacred Skin Method, complete with somatic practices, guided exercises, client stories, and Elizabeth's unique multi-modality framework for healing from the skin in.</p>
+        <div class="book-note">
+          Full outline, chapter structure, and writing support included in the complete Blueprint package.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM BIO -->
+<section class="section section-sage">
+  <div class="container">
+    <div class="section-label">Your Social Presence</div>
+    <h2 class="section-title">Instagram Profile Preview</h2>
+    <p class="section-subtitle">A ready-to-use professional bio that positions you as the authority in body-based trauma healing.</p>
+    <div class="insta-mockup">
+      <div class="insta-header">
+        <div class="insta-avatar">EM</div>
+        <div class="insta-stats">
+          <div class="insta-stat"><div class="insta-stat-num">—</div><div class="insta-stat-label">Posts</div></div>
+          <div class="insta-stat"><div class="insta-stat-num">—</div><div class="insta-stat-label">Followers</div></div>
+          <div class="insta-stat"><div class="insta-stat-num">—</div><div class="insta-stat-label">Following</div></div>
+        </div>
+      </div>
+      <div class="insta-name">Elizabeth Mayle | Sacred Skin Method™</div>
+      <div class="insta-bio">
+        <span class="gold">🌿 Helping women heal from sexual trauma — from the skin in</span><br>
+        Massage • Yoga • Energy Medicine • Sound Healing<br>
+        Entheos Energy Medicine Seer<br>
+        Author of <em>Sacred Skin</em> 📖<br>
+        In person & virtual sessions available
+      </div>
+      <div class="insta-link">🔗 linktr.ee/elizabethmayle</div>
+      <button class="insta-btn">Follow</button>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-label">Your Program Suite</div>
+    <h2 class="section-title">Three Ways to Work With You</h2>
+    <p class="section-subtitle">A value ladder designed to meet women wherever they are in their healing journey.</p>
+    <div class="programs-grid">
+      <div class="program-card">
+        <div class="program-type">Free Resource</div>
+        <h3>The Body After Trauma</h3>
+        <div class="program-price">FREE</div>
+        <p class="program-desc">5 Somatic Practices to Feel Safe in Your Own Skin — a downloadable guide that introduces the Sacred Skin framework.</p>
+      </div>
+      <div class="program-card featured">
+        <div class="program-type">Flagship Group Program</div>
+        <h3>Sacred Skin Circle</h3>
+        <div class="program-price">$1,997</div>
+        <p class="program-desc">6-Week Group Healing Intensive — live weekly sessions combining yoga, sound healing, energy medicine, and somatic integration.</p>
+      </div>
+      <div class="program-card">
+        <div class="program-type">Private 1:1 Coaching</div>
+        <h3>Sacred Skin Private Immersion</h3>
+        <div class="program-price">$7,500</div>
+        <p class="program-desc">12-Week Private Healing Journey — personalized sessions including massage, yoga, energy medicine, and sound therapy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCOME CALCULATOR -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-label">Your Revenue Model</div>
+    <h2 class="section-title" style="color:var(--cream)">Income Calculator</h2>
+    <p class="section-subtitle">Adjust the sliders to see your potential revenue. These are YOUR programs at YOUR prices.</p>
+    <div class="calc-container">
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Women per Sacred Skin Circle round</span>
+          <strong id="groupCount">8</strong>
+        </div>
+        <input type="range" id="groupSlider" min="4" max="16" value="8" oninput="calculate()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Rounds per year</span>
+          <strong id="roundCount">4</strong>
+        </div>
+        <input type="range" id="roundSlider" min="1" max="8" value="4" oninput="calculate()">
+      </div>
+      <div class="calc-row">
+        <div class="calc-label">
+          <span>Private Immersion clients per year</span>
+          <strong id="privateCount">4</strong>
+        </div>
+        <input type="range" id="privateSlider" min="0" max="12" value="4" oninput="calculate()">
+      </div>
+      <div class="calc-results">
+        <div class="calc-results-grid">
+          <div class="calc-result-item">
+            <label>Monthly Revenue</label>
+            <div class="calc-number" id="monthlyRev">$7,800</div>
+          </div>
+          <div class="calc-result-item">
+            <label>Annual Revenue</label>
+            <div class="calc-number" id="annualRev">$93,880</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT TEASER -->
+<section class="section section-cream">
+  <div class="container">
+    <div class="section-label">Inside Your Full Blueprint</div>
+    <h2 class="section-title">What the Complete Report Reveals</h2>
+    <p class="section-subtitle">Your AI Business Design Blueprint includes everything below — built specifically for you, your niche, and your modalities.</p>
+    <div class="report-layout">
+      <div class="report-pages">
+        <div class="report-page">
+          <div class="report-page-header">Market Research Analysis</div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line" style="width:60%"></div>
+          <div class="report-mini-chart">
+            <div class="report-bar" style="height:60%"></div>
+            <div class="report-bar" style="height:85%"></div>
+            <div class="report-bar" style="height:45%"></div>
+            <div class="report-bar" style="height:100%"></div>
+            <div class="report-bar" style="height:70%"></div>
+          </div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-header">Ideal Client Avatar</div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line" style="width:50%"></div>
+          <div class="report-fake-line"></div>
+        </div>
+        <div class="report-page">
+          <div class="report-page-header">Revenue Projections</div>
+          <div class="report-fake-line"></div>
+          <div class="report-fake-line" style="width:80%"></div>
+          <div class="report-mini-chart">
+            <div class="report-bar" style="height:40%"></div>
+            <div class="report-bar" style="height:55%"></div>
+            <div class="report-bar" style="height:75%"></div>
+            <div class="report-bar" style="height:90%"></div>
+            <div class="report-bar" style="height:100%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="report-bullets">
+        <h3>The full Blueprint includes:</h3>
+        <div class="report-bullet">The 5 competitors already serving your exact audience — what they charge, what's working, and the gap NONE of them are filling (that you were born to fill)</div>
+        <div class="report-bullet">The exact words your ideal client uses at 2am when she searches for help — and why most trauma coaches' messaging completely misses her</div>
+        <div class="report-bullet">Why 83% of sexual abuse survivors quit yoga after their first class — and the specific protocol that makes YOUR approach different</div>
+        <div class="report-bullet">The "Body Armor Map" — a proprietary assessment tool that shows your client exactly WHERE she's storing trauma and which of your 4 modalities to start with</div>
+        <div class="report-bullet">The complete 6-week curriculum for Sacred Skin Circle — week-by-week themes, teaching points, yoga sequences, sound healing protocols, and integration exercises</div>
+        <div class="report-bullet">Your full sales page copy — Dan Kennedy-style fascination bullets, problem agitation, and offer stack written specifically for women healing from sexual trauma</div>
+        <div class="report-bullet">The complete chapter outline for <em>Sacred Skin</em> — 10 chapters that position you as THE authority in body-based trauma healing</div>
+        <div class="report-bullet">Three revenue scenarios showing exactly how to go from $0 to $66K, $156K, or $284K using the programs and prices already designed for you</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-label">Ready?</p>
+    <h2>Want to Bring This to Life?</h2>
+    <p>Everything you see on this page was generated by Jimmy Davis's AI Business Design Software. The full Blueprint — complete with programs, curriculum, sales copy, website, and book — is ready to be built for you.</p>
+    <a href="https://ineedjimmy.com/hire" class="cta-btn">See Jimmy's Services & Pricing</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  This preview was generated by Jimmy Davis's AI Business Design Software — INeedJimmy.com
+</footer>
+
+<script>
+function calculate() {
+  const group = parseInt(document.getElementById('groupSlider').value);
+  const rounds = parseInt(document.getElementById('roundSlider').value);
+  const priv = parseInt(document.getElementById('privateSlider').value);
+
+  document.getElementById('groupCount').textContent = group;
+  document.getElementById('roundCount').textContent = rounds;
+  document.getElementById('privateCount').textContent = priv;
+
+  const groupRev = group * rounds * 1997;
+  const privateRev = priv * 7500;
+  const annual = groupRev + privateRev;
+  const monthly = Math.round(annual / 12);
+
+  document.getElementById('monthlyRev').textContent = '$' + monthly.toLocaleString();
+  document.getElementById('annualRev').textContent = '$' + annual.toLocaleString();
+}
+calculate();
+</script>
+
+</body>
+</html>
