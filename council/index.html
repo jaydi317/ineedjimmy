@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <title>Council Access</title>
+  <style>
+    :root { --ink:#1e2230; --plum:#56385a; --coral:#d96236; --cream:#fffaf2; }
+    * { box-sizing:border-box; }
+    body { min-height:100vh; margin:0; display:grid; place-items:center; padding:24px; color:white; font-family:Arial,Helvetica,sans-serif; background:radial-gradient(circle at 80% 20%,rgba(217,98,54,.22),transparent 28%),linear-gradient(145deg,#271d2b,#49314d 62%,#6d4862); }
+    main { width:min(520px,100%); padding:38px; border:1px solid rgba(255,255,255,.17); border-radius:26px; background:rgba(255,255,255,.08); backdrop-filter:blur(14px); box-shadow:0 24px 80px rgba(0,0,0,.28); }
+    .eyebrow { font-size:11px; font-weight:900; letter-spacing:.15em; color:#f2b391; }
+    h1 { margin:22px 0 12px; font:500 clamp(43px,10vw,66px)/.95 Georgia,serif; letter-spacing:-.045em; }
+    p { margin:0 0 28px; color:rgba(255,255,255,.76); line-height:1.55; }
+    label { display:block; margin:15px 0 7px; font-size:11px; font-weight:900; letter-spacing:.1em; color:#f2d9ca; }
+    input { width:100%; padding:15px 16px; color:var(--ink); font-size:18px; border:2px solid transparent; border-radius:13px; background:var(--cream); outline:none; }
+    input:focus { border-color:#f2b391; }
+    button { width:100%; margin-top:21px; padding:16px; border:0; border-radius:13px; color:white; font-size:16px; font-weight:900; cursor:pointer; background:var(--coral); }
+    button:hover { filter:brightness(1.06); }
+    #error { min-height:22px; margin:13px 0 0; color:#ffd0bd; font-size:14px; }
+    small { display:block; margin-top:22px; color:rgba(255,255,255,.5); line-height:1.45; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">JIMMYOS · COUNCIL COMMAND BOARD</div>
+    <h1>Ask once.<br>Watch it move.</h1>
+    <p>Enter the quick access code. The actual board remains protected by Jimmy’s private ChatGPT account.</p>
+    <form id="gate">
+      <label for="username">USERNAME</label>
+      <input id="username" name="username" autocomplete="username" autocapitalize="none" required>
+      <label for="password">PASSWORD</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Open the Council Board</button>
+      <div id="error" role="alert" aria-live="polite"></div>
+    </form>
+    <small>This gateway contains no Council records or private customer information.</small>
+  </main>
+  <script>
+    const destination = "https://jimmy-council-command-board.jaydi317.chatgpt.site";
+    const form = document.getElementById("gate");
+    const error = document.getElementById("error");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const username = document.getElementById("username").value.trim().toLowerCase();
+      const password = document.getElementById("password").value;
+      if (username === "a" && password === "a") {
+        error.textContent = "Opening the private board…";
+        window.location.assign(destination);
+        return;
+      }
+      error.textContent = "That username or password is not correct.";
+    });
+  </script>
+</body>
+</html>
