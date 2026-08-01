@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#16364a">
+  <title>Steven's Business Interview — Jimmy's Council</title>
+  <meta name="description" content="A short guided interview to help Jimmy's Council understand Administrator Assistance and build something useful for Steven.">
+  <style>
+    :root{
+      --navy:#16364a;--navy2:#0e2939;--ink:#18303f;--paper:#f7f2e9;--card:#fffdf8;
+      --orange:#e8673a;--aqua:#acd8d5;--gold:#e6c477;--muted:#60727c;--line:#dfd5c7;
+      --green:#24745d;--red:#b9453e;--shadow:0 16px 50px rgba(32,53,64,.12)
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-rounded,"Avenir Next",Avenir,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+    button,textarea,input{font:inherit}
+    .top{background:linear-gradient(145deg,var(--navy),var(--navy2));color:white;padding:calc(24px + env(safe-area-inset-top)) 20px 34px;overflow:hidden;position:relative}
+    .top:before,.top:after{content:"";position:absolute;border-radius:50%;background:rgba(172,216,213,.12)}
+    .top:before{width:220px;height:220px;right:-95px;top:-105px}.top:after{width:120px;height:120px;left:-55px;bottom:-60px}
+    .hero{width:min(760px,100%);margin:auto;position:relative;z-index:1}
+    .brand{font-size:12px;font-weight:850;letter-spacing:.14em;text-transform:uppercase;color:var(--aqua);margin-bottom:18px}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,10vw,68px);line-height:.98;letter-spacing:-.045em;margin:0;max-width:650px}
+    .lead{font-size:18px;line-height:1.55;color:#e9f1ef;max-width:640px;margin:18px 0 0}
+    .promise{display:flex;gap:10px;align-items:flex-start;margin-top:22px;padding:14px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:15px;font-size:14px;line-height:1.45;color:#f6f3e9}
+    .spark{font-size:20px;line-height:1}
+    .progress-shell{position:sticky;top:0;z-index:20;background:rgba(247,242,233,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:11px 18px}
+    .progress-row{width:min(760px,100%);margin:auto;display:flex;align-items:center;gap:12px}
+    .track{height:8px;background:#e7ded2;border-radius:999px;flex:1;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--orange),#ec9257);transition:width .3s}
+    .count{min-width:72px;text-align:right;font-size:13px;font-weight:800;color:var(--muted)}
+    main{width:min(760px,calc(100% - 22px));margin:22px auto 70px}
+    .instructions{background:#fff0d2;border:1px solid #edd39a;border-radius:18px;padding:18px 19px;line-height:1.55;margin-bottom:16px}
+    .instructions strong{color:#8f4a29}.instructions p{margin:0}.instructions p+p{margin-top:8px}
+    .question{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px;margin:14px 0;box-shadow:0 7px 24px rgba(57,48,34,.06)}
+    .qtop{display:flex;align-items:flex-start;gap:13px}.num{flex:0 0 46px;height:46px;display:grid;place-items:center;border-radius:14px;background:var(--aqua);color:var(--navy);font-size:21px;font-weight:900}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:23px;line-height:1.12;margin:1px 0 7px;letter-spacing:-.02em}.why{font-size:13px;color:var(--muted);line-height:1.4;margin:0}
+    .ask{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.5;margin:18px 0 14px;color:#213a48}
+    textarea{display:block;width:100%;min-height:132px;resize:vertical;border:1.5px solid #d8ccbd;border-radius:15px;background:#fff;padding:14px 15px;color:var(--ink);line-height:1.5;outline:none;transition:.2s}
+    textarea:focus{border-color:#6ea9a8;box-shadow:0 0 0 4px rgba(110,169,168,.14)}textarea::placeholder{color:#91a0a5}
+    .controls{display:flex;align-items:center;gap:9px;margin-top:10px;flex-wrap:wrap}
+    .speak{appearance:none;border:0;border-radius:999px;background:var(--navy);color:white;padding:11px 16px;font-weight:850;cursor:pointer;min-height:44px}.speak:before{content:"●";color:#ff8067;margin-right:8px}.speak.listening{background:var(--red);animation:pulse 1.35s infinite}.speak.listening:before{color:white}
+    .clear{appearance:none;border:0;background:transparent;color:var(--muted);padding:10px 8px;font-weight:750;cursor:pointer}.status{font-size:13px;color:var(--muted);flex:1;min-width:150px}.status.live{color:var(--red);font-weight:800}
+    @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(185,69,62,.13)}}
+    .finish{background:var(--navy);color:white;border-radius:24px;padding:23px;margin-top:20px;box-shadow:var(--shadow)}
+    .finish h2{font-size:28px;margin:0 0 9px}.finish p{color:#dce8e7;line-height:1.5;margin:0 0 16px}
+    .field{margin:12px 0}.field label{display:block;font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:var(--aqua);margin:0 0 7px}.field input{width:100%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:white;border-radius:13px;padding:13px 14px;outline:none}.field input::placeholder{color:#aebfc3}
+    .submit,.download{width:100%;border:0;border-radius:15px;padding:16px;font-weight:900;cursor:pointer;margin-top:9px}.submit{background:var(--orange);color:white;font-size:17px}.submit:disabled{opacity:.6;cursor:wait}.download{background:rgba(255,255,255,.1);color:white}.fine{font-size:12px!important;color:#a9bdc1!important;margin-top:13px!important}
+    .message{display:none;border-radius:16px;padding:16px;margin-top:14px;line-height:1.5}.success{background:#ddf2e9;color:#174c3e}.error{background:#f8dddd;color:#752a26}
+    .thanks{display:none;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px 22px;text-align:center;box-shadow:var(--shadow)}.thanks .check{font-size:46px}.thanks h2{font-size:32px}.thanks p{font-size:17px;line-height:1.55;color:var(--muted)}
+    footer{text-align:center;color:var(--muted);font-size:12px;margin-top:24px;line-height:1.5}
+    @media(max-width:520px){.top{padding-left:17px;padding-right:17px}.lead{font-size:16px}.question{padding:17px;border-radius:19px}.qtop{gap:10px}.num{flex-basis:40px;height:40px}.ask{font-size:18px}.finish{padding:20px}.controls{align-items:stretch}.speak{flex:1}.status{flex-basis:100%}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="hero">
+      <div class="brand">A private conversation with Jimmy's Council</div>
+      <h1>Steve, show us what you’ve built.</h1>
+      <p class="lead">You have decades of knowledge that no website could capture. These seven questions will help us understand the real business—and create something useful around what you actually want next.</p>
+      <div class="promise"><span class="spark">✦</span><span>There are no polished answers required. Tap <strong>Speak</strong>, talk naturally, and review the words before submitting. Your answers go to Jimmy so the Council can build from your language—not ours.</span></div>
+    </div>
+  </header>
+
+  <div class="progress-shell"><div class="progress-row"><div class="track"><div class="bar" id="bar"></div></div><div class="count" id="count">0 of 7</div></div></div>
+
+  <main>
+    <div class="instructions">
+      <p><strong>The only rule:</strong> specific stories beat business language.</p>
+      <p>If a question reminds you of a real phone call, district, problem, or moment, tell us that story. Please leave out confidential student or personnel information.</p>
+    </div>
+
+    <form id="interviewForm">
+      <input type="hidden" name="_subject" value="STEVE COUNCIL INTERVIEW — Administrator Assistance">
+      <input type="hidden" name="source" value="ineedjimmy.com/steve">
+      <input type="hidden" name="message" id="compiledMessage">
+
+      <section class="question" data-question="1"><div class="qtop"><div class="num">1</div><div><h2>What is the business, really?</h2><p class="why">Help us see the company through the eyes of the person who calls you.</p></div></div><p class="ask">Pretend I know nothing. Who calls Administrator Assistance, what has usually just happened when they call, and what do you actually do for them?</p><textarea id="q1" name="q1_business" placeholder="Tap Speak and tell us about the last real call…"></textarea><div class="controls"><button class="speak" type="button" data-target="q1">Speak</button><button class="clear" type="button" data-target="q1">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="2"><div class="qtop"><div class="num">2</div><div><h2>Show us the transformation.</h2><p class="why">A true story gives us the clearest proof and the best language.</p></div></div><p class="ask">Tell us about one engagement you are especially proud of. What was happening before they called, what did your team do, and what was different afterward?</p><textarea id="q2" name="q2_transformation" placeholder="One district, one problem, one outcome…"></textarea><div class="controls"><button class="speak" type="button" data-target="q2">Speak</button><button class="clear" type="button" data-target="q2">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="3"><div class="qtop"><div class="num">3</div><div><h2>Why do they choose you?</h2><p class="why">We want the explanation that works in a real conversation.</p></div></div><p class="ask">Why do districts choose you instead of handling it internally, hiring one person, or using another firm? What do you say on the phone that makes people immediately understand the value?</p><textarea id="q3" name="q3_why_you" placeholder="The words you naturally use on the phone…"></textarea><div class="controls"><button class="speak" type="button" data-target="q3">Speak</button><button class="clear" type="button" data-target="q3">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="4"><div class="qtop"><div class="num">4</div><div><h2>Where does the business come from?</h2><p class="why">This tells us whether the opportunity is marketing, follow-up, packaging, or something else.</p></div></div><p class="ask">Where did your last ten good projects come from? Which two or three services create most of the business—and where do good opportunities fall through the cracks?</p><textarea id="q4" name="q4_demand" placeholder="Referrals, repeat districts, associations, website, outreach…"></textarea><div class="controls"><button class="speak" type="button" data-target="q4">Speak</button><button class="clear" type="button" data-target="q4">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="5"><div class="qtop"><div class="num">5</div><div><h2>What is frustrating?</h2><p class="why">This is often where the most useful system is hiding.</p></div></div><p class="ask">What is not working as well as it should? What do you hate doing, procrastinate on, or wish would disappear from your week? What still has to pass through you personally that should not?</p><textarea id="q5" name="q5_frustration" placeholder="The work, bottleneck, or recurring headache you would gladly hand off…"></textarea><div class="controls"><button class="speak" type="button" data-target="q5">Speak</button><button class="clear" type="button" data-target="q5">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="6"><div class="qtop"><div class="num">6</div><div><h2>Imagine the blank-check future.</h2><p class="why">Before we decide what is practical, we want to understand what “better” means to you.</p></div></div><p class="ask">If you had a blank check and five excellent people for a year, what would you change first? What would the company—and your own life—look like twelve months later?</p><textarea id="q6" name="q6_future" placeholder="Bigger, easier, more profitable, less dependent on you, ready for a successor…"></textarea><div class="controls"><button class="speak" type="button" data-target="q6">Speak</button><button class="clear" type="button" data-target="q6">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="question" data-question="7"><div class="qtop"><div class="num">7</div><div><h2>What would make this worthwhile?</h2><p class="why">Give the Council a finish line instead of making us guess.</p></div></div><p class="ask">What could the Council put in front of you that would make you say, “That’s exactly what I’ve been trying to explain” or “I can actually use this tomorrow”? What do outsiders usually misunderstand?</p><textarea id="q7" name="q7_wow" placeholder="A clearer explanation, website opening, sales piece, referral idea, workflow, AI helper…"></textarea><div class="controls"><button class="speak" type="button" data-target="q7">Speak</button><button class="clear" type="button" data-target="q7">Clear</button><span class="status" aria-live="polite"></span></div></section>
+
+      <section class="finish" id="finish">
+        <h2>Send it to the Council.</h2>
+        <p>Review anything you want to change. Your answers are saved on this device as you go.</p>
+        <div class="field"><label for="name">Your name</label><input id="name" name="name" value="Steven Wittenauer" autocomplete="name"></div>
+        <div class="field"><label for="email">Your email — optional</label><input id="email" type="email" name="email" placeholder="Only if you want a copy or reply" autocomplete="email"></div>
+        <button class="submit" type="submit" id="submitBtn">Send My Answers to Jimmy →</button>
+        <button class="download" type="button" id="downloadBtn">Save a Copy to This Device</button>
+        <p class="fine">Please do not include confidential student, employee, personnel, medical, or legally protected information.</p>
+        <div class="message error" id="errorMsg">We couldn’t send it yet. Your answers are still saved on this device. Tap “Save a Copy,” then send that file to Jimmy.</div>
+      </section>
+    </form>
+
+    <section class="thanks" id="thanks"><div class="check">✓</div><h2>We’ve got it, Steve.</h2><p>Thank you for trusting us with the real story. Jimmy and the Council can now work from what you actually said—not from assumptions.</p></section>
+    <footer>Built for a private business conversation with Jimmy Davis · Administrator Assistance interview</footer>
+  </main>
+
+<script>
+const form=document.getElementById('interviewForm');
+const areas=[...document.querySelectorAll('textarea')];
+const bar=document.getElementById('bar'),count=document.getElementById('count');
+const storageKey='steven-council-interview-v1';
+let recognition=null,activeButton=null,activeTarget=null,baseText='';
+
+function saveDraft(){
+  const payload={}; areas.forEach(a=>payload[a.id]=a.value); payload.name=document.getElementById('name').value;payload.email=document.getElementById('email').value;
+  localStorage.setItem(storageKey,JSON.stringify(payload)); updateProgress();
+}
+function loadDraft(){
+  try{const p=JSON.parse(localStorage.getItem(storageKey)||'{}');areas.forEach(a=>{if(p[a.id])a.value=p[a.id]});if(p.name)document.getElementById('name').value=p.name;if(p.email)document.getElementById('email').value=p.email}catch(e){} updateProgress();
+}
+function updateProgress(){const done=areas.filter(a=>a.value.trim().length>4).length;bar.style.width=(done/7*100)+'%';count.textContent=`${done} of 7`;}
+areas.forEach(a=>a.addEventListener('input',saveDraft));
+document.getElementById('name').addEventListener('input',saveDraft);document.getElementById('email').addEventListener('input',saveDraft);
+
+const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+function stopListening(){if(recognition){try{recognition.stop()}catch(e){}}}
+document.querySelectorAll('.speak').forEach(btn=>btn.addEventListener('click',()=>{
+  if(activeButton===btn){stopListening();return}
+  if(!SpeechRecognition){btn.parentElement.querySelector('.status').textContent='Voice typing is not available in this browser. Tap the answer box and use the microphone on your keyboard.';document.getElementById(btn.dataset.target).focus();return}
+  stopListening();
+  const target=document.getElementById(btn.dataset.target),status=btn.parentElement.querySelector('.status');
+  recognition=new SpeechRecognition();recognition.continuous=true;recognition.interimResults=true;recognition.lang='en-US';
+  activeButton=btn;activeTarget=target;baseText=target.value.trim();btn.classList.add('listening');btn.textContent='Stop';status.textContent='Listening… speak naturally';status.classList.add('live');
+  recognition.onresult=e=>{let finalText='',interim='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)finalText+=t+' ';else interim+=t}if(finalText)baseText=(baseText+' '+finalText).trim();target.value=(baseText+' '+interim).trim();saveDraft()};
+  recognition.onerror=e=>{status.textContent=e.error==='not-allowed'?'Microphone permission was blocked. You can type or use the keyboard microphone.':'Voice typing paused. Tap Speak to try again.'};
+  recognition.onend=()=>{btn.classList.remove('listening');btn.textContent='Speak';status.classList.remove('live');if(status.textContent.startsWith('Listening'))status.textContent='Voice answer added—review or keep talking.';activeButton=null;recognition=null;saveDraft()};
+  try{recognition.start()}catch(e){status.textContent='Tap Speak again to begin.'}
+}));
+document.querySelectorAll('.clear').forEach(btn=>btn.addEventListener('click',()=>{const target=document.getElementById(btn.dataset.target);if(target.value&&confirm('Clear this answer?')){target.value='';saveDraft()}}));
+
+function compile(){
+  const titles=[...document.querySelectorAll('.question h2')].map(h=>h.textContent.trim());
+  let text=`STEVEN WITTENAUER — COUNCIL INTERVIEW\nSubmitted: ${new Date().toLocaleString()}\n\n`;
+  areas.forEach((a,i)=>text+=`${i+1}. ${titles[i]}\n${a.value.trim()||'[No answer]'}\n\n`);
+  return text;
+}
+document.getElementById('downloadBtn').addEventListener('click',()=>{const blob=new Blob([compile()],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='Steven-Wittenauer-Council-Interview.txt';a.click();URL.revokeObjectURL(url)});
+
+form.addEventListener('submit',async e=>{
+  e.preventDefault();stopListening();
+  const answered=areas.filter(a=>a.value.trim().length>4).length;
+  if(answered<3&&!confirm(`Only ${answered} answers have been completed. Send them now anyway?`))return;
+  const btn=document.getElementById('submitBtn'),error=document.getElementById('errorMsg');btn.disabled=true;btn.textContent='Sending safely…';error.style.display='none';document.getElementById('compiledMessage').value=compile();
+  try{
+    const response=await fetch('https://formspree.io/f/mreookga',{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+    if(!response.ok)throw new Error('Submission failed');
+    form.style.display='none';document.getElementById('thanks').style.display='block';localStorage.removeItem(storageKey);window.scrollTo({top:document.querySelector('main').offsetTop,behavior:'smooth'});
+  }catch(err){error.style.display='block';btn.disabled=false;btn.textContent='Try Sending Again →'}
+});
+loadDraft();
+</script>
+</body>
+</html>
