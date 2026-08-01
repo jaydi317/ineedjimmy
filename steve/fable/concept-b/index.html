@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Administrator Assistance — Concept B — The Coverage Map</title>
+<style>
+  :root{
+    --paper:#f6f4ef;
+    --paper-2:#efece3;
+    --ink:#111417;
+    --ink-2:#20262d;
+    --line:#d5d1c4;
+    --line-2:#b7b2a2;
+    --muted:#5b6067;
+    --cardinal:#a01d1d;
+    --cardinal-2:#c0292a;
+    --ochre:#c58a2b;
+    --field:#e8e4d6;
+    --shadow: 0 24px 60px -30px rgba(17,20,23,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    line-height:1.55;}
+  img,svg{max-width:100%;display:block}
+  a{color:inherit}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  .private-label{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:var(--cardinal);color:#fff;
+    font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    text-align:center;padding:8px 12px;font-weight:700;
+  }
+
+  header.site{padding-top:56px;border-bottom:1px solid var(--line)}
+  .top-strip{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 0;font-size:12px;color:var(--muted);
+    border-bottom:1px solid var(--line);
+    letter-spacing:.02em;
+  }
+  .top-strip .est{letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+  .top-strip .tel{font-weight:600;color:var(--ink)}
+
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;padding:22px 0;
+  }
+  .brand{display:flex;gap:14px;align-items:center}
+  .brand .mark{
+    width:44px;height:44px;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;
+    font-weight:800;letter-spacing:.02em;font-size:18px;
+    position:relative;
+  }
+  .brand .mark:after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;height:3px;background:var(--cardinal);
+  }
+  .brand .name{font-weight:700;font-size:17px;letter-spacing:.005em}
+  .brand .sub{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+  .nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0;font-size:14px;font-weight:600}
+  .nav ul a{text-decoration:none;color:var(--ink-2)}
+  .nav .cta{
+    background:var(--cardinal);color:#fff;text-decoration:none;
+    padding:12px 20px;font-weight:700;font-size:14px;letter-spacing:.02em;
+    border:2px solid var(--cardinal);
+  }
+  @media (max-width:900px){.nav ul{display:none}}
+
+  /* HERO */
+  section.hero{
+    background:var(--ink);color:var(--paper);padding:64px 0 0;position:relative;overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+    padding-bottom:64px;
+  }
+  .hero .kicker{
+    display:inline-flex;align-items:center;gap:12px;
+    background:rgba(246,244,239,.08);border:1px solid rgba(246,244,239,.18);
+    padding:8px 14px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    color:#f0d9a4;
+  }
+  .hero .kicker .dot{width:8px;height:8px;background:var(--cardinal-2);border-radius:50%;box-shadow:0 0 0 3px rgba(192,41,42,.25)}
+  .hero h1{
+    font-size:clamp(38px,6vw,74px);line-height:1.02;letter-spacing:-.02em;
+    font-weight:800;margin:22px 0 20px;
+  }
+  .hero h1 .mark{
+    color:#fff;border-bottom:6px solid var(--cardinal-2);padding-bottom:2px;
+  }
+  .hero .lede{font-size:clamp(17px,1.6vw,20.5px);color:#d7d3c6;max-width:600px;margin:0 0 30px}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-block;font-weight:700;font-size:14.5px;text-decoration:none;
+    padding:15px 22px;letter-spacing:.02em;border:2px solid transparent;
+    transition:transform .12s ease;
+  }
+  .btn-primary{background:var(--cardinal);border-color:var(--cardinal);color:#fff}
+  .btn-primary:hover{transform:translateY(-1px)}
+  .btn-secondary{background:transparent;border-color:var(--paper);color:var(--paper)}
+
+  /* MAP */
+  .map-wrap{
+    position:relative;background:#171b20;border:1px solid rgba(246,244,239,.14);
+    padding:22px;
+  }
+  .map-title{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;
+    color:#d7d3c6;margin-bottom:14px;
+  }
+  .map-title .live{color:#f0d9a4}
+  .map svg{width:100%;height:auto}
+  .map-legend{
+    display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:12px;color:#d7d3c6;
+    margin-top:14px;
+  }
+  .swatch{display:inline-block;width:10px;height:10px;margin-right:8px;vertical-align:middle}
+  .sw-served{background:var(--ochre)}
+  .sw-active{background:var(--cardinal-2);box-shadow:0 0 0 2px rgba(192,41,42,.25)}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+
+  .banner-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(246,244,239,.14);
+    border-top:1px solid rgba(246,244,239,.14);
+  }
+  .banner-stats .cell{background:var(--ink);padding:26px 24px;text-align:left}
+  .banner-stats .n{
+    font-size:clamp(38px,4.8vw,58px);font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1;
+  }
+  .banner-stats .n small{color:#f0d9a4;font-size:.55em;letter-spacing:.02em;font-weight:800}
+  .banner-stats .l{
+    margin-top:10px;color:#d7d3c6;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    line-height:1.4;
+  }
+  @media (max-width:820px){.banner-stats{grid-template-columns:1fr}}
+
+  /* ONE SENTENCE */
+  section.onesentence{padding:96px 0 40px}
+  .os-eyebrow{
+    font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:800;color:var(--cardinal)
+  }
+  .os h2{
+    font-size:clamp(32px,4.4vw,54px);line-height:1.08;letter-spacing:-.02em;font-weight:800;
+    max-width:1000px;margin:16px 0 0;
+  }
+  .os h2 .redline{
+    background-image:linear-gradient(180deg,transparent 68%,rgba(160,29,29,.22) 68%,rgba(160,29,29,.22) 92%,transparent 92%);
+  }
+
+  /* PATHWAY */
+  section.pathway{padding:80px 0 40px}
+  .section-title{
+    font-size:clamp(28px,3.6vw,44px);line-height:1.1;letter-spacing:-.015em;font-weight:800;
+    max-width:800px;margin:14px 0 18px;
+  }
+  .section-lede{max-width:620px;color:var(--muted);font-size:17px;margin:0 0 44px}
+
+  .pathway-diagram{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid var(--line);background:var(--paper-2);position:relative;
+  }
+  .step{
+    padding:32px 24px 30px;border-right:1px solid var(--line);position:relative;background:var(--paper);
+  }
+  .step:last-child{border-right:none}
+  .step .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:38px;height:38px;background:var(--ink);color:var(--paper);font-weight:800;
+    margin-bottom:16px;font-size:14px;letter-spacing:.02em;
+  }
+  .step h3{margin:0 0 8px;font-size:19px;font-weight:800;letter-spacing:-.005em}
+  .step p{margin:0;color:var(--muted);font-size:14.5px}
+  .step .time{
+    display:inline-block;margin-top:14px;font-size:11.5px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:800;color:var(--cardinal);
+  }
+  @media (max-width:900px){
+    .pathway-diagram{grid-template-columns:1fr}
+    .step{border-right:none;border-bottom:1px solid var(--line)}
+    .step:last-child{border-bottom:none}
+  }
+
+  /* SITUATIONS */
+  section.situations{padding:96px 0 40px;background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .sit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+  .sit{
+    background:var(--paper);border:1px solid var(--line);padding:26px 26px 28px;position:relative;
+    display:grid;grid-template-columns:56px 1fr;gap:18px;
+  }
+  .sit .icon{
+    width:56px;height:56px;background:var(--ink);color:var(--paper);
+    display:grid;place-items:center;
+  }
+  .sit .icon svg{width:28px;height:28px}
+  .sit .flag{
+    position:absolute;top:0;right:0;background:var(--cardinal);color:#fff;
+    font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;
+    padding:6px 12px;
+  }
+  .sit h4{margin:0 0 6px;font-size:19px;font-weight:800;letter-spacing:-.005em}
+  .sit p{margin:0;color:var(--muted);font-size:14.5px}
+  @media (max-width:820px){.sit-grid{grid-template-columns:1fr}}
+
+  /* CAPACITY GRID (services reorganized) */
+  section.capacity{padding:96px 0 40px}
+  .cap-index{
+    display:grid;grid-template-columns:.4fr 1fr;gap:16px 40px;margin-top:24px;
+    border-top:2px solid var(--ink);
+  }
+  .cap-row{
+    display:contents;
+  }
+  .cap-row .k, .cap-row .v{
+    padding:22px 0;border-bottom:1px solid var(--line);font-size:16px;
+  }
+  .cap-row .k{
+    font-weight:800;letter-spacing:.02em;font-size:14px;text-transform:uppercase;color:var(--cardinal);
+    padding-right:16px;
+  }
+  .cap-row .v{color:var(--ink-2)}
+  .cap-row .v strong{color:var(--ink);font-weight:800}
+
+  /* PROOF STORIES */
+  section.proofstories{padding:96px 0 40px;background:var(--ink);color:var(--paper)}
+  .ps-head{max-width:820px;margin-bottom:44px}
+  .ps-head .eyebrow{color:#f0d9a4;font-size:11.5px;letter-spacing:.28em;text-transform:uppercase;font-weight:800}
+  .ps-head h2{color:#fff;font-size:clamp(28px,3.6vw,44px);letter-spacing:-.015em;line-height:1.1;font-weight:800;margin:14px 0 12px}
+  .ps-head p{color:#c9c5b7;max-width:640px}
+  .ps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid rgba(246,244,239,.16);border-bottom:1px solid rgba(246,244,239,.16)}
+  .ps{padding:28px 24px;border-right:1px solid rgba(246,244,239,.16)}
+  .ps:last-child{border-right:none}
+  .ps .tag{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#f0d9a4;font-weight:800}
+  .ps h3{color:#fff;font-size:18px;line-height:1.28;letter-spacing:-.005em;margin:10px 0 14px;font-weight:800}
+  .ps .kv{display:grid;grid-template-columns:80px 1fr;gap:8px 14px;font-size:14px;color:#d7d3c6;padding:8px 0;border-top:1px solid rgba(246,244,239,.12)}
+  .ps .kv .k{color:#f0d9a4;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+  .ps .note{margin-top:14px;font-size:12.5px;color:#a9a595;font-style:italic}
+  @media (max-width:900px){.ps-grid{grid-template-columns:1fr}.ps{border-right:none;border-bottom:1px solid rgba(246,244,239,.16)}.ps:last-child{border-bottom:none}}
+
+  /* WHO WE ARE */
+  section.who{padding:96px 0 40px}
+  .who-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .who .letter{
+    background:var(--paper-2);border:1px solid var(--line);padding:36px 32px;position:relative;
+    font-size:16.5px;line-height:1.65;color:var(--ink-2);
+  }
+  .who .letter:before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--cardinal);
+  }
+  .who .letter .sig{
+    margin-top:22px;font-family:"Iowan Old Style","Palatino",serif;font-style:italic;font-size:19px;color:var(--ink);
+  }
+  @media (max-width:900px){.who-grid{grid-template-columns:1fr}}
+
+  /* CALL TO ACTION */
+  section.callcta{padding:96px 0}
+  .callcta-inner{
+    background:var(--ink);color:var(--paper);padding:48px;position:relative;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;
+  }
+  .callcta-inner:before{
+    content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--cardinal);
+  }
+  .callcta h2{font-size:clamp(28px,3.6vw,42px);line-height:1.1;letter-spacing:-.015em;font-weight:800;margin:8px 0 14px}
+  .callcta p{color:#c9c5b7;margin:0 0 22px}
+  .callcta ul{list-style:none;margin:0;padding:0;color:#d7d3c6;font-size:15px}
+  .callcta ul li{padding:12px 0;border-top:1px solid rgba(246,244,239,.14);display:flex;gap:12px;align-items:flex-start}
+  .callcta ul li:first-child{border-top:none}
+  .callcta ul li .n{color:var(--cardinal-2);font-weight:800;min-width:22px}
+  @media (max-width:900px){.callcta-inner{grid-template-columns:1fr;padding:32px}}
+
+  footer.site{background:#0d0f12;color:#a3a69f;padding:44px 0 56px;font-size:13px}
+  footer .brand-f{color:#fff;font-weight:800;font-size:16px;letter-spacing:.02em}
+  footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  footer a{color:#d7d3c6}
+  .proposed-note{
+    margin:44px auto 0;max-width:900px;font-size:12px;color:#a3a69f;text-align:center;letter-spacing:.02em;
+    padding:14px 18px;border:1px dashed rgba(246,244,239,.24);background:#161a1e;
+  }
+</style>
+</head>
+<body>
+<div class="private-label">Private Concept — Proposed Messaging · Concept B · The Coverage Map</div>
+
+<header class="site">
+  <div class="container">
+    <div class="top-strip">
+      <div><span class="est">Est. 2008</span> &nbsp;·&nbsp; Serving Indiana public schools statewide</div>
+      <div><span class="tel">Confidential Intake:</span> a former superintendent answers the phone</div>
+    </div>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <div class="mark">AA</div>
+        <div>
+          <div class="name">Administrator Assistance</div>
+          <div class="sub">Indiana School Leadership Network</div>
+        </div>
+      </div>
+      <ul>
+        <li><a href="#pathway">The Pathway</a></li>
+        <li><a href="#situations">When to Call</a></li>
+        <li><a href="#capacity">Capacity Index</a></li>
+        <li><a href="#stories">In the Field</a></li>
+        <li><a href="#who">Who We Are</a></li>
+      </ul>
+      <a class="cta" href="#call">Request a Call</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker"><span class="dot"></span> Indiana School Districts · 2008 – 2026</span>
+        <h1>The <span class="mark">experienced answer</span> to a district problem you have never faced before.</h1>
+        <p class="lede">
+          Administrator Assistance is a statewide response network of former Indiana superintendents,
+          principals, and district leaders. When a school board or superintendent faces an urgent
+          vacancy, decision, or operational problem, we deploy someone who has already solved it.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#call">Request a Confidential Call →</a>
+          <a class="btn btn-secondary" href="#pathway">See the 4-step pathway</a>
+        </div>
+      </div>
+
+      <aside class="map-wrap" aria-label="Coverage map of Indiana districts served">
+        <div class="map-title"><span>Coverage · Indiana</span><span class="live">190+ districts served</span></div>
+        <div class="map">
+          <!-- Stylized Indiana silhouette (schematic, not geographically precise). Purely illustrative. -->
+          <svg viewBox="0 0 400 480" role="img" aria-label="Stylized Indiana coverage map">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M20 0 L0 0 0 20" fill="none" stroke="rgba(246,244,239,.05)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="480" fill="url(#grid)"/>
+            <!-- Indiana silhouette (stylized) -->
+            <path d="
+              M120 24
+              L285 24
+              L292 60
+              L295 110
+              L302 180
+              L307 250
+              L305 320
+              L297 380
+              L280 430
+              L245 452
+              L200 458
+              L160 452
+              L128 438
+              L115 400
+              L110 340
+              L108 280
+              L112 220
+              L114 150
+              L116 90
+              Z"
+              fill="#1e232a" stroke="#3a3f47" stroke-width="1.5"/>
+            <!-- Interior county-ish lines (very light, schematic) -->
+            <g stroke="rgba(246,244,239,.08)" stroke-width="1" fill="none">
+              <path d="M115 120 L295 120"/>
+              <path d="M115 200 L300 200"/>
+              <path d="M112 280 L303 280"/>
+              <path d="M115 360 L297 360"/>
+              <path d="M170 30 L170 450"/>
+              <path d="M225 30 L225 450"/>
+              <path d="M270 30 L270 450"/>
+            </g>
+            <!-- District dots (ochre = served, cardinal = active engagement) -->
+            <g fill="#c58a2b">
+              <circle cx="150" cy="70" r="3.2"/><circle cx="200" cy="60" r="3.2"/><circle cx="250" cy="72" r="3.2"/>
+              <circle cx="140" cy="110" r="3.2"/><circle cx="180" cy="105" r="3.2"/><circle cx="230" cy="100" r="3.2"/><circle cx="275" cy="115" r="3.2"/>
+              <circle cx="132" cy="150" r="3.2"/><circle cx="170" cy="140" r="3.2"/><circle cx="210" cy="150" r="3.2"/><circle cx="255" cy="145" r="3.2"/><circle cx="290" cy="160" r="3.2"/>
+              <circle cx="128" cy="190" r="3.2"/><circle cx="165" cy="185" r="3.2"/><circle cx="205" cy="190" r="3.2"/><circle cx="245" cy="180" r="3.2"/><circle cx="285" cy="200" r="3.2"/>
+              <circle cx="125" cy="230" r="3.2"/><circle cx="160" cy="225" r="3.2"/><circle cx="195" cy="235" r="3.2"/><circle cx="240" cy="225" r="3.2"/><circle cx="280" cy="240" r="3.2"/>
+              <circle cx="122" cy="270" r="3.2"/><circle cx="155" cy="265" r="3.2"/><circle cx="192" cy="275" r="3.2"/><circle cx="232" cy="268" r="3.2"/><circle cx="275" cy="280" r="3.2"/>
+              <circle cx="125" cy="310" r="3.2"/><circle cx="163" cy="308" r="3.2"/><circle cx="200" cy="315" r="3.2"/><circle cx="240" cy="308" r="3.2"/><circle cx="278" cy="320" r="3.2"/>
+              <circle cx="132" cy="350" r="3.2"/><circle cx="170" cy="348" r="3.2"/><circle cx="210" cy="355" r="3.2"/><circle cx="248" cy="350" r="3.2"/><circle cx="280" cy="360" r="3.2"/>
+              <circle cx="145" cy="390" r="3.2"/><circle cx="185" cy="395" r="3.2"/><circle cx="225" cy="390" r="3.2"/><circle cx="260" cy="400" r="3.2"/>
+              <circle cx="170" cy="425" r="3.2"/><circle cx="215" cy="430" r="3.2"/><circle cx="250" cy="425" r="3.2"/>
+            </g>
+            <!-- Active engagements (cardinal, with halo) -->
+            <g>
+              <circle cx="205" cy="150" r="7" fill="none" stroke="#c0292a" stroke-width="1.4" opacity=".55"/>
+              <circle cx="205" cy="150" r="4.2" fill="#c0292a"/>
+              <circle cx="245" cy="225" r="7" fill="none" stroke="#c0292a" stroke-width="1.4" opacity=".55"/>
+              <circle cx="245" cy="225" r="4.2" fill="#c0292a"/>
+              <circle cx="163" cy="308" r="7" fill="none" stroke="#c0292a" stroke-width="1.4" opacity=".55"/>
+              <circle cx="163" cy="308" r="4.2" fill="#c0292a"/>
+              <circle cx="225" cy="390" r="7" fill="none" stroke="#c0292a" stroke-width="1.4" opacity=".55"/>
+              <circle cx="225" cy="390" r="4.2" fill="#c0292a"/>
+            </g>
+            <!-- Label -->
+            <text x="200" y="240" text-anchor="middle" font-family="ui-sans-serif,system-ui" font-size="14" fill="rgba(246,244,239,.28)" letter-spacing="6">INDIANA</text>
+          </svg>
+        </div>
+        <div class="map-legend">
+          <div><span class="swatch sw-served"></span>District served, 2008 – 2026 (illustrative)</div>
+          <div><span class="swatch sw-active"></span>Recent engagement (illustrative)</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="banner-stats" role="list">
+      <div class="cell" role="listitem">
+        <div class="n">50<small>+</small></div>
+        <div class="l">Experienced Indiana school leaders on call</div>
+      </div>
+      <div class="cell" role="listitem">
+        <div class="n">1,500<small>+</small></div>
+        <div class="l">Combined years of public-education leadership</div>
+      </div>
+      <div class="cell" role="listitem">
+        <div class="n">190<small>+</small></div>
+        <div class="l">Indiana districts served since 2008</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="onesentence">
+  <div class="container os">
+    <div class="os-eyebrow">The Idea, in One Sentence</div>
+    <h2>
+      When a school district faces a leadership or operating problem it has never solved before,
+      Administrator Assistance <span class="redline">finds someone who has already solved it</span>
+      — usually within days.
+    </h2>
+  </div>
+</section>
+
+<section class="pathway" id="pathway">
+  <div class="container">
+    <div class="os-eyebrow">The Response Pathway</div>
+    <h2 class="section-title">A single confidential call becomes an experienced answer inside your district.</h2>
+    <p class="section-lede">
+      Districts under pressure do not have time for slow-moving vendors. Our pathway is deliberately
+      short so a superintendent or board can decide quickly, calmly, and privately.
+    </p>
+
+    <div class="pathway-diagram">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Confidential intake</h3>
+        <p>You call. A former Indiana superintendent listens for the situation, the calendar, and the sensitivities. No sales rep, no scripts.</p>
+        <span class="time">Same day</span>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>The right match</h3>
+        <p>We identify the specific person on our bench who has done this exact work in a comparable Indiana district — role, community, calendar.</p>
+        <span class="time">24 – 72 hours</span>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Deploy</h3>
+        <p>Interim on-site, search launched, review begun, or negotiator seated at the table. Whatever the district needs, working — not scheduled.</p>
+        <span class="time">Within the week</span>
+      </div>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Steady hand-off</h3>
+        <p>The engagement ends when the district is ready — with a permanent hire, a clean report, a passed budget, or a signed agreement.</p>
+        <span class="time">Weeks or months</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="situations" id="situations">
+  <div class="container">
+    <div class="os-eyebrow">When Districts Call</div>
+    <h2 class="section-title">Six situations we have already lived through — on the other side of the desk.</h2>
+
+    <div class="sit-grid">
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><circle cx="16" cy="16" r="12"/><path d="M16 8v9l6 3"/></svg>
+        </div>
+        <div>
+          <div class="flag">Urgent</div>
+          <h4>A leader has just resigned mid-year.</h4>
+          <p>A vacant principal or central-office chair, an anxious staff, and a calendar that will not wait. We put an experienced interim in the building — usually within days.</p>
+        </div>
+      </article>
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 26h24M8 22V10M16 22V6M24 22V14"/></svg>
+        </div>
+        <div>
+          <h4>The board is about to hire its next superintendent.</h4>
+          <p>A search led by former superintendents themselves. A confidential pipeline, a defensible process, and a finalist the board can confirm publicly.</p>
+        </div>
+      </article>
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="8" width="22" height="16" rx="1"/><path d="M5 14h22M11 20h4"/></svg>
+        </div>
+        <div>
+          <h4>A referendum, audit, or budget cliff is approaching.</h4>
+          <p>Former business managers and superintendents review the numbers, the assumptions, and the community message — before the board is asked to defend them.</p>
+        </div>
+      </article>
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 24V8h20v16"/><path d="M6 24l20-16"/></svg>
+        </div>
+        <div>
+          <h4>Bargaining season is coming.</h4>
+          <p>A chief negotiator with Indiana experience — at the table, at the study session, and in the community — so the district enters the room prepared.</p>
+        </div>
+      </article>
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4v10l7 3M4 16h6M22 16h6"/><circle cx="16" cy="16" r="12"/></svg>
+        </div>
+        <div>
+          <h4>The board wants a strategic plan the community will trust.</h4>
+          <p>Facilitated retreats and planning by people who have run districts — not consultants speaking a language your board does not use.</p>
+        </div>
+      </article>
+      <article class="sit">
+        <div class="icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 22V10l10-5 10 5v12"/><path d="M12 22v-6h8v6"/></svg>
+        </div>
+        <div>
+          <h4>Operations need an honest outside review.</h4>
+          <p>Curriculum, transportation, technology, or central-office. A quiet audit by former practitioners, delivered to the superintendent first, then to the board.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="capacity" id="capacity">
+  <div class="container">
+    <div class="os-eyebrow">Capacity Index</div>
+    <h2 class="section-title">The full range of what our bench has done — organized by the kind of week you're having.</h2>
+    <p class="section-lede">A large service list is intimidating. Here it is grouped by the situation that usually brings a district to the phone.</p>
+
+    <div class="cap-index">
+      <div class="cap-row">
+        <div class="k">People, quickly</div>
+        <div class="v"><strong>Interim superintendents · Interim principals · Interim business &amp; operations leaders · Superintendent search &amp; evaluation · Central-office &amp; building-leader searches</strong></div>
+      </div>
+      <div class="cap-row">
+        <div class="k">Money &amp; plans</div>
+        <div class="v"><strong>Budget &amp; finance support · Referendum planning · Strategic planning · Board retreats · Grant writing &amp; management · Feasibility studies</strong></div>
+      </div>
+      <div class="cap-row">
+        <div class="k">People &amp; process</div>
+        <div class="v"><strong>Collective bargaining · Board governance workshops · Community &amp; climate audits · Superintendent evaluation</strong></div>
+      </div>
+      <div class="cap-row">
+        <div class="k">Operations</div>
+        <div class="v"><strong>Curriculum leadership &amp; program review · Transportation assessments · Technology assessments · Central-office operations reviews</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="proofstories" id="stories">
+  <div class="container">
+    <div class="ps-head">
+      <div class="eyebrow">In the Field</div>
+      <h2>Three real shapes of an Administrator Assistance engagement.</h2>
+      <p>Composited from publicly reported outcomes of Administrator Assistance's work with Indiana districts. Names withheld unless the district has already made the engagement public.</p>
+    </div>
+    <div class="ps-grid">
+      <article class="ps">
+        <div class="tag">Next-Day Interim</div>
+        <h3>“The principal resigned on Monday. Our interim was in the building on Tuesday.”</h3>
+        <div class="kv"><div class="k">Trigger</div><div>Sudden mid-year principal resignation</div></div>
+        <div class="kv"><div class="k">Match</div><div>Retired principal from a comparable Indiana district</div></div>
+        <div class="kv"><div class="k">Outcome</div><div>Building steady while district ran a permanent search</div></div>
+        <div class="note">Composite of publicly reported next-day interim placements.</div>
+      </article>
+      <article class="ps">
+        <div class="tag">Board-Ready Search</div>
+        <h3>“The final board vote for our new superintendent was 7 – 0.”</h3>
+        <div class="kv"><div class="k">Trigger</div><div>Divided board, high-visibility hire</div></div>
+        <div class="kv"><div class="k">Match</div><div>Search facilitated by former Indiana superintendents</div></div>
+        <div class="kv"><div class="k">Outcome</div><div>Finalist confirmed unanimously and defended publicly</div></div>
+        <div class="note">Drawn from publicly reported unanimous board outcomes.</div>
+      </article>
+      <article class="ps">
+        <div class="tag">Operational Review</div>
+        <h3>“Someone finally told us the truth about what was happening inside our operations.”</h3>
+        <div class="kv"><div class="k">Trigger</div><div>Central-office fatigue, board split on priorities</div></div>
+        <div class="kv"><div class="k">Match</div><div>Two-person team of former practitioners</div></div>
+        <div class="kv"><div class="k">Outcome</div><div>A short list of what to fix now, later, and not yet</div></div>
+        <div class="note">Illustrative of Administrator Assistance's assessment work.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="who" id="who">
+  <div class="container who-grid">
+    <div>
+      <div class="os-eyebrow">Who We Are</div>
+      <h2 class="section-title">Built by a superintendent, for superintendents and school boards.</h2>
+      <p class="section-lede">
+        Steven Wittenauer spent 37 years in Indiana public schools — as teacher, principal, assistant
+        superintendent, and superintendent — before retiring from Benton Community School Corporation in
+        December 2007. In January 2008 he co-founded Administrator Assistance with Dr. Gilbert Crimmins.
+        In June 2023 he became sole owner and manager. The firm's culture reflects what he learned in
+        the district office: get the right people in the room, tell the truth, and finish the work.
+      </p>
+    </div>
+    <aside class="letter">
+      <div class="os-eyebrow">From the Founder</div>
+      <p style="margin-top:14px">
+        We built this company because the situations that most rattle a school district have almost
+        always been solved before — just not by anyone currently on staff. Our job is to be the phone
+        call a superintendent or board member can make on a hard morning, and to have the right
+        experienced person on-site by the end of the week.
+      </p>
+      <p style="margin-top:12px">
+        That is the promise we have kept to Indiana districts since 2008, and it is the promise we
+        expect to keep for the districts calling us next month.
+      </p>
+      <div class="sig">— Steven Wittenauer, Founder &amp; Owner</div>
+    </aside>
+  </div>
+</section>
+
+<section class="callcta" id="call">
+  <div class="container">
+    <div class="callcta-inner">
+      <div>
+        <div class="os-eyebrow" style="color:#f0d9a4">The Next Step</div>
+        <h2>Tell us what happened. We will tell you honestly whether we can help.</h2>
+        <p>The first call is a confidential 15–20 minute conversation with an experienced Indiana school leader — not a sales representative. If our bench is the right answer, we will show you the person we would send. If it is not, we will point you where to look.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#call">Request a Confidential Call →</a>
+          <a class="btn btn-secondary" href="#pathway">Read the pathway first</a>
+        </div>
+      </div>
+      <ul>
+        <li><span class="n">1.</span><span>A former Indiana superintendent answers the call.</span></li>
+        <li><span class="n">2.</span><span>You describe the situation and the calendar. Confidential.</span></li>
+        <li><span class="n">3.</span><span>We describe how we would match it — or refer you elsewhere.</span></li>
+        <li><span class="n">4.</span><span>You decide whether to see a proposed person or plan.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="container">
+    <div class="row">
+      <div>
+        <div class="brand-f">Administrator Assistance</div>
+        <div style="margin-top:8px;max-width:520px">Indiana school leadership network. Serving Indiana public schools since 2008. Sole owner &amp; manager: Steven Wittenauer.</div>
+      </div>
+      <div style="min-width:220px">
+        <div style="color:#fff;text-transform:uppercase;letter-spacing:.2em;font-size:11px;margin-bottom:10px">Contact</div>
+        <div>Confidential intake by phone.<br/>Office in Indiana.</div>
+      </div>
+    </div>
+    <div class="proposed-note">
+      PRIVATE CONCEPT — PROPOSED MESSAGING. This page is one of two independent, unpublished directions
+      prepared for Steven Wittenauer's review. Statistics quoted (50+ / 1,500+ / 190+) match the current
+      public site. The coverage map is a stylized illustration, not a geographically precise map.
+      Case notes are drawn from publicly reported outcomes and are illustrative until Steven confirms specifics.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
