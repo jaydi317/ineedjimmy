@@ -1,0 +1,118 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>What would you hand off? &middot; I Need Jimmy</title><style>
+:root{--ink:#1a1a1a;--muted:#6b6b6b;--gold:#b8912f;--bg:#fbf9f5;--card:#fff;--line:#e8e2d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.72 -apple-system,BlinkMacSystemFont,'Segoe UI',Georgia,serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:680px;margin:0 auto;padding:0 22px 90px}
+header{text-align:center;padding:60px 22px 26px}
+.kicker{letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--gold);font-weight:700}
+h1{font-size:clamp(32px,7.6vw,50px);line-height:1.08;margin:16px 0 0;font-weight:400;letter-spacing:-.02em}
+.rule{width:56px;height:2px;background:var(--gold);margin:28px auto}
+.piece{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:38px 32px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.piece p{margin:0 0 22px}
+.piece p:last-child{margin-bottom:0}
+.pull{font-size:clamp(21px,4.8vw,26px);line-height:1.4;font-weight:600;letter-spacing:-.01em;color:var(--gold);border-left:3px solid var(--gold);padding-left:20px;margin:26px 0!important}
+.form{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;margin:26px 0 0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+label{display:block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:0 0 9px}
+input,textarea{width:100%;font:17px/1.6 -apple-system,BlinkMacSystemFont,'Segoe UI',Georgia,serif;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:13px 14px;margin:0 0 22px}
+input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:120px;resize:vertical}
+button{width:100%;font:600 18px/1 -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#fff;background:var(--gold);border:0;border-radius:10px;padding:18px;cursor:pointer;letter-spacing:.01em}
+button:disabled{opacity:.55;cursor:default}
+.fine{font-size:13px;color:var(--muted);line-height:1.6;margin:14px 0 0;text-align:center}
+.msg{display:none;border-radius:10px;padding:16px 18px;margin:0 0 20px;font-size:16px;line-height:1.6}
+.msg.ok{display:block;background:#f2f8f0;border:1px solid #cfe3c8;color:#2f5227}
+.msg.err{display:block;background:#fdf3f2;border:1px solid #edcdc9;color:#7a2f27}
+footer{text-align:center;color:var(--muted);font-size:14px;margin-top:56px;line-height:1.7}
+footer a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(184,145,47,.4)}
+@media(max-width:520px){.piece,.form{padding:26px 22px}}
+</style></head><body>
+<header>
+<div class='kicker'>I Need Jimmy</div>
+<h1>What would you<br>hand off if you could?</h1>
+<div class='rule'></div>
+</header>
+<div class='wrap'>
+
+<div class='piece'>
+<p>Somebody probably sent you here because of something I made for them. Here&rsquo;s how that
+usually goes.</p>
+
+<p>I bought a ring from a jeweler named Jenny. Then I asked her three questions for three
+minutes, and she said something I couldn&rsquo;t get out of my head:</p>
+
+<p class='pull'>&ldquo;People don&rsquo;t come in to buy jewelry for people that they don&rsquo;t love.&rdquo;</p>
+
+<p>Thirty-five years, and nobody had ever written it down. So I wrote it down, built her a page,
+and gave it to her. It cost her nothing. I did it because I wanted to.</p>
+
+<p>Here&rsquo;s the part worth telling you: that page &mdash; the writing, the design, the whole thing &mdash;
+came out of <strong>an AI system I built</strong>. Start to finish, in an afternoon.</p>
+
+<p>That system is what I actually do now. I&rsquo;ve spent twenty years in direct response marketing and
+been paid seven figures four separate ways &mdash; from a stage, on a webinar, on the phone, on the
+page. Now I&rsquo;ve taught all of it to a machine that doesn&rsquo;t sleep.</p>
+
+<p>Which means the stuff that used to cost real money doesn&rsquo;t anymore. Writing that sounds like
+you. A page that actually sells. Follow-up that goes out whether or not you remember. Answering
+the same customer question for the four hundredth time. The admin pile you&rsquo;ve been avoiding since
+March.</p>
+
+<p>I don&rsquo;t know what yours is. That&rsquo;s the whole reason for the box below.</p>
+
+<p>So &mdash; if you run something, or you&rsquo;re starting something, or there&rsquo;s just a job you hate doing
+every week: tell me what it is. Sixty seconds.</p>
+
+<p><strong>I&rsquo;ll tell you straight whether AI can help, and whether it&rsquo;s worth paying for.
+Sometimes the answer is no.</strong></p>
+</div>
+
+<form class='form' id='f' novalidate>
+<div class='msg' id='m'></div>
+<label for='name'>Your name</label>
+<input id='name' name='name' autocomplete='name' required>
+
+<label for='phone'>Mobile number</label>
+<input id='phone' name='phone' type='tel' autocomplete='tel' inputmode='tel' required>
+
+<label for='work'>What do you do &mdash; and what would you hand off if you could?</label>
+<textarea id='work' name='work' required></textarea>
+
+<input id='company' name='company' tabindex='-1' autocomplete='off' aria-hidden='true' style='position:absolute;left:-9999px;width:1px;height:1px'>
+
+<button type='submit' id='b'>Send it to Jimmy</button>
+<p class='fine'>Goes straight to Jimmy&rsquo;s phone. Your number goes to him and nowhere else &mdash; never sold, never a list.<br><br>By submitting, you agree to receive text messages from I Need Jimmy about your request. Message frequency varies. Msg &amp; data rates may apply. Reply STOP to opt out, HELP for help.</p>
+</form>
+
+<footer>
+Jimmy Davis &middot; Fishers, Indiana<br>
+<a href='https://ineedjimmy.com/'>ineedjimmy.com</a>
+</footer>
+</div>
+<script>
+(function(){
+var ENDPOINT='https://webhook.davisdash.com/webhook/jenny-lead';
+var f=document.getElementById('f'),b=document.getElementById('b'),m=document.getElementById('m');
+function show(cls,html){m.className='msg '+cls;m.innerHTML=html;m.scrollIntoView({behavior:'smooth',block:'center'})}
+f.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(document.getElementById('company').value)return;
+  var d={name:f.name.value.trim(),phone:f.phone.value.trim(),work:f.work.value.trim(),
+         source:'direct',page:location.pathname,ts:new Date().toISOString()};
+  if(!d.name||!d.phone||!d.work){show('err','Need all three &mdash; name, number, and what you do.');return}
+  if(d.phone.replace(/\D/g,'').length<10){show('err','That number looks short. Include the area code.');return}
+  b.disabled=true;b.textContent='Sending…';
+  fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)})
+   .then(function(r){if(!r.ok)throw new Error(r.status);return r.text()})
+   .then(function(){
+     f.querySelectorAll('input,textarea,button').forEach(function(el){el.style.display='none'});
+     f.querySelector('.fine').style.display='none';
+     show('ok','<strong>Got it &mdash; that just landed on Jimmy’s phone.</strong> He reads these himself. If there’s something there, you’ll hear from him.');
+   })
+   .catch(function(){
+     b.disabled=false;b.textContent='Try again';
+     show('err','That didn’t go through &mdash; and I’d rather tell you than pretend it did. Text Jimmy directly at <a href="sms:+16263543229" style="color:#7a2f27;font-weight:700">(626) 354-3229</a> and mention this page.');
+   });
+});
+})();
+</script>
+</body></html>
