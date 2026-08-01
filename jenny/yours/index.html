@@ -55,10 +55,9 @@ sell with it &mdash; from a stage, on a webinar, on the phone, on the page.</p>
 <p>So &mdash; if you&rsquo;ve been doing your thing a long time and there&rsquo;s a version of it nobody has ever put
 into words, tell me below. Two boxes, sixty seconds.</p>
 
-<p>If there&rsquo;s something there, my AI will text you and get the details. If there&rsquo;s <em>really</em> something
-there, you&rsquo;ll hear from me.</p>
+<p>If there&rsquo;s something there, you&rsquo;ll hear from me directly.</p>
 
-<p><strong>I&rsquo;m not going to sell you anything over text.</strong></p>
+<p><strong>I&rsquo;m not going to sell you anything. I want to hear what you do.</strong></p>
 </div>
 
 <form class='form' id='f' novalidate>
@@ -75,8 +74,7 @@ there, you&rsquo;ll hear from me.</p>
 <input id='company' name='company' tabindex='-1' autocomplete='off' aria-hidden='true' style='position:absolute;left:-9999px;width:1px;height:1px'>
 
 <button type='submit' id='b'>Send it to Jimmy</button>
-<p class='fine'>You&rsquo;ll get a text from Jimmy&rsquo;s AI. Reply STOP any time and it stops for good.<br>
-Your number goes to Jimmy and nowhere else.</p>
+<p class='fine'>Goes straight to Jimmy&rsquo;s phone. Your number goes to him and nowhere else.</p>
 </form>
 
 <footer>
@@ -86,7 +84,7 @@ If you haven&rsquo;t read hers: <a href='/jenny/why/'>Why I Do What I Do &rarr;<
 </div>
 <script>
 (function(){
-var ENDPOINT='https://hook.ineedjimmy.com/webhook/jenny-lead';
+var ENDPOINT='https://webhook.davisdash.com/webhook/jenny-lead';
 var f=document.getElementById('f'),b=document.getElementById('b'),m=document.getElementById('m');
 function show(cls,html){m.className='msg '+cls;m.innerHTML=html;m.scrollIntoView({behavior:'smooth',block:'center'})}
 f.addEventListener('submit',function(e){
@@ -102,7 +100,7 @@ f.addEventListener('submit',function(e){
    .then(function(){
      f.querySelectorAll('input,textarea,button').forEach(function(el){el.style.display='none'});
      f.querySelector('.fine').style.display='none';
-     show('ok','<strong>Got it.</strong> You’ll get a text shortly &mdash; that’s Jimmy’s AI, and he built it. Answer it like a person.');
+     show('ok','<strong>Got it &mdash; that just landed on Jimmy’s phone.</strong> He reads these himself. If there’s something there, you’ll hear from him.');
    })
    .catch(function(){
      b.disabled=false;b.textContent='Try again';
