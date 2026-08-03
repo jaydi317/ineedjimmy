@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <link rel="icon" href="data:,">
+  <title>Watkins Ventures — One Shared Operating Map</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="locked">
+  <div class="gate" id="gate">
+    <form class="gate-card" id="gate-form">
+      <div class="seal">WV</div>
+      <p class="eyebrow">WATKINS VENTURES · TEAM ROOM</p>
+      <h1>One company.<br>One shared memory.</h1>
+      <p class="gate-copy">A working room for turning questions into decisions—and decisions into things the team can actually use.</p>
+      <label for="username">Username</label>
+      <input id="username" autocomplete="username" autocapitalize="none" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button class="button primary" type="submit">Enter the team room</button>
+      <p class="error" id="gate-error" aria-live="polite"></p>
+      <p class="tiny">Shared team entry gate. Do not enter passwords, card information, or private customer health details anywhere on this page.</p>
+    </form>
+  </div>
+
+  <div id="app" hidden>
+    <header class="topbar">
+      <a class="brand" href="#top"><span class="brand-mark">WV</span><span>Watkins Ventures</span></a>
+      <nav>
+        <a href="#proof">What we heard</a>
+        <a href="#questions">Answer room</a>
+        <a href="#council">Ask the Council</a>
+      </nav>
+      <div class="live-dot"><i></i> Team room</div>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow coral">BUILT FROM ONE 29-MINUTE TEAM MEETING</p>
+          <h1>Organize everything<br><em>so Brittany can breathe.</em></h1>
+          <p class="lede">Not another dashboard to maintain. One place that remembers the questions, the decisions, the owners, and what still has to happen.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#questions">Answer the first question</a>
+            <a class="text-link" href="#proof">See what the meeting became ↓</a>
+          </div>
+        </div>
+        <div class="hero-proof" aria-label="The meeting became an operating map">
+          <div class="meeting-bubble b1"><strong>Brittany</strong><span>“Use the same names.”</span></div>
+          <div class="meeting-bubble b2"><strong>Joel</strong><span>“It has to be usable and scalable.”</span></div>
+          <div class="meeting-bubble b3"><strong>Linas</strong><span>“There are decisions before I can build.”</span></div>
+          <div class="meeting-bubble b4"><strong>Jimmy</strong><span>“I need a system that catches what I drop.”</span></div>
+          <svg viewBox="0 0 520 410" role="img" aria-label="Four perspectives becoming one shared operating map">
+            <path d="M92 88 C160 105 188 160 260 205"/><path d="M428 88 C360 105 332 160 260 205"/>
+            <path d="M92 322 C160 305 188 250 260 205"/><path d="M428 322 C360 305 332 250 260 205"/>
+          </svg>
+          <div class="center-card"><span>ONE SHARED</span><strong>Operating Map</strong><small>question → decision → owner → proof</small></div>
+        </div>
+      </section>
+
+      <section class="reframe section" id="proof">
+        <div class="section-intro">
+          <p class="eyebrow">THE REAL PROBLEM</p>
+          <h2>The business has been asking people<br>to remember what the system should remember.</h2>
+        </div>
+        <div class="before-after">
+          <article class="before card">
+            <p class="card-label">BEFORE</p>
+            <h3>People remember the system.</h3>
+            <div class="mess-map" aria-hidden="true">
+              <span>Thrive?</span><span>Inner Circle?</span><span>Who owns this?</span><span>Which Zap?</span><span>Did we follow up?</span><span>Ask Linas</span><span>Ask Jimmy</span>
+            </div>
+            <p>Names live in conversations. Decisions live in heads. Work waits for someone to remember it.</p>
+          </article>
+          <div class="arrow">→</div>
+          <article class="after card">
+            <p class="card-label">AFTER</p>
+            <h3>The system remembers for people.</h3>
+            <ol class="clean-chain">
+              <li><span>1</span><b>Question</b><small>captured once</small></li>
+              <li><span>2</span><b>Decision</b><small>approved once</small></li>
+              <li><span>3</span><b>Owner</b><small>named clearly</small></li>
+              <li><span>4</span><b>Proof</b><small>verified visibly</small></li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="heard section">
+        <div class="section-intro compact">
+          <p class="eyebrow">WHAT THE COUNCIL HEARD UNDER THE WORDS</p>
+          <h2>Four people. Four valid needs.</h2>
+        </div>
+        <div class="heard-grid">
+          <article><span>B</span><h3>Brittany wants relief.</h3><p>One language. Clear ownership. No more being the human translator between the creative vision and the operating details.</p></article>
+          <article><span>J</span><h3>Joel wants proof.</h3><p>Not a clever demo. Something governed, testable, documented, and usable by the whole team. That is the right standard.</p></article>
+          <article><span>L</span><h3>Linas wants decisions.</h3><p>A “simple build” often hides five unanswered choices. Give him clean decisions and he can give the team clean systems.</p></article>
+          <article><span>JD</span><h3>Jimmy wants a safety net.</h3><p>Keep the creativity and human presence—while the operating system catches follow-up, loose ends, and forgotten promises.</p></article>
+        </div>
+      </section>
+
+      <section class="proof-strip section">
+        <p class="eyebrow light">WHAT THIS MEETING ALREADY BECAME</p>
+        <div class="proof-numbers">
+          <div><strong id="question-count">—</strong><span>decisions made visible</span></div>
+          <div><strong id="category-count">—</strong><span>workstreams organized</span></div>
+          <div><strong>4</strong><span>independent Council reads</span></div>
+          <div><strong>1</strong><span>approval path</span></div>
+        </div>
+        <p class="proof-note">No system access was assumed. No customer-facing automation was called “live.” Every unknown became a named question.</p>
+      </section>
+
+      <section class="moves section">
+        <div class="section-intro compact">
+          <p class="eyebrow">THE FIRST THREE MOVES</p>
+          <h2>Relief first. Fancy later.</h2>
+        </div>
+        <div class="moves-grid">
+          <article><div class="move-no">01</div><h3>Lock the language.</h3><p>One approved offer-name dictionary, including old aliases, so every page, tag, payment link, and report speaks the same language.</p><span class="pill answer">NEEDS TEAM ANSWER</span></article>
+          <article><div class="move-no">02</div><h3>Map what exists.</h3><p>A read-only customer-journey and automation audit before anyone deletes, rebuilds, or “improves” the current system.</p><span class="pill proposed">PROPOSED</span></article>
+          <article><div class="move-no">03</div><h3>Prove one loop.</h3><p>Give Sophia one bounded ten-case workflow with human approval and a tiny scorecard. Expand only after Joel can verify it works.</p><span class="pill proving">BEING PROVEN</span></article>
+        </div>
+      </section>
+
+      <section class="board section" id="questions">
+        <div class="board-head">
+          <div>
+            <p class="eyebrow">THE ANSWER ROOM</p>
+            <h2>Answer one thing.<br>Watch the map get clearer.</h2>
+            <p>Every answer goes to Jimmy first. The Council receives it only after he approves it.</p>
+          </div>
+          <div class="progress-card">
+            <div class="progress-ring" id="progress-ring"><strong id="answered-count">0</strong><span>approved</span></div>
+            <div><b id="progress-copy">0 of 0 decisions</b><small>Progress is counted only from approved answers—not guessed percentages.</small></div>
+          </div>
+        </div>
+        <div class="filters" id="filters" aria-label="Question categories"></div>
+        <div class="question-list" id="question-list"></div>
+      </section>
+
+      <section class="voice-proof section">
+        <div class="voice-visual" style="position:relative">
+          <button class="mic-orb" type="button" data-open-question="V1" aria-label="Answer the first question by voice"><span>🎙</span></button>
+          <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div>
+          <p class="eyebrow coral">THE VOICE PROOF</p>
+          <h2>Talk normally.<br>The system catches the decision.</h2>
+          <p>Tap the microphone, answer in your own words, review the transcript, and send. Jimmy receives a receipt and approves, edits, or rejects it before the Council acts.</p>
+          <button class="button primary" type="button" data-open-question="V1">Try it with a real question</button>
+        </div>
+      </section>
+
+      <section class="council section" id="council">
+        <div class="council-card">
+          <div>
+            <p class="eyebrow light">ASK THE COUNCIL</p>
+            <h2>Something missing?<br>Ask it here.</h2>
+            <p>Your question does not become company direction. It goes into the same visible path: submit → Jimmy review → Council intake → receipt.</p>
+          </div>
+          <form id="council-form">
+            <label for="ask-name">Your name</label>
+            <input id="ask-name" name="name" required placeholder="Who is asking?">
+            <label for="ask-question">What do you need help with?</label>
+            <textarea id="ask-question" name="question" required placeholder="Talk to us like you would in a meeting…"></textarea>
+            <div class="form-row">
+              <button class="voice-button" type="button" data-voice-target="ask-question">🎙 Speak instead</button>
+              <span class="voice-status" aria-live="polite"></span>
+            </div>
+            <button class="button cream" type="submit">Send to Jimmy for approval</button>
+            <p class="submit-status" id="council-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section class="access section">
+        <div class="section-intro compact">
+          <p class="eyebrow">WHAT THE COUNCIL NEEDS</p>
+          <h2>Read first. Write only when approved.</h2>
+          <p>Access is requested in two separate lanes so “understand the system” never silently becomes permission to change it.</p>
+        </div>
+        <div class="access-grid">
+          <article>
+            <span class="access-icon">👀</span><h3>Needed to understand</h3><p>Read-only views of Close, Stripe reporting, active offers and aliases, automation history, Sophia’s tracker, current SOPs, support categories, and one anonymized customer journey.</p>
+            <ul><li>No customer messages</li><li>No deletions</li><li>No workflow changes</li></ul>
+          </article>
+          <article>
+            <span class="access-icon">🔑</span><h3>Needed to implement later</h3><p>One scoped service account tied to one approved ticket, a test record, a named owner, a rollback plan, and a proof check.</p>
+            <ul><li>Least privilege</li><li>Time-bounded access</li><li>Every change logged</li></ul>
+          </article>
+        </div>
+        <div class="never-box"><strong>Never put these here:</strong> passwords, full card numbers, raw customer health information, private credentials, or unrestricted admin access.</div>
+      </section>
+
+      <section class="truth section">
+        <div class="section-intro compact">
+          <p class="eyebrow">THE TRUTH BOARD</p>
+          <h2>No demo gets to pretend it is the business.</h2>
+        </div>
+        <div class="truth-grid">
+          <article class="truth-now"><span class="pill live">WORKING NOW</span><h3>The meeting-to-map proof</h3><p>The transcript was read, unresolved decisions were inventoried, owners were proposed, and this answer room was built.</p></article>
+          <article><span class="pill proving">BEING PROVEN</span><h3>The approval handoff</h3><p>Team answer → Jimmy approval → Council intake → receipt. It stays in pilot until the full loop survives real use.</p></article>
+          <article><span class="pill proposed">PROPOSED</span><h3>Read-only system audit</h3><p>Map the actual Close, Ontraport, Stripe, Zapier, support, and reporting paths before recommending changes.</p></article>
+          <article><span class="pill proposed">PROPOSED</span><h3>Sophia’s ten-case launch</h3><p>A small supervised sales loop with clear authority, human approval, and measured outcomes before expansion.</p></article>
+        </div>
+      </section>
+
+      <section class="close section">
+        <p class="eyebrow coral">THE POINT IS NOT THAT AI CAN BUILD THINGS</p>
+        <h2>The point is that the business<br>should stop having to remember everything.</h2>
+        <p>One meeting. One map. One next decision at a time.</p>
+        <a class="button primary" href="#questions">Answer one now</a>
+      </section>
+    </main>
+
+    <footer>
+      <div><b>Watkins Ventures Team Room</b><span>Built from the August 3 operating meeting.</span></div>
+      <div><span id="last-sync">Status not yet synced</span><button id="logout" type="button">Lock room</button></div>
+    </footer>
+  </div>
+
+  <dialog id="answer-dialog">
+    <form method="dialog" class="dialog-card" id="answer-form">
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close">×</button>
+      <p class="eyebrow coral" id="dialog-category"></p>
+      <h2 id="dialog-question"></h2>
+      <div class="why-box"><b>Why this matters</b><p id="dialog-why"></p></div>
+      <input type="hidden" id="dialog-id">
+      <label for="answer-name">Your name</label>
+      <input id="answer-name" required placeholder="Brittany, Joel, Linas…">
+      <label for="answer-text">Your answer</label>
+      <textarea id="answer-text" required placeholder="Say it in your own words. The Council will structure it after Jimmy approves it."></textarea>
+      <div class="form-row">
+        <button class="voice-button" type="button" data-voice-target="answer-text">🎙 Speak your answer</button>
+        <span class="voice-status" aria-live="polite"></span>
+      </div>
+      <div class="approval-path"><span>YOU ANSWER</span><i>→</i><span>JIMMY APPROVES</span><i>→</i><span>COUNCIL RECEIVES</span></div>
+      <button class="button primary" type="submit">Send to Jimmy for approval</button>
+      <p class="submit-status" id="answer-status" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
