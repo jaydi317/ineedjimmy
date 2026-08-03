@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="description" content="A private workday discovery page for Kasey and Jimmy.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kasey × Jimmy — Let’s Make the Work Lighter">
+  <meta property="og:description" content="Let’s build around the work you actually do.">
+  <meta property="og:url" content="https://ineedjimmy.com/kasey/">
+  <meta property="og:image" content="https://ineedjimmy.com/kasey/og.png">
+  <meta property="og:image:width" content="1731">
+  <meta property="og:image:height" content="909">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kasey × Jimmy — Let’s Make the Work Lighter">
+  <meta name="twitter:description" content="Let’s build around the work you actually do.">
+  <meta name="twitter:image" content="https://ineedjimmy.com/kasey/og.png">
+  <title>Kasey × Jimmy — Let’s Make the Work Lighter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="https://ineedjimmy.com"><span>J</span> Jimmy + the Council</a>
+    <div class="save-state" id="save-state">Your answers save on this device</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A PERSONAL NOTE FOR KASEY</p>
+        <h1>Let’s build around the work <em>you actually do.</em></h1>
+        <p class="lede">You carry far more than coaching calls. This page helps Jimmy understand the invisible parts of your week—so AI can remove friction without removing the human part you’re brilliant at.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#schedule">Schedule our conversation</a>
+          <a class="button text" href="#interview">Tell us about your week ↓</a>
+        </div>
+      </div>
+      <div class="hero-map" aria-label="The workday gets lighter">
+        <div class="orbit orbit-one">Student care</div>
+        <div class="orbit orbit-two">Calls</div>
+        <div class="orbit orbit-three">Follow-up</div>
+        <div class="orbit orbit-four">Schedules</div>
+        <div class="center"><small>THE GOAL</small><strong>More coaching.<br>Less chasing.</strong></div>
+      </div>
+    </section>
+
+    <section class="seen section-pad">
+      <div class="section-heading narrow">
+        <p class="eyebrow">WHAT WE CAN ALREADY SEE</p>
+        <h2>You’re one of the people who quietly holds the experience together.</h2>
+        <p>This is our starting picture—not our final answer. Your answers will correct it.</p>
+      </div>
+      <div class="role-grid">
+        <article><span>01</span><h3>Coach the person</h3><p>Private sessions, member breakthroughs, and the human judgment no workflow can replace.</p></article>
+        <article><span>02</span><h3>Protect the experience</h3><p>You notice disappointment, confusion, and retention risks before they become bigger problems.</p></article>
+        <article><span>03</span><h3>Teach the room</h3><p>Buddy calls, orientation, study calls, specialty classes, and coverage when plans change.</p></article>
+        <article><span>04</span><h3>Hold the details</h3><p>Calendars, call conflicts, spreadsheets, access dates, eligibility, and exceptions.</p></article>
+        <article><span>05</span><h3>Answer the in-between</h3><p>WhatsApp questions, coach coordination, student follow-through, and “who owns this?” moments.</p></article>
+        <article><span>06</span><h3>Spot the opportunity</h3><p>You hear when someone wants more support or may be ready for the next program.</p></article>
+      </div>
+      <div class="insight-line"><strong>Our hypothesis:</strong> the best AI for Kasey doesn’t replace her coaching. It gives her the context, reminders, preparation, and follow-through that protect her energy for it.</div>
+    </section>
+
+    <section class="schedule section-pad" id="schedule">
+      <div class="section-heading narrow">
+        <p class="eyebrow">STEP ONE · PICK A TIME</p>
+        <h2>Let’s talk like humans first.</h2>
+        <p>Choose a time with Jimmy. The interview below means the conversation can start with your real work—not twenty minutes of catching up.</p>
+      </div>
+      <div class="schedule-frame">
+        <iframe src="https://go.oncehub.com/JimmyDavis" title="Schedule a conversation with Jimmy Davis" loading="lazy"></iframe>
+      </div>
+      <p class="fallback">Scheduler not loading? <a href="https://go.oncehub.com/JimmyDavis" target="_blank" rel="noopener">Open it directly →</a></p>
+    </section>
+
+    <section class="interview section-pad" id="interview">
+      <div class="section-heading interview-heading">
+        <div>
+          <p class="eyebrow">STEP TWO · TEACH US YOUR WEEK</p>
+          <h2>Talk normally. We’ll organize it.</h2>
+        </div>
+        <p>There are no perfect answers. Type a few sentences or tap the microphone and tell the story the way you would tell Jimmy.</p>
+      </div>
+
+      <div class="interview-shell">
+        <aside class="interview-nav">
+          <div class="progress-copy"><strong id="progress-number">1 of 18</strong><span id="progress-category">Your real week</span></div>
+          <div class="progress-track"><span id="progress-bar"></span></div>
+          <div class="chapter-list" id="chapter-list"></div>
+          <p class="privacy-note">Please don’t include student names, private health details, passwords, or payment information.</p>
+        </aside>
+
+        <section class="question-stage" aria-live="polite">
+          <div class="question-label" id="question-label"></div>
+          <h3 id="question-title"></h3>
+          <p class="question-help" id="question-help"></p>
+          <textarea id="answer" rows="9" placeholder="Tell us what this is really like…"></textarea>
+          <div class="answer-tools">
+            <button class="voice-button" id="voice-button" type="button">🎙 Speak instead</button>
+            <span id="voice-status">Your phone keyboard microphone works too.</span>
+          </div>
+          <div class="question-actions">
+            <button class="button ghost" id="previous" type="button">← Back</button>
+            <button class="skip-button" id="skip" type="button">Skip for now</button>
+            <button class="button primary" id="next" type="button">Save & continue →</button>
+          </div>
+        </section>
+      </div>
+
+      <section class="review" id="review" hidden>
+        <div class="review-intro">
+          <p class="eyebrow">YOUR WORKDAY MAP</p>
+          <h2>Here’s what you taught us.</h2>
+          <p>Review anything you want. When you submit it, Jimmy receives it first. Nothing gets automated from this page.</p>
+        </div>
+        <div class="review-list" id="review-list"></div>
+        <div class="submit-card">
+          <label for="kasey-email">Best email for our follow-up <span>optional</span></label>
+          <input id="kasey-email" type="email" autocomplete="email" placeholder="you@example.com">
+          <label class="check"><input id="consent" type="checkbox" required> I reviewed this and I’m ready to send it to Jimmy.</label>
+          <button class="button primary wide" id="submit-interview" type="button">Send my workday map to Jimmy</button>
+          <p class="submit-status" id="submit-status"></p>
+        </div>
+      </section>
+    </section>
+
+    <section class="possibilities section-pad">
+      <div class="section-heading narrow">
+        <p class="eyebrow">WHAT COULD COME NEXT</p>
+        <h2>We’re not deciding the solution before we understand the day.</h2>
+        <p>But these are the kinds of helpers your answers may point toward.</p>
+      </div>
+      <div class="possibility-grid">
+        <article><div>Before a call</div><h3>A two-minute student brief</h3><p>Recent context, commitments, open questions, and what matters today—without searching five places.</p></article>
+        <article><div>After a call</div><h3>Follow-through that follows through</h3><p>Notes, promised resources, next steps, and reminders prepared for your review.</p></article>
+        <article><div>During the week</div><h3>One calm coaching cockpit</h3><p>Upcoming calls, conflicts, coverage gaps, student risks, and answers you’re waiting on.</p></article>
+        <article><div>For the team</div><h3>Questions routed once</h3><p>Clear owners and receipts so you don’t keep chasing the same answer through Slack and WhatsApp.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Made for Kasey, not “the average employee.”</strong>
+    <span>Jimmy + the Council · 2026</span>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
