@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<link rel="icon" href="data:,">
+<title>Follow one lead — Watkins Ventures</title>
+<style>
+:root{
+  --cream:#fdf9f2; --plum:#5a2f52; --plum2:#7d4b73; --orange:#d95a2b;
+  --grey:#8d8489; --greybg:#efeae2; --greyline:#d6cec4;
+  --green:#2f6d52; --greenbg:#eef6f1; --line:#ded4c8; --ink:#2b2028;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);height:100vh;overflow:hidden;
+  font-family:Inter,ui-sans-serif,-apple-system,"Segoe UI",sans-serif;line-height:1.45;
+  -webkit-font-smoothing:antialiased}
+.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.03em}
+
+#bar{position:fixed;top:0;left:0;right:0;height:4px;background:#e6ded2;z-index:60}
+#bar i{display:block;height:100%;background:var(--orange);width:0;transition:width .3s}
+#hud{position:fixed;bottom:12px;right:20px;z-index:60;font-size:.72rem;font-weight:900;
+  letter-spacing:.12em;color:#b3a9ae}
+#hint{position:fixed;bottom:12px;left:20px;z-index:60;font-size:.68rem;letter-spacing:.08em;color:#c2b8bd}
+
+.slide{position:fixed;inset:0;display:none;padding:clamp(30px,4.5vh,64px) clamp(22px,4vw,74px)
+  clamp(44px,6vh,72px);overflow:hidden}
+.slide.on{display:flex;flex-direction:column;justify-content:center;animation:in .32s ease both}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.in{width:min(1520px,100%);margin:auto}
+
+.stamp{display:inline-block;font-size:clamp(.6rem,.95vw,.76rem);font-weight:900;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--orange);
+  border:1.5px solid var(--orange);border-radius:99px;padding:6px 14px;margin-bottom:clamp(12px,1.8vh,22px)}
+h1{font-family:Georgia,serif;font-weight:400;letter-spacing:-.032em;line-height:1.03;
+  color:var(--plum);font-size:clamp(1.9rem,4.4vw,3.9rem)}
+h1.sm{font-size:clamp(1.6rem,3.3vw,2.9rem)}
+.sub{font-size:clamp(.95rem,1.5vw,1.28rem);color:#6b5f66;margin-top:14px;max-width:940px}
+
+/* two columns */
+.two{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(14px,2vw,30px);
+  margin-top:clamp(18px,2.6vh,34px);align-items:stretch}
+.col{border-radius:18px;padding:clamp(16px,2vw,28px);display:flex;flex-direction:column}
+.col .tag{font-size:clamp(.56rem,.85vw,.68rem);font-weight:900;letter-spacing:.17em;
+  text-transform:uppercase;margin-bottom:clamp(10px,1.4vh,16px)}
+.old{background:var(--greybg);border:2px dashed var(--greyline)}
+.old .tag{color:#a09499}
+.new{background:#fff;border:2px solid var(--plum);box-shadow:0 14px 40px rgba(90,47,82,.1)}
+.new .tag{color:var(--orange)}
+ul{list-style:none}
+li{font-size:clamp(.9rem,1.35vw,1.16rem);line-height:1.44;padding-left:20px;position:relative;
+  margin:clamp(8px,1.2vh,13px) 0}
+li::before{content:"";position:absolute;left:0;top:.58em;width:8px;height:8px;border-radius:50%}
+.old li{color:#8d8489}
+.old li::before{background:#bdb3b8}
+.new li{color:var(--ink)}
+.new li::before{background:var(--orange)}
+.new li b{color:var(--plum)}
+.arrowline{font-size:clamp(.86rem,1.25vw,1.05rem);color:var(--green);font-weight:700;
+  margin-top:auto;padding-top:clamp(12px,1.6vh,18px);border-top:1px solid #eee7dd;line-height:1.45}
+
+/* tool pills */
+.tool{display:inline-block;font-size:.82em;font-weight:900;letter-spacing:.02em;
+  padding:2px 9px;border-radius:6px;background:#f2e9f0;color:var(--plum);
+  border:1px solid #e0cddb;white-space:nowrap}
+.old .tool{background:#e6e0d9;color:#8d8489;border-color:#d6cec4}
+
+/* power statement */
+.power{margin-top:clamp(16px,2.4vh,32px);font-family:Georgia,serif;letter-spacing:-.025em;
+  line-height:1.16;color:var(--plum);font-size:clamp(1.15rem,2.3vw,2.1rem);
+  border-left:5px solid var(--orange);padding-left:clamp(14px,1.6vw,22px)}
+.power em{font-style:italic;color:var(--orange)}
+
+/* full-bleed idea slides */
+.dark{background:var(--plum)}
+.dark h1{color:#fff}.dark .sub{color:#e0d0dc}.dark .stamp{color:#f4b391;border-color:#f4b391}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.6vw,20px);
+  margin-top:clamp(20px,3vh,38px)}
+.stp{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+  border-radius:16px;padding:clamp(15px,1.9vw,24px)}
+.stp .n{font-family:Georgia,serif;font-size:clamp(1.4rem,2.6vw,2.2rem);color:#f4b391;line-height:1}
+.stp p{font-size:clamp(.86rem,1.25vw,1.06rem);color:#f2e6ee;margin-top:10px;line-height:1.4}
+.stp p b{color:#fff}
+.dark .power{color:#fff;border-color:#f4b391}
+.dark .power em{color:#f4b391}
+
+@media(max-width:900px){
+  .two{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  li{font-size:.9rem}
+}
+
+/* ---------- gate ---------- */
+body.locked{overflow:hidden}
+.gate[hidden]{display:none!important}
+.gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;
+  background:linear-gradient(160deg,#5a2f52,#3c1f36);padding:24px}
+.gate-card{width:min(430px,100%);background:#fdf9f2;border-radius:22px;
+  padding:clamp(26px,4vw,42px);box-shadow:0 30px 90px rgba(0,0,0,.35)}
+.seal{width:52px;height:52px;border-radius:50%;background:#5a2f52;color:#fff;
+  display:grid;place-items:center;font-family:Georgia,serif;font-size:1.1rem;letter-spacing:.04em;
+  margin-bottom:20px}
+.gate-card .ey{font-size:.6rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase;
+  color:#d95a2b;margin-bottom:10px}
+.gate-card h1{font-family:Georgia,serif;font-weight:400;letter-spacing:-.03em;line-height:1.06;
+  color:#5a2f52;font-size:1.9rem;margin-bottom:12px}
+.gate-card p.c{color:#6b5f66;font-size:.94rem;line-height:1.5;margin-bottom:22px}
+.gate-card label{display:block;font-size:.62rem;font-weight:900;letter-spacing:.15em;
+  text-transform:uppercase;color:#8d8489;margin:14px 0 6px}
+.gate-card input{width:100%;padding:12px 14px;border:1.5px solid #ded4c8;border-radius:10px;
+  font:inherit;font-size:1rem;background:#fff;color:#2b2028}
+.gate-card input:focus{outline:none;border-color:#5a2f52}
+.gate-card button{width:100%;margin-top:22px;padding:14px;border:0;border-radius:99px;
+  background:#5a2f52;color:#fff;font:inherit;font-weight:900;font-size:.9rem;
+  letter-spacing:.06em;cursor:pointer}
+.gate-card button:hover{background:#6d3a63}
+.err{color:#bc3320;font-size:.86rem;font-weight:700;margin-top:12px;min-height:1.2em}
+.tiny{font-size:.72rem;color:#a1969c;margin-top:18px;line-height:1.5}
+
+#app[hidden]{display:none}
+.crosslink{position:fixed;top:14px;right:20px;z-index:70;font-size:.72rem;font-weight:900;
+  letter-spacing:.09em;text-transform:uppercase;text-decoration:none;color:#7d4b73;
+  border:1.5px solid #ded4c8;background:rgba(253,249,242,.9);border-radius:99px;padding:8px 15px}
+.crosslink:hover{border-color:#7d4b73}
+</style>
+</head>
+<body class="locked">
+  <div class="gate" id="gate">
+    <form class="gate-card" id="gate-form">
+      <div class="seal">WV</div>
+      <p class="ey">Watkins Ventures &middot; Sales Room</p>
+      <h1>Follow one lead<br>through the system.</h1>
+      <p class="c">One woman. Ten moments. What happens today, and what happens now.</p>
+      <label for="username">Username</label>
+      <input id="username" autocomplete="username" autocapitalize="none" required>
+      <label for="password">Password</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Enter</button>
+      <p class="err" id="gate-error" aria-live="polite"></p>
+      <p class="tiny">Shared team entry gate. Do not enter passwords, card information, or private customer health details anywhere on this page.</p>
+    </form>
+  </div>
+
+<div id="app" hidden>
+<a class="crosslink" href="/sales/board/">See the whole board &rarr;</a>
+
+<div id="bar"><i></i></div>
+<div id="hud">1 / 11</div>
+<div id="hint">← → to move</div>
+<div id="stage"></div>
+
+</div>
+<script>
+/* ---------- gate ---------- */
+(function(){
+  var gate=document.getElementById('gate'), app=document.getElementById('app');
+  function unlock(u,p){
+    if(String(u).toLowerCase()==='team'&&p==='team'){
+      try{sessionStorage.setItem('wv-team','1')}catch(e){}
+      gate.hidden=true; app.hidden=false; document.body.classList.remove('locked');
+      if(window.__afterUnlock)window.__afterUnlock();
+      return true;
+    } return false;
+  }
+  document.getElementById('gate-form').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!unlock(document.getElementById('username').value.trim(),
+               document.getElementById('password').value))
+      document.getElementById('gate-error').textContent='That username or password is not correct.';
+  });
+  try{ if(sessionStorage.getItem('wv-team')==='1') unlock('team','team'); }catch(e){}
+})();
+
+window.__afterUnlock=function(){ if(window.__initStory) window.__initStory(); };
+window.__initStory=function(){
+
+const T=s=>`<span class="tool">${s}</span>`;
+
+const S=[
+
+/* 0 */
+{cls:'dark',html:`<div class="in">
+  <div class="stamp">The whole thing in one story</div>
+  <h1 class="serif">Let's follow one lead.<br>Her name is Sarah.</h1>
+  <p class="sub">Same woman. Same offer. Same tools you already know — Close, Fathom, OnceHub, Ontraport, Stripe.<br>
+  Left side is what happens to her today. Right side is what happens to her now.</p>
+  <div class="power"><em>Nothing here is a new tool.</em> It's the same tools, wired to actually think.</div>
+</div>`},
+
+/* 1 */
+{html:`<div class="in">
+  <div class="stamp">2:14 PM · She clicks "book a call"</div>
+  <h1 class="serif sm">The booking is identical.<br>The next 90 seconds are not.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>${T('OnceHub')} books the call.</li>
+      <li>It lands on the calendar.</li>
+      <li>That is everything that happens.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>${T('OnceHub')} books the call.</li>
+      <li>She gets an application. <b>Not a generic form</b> — every question is one we know predicts whether someone buys.</li>
+      <li>Her answers write straight into ${T('Close')} as custom fields.</li>
+      <li>The system reads those fields the second they land.</li>
+    </ul>
+    <div class="arrowline">→ From this moment on, we know who she is. Today, we don't.</div>
+    </div>
+  </div>
+  <div class="power">We were already collecting a name and an email. <em>Now we collect the answer.</em></div>
+</div>`},
+
+/* 2 */
+{cls:'dark',html:`<div class="in">
+  <div class="stamp">The obvious question</div>
+  <h1 class="serif">"How do you know those<br>are the right questions?"</h1>
+  <p class="sub">We didn't guess them. We didn't write them. We went and found them.</p>
+  <div class="steps">
+    <div class="stp"><div class="n">1</div><p>Transcribed all <b>334 videos</b> of Cole Gordon's closer training. <b>142 hours.</b></p></div>
+    <div class="stp"><div class="n">2</div><p>Transcribed <b>1,263 of our own recorded sales calls.</b> Six years of them.</p></div>
+    <div class="stp"><div class="n">3</div><p>Looked at <b>who actually bought</b> and who didn't.</p></div>
+    <div class="stp"><div class="n">4</div><p>The questions that separated them <b>became the application.</b></p></div>
+  </div>
+  <div class="power">The questions aren't clever. <em>They're just the ones that turned out to be true.</em></div>
+</div>`},
+
+/* 3 */
+{html:`<div class="in">
+  <div class="stamp">The 3 days between booking and the call</div>
+  <h1 class="serif sm">Today this window is empty.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Nothing.</li>
+      <li>Maybe a reminder email from ${T('OnceHub')}.</li>
+      <li>She shows up on Zoom exactly as convinced as she was when she booked.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>Her application said her real problem is <b>eating at night.</b></li>
+      <li>${T('Ontraport')} sends her <b>Brittany's night-eating lesson</b> — not the generic welcome sequence.</li>
+      <li>She gets two more pieces aimed at what <em>she</em> wrote down.</li>
+      <li>Every open and click writes back to ${T('Close')}.</li>
+    </ul>
+    <div class="arrowline">→ Same three days. One of them changes her mind before she ever sees us.</div>
+    </div>
+  </div>
+  <div class="power">A woman who's ready buys. A woman who's curious doesn't.<br><em>This is where she gets ready.</em></div>
+</div>`},
+
+/* 4 */
+{html:`<div class="in">
+  <div class="stamp">60 seconds before the call</div>
+  <h1 class="serif sm">Same CRM. Same screen.<br>The difference is what's on it.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Open ${T('Close')}.</li>
+      <li>A name. An email. Maybe a source tag.</li>
+      <li>Skim it. Join the Zoom. Find out live who she is.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>Open ${T('Close')}. <b>The note is already written.</b></li>
+      <li>Her exact words, pulled from her application.</li>
+      <li>The one belief standing in her way.</li>
+      <li>The one question that opens her up.</li>
+      <li>Written using what worked on <b>1,263 calls before hers.</b></li>
+    </ul>
+    <div class="arrowline">→ Sixty seconds of reading replaces twenty minutes of guessing on camera.</div>
+    </div>
+  </div>
+  <div class="power">You've been trying to get the right fields into Close.<br><em>This is what was supposed to go in them.</em></div>
+</div>`},
+
+/* 5 */
+{html:`<div class="in">
+  <div class="stamp">The call itself</div>
+  <h1 class="serif sm">We built nothing here.<br>On purpose.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Jimmy is great for 45 minutes.</li>
+      <li>${T('Fathom')} records it.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>Jimmy is great for 45 minutes.</li>
+      <li>${T('Fathom')} records it.</li>
+      <li style="color:#8d8489">No AI in his ear. No script on screen. Identical.</li>
+    </ul>
+    <div class="arrowline">→ The council actually proposed live AI prompts during calls. Then killed the idea.</div>
+    </div>
+  </div>
+  <div class="power">This part already converts. <em>Automating it would break the only thing that was never broken.</em></div>
+</div>`},
+
+/* 6 */
+{html:`<div class="in">
+  <div class="stamp">The second the call ends</div>
+  <h1 class="serif sm">Fathom was already recording every call.<br>It was a library nobody read.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Laptop closes.</li>
+      <li>The ${T('Fathom')} recording sits there. Nobody opens it again.</li>
+      <li>Jimmy tries to remember what he promised her.</li>
+      <li>He remembers one of the four things.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>The ${T('Fathom')} transcript comes in automatically.</li>
+      <li>The system reads it and pulls out four things: <b>what she actually said · every promise made · her real objection · the next step.</b></li>
+      <li>Writes all of it into ${T('Close')} as the call note.</li>
+      <li>Drafts the follow-up message.</li>
+      <li>Pings Jimmy on ${T('Telegram')}: approve or edit.</li>
+    </ul>
+    <div class="arrowline">→ Done before he stands up from the desk.</div>
+    </div>
+  </div>
+  <div class="power">You already own 1,263 recordings. <em>They were an expense. Now they're the asset.</em></div>
+</div>`},
+
+/* 7 */
+{html:`<div class="in">
+  <div class="stamp">The next 48 hours</div>
+  <h1 class="serif sm">The sale isn't lost on the call.<br>It's lost right here.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Jimmy means to follow up.</li>
+      <li>Sometimes he does.</li>
+      <li>She sits in ${T('Close')} on "Follow-Up" forever.</li>
+      <li>She texts a question. It gets seen six hours later.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>An agent texts her — <b>using what she actually said on the call,</b> not a template.</li>
+      <li>She asks a question at 9pm. It gets answered at 9pm.</li>
+      <li>She asks for the link. It sends the right ${T('Stripe')} link — one approved link per offer, not one of the 47.</li>
+      <li>If she goes quiet, it follows up on schedule.</li>
+      <li>Every single touch logs to ${T('Close')}.</li>
+    </ul>
+    <div class="arrowline">→ Nobody has to be organized for any of this to happen.</div>
+    </div>
+  </div>
+  <div class="power">Two days of silence is the most expensive thing in this business.<br><em>And it was free to fix.</em></div>
+</div>`},
+
+/* 8 */
+{html:`<div class="in">
+  <div class="stamp">She says yes</div>
+  <h1 class="serif sm">Ten minutes of admin,<br>times every sale, times forever.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>${T('Stripe')} link goes out. She pays.</li>
+      <li>Then Jimmy manually: creates her account, sends the welcome, adds her to the Facebook group, tells her coach, updates ${T('Close')}.</li>
+      <li>Ten minutes. Sometimes it happens the next day. Sometimes it doesn't.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>${T('Stripe')} fires the payment event.</li>
+      <li>Account created through the portal ${T('API')}.</li>
+      <li>Welcome sent. Coach notified. ${T('Close')} updated. ${T('Slack')} posted.</li>
+      <li>Nobody touched anything.</li>
+    </ul>
+    <div class="arrowline">→ This is the piece that needs you, Linas. It's the last wire.</div>
+    </div>
+  </div>
+  <div class="power">She joined at 9:40pm and her account was live at 9:40pm.<br><em>That's the difference between a customer and a refund.</em></div>
+</div>`},
+
+/* 9 */
+{html:`<div class="in">
+  <div class="stamp">The next lead books a call</div>
+  <h1 class="serif sm">Call 400 doesn't go<br>like call 1 anymore.</h1>
+  <div class="two">
+    <div class="col old"><div class="tag">Today</div><ul>
+      <li>Identical to Sarah's.</li>
+      <li>Nothing from Sarah's call made the next one better.</li>
+      <li>Nothing ever will.</li>
+    </ul></div>
+    <div class="col new"><div class="tag">Now</div><ul>
+      <li>Sarah's call goes back into the pile.</li>
+      <li>Did the application question predict her? Did the night-eating lesson move her? Did the follow-up timing work?</li>
+      <li>One thing changes. Then we check whether it actually helped.</li>
+      <li><b>The application, the pre-call content, the note, the follow-up timing</b> — all a little better next week because of her.</li>
+    </ul>
+    <div class="arrowline">→ One improvement at a time, tested against what really happened.</div>
+    </div>
+  </div>
+  <div class="power">A script is worth the most the day you write it.<br><em>This is worth the least the day you turn it on.</em></div>
+</div>`},
+
+/* 10 */
+{cls:'dark',html:`<div class="in">
+  <div class="stamp">Joel — this part is for you</div>
+  <h1 class="serif">You've been connecting Close<br>to things. So have I.</h1>
+  <p class="sub">And you already know the connections aren't actually that hard. Zapier, webhooks, an API key. A weekend.</p>
+  <div class="power" style="margin-top:clamp(20px,3vh,40px);font-size:clamp(1.3rem,2.7vw,2.5rem)">
+    Connecting the tools is the easy half.<br>
+    <em>Knowing what to send through the wire is the whole game.</em>
+  </div>
+  <p class="sub" style="margin-top:clamp(18px,2.6vh,32px)">
+    Anybody can wire Close to Ontraport. Nobody else transcribed 142 hours of the best closer alive
+    and 1,263 of our own sales calls to figure out <b style="color:#fff">what should travel through it.</b>
+  </p>
+  <p class="sub" style="margin-top:14px;color:#f4b391">
+    That's the part I'd like to show you the rest of — whenever you've got thirty minutes.</p>
+</div>`}
+
+];
+
+const stage=document.getElementById('stage'),hud=document.getElementById('hud'),
+      bar=document.querySelector('#bar i');
+let i=0;
+S.forEach(s=>{const d=document.createElement('div');
+  d.className='slide '+(s.cls||'');d.innerHTML=s.html;stage.appendChild(d)});
+const sl=[...stage.children];
+function go(n){i=Math.max(0,Math.min(S.length-1,n));
+  sl.forEach((s,k)=>s.classList.toggle('on',k===i));
+  hud.textContent=(i+1)+' / '+S.length;
+  bar.style.width=(i/(S.length-1)*100)+'%';
+  document.body.style.background=S[i].cls==='dark'?'#5a2f52':'#fdf9f2';}
+addEventListener('keydown',e=>{
+  if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();go(i+1)}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(i-1)}
+  else if(e.key==='Home')go(0); else if(e.key==='End')go(S.length-1);
+  else if(e.key.toLowerCase()==='f')document.documentElement.requestFullscreen?.();});
+stage.addEventListener('click',e=>go(e.clientX<innerWidth*.27?i-1:i+1));
+let tx=0;addEventListener('touchstart',e=>tx=e.changedTouches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{const d=e.changedTouches[0].clientX-tx;
+  if(Math.abs(d)>50)go(d<0?i+1:i-1)},{passive:true});
+go(0);
+
+};
+</script>
+</body>
+</html>
