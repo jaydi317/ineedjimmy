@@ -134,7 +134,7 @@ document.getElementById('council-form').addEventListener('submit',async e=>{
 });
 
 function updateProgress(){
-  const approved=Object.values(statusMap).filter(x=>['APPROVED_FOR_COUNCIL','COUNCIL_RECEIVED','VERIFIED'].includes(x)).length,pct=Math.round((approved/questions.length)*100);
+  const approved=questions.filter(q=>['APPROVED_FOR_COUNCIL','COUNCIL_RECEIVED','VERIFIED'].includes(statusMap[q.id])).length,pct=Math.round((approved/questions.length)*100);
   document.getElementById('answered-count').textContent=approved;document.getElementById('progress-copy').textContent=`${approved} of ${questions.length} decisions approved`;
   document.getElementById('progress-ring').style.setProperty('--progress',pct+'%');
 }
