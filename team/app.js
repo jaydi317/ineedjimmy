@@ -110,11 +110,14 @@ function openQuestion(id){
 }
 
 function savedReceipts(){
-  try{return JSON.parse(sessionStorage.getItem('wv-team-receipts')||'[]').filter(x=>/^WV-\d{8}-[A-F0-9]{6}$/.test(x.id)&&x.receipt).slice(0,8)}catch{return []}
+  try{
+    const saved=localStorage.getItem('wv-team-receipts')||sessionStorage.getItem('wv-team-receipts')||'[]';
+    return JSON.parse(saved).filter(x=>/^WV-\d{8}-[A-F0-9]{6}$/.test(x.id)&&x.receipt).slice(0,8)
+  }catch{return []}
 }
 function rememberReceipt(id,label,receipt){
   const items=savedReceipts().filter(x=>x.id!==id);items.unshift({id,receipt,label:String(label||'Team request').slice(0,120),at:new Date().toISOString()});
-  sessionStorage.setItem('wv-team-receipts',JSON.stringify(items.slice(0,8)));renderReceipts();
+  localStorage.setItem('wv-team-receipts',JSON.stringify(items.slice(0,8)));renderReceipts();
 }
 const receiptStages={
   WAITING_FOR_JIMMY:{at:1,label:'Saved · waiting for Jimmy'},
