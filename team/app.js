@@ -2,6 +2,7 @@ const API='https://webhook.davisdash.com/watkins-team';
 let auth='';
 let activeCategory='all';
 let statusMap={};
+const receiptTimers=new Map();
 
 const questions=[
   {id:'V1',cat:'Vocabulary',q:'What is the one approved name for the paid membership: Thrive or Thrive Membership?',owner:'Brittany · Linas validates',why:'The meeting stopped twice because the same offer had different names.',unlock:'Every tag, product record, workflow, and report.',block:true},
@@ -108,12 +109,49 @@ function openQuestion(id){
   document.getElementById('answer-status').textContent='';document.getElementById('answer-text').value='';dialog.showModal();
 }
 
+function savedReceipts(){
+  try{return JSON.parse(sessionStorage.getItem('wv-team-receipts')||'[]').filter(x=>/^WV-\d{8}-[A-F0-9]{6}$/.test(x.id)&&x.receipt).slice(0,8)}catch{return []}
+}
+function rememberReceipt(id,label,receipt){
+  const items=savedReceipts().filter(x=>x.id!==id);items.unshift({id,receipt,label:String(label||'Team request').slice(0,120),at:new Date().toISOString()});
+  sessionStorage.setItem('wv-team-receipts',JSON.stringify(items.slice(0,8)));renderReceipts();
+}
+const receiptStages={
+  WAITING_FOR_JIMMY:{at:1,label:'Saved · waiting for Jimmy'},
+  APPROVED_FOR_COUNCIL:{at:2,label:'Jimmy approved · routing to the Council'},
+  COUNCIL_RECEIVED:{at:3,label:'Council has it · preparing the readback'},
+  VERIFIED:{at:4,label:'Answer ready'},
+  REJECTED_BY_JIMMY:{at:1,label:'Jimmy sent this one back'}
+};
+function receiptCard(item,data){
+  const stage=receiptStages[data?.status]||receiptStages.WAITING_FOR_JIMMY;
+  const steps=['Saved','Jimmy decides','Council reads','Answer ready'];
+  const alertPending=data?.status==='WAITING_FOR_JIMMY'&&data?.notification_sent===false;
+  const stateLabel=alertPending?'Saved · Jimmy’s alert is retrying':stage.label;
+  const alertNote=alertPending?'<p class="receipt-alert">Your answer is safely stored. The alert did not confirm on the first try, so the system is retrying instead of pretending Jimmy saw it.</p>':'';
+  return `<article class="receipt-card" data-receipt="${esc(item.id)}"><div class="receipt-head"><div><small>RECEIPT</small><b>${esc(item.id)}</b></div><span class="receipt-state">${esc(stateLabel)}</span></div><p class="receipt-label">${esc(item.label)}</p>${alertNote}<div class="receipt-steps">${steps.map((s,i)=>`<span class="${i<stage.at?'done':i===stage.at?'current':''}"><i>${i<stage.at?'✓':i+1}</i>${s}</span>`).join('')}</div>${data?.status==='VERIFIED'&&data.response?`<div class="council-readback"><small>${esc(data.response_by||'Council intake')}</small><div>${esc(data.response).replace(/\n/g,'<br>')}</div></div>`:''}</article>`
+}
+async function fetchReceipt(item){
+  const r=await fetch(API+'/item/'+encodeURIComponent(item.id)+'?receipt='+encodeURIComponent(item.receipt),{headers:{'Authorization':auth}});if(!r.ok)throw new Error();return r.json();
+}
+async function updateReceipt(item){
+  const host=document.querySelector(`[data-receipt="${item.id}"]`);if(!host)return;
+  try{const data=await fetchReceipt(item);host.outerHTML=receiptCard(item,data);if(data.status==='VERIFIED'||data.status==='REJECTED_BY_JIMMY'){clearInterval(receiptTimers.get(item.id));receiptTimers.delete(item.id)}}catch{host.querySelector('.receipt-state').textContent='Saved · status check will retry'}
+}
+function renderReceipts(){
+  const items=savedReceipts(),section=document.getElementById('recent-receipts'),list=document.getElementById('receipt-list');if(!section||!list)return;
+  section.hidden=!items.length;list.innerHTML=items.map(item=>receiptCard(item,{status:'WAITING_FOR_JIMMY'})).join('');
+  items.forEach(item=>{updateReceipt(item);if(!receiptTimers.has(item.id))receiptTimers.set(item.id,setInterval(()=>updateReceipt(item),10000))});
+}
+
 async function submitItem(data,statusEl,button){
   statusEl.textContent='Sending to Jimmy’s approval queue…';button.disabled=true;
   try{
     const r=await fetch(API+'/submit',{method:'POST',headers:{'Content-Type':'application/json','Authorization':auth},body:JSON.stringify({...data,page:location.href,submitted_at:new Date().toISOString(),website:''})});
     if(!r.ok)throw new Error('Submission failed');const out=await r.json();
-    statusEl.textContent=`Received · ${out.id} · Waiting for Jimmy’s approval.`;
+    statusEl.textContent=out.notification_sent?`Received · ${out.id} · Waiting for Jimmy’s approval.`:`Saved · ${out.id} · Jimmy’s alert is retrying.`;
+    rememberReceipt(out.id,data.question||'Question for the Council',out.receipt);
+    const saved=savedReceipts().find(x=>x.id===out.id);if(saved){statusEl.innerHTML=receiptCard(saved,{status:out.status||'WAITING_FOR_JIMMY'})}
     return out;
   }catch(err){statusEl.textContent='That did not reach the approval queue. Your words are still here—please try again.';return null}
   finally{button.disabled=false}
@@ -124,7 +162,7 @@ document.getElementById('answer-form').addEventListener('submit',async e=>{
   const name=document.getElementById('answer-name').value.trim(),answer=document.getElementById('answer-text').value.trim();
   if(!name||!answer)return;
   const out=await submitItem({kind:'answer',question_id:id,category:x.cat,question:x.q,name,answer},document.getElementById('answer-status'),button);
-  if(out){statusMap[id]='WAITING_FOR_JIMMY';setTimeout(()=>dialog.close(),1800)}
+  if(out){statusMap[id]='WAITING_FOR_JIMMY'}
 });
 
 document.getElementById('council-form').addEventListener('submit',async e=>{
@@ -139,7 +177,7 @@ function updateProgress(){
   document.getElementById('progress-ring').style.setProperty('--progress',pct+'%');
 }
 async function syncStatus(){
-  try{const r=await fetch(API+'/status-summary',{headers:{'Authorization':auth}});if(!r.ok)throw new Error();const data=await r.json();statusMap=data.question_status||{};document.getElementById('last-sync').textContent='Last receipt sync: '+new Date(data.generated_at).toLocaleString();render()}
+  try{const r=await fetch(API+'/status-summary',{headers:{'Authorization':auth}});if(!r.ok)throw new Error();const data=await r.json();statusMap=data.question_status||{};document.getElementById('last-sync').textContent='Last receipt sync: '+new Date(data.generated_at).toLocaleString();render();renderReceipts()}
   catch{document.getElementById('last-sync').textContent='Approval queue is temporarily offline · page remains readable';}
 }
 

@@ -274,6 +274,28 @@
         <div class="question-list" id="question-list"></div>
       </section>
 
+      <section class="receipt-proof section" id="receipts">
+        <div class="section-intro compact">
+          <p class="eyebrow coral">WHAT HAPPENS WHEN YOU PRESS SEND</p>
+          <h2>Your answer does not disappear.<br><em>You can watch it move.</em></h2>
+          <p>Nothing touches a business system. First the answer is saved, then Jimmy decides whether it should reach the Council, then a plain-English readback comes back here.</p>
+        </div>
+        <div class="receipt-journey" aria-label="The safe four-step request journey">
+          <article><span>1</span><b>SAVED</b><p>You get a receipt number immediately.</p></article>
+          <i>→</i>
+          <article><span>2</span><b>JIMMY DECIDES</b><p>Approve, reject, or send it back.</p></article>
+          <i>→</i>
+          <article><span>3</span><b>COUNCIL READS</b><p>A durable handoff must succeed.</p></article>
+          <i>→</i>
+          <article><span>4</span><b>ANSWER READY</b><p>You see what we heard and recommend.</p></article>
+        </div>
+        <div class="safety-lock"><strong>THE SAFETY LOCK</strong><span>A form answer can create advice. It cannot delete data, message a customer, move money, change a password, or alter a live workflow.</span></div>
+        <div class="recent-receipts" id="recent-receipts" hidden>
+          <p class="eyebrow">YOUR REQUESTS FROM THIS DEVICE</p>
+          <div id="receipt-list"></div>
+        </div>
+      </section>
+
       <section class="voice-proof section">
         <div class="voice-visual" style="position:relative">
           <button class="mic-orb" type="button" data-open-question="V1" aria-label="Answer the first question by voice"><span>🎙</span></button>
@@ -304,7 +326,7 @@
               <span class="voice-status" aria-live="polite"></span>
             </div>
             <button class="button cream" type="submit">Send to Jimmy for approval</button>
-            <p class="submit-status" id="council-status" aria-live="polite"></p>
+            <div class="submit-status" id="council-status" aria-live="polite"></div>
           </form>
         </div>
       </section>
@@ -372,7 +394,7 @@
       </div>
       <div class="approval-path"><span>YOU ANSWER</span><i>→</i><span>JIMMY APPROVES</span><i>→</i><span>COUNCIL RECEIVES</span></div>
       <button class="button primary" type="submit">Send to Jimmy for approval</button>
-      <p class="submit-status" id="answer-status" aria-live="polite"></p>
+      <div class="submit-status" id="answer-status" aria-live="polite"></div>
     </form>
   </dialog>
 
