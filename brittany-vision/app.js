@@ -1,4 +1,18 @@
 const imageRoot = "assets/images/";
+const firstBatchRoot = "assets/first-batch/";
+
+const firstBatch = Array.from({ length: 94 }, (_, index) => {
+  const id = index + 22;
+  return {
+    id,
+    title: `First-batch doodle ${id}`,
+    image: `doodle-${id}.webp`,
+    belief: "One Brittany teaching was turned into a visual idea a woman could recognize in a glance.",
+    category: `THE FIRST VISUAL HARVEST · DOODLE ${id}`,
+    use: "A visual seed for an article, email, video, webinar, social post, curriculum moment or future keystone.",
+    status: "One of 94 rendered doodles from the original 100-idea sprint. The later manifesto pass added full-copy context, pacing and heart."
+  };
+});
 
 const manifestoVisuals = [
   {
@@ -224,6 +238,16 @@ function renderManifesto() {
   `).join("");
 }
 
+function renderFirstBatch() {
+  const grid = document.querySelector("#firstBatchGrid");
+  grid.innerHTML = firstBatch.map((item) => `
+    <button type="button" class="batch-thumb" data-batch-id="${item.id}" aria-label="Open first-batch doodle ${item.id}">
+      <img src="${firstBatchRoot}${item.image}" alt="First-batch Brittany visual ${item.id}" loading="lazy">
+      <span>${String(item.id).padStart(3, "0")}</span>
+    </button>
+  `).join("");
+}
+
 function renderDataStories() {
   const grid = document.querySelector("#dataGrid");
   grid.innerHTML = dataStories.map((item, index) => `
@@ -290,7 +314,7 @@ const modalStatus = document.querySelector("#modalStatus");
 
 function openModal(item) {
   const data = modalPayload(item);
-  modalImage.src = `${imageRoot}${data.image}`;
+  modalImage.src = item.batch ? `${firstBatchRoot}${data.image}` : `${imageRoot}${data.image}`;
   modalImage.alt = data.title;
   modalTitle.textContent = data.title;
   modalBelief.textContent = data.belief;
@@ -393,6 +417,13 @@ function renderEcosystemRoute(routeName = "email") {
 }
 
 function bindInteractions() {
+  document.querySelector("#firstBatchGrid").addEventListener("click", (event) => {
+    const card = event.target.closest("[data-batch-id]");
+    if (!card) return;
+    const item = firstBatch.find((candidate) => candidate.id === Number(card.dataset.batchId));
+    if (item) openModal({ ...item, batch: true });
+  });
+
   document.querySelector("#manifestoGrid").addEventListener("click", (event) => {
     const card = event.target.closest("[data-modal]");
     if (!card) return;
@@ -485,6 +516,7 @@ function initProgress() {
   window.addEventListener("resize", update);
 }
 
+renderFirstBatch();
 renderManifesto();
 renderDataStories();
 renderKeystones();
