@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<link rel="icon" href="data:,">
+<title>The Numbers — Watkins Ventures</title>
+<style>
+:root{--cream:#fdf9f2;--card:#fffdfa;--plum:#5a2f52;--plum2:#7d4b73;
+ --orange:#d95a2b;--ink:#2b2028;--body:#6b5f66;--soft:#9c8f96;--line:#ded4c8;
+ --s1:#d95a2b;--s2:#9c3f8c;--s3:#1b8a68;--s4:#a8770f;
+ --good:#0ca30c;--warning:#b8820c;--serious:#c2603a;--critical:#d03b3b;
+ --grid:#ece4d8;--axis:#cfc4b4}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);
+ font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+ line-height:1.5;-webkit-font-smoothing:antialiased}
+.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.028em}
+h1,h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.03em;line-height:1.04;color:var(--plum)}
+h1{font-size:clamp(2.2rem,5.4vw,4.8rem)}
+h2{font-size:clamp(1.6rem,3.4vw,2.9rem)}
+p{color:var(--body)}
+.sec{max-width:1340px;margin:auto;padding:clamp(44px,5.5vw,88px) clamp(18px,4vw,50px)}
+.eyebrow{font-size:.66rem;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:15px}
+.lead{font-size:clamp(1rem,1.6vw,1.32rem);color:var(--body);max-width:840px;margin-top:20px;line-height:1.55}
+.mid{text-align:center}.mid .lead{margin-inline:auto}
+.dark{background:var(--plum);max-width:none}
+.dark .in{max-width:1340px;margin:auto;padding:clamp(44px,5.5vw,88px) clamp(18px,4vw,50px)}
+.dark h1,.dark h2{color:#fff}.dark p{color:#e2d3de}.dark .eyebrow{color:#f4b391}
+
+/* hero figure */
+.hero{display:flex;align-items:baseline;justify-content:center;gap:clamp(10px,1.6vw,20px);flex-wrap:wrap;margin-top:clamp(20px,3vw,34px)}
+.hero .fig{font-size:clamp(4rem,13vw,11rem);font-weight:800;letter-spacing:-.05em;line-height:.85;color:var(--orange)}
+.hero .cap{font-size:clamp(.95rem,1.5vw,1.3rem);color:var(--body);max-width:330px;text-align:left;line-height:1.35}
+
+/* figure block */
+.fig-block{background:var(--card);border:1px solid var(--line);border-radius:20px;
+ padding:clamp(18px,2.3vw,32px);margin-top:clamp(22px,3vw,38px);box-shadow:0 12px 36px rgba(90,47,82,.06)}
+.fig-head{margin-bottom:clamp(16px,2vw,26px)}
+.fig-head h3{font-family:Georgia,serif;font-weight:400;font-size:clamp(1.15rem,2vw,1.7rem);color:var(--plum);letter-spacing:-.025em;line-height:1.15}
+.fig-head p{font-size:.9rem;color:var(--soft);margin-top:8px;max-width:760px;line-height:1.5}
+.fig-note{font-size:.78rem;color:var(--soft);margin-top:16px;padding-top:14px;border-top:1px solid #f0eae0;line-height:1.5}
+.tblbtn{background:none;border:0;font:inherit;font-size:.74rem;font-weight:800;color:var(--plum2);
+ text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:0;margin-top:12px}
+table.dt{width:100%;border-collapse:collapse;margin-top:14px;font-size:.82rem}
+table.dt th{text-align:left;font-size:.6rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;
+ color:var(--soft);padding:8px 10px;border-bottom:1.5px solid var(--line)}
+table.dt td{padding:8px 10px;border-bottom:1px solid #f2ece2;color:var(--body)}
+table.dt td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:700}
+table.dt[hidden]{display:none}
+
+/* bars */
+.rows{display:flex;flex-direction:column;gap:clamp(8px,1.1vw,13px)}
+.row{display:grid;grid-template-columns:minmax(120px,270px) 1fr auto;gap:clamp(10px,1.5vw,18px);align-items:center;cursor:default}
+.row .lb{font-size:clamp(.78rem,1.05vw,.92rem);color:var(--ink);line-height:1.3;font-weight:600}
+.row .track{position:relative;height:clamp(20px,2.4vw,30px);background:#f4ede2;border-radius:0 5px 5px 0}
+.row .bar{position:absolute;left:0;top:0;bottom:0;background:var(--s1);border-radius:0 4px 4px 0;
+ transition:width .5s cubic-bezier(.4,0,.2,1),filter .15s}
+.row:hover .bar{filter:brightness(1.09)}
+.row .val{font-size:clamp(.82rem,1.15vw,1rem);font-weight:800;color:var(--ink);
+ font-variant-numeric:tabular-nums;min-width:58px;text-align:right}
+.row .val small{display:block;font-size:.68rem;font-weight:700;color:var(--soft);margin-top:1px}
+.row .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.row .sub{display:block;font-size:.74rem;color:var(--soft);font-weight:400;margin-top:3px;line-height:1.4}
+
+/* stat strip */
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(9px,1.4vw,16px);margin-top:clamp(22px,3vw,36px)}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(15px,2vw,24px)}
+.tile b{display:block;font-size:clamp(1.5rem,3vw,2.6rem);font-weight:800;letter-spacing:-.04em;line-height:1;color:var(--plum)}
+.tile i{display:block;font-style:normal;font-size:.66rem;font-weight:900;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--orange);margin:10px 0 6px}
+.tile span{display:block;font-size:.8rem;color:var(--soft);line-height:1.45}
+.dark .tile{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.19)}
+.dark .tile b{color:#fff}.dark .tile i{color:#f4b391}.dark .tile span{color:#cbb8c6}
+
+.kick{margin-top:clamp(22px,3vw,40px);font-family:Georgia,serif;letter-spacing:-.026em;line-height:1.16;
+ color:var(--plum);font-size:clamp(1.2rem,2.4vw,2.2rem);border-left:5px solid var(--orange);padding-left:clamp(15px,1.8vw,23px)}
+.kick em{color:var(--orange);font-style:italic}
+.dark .kick{color:#fff;border-color:#f4b391}.dark .kick em{color:#f4b391}
+.foot{max-width:1340px;margin:auto;padding:26px clamp(18px,4vw,50px) 54px;font-size:.78rem;color:var(--soft);line-height:1.65;text-align:center}
+.xl{position:fixed;top:14px;right:20px;z-index:70;font-size:.71rem;font-weight:900;letter-spacing:.09em;
+ text-transform:uppercase;text-decoration:none;color:var(--plum2);border:1.5px solid var(--line);
+ background:rgba(253,249,242,.93);border-radius:99px;padding:8px 15px}
+@media(max-width:960px){.strip{grid-template-columns:1fr 1fr}
+ .row{grid-template-columns:1fr;gap:5px}.row .val{text-align:left}.row .track{height:16px}}
+body.locked{overflow:hidden}
+.gate[hidden]{display:none!important}
+.gate{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:linear-gradient(160deg,#5a2f52,#3c1f36);padding:24px}
+.gate-card{width:min(430px,100%);background:#fdf9f2;border-radius:22px;padding:clamp(26px,4vw,42px);box-shadow:0 30px 90px rgba(0,0,0,.35)}
+.seal{width:52px;height:52px;border-radius:50%;background:#5a2f52;color:#fff;display:grid;place-items:center;
+ font-family:Georgia,serif;font-size:1.1rem;margin-bottom:20px}
+.gate-card .ey{font-size:.6rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase;color:#d95a2b;margin-bottom:10px}
+.gate-card h1{font-family:Georgia,serif;font-weight:400;letter-spacing:-.03em;line-height:1.06;color:#5a2f52;font-size:1.85rem;margin-bottom:12px}
+.gate-card p.c{color:#6b5f66;font-size:.94rem;line-height:1.5;margin-bottom:22px}
+.gate-card label{display:block;font-size:.62rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase;color:#8d8489;margin:14px 0 6px}
+.gate-card input{width:100%;padding:12px 14px;border:1.5px solid #ded4c8;border-radius:10px;font:inherit;font-size:1rem;background:#fff;color:#2b2028}
+.gate-card input:focus{outline:none;border-color:#5a2f52}
+.gate-card button{width:100%;margin-top:22px;padding:14px;border:0;border-radius:99px;background:#5a2f52;color:#fff;
+ font:inherit;font-weight:900;font-size:.9rem;letter-spacing:.06em;cursor:pointer}
+.err{color:#bc3320;font-size:.86rem;font-weight:700;margin-top:12px;min-height:1.2em}
+.tiny{font-size:.72rem;color:#a1969c;margin-top:18px;line-height:1.5}
+#app[hidden]{display:none}
+</style>
+</head>
+<body class="locked">
+<div class="gate" id="gate">
+<form class="gate-card" id="gate-form">
+<div class="seal">WV</div>
+<p class="ey">Watkins Ventures &middot; The Numbers</p>
+<h1>What's actually<br>in the mine.</h1>
+<p class="c">Every figure counted from the live archive. Nothing estimated.</p>
+<label for="username">Username</label><input id="username" autocomplete="username" autocapitalize="none" required>
+<label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required>
+<button type="submit">Enter</button>
+<p class="err" id="gate-error" aria-live="polite"></p>
+<p class="tiny">Shared team entry gate. Do not enter passwords, card information, or private customer health details anywhere on this page.</p>
+</form></div>
+<div id="app" hidden>
+
+<a class="xl" href="/britgold/">Read her words &rarr;</a>
+
+<section class="sec mid">
+  <div class="eyebrow">For the team</div>
+  <h1 class="serif">The numbers.</h1>
+  <div class="hero">
+    <span class="fig">18,158</span>
+    <span class="cap">women who told us, unprompted, exactly what's wrong &mdash; and typed it themselves.</span>
+  </div>
+  <p class="lead">Every figure on this page was counted from the live archive this morning. If a number is here, you can go open the file it came from.</p>
+</section>
+
+<section class="dark"><div class="in">
+  <div class="eyebrow">Scale of the raw pile</div>
+  <h2 class="serif">What went in.</h2>
+  <div class="strip">
+    <div class="tile"><b>2,866</b><i>Files scanned</i><span>Every candidate document across four archives, inventoried before one was read.</span></div>
+    <div class="tile"><b>262,728</b><i>Words of Brittany</i><span>Her course, her masterclasses, her retreats and two won sales calls &mdash; turned into searchable text.</span></div>
+    <div class="tile"><b>142.4</b><i>Hours of closer training</i><span>Cole Gordon's entire program, transcribed and timestamped to the second.</span></div>
+    <div class="tile"><b>1,347</b><i>Sales calls recorded</i><span>84 Thrive calls plus 1,263 in Jimmy's six-year archive.</span></div>
+  </div>
+  <div class="kick">This is the part nobody wants to do. <em>It's also the only part that can't be copied.</em></div>
+</div></section>
+
+<section class="sec">
+  <div class="eyebrow">Where the words came from</div>
+  <h2 class="serif">262,728 words of Brittany, in her own voice.</h2>
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>Brittany teaching and selling, transcribed</h3>
+      <p>Audio and video that existed already, sitting in folders. None of it was searchable until it became text. The two call transcripts at the bottom are sales she actually won &mdash; start to finish.</p>
+    </div>
+    <div class="rows" data-chart="words" data-unit="words"></div>
+    <p class="fig-note">Counted with <code>wc -w</code> on each transcript, and each file checked for who is actually speaking &mdash; not assumed from the filename. Excludes the 142 hours of Cole training and the sales-call archive, counted separately. The wider archive also holds large corpora from unrelated projects; none of those are counted here.</p>
+    <button class="tblbtn" data-table="words">Show the table</button>
+    <table class="dt" id="t-words" hidden></table>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="eyebrow">What the mining produced</div>
+  <h2 class="serif">604 finished assets, filed by the job each one does.</h2>
+  <p class="lead">Not a research report. A library you pull from when you're writing something.</p>
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>The 604 assets, by what they're for</h3>
+      <p>The biggest pile by far is her own language. That's on purpose &mdash; everything else gets written from it.</p>
+    </div>
+    <div class="rows" data-chart="assetsByType" data-unit="assets"></div>
+    <button class="tblbtn" data-table="assetsByType">Show the table</button>
+    <table class="dt" id="t-assetsByType" hidden></table>
+  </div>
+
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>How good each one is, graded honestly</h3>
+      <p>Every asset carries a grade. A third of them are raw ore that still needs work &mdash; and they're labelled that way instead of padding the total.</p>
+    </div>
+    <div class="rows" data-chart="strength" data-unit="assets"></div>
+    <button class="tblbtn" data-table="strength">Show the table</button>
+    <table class="dt" id="t-strength" hidden></table>
+  </div>
+</section>
+
+<section class="sec" style="background:#f7f1e7;max-width:none">
+ <div style="max-width:1340px;margin:auto">
+  <div class="eyebrow">The chart most people would never show you</div>
+  <h2 class="serif">Only 248 of the 604 are cleared to use today.</h2>
+  <p class="lead">A system you can trust is one that tells you what it can't use yet. Every asset carries a permission status, and most of them are not a simple yes.</p>
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>What we're actually allowed to publish</h3>
+      <p>Status is stored per asset, not decided later by whoever is writing that day.</p>
+    </div>
+    <div class="rows" data-chart="compliance" data-unit="assets" data-status="1"></div>
+    <p class="fig-note">Status labels are carried on every row of the master matrix. &ldquo;Pattern fuel&rdquo; means the language shapes how we write but never appears as a quote.</p>
+    <button class="tblbtn" data-table="compliance">Show the table</button>
+    <table class="dt" id="t-compliance" hidden></table>
+  </div>
+  <div class="kick">Anyone can generate more. <em>Almost nobody labels what they can't use.</em></div>
+ </div>
+</section>
+
+<section class="sec">
+  <div class="eyebrow">Proof it already works</div>
+  <h2 class="serif">Her language, in the subject line, with real numbers attached.</h2>
+  <p class="lead">These aren't guesses about what might work. These are subject lines that already went out to Brittany's list, with the open rate recorded next to each one.</p>
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>Open rate by subject line</h3>
+      <p>Nine emails with performance data recorded in the library. The winner is a sentence a customer said, handed straight back to her.</p>
+    </div>
+    <div class="rows" data-chart="emails" data-unit="%" data-dec="1"></div>
+    <p class="fig-note">Open and click rates recorded in the headline bank from the top-performing email export. Click rates are shown in the table view.</p>
+    <button class="tblbtn" data-table="emails">Show the table</button>
+    <table class="dt" id="t-emails" hidden></table>
+  </div>
+  <div class="kick">&ldquo;You said <em>just one bite</em>&rdquo; opened at 58%.<br>It isn't clever. It's just something a real woman actually said.</div>
+</section>
+
+<section class="sec">
+  <div class="eyebrow">The other half of the corpus</div>
+  <h2 class="serif">334 videos of the best closer alive.</h2>
+  <p class="lead">Transcribed locally, kept private, timestamped so any rule can be traced back to the exact moment it was taught.</p>
+  <div class="fig-block">
+    <div class="fig-head">
+      <h3>Cole Gordon's program, by module</h3>
+      <p>The calls library is the biggest piece &mdash; 118 recorded real sales calls with teardowns, which is where the actual mechanics live.</p>
+    </div>
+    <div class="rows" data-chart="cole" data-unit="videos"></div>
+    <p class="fig-note">142.43 hours total: 72.54 hours of curriculum and 69.89 hours of call training. The paid course stays private; only the derived rules are used.</p>
+    <button class="tblbtn" data-table="cole">Show the table</button>
+    <table class="dt" id="t-cole" hidden></table>
+  </div>
+</section>
+
+<section class="dark"><div class="in">
+  <div class="eyebrow">Why any of this matters</div>
+  <h2 class="serif">Everybody has the same AI.</h2>
+  <p class="lead" style="color:#e2d3de">The model isn't the advantage. Anyone can buy it this afternoon. The advantage is having read 18,158 answers, transcribed 740,000 words, graded every asset, and written down what you're not allowed to say.</p>
+  <div class="kick">Nobody else has this pile. <em>And the pile is the whole game.</em></div>
+</div></section>
+
+<div class="foot">
+  Every figure counted from the Thrive Asset Library master matrix and the Jimmy-OS archive on 2026-08-03.
+  Asset counts, grades, and permission statuses are read directly from the 604-row matrix. Email performance is as recorded in the source export.
+  No customer names, emails, or phone numbers appear anywhere in this data.
+</div>
+</div>
+<script>
+var D={"assetsByType": [{"l": "Her problem, in her words (VOC)", "v": 188}, {"l": "Headlines & subject lines", "v": 112}, {"l": "Price & value framing", "v": 58}, {"l": "Proof — testimonials, stats, science", "v": 57}, {"l": "False-belief flips", "v": 55}, {"l": "Unique mechanism explanations", "v": 48}, {"l": "Analogies & word pictures", "v": 47}, {"l": "“I know what it feels like” empathy", "v": 24}, {"l": "FAQs", "v": 14}, {"l": "Credibility & damaging admissions", "v": 1}], "strength": [{"l": "A — use as is", "v": 206}, {"l": "B — usable, needs a pass", "v": 251}, {"l": "C — raw ore", "v": 147}], "compliance": [{"l": "Cleared — sourced, ready to use", "v": 248, "s": "good", "n": "Every line traced to a file. 37 of these carry real open/click data."}, {"l": "Needs one review before publishing", "v": 77, "s": "warning", "n": "Sourced, but the claim or context needs a second look first."}, {"l": "Pattern fuel only — never quoted", "v": 149, "s": "serious", "n": "Survey language. Shapes how we write. Never printed as a quote."}, {"l": "Blocked — needs her permission", "v": 71, "s": "critical", "n": "A real person would have to say yes before this appears anywhere."}, {"l": "Internal only — sources disagree", "v": 59, "s": "critical", "n": "Kept in a conflicts file instead of quietly picking a side."}], "emails": [{"l": "You said “just one bite”", "v": 58.42, "c": 2.27}, {"l": "🛑 This IS NOT for everyone", "v": 48.17, "c": 4.26}, {"l": "💉 Everyone is on ozempic", "v": 48.0, "c": 3.27}, {"l": "💀 This was never supposed to exist", "v": 47.26, "c": 3.74}, {"l": "🤫 Shhh... keep this between us", "v": 46.26, "c": 2.85}, {"l": "Can't say no? Read this.", "v": 35.79, "c": 2.12}, {"l": "Private msg", "v": 35.75, "c": 2.23}, {"l": "Why you eat when you're not hungry", "v": 33.35, "c": 2.17}, {"l": "(How to) STOP the Food Noise!", "v": 33.13, "c": 2.01}], "cole": [{"l": "Calls library", "v": 118}, {"l": "Module 2", "v": 52}, {"l": "Module 4", "v": 45}, {"l": "Module 3", "v": 37}, {"l": "Module 1", "v": 22}, {"l": "Module 6", "v": 17}, {"l": "Module 5", "v": 16}, {"l": "Module 7", "v": 11}, {"l": "Module 8", "v": 9}, {"l": "Module 0", "v": 7}], "words": [{"l": "Thrive course — all 12 lessons", "v": 183265}, {"l": "Tapping for Self-Love masterclass", "v": 24229}, {"l": "Shed Pounds retreat — day 2", "v": 19768}, {"l": "Shed Pounds retreat — day 1", "v": 14054}, {"l": "Won sale call — Shamim Shah", "v": 11324}, {"l": "Won sale call — Julie Holst", "v": 10088}]};
+var STATUS={good:'var(--good)',warning:'var(--warning)',serious:'var(--serious)',critical:'var(--critical)'};
+function fmt(n,dec){return dec?n.toFixed(dec):n.toLocaleString('en-US')}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+function drawChart(el){
+  var key=el.dataset.chart, unit=el.dataset.unit||'', dec=+(el.dataset.dec||0);
+  var isStatus=el.dataset.status==='1';
+  var rows=D[key], max=Math.max.apply(null,rows.map(function(r){return r.v}));
+  el.innerHTML=rows.map(function(r){
+    var pct=(r.v/max*100);
+    var color=isStatus&&r.s?STATUS[r.s]:'var(--s1)';
+    var dot=isStatus&&r.s?'<span class="dot" style="background:'+color+'"></span>':'';
+    var sub=r.n?'<span class="sub">'+esc(r.n)+'</span>':'';
+    var extra=(key==='emails')?'<small>'+r.c.toFixed(2)+'% clicked</small>':'';
+    return '<div class="row" title="'+esc(r.l)+': '+fmt(r.v,dec)+' '+unit+'">'+
+      '<div class="lb">'+dot+esc(r.l)+sub+'</div>'+
+      '<div class="track"><div class="bar" style="width:0%;background:'+color+'" data-w="'+pct+'"></div></div>'+
+      '<div class="val">'+fmt(r.v,dec)+(unit==='%'?'%':'')+extra+'</div></div>';
+  }).join('');
+}
+function animate(){
+  document.querySelectorAll('.bar').forEach(function(b){
+    requestAnimationFrame(function(){b.style.width=b.dataset.w+'%'});
+  });
+}
+function buildTable(key){
+  var t=document.getElementById('t-'+key); if(!t||t.dataset.built)return;
+  var rows=D[key], isEmail=key==='emails';
+  t.innerHTML='<thead><tr><th>Item</th><th style="text-align:right">'+
+    (isEmail?'Open rate':'Count')+'</th>'+(isEmail?'<th style="text-align:right">Click rate</th>':'')+
+    '</tr></thead><tbody>'+rows.map(function(r){
+      return '<tr><td>'+esc(r.l)+'</td><td class="num">'+
+        (isEmail?r.v.toFixed(2)+'%':r.v.toLocaleString('en-US'))+'</td>'+
+        (isEmail?'<td class="num">'+r.c.toFixed(2)+'%</td>':'')+'</tr>'}).join('')+'</tbody>';
+  t.dataset.built='1';
+}
+window.__go=function(){
+  document.querySelectorAll('[data-chart]').forEach(drawChart);
+  document.querySelectorAll('[data-table]').forEach(function(b){
+    b.onclick=function(){
+      var k=b.dataset.table, t=document.getElementById('t-'+k);
+      buildTable(k); t.hidden=!t.hidden;
+      b.textContent=t.hidden?'Show the table':'Hide the table';
+    };
+  });
+  setTimeout(animate,120);
+};
+
+
+(function(){var g=document.getElementById('gate'),a=document.getElementById('app');
+function u(x,p){if(String(x).toLowerCase()==='team'&&p==='team'){try{sessionStorage.setItem('wv-team','1')}catch(e){}
+g.hidden=true;a.hidden=false;document.body.classList.remove('locked');if(window.__go)window.__go();return true}return false}
+document.getElementById('gate-form').addEventListener('submit',function(e){e.preventDefault();
+if(!u(document.getElementById('username').value.trim(),document.getElementById('password').value))
+document.getElementById('gate-error').textContent='That username or password is not correct.'});
+try{if(sessionStorage.getItem('wv-team')==='1')u('team','team')}catch(e){}})();
+</script>
+</body>
+</html>
