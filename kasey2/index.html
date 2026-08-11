@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasey's Hub — "It's in the Doc" Concierge (Demo)</title>
+<style>
+  :root{--ink:#2b2b33; --soft:#6d6d7a; --bg:#f6f4ef; --card:#fff; --accent:#4f7a52; --gold:#c99a2e; --line:#e2ddd2;}
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:Helvetica,Arial,sans-serif; background:var(--bg); color:var(--ink); padding:30px 18px 60px;}
+  .wrap{max-width:980px; margin:0 auto;}
+  .demo-banner{background:#fff3d6; border:1px solid #e5c877; color:#7a5c10; border-radius:10px; padding:10px 16px; font-size:13px; text-align:center; margin-bottom:24px;}
+  header{text-align:center; margin-bottom:28px;}
+  h1{font-family:Georgia,serif; font-size:30px;}
+  header p{color:var(--soft); margin-top:6px; font-size:15px;}
+  .search{max-width:560px; margin:22px auto 0; display:flex; background:#fff; border:2px solid var(--accent); border-radius:40px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,.07);}
+  .search input{flex:1; border:none; padding:14px 22px; font-size:15.5px; outline:none; font-style:italic; color:#888;}
+  .search button{background:var(--accent); color:#fff; border:none; padding:0 26px; font-size:15px; font-weight:bold; cursor:pointer;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:30px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:0 2px 6px rgba(0,0,0,.04);}
+  .card h2{font-size:16px; margin-bottom:10px; display:flex; gap:8px; align-items:center;}
+  .card ul{list-style:none;}
+  .card li{padding:7px 0; border-top:1px dashed #eee8db; font-size:14px; display:flex; justify-content:space-between; gap:10px;}
+  .card li:first-child{border-top:none;}
+  .pill{color:var(--accent); font-weight:bold; font-size:12.5px; white-space:nowrap; text-decoration:underline; cursor:pointer;}
+  .updated{font-size:11px; color:#a89f8d; font-style:italic;}
+  .flow{margin-top:40px;}
+  .flow h2{font-family:Georgia,serif; font-size:24px; text-align:center; margin-bottom:6px;}
+  .flow>p{text-align:center; color:var(--soft); font-size:14.5px; margin-bottom:22px;}
+  .chat{max-width:520px; margin:0 auto; background:#ece5dd; border-radius:16px; padding:18px 14px; box-shadow:0 3px 12px rgba(0,0,0,.1);}
+  .bubble{max-width:86%; padding:11px 14px; border-radius:12px; font-size:14px; line-height:1.45; margin-bottom:10px; position:relative;}
+  .them{background:#fff; border-top-left-radius:2px;}
+  .me{background:#d9fdd3; margin-left:auto; border-top-right-radius:2px;}
+  .ai{background:#eef5ee; border:1.5px dashed var(--accent); margin-left:auto; max-width:92%;}
+  .who{font-size:11px; font-weight:bold; color:#8a7f6a; margin-bottom:3px; letter-spacing:.4px;}
+  .ai .who{color:var(--accent);}
+  .actions{display:flex; gap:8px; margin:4px 0 12px; justify-content:flex-end;}
+  .actions span{font-size:12px; font-weight:bold; padding:6px 14px; border-radius:20px; cursor:pointer;}
+  .send{background:var(--accent); color:#fff;}
+  .edit{background:#fff; color:var(--accent); border:1px solid var(--accent);}
+  .phase{margin-top:34px; text-align:center; background:#f0ede4; border-radius:12px; padding:18px 20px; font-size:14.5px; color:#55534b; max-width:640px; margin-left:auto; margin-right:auto;}
+  .phase b{color:var(--accent);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="demo-banner">⚠️ DEMO MOCK-UP — sample content so Kasey can see the shape of it. Real version gets loaded with the actual links &amp; schedules once, then stays current automatically.</div>
+
+  <header>
+    <h1>Kasey's Hub</h1>
+    <p>One source of truth. Every link, every schedule, every script — always current.</p>
+    <div class="search">
+      <input type="text" placeholder='Try: "Where is the Inner Circle call schedule?"' disabled>
+      <button>Ask</button>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="card">
+      <h2>📅 Call Schedules</h2>
+      <ul>
+        <li>Inner Circle — Monday calls <span class="pill">Open</span></li>
+        <li>Tapping Circle schedule <span class="pill">Open</span></li>
+        <li>Buddy &amp; orientation calls <span class="pill">Open</span></li>
+        <li class="updated">Auto-updates when the coach calendar changes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>🔗 Links Students Always Ask For</h2>
+      <ul>
+        <li>Kasey's 1:1 booking link <span class="pill">Copy</span></li>
+        <li>Group call Zoom links <span class="pill">Copy</span></li>
+        <li>The Google Doc <span class="pill">Open</span></li>
+        <li>Thrive members area <span class="pill">Open</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>📍 "Where is it in the course?"</h2>
+      <ul>
+        <li>Limiting beliefs list → Thrive, Lesson 1 <span class="pill">Open</span></li>
+        <li>Tapping scripts library <span class="pill">Open</span></li>
+        <li>Homework trackers <span class="pill">Open</span></li>
+        <li>How laser coaching works <span class="pill">Open</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flow">
+    <h2>The part that saves Kasey's sanity</h2>
+    <p>A repeat question arrives in WhatsApp. Kasey forwards it. The answer comes back drafted — her voice, right link. One tap.</p>
+    <div class="chat">
+      <div class="bubble them"><div class="who">STUDENT — 9:42 AM</div>Hi Kasey! Sorry to bother you again 🙈 what's the zoom link for tonight's study group? And what time is it eastern?</div>
+      <div class="bubble me"><div class="who">KASEY → forwards to her AI</div><em>(forwarded)</em></div>
+      <div class="bubble ai"><div class="who">✨ DRAFT READY — 9:42 AM</div>Hi love! No bother at all 💛 Tonight's study group is at 7pm Eastern — here's the Zoom link: [link]. It's also always in the Google Doc under "Weekly Calls" if you ever need it fast: [link]. See you tonight!</div>
+      <div class="actions"><span class="send">Send ✓</span><span class="edit">Edit</span></div>
+      <div class="bubble them"><div class="who">STUDENT — 9:44 AM</div>You're the best!! ❤️</div>
+    </div>
+  </div>
+
+  <div class="phase"><b>Phase 2:</b> students message the Hub directly and get their answer in seconds — Kasey never sees the question. She only ever sees the ones that need <em>her</em>. That's the line she drew: anything that's real coaching stays deeply human.</div>
+</div>
+</body>
+</html>

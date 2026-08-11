@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173c4b">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+  <title>Rosy’s London &amp; Bath Adventure</title>
+  <meta name="description" content="A little London and Bath planning room made for Rosy by Jimmy and the Council.">
+  <meta property="og:title" content="Rosy’s London &amp; Bath Adventure">
+  <meta property="og:description" content="Three London days. One wonderful trip. Tell us what you love and we’ll make the plan yours.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ineedjimmy.com/rosy/">
+  <meta property="og:image" content="https://ineedjimmy.com/rosy/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Rosy’s London &amp; Bath Adventure">
+  <meta name="twitter:description" content="Three London days. One wonderful trip. Let’s make it yours.">
+  <meta name="twitter:image" content="https://ineedjimmy.com/rosy/og.png">
+  <style>
+    :root{
+      --ink:#173c4b;--ink2:#0f2c38;--cream:#f7f0e3;--paper:#fffdf8;--red:#be4c3c;
+      --gold:#d8a743;--sky:#acd8dc;--sage:#8ea88a;--muted:#68777a;--line:rgba(23,60,75,.14);
+      --shadow:0 24px 80px rgba(15,44,56,.15);--serif:Georgia,"Times New Roman",serif;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--cream);color:var(--ink);font-family:"Avenir Next",Avenir,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.28;background-image:radial-gradient(rgba(23,60,75,.14) .6px,transparent .6px);background-size:9px 9px;z-index:-1}
+    a{color:inherit}
+    button,textarea,input{font:inherit}
+    button{touch-action:manipulation}
+    .shell{width:min(1120px,100%);margin:auto;padding:18px clamp(14px,3vw,30px) 80px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:7px 4px 18px;font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:900}
+    .mark{display:flex;align-items:center;gap:9px}.mark i{width:12px;height:12px;border:3px solid var(--red);border-radius:50%}
+    .live{display:flex;align-items:center;gap:7px;color:var(--muted)}.live:before{content:"";width:7px;height:7px;background:#58a36f;border-radius:50%;box-shadow:0 0 0 4px rgba(88,163,111,.13)}
+    .hero{position:relative;overflow:hidden;min-height:670px;border-radius:34px;background:linear-gradient(145deg,var(--ink),var(--ink2));color:white;box-shadow:var(--shadow);padding:clamp(38px,7vw,78px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);align-items:center;gap:40px}
+    .hero:before{content:"";position:absolute;width:580px;height:580px;border:1px solid rgba(255,255,255,.12);border-radius:50%;right:-230px;top:-240px;box-shadow:0 0 0 76px rgba(172,216,220,.05),0 0 0 152px rgba(255,255,255,.018)}
+    .hero-copy{position:relative;z-index:2}.eyebrow{margin:0 0 18px;color:var(--sky);font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:900}
+    h1,h2,h3{font-family:var(--serif)}
+    .hero h1{font-size:clamp(52px,7.5vw,91px);line-height:.91;letter-spacing:-.055em;margin:0 0 26px;font-weight:500;max-width:760px}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero .lead{font-size:clamp(18px,2.2vw,23px);line-height:1.52;color:rgba(255,255,255,.83);max-width:680px;margin:0 0 27px}
+    .hero-actions{display:flex;gap:11px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:14px 19px;border-radius:14px;font-weight:900;text-decoration:none;border:0;cursor:pointer}
+    .button.primary{background:var(--gold);color:var(--ink2);box-shadow:5px 5px 0 var(--red)}.button.secondary{border:1px solid rgba(255,255,255,.32);color:white;background:rgba(255,255,255,.06)}
+    .trip-ticket{position:relative;z-index:2;background:var(--paper);color:var(--ink);border-radius:24px;padding:26px;transform:rotate(2deg);box-shadow:0 24px 70px rgba(0,0,0,.25)}
+    .trip-ticket:before,.trip-ticket:after{content:"";position:absolute;width:24px;height:24px;border-radius:50%;background:var(--ink2);top:55%;transform:translateY(-50%)}.trip-ticket:before{left:-12px}.trip-ticket:after{right:-12px}
+    .ticket-top{display:flex;justify-content:space-between;gap:12px;align-items:start;border-bottom:1.5px dashed #c8c0b4;padding-bottom:20px;margin-bottom:20px}
+    .ticket-top small{display:block;color:var(--red);font-weight:900;letter-spacing:.14em;text-transform:uppercase;margin-bottom:5px}.ticket-top strong{font:700 26px/1.1 var(--serif)}
+    .ticket-stamp{width:72px;height:72px;border:2px solid var(--red);border-radius:50%;display:grid;place-items:center;text-align:center;font-size:10px;line-height:1.15;font-weight:900;color:var(--red);transform:rotate(-10deg)}
+    .ticket-route{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center}.ticket-route .city:last-child{text-align:right}.city b{display:block;font:700 28px var(--serif)}.city span{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.1em}.route-line{color:var(--gold);font-size:27px}.ticket-foot{margin-top:22px;padding-top:18px;border-top:1.5px dashed #c8c0b4;display:flex;justify-content:space-between;font-size:12px;font-weight:800;color:var(--muted)}
+    .bridge{position:relative;z-index:4;margin:-30px auto 45px;width:min(940px,calc(100% - 28px));background:var(--paper);border:1px solid var(--line);border-radius:22px;box-shadow:0 18px 60px rgba(15,44,56,.12);padding:25px 28px;display:grid;grid-template-columns:auto 1fr auto;gap:17px;align-items:center}
+    .bridge-icon{width:55px;height:55px;border-radius:18px;background:var(--sky);display:grid;place-items:center;font-size:26px}.bridge strong{display:block;font:700 23px var(--serif);margin-bottom:4px}.bridge p{margin:0;color:var(--muted);line-height:1.5}.countdown{font-weight:900;color:var(--red);white-space:nowrap}
+    .section{padding:74px 0}.section-head{display:grid;grid-template-columns:minmax(0,.85fr) minmax(300px,1.15fr);gap:42px;align-items:end;margin-bottom:32px}.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);font-weight:900}.section h2{font-size:clamp(39px,5.5vw,66px);line-height:.98;letter-spacing:-.045em;margin:11px 0}.section-intro{color:var(--muted);font-size:18px;line-height:1.62;margin:0;max-width:700px}
+    .day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.day{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:25px;min-height:430px;box-shadow:0 16px 45px rgba(15,44,56,.08);display:flex;flex-direction:column}.day:nth-child(2){background:var(--ink);color:white}.day-no{display:flex;align-items:center;justify-content:space-between;color:var(--red);font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.day:nth-child(2) .day-no{color:var(--sky)}.day-no span{font:700 46px var(--serif);color:var(--gold);letter-spacing:-.04em}.day h3{font-size:31px;line-height:1.04;margin:22px 0 13px}.day p{color:var(--muted);line-height:1.56;margin:0 0 21px}.day:nth-child(2) p{color:rgba(255,255,255,.7)}.stops{list-style:none;padding:0;margin:auto 0 0}.stops li{padding:10px 0;border-top:1px solid var(--line);display:flex;gap:10px;font-size:13px;font-weight:800;line-height:1.35}.day:nth-child(2) .stops li{border-color:rgba(255,255,255,.12)}.stops li:before{content:"→";color:var(--gold)}
+    .recommend{background:var(--gold);border-radius:30px;padding:clamp(28px,5vw,52px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(290px,.9fr);gap:35px;align-items:center;box-shadow:var(--shadow)}
+    .recommend .kicker{color:#7f3329}.recommend h2{font-size:clamp(42px,5.5vw,69px);margin:10px 0 17px}.recommend p{font-size:18px;line-height:1.58;margin:0 0 21px;color:#334e57}.why{display:flex;gap:9px;flex-wrap:wrap}.why span{background:rgba(255,255,255,.46);border:1px solid rgba(23,60,75,.12);padding:8px 11px;border-radius:999px;font-size:12px;font-weight:900}
+    .restaurant-card{background:var(--paper);border:1px solid rgba(23,60,75,.16);border-radius:22px;padding:25px;box-shadow:9px 9px 0 var(--red);transform:rotate(-1deg)}.restaurant-card small{color:var(--red);font-weight:900;letter-spacing:.13em;text-transform:uppercase}.restaurant-card h3{font-size:37px;margin:9px 0 8px}.restaurant-card p{font-size:15px;margin:0 0 19px}.restaurant-card a{display:flex;align-items:center;justify-content:space-between;text-decoration:none;background:var(--ink);color:white;border-radius:13px;padding:14px 16px;font-weight:900}.restaurant-card a:hover{background:var(--ink2)}
+    .markets{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:16px}.market{border-radius:22px;padding:24px;background:var(--paper);border:1px solid var(--line);min-height:300px;display:flex;flex-direction:column}.market:first-child{background:var(--red);color:white;border:0}.market .tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;color:var(--red)}.market:first-child .tag{color:#ffd88a}.market h3{font-size:30px;margin:17px 0 9px}.market p{line-height:1.5;color:var(--muted);margin:0 0 20px}.market:first-child p{color:rgba(255,255,255,.8)}.market a{margin-top:auto;font-weight:900;font-size:13px;text-decoration-thickness:2px;text-underline-offset:4px}
+    .bath-note{margin-top:16px;background:var(--sky);border-radius:22px;padding:23px 26px;display:flex;gap:17px;align-items:center}.bath-note b{font:700 21px var(--serif)}.bath-note p{margin:4px 0 0;color:#35545e;line-height:1.45}.bath-note a{font-weight:900}
+    .planner-intro{text-align:center;max-width:790px;margin:0 auto 34px}.planner-intro h2{font-size:clamp(44px,6vw,72px)}.planner-intro p{margin:0 auto;color:var(--muted);font-size:18px;line-height:1.58}.planner{background:var(--paper);border:1px solid var(--line);border-radius:30px;box-shadow:var(--shadow);overflow:hidden;max-width:950px;margin:auto}.form-head{padding:24px 28px 19px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}.form-head strong{font-size:14px}.progress-label{font-size:13px;color:var(--muted);font-weight:800}.track{height:6px;background:#ece4d8}.fill{height:100%;width:14.285%;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .35s ease}
+    .question{display:none;padding:clamp(28px,6vw,58px)}.question.active{display:block;animation:rise .35s ease}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    .qnum{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;color:var(--red);margin-bottom:18px}.question h3{font-size:clamp(32px,4.8vw,48px);line-height:1.07;letter-spacing:-.03em;margin:0 0 12px}.prompt{color:var(--muted);line-height:1.55;margin:0 0 22px;max-width:730px}
+    .chips{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 19px}.chip{border:1.5px solid var(--line);background:#fbf8f1;color:var(--ink);border-radius:999px;padding:11px 14px;font-size:13px;font-weight:850;cursor:pointer}.chip.selected{background:var(--ink);color:white;border-color:var(--ink);box-shadow:0 5px 14px rgba(23,60,75,.15)}
+    textarea{display:block;width:100%;min-height:150px;resize:vertical;border:1.5px solid var(--line);background:#fbf8f1;border-radius:17px;padding:17px 18px;color:var(--ink);font-size:17px;line-height:1.5;outline:none}textarea:focus{border-color:var(--red);box-shadow:0 0 0 4px rgba(190,76,60,.1);background:white}textarea::placeholder{color:#94a09e}
+    .voice-row{display:flex;align-items:center;gap:12px;margin-top:14px;flex-wrap:wrap}.mic{border:0;border-radius:999px;background:var(--ink);color:white;padding:12px 16px;font-size:13px;font-weight:900;display:flex;align-items:center;gap:9px;cursor:pointer}.mic .dot{width:10px;height:10px;border:2px solid white;border-radius:50%}.mic.listening{background:var(--red)}.mic.listening .dot{background:white;animation:pulse 1s infinite}@keyframes pulse{50%{transform:scale(1.45);opacity:.6}}.voice-note{font-size:12px;color:var(--muted);line-height:1.4}
+    .nav-buttons{padding:0 clamp(28px,6vw,58px) clamp(28px,5vw,44px);display:flex;justify-content:space-between;gap:12px}.nav-btn{border:0;border-radius:999px;padding:14px 20px;font-weight:900;cursor:pointer}.back{background:#ece5da;color:var(--ink)}.next{background:var(--red);color:white;margin-left:auto}.back[disabled]{visibility:hidden}
+    .submit-panel{display:none;padding:clamp(34px,6vw,62px);text-align:center}.submit-panel.active{display:block}.seal{width:76px;height:76px;border-radius:50%;margin:0 auto 20px;background:var(--sky);display:grid;place-items:center;font-size:32px}.submit-panel h3{font-size:clamp(36px,5vw,52px);margin:0 0 13px}.submit-panel p{color:var(--muted);font-size:17px;line-height:1.6;max-width:620px;margin:0 auto 24px}.submit-btn{border:0;border-radius:999px;background:var(--red);color:white;padding:17px 25px;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 12px 28px rgba(190,76,60,.24)}.submit-btn:disabled{opacity:.55;cursor:wait}.privacy{font-size:12px!important;margin-top:17px!important}.error{display:none;color:#a4342b!important;font-weight:850}.fallback-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:14px}.fallback-btn{border:1.5px solid var(--red);background:white;color:var(--red);border-radius:999px;padding:11px 15px;font-weight:900;cursor:pointer}.delivery-frame{position:absolute;width:1px;height:1px;border:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden}.success{display:none;background:var(--ink);color:white;padding:clamp(48px,7vw,78px);text-align:center}.success.active{display:block}.success h3{font-size:clamp(42px,6vw,62px);margin:0 0 15px}.success p{color:rgba(255,255,255,.74);font-size:18px;line-height:1.6;max-width:620px;margin:0 auto}.success .tiny{font-size:13px;margin-top:20px;color:var(--sky)}
+    .sources{margin:42px auto 0;max-width:950px;border-top:1px solid var(--line);padding-top:20px;color:var(--muted);font-size:12px;line-height:1.65}.sources summary{cursor:pointer;font-weight:900;color:var(--ink)}.sources ul{columns:2;gap:30px;padding-left:18px}.sources a{text-underline-offset:3px}
+    footer{text-align:center;color:var(--muted);font-size:12px;line-height:1.6;padding:28px 12px 0}
+    @media(max-width:860px){.hero{grid-template-columns:1fr;min-height:auto}.trip-ticket{max-width:520px}.day-grid,.markets{grid-template-columns:1fr}.day{min-height:auto}.recommend,.section-head{grid-template-columns:1fr}.market{min-height:235px}.bridge{grid-template-columns:auto 1fr}.countdown{grid-column:2}.sources ul{columns:1}}
+    @media(max-width:590px){.shell{padding:10px 10px 55px}.topbar{padding:4px 6px 13px}.hero{border-radius:25px;padding:36px 22px 58px;gap:35px}.hero h1{font-size:clamp(48px,15vw,70px)}.hero-actions{display:grid;grid-template-columns:1fr}.trip-ticket{padding:21px}.bridge{margin-top:-23px;padding:19px;grid-template-columns:42px 1fr}.bridge-icon{width:42px;height:42px;border-radius:13px;font-size:21px}.bridge strong{font-size:19px}.bridge p{font-size:13px}.countdown{font-size:12px}.section{padding:55px 7px}.section h2{font-size:clamp(38px,11vw,52px)}.recommend{border-radius:24px;padding:27px 21px}.restaurant-card{transform:none;box-shadow:6px 6px 0 var(--red)}.bath-note{align-items:flex-start}.form-head{padding:20px}.question{padding:31px 22px}.nav-buttons{padding:0 22px 29px}.voice-row{align-items:flex-start;flex-direction:column}.mic{width:100%;justify-content:center}.sources{margin-inline:8px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <div class="topbar"><div class="mark"><i></i> Jimmy × The Council</div><div class="live">Rosy’s planning room</div></div>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Made for Rosy &amp; Jim · September 3–15, 2026</p>
+      <h1>Three London days.<br>Let’s make them <em>wonderful.</em></h1>
+      <p class="lead">You’re staying near the London Eye, heading on to Bath, and you want the good stuff—not a frantic tourist checklist. Here’s Jimmy’s first take. Then tell us what feels like you.</p>
+      <div class="hero-actions"><a class="button primary" href="#first-take">See the first take ↓</a><a class="button secondary" href="#questions">Make it mine →</a></div>
+    </div>
+    <aside class="trip-ticket" aria-label="Trip details">
+      <div class="ticket-top"><div><small>Your England escape</small><strong>Admit two adventurers</strong></div><div class="ticket-stamp">ROSY<br>APPROVED<br>2026</div></div>
+      <div class="ticket-route"><div class="city"><b>London</b><span>3 brilliant days</span></div><div class="route-line">→</div><div class="city"><b>Bath</b><span>the lovely part</span></div></div>
+      <div class="ticket-foot"><span>SEP 03</span><span>12 NIGHTS</span><span>SEP 15</span></div>
+    </aside>
+  </section>
+
+  <aside class="bridge"><div class="bridge-icon">✦</div><div><strong>This is the beginning—not the generic itinerary.</strong><p>Answer seven easy questions by tapping, typing, or talking. Jimmy’s Council will turn your answers into the trip plan.</p></div><div class="countdown" id="countdown">Counting down…</div></aside>
+
+  <section class="section" id="first-take">
+    <div class="section-head"><div><div class="kicker">Jimmy’s first take</div><h2>The smartest shape for three days</h2></div><p class="section-intro">Keep each day in one part of London. That means more London and less time underground. This is the opening sketch; your answers decide the final version.</p></div>
+    <div class="day-grid">
+      <article class="day"><div class="day-no">Day one <span>01</span></div><h3>Royal London, right outside your door</h3><p>Start gently after travel and let the landmarks come to you. Your hotel area makes this the easiest win.</p><ul class="stops"><li>Westminster Bridge, Big Ben &amp; the Abbey</li><li>St James’s Park to Buckingham Palace</li><li>Covent Garden or a West End show</li><li>London Eye near sunset</li></ul></article>
+      <article class="day"><div class="day-no">Day two <span>02</span></div><h3>Tower, market &amp; the Thames</h3><p>Book the Tower at opening, then reward yourselves with lunch at Borough Market. Walk the river only as far as feels good.</p><ul class="stops"><li>Tower of London at opening</li><li>Tower Bridge photos</li><li>Borough Market lunch</li><li>Tate Modern, St Paul’s view &amp; South Bank</li></ul></article>
+      <article class="day"><div class="day-no">Day three <span>03</span></div><h3>The London that feels like Rosy</h3><p>This is the flex day: antiques, flowers, fashion, museums, neighborhoods, or a long lunch. We’ll choose after you answer.</p><ul class="stops"><li>Portobello if it’s Saturday</li><li>Columbia Road if it’s Sunday</li><li>Notting Hill, Kensington or Camden</li><li>One beautiful final dinner</li></ul></article>
+    </div>
+  </section>
+
+  <section class="recommend" aria-labelledby="restaurant-title">
+    <div><div class="kicker">Best first restaurant pick near the London Eye</div><h2 id="restaurant-title">Skylon at the Royal Festival Hall.</h2><p>It’s close enough to stroll home, but it still feels like an occasion: Modern British food, a dramatic room, and floor-to-ceiling views of the Thames. Ask for a river-facing table and time dinner around sunset.</p><div class="why"><span>Easy South Bank walk</span><span>River view</span><span>Special, not stuffy</span><span>Open daily</span></div></div>
+    <article class="restaurant-card"><small>Jimmy’s reservation note</small><h3>Book the window.</h3><p>Make the view part of the dinner. If Rosie prefers cozy, historic, adventurous, or ultra-fancy, her answers will change the recommendation.</p><a href="https://skylon-restaurant.co.uk/" target="_blank" rel="noopener">See Skylon &amp; book <span>↗</span></a></article>
+  </section>
+
+  <section class="section" id="markets">
+    <div class="section-head"><div><div class="kicker">The market shortlist</div><h2>Choose by mood, not hype</h2></div><p class="section-intro">Borough is the sure thing for food. After that, the best market depends on which three dates are the London dates and what you actually love hunting for.</p></div>
+    <div class="markets">
+      <article class="market"><div class="tag">Best first market · Food</div><h3>Borough Market</h3><p>The essential London food market. Go near opening—especially on Saturday—then pair it with the Tower, Tower Bridge, or a Thames walk.</p><a href="https://boroughmarket.org.uk/visit-us/" target="_blank" rel="noopener">Hours &amp; official guide ↗</a></article>
+      <article class="market"><div class="tag">Best Saturday · Antiques &amp; vintage</div><h3>Portobello Road</h3><p>Colorful Notting Hill streets, antiques, vintage finds, people-watching, and a proper browse. Saturday has the fullest market energy.</p><a href="https://visitportobello.com/" target="_blank" rel="noopener">Explore Portobello ↗</a></article>
+      <article class="market"><div class="tag">Best Sunday · Flowers &amp; East London</div><h3>Columbia Road</h3><p>A flower-packed Sunday morning with independent shops. It combines naturally with Brick Lane and Spitalfields afterward.</p><a href="https://columbiaroad.info/" target="_blank" rel="noopener">Sunday market details ↗</a></article>
+    </div>
+    <aside class="bath-note"><div style="font-size:28px">♨</div><div><b>Bath deserves its own unhurried chapter.</b><p>The Roman Baths’ September 2026 tickets are already listed, with guided tours running daily. We’ll place this properly after we know your Bath dates. <a href="https://www.romanbaths.co.uk/tickets/2026-09-september" target="_blank" rel="noopener">See official September information ↗</a></p></div></aside>
+  </section>
+
+  <section class="section" id="questions">
+    <div class="planner-intro"><div class="kicker">Now make it yours</div><h2>Rosy, just talk to us.</h2><p>No research. No perfect answers. Tap what sounds good, then say or type anything else. Your progress stays on this device until you press send.</p></div>
+    <section class="planner" id="room">
+      <div class="form-head"><strong>THE ROSY TRIP BRIEF</strong><span class="progress-label" id="progressLabel">1 of 7</span></div><div class="track"><div class="fill" id="progressFill"></div></div>
+      <form id="rosyForm">
+        <div class="question active" data-q="1"><div class="qnum">Question 01 · The dates</div><h3>Which three days are actually your London days?</h3><p class="prompt">We know the whole trip is September 3–15. Tell us when London ends and Bath—or anywhere else—begins.</p><div class="chips" data-mode="single"><button class="chip" type="button">Sep 3–5</button><button class="chip" type="button">Sep 4–6</button><button class="chip" type="button">Sep 5–7</button><button class="chip" type="button">Not sure yet</button></div><textarea name="dates" placeholder="The London nights are…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">Your voice becomes text. No audio file is stored.</span></div></div>
+
+        <div class="question" data-q="2"><div class="qnum">Question 02 · The pace</div><h3>How do you want the days to feel?</h3><p class="prompt">There is no prize for squeezing in twelve things. Pick the rhythm that sounds like a vacation.</p><div class="chips" data-mode="single"><button class="chip" type="button">Easy &amp; spacious</button><button class="chip" type="button">A happy middle</button><button class="chip" type="button">Pack it in</button></div><textarea name="pace" placeholder="A perfect day feels like…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">Think out loud—messy is useful.</span></div></div>
+
+        <div class="question" data-q="3"><div class="qnum">Question 03 · The magic</div><h3>What would make you say, “That was London”?</h3><p class="prompt">Tap everything with a little pull. We’ll use the pattern, not force every item into the schedule.</p><div class="chips" data-mode="multi"><button class="chip" type="button">Palaces &amp; history</button><button class="chip" type="button">Markets &amp; food</button><button class="chip" type="button">West End theatre</button><button class="chip" type="button">Pretty neighborhoods</button><button class="chip" type="button">Museums &amp; art</button><button class="chip" type="button">Shopping</button><button class="chip" type="button">Pubs &amp; music</button><button class="chip" type="button">River views</button></div><textarea name="magic" placeholder="The thing I’m most excited to experience is…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">Tell us what you picture when you picture London.</span></div></div>
+
+        <div class="question" data-q="4"><div class="qnum">Question 04 · The table</div><h3>What kind of meals make you happiest?</h3><p class="prompt">This decides whether Skylon stays the pick and which reservations deserve one of your three nights.</p><div class="chips" data-mode="multi"><button class="chip" type="button">Classic British</button><button class="chip" type="button">Cozy pub</button><button class="chip" type="button">Indian</button><button class="chip" type="button">Italian</button><button class="chip" type="button">Adventurous</button><button class="chip" type="button">One big splurge</button><button class="chip" type="button">Casual only</button></div><textarea name="food" placeholder="Foods we love, foods we avoid, allergies, budget, or the kind of dinner we want…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">Dietary needs matter more than being adventurous.</span></div></div>
+
+        <div class="question" data-q="5"><div class="qnum">Question 05 · The market</div><h3>What do you want to hunt for?</h3><p class="prompt">This is how we choose Borough, Portobello, Columbia Road, Camden—or skip a second market entirely.</p><div class="chips" data-mode="multi"><button class="chip" type="button">Food to taste</button><button class="chip" type="button">Antiques</button><button class="chip" type="button">Vintage clothes</button><button class="chip" type="button">Flowers</button><button class="chip" type="button">Artisan gifts</button><button class="chip" type="button">Music &amp; alternative</button><button class="chip" type="button">Mostly people-watch</button></div><textarea name="markets" placeholder="At a market I want to find…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">One vivid answer can pick the whole neighborhood.</span></div></div>
+
+        <div class="question" data-q="6"><div class="qnum">Question 06 · The hard no</div><h3>What could quietly ruin the trip?</h3><p class="prompt">Tell us what to protect you from. This is often more useful than another must-see list.</p><div class="chips" data-mode="multi"><button class="chip" type="button">Long lines</button><button class="chip" type="button">Too much walking</button><button class="chip" type="button">Early mornings</button><button class="chip" type="button">Packed crowds</button><button class="chip" type="button">Formal dining</button><button class="chip" type="button">Over-scheduling</button><button class="chip" type="button">Lots of stairs</button></div><textarea name="avoid" placeholder="Please do not build us a trip with…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">Mobility or accessibility needs are welcome here too.</span></div></div>
+
+        <div class="question" data-q="7"><div class="qnum">Question 07 · The rest of the adventure</div><h3>Tell us what you already know about Bath—and anything else.</h3><p class="prompt">How many nights? Roman Baths, spa time, Jane Austen, Cotswolds, Stonehenge, gardens, shopping? Also tell us who is traveling and whether you’re celebrating anything.</p><div class="chips" data-mode="multi"><button class="chip" type="button">Roman Baths</button><button class="chip" type="button">Thermal spa</button><button class="chip" type="button">Jane Austen</button><button class="chip" type="button">Cotswolds</button><button class="chip" type="button">Stonehenge</button><button class="chip" type="button">Beautiful gardens</button><button class="chip" type="button">No idea yet</button></div><textarea name="bath" placeholder="Here’s what we know about the rest of the trip…"></textarea><div class="voice-row"><button class="mic" type="button"><span class="dot"></span><span>Speak my answer</span></button><span class="voice-note">This is the catch-all. Say anything Jimmy should know.</span></div></div>
+
+        <div class="nav-buttons" id="formNav"><button class="nav-btn back" id="backBtn" type="button" disabled>← Back</button><button class="nav-btn next" id="nextBtn" type="button">Next question →</button></div>
+        <div class="submit-panel" id="submitPanel"><div class="seal">✓</div><h3>That’s everything we need.</h3><p>Press send and your exact answers go to Jimmy’s team. Then the Council can turn this sketch into Rosy and Jim’s actual London-and-Bath plan.</p><button class="submit-btn" id="submitBtn" type="submit">Send my answers to Jimmy →</button><p class="privacy">Only what you entered on this page is sent. Voice answers are converted to text in your browser.</p><div class="error" id="errorMsg"><p>We could not confirm the delivery. Your answers are still safe on this device.</p><div class="fallback-actions"><button class="fallback-btn" id="retryBtn" type="button">Try once more</button><button class="fallback-btn" id="copyBtn" type="button">Copy my answers</button><button class="fallback-btn" id="shareBtn" type="button">Share my answers</button></div></div></div>
+        <div class="success" id="success"><h3>Rosy, we’ve got it.</h3><p>You don’t need to research another thing right now. Jimmy and the Council have your answers and can build the trip around what you actually love.</p><p class="tiny">Next stop: your made-for-you London &amp; Bath plan.</p></div>
+      </form>
+      <iframe class="delivery-frame" id="deliveryFrame" name="deliveryFrame" title="Answer delivery confirmation"></iframe>
+    </section>
+
+    <details class="sources"><summary>Planning sources &amp; freshness</summary><p>Checked August 5, 2026. Always recheck exact hours and availability before booking.</p><ul><li><a href="https://www.visitlondon.com/things-to-do/visiting-london-for-the-first-time/firsttime-visitors-itinerary" target="_blank" rel="noopener">Visit London: first-time three-day guide</a></li><li><a href="https://www.londoneye.com/plan-your-visit/before-you-visit/opening-hours/" target="_blank" rel="noopener">London Eye: official hours</a></li><li><a href="https://www.hrp.org.uk/tower-of-london/" target="_blank" rel="noopener">Tower of London: official visit page</a></li><li><a href="https://boroughmarket.org.uk/visit-us/" target="_blank" rel="noopener">Borough Market: official hours</a></li><li><a href="https://visitportobello.com/" target="_blank" rel="noopener">Portobello Road Market: official guide</a></li><li><a href="https://columbiaroad.info/" target="_blank" rel="noopener">Columbia Road: Sunday hours</a></li><li><a href="https://skylon-restaurant.co.uk/" target="_blank" rel="noopener">Skylon: restaurant &amp; reservations</a></li><li><a href="https://www.romanbaths.co.uk/tickets/2026-09-september" target="_blank" rel="noopener">Roman Baths: September 2026</a></li></ul></details>
+  </section>
+
+  <footer>Made with love for Rosy &amp; Jim by Jimmy and the Council · Private working link · Not affiliated with the places listed</footer>
+</main>
+
+<script>
+const FORM_ENDPOINT='https://formspree.io/f/mgoqppzg';
+const form=document.getElementById('rosyForm');
+const questions=[...document.querySelectorAll('.question')];
+const nav=document.getElementById('formNav');
+const back=document.getElementById('backBtn');
+const next=document.getElementById('nextBtn');
+const submitPanel=document.getElementById('submitPanel');
+const fill=document.getElementById('progressFill');
+const label=document.getElementById('progressLabel');
+let current=0,activeRecognition=null,deliveryArmed=false,deliveryTimer=null,lastMessage='';
+
+function save(){
+  const data={answers:{},chips:{}};
+  form.querySelectorAll('textarea').forEach(t=>data.answers[t.name]=t.value);
+  questions.forEach((q,i)=>data.chips[i]=[...q.querySelectorAll('.chip.selected')].map(c=>c.textContent.trim()));
+  localStorage.setItem('rosy-trip-brief-v1',JSON.stringify(data));
+}
+function restore(){
+  try{
+    const data=JSON.parse(localStorage.getItem('rosy-trip-brief-v1')||'{}');
+    form.querySelectorAll('textarea').forEach(t=>{if(data.answers&&data.answers[t.name])t.value=data.answers[t.name]});
+    questions.forEach((q,i)=>{const selected=(data.chips&&data.chips[i])||[];q.querySelectorAll('.chip').forEach(c=>c.classList.toggle('selected',selected.includes(c.textContent.trim())))});
+  }catch(e){}
+}
+restore();
+form.querySelectorAll('textarea').forEach(t=>t.addEventListener('input',save));
+document.querySelectorAll('.chips').forEach(group=>group.addEventListener('click',e=>{
+  const chip=e.target.closest('.chip');if(!chip)return;
+  if(group.dataset.mode==='single'){group.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));chip.classList.add('selected')}else{chip.classList.toggle('selected')}
+  save();
+}));
+
+function show(i){
+  current=i;questions.forEach((q,n)=>q.classList.toggle('active',n===i));submitPanel.classList.remove('active');nav.style.display='flex';
+  back.disabled=i===0;next.textContent=i===questions.length-1?'Review & send →':'Next question →';
+  fill.style.width=((i+1)/questions.length*100)+'%';label.textContent=(i+1)+' of '+questions.length;
+  document.getElementById('room').scrollIntoView({behavior:'smooth',block:'start'});
+}
+back.addEventListener('click',()=>show(Math.max(0,current-1)));
+next.addEventListener('click',()=>{if(current<questions.length-1)show(current+1);else{questions[current].classList.remove('active');nav.style.display='none';submitPanel.classList.add('active');label.textContent='Ready to send';fill.style.width='100%';document.getElementById('room').scrollIntoView({behavior:'smooth',block:'start'})}});
+
+const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+document.querySelectorAll('.mic').forEach(button=>button.addEventListener('click',()=>{
+  const area=button.closest('.question').querySelector('textarea');const note=button.nextElementSibling;
+  if(!SpeechRecognition){area.focus();note.textContent='Use the microphone on your phone keyboard to dictate here.';return}
+  if(activeRecognition){activeRecognition.stop();activeRecognition=null;return}
+  const r=new SpeechRecognition();activeRecognition=r;r.continuous=true;r.interimResults=true;r.lang='en-US';
+  const existing=area.value.trim();let finalText='';button.classList.add('listening');button.querySelector('span:last-child').textContent='Listening… tap to stop';
+  r.onresult=e=>{let interim='';for(let i=e.resultIndex;i<e.results.length;i++){if(e.results[i].isFinal)finalText+=e.results[i][0].transcript+' ';else interim+=e.results[i][0].transcript}area.value=[existing,finalText,interim].filter(Boolean).join(' ').trim();save()};
+  r.onend=()=>{button.classList.remove('listening');button.querySelector('span:last-child').textContent='Speak my answer';activeRecognition=null;save()};
+  r.onerror=()=>{note.textContent='Voice paused. Tap again—or use your phone keyboard microphone.'};r.start();
+}));
+
+function answerBlock(q,i){
+  const title=q.querySelector('h3').textContent.trim();const choices=[...q.querySelectorAll('.chip.selected')].map(c=>c.textContent.trim());const detail=q.querySelector('textarea').value.trim();
+  return `${i+1}. ${title}\nSelections: ${choices.length?choices.join(', '):'[None selected]'}\nNotes: ${detail||'[No extra note]'}`;
+}
+function showDeliverySuccess(){
+  if(!deliveryArmed)return;deliveryArmed=false;clearTimeout(deliveryTimer);submitPanel.classList.remove('active');document.getElementById('success').classList.add('active');document.querySelector('.form-head').style.display='none';document.querySelector('.track').style.display='none';localStorage.removeItem('rosy-trip-brief-v1');
+}
+function sendNative(){
+  const btn=document.getElementById('submitBtn');const error=document.getElementById('errorMsg');btn.disabled=true;btn.textContent='Sending your answers…';error.style.display='none';
+  lastMessage=questions.map(answerBlock).join('\n\n────────────────────\n\n');
+  const carrier=document.createElement('form');carrier.method='POST';carrier.action=FORM_ENDPOINT;carrier.target='deliveryFrame';carrier.style.display='none';
+  const fields={_subject:'Rosy & Jim — London and Bath Trip Brief Submitted',name:'Rosy and Jim',source:'https://ineedjimmy.com/rosy/',travel_dates:'September 3–15, 2026',message:lastMessage};
+  Object.entries(fields).forEach(([name,value])=>{const input=document.createElement('input');input.type='hidden';input.name=name;input.value=value;carrier.appendChild(input)});
+  document.body.appendChild(carrier);deliveryArmed=true;carrier.submit();carrier.remove();
+  clearTimeout(deliveryTimer);deliveryTimer=setTimeout(()=>{if(!deliveryArmed)return;deliveryArmed=false;error.style.display='block';btn.disabled=false;btn.textContent='Send my answers to Jimmy →'},15000);
+}
+document.getElementById('deliveryFrame').addEventListener('load',()=>{if(deliveryArmed)setTimeout(showDeliverySuccess,350)});
+form.addEventListener('submit',e=>{e.preventDefault();sendNative()});
+document.getElementById('retryBtn').addEventListener('click',sendNative);
+document.getElementById('copyBtn').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(lastMessage);document.getElementById('copyBtn').textContent='Copied ✓'}catch(e){const box=document.createElement('textarea');box.value=lastMessage;document.body.appendChild(box);box.select();document.execCommand('copy');box.remove();document.getElementById('copyBtn').textContent='Copied ✓'}});
+const shareBtn=document.getElementById('shareBtn');if(!navigator.share)shareBtn.style.display='none';shareBtn.addEventListener('click',()=>navigator.share({title:'Rosy & Jim — London and Bath Trip Brief',text:lastMessage}).catch(()=>{}));
+
+function updateCountdown(){
+  const now=new Date();const trip=new Date('2026-09-03T00:00:00-04:00');const days=Math.ceil((trip-now)/86400000);const el=document.getElementById('countdown');
+  el.textContent=days>1?days+' days to go':days===1?'Tomorrow!':days===0?'The adventure begins today':'The adventure has begun';
+}
+updateCountdown();
+</script>
+</body>
+</html>

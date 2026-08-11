@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kasey's Ikigai — The AI Plan on One Page</title>
+<style>
+  :root{
+    --ink:#2b2b33; --soft:#6b6b78; --bg:#faf8f4; --card:#ffffff;
+    --love:#e9c46a; --good:#8ab17d; --paid:#7fb3c8; --needs:#e76f51;
+    --pick:#5a8f5d; --line:#d8d3c8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:Georgia,'Times New Roman',serif; background:var(--bg); color:var(--ink); padding:36px 20px 60px;}
+  .wrap{max-width:1060px; margin:0 auto;}
+  h1{font-size:34px; text-align:center; letter-spacing:.5px;}
+  .sub{text-align:center; color:var(--soft); font-style:italic; margin:8px 0 34px; font-size:17px;}
+  .center{display:flex; justify-content:center; margin-bottom:10px;}
+  .ikigai{position:relative; width:340px; height:340px;}
+  .circle{position:absolute; width:200px; height:200px; border-radius:50%; opacity:.55; mix-blend-mode:multiply;}
+  .c1{background:var(--love); top:0; left:70px;}
+  .c2{background:var(--good); top:70px; left:0;}
+  .c3{background:var(--paid); top:140px; left:70px;}
+  .c4{background:var(--needs); top:70px; left:140px;}
+  .clabel{position:absolute; font-size:12.5px; font-weight:bold; letter-spacing:.4px; color:#3d3d46; text-align:center; width:120px; font-family:Helvetica,Arial,sans-serif;}
+  .l1{top:22px; left:110px;}
+  .l2{top:158px; left:-14px;}
+  .l3{top:296px; left:110px;}
+  .l4{top:158px; left:236px;}
+  .core{position:absolute; top:132px; left:132px; width:76px; height:76px; border-radius:50%; background:#3e5641; color:#fff; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:bold; text-align:center; font-family:Helvetica,Arial,sans-serif; box-shadow:0 4px 14px rgba(0,0,0,.25); z-index:2;}
+  .core-note{text-align:center; font-size:16px; color:var(--ink); margin:6px auto 40px; max-width:560px;}
+  .core-note b{color:#3e5641;}
+  .branches{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+  @media(max-width:760px){.branches{grid-template-columns:1fr;}}
+  .branch{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px 22px; box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .branch h2{font-size:19px; margin-bottom:4px; display:flex; align-items:center; gap:9px;}
+  .tag{font-family:Helvetica,Arial,sans-serif; font-size:10.5px; font-weight:bold; letter-spacing:1px; padding:3px 9px; border-radius:20px; color:#fff;}
+  .t-love{background:#c99a2e;} .t-drain{background:#a05252;} .t-build{background:#4f7a52;} .t-later{background:#7d8aa0;}
+  .branch p.lead{color:var(--soft); font-style:italic; font-size:14.5px; margin:6px 0 12px;}
+  ul{list-style:none;}
+  li{padding:7px 0 7px 22px; position:relative; font-size:15.5px; line-height:1.45; border-top:1px dashed #ece7dc;}
+  li:first-child{border-top:none;}
+  li::before{content:"—"; position:absolute; left:0; color:#b9b2a2;}
+  .quote{font-style:italic; color:#5c5c68;}
+  .picked{background:#eef5ee; border:2px solid var(--pick); box-shadow:0 4px 14px rgba(79,122,82,.18); position:relative;}
+  .picked::after{content:"★ KASEY PICKED THIS"; position:absolute; top:-11px; right:14px; background:var(--pick); color:#fff; font-family:Helvetica,Arial,sans-serif; font-size:10px; font-weight:bold; letter-spacing:1px; padding:4px 10px; border-radius:20px;}
+  .flow{margin-top:34px; background:#f2efe7; border-radius:14px; padding:22px 24px; text-align:center;}
+  .flow h3{font-size:17px; margin-bottom:14px; font-family:Helvetica,Arial,sans-serif; letter-spacing:.5px;}
+  .steps{display:flex; flex-wrap:wrap; justify-content:center; gap:8px; align-items:center;}
+  .step{background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:14px; font-family:Helvetica,Arial,sans-serif;}
+  .step b{display:block; font-size:12px; color:#4f7a52; letter-spacing:.5px;}
+  .arrow{color:#a05252; font-size:20px;}
+  .foot{text-align:center; color:var(--soft); font-size:13px; margin-top:26px; font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Kasey's Ikigai — The Plan on One Page</h1>
+  <p class="sub">Everything below has one job: delete what drains you, and pour those hours into the center of this diagram.</p>
+
+  <div class="center">
+    <div class="ikigai">
+      <div class="circle c1"></div>
+      <div class="circle c2"></div>
+      <div class="circle c3"></div>
+      <div class="circle c4"></div>
+      <div class="clabel l1">WHAT YOU LOVE</div>
+      <div class="clabel l2">WHAT YOU'RE<br>GOOD AT</div>
+      <div class="clabel l3">WHAT YOU CAN BE PAID FOR</div>
+      <div class="clabel l4">WHAT THE<br>WORLD NEEDS</div>
+      <div class="core">Deep 1:1<br>coaching<br>+ teaching</div>
+    </div>
+  </div>
+  <p class="core-note">In your own words: <b>"Teaching classes, 1:1 coaching"</b> is what makes you feel useful, energized, and proud. Everything else on this page is a sandbag we're cutting loose.</p>
+
+  <div class="branches">
+    <div class="branch">
+      <h2><span class="tag t-love">CENTER</span> Your Zone of Genius</h2>
+      <p class="lead">Protect at all costs — stays 100% human, forever.</p>
+      <ul>
+        <li>1:1 subconscious work — <span class="quote">"steering the ship so the client's brain can turn off"</span></li>
+        <li>Teaching classes &amp; group coaching</li>
+        <li>Blind-spot finding — the thing Britt herself trusts you for</li>
+        <li><span class="quote">"Anything that involves actual coaching and personalized answers"</span></li>
+      </ul>
+    </div>
+
+    <div class="branch">
+      <h2><span class="tag t-drain">DRAINS</span> The Sandbags</h2>
+      <p class="lead">Named by you — targeted for deletion.</p>
+      <ul>
+        <li><span class="quote">"Telling students for the thousandth time it's in the Google Doc"</span></li>
+        <li>Resending call links, schedules, course locations</li>
+        <li>Chasing slow-responding coaches for the monthly schedule</li>
+        <li>Tapping Circle schedule changes that need posting to Facebook (the one thing that slips)</li>
+        <li>Students stuck in victimhood who don't implement (emotional drain)</li>
+      </ul>
+    </div>
+
+    <div class="branch picked">
+      <h2><span class="tag t-build">BUILD 1</span> "It's in the Doc" Concierge</h2>
+      <p class="lead">Your stated quick win: "Oh — that actually helps."</p>
+      <ul>
+        <li>One always-current hub: every link, schedule, script, and course location</li>
+        <li>Repeat question arrives → you forward it → answer drafted in your voice with the right link → you tap send</li>
+        <li>Phase 2: students ask it directly — you never see the question at all</li>
+      </ul>
+    </div>
+
+    <div class="branch picked">
+      <h2><span class="tag t-build">BUILD 2</span> The Pattern Engine</h2>
+      <p class="lead">Your dream assistant: "Help me notice the patterns I'm working on with my students."</p>
+      <ul>
+        <li>Session insights (via consented recordings or Kasey's 60-second voice debriefs) → a living dossier per student</li>
+        <li>Before each call: a one-page brief — session #, last time, recurring themes, what shifted, what was promised</li>
+        <li>Cross-session pattern spotting — the thread a busy week makes invisible</li>
+        <li>Gently flags the not-implementing loop so you walk in with a strategy, not dread</li>
+      </ul>
+    </div>
+
+    <div class="branch">
+      <h2><span class="tag t-build">BUILD 3</span> Schedule Ops</h2>
+      <p class="lead">Kills the quiet leaks.</p>
+      <ul>
+        <li>Monthly coach schedule: AI collects availability &amp; nudges the slow responders — you're never the nag</li>
+        <li>Any schedule change → Facebook post + WhatsApp update drafted for one-tap approval</li>
+        <li>Your own "Claire": texts clients, reschedules, sends your booking link, in your voice</li>
+      </ul>
+    </div>
+
+    <div class="branch">
+      <h2><span class="tag t-later">THEN</span> The Kasey Kingdom</h2>
+      <p class="lead">Reclaimed hours → higher-leverage Kasey.</p>
+      <ul>
+        <li>Inner Circle positioning: "the coach Britt goes to for her own blind spots"</li>
+        <li>On the 7-day with Britt → the face of the Inner Circle</li>
+        <li>KaseyLeighWellness.com &amp; BossBody Energy™ — funnel rebuilt, site AI-editable, free hosting</li>
+        <li><em>Ditch the Diets</em> podcast → articles, emails, social — automatically repurposed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="flow">
+    <h3>THE SEQUENCE</h3>
+    <div class="steps">
+      <div class="step"><b>WEEK 1–2</b>Concierge live</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>WEEK 2–4</b>Pattern Engine pilot</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>MONTH 2</b>Schedule Ops + your own AI assistant</div>
+      <div class="arrow">→</div>
+      <div class="step"><b>MONTH 3+</b>Inner Circle brand build + your kingdom</div>
+    </div>
+  </div>
+
+  <p class="foot">Built from Kasey's own answers — Aug 6 call + written workday map · Aug 10, 2026</p>
+</div>
+</body>
+</html>
