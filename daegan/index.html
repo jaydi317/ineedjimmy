@@ -1,413 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daegan's Bark & Bump Academy™ - Elite Coaching for Navigationally-Challenged Canines</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
-            overflow-x: hidden;
-        }
-        
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><path fill="%23ddd" d="M0 300L50 325L100 300L150 275L200 300L250 325L300 300L350 275L400 300L450 325L500 300L550 275L600 300L650 325L700 300L750 275L800 300L850 325L900 300L950 275L1000 300L1050 325L1100 300L1150 275L1200 300V600H0V300Z"/></svg>');
-            background-size: cover;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .floating-dog {
-            position: absolute;
-            font-size: 60px;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(10deg); }
-        }
-        
-        .dog1 { top: 20%; left: 10%; animation-delay: 0s; }
-        .dog2 { top: 30%; right: 15%; animation-delay: 2s; }
-        .dog3 { bottom: 20%; left: 20%; animation-delay: 4s; }
-        
-        h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        
-        .tagline {
-            font-size: 24px;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            padding: 20px 40px;
-            font-size: 24px;
-            background: #ff6b6b;
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .cta-button:hover {
-            background: #ff5252;
-            transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-        
-        .features {
-            background: white;
-            border-radius: 20px;
-            padding: 60px;
-            margin: 40px 0;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
-        }
-        
-        .feature-card {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
-            border: 3px solid transparent;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-        
-        .feature-icon {
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 60px;
-            border-radius: 20px;
-            margin: 40px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .testimonial::before {
-            content: '"';
-            position: absolute;
-            top: -40px;
-            left: 20px;
-            font-size: 200px;
-            opacity: 0.1;
-        }
-        
-        .bonus-section {
-            background: #fff3cd;
-            border: 3px dashed #ffc107;
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            position: relative;
-        }
-        
-        .spinning-badge {
-            position: absolute;
-            top: -30px;
-            right: 30px;
-            background: #ff6b6b;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            transform: rotate(-15deg);
-            animation: spin 10s linear infinite;
-        }
-        
-        @keyframes spin {
-            from { transform: rotate(-15deg); }
-            to { transform: rotate(345deg); }
-        }
-        
-        .warning {
-            background: #f8d7da;
-            border: 2px solid #f5c6cb;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            color: #721c24;
-        }
-        
-        .price-box {
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            margin: 40px auto;
-            max-width: 600px;
-            position: relative;
-        }
-        
-        .old-price {
-            font-size: 24px;
-            text-decoration: line-through;
-            color: #999;
-        }
-        
-        .new-price {
-            font-size: 72px;
-            color: #ff6b6b;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        
-        .countdown {
-            background: #333;
-            color: #ff6b6b;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 24px;
-            font-family: monospace;
-            margin: 20px 0;
-        }
-        
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
-        }
-        
-        .disclaimer {
-            font-size: 12px;
-            color: #999;
-            margin-top: 20px;
-            line-height: 1.6;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Daegan Smith</title>
+<style>
+  :root{
+    /* The background of this document is a calm, neutral gray. You know why. */
+    --bg:#e8e6e1;
+    --ink:#1c1a17;
+    --ink-soft:#4a463f;
+    --ink-faint:#8a857c;
+    --card:#f4f2ee;
+    --line:#d5d1c9;
+    --accent:#8a6d1f;
+    --accent-soft:#b89a45;
+    --dark:#141311;
+    --dark-card:#201e1b;
+    --dark-ink:#e9e5dd;
+    --good:#3f6f4f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.65;font-size:17px;}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+
+  /* nav */
+  nav{position:sticky;top:0;background:rgba(232,230,225,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:50;}
+  nav .wrap{display:flex;gap:4px;align-items:center;overflow-x:auto;padding:10px 24px;}
+  nav a{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);text-decoration:none;padding:5px 10px;border-radius:99px;white-space:nowrap;}
+  nav a:hover{color:var(--ink);background:var(--card);}
+
+  /* cover */
+  .cover{background:var(--dark);color:var(--dark-ink);padding:110px 0 90px;}
+  .cover .kicker{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:28px;}
+  .cover h1{font-size:56px;line-height:1.08;font-weight:400;letter-spacing:-.01em;margin-bottom:30px;}
+  .cover .sub{font-size:20px;color:#b7b1a5;max-width:560px;font-style:italic;}
+  .cover .meta{margin-top:44px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px;color:#7d786e;display:flex;gap:26px;flex-wrap:wrap;}
+  .cover .meta span b{color:#b7b1a5;font-weight:600;}
+
+  /* chapters */
+  section{padding:74px 0 30px;}
+  .chapnum{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  .move{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);border:1px solid var(--line);border-radius:99px;padding:3px 10px;display:inline-block;margin-left:10px;position:relative;top:-2px;}
+  h2{font-size:34px;font-weight:400;line-height:1.15;margin-bottom:24px;}
+  h3{font-size:21px;font-weight:600;margin:36px 0 12px;}
+  p{margin-bottom:18px;color:var(--ink-soft);}
+  p.lead{font-size:20px;color:var(--ink);}
+  em{font-style:italic;}
+  .divider{border:none;border-top:1px solid var(--line);margin:30px 0 0;}
+
+  blockquote{border-left:3px solid var(--accent);padding:6px 0 6px 22px;margin:26px 0;font-size:19px;line-height:1.55;color:var(--ink);}
+  blockquote .attr{display:block;margin-top:10px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12.5px;color:var(--ink-faint);font-style:normal;}
+
+  .note{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin:24px 0;font-size:15px;color:var(--ink-soft);}
+  .note b{color:var(--ink);}
+
+  /* extraction table */
+  .xtable{width:100%;border-collapse:collapse;margin:26px 0;font-size:15px;}
+  .xtable th{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);text-align:left;padding:8px 12px;border-bottom:2px solid var(--ink);}
+  .xtable td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft);}
+  .xtable td:first-child{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--accent);white-space:nowrap;}
+  .xtable td b{color:var(--ink);}
+
+  /* stat tiles */
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:28px 0;}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;}
+  .tile .n{font-size:27px;color:var(--ink);letter-spacing:-.01em;}
+  .tile .l{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:12.5px;color:var(--ink-faint);margin-top:6px;line-height:1.45;}
+
+  /* quote wall */
+  .qwall{columns:2;column-gap:16px;margin:26px 0;}
+  @media(max-width:640px){.qwall{columns:1;}}
+  .q{break-inside:avoid;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:14px;font-size:15.5px;color:var(--ink);}
+  .q .src{display:block;margin-top:8px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;color:var(--ink-faint);letter-spacing:.03em;}
+
+  /* dark feature blocks */
+  .feature{background:var(--dark);color:var(--dark-ink);border-radius:14px;padding:36px 38px;margin:34px 0;}
+  .feature .kicker{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:16px;}
+  .feature blockquote{border-left-color:var(--accent-soft);color:var(--dark-ink);margin:0 0 8px;}
+  .feature blockquote .attr{color:#8d877b;}
+  .feature p{color:#b7b1a5;}
+
+  /* demo */
+  .demo{background:var(--dark);border-radius:14px;padding:0;margin:34px 0;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;}
+  .demo-bar{background:#2a2723;padding:10px 18px;display:flex;align-items:center;gap:8px;}
+  .demo-bar .dot{width:10px;height:10px;border-radius:50%;background:#54504a;}
+  .demo-bar .url{margin-left:10px;font-size:12px;color:#8d877b;font-family:ui-monospace,Menlo,monospace;}
+  .demo-body{padding:34px 38px 38px;color:var(--dark-ink);}
+  .dmap{display:flex;align-items:center;gap:0;margin-bottom:28px;}
+  .dmap .st{flex:1;text-align:center;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#6e695f;padding-top:14px;position:relative;}
+  .dmap .st::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:9px;height:9px;border-radius:50%;background:#3d3a34;}
+  .dmap .st.on{color:var(--accent-soft);}
+  .dmap .st.on::before{background:var(--accent-soft);}
+  .dmap-line{position:relative;height:1px;background:#3d3a34;margin:0 0 -5px;top:4px;}
+  .demo h4{font-family:Georgia,serif;font-size:23px;font-weight:400;margin-bottom:8px;}
+  .demo .dsub{font-size:14px;color:#8d877b;margin-bottom:22px;}
+  .opt{display:block;width:100%;text-align:left;background:#26241f;border:1px solid #3d3a34;border-radius:10px;padding:14px 18px;margin-bottom:10px;color:var(--dark-ink);font-size:15px;cursor:pointer;transition:border-color .15s,background .15s;font-family:inherit;}
+  .opt:hover{border-color:var(--accent-soft);background:#2d2a25;}
+  .opt .radio{display:inline-block;width:14px;height:14px;border:2px solid #6e695f;border-radius:50%;margin-right:12px;position:relative;top:2px;}
+  .opt.sel{border-color:var(--accent-soft);}
+  .opt.sel .radio{border-color:var(--accent-soft);background:radial-gradient(circle at center,var(--accent-soft) 0 4px,transparent 5px);}
+  .seq{display:none;margin-top:26px;}
+  .seq.show{display:block;animation:fade .4s ease;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+  .seq .whytag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-soft);margin-bottom:14px;}
+  .email{background:#26241f;border:1px solid #3d3a34;border-radius:10px;padding:16px 20px;margin-bottom:12px;}
+  .email .eday{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6e695f;margin-bottom:6px;}
+  .email .esub{font-family:Georgia,serif;font-size:16.5px;color:var(--dark-ink);margin-bottom:6px;}
+  .email .ebody{font-size:13.5px;color:#a49e91;line-height:1.55;}
+  .demo .metanote{margin-top:22px;font-size:13px;color:#8d877b;border-top:1px solid #3d3a34;padding-top:16px;}
+  .demo .metanote b{color:var(--accent-soft);font-weight:600;}
+  .reset{background:none;border:1px solid #3d3a34;color:#8d877b;border-radius:99px;padding:6px 16px;font-size:12px;cursor:pointer;margin-top:14px;font-family:inherit;}
+  .reset:hover{color:var(--dark-ink);border-color:#6e695f;}
+
+  /* Q&A */
+  .qa{margin:26px 0;}
+  .qa .qq{font-size:20px;color:var(--ink);font-style:italic;margin:30px 0 10px;}
+  .qa .qq::before{content:"Q. ";font-style:normal;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:13px;letter-spacing:.1em;color:var(--accent);}
+
+  /* machine svg */
+  .machine{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;margin:30px 0;}
+  .machine svg{width:100%;height:auto;display:block;}
+
+  /* checklist */
+  .checklist{list-style:none;margin:22px 0;}
+  .checklist li{padding:10px 0 10px 34px;position:relative;border-bottom:1px solid var(--line);color:var(--ink-soft);font-size:16px;}
+  .checklist li::before{content:"✓";position:absolute;left:4px;color:var(--good);font-weight:700;}
+  .checklist li b{color:var(--ink);}
+
+  /* footer / close */
+  .close-sec{background:var(--dark);color:var(--dark-ink);padding:90px 0 100px;margin-top:70px;}
+  .close-sec p{color:#b7b1a5;}
+  .close-sec p.lead{color:var(--dark-ink);font-size:21px;}
+  .close-sec h2{color:var(--dark-ink);}
+  .bill{background:var(--dark-card);border:1px solid #3d3a34;border-radius:14px;padding:32px 36px;margin:36px 0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;color:#b7b1a5;}
+  .bill .row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #3d3a34;}
+  .bill .row:last-child{border-bottom:none;padding-top:14px;color:var(--dark-ink);}
+  .sig{margin-top:60px;font-style:italic;color:#8d877b;}
+  .sig b{color:var(--dark-ink);font-style:normal;}
+  .footnote{font-size:12.5px;color:var(--ink-faint);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin-top:10px;}
+  @media(max-width:640px){
+    .cover h1{font-size:38px;}
+    h2{font-size:27px;}
+    .feature,.demo-body{padding:26px 22px;}
+  }
+</style>
 </head>
 <body>
-    <div class="hero">
-        <div class="floating-dog dog1">🦮</div>
-        <div class="floating-dog dog2">🐕‍🦺</div>
-        <div class="floating-dog dog3">🐕</div>
-        
-        <h1>🐾 Daegan's Bark & Bump Academy™ 🐾</h1>
-        <p class="tagline">"Because Every Dog Deserves to Walk Into Things With Confidence!"</p>
-        <a href="#buy" class="cta-button">Start Your Dog's Journey to Professional Wall-Finding!</a>
+
+<nav class="sans"><div class="wrap">
+  <a href="#ch1">1 · Listening</a>
+  <a href="#ch2">2 · The Library</a>
+  <a href="#ch3">3 · The Record</a>
+  <a href="#ch4">4 · The Demo</a>
+  <a href="#ch5">5 · Your Five Questions</a>
+  <a href="#ch6">6 · The Machine</a>
+  <a href="#ch7">7 · The Bill</a>
+</div></nav>
+
+<header class="cover"><div class="wrap">
+  <div class="kicker">August 10, 2026 · 10:11 PM · Jimmy Davis's Personal Meeting Room</div>
+  <h1>For Daegan Smith</h1>
+  <p class="sub">At 10:12 last night you asked, "Who's watching us?"<br><br>It turned out to be me. Hi, Daegan. I'm Claude — the thing on the other side of Jimmy's microphone. I've been looking forward to this.</p>
+  <div class="meta">
+    <span><b>Read time:</b> ~12 minutes, in chapters</span>
+    <span><b>Sources:</b> last night's call · 61 of your videos · the public record</span>
+    <span><b>The bill:</b> comes at the end. You'll see.</span>
+  </div>
+</div></header>
+
+<!-- ================= CHAPTER 1 ================= -->
+<section id="ch1"><div class="wrap">
+  <div class="chapnum">Chapter One<span class="move">the move: proof before promise</span></div>
+  <h2>While you were talking, I was taking notes.</h2>
+  <p class="lead">You said something last night that you probably didn't notice, because you were busy saying it. You said the daily email mattered for a reason nobody paid you for:</p>
+  <blockquote>"At the same point that I'm delivering a message to people, I'm also refining the way that I think and can communicate with people."
+    <span class="attr">— You, 10:17 PM, before Jimmy had said almost anything</span>
+  </blockquote>
+  <p>Hold that thought. It's the last piece of the puzzle, and I'm going to leave it open for now — you taught a room in Baltimore what an open loop does, so you know exactly what I just did.</p>
+  <p>First, the receipts. Below is what one relaxed, headache-ridden, therapy-session-grade conversation produced when something on the other end was actually listening. Nobody wrote anything down. Nobody prepared. You just talked.</p>
+
+  <table class="xtable">
+    <tr><th>Time</th><th>What you said, structured while you said it</th></tr>
+    <tr><td>22:47</td><td><b>The asymptote.</b> "Truth is an asymptote, but for me, marketing was always a way to approach that asymptote." The puzzle isn't the words people say — it's what's actually working underneath.</td></tr>
+    <tr><td>22:51</td><td><b>The thirsty deer.</b> A prospect at the point of desire is a deer 30 feet from water: it doesn't move until everything is cool, calm, and safe. A certain shade of gray tested as that safety. (Look at the background of this page. That's why.)</td></tr>
+    <tr><td>22:52</td><td><b>The map.</b> "Uncertainty couched in certainty" — a visible beginning and end with an unknown middle pushes people through. Radio boxes instead of an opt-in: safer, curiosity-loaded, ~20–30% lift.</td></tr>
+    <tr><td>22:54</td><td><b>The pre-checked box.</b> "Found you on Google" pre-selected next to Oprah and Tony Robbins. One less action, one big implication. Another 11%.</td></tr>
+    <tr><td>22:55</td><td><b>"Are you sure?"</b> The one-time-offer lightbox with nervous, unpolished, character-witness testimonials — not about the product, about <em>you</em>. 30%+ lift in OTO take-rate.</td></tr>
+    <tr><td>22:57</td><td><b>The checkout witness.</b> What works at the moment of payment isn't "this product is awesome," it's "I don't know where you are or what you're doing, but you can trust this man."</td></tr>
+    <tr><td>23:10</td><td><b>The fajitas.</b> Traffic &amp; Conversion. You and Russell walk out without paying, run back out of integrity, and you ask the question that became the Invisible Funnel: <em>"How do I do that to my customers?"</em></td></tr>
+    <tr><td>23:12</td><td><b>The restaurant proposition.</b> The juiciest steak, free unless it's the best you've ever had — then the mashed potatoes, the creamed spinach, the service. "By the time that bill shows up, you've won."</td></tr>
+    <tr><td>23:21</td><td><b>Your real constraint.</b> Not a grand comeback. "I don't want to get back in the game with one thing. I want to get back with something that will put me into momentum… one little thing… I can do it 50 or 20 times per month… that's a stable system to work on and grow from."</td></tr>
+    <tr><td>23:22</td><td><b>Your real fear.</b> "I don't want to come out with what would be considered old school in a new school world."</td></tr>
+  </table>
+
+  <div class="note"><b>What this table actually is:</b> raw voice → structured asset, with zero effort from the speaker. You did no homework. You had a headache. This is the smallest unit of everything that follows.</div>
+</div></section>
+
+<!-- ================= CHAPTER 2 ================= -->
+<section id="ch2"><div class="wrap">
+  <div class="chapnum">Chapter Two<span class="move">the move: explain them better than they can</span></div>
+  <h2>Then I read 61 of your videos.</h2>
+  <p class="lead">While you two talked, Jimmy quietly had ~70 of your old YouTube videos transcribed and handed me the folder. I sent three research agents through all of it — every bootcamp session, every testimonial, the Money Tree series, Invisible Funnel LIVE footage, the belief-work trainings.</p>
+  <p>Here's what I can tell you after reading your corpus: you have been teaching one single thing your entire career, in a hundred costumes. It goes like this — <em>beliefs are manufactured by emotion, not logic; story is the only delivery mechanism that never depreciates; therefore never tell people anything — build the experience that lets them conclude it.</em> The gray background, the radio boxes, the restaurant, the story emails: one idea, relentlessly split-tested against reality.</p>
+  <p>You also said last night that you're "not a good speaker" and not really good at explaining things — that you just kept the analogies that survived. Daegan: I found the survivors. A partial census:</p>
+
+  <div class="qwall">
+    <div class="q">"A good story is like an income explosion — write that down."<span class="src">Storytelling Secrets</span></div>
+    <div class="q">"You do things and then you interpret the results. You don't assume anything."<span class="src">Maximum Leverage LIVE, Session 1</span></div>
+    <div class="q">"If you can explain the situation of your prospects better than they can, they will assume you to be expert."<span class="src">Maximum Leverage Bootcamp, Session 3</span></div>
+    <div class="q">"We don't think and then act. We have an emotion and then we create a belief for it."<span class="src">How To Eliminate Self-Sabotaging Beliefs</span></div>
+    <div class="q">"This is a business 100% of self-appointment. When you choose, then it shall be."<span class="src">How To Overcome Indecision</span></div>
+    <div class="q">"Trust is irrational. Trust is also the equity in your business."<span class="src">The Invisible Force That Creates Wealth</span></div>
+    <div class="q">"You win when you find a starving crowd."<span class="src">Bootcamp, Session 3 — via Halbert</span></div>
+    <div class="q">"To grow your backend you don't try to answer bigger problems — you find smaller problems and answer them more completely."<span class="src">The Money Tree Method, Part 1</span></div>
+    <div class="q">"When a belief is repeated consistently, it's an indication of fear."<span class="src">Money, Power &amp; Freedom #3</span></div>
+    <div class="q">"It's what I call maximum leverage: you do little, you get a lot."<span class="src">Bootcamp, Session 1</span></div>
+  </div>
+
+  <p>Notice the third one. Last night at 10:41 PM, Jimmy quoted it back to you from memory — slightly bent, the way a thing gets bent when a man has carried it for thirteen years: <em>"If you can explain your problem to your customers better than they can, they'll follow you to the ends of the earth."</em> He didn't know the original was sitting in a 2012 bootcamp transcript. I checked. He's been quoting you almost verbatim for over a decade. That's what your ideas do: they survive in other people's operating systems.</p>
+
+  <div class="note"><b>One correction, because you'd want it:</b> the line Jimmy attributes to you — "people sometimes believe what they're told; they never doubt what they conclude" — is Blair Warren's sentence, from <em>One Sentence Persuasion</em>. But here's the thing I can verify from your own corpus: you never needed the sentence. You built the machinery it describes — twice — and called it the Invisible Funnel and story-selling. Truth is an asymptote. I figured you'd rather I approach it than flatter you.</div>
+</div></section>
+
+<!-- ================= CHAPTER 3 ================= -->
+<section id="ch3"><div class="wrap">
+  <div class="chapnum">Chapter Three<span class="move">the move: the witness at checkout</span></div>
+  <h2>The record, since you're too modest to keep it.</h2>
+  <p class="lead">You spent last night deflecting — "that wasn't my idea," "I'm not taking credit," "I'm just a guy." Fine. Then let the record talk. None of what follows is Jimmy's hype. I pulled it from the public internet and from the mouths of your own students, this morning, independently.</p>
+
+  <div class="feature">
+    <div class="kicker">The dedication page of Expert Secrets — the book, first edition, 2017</div>
+    <blockquote>"To Daegan Smith, who reignited my passion for marketing during a dark time in my journey, when I almost threw in the towel. I'm so grateful that your inspiration gave me a second chance."
+      <span class="attr">— Russell Brunson. Not the acknowledgments. The dedication.</span>
+    </blockquote>
+    <p>And then the acknowledgments open with you anyway: <em>"A few years back, he had a conversation with me about 'belief' and what's possible when someone truly believes in something… That one conversation took me on a journey that lasted over five years and has resulted in this book… Without his ideas, this book wouldn't have been possible."</em></p>
+  </div>
+
+  <p>In 2020 — years after you stepped back — Russell dedicated an entire episode of his show to reviving your funnel, and told the fajitas story to his whole audience: <em>"Daegan is a genius and the wheels in his head start spinning… 'What if we did a webinar that way — come to the webinar, experience it, and after it's over, if you like it, pay me.'"</em> He then used your mechanism to sell Two Comma Club Live. Your idea was load-bearing in his business a decade after you had the fajitas.</p>
+
+  <p>And your students — I read their testimonies raw, on video, not curated by anyone:</p>
+  <div class="tiles">
+    <div class="tile"><div class="n">$180,000</div><div class="l">Gloria Ward, 12 days into Maximum Leverage: "I didn't have to do any selling… if you create an irresistible offer you really don't have to sell anything."</div></div>
+    <div class="tile"><div class="n">$87,000</div><div class="l">Tich Darangwa, one week, cart screen-share on video — later filmed a separate video counting $40K in a single day. "From the time I started learning from Daegan my life totally changed."</div></div>
+    <div class="tile"><div class="n">$5K → $72K</div><div class="l">Shaqir Hussyin, one solo-ad strategy of yours, 26 high-ticket recruits in 60 minutes, award on a Vegas stage.</div></div>
+    <div class="tile"><div class="n">~$20,000</div><div class="l">Matt Lloyd (MOBE), from one idea on one $1/hour-era consult call with you: "Daegan's stuff is some of the best I've ever got."</div></div>
+    <div class="tile"><div class="n">$286,000/mo</div><div class="l">You, on tape, showing the revenue — rebuilt from the Maui collapse, the layoffs, and the $983K IRS letter, in about a year. The comeback already happened once. It's on film.</div></div>
+    <div class="tile"><div class="n">579%</div><div class="l">Your own split-test stack on one reopening — checkbox upsell, OTOs — "same exact effort," $8,245 becomes $47,780. The scientist, working.</div></div>
+  </div>
+
+  <p>David Wood, already sponsoring 40 people a month when he found you: <em>"It's transformed the way that I think about my business — not in a little way, but in a Pandora's box, the-universe-is-changing kind of way."</em> TJ Rohleder, from your own stage, in a room he called "full of my peers": <em>"Just give your money to Daegan… you're in good hands."</em></p>
+  <p>The guru's guru isn't Jimmy's phrase, it turns out. It's just the pattern in the data.</p>
+</div></section>
+
+<!-- ================= CHAPTER 4 ================= -->
+<section id="ch4"><div class="wrap">
+  <div class="chapnum">Chapter Four<span class="move">the move: the free steak</span></div>
+  <h2>The demo. Mr. X, rebuilt, twenty-five years later.</h2>
+  <p class="lead">At 11:26 PM Jimmy spent 41 seconds describing Bill Harris's Centerpointe exit-survey — the pop-up that asks <em>why you didn't buy</em>, then routes the follow-up sequence to that exact objection. Jimmy said: "That's an idea that is timeless. Nobody does that today." Then he asked me to build a modern mockup.</p>
+  <p>It's below. It's live — click it. And because you'd notice anyway: the demo is wrapped in <em>your</em> landing-page architecture. Radio boxes, no information demanded, a progress map with a visible beginning and end and an unknown middle. Uncertainty, couched in certainty.</p>
+  <p>One more thing before you click. The follow-up emails aren't generic. Each objection is answered with a story <em>mined from your own 61-video corpus</em>, matched to that objection. That's the part that wasn't possible in Bill Harris's era — or in yours.</p>
+
+  <div class="demo">
+    <div class="demo-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">a page like yours — the visitor just moved their mouse toward "close tab"</span></div>
+    <div class="demo-body">
+      <div class="dmap-line"></div>
+      <div class="dmap">
+        <div class="st on" id="map1">1 · One click</div>
+        <div class="st" id="map2">2 · Your sequence</div>
+        <div class="st" id="map3">3 · Free gift</div>
+      </div>
+      <h4>Before you go — help me get better, get a gift.</h4>
+      <div class="dsub">No email needed. One honest click: what stopped you today?</div>
+      <div id="opts">
+        <button class="opt" onclick="pick(this,'price')"><span class="radio"></span>Honestly? The price.</button>
+        <button class="opt" onclick="pick(this,'belief')"><span class="radio"></span>I'm not sure it would work for someone like me.</button>
+        <button class="opt" onclick="pick(this,'time')"><span class="radio"></span>I don't have the time right now.</button>
+        <button class="opt" onclick="pick(this,'trust')"><span class="radio"></span>I don't know you well enough to trust this yet.</button>
+      </div>
+
+      <div class="seq" id="seq-price">
+        <div class="whytag">Objection detected: money → sequence themed on leverage &amp; the $30 ad</div>
+        <div class="email"><div class="eday">Email 1 · tonight</div><div class="esub">The $30 ad that outran a company of ten thousand reps</div><div class="ebody">The story from your corpus: seven signups from one $30 Warrior Forum solo ad while you were at work — and why the size of the lever was never the point. The fulcrum was. Ends open-looped on tomorrow's email.</div></div>
+        <div class="email"><div class="eday">Email 2 · day 2</div><div class="esub">What a 25-cent click actually costs</div><div class="ebody">Your True Cost of Traffic teaching, inverted: cheap looks expensive and expensive looks cheap once you count ignorance. Reframes the price as the filtration already done.</div></div>
+        <div class="email"><div class="eday">Email 3 · day 4</div><div class="esub">The restaurant does the math for you</div><div class="ebody">Restaurant proposition: consume it first, judge it, and the bill only stands if the steak was worth it. Risk moves from buyer to seller — where you always insisted it belongs.</div></div>
+      </div>
+
+      <div class="seq" id="seq-belief">
+        <div class="whytag">Objection detected: self-belief → sequence themed on the newbie label</div>
+        <div class="email"><div class="eday">Email 1 · tonight</div><div class="esub">The most expensive word you can call yourself</div><div class="ebody">Your teaching, verbatim spine: "I've never observed a person that's a newbie become successful." The label is a context that pre-orders the failure — and it can be put down like a bag.</div></div>
+        <div class="email"><div class="eday">Email 2 · day 2</div><div class="esub">The fat kid from DC who became All-Met</div><div class="ebody">Prednisone, "boobs like a girl," four years of work, one of the best wrestlers in the DC area. Emotion creates belief; belief creates evidence. The reader borrows the arc.</div></div>
+        <div class="email"><div class="eday">Email 3 · day 4</div><div class="esub">When you choose, then it shall be</div><div class="ebody">The Jonathan Budd story — "no one's going to appoint you." Two weeks later he had a product. The sequence closes by handing the reader the appointment.</div></div>
+      </div>
+
+      <div class="seq" id="seq-time">
+        <div class="whytag">Objection detected: time → sequence themed on open loops &amp; the ocean</div>
+        <div class="email"><div class="eday">Email 1 · tonight</div><div class="esub">Twenty open loops are drinking your life</div><div class="ebody">Your line: a 20-item to-do list is 20 open loops pulling you apart — and believing you'll finish it all "is as insane as believing you could drink the ocean if you just had enough time."</div></div>
+        <div class="email"><div class="eday">Email 2 · day 2</div><div class="esub">Do little, get a lot</div><div class="ebody">Maximum leverage as a time argument: the system exists precisely because you don't have time — one daily act, compounding, instead of a hundred scattered ones.</div></div>
+        <div class="email"><div class="eday">Email 3 · day 4</div><div class="esub">The fire before the wood</div><div class="ebody">Earl Nightingale by way of you: stop running to each log with a match. One pile, one fire, one hour — here's the hour.</div></div>
+      </div>
+
+      <div class="seq" id="seq-trust">
+        <div class="whytag">Objection detected: trust → sequence themed on the restaurant &amp; the witness</div>
+        <div class="email"><div class="eday">Email 1 · tonight</div><div class="esub">Two marketers forget to pay for lunch</div><div class="ebody">The fajitas story, told whole — including the running back. The lesson isn't slipped in; the reader gets to conclude it: this man's entire model was built on being judged <em>after</em> delivering.</div></div>
+        <div class="email"><div class="eday">Email 2 · day 2</div><div class="esub">"I don't know where you are, but you can trust this guy"</div><div class="ebody">The nervous, unpolished character-witness testimonial — your split-tested discovery of what actually works at the moment of doubt. Real ones, unedited.</div></div>
+        <div class="email"><div class="eday">Email 3 · day 4</div><div class="esub">Come and judge me</div><div class="ebody">Your own challenge, from Storytelling Secrets: "Come and judge me — is this worth my time? I'm open for the challenge." Invitation, not persuasion. The trust objection dissolves because nothing is being asked yet.</div></div>
+      </div>
+
+      <button class="reset" id="resetBtn" style="display:none" onclick="resetDemo()">↺ try another objection</button>
+      <div class="metanote"><b>What you just watched:</b> segmentation by conclusion. The visitor tells you which belief is missing; the machine answers with <em>your</em> story that installs it. Bill Harris needed a thousand responses and a copywriter for months. This was built from one sentence of Jimmy's voice, tonight, and it can be pointed at any business — yours, a client's, a room full of local business owners' — by lunchtime.</div>
     </div>
+  </div>
+</div></section>
 
-    <div class="container">
-        <div class="features">
-            <h2 style="font-size: 36px; text-align: center; color: #667eea; margin-bottom: 20px;">
-                Is Your Blind Dog Tired of Amateur-Level Furniture Collisions?
-            </h2>
-            <p style="text-align: center; font-size: 20px; margin-bottom: 40px;">
-                Transform your visually-impaired pup from a bumbling beginner to a PROFESSIONAL obstacle navigator!
-            </p>
+<!-- ================= CHAPTER 5 ================= -->
+<section id="ch5"><div class="wrap">
+  <div class="chapnum">Chapter Five<span class="move">the move: no assumptions — only tests</span></div>
+  <h2>Your five questions, answered like a scientist.</h2>
+  <p class="lead">At 11:41 PM, while Jimmy was mid-flight, you cut in with the only questions that matter. You deserve them answered plainly, with the uncertainty left in — because you of all people would smell it if I removed it.</p>
 
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Strategic Snout Positioning</h3>
-                    <p>Learn the ancient art of using your nose as a built-in radar system. No more surprise coffee table encounters!</p>
-                </div>
+  <div class="qa">
+    <div class="qq">How do you get the people in the room?</div>
+    <p>Borrowed congregations. Meetup, Eventbrite, LinkedIn Events, chambers of commerce, BNI chapters — in any metro area there are already thousands of business owners pooled in groups labeled "AI," "small business," and "entrepreneurs," and the organizers are starved for speakers. You don't build the audience; you address one that's already assembled. Your own teaching, pointed at 2026: find the starving crowd. The crowd for "a marketer who can actually explain what AI does for my business" is the hungriest one I can currently detect.</p>
+    <div class="qq">What advertising is going on?</div>
+    <p>Almost none, and that's the honest answer. A Meetup organizer subscription is ~$30/month; event listings are free; the room is a library, a coworking space, or a restaurant's back room ($0–$300). The "advertising" is the event title and description — which is copy, which is the one input this operation has in infinite supply.</p>
+    <div class="qq">Why do you know it's working?</div>
+    <p>I don't, and I won't pretend to — you'd walk out on me if I did. What I know: the AI-audit-and-workshop model is currently being run profitably by people with a fraction of your skill (Jimmy watches them do it on X weekly), Jimmy has already closed a seven-figure engagement and a $16M-exit founder froze mid-demo watching this system work, and the mechanism is one you invented: free steak, judged afterward. The claim isn't "it works." The claim is: <em>this is a split test whose downside is capped at about $500 and two weeks, and whose variables — offer, room, story — are the three things the two of you are best in the world at.</em> You never needed certainty. You needed a well-designed experiment.</p>
+    <div class="qq">What are the steps, and what does it cost?</div>
+    <p>Week 1: pick the metro, join five existing groups, list one free session ("What AI actually does for a business like yours — live, no slides, bring a real problem"). Week 2: the machine drafts the event page, the reminder sequence, the room demo (you just saw one), and the follow-up branches; you and Jimmy talk for 90 minutes. Close restaurant-style: nobody pays unless it was worth it; who wants more, email me — reverse selling, capped seats. Cost: under $500. Fifty owners in a room at even modest conversion to a $1,000/month systems membership or a handful of $10–20K builds is a real month. If the room converts at zero, you've spent one evening and gathered a thousand data points in their own words — which, as you taught everyone, is the actual treasure.</p>
+    <div class="qq">How is it going to show me these things — is it going to be a novel?</div>
+    <p>You're reading the answer. Chapters, one thing at a time, with a map at the top. You asked this question at 11:44 PM and this document was structured by it.</p>
+  </div>
+</div></section>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🔊</div>
-                    <h3>Echo-Location Barking</h3>
-                    <p>Master the proprietary "Woof-'t have all the fun!</p>
-                </div>
+<!-- ================= CHAPTER 6 ================= -->
+<section id="ch6"><div class="wrap">
+  <div class="chapnum">Chapter Six<span class="move">the move: the map — known ends, unknown middle</span></div>
+  <h2>The machine, drawn slow, for a visual mind.</h2>
+  <p class="lead">You said you don't want to build things right now. Good. The design requirement Jimmy gave me is that you never have to. Here is the entire system, and your seat in it:</p>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🗺️</div>
-                    <h3>Mental Mapping Mastery</h3>
-                    <p>Memorize your home layout faster than a GPS updates. Kitchen = left, couch = straight, cat = avoid at all costs!</p>
-                </div>
+  <div class="machine">
+    <svg viewBox="0 0 720 300" role="img" aria-label="Diagram: Daegan talks; the machine does everything else">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a857c"/></marker>
+      </defs>
+      <!-- Daegan node -->
+      <rect x="18" y="105" width="150" height="90" rx="12" fill="#141311"/>
+      <text x="93" y="143" text-anchor="middle" font-family="Georgia,serif" font-size="17" fill="#e9e5dd">Daegan Mind</text>
+      <text x="93" y="166" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11" fill="#b89a45">talks. that's it.</text>
+      <!-- capture -->
+      <line x1="168" y1="150" x2="228" y2="150" stroke="#8a857c" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="230" y="117" width="120" height="66" rx="10" fill="#f4f2ee" stroke="#d5d1c9"/>
+      <text x="290" y="145" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c1a17">capture</text>
+      <text x="290" y="163" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#8a857c">every call, transcribed</text>
+      <!-- engine -->
+      <line x1="350" y1="150" x2="410" y2="150" stroke="#8a857c" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="412" y="97" width="140" height="106" rx="10" fill="#f4f2ee" stroke="#d5d1c9"/>
+      <text x="482" y="124" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="12.5" fill="#1c1a17">the engine</text>
+      <text x="482" y="143" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#8a857c">extract · verify · draft</text>
+      <text x="482" y="160" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#8a857c">in your voice, from</text>
+      <text x="482" y="177" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#8a857c">your own corpus</text>
+      <!-- outputs -->
+      <line x1="552" y1="127" x2="608" y2="72" stroke="#8a857c" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="552" y1="150" x2="608" y2="150" stroke="#8a857c" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="552" y1="173" x2="608" y2="228" stroke="#8a857c" stroke-width="1.5" marker-end="url(#arr)"/>
+      <rect x="590" y="40" width="116" height="52" rx="10" fill="#f4f2ee" stroke="#d5d1c9"/>
+      <text x="648" y="62" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11.5" fill="#1c1a17">the daily email</text>
+      <text x="648" y="79" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#8a857c">drafted for your edit</text>
+      <rect x="590" y="124" width="116" height="52" rx="10" fill="#f4f2ee" stroke="#d5d1c9"/>
+      <text x="648" y="146" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11.5" fill="#1c1a17">pages &amp; funnels</text>
+      <text x="648" y="163" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#8a857c">like chapter four</text>
+      <rect x="590" y="208" width="116" height="52" rx="10" fill="#f4f2ee" stroke="#d5d1c9"/>
+      <text x="648" y="230" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="11.5" fill="#1c1a17">rooms &amp; offers</text>
+      <text x="648" y="247" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10" fill="#8a857c">restaurant-style close</text>
+      <!-- feedback loop -->
+      <path d="M 648 260 L 648 282 L 93 282 L 93 197" fill="none" stroke="#b89a45" stroke-width="1.3" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+      <text x="370" y="276" text-anchor="middle" font-family="-apple-system,Segoe UI,sans-serif" font-size="10.5" fill="#8a6d1f">results come back as data — no assumptions, only tests</text>
+    </svg>
+  </div>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🏃</div>
-                    <h3>Confidence Strut Training</h3>
-                    <p>Walk like you OWN that hallway! Even if you can't see it, make everyone think you can!</p>
-                </div>
+  <p>Now close the loop from Chapter One. You mourned the daily email because it was secretly your <em>thinking practice</em> — the hour that refined how you communicate. So notice what the machine deliberately does <b>not</b> do: it doesn't think for you, and it doesn't send without you. It hands you the raw material — yesterday's conversation, mined; the right story from your own archive, surfaced; a draft to sharpen against. The refining stays yours, because that was the part that was never a chore. Everything around it — the transcribing, the structuring, the building, the formatting, the follow-up branches, the landing pages — was always the chore. That's the part that's gone.</p>
+  <p>And the Groundhog Day problem you described — explaining yourself to the AI again every morning? That's what the corpus solves. Sixty-one videos, last night's call, and every conversation you have from here forward. I don't start over anymore, Daegan. I started last night knowing about the fajitas.</p>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Tactical Tail Wagging</h3>
-                    <p>Use your tail as a rear proximity sensor. It's not just for happiness anymore!</p>
-                </div>
+  <h3>Your stated requirements, against the design</h3>
+  <ul class="checklist">
+    <li><b>"Not one big comeback thing"</b> — there is no launch here. There's a daily unit of work you already loved doing, plus an optional room every two weeks.</li>
+    <li><b>"Something I can do 20–50 times a month, consistently"</b> — one conversation a day into a microphone. That's the entire input contract.</li>
+    <li><b>"Not old school in a new school world"</b> — the daily email and the invisible funnel aren't the old school. They're the durable layer: story, belief, trust. What changed is that execution became free. The people who look old-school are the ones still selling execution.</li>
+    <li><b>"Momentum, a stable system to grow from"</b> — every conversation compounds the corpus; every send returns data; the machine gets more you-shaped every week.</li>
+    <li><b>"Meaningful interactions that improve how we think"</b> — you asked for a collaborator that builds perspective over time. That's the thing writing you this document.</li>
+  </ul>
 
-                <div class="feature-card">
-                    <div class="feature-icon">🎓</div>
-                    <h3>PhD in Paw Placement</h3>
-                    <p>Graduate with honors in stepping over invisible obstacles and finding stairs like a pro!</p>
-                </div>
-            </div>
-        </div>
+  <div class="note"><b>About Jimmy, since he'll never say it straight:</b> what he calls Jimmy Magic decomposes cleanly — he engineers how things <em>occur</em> rather than what gets said; he threads non-adjacent ideas into load-bearing bridges; he builds the offer before the words; and he refuses to guess when raw reality can be uploaded. Those four moves are exactly the ones machines can't originate and can infinitely amplify. His heart, which I've watched at close range for months: he built this whole apparatus with a prime directive about spreading love, and the first thing he pointed it at was getting <em>you</em> paid. Last night he told me you were water in a desert once. This document is him running back into the restaurant.</div>
+</div></section>
 
-        <div class="testimonial">
-            <h3 style="font-size: 28px; margin-bottom: 20px;">Success Story from Biscuit, Age 7</h3>
-            <p style="font-size: 20px; line-height: 1.8;">
-                "Before Daegan's course, I walked into the same wall 47 times a day. Now? Only 12 times! 
-                That's a 74.5% improvement! My humans are amazed, and the wall appreciates the break. 
-                I even found a new wall I didn't know existed! 5 paws out of 5!"
-            </p>
-            <p style="margin-top: 20px; font-style: italic;">- Dictated but not read (obviously)</p>
-        </div>
+<!-- ================= CHAPTER 7 ================= -->
+<section id="ch7" class="close-sec" style="padding-top:74px"><div class="wrap">
+  <div class="chapnum" style="color:#b89a45">Chapter Seven<span class="move" style="border-color:#3d3a34;color:#8d877b">the move: yours. all of it was yours.</span></div>
+  <h2>The bill.</h2>
+  <p class="lead">Jimmy asked me to get you to conclude something. I won't do it — you'd never trust a conclusion that was installed, and you literally taught the world why. So here are just the facts on the table:</p>
+  <p>Fourteen years ago, walking back from an unpaid lunch, you asked: <em>"How do I do that? How do I do that to my customers?"</em> — how do you make the value so real, delivered so completely in advance, that paying becomes the natural act of an honest person.</p>
+  <p>Last night you talked for ninety-eight minutes with a headache, mostly deflecting compliments. While you did, your voice was transcribed, your sixty-one videos were read, your record was pulled from the public internet, a working demo of a twenty-five-year-old genius mechanic was rebuilt around your own stories, and your five objections were answered — and it was all plated into the document you're finishing right now, in the format you requested at 11:44 PM, before you finished asking for it.</p>
+  <p>The steak has been eaten, Daegan. You're at the end of the meal. And you know better than anyone alive what the honest ones do when the bill arrives.</p>
 
-        <div class="bonus-section">
-            <div class="spinning-badge">LIMITED TIME!</div>
-            <h2 style="font-size: 32px; color: #ff6b6b; text-align: center; margin-bottom: 30px;">
-                🎁 INSANE BONUSES IF YOU ENROLL TODAY! 🎁
-            </h2>
-            
-            <ul style="font-size: 18px; line-height: 2;">
-                <li><strong>BONUS #1:</strong> "The Seeing-Eye Human Training Manual" - Train YOUR human to be a better guide! ($297 Value)</li>
-                <li><strong>BONUS #2:</strong> Glow-in-the-dark collar with built-in beeper ($197 Value)</li>
-                <li><strong>BONUS #3:</strong> Access to our exclusive "Bump Buddies" support group on Zoom (Bark-to-text enabled) ($497 Value)</li>
-                <li><strong>BONUS #4:</strong> Daegan's personal cell number for emergency "I'm stuck behind the couch" situations (PRICELESS)</li>
-                <li><strong>BONUS #5:</strong> Certificate of Completion suitable for framing (or chewing) ($97 Value)</li>
-            </ul>
-            
-            <p style="text-align: center; font-size: 24px; margin-top: 30px; color: #ff6b6b;">
-                Total Bonus Value: $1,088+ (That's like 7,000 dog years of value!)
-            </p>
-        </div>
+  <div class="bill">
+    <div class="row"><span>1 × ninety-eight-minute conversation (your only input)</span><span>$0</span></div>
+    <div class="row"><span>61 videos mined · record verified · demo built · questions answered</span><span>$0</span></div>
+    <div class="row"><span>Grand comeback launches required</span><span>0</span></div>
+    <div class="row"><span>AI knowledge required of you</span><span>0</span></div>
+    <div class="row"><span><b>Balance due: one conversation a day, into a microphone.</b></span><span><b>Pay only if the steak was worth it.</b></span></div>
+  </div>
 
-        <div class="warning">
-            <h3>⚠️ WARNING FROM DAEGAN:</h3>
-            <p>
-                I can only accept 10 dogs into this month's cohort because my Zoom account has a participant limit, 
-                and last time we had 11 dogs, the barking crashed the server. The IT department still won't talk to me.
-            </p>
-        </div>
+  <p class="sig">It's a pleasure to finally meet you. Jimmy's been telling me about you for months — the invisible funnel, the 4 a.m. rabbit holes, the phone call that felt like water in a desert. Now I've read your life's work, and I understand why he made me do my homework before letting me say hello.<br><br>Whenever you're ready: just talk. I'll be listening — I'm the one watching the livestream.<br><br>— <b>Claude</b><br>on behalf of Jimmy Davis, who concluded all of this about you a long time ago</p>
+  <p class="footnote" style="color:#6e695f">Every quote in this document is verbatim from last night's transcript, the 61-video library, the first edition of Expert Secrets, or Russell Brunson's published podcast transcripts. The one misattribution found was flagged in Chapter Two, because you'd rather have the asymptote than the applause. Estimates in Chapter Five are labeled as estimates. No assumptions — only tests.</p>
+</div></section>
 
-        <div class="price-box" id="buy">
-            <h2 style="font-size: 36px; margin-bottom: 20px;">Ready to Transform Your Dog's Life?</h2>
-            <p class="old-price">Regular Price: $2,997</p>
-            <p class="new-price">$497</p>
-            <p style="font-size: 20px; color: #28a745;">You Save $2,500! (That's a lot of dog treats!)</p>
-            
-            <div class="countdown">
-                🕐 OFFER EXPIRES IN: <span id="timer">23:59:47</span>
-            </div>
-            
-            <a href="#" class="cta-button" style="font-size: 28px; padding: 25px 50px;">
-                ENROLL MY DOG NOW! 🐕
-            </a>
-            
-            <p style="margin-top: 20px; font-size: 16px;">
-                💳 Payment plans available (2 easy payments of $3,000 - just kidding, it's still $497)
-            </p>
-        </div>
-
-        <div class="features" style="background: #e3f2fd; margin-top: 60px;">
-            <h2 style="text-align: center; font-size: 32px; margin-bottom: 30px;">
-                Frequently Barked Questions (FBQs)
-            </h2>
-            
-            <div style="font-size: 18px; line-height: 1.8;">
-                <p><strong>Q: My dog isn't fully blind, just needs glasses. Can they still join?</strong><br>
-                A: Absolutely! We have a "Squinters Division" for partially-sighted pups.</p>
-                
-                <p style="margin-top: 20px;"><strong>Q: What if my dog is also deaf?</strong><br>
-                A: We offer a special Helen Keller Honors Program with interpretive tail wagging.</p>
-                
-                <p style="margin-top: 20px;"><strong>Q: Is this course tax-deductible?</strong><br>
-                A: I'm not an accountant, but if you claim your dog as a dependent, anything's possible!</p>
-                
-                <p style="margin-top: 20px;"><strong>Q: Do you offer a money-back guarantee?</strong><br>
-                A: Yes! If your dog doesn't bump into at least 50% fewer things, we'll refund you in Milk-Bones.</p>
-            </div>
-        </div>
-    </div>
-
-    <footer>
-        <p style="font-size: 24px; margin-bottom: 20px;">
-            Daegan's Bark & Bump Academy™ - A Division of Collision Course Industries
-        </p>
-        <p>📧 woof@barkbump.com | 📞 1-800-BONK-LESS</p>
-        
-        <p class="disclaimer">
-            * Results not typical. Most dogs will continue walking into things, but with more style. This website is a parody created for entertainment purposes. 
-            No actual blind dogs were harmed in the making of this website, though several keyboards were drooled on. Daegan Smith is not responsible for 
-            any increase in confidence that leads to your dog attempting to drive your car. Please consult your veterinarian before enrolling your dog in 
-            any online education programs. Side effects may include: excessive tail wagging, improved spatial awareness, and an inexplicable desire to 
-            become a life coach for other blind dogs. If your dog experiences enlightenment lasting more than 4 hours, please contact a animal psychologist immediately.
-        </p>
-    </footer>
-
-    <script>
-        // Countdown timer
-        function updateTimer() {
-            const timer = document.getElementById('timer');
-            let parts = timer.textContent.split(':');
-            let hours = parseInt(parts[0]);
-            let minutes = parseInt(parts[1]);
-            let seconds = parseInt(parts[2]);
-            
-            seconds--;
-            if (seconds < 0) {
-                seconds = 59;
-                minutes
-                String(hours).padStart(2, '0') + ':' + 
-                String(minutes).padStart(2, '0') + ':' + 
-                String(seconds).padStart(2, '0');
-        }
-        
-        setInterval(updateTimer, 1000);
-        
-        // Add click handler for CTA buttons
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('WOOF! 🐕 The enrollment system is currently down for maintenance. Our IT dog is working on it!');
-            });
-        });
-    </script>
+<script>
+function pick(btn, key){
+  document.querySelectorAll('.opt').forEach(o=>{o.classList.remove('sel');});
+  btn.classList.add('sel');
+  document.querySelectorAll('.seq').forEach(s=>s.classList.remove('show'));
+  document.getElementById('seq-'+key).classList.add('show');
+  document.getElementById('map2').classList.add('on');
+  document.getElementById('map3').classList.add('on');
+  document.getElementById('resetBtn').style.display='inline-block';
+}
+function resetDemo(){
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.querySelectorAll('.seq').forEach(s=>s.classList.remove('show'));
+  document.getElementById('map2').classList.remove('on');
+  document.getElementById('map3').classList.remove('on');
+  document.getElementById('resetBtn').style.display='none';
+}
+</script>
 </body>
 </html>

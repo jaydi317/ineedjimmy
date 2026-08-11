@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Grab time with Jimmy</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;600;800&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--CAL:"https://cal.com/james-davis-prinv9/zoom-with-jimmy"}
+body{background:#faf7f1;color:#141216;font-family:'Inter',sans-serif;font-size:18px;line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:60px 24px 80px;text-align:center}
+h1{font-family:'Fraunces',Georgia,serif;font-weight:900;font-size:clamp(40px,8vw,64px);line-height:1.02;letter-spacing:-.02em}
+.hand{font-family:'Caveat',cursive;font-size:26px;color:#c14e28;display:inline-block;transform:rotate(-2deg);margin-top:14px}
+p.sub{color:#57515e;max-width:480px;margin:22px auto 0;font-size:19px}
+p.sub b{color:#141216}
+.btn{display:inline-block;background:#c14e28;color:#fff;font-weight:800;font-size:19px;padding:20px 42px;border-radius:14px;text-decoration:none;margin-top:32px;box-shadow:0 10px 28px rgba(193,78,40,.35)}
+.frame{margin-top:40px;border:1px solid #e6dfd3;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 8px 30px rgba(20,18,22,.08)}
+iframe{width:100%;height:680px;border:0;display:block}
+.micro{font-size:14px;color:#8a7f90;margin-top:26px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>You know me.<br>Grab a time.</h1>
+  <div class="hand">this page is just for friends &amp; family &#10084;</div>
+  <p class="sub">No forms about your business. No sales anything. Pick a slot below and a calendar invite with <b>my Zoom room link</b> shows up in your inbox automatically — with a reminder so neither of us forgets, because let's be honest about both of us.</p>
+  <a class="btn" id="calbtn" href="#">Pick a time with Jimmy &rarr;</a>
+  <div class="frame"><iframe id="calframe" src="about:blank" title="Jimmy's calendar"></iframe></div>
+  <p class="micro">This page isn't linked from anywhere — you got it because Jimmy loves you. Don't post it. 😉</p>
+</div>
+<script>
+var CAL = "https://cal.com/james-davis-prinv9/zoom-with-jimmy"; // ← the only line that matters: Jimmy's Cal.com event link, e.g. https://cal.com/jimmydavis/friends
+if (CAL.indexOf("http") === 0) {
+  document.getElementById("calbtn").href = CAL;
+  document.getElementById("calframe").src = CAL;
+} else {
+  document.querySelector(".frame").style.display = "none";
+  document.getElementById("calbtn").textContent = "Calendar connecting — text Jimmy for now ❤";
+}
+</script>
+</body>
+</html>
