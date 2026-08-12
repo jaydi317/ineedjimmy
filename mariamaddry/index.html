@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Private Letter for Maria Maddry — The Woman Who Rescues Lost Women</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f0e3;
+    --paper-deep:#efe6d2;
+    --ink:#2a241c;
+    --ink-soft:#5a4f40;
+    --rust:#9c3a2b;
+    --gold:#b98a2e;
+    --hl:#f5e37e;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    background:var(--paper-deep);
+    color:var(--ink);
+    font-family:'Lora',Georgia,serif;
+    font-size:19px;
+    line-height:1.72;
+  }
+  .sheet{
+    max-width:760px;
+    margin:0 auto;
+    background:var(--paper);
+    box-shadow:0 0 60px rgba(60,45,20,.25);
+    padding:0 0 60px;
+  }
+  .inner{padding:0 48px;}
+  @media(max-width:640px){
+    body{font-size:17px;}
+    .inner{padding:0 22px;}
+  }
+
+  /* masthead */
+  .masthead{
+    text-align:center;
+    padding:42px 30px 8px;
+  }
+  .masthead .studio{
+    font-family:'Playfair Display',serif;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .masthead .rule{
+    width:90px;height:1px;background:var(--gold);margin:14px auto;
+  }
+  .eyebrow{
+    font-family:'Caveat',cursive;
+    font-size:24px;
+    color:var(--rust);
+    text-align:center;
+    padding:6px 30px 0;
+  }
+  h1{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-size:52px;
+    line-height:1.12;
+    text-align:center;
+    padding:14px 34px 0;
+  }
+  @media(max-width:640px){h1{font-size:36px;}}
+  .subhead{
+    text-align:center;
+    font-size:21px;
+    font-style:italic;
+    color:var(--ink-soft);
+    max-width:620px;
+    margin:20px auto 0;
+    padding:0 30px;
+  }
+  .daterow{
+    text-align:center;
+    font-size:14px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:26px 0 34px;
+  }
+  .divider{
+    text-align:center;
+    color:var(--gold);
+    font-size:20px;
+    letter-spacing:.6em;
+    margin:38px 0;
+  }
+
+  p{margin:0 0 24px;}
+  .hl{background:linear-gradient(transparent 55%, var(--hl) 55%);padding:0 2px;}
+  .big-first::first-letter{
+    font-family:'Playfair Display',serif;
+    font-size:64px;
+    float:left;
+    line-height:.9;
+    padding:6px 10px 0 0;
+    color:var(--rust);
+  }
+  h2{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:31px;
+    line-height:1.25;
+    margin:52px 0 20px;
+  }
+  h2 .num{color:var(--rust);}
+  .script{font-family:'Caveat',cursive;font-size:26px;color:var(--rust);}
+
+  .pullquote{
+    border-left:4px solid var(--gold);
+    padding:10px 0 10px 26px;
+    margin:34px 0;
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:25px;
+    line-height:1.45;
+    color:var(--ink);
+  }
+  .bigidea{
+    background:var(--ink);
+    color:var(--paper);
+    padding:40px 42px;
+    margin:44px 0;
+    text-align:center;
+  }
+  @media(max-width:640px){.bigidea{padding:30px 22px;}}
+  .bigidea .label{
+    font-family:'Caveat',cursive;
+    color:var(--hl);
+    font-size:26px;
+    margin-bottom:10px;
+  }
+  .bigidea .idea{
+    font-family:'Playfair Display',serif;
+    font-size:29px;
+    line-height:1.4;
+  }
+  .notlist{list-style:none;margin:0 0 24px;}
+  .notlist li{
+    margin-bottom:16px;
+    padding-left:34px;
+    position:relative;
+  }
+  .notlist li::before{
+    content:"✕";
+    position:absolute;left:0;top:2px;
+    color:var(--rust);
+    font-weight:bold;
+  }
+  .checklist{list-style:none;margin:0 0 24px;}
+  .checklist li{
+    margin-bottom:16px;
+    padding-left:34px;
+    position:relative;
+  }
+  .checklist li::before{
+    content:"✦";
+    position:absolute;left:0;top:2px;
+    color:var(--gold);
+    font-weight:bold;
+  }
+
+  .engine{
+    background:#fff;
+    border:1px solid #e2d6bc;
+    border-top:5px solid var(--rust);
+    padding:30px 32px 24px;
+    margin:26px 0;
+    box-shadow:0 3px 14px rgba(90,70,40,.08);
+  }
+  .engine h3{
+    font-family:'Playfair Display',serif;
+    font-size:23px;
+    margin-bottom:6px;
+  }
+  .engine .tag{
+    font-family:'Caveat',cursive;
+    color:var(--rust);
+    font-size:22px;
+    margin-bottom:14px;
+  }
+  .engine p{margin-bottom:14px;font-size:18px;}
+  .engine .money{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    color:var(--ink);
+    background:var(--hl);
+    display:inline-block;
+    padding:2px 12px;
+    margin-top:4px;
+  }
+
+  table{
+    width:100%;
+    border-collapse:collapse;
+    margin:30px 0 10px;
+    background:#fff;
+    font-size:17px;
+  }
+  th{
+    font-family:'Playfair Display',serif;
+    text-align:left;
+    border-bottom:2px solid var(--ink);
+    padding:12px 14px;
+    font-size:16px;
+    letter-spacing:.05em;
+  }
+  td{padding:12px 14px;border-bottom:1px solid #e6dcc6;}
+  tr.total td{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:20px;
+    background:var(--hl);
+    border-bottom:none;
+  }
+  .tablenote{
+    font-family:'Caveat',cursive;
+    font-size:23px;
+    color:var(--rust);
+    text-align:right;
+    margin-bottom:26px;
+  }
+
+  .phase{
+    display:flex;
+    gap:20px;
+    margin-bottom:26px;
+  }
+  .phase .when{
+    flex:0 0 118px;
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    color:var(--rust);
+    font-size:17px;
+    padding-top:2px;
+  }
+  .phase .what{flex:1;font-size:18px;}
+  @media(max-width:640px){.phase{flex-direction:column;gap:4px;}}
+
+  .cta-block{
+    background:var(--rust);
+    color:#fdf8ec;
+    text-align:center;
+    padding:46px 36px;
+    margin:52px 0 8px;
+  }
+  .cta-block h2{margin:0 0 14px;color:#fff;}
+  .cta-block p{font-size:19px;max-width:540px;margin:0 auto 22px;}
+  .cta-btn{
+    display:inline-block;
+    background:var(--hl);
+    color:var(--ink);
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:20px;
+    padding:16px 38px;
+    text-decoration:none;
+    border-radius:4px;
+    box-shadow:0 4px 0 rgba(0,0,0,.25);
+    margin:6px 8px;
+  }
+  .cta-sub{font-family:'Caveat',cursive;font-size:24px;margin-top:16px;color:#f7e6b0;}
+
+  .ps{
+    margin-top:46px;
+    padding-top:30px;
+    border-top:1px solid #d9cbaa;
+    font-size:18px;
+  }
+  .sig{
+    font-family:'Caveat',cursive;
+    font-size:40px;
+    color:var(--ink);
+    margin:34px 0 0;
+  }
+  .sig-role{font-size:15px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+  footer{
+    text-align:center;
+    font-size:13px;
+    color:var(--ink-soft);
+    padding:34px 20px 0;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <div class="masthead">
+    <div class="studio">Studio Tableaux &nbsp;·&nbsp; Est. 1969</div>
+    <div class="rule"></div>
+  </div>
+
+  <div class="eyebrow">A private letter — written for exactly one woman on Earth</div>
+
+  <h1>The Woman Who<br>Rescues Lost Women</h1>
+
+  <p class="subhead">How a 56-year-old collage artist with a paid-for studio, thirty years of showing up, and a story no competitor on the planet can copy starts making $5,000 a month — without ads, without tech, and without asking anyone's permission.</p>
+
+  <div class="daterow">For Maria Maddry · August 12, 2026 · Northern California</div>
+
+  <div class="inner">
+
+    <p class="big-first">Dear Maria,</p>
+
+    <p>Today, on our call, you said something you've probably said a hundred times without ever <em>hearing</em> it.</p>
+
+    <p>You told me you collect black-and-white photographs of women nobody remembers. Women thrown away by their own families. Women who ended up in garage sale boxes, unnamed, unclaimed. And you take those women and you build them into books — beautiful books, rebuilt from other books that were falling apart — <span class="hl">"so they're not lost."</span></p>
+
+    <p>Maria. Read that sentence again. Slower.</p>
+
+    <p>You have spent years rescuing women whose stories were discarded and never discussed — while being a woman whose story was discarded and never discussed. Your origin: <em>we don't talk about that.</em> Your brother's death: <em>we don't talk about that.</em> Your art: <em>absolutely not.</em></p>
+
+    <ul class="notlist">
+      <li>At 18 you asked for art school. The answer was <strong>"absolutely not."</strong></li>
+      <li>At 16 a doctor said your body needed help. The answer was <strong>"absolutely not."</strong></li>
+      <li>Your whole life you asked, in a thousand quiet ways, <em>who am I?</em> The answer was silence.</li>
+    </ul>
+
+    <p>So you did "the right path" — your words, your air quotes. Nursing degree. Units you hated. Then thirty years running someone else's dream in a bakery, doing it excellently, the way you do everything excellently, while a creative kid sat in the back seat waiting for her turn.</p>
+
+    <p>The bakery closed. Your dad passed in November. The two structures that held the old script in place are gone. And in January — quietly, without asking anyone — you rented a studio and went back to the work.</p>
+
+    <p class="pullquote">Here's what I know after twenty years of building businesses for coaches, healers and artists: your story is not baggage. In this business, your story is the entire inventory.</p>
+
+    <div class="bigidea">
+      <div class="label">The Big Idea</div>
+      <div class="idea">Nobody pays $75 for paper and glue.<br>They pay for <em>meaning</em>.<br>And your workshops come with meaning pre-installed.</div>
+    </div>
+
+    <h2>Proof it works — from people with half your story</h2>
+
+    <p>I don't deal in theory, so before writing this letter I went and checked the market. Here's what's already true, today, in the real world:</p>
+
+    <ul class="checklist">
+      <li>A junk-journal workshop across the bay in Oakland charges <strong>$45 a seat</strong> for two hours, materials included — taught by someone who started in 2025 with no story at all. It gets five-star reviews and sells out.</li>
+      <li>There are <strong>national franchises</strong> (Board &amp; Brush, AR Workshop) built on one idea: women pay $65–$85 to sit in a room together and make something with their hands. Single studios do six figures a year on that alone. It's so proven, people pay six figures just for the franchise rights.</li>
+      <li>A book artist in Massachusetts runs an online <strong>Handmade Book Club</strong> that is so full she keeps enrollment <em>closed</em> and runs a waitlist.</li>
+      <li>Corporations sell mass-produced "heirloom" photo albums for <strong>hundreds of dollars</strong> — printed by machines, touched by no one.</li>
+    </ul>
+
+    <p>Every one of those businesses is thriving with less than you have. None of them has a 30-year landlord relationship, a paid studio at $830 a month, a lifetime of supplies, and a founder whose own life <em>is</em> the message. The demand is not the question, Maria. It never was.</p>
+
+    <h2>Your dream business — three engines, one studio</h2>
+
+    <div class="engine">
+      <h3><span class="num">Engine 1:</span> Lost &amp; Found Workshop Nights</h3>
+      <div class="tag">the cash engine — starts in 3 weeks</div>
+      <p>Eight women. Two hours. Your studio. Each guest chooses one forgotten photograph from your collection and rescues her — builds her a page, a spread, a small book. They leave with something they made, a story they'll tell for a week, and a reason to come back.</p>
+      <p><strong>$75 a seat founding price</strong> (the Oakland amateurs get $45 — you are not an amateur), rising to $95 when the waitlist starts.</p>
+      <p class="money">8 seats × $75 × 4 nights = $2,400/month</p>
+    </div>
+
+    <div class="engine">
+      <h3><span class="num">Engine 2:</span> Legacy Books — commissioned heirlooms</h3>
+      <div class="tag">the high-ticket engine nobody else can offer</div>
+      <p>Families bring you the shoebox. The loose photographs of a mother who passed. The recipes from a restaurant that closed. The letters nobody knows what to do with. You build them a one-of-a-kind, handmade heirloom book — the anti-Shutterfly. A nurse's calm, an artist's hands, and a woman who understands grief that never got talked about. That's not a product. That's a calling with an invoice.</p>
+      <p><strong>$450 / $850 / $1,200</strong> depending on scope. Never less than $450 — that's the rule. The first one will feel like fraud. The third one comes with a thank-you note that rewires you.</p>
+      <p class="money">2 books × $850 = $1,700/month</p>
+    </div>
+
+    <div class="engine">
+      <h3><span class="num">Engine 3:</span> The Found Women — art, kits &amp; what comes next</h3>
+      <div class="tag">the compounding engine</div>
+      <p>Your finished collection sells at every workshop ($150–$400 a piece). Rescue Kits — a curated envelope with a vintage photograph, ephemera, and instructions — go on the back table at $35. Private parties (book clubs, birthdays, teams) book your whole studio at $600–$1,200 flat. And in month six, when the waitlist is real: the online class, run exactly like that Massachusetts book club — doors closed, waitlist open.</p>
+      <p class="money">Kits + art + one party ≈ $1,250/month</p>
+    </div>
+
+    <h2>The arithmetic of $5,000 a month</h2>
+
+    <table>
+      <tr><th>Stream</th><th>Volume</th><th>Monthly</th></tr>
+      <tr><td>Workshop nights</td><td>4 nights × 8 seats × $75</td><td>$2,400</td></tr>
+      <tr><td>Legacy Books</td><td>2 commissions × $850</td><td>$1,700</td></tr>
+      <tr><td>Kits &amp; finished art</td><td>~10 kits + 1 piece</td><td>$650</td></tr>
+      <tr><td>Private party</td><td>1 × $600</td><td>$600</td></tr>
+      <tr class="total"><td>Total</td><td>≈ 10 working days</td><td>$5,350</td></tr>
+    </table>
+    <div class="tablenote">…and this same machine at $95 seats = $9–10K/month. Hello, $100K goal.</div>
+
+    <h2>The first 90 days</h2>
+
+    <div class="phase"><div class="when">Days 1–14</div><div class="what"><strong>Sell before you build.</strong> Pick one date three weeks out. Personally invite eight women — bakery regulars, friends, studio neighbors. Founding price, $75. Venmo. No website. No logo project. No waiting until you're "ready."</div></div>
+    <div class="phase"><div class="when">Days 15–45</div><div class="what"><strong>Run it, photograph it, book the next two.</strong> Get photos of every finished piece and three testimonials. Book the next two dates while the women are still in the room. At the close, one sentence: <em>"If you have a box of family photos in a closet, come talk to me."</em> That sentence sells your first Legacy Book.</div></div>
+    <div class="phase"><div class="when">Days 46–90</div><div class="what"><strong>Systemize and raise.</strong> Four nights a month. Two Legacy Books delivered. Kits on the table. Seats go to $95. First private party booked. <em>Now</em> we talk about a website.</div></div>
+
+    <h2>Now the hard part — and it isn't the business</h2>
+
+    <p>Maria, I could hand this exact plan to a hundred people and ninety of them would never run workshop #1. You already know why, because you read it in the horse letter and said <em>"that's me."</em></p>
+
+    <p>Somewhere around day ten, a familiar voice is going to speak up. The one that's been running since before you could talk. It'll say <em>who are you to charge for this?</em> It'll say <em>absolutely not</em> — in your own mother's cadence. And it will feel exactly like the feeling that sends a hand toward food at 9pm. <span class="hl">Same software. Same program. Different disguise.</span></p>
+
+    <p>That's why this plan and the inner work are not two separate projects. The 6-week program you already own and the Inner Circle aren't detours from the dream business — they're the keel of the boat. A sail without a keel doesn't catch wind. It capsizes.</p>
+
+    <p>You've been reading this whole letter with a plan in your hands and a voice in your head. My job was the plan. Brittany's work is the voice.</p>
+
+    <div class="cta-block">
+      <h2>This time, the answer is<br>"Absolutely, yes."</h2>
+      <p>Two moves, Maria. That's the whole assignment. Put workshop #1 on the calendar within 14 days — and start week one of the program you already own, so the voice doesn't get a vote this time.</p>
+      <a class="cta-btn" href="mailto:watkinsventures@gmail.com?subject=SAIL&body=Jimmy — I'm in. My first workshop date is:">Reply "SAIL" With Your Workshop Date</a>
+      <div class="cta-sub">…and when Claire texts you, just answer her. She'll keep you honest.</div>
+    </div>
+
+    <p class="sig">— Jimmy</p>
+    <div class="sig-role">Jimmy Davis · Business partner to Brittany · The guy who wrote the horse letter</div>
+
+    <div class="ps">
+      <p><strong>P.S.</strong> — Your email address gave you away: <em>Studio Tableaux, 1969.</em> "Tableaux" — pictures. And 1969 — the year a young woman in Brazil decided, against every expectation her world handed her, to keep her baby. The studio was named after you before you ever rented it, Maria. You weren't starting a business in January. You were moving into one that's been waiting fifty-six years for you to show up.</p>
+      <p><strong>P.P.S.</strong> — Somewhere in a garage sale box, fifty years from now, nobody will find <em>your</em> photograph. Because the women you teach, and the families whose shoeboxes you turn into heirlooms, will remember exactly who you were. That's the business, Maria. You're not selling collage classes. You're making sure no woman gets lost. Including the one in the mirror.</p>
+    </div>
+
+  </div>
+
+  <footer>Studio Tableaux · Maria Angelique Creative · prepared with love by ineedjimmy.com</footer>
+</div>
+</body>
+</html>
