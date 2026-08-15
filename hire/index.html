@@ -260,9 +260,9 @@ section{position:relative;padding:100px 24px}
         <div class="weekend-price-box">
           <div class="wp-price">$25,000</div>
           <div class="wp-note">Two full days with Jimmy and his team in Carmel, Indiana. Travel and accommodation not included. Limited to 2 weekends per month.</div>
-          <div class="wp-deposit">$1,000 non-refundable deposit required just to schedule a qualifying interview.</div>
+          <div class="wp-deposit">$1,000 deposit required just to schedule a qualifying interview.</div>
           <a href="#" class="card-btn gold" id="btn-weekend" style="display:inline-block;width:auto;padding:15px 36px">Pay $1,000 Deposit & Apply</a>
-          <p style="font-size:11px;color:var(--cream-dim);margin-top:14px">The deposit secures your interview slot. If you're not a fit, the remaining $24,000 is never charged. If you are — prepare for the most productive 48 hours of your business life.</p>
+          <p style="font-size:11px;color:var(--cream-dim);margin-top:14px">The deposit secures your interview slot. If Jimmy doesn't accept you, it is refunded in full. If he does, it's credited toward your $25,000 — prepare for the most productive 48 hours of your business life.</p>
         </div>
 
         <div style="margin-top:24px;padding:24px;background:var(--deep);border:1px solid rgba(198,168,85,0.08);border-radius:12px">
@@ -299,13 +299,13 @@ const observer=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(link.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-// Stripe links — Replace with actual checkout URLs
+// Stripe Payment Links — Reverse Selling LLC
 const STRIPE_LINKS = {
-  single: "https://buy.stripe.com/REPLACE_WITH_SINGLE_SESSION",
-  fourpack: "https://buy.stripe.com/REPLACE_WITH_4PACK",
-  monthly_strategy: "https://buy.stripe.com/REPLACE_WITH_STRATEGY",
-  monthly_command: "https://buy.stripe.com/REPLACE_WITH_COMMAND",
-  weekend_deposit: "https://buy.stripe.com/REPLACE_WITH_WEEKEND"
+  single: "https://buy.stripe.com/8x27sD43x8a79CI29JeZ206",
+  fourpack: "https://buy.stripe.com/bJe4gr57B9eb16c7u3eZ207",
+  monthly_strategy: "https://buy.stripe.com/6oUeV5eIbgGD8yE9CbeZ208",
+  monthly_command: "https://buy.stripe.com/28E7sD8jN3TRcOUcOneZ209",
+  weekend_deposit: "https://buy.stripe.com/14AeV5fMf4XV6qw8y7eZ20d"
 };
 document.getElementById('btn-single').href = STRIPE_LINKS.single;
 document.getElementById('btn-4pack').href = STRIPE_LINKS.fourpack;
