@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Butterfly Method — Carina de Villiers</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1A1A;--soft:#4A4A4A;--mut:#7E7468;--line:#E6DFD4;--cream:#FDFBF7;--paper:#F5F0E8;--plum:#3D2B45;--gold:#B08B4F;--goldl:#E4C892;--lav:#8B6FA8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--cream);color:var(--ink);font-size:20px;line-height:1.62;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:940px;margin:0 auto;padding:0 22px}
+.col{max-width:700px;margin:0 auto}
+p{font-size:20px;margin-bottom:19px;color:var(--soft)}
+p strong{color:var(--ink);font-weight:750}
+h1{font-size:52px;line-height:1.06;font-weight:900;letter-spacing:-.025em}
+h2{font-size:36px;line-height:1.16;font-weight:900;letter-spacing:-.015em;margin:0 0 20px}
+h3{font-size:26px;line-height:1.25;font-weight:800;margin:38px 0 14px}
+h4{font-size:22px;line-height:1.3;font-weight:800;margin:30px 0 10px}
+.kick{font-size:13px;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+section{padding:60px 0}
+.hero{background:var(--plum);color:#fff;padding:52px 0 58px;text-align:center}
+.hero h1{color:#fff;margin:20px auto 22px;max-width:700px}
+.hero .sub{font-size:22px;color:#DCD2E4;max-width:700px;margin:0 auto 30px}
+.hero .kick{color:var(--goldl)}
+.emblem{width:118px;margin:0 auto}
+.cta{display:inline-block;background:var(--gold);color:#26190B;font-size:21px;font-weight:800;padding:19px 40px;border-radius:100px;text-decoration:none;box-shadow:0 8px 26px rgba(176,139,79,.34);border:none;cursor:pointer}
+.cta:hover{background:var(--goldl)}
+.cta.dark{background:var(--plum);color:#fff;box-shadow:0 8px 26px rgba(61,43,69,.28)}
+.ctawrap{text-align:center;margin:36px 0}
+.ctanote{font-size:13px;color:var(--mut);margin-top:13px;letter-spacing:.04em}
+.hero .ctanote{color:#B3A3BE}
+.big{font-size:29px;line-height:1.36;font-weight:800;color:var(--ink);margin:34px 0;padding-left:22px;border-left:4px solid var(--gold)}
+.band{background:var(--paper);}
+.band.plum{background:var(--plum);color:#fff}
+.band.plum p{color:#DCD2E4}
+.band.plum h2,.band.plum h3,.band.plum strong{color:#fff}
+figure{margin:38px auto;max-width:940px}
+figcaption{font-size:13px;color:var(--mut);text-align:center;margin-top:11px;letter-spacing:.05em}
+.pricegrid{display:flex;gap:20px;flex-wrap:wrap;margin:34px 0}
+.card{flex:1;min-width:280px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px 28px}
+.card.hot{border:3px solid var(--gold);box-shadow:0 10px 40px rgba(176,139,79,.2)}
+.card h4{margin-top:0}
+.card .price{font-size:44px;font-weight:900;color:var(--plum);line-height:1.05;margin:10px 0 4px}
+.card .per{font-size:13px;color:var(--mut);letter-spacing:.06em;text-transform:uppercase;font-weight:700;margin-bottom:18px}
+.card ul{margin:0 0 22px 19px}
+.card li{font-size:19px;color:var(--soft);margin-bottom:9px}
+.card li strong{color:var(--ink)}
+.tag{display:inline-block;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;background:var(--gold);color:#fff;padding:6px 13px;border-radius:100px;margin-bottom:13px}
+.notfor{background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px 30px;margin:30px 0}
+.notfor li{font-size:20px;margin-bottom:11px;color:var(--soft)}
+.faq{border-top:1px solid var(--line);padding-top:26px;margin-top:26px}
+.sig{font-size:22px;font-weight:800;color:var(--plum);margin-top:26px}
+ul{margin:0 0 20px 21px}
+li{margin-bottom:10px}
+footer{background:var(--plum);color:#B3A3BE;padding:46px 0;text-align:center;font-size:13px;letter-spacing:.05em}
+.mocknote{background:#243B4A;color:#CFE0E9;font-size:13px;text-align:center;padding:11px 20px;letter-spacing:.08em;font-weight:600}
+@media(max-width:640px){h1{font-size:35px}h2{font-size:28px}.big{font-size:23px}.hero .sub{font-size:20px}}
+</style>
+</head>
+<body>
+
+<div class="mocknote">MOCKUP A &nbsp;·&nbsp; THE LETTER &nbsp;·&nbsp; built for Carina de Villiers &nbsp;·&nbsp; 18 August 2026</div>
+
+<div class="hero">
+  <div class="wrap">
+    <img class="emblem" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMjQwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCI+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEyMCIgcj0iMTE2IiBmaWxsPSJub25lIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNTUiLz4KPGNpcmNsZSBjeD0iMTIwIiBjeT0iMTIwIiByPSIxMDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0IwOEI0RiIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9Ii4zIi8+CgogIDxwYXRoIGQ9Ik0xMjAgODkuNCBDMTIwIDg5LjQgOTUuMiA2MS41IDcwLjQgNzMuOQogICAgICAgICAgIEM0NS41OTk5OTk5OTk5OTk5OTQgODYuMyA1MS44IDEyMC40IDc5LjY5OTk5OTk5OTk5OTk5IDEyNi42CiAgICAgICAgICAgQzEwMS40IDEzMS4yNSAxMjAgMTA4IDEyMCAxMDggWiIgZmlsbD0iIzhCNkZBOCIgb3BhY2l0eT0iMC45NSIvPgogIDxwYXRoIGQ9Ik0xMjAgMTA4IEMxMjAgMTA4IDk4LjMgMTI2LjYgODUuOSAxNTQuNQogICAgICAgICAgIEM3NS4wNSAxNzcuNzUgOTguMyAxOTEuNyAxMTMuOCAxNzYuMgogICAgICAgICAgIEMxMjAgMTY2LjkgMTIwIDEzMi44IDEyMCAxMzIuOCBaIiBmaWxsPSIjOEI2RkE4IiBvcGFjaXR5PSIwLjU4OSIvPgogIDxwYXRoIGQ9Ik0xMjAgODkuNCBDMTIwIDg5LjQgMTQ0LjggNjEuNSAxNjkuNiA3My45CiAgICAgICAgICAgQzE5NC40IDg2LjMgMTg4LjIgMTIwLjQgMTYwLjMgMTI2LjYKICAgICAgICAgICBDMTM4LjYgMTMxLjI1IDEyMCAxMDggMTIwIDEwOCBaIiBmaWxsPSIjQjA4QjRGIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPHBhdGggZD0iTTEyMCAxMDggQzEyMCAxMDggMTQxLjcgMTI2LjYgMTU0LjEgMTU0LjUKICAgICAgICAgICBDMTY0Ljk1IDE3Ny43NSAxNDEuNyAxOTEuNyAxMjYuMiAxNzYuMgogICAgICAgICAgIEMxMjAgMTY2LjkgMTIwIDEzMi44IDEyMCAxMzIuOCBaIiBmaWxsPSIjQjA4QjRGIiBvcGFjaXR5PSIwLjU4OSIvPgogIDxyZWN0IHg9IjExNy41MiIgeT0iODMuMiIgd2lkdGg9IjQuOTYwMDAwMDAwMDAwMDAxIiBoZWlnaHQ9Ijk2LjEwMDAwMDAwMDAwMDAxIiByeD0iMi40ODAwMDAwMDAwMDAwMDA0IiBmaWxsPSIjM0QyQjQ1IiBvcGFjaXR5PSIwLjg1NSIvPgoKPHRleHQgeD0iMTIwIiB5PSIyMTUiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxMyIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNCMDhCNEYiIGZvbnQtd2VpZ2h0PSI3MDAiPlRIRSBCVVRURVJGTFkgTUVUSE9EPC90ZXh0Pgo8L3N2Zz4=" alt="The Butterfly Method emblem">
+    <div class="kick">For the woman who held everyone else together</div>
+    <h1>Everyone Calls You The Strong One. Nobody Has Ever Asked Who Holds You.</h1>
+    <p class="sub">I'm Carina, and <strong>I was that woman for forty years.</strong></p>
+    <p class="sub" style="margin-bottom:30px">Here is how I found the person still alive underneath all those layers — and how I will help you find her.</p>
+    <div class="ctawrap"><a class="cta" href="#book">Yes — I want to talk to Carina</a>
+    <div class="ctanote">A free 20 minute call. No pitch. Just tell me what you are carrying.</div></div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>I want to tell you what I think is happening to you.</h2>
+    <p><strong>You are functioning.</strong></p>
+    <p>You get up and you do the day.</p>
+    <p>People tell you how well you are coping. <strong>They mean it as a compliment.</strong></p>
+    <p>And somewhere underneath, there is a sentence you have never let finish forming. <strong>It starts with "I am so tired."</strong></p>
+
+    <div class="big">You are not depressed. You are not ungrateful. You have simply been the strong one for so long that you have forgotten there was ever anybody underneath.</div>
+
+    <p><strong>I know what that feels like.</strong> Not from a textbook.</p>
+    <p>I was the little girl who had to tell her own mother she was allowed to leave. <strong>I made adult decisions before I was old enough to make them.</strong></p>
+    <p>I was widowed at twenty-six with two little ones.</p>
+    <p><strong>I buried my mother.</strong> I lost the family business the same year.</p>
+    <p>And for most of my life I did what you are doing right now. <strong>I coped.</strong></p>
+  </div></div>
+</section>
+
+<figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzQwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjM0MCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzQwIiBmaWxsPSIjM0QyQjQ1Ii8+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI5MDAiIGhlaWdodD0iMzQwIiBmaWxsPSJ1cmwoI2cpIiBvcGFjaXR5PSIuNSIvPgo8ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj4KPHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEUzOTU5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMkMxRTMzIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+Cjx0ZXh0IHg9IjQ1MCIgeT0iMTE4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNGREZCRjciIGZvbnQtd2VpZ2h0PSI4MDAiPiJJIHdlbnQgZnJvbSB0YWtpbmcgY2FyZSBvZiBoZXI8L3RleHQ+Cjx0ZXh0IHg9IjQ1MCIgeT0iMTY2IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMzQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNFNEM4OTIiIGZvbnQtd2VpZ2h0PSI4MDAiPnRvIHdoYXQgZmVlbHMgbGlrZSBub3RoaW5nbmVzcy4iPC90ZXh0Pgo8bGluZSB4MT0iMzgwIiB5MT0iMjAwIiB4Mj0iNTIwIiB5Mj0iMjAwIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMiIvPgo8dGV4dCB4PSI0NTAiIHk9IjI0MCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjQzZCOEQwIj5BIHdvbWFuLCBvbmUgeWVhciBhZnRlciBoZXIgbW90aGVyIGRpZWQsPC90ZXh0Pgo8dGV4dCB4PSI0NTAiIHk9IjI2NiIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE3IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjQzZCOEQwIj53cml0aW5nIG9uIGEgZm9ydW0gYXQgdHdvIGluIHRoZSBtb3JuaW5nLjwvdGV4dD4KPHRleHQgeD0iNDUwIiB5PSIzMDQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0U0Qzg5MiIgZm9udC13ZWlnaHQ9IjcwMCI+Tm9ib2R5IGFuc3dlcmVkIGhlci48L3RleHQ+Cjwvc3ZnPg==" alt="Quote from a bereaved caregiver"></figure>
+
+<section class="band">
+  <div class="wrap"><div class="col">
+    <h2>Here is the part nobody warns you about.</h2>
+    <p>Everyone thinks the hardest day is the funeral. <strong>It isn't.</strong></p>
+    <p>The hardest part comes about a year later.</p>
+    <p><strong>The paperwork is finished.</strong> The casseroles stopped.</p>
+    <p><strong>The phone went quiet.</strong></p>
+    <p>And you are standing in your own kitchen with nothing to organise and nobody to hold up. <strong>And you have absolutely no idea what to do with yourself.</strong></p>
+    <p>That is not you falling apart. <strong>That is the job ending.</strong></p>
+
+    <h3>You didn't just lose a person. You lost your position.</h3>
+    <p>For years you were the one who knew where the medication was. <strong>You were the one who rang the doctor.</strong></p>
+    <p>You were the reason it all held together. <strong>That was who you were.</strong></p>
+    <p>And when they went, that person went with them. <strong>Nobody has offered you a single word for that.</strong></p>
+    <div class="ctawrap"><a class="cta dark" href="#book">I want to talk to Carina</a></div>
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>You have probably already tried to fix this.</h2>
+    <p><strong>You went to therapy.</strong> Maybe for years.</p>
+    <p>You read the books and did the journaling.</p>
+    <p><strong>You went to the retreat.</strong></p>
+    <p>And here is what happened. <strong>You got very good at explaining it.</strong></p>
+    <p>You can describe your childhood in clean, calm sentences now. <strong>You can name the pattern.</strong></p>
+    <p>And absolutely nothing moved.</p>
+
+    <div class="big">Understanding a thing and being free of it are two completely different jobs.</div>
+
+    <h3>I am not going to tell you therapy was a waste.</h3>
+    <p><strong>It wasn't.</strong> It gave you the words.</p>
+    <p>But words were never where this was stored. <strong>It is stored in your body.</strong></p>
+    <p>Your body has been braced for so long that bracing became your resting position. <strong>You cannot talk a body out of bracing.</strong></p>
+    <p>You have to go into the body and take it out. <strong>That is the whole of my work.</strong></p>
+  </div></div>
+</section>
+
+<figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDMwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQzMCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNDMwIiBmaWxsPSIjRkRGQkY3Ii8+CjxyZWN0IHg9IjQwIiB5PSIzNCIgd2lkdGg9IjM4MCIgaGVpZ2h0PSIzNjAiIHJ4PSIxNCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRTJEQUQwIiBzdHJva2Utd2lkdGg9IjEuNSIvPgo8cmVjdCB4PSI0ODAiIHk9IjM0IiB3aWR0aD0iMzgwIiBoZWlnaHQ9IjM2MCIgcng9IjE0IiBmaWxsPSIjZmZmIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMi41Ii8+CjxyZWN0IHg9IjQwIiB5PSIzNCIgd2lkdGg9IjM4MCIgaGVpZ2h0PSI1NiIgcng9IjE0IiBmaWxsPSIjRUZFOUUxIi8+CjxyZWN0IHg9IjQ4MCIgeT0iMzQiIHdpZHRoPSIzODAiIGhlaWdodD0iNTYiIHJ4PSIxNCIgZmlsbD0iIzNEMkI0NSIvPgo8dGV4dCB4PSIyMzAiIHk9IjcwIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4QTdGNzMiIGZvbnQtd2VpZ2h0PSI4MDAiPlRBTEtJTkcgQUJPVVQgSVQ8L3RleHQ+Cjx0ZXh0IHg9IjY3MCIgeT0iNzAiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0ZERkJGNyIgZm9udC13ZWlnaHQ9IjgwMCI+VEhFIEJVVFRFUkZMWSBNRVRIT0Q8L3RleHQ+Cgo8dGV4dCB4PSI3MCIgeT0iMTM0IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTciIGZpbGw9IiM4QTdGNzMiPldvcmtzIG9uIHRoZSB0aGlua2luZyBtaW5kPC90ZXh0Pgo8dGV4dCB4PSI3MCIgeT0iMTg0IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTciIGZpbGw9IiM4QTdGNzMiPllvdSBleHBsYWluIGl0IGJldHRlciBlYWNoIHRpbWU8L3RleHQ+Cjx0ZXh0IHg9IjcwIiB5PSIyMzQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgZmlsbD0iIzhBN0Y3MyI+WW91IHVuZGVyc3RhbmQg4oCUIG5vdGhpbmcgbW92ZXM8L3RleHQ+Cjx0ZXh0IHg9IjcwIiB5PSIyODQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgZmlsbD0iIzhBN0Y3MyI+WW91IGdvIGJhY2sgb3ZlciB0aGUgc3Rvcnk8L3RleHQ+Cjx0ZXh0IHg9IjcwIiB5PSIzMzQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgZmlsbD0iIzhBN0Y3MyI+TW9udGhzLCBzb21ldGltZXMgeWVhcnM8L3RleHQ+Cgo8dGV4dCB4PSI1MTAiIHk9IjEzNCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE3IiBmaWxsPSIjMUExQTFBIiBmb250LXdlaWdodD0iNjAwIj5Xb3JrcyBvbiB0aGUgYm9keSB0aGF0IGhvbGRzIGl0PC90ZXh0Pgo8dGV4dCB4PSI1MTAiIHk9IjE4NCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE3IiBmaWxsPSIjMUExQTFBIiBmb250LXdlaWdodD0iNjAwIj5Zb3UgZmVlbCBpdCBsZWF2ZSBpbiB0aGUgc2Vzc2lvbjwvdGV4dD4KPHRleHQgeD0iNTEwIiB5PSIyMzQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjYwMCI+VGhlIGNoYXJnZSBjb21lcyBvZmYgdGhlIG1lbW9yeTwvdGV4dD4KPHRleHQgeD0iNTEwIiB5PSIyODQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNyIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjYwMCI+WW91IGRvbid0IHJlbGl2ZSBpdCB0byByZWxlYXNlIGl0PC90ZXh0Pgo8dGV4dCB4PSI1MTAiIHk9IjMzNCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE3IiBmaWxsPSIjMUExQTFBIiBmb250LXdlaWdodD0iNjAwIj5PZnRlbiBtaW51dGVzLCBub3QgbW9udGhzPC90ZXh0PgoKPGcgZmlsbD0iI0M5QkZCMiI+CjxjaXJjbGUgY3g9IjU4IiBjeT0iMTI4IiByPSI1Ii8+PGNpcmNsZSBjeD0iNTgiIGN5PSIxNzgiIHI9IjUiLz48Y2lyY2xlIGN4PSI1OCIgY3k9IjIyOCIgcj0iNSIvPjxjaXJjbGUgY3g9IjU4IiBjeT0iMjc4IiByPSI1Ii8+PGNpcmNsZSBjeD0iNTgiIGN5PSIzMjgiIHI9IjUiLz4KPC9nPgo8ZyBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KPHBhdGggZD0iTTQ5MiAxMjggbDUgNiBsOSAtMTIiLz48cGF0aCBkPSJNNDkyIDE3OCBsNSA2IGw5IC0xMiIvPjxwYXRoIGQ9Ik00OTIgMjI4IGw1IDYgbDkgLTEyIi8+PHBhdGggZD0iTTQ5MiAyNzggbDUgNiBsOSAtMTIiLz48cGF0aCBkPSJNNDkyIDMyOCBsNSA2IGw5IC0xMiIvPgo8L2c+Cjwvc3ZnPg==" alt="Talking about it versus the Butterfly Method"></figure>
+
+<section class="band plum">
+  <div class="wrap"><div class="col">
+    <h2>Why I called it the Butterfly Method.</h2>
+    <p>People tell me they have lost themselves. <strong>I do not think that is true.</strong></p>
+    <p>I think she is still in there. <strong>She is just under a great many layers.</strong></p>
+    <p>Layers of being needed. <strong>Layers of being brave.</strong></p>
+    <p><strong>Layers of being fine when you were not fine.</strong></p>
+    <p>A chrysalis looks like an ending from the outside. <strong>It is the opposite.</strong></p>
+    <p>The work is not building you a new self. <strong>The work is eating away at the layers until she comes out.</strong></p>
+    <div class="big" style="border-color:var(--goldl);color:#fff">And then she gets to fly off and go and see what the world is actually like. That is what I want for you.</div>
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>The three parts of the work.</h2>
+  </div></div>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzIwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMyMCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzIwIiBmaWxsPSIjRkRGQkY3Ii8+Cjx0ZXh0IHg9IjQ1MCIgeT0iNDIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNCMDhCNEYiIGZvbnQtd2VpZ2h0PSI4MDAiPlRIRSBCVVRURVJGTFkgTUVUSE9EPC90ZXh0Pgo8bGluZSB4MT0iMTUwIiB5MT0iMTUwIiB4Mj0iNzUwIiB5Mj0iMTUwIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtZGFzaGFycmF5PSI1IDciIG9wYWNpdHk9Ii42Ii8+CjxnPgogIDxjaXJjbGUgY3g9IjE1MCIgY3k9IjE1MCIgcj0iNTIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iIzNEMkI0NSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHBhdGggZD0iTTEzOCAxMjggcTEyIC0xMCAyNCAwIHExMCAyMiAtMTIgNDQgcS0yMiAtMjIgLTEyIC00NCBaIiBmaWxsPSIjM0QyQjQ1IiBvcGFjaXR5PSIuODUiLz4KICA8dGV4dCB4PSIxNTAiIHk9IjIzMiIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjIxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMUExQTFBIiBmb250LXdlaWdodD0iODAwIj5PTkUg4oCUIFRoZSBMYXllcnM8L3RleHQ+CiAgPHRleHQgeD0iMTUwIiB5PSIyNTgiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhBN0Y3MyI+V2UgZmluZCB3aGF0IGlzIGFjdHVhbGx5PC90ZXh0PgogIDx0ZXh0IHg9IjE1MCIgeT0iMjc4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4QTdGNzMiPnVuZGVyIHRoZXJlLjwvdGV4dD4KPC9nPgo8Zz4KICA8Y2lyY2xlIGN4PSI0NTAiIGN5PSIxNTAiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiM4QjZGQTgiIHN0cm9rZS13aWR0aD0iMiIvPgogIDxwYXRoIGQ9Ik00MzYgMTI2IHExNCAtOCAyOCAwIHExMiAyNiAtMTQgNTAgcS0yNiAtMjQgLTE0IC01MCBaIiBmaWxsPSIjOEI2RkE4IiBvcGFjaXR5PSIuNSIvPgogIDxwYXRoIGQ9Ik00NDQgMTQwIGgxMiBNNDQyIDE1MiBoMTYgTTQ0NiAxNjQgaDgiIHN0cm9rZT0iI0ZERkJGNyIgc3Ryb2tlLXdpZHRoPSIyLjQiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjQ1MCIgeT0iMjMyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxQTFBMUEiIGZvbnQtd2VpZ2h0PSI4MDAiPlRXTyDigJQgVGhlIERpc3NvbHZlPC90ZXh0PgogIDx0ZXh0IHg9IjQ1MCIgeT0iMjU4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4QTdGNzMiPldlIHRha2UgaXQgb3V0IG9mIHRoZSBib2R5LDwvdGV4dD4KICA8dGV4dCB4PSI0NTAiIHk9IjI3OCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOEE3RjczIj5vbmUgbGF5ZXIgYXQgYSB0aW1lLjwvdGV4dD4KPC9nPgo8Zz4KICA8Y2lyY2xlIGN4PSI3NTAiIGN5PSIxNTAiIHI9IjUyIiBmaWxsPSIjZmZmIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMiIvPgogIAogIDxwYXRoIGQ9Ik03NTAgMTM0LjA4IEM3NTAgMTM0LjA4IDczOS40NCAxMjIuMiA3MjguODggMTI3LjQ4CiAgICAgICAgICAgQzcxOC4zMiAxMzIuNzYgNzIwLjk2IDE0Ny4yOCA3MzIuODQgMTQ5LjkyCiAgICAgICAgICAgQzc0Mi4wOCAxNTEuOSA3NTAgMTQyIDc1MCAxNDIgWiIgZmlsbD0iIzhCNkZBOCIgb3BhY2l0eT0iMC45NSIvPgogIDxwYXRoIGQ9Ik03NTAgMTQyIEM3NTAgMTQyIDc0MC43NiAxNDkuOTIgNzM1LjQ4IDE2MS44CiAgICAgICAgICAgQzczMC44NiAxNzEuNyA3NDAuNzYgMTc3LjY0IDc0Ny4zNiAxNzEuMDQKICAgICAgICAgICBDNzUwIDE2Ny4wOCA3NTAgMTUyLjU2IDc1MCAxNTIuNTYgWiIgZmlsbD0iIzhCNkZBOCIgb3BhY2l0eT0iMC41ODkiLz4KICA8cGF0aCBkPSJNNzUwIDEzNC4wOCBDNzUwIDEzNC4wOCA3NjAuNTYgMTIyLjIgNzcxLjEyIDEyNy40OAogICAgICAgICAgIEM3ODEuNjggMTMyLjc2IDc3OS4wNCAxNDcuMjggNzY3LjE2IDE0OS45MgogICAgICAgICAgIEM3NTcuOTIgMTUxLjkgNzUwIDE0MiA3NTAgMTQyIFoiIGZpbGw9IiNCMDhCNEYiIG9wYWNpdHk9IjAuOTUiLz4KICA8cGF0aCBkPSJNNzUwIDE0MiBDNzUwIDE0MiA3NTkuMjQgMTQ5LjkyIDc2NC41MiAxNjEuOAogICAgICAgICAgIEM3NjkuMTQgMTcxLjcgNzU5LjI0IDE3Ny42NCA3NTIuNjQgMTcxLjA0CiAgICAgICAgICAgQzc1MCAxNjcuMDggNzUwIDE1Mi41NiA3NTAgMTUyLjU2IFoiIGZpbGw9IiNCMDhCNEYiIG9wYWNpdHk9IjAuNTg5Ii8+CiAgPHJlY3QgeD0iNzQ4Ljk0NCIgeT0iMTMxLjQ0IiB3aWR0aD0iMi4xMTIiIGhlaWdodD0iNDAuOTIiIHJ4PSIxLjA1NiIgZmlsbD0iIzNEMkI0NSIgb3BhY2l0eT0iMC44NTUiLz4KCiAgPHRleHQgeD0iNzUwIiB5PSIyMzIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIyMSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjgwMCI+VEhSRUUg4oCUIFRoZSBXaW5nczwvdGV4dD4KICA8dGV4dCB4PSI3NTAiIHk9IjI1OCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOEE3RjczIj5XZSBidWlsZCB0aGUgbGlmZSB0aGUgc3Ryb25nPC90ZXh0PgogIDx0ZXh0IHg9Ijc1MCIgeT0iMjc4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM4QTdGNzMiPm9uZSBuZXZlciBnb3Qgcm91bmQgdG8uPC90ZXh0Pgo8L2c+Cjwvc3ZnPg==" alt="The three phases of The Butterfly Method"></figure>
+  <div class="wrap"><div class="col">
+    <h4>Phase one — The Layers</h4>
+    <p>Most of what is running you is under your own awareness. <strong>You cannot fix what you cannot see.</strong></p>
+    <p>So we find it. <strong>Not what you think is there — what is actually there.</strong></p>
+
+    <h4>Phase two — The Dissolve</h4>
+    <p>Then we take it out of the body, one layer at a time. <strong>You do not have to relive it to release it.</strong></p>
+    <p>Most women feel the first shift inside one session.</p>
+    <p><strong>Not weeks — one session.</strong></p>
+
+    <h4>Phase three — The Wings</h4>
+    <p>This is the part almost nobody gets to. <strong>What do you actually want?</strong></p>
+    <p>Not what would be sensible. <strong>Not what everyone needs from you.</strong></p>
+    <p>What do <em>you</em> want. <strong>We build that.</strong></p>
+    <div class="ctawrap"><a class="cta" href="#book">Yes — I want to start with the layers</a></div>
+  </div></div>
+</section>
+
+<figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMjEwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjIxMCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMjEwIiBmaWxsPSIjRkRGQkY3Ii8+Cjx0ZXh0IHg9IjQ1MCIgeT0iNDQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxMyIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNCMDhCNEYiIGZvbnQtd2VpZ2h0PSI4MDAiPldIQVQgSSBBQ1RVQUxMWSBETyBJTiBUSEUgUk9PTSBXSVRIIFlPVTwvdGV4dD4KPGcgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4KPHRleHQgeD0iMTUwIiB5PSIxMDIiIGZvbnQtc2l6ZT0iMTkiIGZpbGw9IiMxQTFBMUEiIGZvbnQtd2VpZ2h0PSI4MDAiPlRGVDwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxMzAiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiPlRoZSBvcmlnaW5hbCB0YXBwaW5nLjwvdGV4dD4KPHRleHQgeD0iMTUwIiB5PSIxNTIiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiPkRpYWdub3N0aWMgbGV2ZWwuPC90ZXh0Pgo8dGV4dCB4PSIzNzUiIHk9IjEwMiIgZm9udC1zaXplPSIxOSIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjgwMCI+Qk9EWSBBTElHTk1FTlQ8L3RleHQ+Cjx0ZXh0IHg9IjM3NSIgeT0iMTMwIiBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIj5NZXJpZGlhbnMsIGNoYWtyYXMsPC90ZXh0Pgo8dGV4dCB4PSIzNzUiIHk9IjE1MiIgZm9udC1zaXplPSIxNSIgZmlsbD0iIzhBN0Y3MyI+ZGFudGlhbnMgYmFjayBpbiBsaW5lLjwvdGV4dD4KPHRleHQgeD0iNjAwIiB5PSIxMDIiIGZvbnQtc2l6ZT0iMTkiIGZpbGw9IiMxQTFBMUEiIGZvbnQtd2VpZ2h0PSI4MDAiPkhFQUxJTkcgTUVESVRBVElPTjwvdGV4dD4KPHRleHQgeD0iNjAwIiB5PSIxMzAiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiPkd1aWRlZCwgc28geW91ciBib2R5PC90ZXh0Pgo8dGV4dCB4PSI2MDAiIHk9IjE1MiIgZm9udC1zaXplPSIxNSIgZmlsbD0iIzhBN0Y3MyI+bGVhcm5zIHNhZmUgYWdhaW4uPC90ZXh0Pgo8dGV4dCB4PSI4MDAiIHk9IjEwMiIgZm9udC1zaXplPSIxOSIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjgwMCI+VEhFIEJBU0lDUzwvdGV4dD4KPHRleHQgeD0iODAwIiB5PSIxMzAiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiPkZvb2QgYW5kIG1vdmVtZW50LDwvdGV4dD4KPHRleHQgeD0iODAwIiB5PSIxNTIiIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiPnByb3Blcmx5IHF1YWxpZmllZC48L3RleHQ+CjwvZz4KPGxpbmUgeDE9IjI2MiIgeTE9Ijg2IiB4Mj0iMjYyIiB5Mj0iMTY0IiBzdHJva2U9IiNFMEQ2QzgiLz4KPGxpbmUgeDE9IjQ4NyIgeTE9Ijg2IiB4Mj0iNDg3IiB5Mj0iMTY0IiBzdHJva2U9IiNFMEQ2QzgiLz4KPGxpbmUgeDE9IjcwMCIgeTE9Ijg2IiB4Mj0iNzAwIiB5Mj0iMTY0IiBzdHJva2U9IiNFMEQ2QzgiLz4KPC9zdmc+" alt="What Carina does in the room"></figure>
+
+<section class="band">
+  <div class="wrap"><div class="col">
+    <h2>What I actually do, in plain English.</h2>
+    <p>I am trained in TFT. <strong>That is the original tapping</strong> — the method EFT was later simplified out of.</p>
+    <p>And I am trained at the diagnostic level. <strong>That matters more than it sounds.</strong></p>
+    <p>A free app gives every woman on earth the same sequence. <strong>I work out yours.</strong></p>
+    <p>Alongside that I bring the body back into alignment.</p>
+    <p><strong>Meridians, chakras, dantians.</strong></p>
+    <p>When those are out, everything else is fighting uphill. <strong>I have watched it a hundred times.</strong></p>
+    <p>And when you are ready for the practical part, I am properly qualified in nutrition and conditioning too.</p>
+    <p><strong>Not guesswork — actual qualifications.</strong></p>
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col"><h2>Is any of this you?</h2></div></div>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDQwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQ0MCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNDQwIiBmaWxsPSIjM0QyQjQ1Ii8+Cjx0ZXh0IHg9IjQ1MCIgeT0iNjIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0ZERkJGNyIgZm9udC13ZWlnaHQ9IjkwMCI+SXMgYW55IG9mIHRoaXMgeW91PzwvdGV4dD4KPGcgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE5IiBmaWxsPSIjRTlFMkVFIj4KPHRleHQgeD0iMTE4IiB5PSIxMzAiPllvdSBhcmUgdGhlIG9uZSBldmVyeWJvZHkgcmluZ3Mgd2hlbiBpdCBnb2VzIHdyb25nLjwvdGV4dD4KPHRleHQgeD0iMTE4IiB5PSIxODIiPllvdSBncmV3IHVwIGZhc3RlciB0aGFuIHlvdSBzaG91bGQgaGF2ZSBoYWQgdG8uPC90ZXh0Pgo8dGV4dCB4PSIxMTgiIHk9IjIzNCI+WW91IGxvb2tlZCBhZnRlciBzb21lb25lIHVudGlsIHRoZXJlIHdhcyBub2JvZHkgbGVmdCB0byBsb29rIGFmdGVyLjwvdGV4dD4KPHRleHQgeD0iMTE4IiB5PSIyODYiPllvdSBjYW4gc2F5IHdoYXQgeW91IGZlZWwuIFlvdSBjYW5ub3QgZmVlbCB3aGF0IHlvdSBzYXkuPC90ZXh0Pgo8dGV4dCB4PSIxMTgiIHk9IjMzOCI+WW91IGFyZSBmaW5lLiBZb3UgYXJlIGFsd2F5cyBmaW5lLiBZb3UgaGF2ZSBiZWVuIGZpbmUgZm9yIHllYXJzLjwvdGV4dD4KPHRleHQgeD0iMTE4IiB5PSIzOTAiPllvdSBkbyBub3Qga25vdyB3aGF0IHlvdSBsaWtlIGFueW1vcmUuIFlvdSBrbm93IHdoYXQgdGhleSBsaWtlLjwvdGV4dD4KPC9nPgo8ZyBzdHJva2U9IiNFNEM4OTIiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj4KPHBhdGggZD0iTTc4IDEyMiBsNyA4IGwxMyAtMTciLz48cGF0aCBkPSJNNzggMTc0IGw3IDggbDEzIC0xNyIvPjxwYXRoIGQ9Ik03OCAyMjYgbDcgOCBsMTMgLTE3Ii8+CjxwYXRoIGQ9Ik03OCAyNzggbDcgOCBsMTMgLTE3Ii8+PHBhdGggZD0iTTc4IDMzMCBsNyA4IGwxMyAtMTciLz48cGF0aCBkPSJNNzggMzgyIGw3IDggbDEzIC0xNyIvPgo8L2c+Cjwvc3ZnPg==" alt="Is any of this you"></figure>
+  <div class="wrap"><div class="col">
+    <p>If you read that and something went tight in your chest, <strong>that was not nothing.</strong></p>
+    <p>That was your body answering before your mind got a chance to be polite about it. <strong>That is exactly what I work with.</strong></p>
+    <div class="ctawrap"><a class="cta" href="#book">That's me — book my call</a></div>
+  </div></div>
+</section>
+
+<figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzAwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMwMCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjRkRGQkY3Ii8+Cjx0ZXh0IHg9IjQ1MCIgeT0iMzYiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxMiIgbGV0dGVyLXNwYWNpbmc9IjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNCMDhCNEYiIGZvbnQtd2VpZ2h0PSI4MDAiPkxBWU9VVCBPTkxZIOKAlCBZT1VSIEZJUlNUIFRIUkVFIFdPTUVOIEZJTEwgVEhFU0UgSU48L3RleHQ+CjxnPgo8cmVjdCB4PSIzMCIgeT0iNTgiIHdpZHRoPSIyNzAiIGhlaWdodD0iMjEyIiByeD0iMTIiIGZpbGw9IiNmZmYiIHN0cm9rZT0iI0U0RENEMSIvPgo8Y2lyY2xlIGN4PSI3MCIgY3k9IjEwMiIgcj0iMjIiIGZpbGw9IiNERUQ0QzYiLz4KPHRleHQgeD0iMTA0IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNiIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjcwMCI+SGVyIGZpcnN0IG5hbWU8L3RleHQ+Cjx0ZXh0IHg9IjEwNCIgeT0iMTIyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM4QTdGNzMiPldoYXQgc2hlIGNhbWUgaW4gY2Fycnlpbmc8L3RleHQ+Cjx0ZXh0IHg9IjU2IiB5PSIxNjQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgZmlsbD0iIzhBN0Y3MyIgZm9udC1zdHlsZT0iaXRhbGljIj4iSGVyIHdvcmRzLiBJbiBoZXIgdm9pY2UuPC90ZXh0Pgo8dGV4dCB4PSI1NiIgeT0iMTg4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiIGZvbnQtc3R5bGU9Iml0YWxpYyI+Tm90IHBvbGlzaGVkLiBOb3QgdGlkaWVkIHVwLjwvdGV4dD4KPHRleHQgeD0iNTYiIHk9IjIxMiIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPlRoZSBsaW5lIHNoZSBzYWlkIHdoZW48L3RleHQ+Cjx0ZXh0IHg9IjU2IiB5PSIyMzYiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgZmlsbD0iIzhBN0Y3MyIgZm9udC1zdHlsZT0iaXRhbGljIj5zaGUgc3RhcnRlZCBjcnlpbmcuIjwvdGV4dD4KPC9nPgo8Zz4KPHJlY3QgeD0iMzE1IiB5PSI1OCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIyMTIiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRTREQ0QxIi8+CjxjaXJjbGUgY3g9IjM1NSIgY3k9IjEwMiIgcj0iMjIiIGZpbGw9IiNERUQ0QzYiLz4KPHRleHQgeD0iMzg5IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNiIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjcwMCI+SGVyIGZpcnN0IG5hbWU8L3RleHQ+Cjx0ZXh0IHg9IjM4OSIgeT0iMTIyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM4QTdGNzMiPkhvdyBsb25nIHNoZSBoYWQgY2FycmllZCBpdDwvdGV4dD4KPHRleHQgeD0iMzQxIiB5PSIxNjQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgZmlsbD0iIzhBN0Y3MyIgZm9udC1zdHlsZT0iaXRhbGljIj4iQXNrIGhlciBvbmUgcXVlc3Rpb246PC90ZXh0Pgo8dGV4dCB4PSIzNDEiIHk9IjE4OCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPndoYXQgY2FuIHlvdSBkbyBub3c8L3RleHQ+Cjx0ZXh0IHg9IjM0MSIgeT0iMjEyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiIGZvbnQtc3R5bGU9Iml0YWxpYyI+dGhhdCB5b3UgY291bGQgbm90IGRvPC90ZXh0Pgo8dGV4dCB4PSIzNDEiIHk9IjIzNiIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPmJlZm9yZSB3ZSBtZXQ/IjwvdGV4dD4KPC9nPgo8Zz4KPHJlY3QgeD0iNjAwIiB5PSI1OCIgd2lkdGg9IjI3MCIgaGVpZ2h0PSIyMTIiIHJ4PSIxMiIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjRTREQ0QxIi8+CjxjaXJjbGUgY3g9IjY0MCIgY3k9IjEwMiIgcj0iMjIiIGZpbGw9IiNERUQ0QzYiLz4KPHRleHQgeD0iNjc0IiB5PSIxMDAiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNiIgZmlsbD0iIzFBMUExQSIgZm9udC13ZWlnaHQ9IjcwMCI+SGVyIGZpcnN0IG5hbWU8L3RleHQ+Cjx0ZXh0IHg9IjY3NCIgeT0iMTIyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM4QTdGNzMiPldoYXQgY2hhbmdlZCBhdCBob21lPC90ZXh0Pgo8dGV4dCB4PSI2MjYiIHk9IjE2NCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPiJSZWNvcmQgdGhlIGNhbGwuPC90ZXh0Pgo8dGV4dCB4PSI2MjYiIHk9IjE4OCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPlRyYW5zY3JpYmUgaXQuIFVzZSBoZXI8L3RleHQ+Cjx0ZXh0IHg9IjYyNiIgeT0iMjEyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIGZpbGw9IiM4QTdGNzMiIGZvbnQtc3R5bGU9Iml0YWxpYyI+ZXhhY3Qgd29yZHMsIHNwZWxsaW5nPC90ZXh0Pgo8dGV4dCB4PSI2MjYiIHk9IjIzNiIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiBmaWxsPSIjOEE3RjczIiBmb250LXN0eWxlPSJpdGFsaWMiPm1pc3Rha2VzIGFuZCBhbGwuIjwvdGV4dD4KPC9nPgo8L3N2Zz4=" alt="Where client stories will go"></figure>
+
+<section class="band" id="book">
+  <div class="wrap"><div class="col">
+    <h2>Three ways to work with me.</h2>
+    <p>I do not take on many women at once. <strong>This work is not a webinar.</strong></p>
+  </div></div>
+  <figure><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgMzAwIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjMwMCI+CjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iMzAwIiBmaWxsPSIjM0QyQjQ1Ii8+Cjx0ZXh0IHg9IjQ1MCIgeT0iNTIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNFNEM4OTIiIGZvbnQtd2VpZ2h0PSI4MDAiPlRIUkVFIFdBWVMgVE8gV09SSyBXSVRIIE1FPC90ZXh0Pgo8Zz4KPHJlY3QgeD0iNDYiIHk9Ijg2IiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjE3NiIgcng9IjEyIiBmaWxsPSIjNEEzNjUzIiBzdHJva2U9IiM2QTU0NzQiLz4KPHRleHQgeD0iMTcxIiB5PSIxMjgiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0ZERkJGNyIgZm9udC13ZWlnaHQ9IjgwMCI+VGhlIExheWVyIFJlbGVhc2U8L3RleHQ+Cjx0ZXh0IHg9IjE3MSIgeT0iMTc2IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iNDAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNFNEM4OTIiIGZvbnQtd2VpZ2h0PSI5MDAiPiQyOTc8L3RleHQ+Cjx0ZXh0IHg9IjE3MSIgeT0iMjA4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNDQkJCRDYiPk9uZSA5MC1taW51dGUgc2Vzc2lvbjwvdGV4dD4KPHRleHQgeD0iMTcxIiB5PSIyMzIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0NCQkJENiI+RmluZCB3aGF0IGlzIHVuZGVyIHRoZXJlPC90ZXh0Pgo8L2c+CjxnPgo8cmVjdCB4PSIzMjUiIHk9IjcyIiB3aWR0aD0iMjUwIiBoZWlnaHQ9IjIwNCIgcng9IjEyIiBmaWxsPSIjQjA4QjRGIi8+Cjx0ZXh0IHg9IjQ1MCIgeT0iMTAyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTIiIGxldHRlci1zcGFjaW5nPSIzIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjM0IyQzE1IiBmb250LXdlaWdodD0iODAwIj5NT1NUIFdPTUVOIFNUQVJUIEhFUkU8L3RleHQ+Cjx0ZXh0IHg9IjQ1MCIgeT0iMTQwIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMjEiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyQjFGMEYiIGZvbnQtd2VpZ2h0PSI4MDAiPlRoZSBDaHJ5c2FsaXM8L3RleHQ+Cjx0ZXh0IHg9IjQ1MCIgeT0iMTkyIiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iNDQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyQjFGMEYiIGZvbnQtd2VpZ2h0PSI5MDAiPiQzLDAwMDwvdGV4dD4KPHRleHQgeD0iNDUwIiB5PSIyMjQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzRBMzgxOCI+MTIgd2Vla3MsIG9uZSB0byBvbmU8L3RleHQ+Cjx0ZXh0IHg9IjQ1MCIgeT0iMjQ4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM0QTM4MTgiPm9yIHRocmVlIHBheW1lbnRzIG9mICQxLDEwMDwvdGV4dD4KPC9nPgo8Zz4KPHJlY3QgeD0iNjA0IiB5PSI4NiIgd2lkdGg9IjI1MCIgaGVpZ2h0PSIxNzYiIHJ4PSIxMiIgZmlsbD0iIzRBMzY1MyIgc3Ryb2tlPSIjNkE1NDc0Ii8+Cjx0ZXh0IHg9IjcyOSIgeT0iMTI4IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNGREZCRjciIGZvbnQtd2VpZ2h0PSI4MDAiPlRoZSBGbGlnaHQgUm9vbTwvdGV4dD4KPHRleHQgeD0iNzI5IiB5PSIxNzYiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0U0Qzg5MiIgZm9udC13ZWlnaHQ9IjkwMCI+JDk3PC90ZXh0Pgo8dGV4dCB4PSI3MjkiIHk9IjIwOCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjE1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjQ0JCQkQ2Ij5FdmVyeSBtb250aDwvdGV4dD4KPHRleHQgeD0iNzI5IiB5PSIyMzIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI0NCQkJENiI+WW91IGFyZSBub3QgZG9pbmcgaXQgYWxvbmU8L3RleHQ+CjwvZz4KPC9zdmc+" alt="The three packages"></figure>
+  <div class="wrap">
+    <div class="pricegrid">
+      <div class="card">
+        <h4>The Layer Release</h4>
+        <div class="price">$297</div>
+        <div class="per">One 90 minute session</div>
+        <ul>
+          <li><strong>We find what is actually under there.</strong></li>
+          <li>Your own diagnosed sequence, not a generic one.</li>
+          <li><strong>You feel the first layer come off.</strong></li>
+          <li>A written map of what we found.</li>
+        </ul>
+        <a class="cta dark" href="#book" style="font-size:19px;padding:15px 28px">I want a session</a>
+      </div>
+      <div class="card hot">
+        <span class="tag">Most women start here</span>
+        <h4>The Chrysalis</h4>
+        <div class="price">$3,000</div>
+        <div class="per">12 weeks · or 3 payments of $1,100</div>
+        <ul>
+          <li><strong>Twelve weekly one to one sessions.</strong></li>
+          <li>All three phases, start to finish.</li>
+          <li><strong>Messaging access between sessions.</strong></li>
+          <li>Your body alignment and meditation practice.</li>
+          <li><strong>The Wings plan — what you build after.</strong></li>
+          <li>Six months in The Flight Room included.</li>
+        </ul>
+        <a class="cta" href="#book" style="font-size:19px;padding:15px 28px">I'm in — let's begin</a>
+      </div>
+      <div class="card">
+        <h4>The Flight Room</h4>
+        <div class="price">$97</div>
+        <div class="per">Every month · cancel anytime</div>
+        <ul>
+          <li><strong>Two live group sessions a month.</strong></li>
+          <li>A private group of women like you.</li>
+          <li><strong>Guided practice you can do at home.</strong></li>
+          <li>Somewhere to go when it gets loud.</li>
+        </ul>
+        <a class="cta dark" href="#book" style="font-size:19px;padding:15px 28px">I want to join</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col"><h2>My promise, and I mean it.</h2></div></div>
+  <figure style="max-width:320px"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgMzIwIiB3aWR0aD0iMzIwIiBoZWlnaHQ9IjMyMCI+CjxjaXJjbGUgY3g9IjE2MCIgY3k9IjE2MCIgcj0iMTUyIiBmaWxsPSIjRkRGQkY3IiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMyIvPgo8Y2lyY2xlIGN4PSIxNjAiIGN5PSIxNjAiIHI9IjEzNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQjA4QjRGIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9Ii41NSIvPgo8dGV4dCB4PSIxNjAiIHk9Ijk2IiBmb250LWZhbWlseT0nSW50ZXIsSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWYnIGZvbnQtc2l6ZT0iMTQiIGxldHRlci1zcGFjaW5nPSI0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjQjA4QjRGIiBmb250LXdlaWdodD0iODAwIj5NWSBQUk9NSVNFIFRPIFlPVTwvdGV4dD4KPHRleHQgeD0iMTYwIiB5PSIxNDYiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIzNCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzNEMkI0NSIgZm9udC13ZWlnaHQ9IjkwMCI+T25lIFNlc3Npb24uPC90ZXh0Pgo8dGV4dCB4PSIxNjAiIHk9IjE4NCIgZm9udC1mYW1pbHk9J0ludGVyLEhlbHZldGljYSxBcmlhbCxzYW5zLXNlcmlmJyBmb250LXNpemU9IjM0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjM0QyQjQ1IiBmb250LXdlaWdodD0iOTAwIj5ObyBSaXNrLjwvdGV4dD4KPHRleHQgeD0iMTYwIiB5PSIyMjIiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhBN0Y3MyI+SWYgbm90aGluZyBzaGlmdHMgaW4geW91ciBib2R5LDwvdGV4dD4KPHRleHQgeD0iMTYwIiB5PSIyNDQiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzhBN0Y3MyI+SSByZWZ1bmQgaXQgYW5kIHdlIHN0b3AuPC90ZXh0PgoKICA8cGF0aCBkPSJNMTYwIDI2Ni45NiBDMTYwIDI2Ni45NiAxNTMuMjggMjU5LjQgMTQ2LjU2IDI2Mi43NgogICAgICAgICAgIEMxMzkuODQgMjY2LjEyIDE0MS41MiAyNzUuMzYgMTQ5LjA4IDI3Ny4wNAogICAgICAgICAgIEMxNTQuOTYgMjc4LjMgMTYwIDI3MiAxNjAgMjcyIFoiIGZpbGw9IiM4QjZGQTgiIG9wYWNpdHk9IjAuOSIvPgogIDxwYXRoIGQ9Ik0xNjAgMjcyIEMxNjAgMjcyIDE1NC4xMiAyNzcuMDQgMTUwLjc2IDI4NC42CiAgICAgICAgICAgQzE0Ny44MiAyOTAuOSAxNTQuMTIgMjk0LjY4IDE1OC4zMiAyOTAuNDgKICAgICAgICAgICBDMTYwIDI4Ny45NiAxNjAgMjc4LjcyIDE2MCAyNzguNzIgWiIgZmlsbD0iIzhCNkZBOCIgb3BhY2l0eT0iMC41NTgiLz4KICA8cGF0aCBkPSJNMTYwIDI2Ni45NiBDMTYwIDI2Ni45NiAxNjYuNzIgMjU5LjQgMTczLjQ0IDI2Mi43NgogICAgICAgICAgIEMxODAuMTYgMjY2LjEyIDE3OC40OCAyNzUuMzYgMTcwLjkyIDI3Ny4wNAogICAgICAgICAgIEMxNjUuMDQgMjc4LjMgMTYwIDI3MiAxNjAgMjcyIFoiIGZpbGw9IiNCMDhCNEYiIG9wYWNpdHk9IjAuOSIvPgogIDxwYXRoIGQ9Ik0xNjAgMjcyIEMxNjAgMjcyIDE2NS44OCAyNzcuMDQgMTY5LjI0IDI4NC42CiAgICAgICAgICAgQzE3Mi4xOCAyOTAuOSAxNjUuODggMjk0LjY4IDE2MS42OCAyOTAuNDgKICAgICAgICAgICBDMTYwIDI4Ny45NiAxNjAgMjc4LjcyIDE2MCAyNzguNzIgWiIgZmlsbD0iI0IwOEI0RiIgb3BhY2l0eT0iMC41NTgiLz4KICA8cmVjdCB4PSIxNTkuMzI4IiB5PSIyNjUuMjgiIHdpZHRoPSIxLjM0NCIgaGVpZ2h0PSIyNi4wNCIgcng9IjAuNjcyIiBmaWxsPSIjM0QyQjQ1IiBvcGFjaXR5PSIwLjgxIi8+Cgo8L3N2Zz4=" alt="One session, no risk guarantee"></figure>
+  <div class="wrap"><div class="col">
+    <p>Do one full session with me. <strong>If nothing shifts in your body — nothing, not one degree — tell me.</strong></p>
+    <p>I will refund you and we will stop.</p>
+    <p><strong>No form, no argument.</strong></p>
+    <p>I am not willing to take money from a woman who has already given everything away. <strong>That is not why I do this.</strong></p>
+  </div></div>
+</section>
+
+<section class="band">
+  <div class="wrap"><div class="col">
+    <h2>Who this is not for.</h2>
+    <div class="notfor"><ul>
+      <li><strong>If you want to talk about it, this is not it.</strong> There are good therapists for that, and I will happily point you to one.</li>
+      <li><strong>If you want somebody to agree that it was all done to you</strong>, I am the wrong woman. I will be kind and I will not do that.</li>
+      <li><strong>If you are in the first weeks of a loss</strong>, please just be held right now. Come and find me later.</li>
+      <li><strong>If you are not willing to feel anything</strong>, this will not work, and I would rather say so now.</li>
+    </ul></div>
+    <div class="ctawrap"><a class="cta" href="#book">None of those are me — book my call</a></div>
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>The questions I get asked most.</h2>
+
+    <div class="faq"><h4>"It has been years. Am I not supposed to be over this by now?"</h4>
+    <p>There is no clock on this. <strong>The women I work with are usually years out.</strong></p>
+    <p>That is precisely when it gets harder, not easier. <strong>Everyone else has moved on and you are still there.</strong></p></div>
+
+    <div class="faq"><h4>"I have already spent a fortune on things that did not work."</h4>
+    <p>I know. <strong>So had I.</strong></p>
+    <p>Which is exactly why you get one session with a full refund if nothing moves. <strong>The risk is mine, not yours.</strong></p></div>
+
+    <div class="faq"><h4>"Tapping sounds a bit strange to me."</h4>
+    <p>It did to me as well. <strong>Then I watched it do in twenty minutes what years of talking never did.</strong></p>
+    <p>You do not have to believe in it. <strong>You only have to try it once.</strong></p></div>
+
+    <div class="faq"><h4>"I do not have time for this."</h4>
+    <p>You have carried this for years. <strong>You can give it ninety minutes.</strong></p></div>
+
+    <div class="faq"><h4>"Is it selfish to spend this on myself?"</h4>
+    <p>You have asked that question about every single thing you have ever wanted. <strong>That is the layer.</strong></p></div>
+  </div></div>
+</section>
+
+<section class="band plum">
+  <div class="wrap"><div class="col">
+    <h2>One last thing, and then I will let you go.</h2>
+    <p>When my mother was dying, I sat with her. <strong>I had given her a home.</strong></p>
+    <p>I had given her food and money and safety. <strong>I had done everything a daughter is meant to do.</strong></p>
+    <p>And the only thought in my head was this. <strong>There is so much more to life than this.</strong></p>
+    <p>I never once got to watch her feel alive. <strong>Not for a single moment.</strong></p>
+    <div class="big" style="border-color:var(--goldl);color:#fff">I built this so no other woman runs out of time before she gets to meet herself.</div>
+    <p>You have looked after everybody. <strong>Let somebody look after you for twenty minutes.</strong></p>
+    <div class="sig">— Carina</div>
+    <div class="ctawrap"><a class="cta" href="#book">Yes — I'll book the call</a>
+    <div class="ctanote">Twenty minutes. No pitch. You can cry if you need to.</div></div>
+  </div></div>
+</section>
+
+<footer>
+  <div class="wrap">THE BUTTERFLY METHOD™ &nbsp;·&nbsp; CARINA DE VILLIERS &nbsp;·&nbsp; NEW ZEALAND<br><br>
+  This is coaching, not therapy or medical treatment.</div>
+</footer>
+
+</body>
+</html>
