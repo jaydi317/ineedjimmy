@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carina de Villiers — The Butterfly Method | Build Room</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1A1A1A;--soft:#4A4A4A;--mut:#7E7468;--line:#E7DFD2;--ivory:#FFFDF9;--sand:#F3EDE2;--plum:#3D2B45;--gold:#A8792F;--goldl:#E6C98C;--sage:#3E6B54}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--ivory);color:var(--ink);font-size:19px;line-height:1.62}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+.col{max-width:720px;margin:0 auto}
+p{margin-bottom:17px;color:var(--soft)}
+p strong{color:var(--ink);font-weight:700}
+h1{font-size:46px;line-height:1.08;font-weight:900;letter-spacing:-.025em}
+h2{font-size:32px;line-height:1.18;font-weight:900;letter-spacing:-.015em;margin:0 0 18px}
+h3{font-size:23px;font-weight:800;margin:30px 0 12px}
+.kick{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+section{padding:54px 0}
+header{background:var(--plum);color:#fff;padding:56px 0 52px;text-align:center}
+header h1{color:#fff;margin:16px auto 18px;max-width:760px}
+header .kick{color:var(--goldl)}
+header p{color:#DCD2E4;font-size:20px;max-width:640px;margin:0 auto}
+.emblem{width:96px;margin:0 auto}
+.band{background:var(--sand)}
+.pitch{background:#fff;border:2px solid var(--gold);border-radius:14px;padding:34px 32px;font-size:23px;line-height:1.55;color:var(--ink);margin:26px 0}
+.pitch em{font-style:normal;font-weight:800;color:var(--plum)}
+.cards{display:flex;gap:24px;flex-wrap:wrap;margin:30px 0}
+.mock{flex:1;min-width:300px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 4px 22px rgba(61,43,69,.07)}
+.mock .top{background:var(--plum);color:#fff;padding:22px 26px}
+.mock .top h3{margin:0;color:#fff;font-size:21px}
+.mock .top .lab{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--goldl);font-weight:800;margin-bottom:7px}
+.mock .body{padding:26px}
+.mock .body p{font-size:18px}
+.mock ul{margin:0 0 20px 20px}
+.mock li{font-size:18px;color:var(--soft);margin-bottom:8px}
+.btn{display:inline-block;background:var(--gold);color:#fff;font-weight:800;font-size:19px;padding:15px 30px;border-radius:9px;text-decoration:none}
+.btn:hover{background:#8F651F}
+.btn.plum{background:var(--plum)}
+.math{background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px 30px;margin:26px 0}
+.math .row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line);font-size:19px}
+.math .row b{color:var(--ink)}
+.math .row span{white-space:nowrap;font-weight:800;color:var(--plum)}
+.math .tot{display:flex;justify-content:space-between;padding-top:18px;font-size:24px;font-weight:900;color:var(--gold)}
+.steps{counter-reset:s}
+.step{background:#fff;border:1px solid var(--line);border-left:6px solid var(--gold);border-radius:10px;padding:24px 26px;margin-bottom:18px;counter-increment:s}
+.step h3{margin:0 0 8px;font-size:21px}
+.step h3:before{content:"Step " counter(s) " — ";color:var(--gold)}
+.step p{font-size:18px;margin-bottom:10px}
+.step code{background:var(--sand);padding:3px 7px;border-radius:5px;font-size:16px;font-family:ui-monospace,Menlo,monospace}
+.note{background:var(--plum);color:#DCD2E4;border-radius:14px;padding:30px 32px;margin:28px 0}
+.note strong{color:#fff}
+ul{margin:0 0 18px 21px}
+li{margin-bottom:9px}
+footer{background:var(--plum);color:#B3A3BE;padding:44px 0;text-align:center;font-size:13px;letter-spacing:.05em}
+@media(max-width:660px){h1{font-size:32px}h2{font-size:26px}.pitch{font-size:20px;padding:24px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <img class="emblem" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgMjQwIiB3aWR0aD0iMjQwIiBoZWlnaHQ9IjI0MCI+CjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEyMCIgcj0iMTE2IiBmaWxsPSJub25lIiBzdHJva2U9IiNCMDhCNEYiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIuNTUiLz4KPGNpcmNsZSBjeD0iMTIwIiBjeT0iMTIwIiByPSIxMDQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0IwOEI0RiIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9Ii4zIi8+CgogIDxwYXRoIGQ9Ik0xMjAgODkuNCBDMTIwIDg5LjQgOTUuMiA2MS41IDcwLjQgNzMuOQogICAgICAgICAgIEM0NS41OTk5OTk5OTk5OTk5OTQgODYuMyA1MS44IDEyMC40IDc5LjY5OTk5OTk5OTk5OTk5IDEyNi42CiAgICAgICAgICAgQzEwMS40IDEzMS4yNSAxMjAgMTA4IDEyMCAxMDggWiIgZmlsbD0iIzhCNkZBOCIgb3BhY2l0eT0iMC45NSIvPgogIDxwYXRoIGQ9Ik0xMjAgMTA4IEMxMjAgMTA4IDk4LjMgMTI2LjYgODUuOSAxNTQuNQogICAgICAgICAgIEM3NS4wNSAxNzcuNzUgOTguMyAxOTEuNyAxMTMuOCAxNzYuMgogICAgICAgICAgIEMxMjAgMTY2LjkgMTIwIDEzMi44IDEyMCAxMzIuOCBaIiBmaWxsPSIjOEI2RkE4IiBvcGFjaXR5PSIwLjU4OSIvPgogIDxwYXRoIGQ9Ik0xMjAgODkuNCBDMTIwIDg5LjQgMTQ0LjggNjEuNSAxNjkuNiA3My45CiAgICAgICAgICAgQzE5NC40IDg2LjMgMTg4LjIgMTIwLjQgMTYwLjMgMTI2LjYKICAgICAgICAgICBDMTM4LjYgMTMxLjI1IDEyMCAxMDggMTIwIDEwOCBaIiBmaWxsPSIjQjA4QjRGIiBvcGFjaXR5PSIwLjk1Ii8+CiAgPHBhdGggZD0iTTEyMCAxMDggQzEyMCAxMDggMTQxLjcgMTI2LjYgMTU0LjEgMTU0LjUKICAgICAgICAgICBDMTY0Ljk1IDE3Ny43NSAxNDEuNyAxOTEuNyAxMjYuMiAxNzYuMgogICAgICAgICAgIEMxMjAgMTY2LjkgMTIwIDEzMi44IDEyMCAxMzIuOCBaIiBmaWxsPSIjQjA4QjRGIiBvcGFjaXR5PSIwLjU4OSIvPgogIDxyZWN0IHg9IjExNy41MiIgeT0iODMuMiIgd2lkdGg9IjQuOTYwMDAwMDAwMDAwMDAxIiBoZWlnaHQ9Ijk2LjEwMDAwMDAwMDAwMDAxIiByeD0iMi40ODAwMDAwMDAwMDAwMDA0IiBmaWxsPSIjM0QyQjQ1IiBvcGFjaXR5PSIwLjg1NSIvPgoKPHRleHQgeD0iMTIwIiB5PSIyMTUiIGZvbnQtZmFtaWx5PSdJbnRlcixIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZicgZm9udC1zaXplPSIxMyIgbGV0dGVyLXNwYWNpbmc9IjUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNCMDhCNEYiIGZvbnQtd2VpZ2h0PSI3MDAiPlRIRSBCVVRURVJGTFkgTUVUSE9EPC90ZXh0Pgo8L3N2Zz4=" alt="The Butterfly Method emblem">
+    <div class="kick">The build room · 18 August 2026</div>
+    <h1>Carina de Villiers<br>The Butterfly Method™</h1>
+    <p>Everything built on the call, in one place. Two website mockups, the offer, the numbers, and the exact steps to get this live.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>The identity we locked.</h2>
+    <p><strong>Who you serve:</strong> the woman who has been <em>the strong one</em> her whole life. She held the family together. She made adult decisions before she was old enough to make them.</p>
+    <p>She looked after someone until there was nobody left to look after. <strong>And now she has no idea who she is.</strong></p>
+
+    <h3>Your elevator pitch</h3>
+    <div class="pitch">"Hi, I'm Carina de Villiers, creator of <em>the Butterfly Method</em>. I help women who have spent their whole lives being the strong one for everybody else <em>find out who they are underneath it</em> — using a body-first method that works when talking about it hasn't."</div>
+
+    <h3>Why you built it</h3>
+    <p>"When my mum was dying I had given her everything a daughter is supposed to give. A home, food, safety, money.</p>
+    <p><strong>And I never once got to watch her feel alive.</strong> I built this so no other woman runs out of time before she gets to meet herself."</p>
+
+    <h3>Your unfair advantage</h3>
+    <p>We mapped 30+ coaches making real money in this space. <strong>Nearly all of them say the same sentence:</strong> you cannot talk your way out of something that is stored in the body.</p>
+    <p><strong>They say it. They can't do it.</strong> They say "somatic" and run a Zoom call with a workbook.</p>
+    <p>You have TFT at diagnostic level — <strong>the original tapping, the one EFT was simplified out of.</strong> An app gives every woman the same sequence. You work out hers.</p>
+  </div></div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="col"><h2>Two mockups. Same offer, two different doors.</h2>
+    <p>Both are written from you, to her. Read both, then tell me which one feels like your voice.</p></div>
+    <div class="cards">
+      <div class="mock">
+        <div class="top"><div class="lab">Mockup A</div><h3>The Letter</h3></div>
+        <div class="body">
+          <p><strong>"Everyone Calls You The Strong One. Nobody Has Ever Asked Who Holds You."</strong></p>
+          <ul>
+            <li>Story-led, warm, one long letter</li>
+            <li>Your life carries the proof</li>
+            <li>Reads like you talking, not a funnel</li>
+            <li>Best for women who need to feel <em>seen</em> before they'll move</li>
+          </ul>
+          <a class="btn plum" href="mockup-a.html">Open Mockup A</a>
+        </div>
+      </div>
+      <div class="mock">
+        <div class="top"><div class="lab">Mockup B</div><h3>The Diagnostic</h3></div>
+        <div class="body">
+          <p><strong>"'Just Take Care Of Yourself' Is The Most Useless Advice Ever Given To A Woman Like You."</strong></p>
+          <ul>
+            <li>Punchier, structured, names the enemy</li>
+            <li>Three reasons nothing has worked</li>
+            <li>Value stack and a Kennedy P.S.</li>
+            <li>Best for the analytical woman who needs it to <em>make sense</em></li>
+          </ul>
+          <a class="btn" href="mockup-b.html">Open Mockup B</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>The number. $10,000 a month.</h2>
+    <p>Here is the thing about that number that nobody tells you. <strong>It is smaller than it sounds.</strong></p>
+    <div class="math">
+      <div class="row"><b>3 × The Chrysalis at $3,000</b><span>$9,000</span></div>
+      <div class="row"><b>12 women in The Flight Room at $97</b><span>$1,164</span></div>
+      <div class="tot"><span>Every month</span><span>$10,164</span></div>
+    </div>
+    <p><strong>You need three women a month. Not thirty.</strong></p>
+    <p>Three. That is the whole business.</p>
+
+    <h3>What that actually costs you in hours</h3>
+    <p>Nine active clients at a time, one session each per week. <strong>Nine sessions a week.</strong></p>
+    <p>Plus two group calls a month. <strong>You are working roughly twelve hours a week.</strong></p>
+
+    <h3>What you need feeding it</h3>
+    <p>Three sales a month means roughly <strong>ten conversations a month</strong>. That is two or three calls a week.</p>
+    <p>Ten conversations means around <strong>fifty women seeing the page</strong>. Fifty. Not fifty thousand.</p>
+    <div class="note">
+      <p><strong>This is why the number is not the problem.</strong> The problem was never the money.</p>
+      <p>The problem was that nobody could tell in eight seconds what you do or who you do it for. <strong>That is now fixed.</strong></p>
+    </div>
+  </div></div>
+</section>
+
+<section class="band">
+  <div class="wrap"><div class="col">
+    <h2>Getting this live. Cheap domain, free hosting.</h2>
+    <p>Total cost for year one: <strong>about $12.</strong> That is the domain. The hosting is free forever.</p>
+    <div class="steps">
+
+      <div class="step">
+        <h3>Buy the domain</h3>
+        <p>Go to <strong>Cloudflare Registrar</strong> or <strong>Namecheap</strong>. Search <code>thebutterflymethod.com</code>.</p>
+        <p>If it is taken, try <code>carinadevilliers.com</code> or <code>thebutterflymethod.co.nz</code>. <strong>Expect $10–$15 for the year.</strong></p>
+        <p>Cloudflare sells at cost with no renewal jump. <strong>That is the one I'd pick.</strong></p>
+      </div>
+
+      <div class="step">
+        <h3>Make a free GitHub account</h3>
+        <p>Go to <code>github.com</code> and sign up. <strong>Username something like carinadevilliers.</strong></p>
+        <p>It is free. <strong>You do not need to understand any code.</strong></p>
+      </div>
+
+      <div class="step">
+        <h3>Create the repository</h3>
+        <p>Click the <strong>+</strong> in the top right, then <strong>New repository</strong>.</p>
+        <p>Name it exactly: <code>yourusername.github.io</code>. Set it to <strong>Public</strong>. Click create.</p>
+      </div>
+
+      <div class="step">
+        <h3>Upload the page</h3>
+        <p>Rename your chosen mockup file to <code>index.html</code>.</p>
+        <p>In the repository click <strong>Add file → Upload files</strong>, drag it in, then <strong>Commit changes</strong>.</p>
+        <p>Everything is inside that one file — no images to upload. <strong>It just works.</strong></p>
+      </div>
+
+      <div class="step">
+        <h3>Switch the site on</h3>
+        <p>Go to <strong>Settings → Pages</strong>. Under Source pick <strong>Deploy from a branch</strong>, branch <strong>main</strong>, folder <strong>/ (root)</strong>. Save.</p>
+        <p>Wait two minutes. <strong>Your site is now live at yourusername.github.io.</strong></p>
+      </div>
+
+      <div class="step">
+        <h3>Point your domain at it</h3>
+        <p>In <strong>Settings → Pages → Custom domain</strong>, type your domain and save. GitHub creates a <code>CNAME</code> file for you.</p>
+        <p>Then in your domain account add these <strong>A records</strong> for <code>@</code>:</p>
+        <p><code>185.199.108.153</code> &nbsp; <code>185.199.109.153</code> &nbsp; <code>185.199.110.153</code> &nbsp; <code>185.199.111.153</code></p>
+        <p>And one <strong>CNAME</strong> for <code>www</code> pointing to <code>yourusername.github.io</code>.</p>
+        <p>Back in GitHub, tick <strong>Enforce HTTPS</strong>. <strong>Done. It is live and secure.</strong></p>
+      </div>
+
+      <div class="step">
+        <h3>Add the booking link</h3>
+        <p>Sign up free at <strong>TidyCal</strong> ($29 once, lifetime) or <strong>Calendly</strong> (free tier).</p>
+        <p>Create a <strong>20 minute call</strong> called "A quiet 20 minutes with Carina."</p>
+        <p>Then find every <code>href="#book"</code> or <code>href="#offer"</code> in the file and swap it for your booking link.</p>
+      </div>
+
+      <div class="step">
+        <h3>Take payment</h3>
+        <p>Open a free <strong>Stripe</strong> account. Create three Payment Links.</p>
+        <p><strong>$297 one-off. $3,000 one-off. $1,100 × 3. $97 monthly subscription.</strong></p>
+        <p>You do not need a shopping cart. <strong>You send the link on the call.</strong></p>
+      </div>
+
+    </div>
+  </div></div>
+</section>
+
+<section>
+  <div class="wrap"><div class="col">
+    <h2>The first 90 days.</h2>
+    <h3>Days 1–14 — get findable</h3>
+    <p>Site live. Booking link working. <strong>Stripe links made.</strong></p>
+    <p>Then have <strong>ten conversations</strong> with women who fit. Not to sell. To listen and collect their exact words.</p>
+
+    <h3>Days 15–45 — your first three</h3>
+    <p><strong>Never take a client under $1,000.</strong> That rule is not about the money.</p>
+    <p>It is about what happens in you when a woman pays you properly and then tells you it changed her life.</p>
+    <p>Record every session you are allowed to record. <strong>Ask one question at the end: what can you do now that you could not do before?</strong></p>
+
+    <h3>Days 46–90 — proof, then scale</h3>
+    <p>Three real stories on the page, in their words, spelling mistakes and all. <strong>Then open The Flight Room.</strong></p>
+    <p>Now the page does the qualifying and you just have the conversations. <strong>That is a business.</strong></p>
+
+    <div class="note">
+      <p><strong>The one thing that will try to stop you.</strong> When you make your first $1,000 sale you are going to feel like a fraud.</p>
+      <p>Every single woman does. <strong>It is not a signal. It is the layer.</strong></p>
+      <p>Make the second sale. Then the third. <strong>The feeling dies somewhere around number four.</strong></p>
+    </div>
+  </div></div>
+</section>
+
+<footer>
+  <div class="wrap">BUILT FOR CARINA DE VILLIERS &nbsp;·&nbsp; 18 AUGUST 2026 &nbsp;·&nbsp; JIMMY DAVIS<br><br>
+  The Butterfly Method™ — her words, her method, her business.</div>
+</footer>
+
+</body>
+</html>
