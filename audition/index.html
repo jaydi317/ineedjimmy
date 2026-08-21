@@ -246,7 +246,7 @@
   <p class="trace" id="trace">Checking the Talk pipe…</p>
   <p class="foot">No keys on this page. Marin, Carina, Kora, and Katie use a short-lived token. Gemini Live in the browser is next.</p>
 </main>
-<audio id="remoteAudio" autoplay></audio>
+<audio id="remoteAudio" autoplay playsinline></audio>
 <script>
 const BRIDGES = [
   "https://webhook.davisdash.com/voice-bridge",
@@ -256,6 +256,7 @@ const SCRIPT = "You are a warm phone helper. Be brief and human. Jimmy will inte
 let bridge = "";
 let session = null;
 let starting = false;
+let sharedCtx = null;
 
 function say(line){
   document.getElementById("trace").textContent = line;
@@ -288,36 +289,85 @@ async function fetchTimeout(url, opts, ms){
   }
   finally { clearTimeout(t); }
 }
-function firstOk(promises){
-  return new Promise((resolve, reject) => {
-    let left = promises.length;
-    if (!left){ reject(new Error("pipe down")); return; }
-    let done = false;
-    promises.forEach(p => {
-      Promise.resolve(p).then(v => { if (!done){ done = true; resolve(v); } }, () => {
-        left -= 1;
-        if (!left && !done) reject(new Error("pipe down"));
-      });
-    });
-  });
+function unlockAudio(){
+  const remote = document.getElementById("remoteAudio");
+  try { remote.setAttribute("playsinline",""); remote.autoplay = true; remote.play().catch(()=>{}); } catch {}
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (AC){
+    if (!sharedCtx) sharedCtx = new AC();
+    if (sharedCtx.state === "suspended") sharedCtx.resume();
+  }
+  return sharedCtx;
 }
+function makeCtx(rate){
+  const AC = window.AudioContext || window.webkitAudioContext;
+  const ctx = rate ? new AC({sampleRate:rate}) : new AC();
+  if (ctx.state === "suspended") ctx.resume();
+  return ctx;
+}
+function resumeCtx(ctx){
+  if (ctx && ctx.state === "suspended") return ctx.resume();
+}
+function floatToPcm16(float32){
+  const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
+  for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
+  return new Uint8Array(out);
+}
+function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
+function base64ToPcm(b64){ const raw=atob(b64), out=new Float32Array(raw.length/2), v=new DataView(new ArrayBuffer(raw.length)); for(let i=0;i<raw.length;i++) v.setUint8(i, raw.charCodeAt(i)); for(let i=0;i<out.length;i++) out[i]=v.getInt16(i*2,true)/32768; return out; }
+function resample(float32, fromRate, toRate){
+  if (!fromRate || !toRate || fromRate === toRate) return float32;
+  const ratio = fromRate / toRate;
+  const n = Math.max(1, Math.round(float32.length / ratio));
+  const out = new Float32Array(n);
+  for (let i=0;i<n;i++){
+    const x = i * ratio;
+    const i0 = Math.min(Math.floor(x), float32.length-1);
+    const i1 = Math.min(i0+1, float32.length-1);
+    const f = x - i0;
+    out[i] = float32[i0]*(1-f) + float32[i1]*f;
+  }
+  return out;
+}
+function b64ToBlob(b64, type){
+  const raw = atob(b64);
+  const arr = new Uint8Array(raw.length);
+  for (let i=0;i<raw.length;i++) arr[i] = raw.charCodeAt(i);
+  return new Blob([arr], {type:type||"audio/wav"});
+}
+function hookWs(ws, handlers){
+  ws.onopen = handlers.onopen;
+  ws.onmessage = handlers.onmessage;
+  ws.onerror = handlers.onerror;
+  ws.onclose = handlers.onclose;
+  if (ws.readyState === WebSocket.OPEN && handlers.onopen) handlers.onopen();
+}
+function errText(ev){
+  if (!ev) return "unknown";
+  if (typeof ev === "string") return ev;
+  return ev.message || ev.error || ev.slug || ev.code || (ev.error && ev.error.message) || "unknown";
+}
+
 async function pickBridge(){
   say("Checking the Talk pipe…");
-  const tryOne = (base) => fetchTimeout(base + "/api/status", {cache:"no-store"}, 4000).then(async r => {
-    if (!r.ok) throw new Error("bad");
+  const tryOne = async (base, ms, label) => {
+    const r = await fetchTimeout(base + "/api/status", {cache:"no-store"}, ms);
+    if (!r.ok) throw new Error(label + " " + r.status);
     const s = await r.json();
-    if (!s || typeof s !== "object") throw new Error("bad");
+    if (!s || typeof s !== "object") throw new Error(label + " bad status");
     return {base, s};
-  });
+  };
   let picked = null;
   try {
-    picked = await Promise.race([
-      firstOk(BRIDGES.map(tryOne)),
-      new Promise((_, rej) => setTimeout(() => rej(new Error("pipe down")), 5000))
-    ]);
+    picked = await tryOne(BRIDGES[0], 2000, "VPS");
   } catch (e) {
-    say("Talk pipe is down. Refresh. Phone still works: 833-721-4250.");
-    return;
+    say("VPS pipe missed (" + (e && e.message || e) + "). Trying backup…");
+    try {
+      picked = await tryOne(BRIDGES[1], 4000, "backup");
+    } catch (e2) {
+      say("Talk pipe is down. " + (e2 && e2.message || e2) + ". Refresh. Phone still works: 833-721-4250.");
+      return;
+    }
   }
   const {base, s} = picked;
   bridge = base;
@@ -333,9 +383,26 @@ async function pickBridge(){
 }
 async function token(path){
   if (!bridge) throw new Error("pipe is down");
-  const r = await fetchTimeout(bridge + path, {method:"POST"}, 8000);
-  const data = await r.json();
-  if (!r.ok || !data.value) throw new Error(data.error || "token failed");
+  let r;
+  try {
+    r = await fetchTimeout(bridge + path, {method:"POST"}, 8000);
+  } catch (e) {
+    const msg = "token failed: " + (e && e.message || e);
+    say(msg);
+    throw new Error(msg);
+  }
+  let data = {};
+  try { data = await r.json(); }
+  catch {
+    const msg = "token failed: " + r.status + " (not json)";
+    say(msg);
+    throw new Error(msg);
+  }
+  if (!r.ok || !data.value){
+    const msg = data.error || ("token failed: " + r.status);
+    say(msg);
+    throw new Error(msg);
+  }
   return data.value;
 }
 async function stop(msg){
@@ -348,12 +415,39 @@ async function stop(msg){
   say(msg || "Stopped. Score it, then try the other one.");
 }
 function stillOn(){ return !!session; }
+
+function playPcm(outputCtx, state, samples, rate){
+  resumeCtx(outputCtx);
+  if (!outputCtx || outputCtx.state === "suspended"){
+    say("Playback blocked: tap Talk again to unlock audio.");
+    return;
+  }
+  const b = outputCtx.createBuffer(1, samples.length, rate);
+  b.copyToChannel(samples, 0);
+  const node = outputCtx.createBufferSource();
+  node.buffer = b;
+  node.connect(outputCtx.destination);
+  state.nextPlay = Math.max(state.nextPlay, outputCtx.currentTime + 0.03);
+  node.start(state.nextPlay);
+  state.nextPlay += b.duration;
+  state.playing.push(node);
+  node.onended = () => {
+    const i = state.playing.indexOf(node);
+    if (i >= 0) state.playing.splice(i, 1);
+  };
+}
+function clearPlay(state, outputCtx){
+  state.playing.splice(0).forEach(n=>{ try{ n.stop(); } catch{} });
+  state.nextPlay = outputCtx ? outputCtx.currentTime : 0;
+}
+
 async function startOpenAI(){
   if (session) await stop();
   const btn = document.getElementById("talk-openai");
   btn.classList.add("live");
   btn.textContent = "Stop · Marin";
   say("Asking for mic, then Marin…");
+  unlockAudio();
   const pc = new RTCPeerConnection();
   const remote = document.getElementById("remoteAudio");
   let stream = null, dc = null;
@@ -361,14 +455,18 @@ async function startOpenAI(){
     ()=>{ if (dc) dc.close(); },
     ()=>pc.close(),
     ()=>{ if (stream) stream.getTracks().forEach(t=>t.stop()); },
-    ()=>{ remote.srcObject = null; }
+    ()=>{ remote.srcObject = null; remote.pause(); }
   ]};
   const value = await token("/api/token/openai");
   if (!stillOn()) return;
   stream = await navigator.mediaDevices.getUserMedia({audio:true, video:false});
   if (!stillOn()){ stream.getTracks().forEach(t=>t.stop()); return; }
   stream.getTracks().forEach(t=>pc.addTrack(t, stream));
-  pc.ontrack = e => { remote.srcObject = e.streams[0]; };
+  pc.ontrack = e => {
+    remote.srcObject = e.streams[0];
+    const p = remote.play();
+    if (p && p.catch) p.catch(err => say("Marin play blocked: " + (err && err.message || err) + ". Tap Talk again."));
+  };
   dc = pc.createDataChannel("oai-events");
   dc.onopen = () => {
     dc.send(JSON.stringify({
@@ -429,78 +527,83 @@ async function startOpenAI(){
   }, 8000);
   session.cleanup.push(() => clearTimeout(iceTimer));
 }
+
 async function startXai(){
   if (session) await stop();
   const btn = document.getElementById("talk-xai");
   btn.classList.add("live");
   btn.textContent = "Stop · Carina";
   say("Asking for mic, then Carina…");
-  let ws = null, stream = null, inputCtx = null, outputCtx = null, processor = null, source = null;
+  unlockAudio();
+  let ws = null, stream = null, processor = null, source = null;
+  const inputCtx = makeCtx(24000);
+  const outputCtx = makeCtx(24000);
+  const state = {playing:[], nextPlay:0};
+  let ready = false;
   session = {cleanup:[
     ()=>{ if (ws) ws.close(); },
     ()=>{ try{ if (processor) processor.disconnect(); if (source) source.disconnect(); }catch{} },
     ()=>{ if (inputCtx) inputCtx.close(); },
     ()=>{ if (outputCtx) outputCtx.close(); },
-    ()=>{ if (stream) stream.getTracks().forEach(t=>t.stop()); }
+    ()=>{ if (stream) stream.getTracks().forEach(t=>t.stop()); },
+    ()=>clearPlay(state, outputCtx)
   ]};
   const value = await token("/api/token/xai");
   if (!stillOn()) return;
+  resumeCtx(inputCtx); resumeCtx(outputCtx);
+  const hang = setTimeout(() => { if (stillOn() && ws && ws.readyState !== WebSocket.OPEN) stop("Carina failed: socket timed out"); }, 8000);
+  session.cleanup.push(() => clearTimeout(hang));
   ws = new WebSocket("wss://api.x.ai/v1/realtime?model=grok-voice-latest", ["xai-client-secret." + value]);
+  hookWs(ws, {
+    onopen(){
+      const rate = inputCtx.sampleRate || 24000;
+      ws.send(JSON.stringify({
+        type:"session.update",
+        session:{
+          voice:"Carina",
+          instructions: SCRIPT,
+          reasoning:{effort:"none"},
+          turn_detection:{type:"server_vad"},
+          audio:{
+            input:{format:{type:"audio/pcm", rate:rate}, transport:"json"},
+            output:{format:{type:"audio/pcm", rate:24000}, transport:"json"}
+          }
+        }
+      }));
+      ready = true;
+      say("Carina is live. Say the script. Press Stop when you are done.");
+    },
+    onmessage(e){
+      if (typeof e.data !== "string") return;
+      let ev;
+      try { ev = JSON.parse(e.data); } catch { return; }
+      const typ = ev.type || "";
+      if (typ === "response.output_audio.delta" || typ === "response.audio.delta"){
+        if (!ev.delta) return;
+        resumeCtx(outputCtx);
+        playPcm(outputCtx, state, base64ToPcm(ev.delta), 24000);
+      } else if (typ === "input_audio_buffer.speech_started"){
+        clearPlay(state, outputCtx);
+      } else if (typ === "error"){
+        say("Carina error: " + errText(ev.error || ev));
+      }
+    },
+    onerror(){ if (stillOn()) stop("Carina failed: socket error"); },
+    onclose(ev){ if (stillOn()) stop("Carina failed: socket closed" + (ev && ev.code ? " " + ev.code : "") + (ev && ev.reason ? " " + ev.reason : "")); }
+  });
   stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}, video:false});
   if (!stillOn()){ stream.getTracks().forEach(t=>t.stop()); return; }
-  inputCtx = new AudioContext({sampleRate:24000});
+  resumeCtx(inputCtx);
   source = inputCtx.createMediaStreamSource(stream);
   processor = inputCtx.createScriptProcessor(4096,1,1);
   const silent = inputCtx.createGain(); silent.gain.value = 0;
   source.connect(processor); processor.connect(silent); silent.connect(inputCtx.destination);
-  outputCtx = new AudioContext({sampleRate:24000});
-  let nextPlay = 0;
-  function floatToPcm16(float32){
-    const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
-    for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
-    return new Uint8Array(out);
-  }
-  function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
-  function base64ToPcm(b64){ const raw=atob(b64), out=new Float32Array(raw.length/2), v=new DataView(new ArrayBuffer(raw.length)); for(let i=0;i<raw.length;i++) v.setUint8(i, raw.charCodeAt(i)); for(let i=0;i<out.length;i++) out[i]=v.getInt16(i*2,true)/32768; return out; }
+  const sendRate = inputCtx.sampleRate || 24000;
   processor.onaudioprocess = e => {
-    if (ws && ws.readyState === WebSocket.OPEN){
-      const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
-      ws.send(JSON.stringify({type:"input_audio_buffer.append", audio: bytesToBase64(pcm)}));
-    }
+    if (!ready || !ws || ws.readyState !== WebSocket.OPEN) return;
+    const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
+    ws.send(JSON.stringify({type:"input_audio_buffer.append", audio: bytesToBase64(pcm)}));
   };
-  ws.onopen = () => {
-    ws.send(JSON.stringify({
-      type:"session.update",
-      session:{
-        voice:"Carina",
-        instructions: SCRIPT,
-        turn_detection:{type:"server_vad"},
-        audio:{
-          input:{format:{type:"audio/pcm", rate:24000}, transport:"json"},
-          output:{format:{type:"audio/pcm", rate:24000}, transport:"json"}
-        }
-      }
-    }));
-    say("Carina is live. Say the script. Press Stop when you are done.");
-  };
-  ws.onmessage = e => {
-    if (typeof e.data !== "string") return;
-    const ev = JSON.parse(e.data);
-    if (ev.type === "response.output_audio.delta"){
-      const samples = base64ToPcm(ev.delta);
-      const b = outputCtx.createBuffer(1, samples.length, 24000);
-      b.copyToChannel(samples, 0);
-      const node = outputCtx.createBufferSource();
-      node.buffer = b;
-      node.connect(outputCtx.destination);
-      nextPlay = Math.max(nextPlay, outputCtx.currentTime + 0.03);
-      node.start(nextPlay);
-      nextPlay += b.duration;
-    } else if (ev.type === "error"){
-      say("Carina error: " + (ev.error && ev.error.message || "unknown"));
-    }
-  };
-  ws.onerror = () => { if (stillOn()) stop("Carina failed: socket error"); };
 }
 
 const KORA = "59cfc7ab-e945-43de-ad1a-471daa379c67";
@@ -510,56 +613,85 @@ async function startHume(){
   btn.classList.add("live");
   btn.textContent = "Stop · Kora";
   say("Asking for mic, then Kora…");
-  let ws = null, stream = null, inputCtx = null, processor = null, source = null;
+  unlockAudio();
+  let ws = null, stream = null, processor = null, source = null;
+  const inputCtx = makeCtx(16000);
+  const queue = [];
+  let current = null, playing = false, ready = false;
+  function stopKoraAudio(){
+    if (current){ try{ current.pause(); current.src = ""; } catch{} current = null; }
+    queue.length = 0;
+    playing = false;
+  }
+  function playNext(){
+    if (playing || !queue.length) return;
+    playing = true;
+    const blob = queue.shift();
+    const url = URL.createObjectURL(blob);
+    current = new Audio(url);
+    current.onended = () => { URL.revokeObjectURL(url); playing = false; current = null; playNext(); };
+    current.onerror = () => { say("Kora play failed"); URL.revokeObjectURL(url); playing = false; current = null; playNext(); };
+    current.play().catch(err => {
+      say("Kora play blocked: " + (err && err.message || err) + ". Tap Talk again.");
+      URL.revokeObjectURL(url);
+      playing = false;
+      current = null;
+    });
+  }
   session = {cleanup:[
     ()=>{ if (ws) ws.close(); },
     ()=>{ try{ if (processor) processor.disconnect(); if (source) source.disconnect(); }catch{} },
     ()=>{ if (inputCtx) inputCtx.close(); },
-    ()=>{ if (stream) stream.getTracks().forEach(t=>t.stop()); }
+    ()=>{ if (stream) stream.getTracks().forEach(t=>t.stop()); },
+    ()=>stopKoraAudio()
   ]};
   const value = await token("/api/token/hume");
   if (!stillOn()) return;
-  ws = new WebSocket("wss://api.hume.ai/v0/evi/chat?access_token=" + encodeURIComponent(value) + "&voice_id=" + KORA);
+  resumeCtx(inputCtx);
+  const hang = setTimeout(() => { if (stillOn() && ws && ws.readyState !== WebSocket.OPEN) stop("Kora failed: socket timed out"); }, 8000);
+  session.cleanup.push(() => clearTimeout(hang));
+  ws = new WebSocket("wss://api.hume.ai/v0/evi/chat?access_token=" + encodeURIComponent(value) + "&voice_id=" + KORA + "&verbose_transcription=true");
+  hookWs(ws, {
+    onopen(){
+      const rate = Math.round(inputCtx.sampleRate || 16000);
+      ws.send(JSON.stringify({
+        type:"session_settings",
+        system_prompt: SCRIPT,
+        voice_id: KORA,
+        audio:{encoding:"linear16", sample_rate:rate, channels:1},
+        context:{type:"persistent", text: SCRIPT}
+      }));
+      ready = true;
+      say("Kora is live. Say the script. Press Stop when you are done.");
+    },
+    onmessage(e){
+      if (typeof e.data !== "string") return;
+      let ev;
+      try { ev = JSON.parse(e.data); } catch { return; }
+      if (ev.type === "audio_output" && ev.data){
+        queue.push(b64ToBlob(ev.data, "audio/wav"));
+        playNext();
+      } else if (ev.type === "user_interruption" || ev.type === "user_message"){
+        stopKoraAudio();
+      } else if (ev.type === "error"){
+        say("Kora error: " + errText(ev));
+      }
+    },
+    onerror(){ if (stillOn()) stop("Kora failed: socket error"); },
+    onclose(ev){ if (stillOn()) stop("Kora failed: socket closed" + (ev && ev.code ? " " + ev.code : "") + (ev && ev.reason ? " " + ev.reason : "")); }
+  });
   stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}, video:false});
   if (!stillOn()){ stream.getTracks().forEach(t=>t.stop()); return; }
-  inputCtx = new AudioContext({sampleRate:16000});
+  resumeCtx(inputCtx);
   source = inputCtx.createMediaStreamSource(stream);
   processor = inputCtx.createScriptProcessor(4096,1,1);
   const silent = inputCtx.createGain(); silent.gain.value = 0;
   source.connect(processor); processor.connect(silent); silent.connect(inputCtx.destination);
-  function floatToPcm16(float32){
-    const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
-    for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
-    return new Uint8Array(out);
-  }
-  function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
   processor.onaudioprocess = e => {
-    if (ws && ws.readyState === WebSocket.OPEN){
-      const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
-      ws.send(JSON.stringify({type:"audio_input", data: bytesToBase64(pcm)}));
-    }
+    if (!ready || !ws || ws.readyState !== WebSocket.OPEN) return;
+    const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
+    ws.send(JSON.stringify({type:"audio_input", data: bytesToBase64(pcm)}));
   };
-  ws.onopen = () => {
-    ws.send(JSON.stringify({
-      type:"session_settings",
-      system_prompt: SCRIPT,
-      voice_id: KORA,
-      audio:{encoding:"linear16", sample_rate:16000},
-      context:{type:"persistent", text: SCRIPT}
-    }));
-    say("Kora is live. Say the script. Press Stop when you are done.");
-  };
-  ws.onmessage = e => {
-    if (typeof e.data !== "string") return;
-    const ev = JSON.parse(e.data);
-    if (ev.type === "audio_output" && ev.data){
-      const audio = new Audio("data:audio/wav;base64," + ev.data);
-      audio.play().catch(()=>{});
-    } else if (ev.type === "error"){
-      say("Kora error: " + (ev.message || ev.error || "unknown"));
-    }
-  };
-  ws.onerror = () => { if (stillOn()) stop("Kora failed: socket error"); };
 }
 
 const KATIE = "agent_yuJpDH3kePfVmnzRUQu97o";
@@ -570,11 +702,13 @@ async function startCartesia(){
   btn.classList.add("live");
   btn.textContent = "Stop · Katie";
   say("Asking for mic, then Katie…");
-  let ws = null, stream = null, inputCtx = null, outputCtx = null, processor = null, source = null;
-  const playing = [];
-  function clearPlayback(){
-    playing.splice(0).forEach(n=>{ try{ n.stop(); } catch{} });
-  }
+  unlockAudio();
+  let ws = null, stream = null, processor = null, source = null, streamId = "";
+  const inputCtx = makeCtx(24000);
+  const outputCtx = makeCtx(24000);
+  const state = {playing:[], nextPlay:0};
+  let ready = false;
+  function clearPlayback(){ clearPlay(state, outputCtx); }
   session = {cleanup:[
     ()=>{ if (ws) ws.close(); },
     ()=>{ try{ if (processor) processor.disconnect(); if (source) source.disconnect(); }catch{} },
@@ -585,71 +719,75 @@ async function startCartesia(){
   ]};
   const value = await token("/api/token/cartesia");
   if (!stillOn()) return;
+  resumeCtx(inputCtx); resumeCtx(outputCtx);
+  const hang = setTimeout(() => { if (stillOn() && ws && ws.readyState !== WebSocket.OPEN) stop("Katie failed: socket timed out"); }, 8000);
+  session.cleanup.push(() => clearTimeout(hang));
   ws = new WebSocket("wss://api.cartesia.ai/agents/stream/" + KATIE + "?access_token=" + encodeURIComponent(value) + "&cartesia_version=2026-08-14");
+  hookWs(ws, {
+    onopen(){
+      ws.send(JSON.stringify({
+        event:"start",
+        config:{input_format:"pcm_24000", output_audio_delivery:"as_available", voice_id:KATIE_VOICE},
+        agent:{introduction:"", system_prompt: SCRIPT}
+      }));
+      ready = true;
+      say("Katie is live. Say the script. Press Stop when you are done.");
+    },
+    onmessage(e){
+      if (typeof e.data !== "string") return;
+      let ev;
+      try { ev = JSON.parse(e.data); } catch { return; }
+      if (ev.event === "ack" && ev.stream_id) streamId = ev.stream_id;
+      if (ev.event === "media_output" && ev.media && ev.media.payload){
+        resumeCtx(outputCtx);
+        playPcm(outputCtx, state, base64ToPcm(ev.media.payload), 24000);
+      } else if (ev.event === "clear" || (ev.event === "turn_started" && ev.turn_started && ev.turn_started.role === "user")){
+        clearPlayback();
+      } else if (ev.event === "error"){
+        say("Katie error: " + errText(ev));
+      }
+    },
+    onerror(){ if (stillOn()) stop("Katie failed: socket error"); },
+    onclose(ev){ if (stillOn()) stop("Katie failed: socket closed" + (ev && ev.code ? " " + ev.code : "") + (ev && ev.reason ? " " + ev.reason : "")); }
+  });
   stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}, video:false});
   if (!stillOn()){ stream.getTracks().forEach(t=>t.stop()); return; }
-  inputCtx = new AudioContext({sampleRate:24000});
+  resumeCtx(inputCtx);
   source = inputCtx.createMediaStreamSource(stream);
   processor = inputCtx.createScriptProcessor(4096,1,1);
   const silent = inputCtx.createGain(); silent.gain.value = 0;
   source.connect(processor); processor.connect(silent); silent.connect(inputCtx.destination);
-  outputCtx = new AudioContext({sampleRate:24000});
-  let nextPlay = 0;
-  function floatToPcm16(float32){
-    const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
-    for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
-    return new Uint8Array(out);
-  }
-  function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
-  function base64ToPcm(b64){ const raw=atob(b64), out=new Float32Array(raw.length/2), v=new DataView(new ArrayBuffer(raw.length)); for(let i=0;i<raw.length;i++) v.setUint8(i, raw.charCodeAt(i)); for(let i=0;i<out.length;i++) out[i]=v.getInt16(i*2,true)/32768; return out; }
   processor.onaudioprocess = e => {
-    if (ws && ws.readyState === WebSocket.OPEN){
-      const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
-      ws.send(JSON.stringify({event:"media_input", media:{payload: bytesToBase64(pcm)}}));
-    }
+    if (!ready || !ws || ws.readyState !== WebSocket.OPEN) return;
+    const samples = resample(e.inputBuffer.getChannelData(0), inputCtx.sampleRate, 24000);
+    const msg = {event:"media_input", media:{payload: bytesToBase64(floatToPcm16(samples))}};
+    if (streamId) msg.stream_id = streamId;
+    ws.send(JSON.stringify(msg));
   };
-  ws.onopen = () => {
-    ws.send(JSON.stringify({
-      event:"start",
-      config:{input_format:"pcm_24000", output_audio_delivery:"as_available", voice_id:KATIE_VOICE},
-      agent:{introduction:"", system_prompt: SCRIPT}
-    }));
-    say("Katie is live. Say the script. Press Stop when you are done.");
-  };
-  ws.onmessage = e => {
-    if (typeof e.data !== "string") return;
-    const ev = JSON.parse(e.data);
-    if (ev.event === "media_output" && ev.media && ev.media.payload){
-      const samples = base64ToPcm(ev.media.payload);
-      const b = outputCtx.createBuffer(1, samples.length, 24000);
-      b.copyToChannel(samples, 0);
-      const node = outputCtx.createBufferSource();
-      node.buffer = b;
-      node.connect(outputCtx.destination);
-      nextPlay = Math.max(nextPlay, outputCtx.currentTime + 0.03);
-      node.start(nextPlay);
-      nextPlay += b.duration;
-      playing.push(node);
-    } else if (ev.event === "clear"){
-      clearPlayback();
-    } else if (ev.event === "error"){
-      say("Katie error: " + (ev.message || ev.error || "unknown"));
-    }
-  };
-  ws.onerror = () => { if (stillOn()) stop("Katie failed: socket error"); };
 }
 
 async function clickTalk(startFn, name){
   if (session || starting){ await stop(); return; }
   starting = true;
-  try { await startFn(); }
-  catch (err) { await stop(name + " failed: " + err.message); }
+  try {
+    unlockAudio();
+    await startFn();
+  }
+  catch (err) { await stop(name + " failed: " + (err && err.message || err)); }
   finally { if (!session) starting = false; }
 }
 document.getElementById("talk-openai").onclick = () => clickTalk(startOpenAI, "Marin");
 document.getElementById("talk-xai").onclick = () => clickTalk(startXai, "Carina");
 document.getElementById("talk-hume").onclick = () => clickTalk(startHume, "Kora");
 document.getElementById("talk-cartesia").onclick = () => clickTalk(startCartesia, "Katie");
+window.addEventListener("pageshow", e => {
+  if (e.persisted){
+    starting = false;
+    session = null;
+    disarmAll();
+    pickBridge();
+  }
+});
 pickBridge();
 </script>
 </body>
