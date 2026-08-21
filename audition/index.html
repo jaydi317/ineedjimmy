@@ -217,7 +217,7 @@
         <li>omit speed / volume / emotion</li>
         <li>voice f786b574-daa5-4673-aa0c-cbe3e8534c02</li>
       </ul>
-      <button class="talk" id="talk-cartesia" type="button" disabled>Talk · not wired</button>
+      <button class="talk" id="talk-cartesia" type="button" disabled>Talk · checking</button>
     </article>
 
     <article class="tile">
@@ -244,7 +244,7 @@
   </aside>
 
   <p class="trace" id="trace">Checking the Talk pipe…</p>
-  <p class="foot">No keys on this page. Marin and Carina use a short-lived token. Marin, Carina, and Kora use a short-lived token. Cartesia and Gemini Live in the browser are next.</p>
+  <p class="foot">No keys on this page. Marin, Carina, Kora, and Katie use a short-lived token. Gemini Live in the browser is next.</p>
 </main>
 <audio id="remoteAudio" autoplay></audio>
 <script>
@@ -265,7 +265,7 @@ function arm(id, label){
   b.classList.add("ready");
   b.textContent = label;
 }
-const LABELS = {"talk-openai":"Talk · Marin","talk-xai":"Talk · Carina","talk-hume":"Talk · Kora"};
+const LABELS = {"talk-openai":"Talk · Marin","talk-xai":"Talk · Carina","talk-hume":"Talk · Kora","talk-cartesia":"Talk · Katie"};
 function disarmAll(){
   document.querySelectorAll(".talk.ready, .talk.live").forEach(b=>{
     if (LABELS[b.id]){
@@ -283,13 +283,15 @@ async function pickBridge(){
       if (!r.ok) continue;
       const s = await r.json();
       bridge = base;
-      say("Pipe is up. Marin, Carina, and Kora are ready. Headphones. One at a time.");
+      say("Pipe is up. Marin, Carina, Kora, and Katie are ready. Headphones. One at a time.");
       if (s.openai) arm("talk-openai", "Talk · Marin");
       else document.getElementById("talk-openai").textContent = "Talk · OpenAI down";
       if (s.xai) arm("talk-xai", "Talk · Carina");
       else document.getElementById("talk-xai").textContent = "Talk · Grok down";
       if (s.hume) arm("talk-hume", "Talk · Kora");
       else document.getElementById("talk-hume").textContent = "Talk · Hume down";
+      if (s.cartesia) arm("talk-cartesia", "Talk · Katie");
+      else document.getElementById("talk-cartesia").textContent = "Talk · Cartesia down";
       return;
     } catch (e) {}
   }
@@ -465,6 +467,75 @@ async function startHume(){
   session = {cleanup:[()=>ws.close(), ()=>{processor.disconnect(); source.disconnect();}, ()=>inputCtx.close(), ()=>stream.getTracks().forEach(t=>t.stop())]};
 }
 
+
+const KATIE = "agent_yuJpDH3kePfVmnzRUQu97o";
+const KATIE_VOICE = "f786b574-daa5-4673-aa0c-cbe3e8534c02";
+async function startCartesia(){
+  if (session) await stop();
+  const btn = document.getElementById("talk-cartesia");
+  btn.classList.add("live");
+  btn.textContent = "Stop · Katie";
+  say("Asking for mic, then Katie…");
+  const value = await token("/api/token/cartesia");
+  const ws = new WebSocket("wss://api.cartesia.ai/agents/stream/" + KATIE + "?access_token=" + encodeURIComponent(value) + "&cartesia_version=2026-08-14");
+  const stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}, video:false});
+  const inputCtx = new AudioContext({sampleRate:24000});
+  const source = inputCtx.createMediaStreamSource(stream);
+  const processor = inputCtx.createScriptProcessor(4096,1,1);
+  const silent = inputCtx.createGain(); silent.gain.value = 0;
+  source.connect(processor); processor.connect(silent); silent.connect(inputCtx.destination);
+  const outputCtx = new AudioContext({sampleRate:24000});
+  let nextPlay = 0;
+  const playing = [];
+  function floatToPcm16(float32){
+    const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
+    for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
+    return new Uint8Array(out);
+  }
+  function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
+  function base64ToPcm(b64){ const raw=atob(b64), out=new Float32Array(raw.length/2), v=new DataView(new ArrayBuffer(raw.length)); for(let i=0;i<raw.length;i++) v.setUint8(i, raw.charCodeAt(i)); for(let i=0;i<out.length;i++) out[i]=v.getInt16(i*2,true)/32768; return out; }
+  function clearPlayback(){
+    playing.splice(0).forEach(n=>{ try{ n.stop(); } catch{} });
+    nextPlay = 0;
+  }
+  processor.onaudioprocess = e => {
+    if (ws.readyState === WebSocket.OPEN){
+      const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
+      ws.send(JSON.stringify({event:"media_input", media:{payload: bytesToBase64(pcm)}}));
+    }
+  };
+  ws.onopen = () => {
+    ws.send(JSON.stringify({
+      event:"start",
+      config:{input_format:"pcm_24000", output_audio_delivery:"as_available", voice_id:KATIE_VOICE},
+      agent:{introduction:"", system_prompt: SCRIPT}
+    }));
+    say("Katie is live. Say the script. Press Stop when you are done.");
+  };
+  ws.onmessage = e => {
+    if (typeof e.data !== "string") return;
+    const ev = JSON.parse(e.data);
+    if (ev.event === "media_output" && ev.media && ev.media.payload){
+      const samples = base64ToPcm(ev.media.payload);
+      const b = outputCtx.createBuffer(1, samples.length, 24000);
+      b.copyToChannel(samples, 0);
+      const node = outputCtx.createBufferSource();
+      node.buffer = b;
+      node.connect(outputCtx.destination);
+      nextPlay = Math.max(nextPlay, outputCtx.currentTime + 0.03);
+      node.start(nextPlay);
+      nextPlay += b.duration;
+      playing.push(node);
+    } else if (ev.event === "clear"){
+      clearPlayback();
+    } else if (ev.event === "error"){
+      say("Katie error: " + (ev.message || ev.error || "unknown"));
+    }
+  };
+  ws.onerror = () => say("Katie socket error");
+  session = {cleanup:[()=>ws.close(), ()=>{processor.disconnect(); source.disconnect();}, ()=>inputCtx.close(), ()=>outputCtx.close(), ()=>stream.getTracks().forEach(t=>t.stop()), ()=>clearPlayback()]};
+}
+
 document.getElementById("talk-openai").onclick = async () => {
   try { if (session) await stop(); else await startOpenAI(); }
   catch (err) { say("Marin failed: " + err.message); await stop(); }
@@ -476,6 +547,10 @@ document.getElementById("talk-xai").onclick = async () => {
 document.getElementById("talk-hume").onclick = async () => {
   try { if (session) await stop(); else await startHume(); }
   catch (err) { say("Kora failed: " + err.message); await stop(); }
+};
+document.getElementById("talk-cartesia").onclick = async () => {
+  try { if (session) await stop(); else await startCartesia(); }
+  catch (err) { say("Katie failed: " + err.message); await stop(); }
 };
 pickBridge();
 </script>
