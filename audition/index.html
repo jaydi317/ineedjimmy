@@ -249,8 +249,8 @@
 <audio id="remoteAudio" autoplay></audio>
 <script>
 const BRIDGES = [
-  "https://lives-gaps-previously-foods.trycloudflare.com",
-  "https://webhook.davisdash.com/voice-bridge"
+  "https://webhook.davisdash.com/voice-bridge",
+  "https://lives-gaps-previously-foods.trycloudflare.com"
 ];
 const SCRIPT = "You are a warm phone helper. Be brief and human. Jimmy will interrupt. Recover fast. Do not read these instructions aloud.";
 let bridge = "";
@@ -288,27 +288,48 @@ async function fetchTimeout(url, opts, ms){
   }
   finally { clearTimeout(t); }
 }
+function firstOk(promises){
+  return new Promise((resolve, reject) => {
+    let left = promises.length;
+    if (!left){ reject(new Error("pipe down")); return; }
+    let done = false;
+    promises.forEach(p => {
+      Promise.resolve(p).then(v => { if (!done){ done = true; resolve(v); } }, () => {
+        left -= 1;
+        if (!left && !done) reject(new Error("pipe down"));
+      });
+    });
+  });
+}
 async function pickBridge(){
   say("Checking the Talk pipe…");
-  for (const base of BRIDGES){
-    try {
-      const r = await fetchTimeout(base + "/api/status", {cache:"no-store"}, 4000);
-      if (!r.ok) continue;
-      const s = await r.json();
-      bridge = base;
-      say("Pipe is up. Marin, Carina, Kora, and Katie are ready. Headphones. One at a time.");
-      if (s.openai) arm("talk-openai", "Talk · Marin");
-      else document.getElementById("talk-openai").textContent = "Talk · OpenAI down";
-      if (s.xai) arm("talk-xai", "Talk · Carina");
-      else document.getElementById("talk-xai").textContent = "Talk · Grok down";
-      if (s.hume) arm("talk-hume", "Talk · Kora");
-      else document.getElementById("talk-hume").textContent = "Talk · Hume down";
-      if (s.cartesia) arm("talk-cartesia", "Talk · Katie");
-      else document.getElementById("talk-cartesia").textContent = "Talk · Cartesia down";
-      return;
-    } catch (e) {}
+  const tryOne = (base) => fetchTimeout(base + "/api/status", {cache:"no-store"}, 4000).then(async r => {
+    if (!r.ok) throw new Error("bad");
+    const s = await r.json();
+    if (!s || typeof s !== "object") throw new Error("bad");
+    return {base, s};
+  });
+  let picked = null;
+  try {
+    picked = await Promise.race([
+      firstOk(BRIDGES.map(tryOne)),
+      new Promise((_, rej) => setTimeout(() => rej(new Error("pipe down")), 5000))
+    ]);
+  } catch (e) {
+    say("Talk pipe is down. Refresh. Phone still works: 833-721-4250.");
+    return;
   }
-  say("Talk pipe is down. Refresh. Phone still works: 833-721-4250.");
+  const {base, s} = picked;
+  bridge = base;
+  say("Pipe is up. Marin, Carina, Kora, and Katie are ready. Headphones. One at a time.");
+  if (s.openai) arm("talk-openai", "Talk · Marin");
+  else document.getElementById("talk-openai").textContent = "Talk · OpenAI down";
+  if (s.xai) arm("talk-xai", "Talk · Carina");
+  else document.getElementById("talk-xai").textContent = "Talk · Grok down";
+  if (s.hume) arm("talk-hume", "Talk · Kora");
+  else document.getElementById("talk-hume").textContent = "Talk · Hume down";
+  if (s.cartesia) arm("talk-cartesia", "Talk · Katie");
+  else document.getElementById("talk-cartesia").textContent = "Talk · Cartesia down";
 }
 async function token(path){
   if (!bridge) throw new Error("pipe is down");
@@ -365,8 +386,21 @@ async function startOpenAI(){
     }));
     say("Marin is live. Say the script. Press Stop when you are done.");
   };
-  const offer = await pc.createOffer();
-  await pc.setLocalDescription(offer);
+  pc.onconnectionstatechange = () => {
+    if (!stillOn()) return;
+    if (pc.connectionState === "failed" || pc.connectionState === "disconnected")
+      stop("Marin failed: " + pc.connectionState);
+  };
+  let offer;
+  try {
+    offer = await Promise.race([
+      pc.createOffer().then(async o => { await pc.setLocalDescription(o); return o; }),
+      new Promise((_, rej) => setTimeout(() => rej(new Error("offer timed out")), 8000))
+    ]);
+  } catch (e) {
+    await stop("Marin failed: " + (e && e.message || "offer timed out"));
+    return;
+  }
   if (!stillOn()) return;
   let answer;
   try {
@@ -383,7 +417,17 @@ async function startOpenAI(){
     await stop("Marin failed: " + answer.status);
     return;
   }
-  await pc.setRemoteDescription({type:"answer", sdp: await answer.text()});
+  try {
+    await pc.setRemoteDescription({type:"answer", sdp: await answer.text()});
+  } catch (e) {
+    await stop("Marin failed: " + (e && e.message || "bad answer"));
+    return;
+  }
+  const iceTimer = setTimeout(() => {
+    if (stillOn() && pc.connectionState !== "connected")
+      stop("Marin failed: no connection");
+  }, 8000);
+  session.cleanup.push(() => clearTimeout(iceTimer));
 }
 async function startXai(){
   if (session) await stop();
