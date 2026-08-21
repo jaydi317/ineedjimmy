@@ -255,6 +255,7 @@ const BRIDGES = [
 const SCRIPT = "You are a warm phone helper. Be brief and human. Jimmy will interrupt. Recover fast. Do not read these instructions aloud.";
 let bridge = "";
 let session = null;
+let starting = false;
 
 function say(line){
   document.getElementById("trace").textContent = line;
@@ -263,11 +264,12 @@ function arm(id, label){
   const b = document.getElementById(id);
   b.disabled = false;
   b.classList.add("ready");
+  b.classList.remove("live");
   b.textContent = label;
 }
 const LABELS = {"talk-openai":"Talk · Marin","talk-xai":"Talk · Carina","talk-hume":"Talk · Kora","talk-cartesia":"Talk · Katie"};
 function disarmAll(){
-  document.querySelectorAll(".talk.ready, .talk.live").forEach(b=>{
+  document.querySelectorAll(".talk").forEach(b=>{
     if (LABELS[b.id]){
       b.disabled = false;
       b.classList.add("ready");
@@ -276,10 +278,17 @@ function disarmAll(){
     }
   });
 }
+async function fetchTimeout(url, opts, ms){
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), ms);
+  try { return await fetch(url, Object.assign({signal:ctrl.signal}, opts||{})); }
+  finally { clearTimeout(t); }
+}
 async function pickBridge(){
+  say("Checking the Talk pipe…");
   for (const base of BRIDGES){
     try {
-      const r = await fetch(base + "/api/status", {cache:"no-store"});
+      const r = await fetchTimeout(base + "/api/status", {cache:"no-store"}, 4000);
       if (!r.ok) continue;
       const s = await r.json();
       bridge = base;
@@ -295,18 +304,21 @@ async function pickBridge(){
       return;
     } catch (e) {}
   }
-  say("Talk pipe is down. Phone Gemini still works: 833-721-4250.");
+  say("Talk pipe is down. Refresh. Phone still works: 833-721-4250.");
 }
 async function token(path){
-  const r = await fetch(bridge + path, {method:"POST"});
+  if (!bridge) throw new Error("pipe is down");
+  const r = await fetchTimeout(bridge + path, {method:"POST"}, 8000);
   const data = await r.json();
   if (!r.ok || !data.value) throw new Error(data.error || "token failed");
   return data.value;
 }
 async function stop(){
-  if (!session) return;
-  session.cleanup.forEach(fn=>{ try{ fn(); } catch{} });
-  session = null;
+  starting = false;
+  if (session){
+    session.cleanup.forEach(fn=>{ try{ fn(); } catch{} });
+    session = null;
+  }
   disarmAll();
   say("Stopped. Score it, then try the other one.");
 }
@@ -320,6 +332,7 @@ async function startOpenAI(){
   const pc = new RTCPeerConnection();
   const remote = document.getElementById("remoteAudio");
   const stream = await navigator.mediaDevices.getUserMedia({audio:true, video:false});
+  session = {cleanup:[()=>pc.close(), ()=>stream.getTracks().forEach(t=>t.stop()), ()=>{remote.srcObject=null}]};
   stream.getTracks().forEach(t=>pc.addTrack(t, stream));
   pc.ontrack = e => { remote.srcObject = e.streams[0]; };
   const dc = pc.createDataChannel("oai-events");
@@ -348,7 +361,7 @@ async function startOpenAI(){
   });
   if (!answer.ok) throw new Error("OpenAI SDP failed " + answer.status);
   await pc.setRemoteDescription({type:"answer", sdp: await answer.text()});
-  session = {cleanup:[()=>dc.close(), ()=>pc.close(), ()=>stream.getTracks().forEach(t=>t.stop()), ()=>{remote.srcObject=null}]};
+  session.cleanup.unshift(()=>dc.close());
 }
 async function startXai(){
   if (session) await stop();
@@ -536,22 +549,17 @@ async function startCartesia(){
   session = {cleanup:[()=>ws.close(), ()=>{processor.disconnect(); source.disconnect();}, ()=>inputCtx.close(), ()=>outputCtx.close(), ()=>stream.getTracks().forEach(t=>t.stop()), ()=>clearPlayback()]};
 }
 
-document.getElementById("talk-openai").onclick = async () => {
-  try { if (session) await stop(); else await startOpenAI(); }
-  catch (err) { say("Marin failed: " + err.message); await stop(); }
-};
-document.getElementById("talk-xai").onclick = async () => {
-  try { if (session) await stop(); else await startXai(); }
-  catch (err) { say("Carina failed: " + err.message); await stop(); }
-};
-document.getElementById("talk-hume").onclick = async () => {
-  try { if (session) await stop(); else await startHume(); }
-  catch (err) { say("Kora failed: " + err.message); await stop(); }
-};
-document.getElementById("talk-cartesia").onclick = async () => {
-  try { if (session) await stop(); else await startCartesia(); }
-  catch (err) { say("Katie failed: " + err.message); await stop(); }
-};
+async function clickTalk(startFn, name){
+  if (session || starting){ await stop(); return; }
+  starting = true;
+  try { await startFn(); }
+  catch (err) { say(name + " failed: " + err.message); await stop(); }
+  finally { if (!session) starting = false; }
+}
+document.getElementById("talk-openai").onclick = () => clickTalk(startOpenAI, "Marin");
+document.getElementById("talk-xai").onclick = () => clickTalk(startXai, "Carina");
+document.getElementById("talk-hume").onclick = () => clickTalk(startHume, "Kora");
+document.getElementById("talk-cartesia").onclick = () => clickTalk(startCartesia, "Katie");
 pickBridge();
 </script>
 </body>
