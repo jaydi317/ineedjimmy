@@ -205,7 +205,7 @@
         <li>end-of-turn 2000</li>
         <li>interrupt 1500</li>
       </ul>
-      <button class="talk" id="talk-hume" type="button" disabled>Talk · not wired</button>
+      <button class="talk" id="talk-hume" type="button" disabled>Talk · checking</button>
     </article>
 
     <article class="tile">
@@ -244,7 +244,7 @@
   </aside>
 
   <p class="trace" id="trace">Checking the Talk pipe…</p>
-  <p class="foot">No keys on this page. Marin and Carina use a short-lived token. Hume, Cartesia, and Gemini Live in the browser are next.</p>
+  <p class="foot">No keys on this page. Marin and Carina use a short-lived token. Marin, Carina, and Kora use a short-lived token. Cartesia and Gemini Live in the browser are next.</p>
 </main>
 <audio id="remoteAudio" autoplay></audio>
 <script>
@@ -265,13 +265,14 @@ function arm(id, label){
   b.classList.add("ready");
   b.textContent = label;
 }
+const LABELS = {"talk-openai":"Talk · Marin","talk-xai":"Talk · Carina","talk-hume":"Talk · Kora"};
 function disarmAll(){
   document.querySelectorAll(".talk.ready, .talk.live").forEach(b=>{
-    if (b.id === "talk-openai" || b.id === "talk-xai"){
+    if (LABELS[b.id]){
       b.disabled = false;
       b.classList.add("ready");
       b.classList.remove("live");
-      b.textContent = b.id === "talk-openai" ? "Talk · Marin" : "Talk · Carina";
+      b.textContent = LABELS[b.id];
     }
   });
 }
@@ -282,11 +283,13 @@ async function pickBridge(){
       if (!r.ok) continue;
       const s = await r.json();
       bridge = base;
-      say("Pipe is up. Marin and Carina are ready. Headphones. One at a time.");
+      say("Pipe is up. Marin, Carina, and Kora are ready. Headphones. One at a time.");
       if (s.openai) arm("talk-openai", "Talk · Marin");
       else document.getElementById("talk-openai").textContent = "Talk · OpenAI down";
       if (s.xai) arm("talk-xai", "Talk · Carina");
       else document.getElementById("talk-xai").textContent = "Talk · Grok down";
+      if (s.hume) arm("talk-hume", "Talk · Kora");
+      else document.getElementById("talk-hume").textContent = "Talk · Hume down";
       return;
     } catch (e) {}
   }
@@ -409,6 +412,59 @@ async function startXai(){
   session = {cleanup:[()=>ws.close(), ()=>{processor.disconnect(); source.disconnect();}, ()=>inputCtx.close(), ()=>outputCtx.close(), ()=>stream.getTracks().forEach(t=>t.stop())]};
 }
 
+
+const KORA = "59cfc7ab-e945-43de-ad1a-471daa379c67";
+async function startHume(){
+  if (session) await stop();
+  const btn = document.getElementById("talk-hume");
+  btn.classList.add("live");
+  btn.textContent = "Stop · Kora";
+  say("Asking for mic, then Kora…");
+  const value = await token("/api/token/hume");
+  const ws = new WebSocket("wss://api.hume.ai/v0/evi/chat?access_token=" + encodeURIComponent(value) + "&voice_id=" + KORA);
+  const stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true}, video:false});
+  const inputCtx = new AudioContext({sampleRate:16000});
+  const source = inputCtx.createMediaStreamSource(stream);
+  const processor = inputCtx.createScriptProcessor(4096,1,1);
+  const silent = inputCtx.createGain(); silent.gain.value = 0;
+  source.connect(processor); processor.connect(silent); silent.connect(inputCtx.destination);
+  const remote = document.getElementById("remoteAudio");
+  function floatToPcm16(float32){
+    const out = new ArrayBuffer(float32.length*2), view = new DataView(out);
+    for (let i=0;i<float32.length;i++){ const s=Math.max(-1,Math.min(1,float32[i])); view.setInt16(i*2, s<0?s*0x8000:s*0x7fff, true); }
+    return new Uint8Array(out);
+  }
+  function bytesToBase64(bytes){ let s=""; const n=0x8000; for(let i=0;i<bytes.length;i+=n) s+=String.fromCharCode(...bytes.subarray(i,i+n)); return btoa(s); }
+  processor.onaudioprocess = e => {
+    if (ws.readyState === WebSocket.OPEN){
+      const pcm = floatToPcm16(e.inputBuffer.getChannelData(0));
+      ws.send(JSON.stringify({type:"audio_input", data: bytesToBase64(pcm)}));
+    }
+  };
+  ws.onopen = () => {
+    ws.send(JSON.stringify({
+      type:"session_settings",
+      system_prompt: SCRIPT,
+      voice_id: KORA,
+      audio:{encoding:"linear16", sample_rate:16000},
+      context:{type:"persistent", text: SCRIPT}
+    }));
+    say("Kora is live. Say the script. Press Stop when you are done.");
+  };
+  ws.onmessage = e => {
+    if (typeof e.data !== "string") return;
+    const ev = JSON.parse(e.data);
+    if (ev.type === "audio_output" && ev.data){
+      const audio = new Audio("data:audio/wav;base64," + ev.data);
+      audio.play().catch(()=>{});
+    } else if (ev.type === "error"){
+      say("Kora error: " + (ev.message || ev.error || "unknown"));
+    }
+  };
+  ws.onerror = () => say("Kora socket error");
+  session = {cleanup:[()=>ws.close(), ()=>{processor.disconnect(); source.disconnect();}, ()=>inputCtx.close(), ()=>stream.getTracks().forEach(t=>t.stop())]};
+}
+
 document.getElementById("talk-openai").onclick = async () => {
   try { if (session) await stop(); else await startOpenAI(); }
   catch (err) { say("Marin failed: " + err.message); await stop(); }
@@ -416,6 +472,10 @@ document.getElementById("talk-openai").onclick = async () => {
 document.getElementById("talk-xai").onclick = async () => {
   try { if (session) await stop(); else await startXai(); }
   catch (err) { say("Carina failed: " + err.message); await stop(); }
+};
+document.getElementById("talk-hume").onclick = async () => {
+  try { if (session) await stop(); else await startHume(); }
+  catch (err) { say("Kora failed: " + err.message); await stop(); }
 };
 pickBridge();
 </script>
