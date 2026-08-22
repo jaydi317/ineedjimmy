@@ -10,3 +10,5 @@
 /* Validation pass: keep the high-energy direction unmistakably wedding-first. */
 .nightlife .hero{background-image:url('assets/ian-original.jpg')}
 .nightlife .hero:after{background:radial-gradient(circle at 70% 30%,#5f2cff38,transparent 36%),linear-gradient(90deg,#070910f2 5%,#0709108c 58%,#07091055)}
+
+.collection-divider{margin:88px 0 38px;padding:36px 0 22px;border-top:1px solid #fff3;display:flex;align-items:end;justify-content:space-between;gap:30px}.collection-divider span{font-size:.7rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase;color:#e2a85c}.collection-divider strong{font:400 clamp(1.7rem,3vw,3rem)/1.05 var(--serif);max-width:650px;text-align:right}@media(max-width:800px){.collection-divider{margin-top:65px;display:block}.collection-divider strong{display:block;text-align:left;margin-top:13px}}
