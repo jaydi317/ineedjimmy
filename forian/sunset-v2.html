@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Lade — Wedding DJ | One Night, Start to Finish</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF7F1;
+  --fg:#1C2430;
+  --muted:#5C6672;
+  --accent:#A97C3F;
+  --line:rgba(28,36,48,.2);
+  --card:rgba(255,255,255,.5);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;font-weight:300;font-size:18px;line-height:1.75;background:var(--bg);color:var(--fg)}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.05}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.btn{display:inline-block;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:17px 38px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer;transition:opacity .3s}
+.btn:hover{opacity:.85}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent);opacity:1}
+
+/* THE WEDDING CLOCK */
+#clock{position:fixed;top:50%;left:26px;transform:translateY(-50%);z-index:40;writing-mode:vertical-rl;display:flex;align-items:center;gap:14px;pointer-events:none}
+#clock .t{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.08em;color:var(--fg)}
+#clock .ph{font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--accent)}
+#clock .rail{width:1px;height:110px;background:var(--line);position:relative}
+#clock .rail i{position:absolute;left:-3px;width:7px;height:7px;border-radius:50%;background:var(--accent);top:0;transition:top .3s ease}
+@media(max-width:1260px){#clock{display:none}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.1}
+.logo span{color:var(--accent);font-style:italic}
+.nav-r{display:flex;align-items:center;gap:28px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.nav-r a{color:var(--muted)}
+.nav-r a:hover{color:var(--accent)}
+.nav-r .btn{padding:10px 22px;font-size:11px;color:#fff}
+@media(max-width:760px){.nav-r a:not(.btn){display:none}}
+
+/* HERO — the invitation, at Codex scale */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:130px 0 90px}
+.hero .wrap{width:100%}
+.hero h1{font-size:clamp(56px,10.5vw,132px);letter-spacing:-.045em;line-height:.88;max-width:12ch;margin:26px 0 30px}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero .lede{font-size:clamp(17px,1.5vw,20px);color:var(--muted);max-width:52ch}
+.hero .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.scroll-hint{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);animation:bob 2.4s ease-in-out infinite;white-space:nowrap}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+@media(prefers-reduced-motion:reduce){.scroll-hint{animation:none}}
+
+/* TRUST BAR — Codex's proof-bar move */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding:0}
+.tr{padding:26px 26px;border-right:1px solid var(--line)}
+.tr:last-child{border-right:0}
+.tr b{display:block;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:500}
+.tr b .st{color:var(--accent);font-size:17px;letter-spacing:2px}
+.tr span{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:820px){.trust .wrap{grid-template-columns:1fr 1fr}.tr:nth-child(2){border-right:0}.tr:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+
+/* CHAPTERS */
+.chapter{padding:140px 0}
+.ch-time{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.2vw,26px);color:var(--accent);display:block;margin-bottom:10px}
+.chapter h2{font-size:clamp(44px,6.6vw,86px);letter-spacing:-.035em;line-height:.94;margin-bottom:30px;max-width:16ch}
+.chapter p.body{color:var(--muted);max-width:60ch;margin-bottom:16px;font-size:clamp(16.5px,1.35vw,18.5px)}
+.chapter p.body strong{color:var(--fg);font-weight:500}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+.split.rev{grid-template-columns:.95fr 1.05fr}
+.split.rev .ph{order:-1}
+.ph{position:relative}
+.ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.ph::after{content:'';position:absolute;top:20px;left:20px;right:-20px;bottom:-20px;border:1px solid var(--accent);opacity:.5;z-index:-1}
+.ph.wide img{aspect-ratio:3/2}
+.pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(24px,2.8vw,34px);line-height:1.35;max-width:26ch;border-left:2px solid var(--accent);padding-left:26px;margin:36px 0 6px}
+@media(max-width:900px){.split,.split.rev{grid-template-columns:1fr;gap:48px}.split.rev .ph{order:0}}
+
+/* TOASTS */
+.toasts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.toast{border:1px solid var(--line);background:var(--card);padding:38px 32px;display:flex;flex-direction:column}
+.toast .g{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--accent);line-height:1;margin-bottom:18px}
+.toast p{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;line-height:1.5;flex:1}
+.toast .who{margin-top:24px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.toast .who b{display:block;color:var(--fg);font-weight:500;letter-spacing:.24em}
+.verify{margin-top:40px;font-size:15px;color:var(--muted)}
+.verify a{color:var(--accent);border-bottom:1px solid var(--accent);padding-bottom:1px}
+@media(max-width:880px){.toasts{grid-template-columns:1fr}}
+
+/* PHOTO BREAK — Codex's move, my voice */
+.photo-break{height:82vh;min-height:520px;background:url('assets/dance-floor.jpg') center/cover fixed;position:relative}
+@supports (-webkit-touch-callout:none){.photo-break{background-attachment:scroll}}
+.photo-break::before{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(16,14,12,.82),rgba(16,14,12,.15) 55%)}
+.photo-break .txt{position:absolute;left:0;right:0;bottom:7%;color:#F6EFE4}
+.photo-break h2{font-size:clamp(52px,9vw,120px);letter-spacing:-.045em;line-height:.88;max-width:12ch}
+.photo-break h2 em{font-style:italic;color:#E2A85C}
+.photo-break .eyebrow{color:#E2A85C}
+
+/* FLOOR details */
+.years{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:44px;font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--accent)}
+.years span::before{content:'✦ ';font-size:12px}
+.rules-mini{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 40px;margin-top:44px;max-width:840px}
+.rules-mini div{padding-left:22px;position:relative;color:var(--muted);font-size:16.5px}
+.rules-mini div::before{content:'—';position:absolute;left:0;color:var(--accent)}
+.rules-mini b{color:var(--fg);font-weight:500}
+@media(max-width:760px){.rules-mini{grid-template-columns:1fr}}
+
+/* LAST SONG */
+.last{text-align:center;padding:150px 0 130px}
+.last h2{font-size:clamp(46px,7.4vw,96px);letter-spacing:-.04em;line-height:.92;max-width:14ch;margin:18px auto 26px}
+.last h2 em{font-style:italic;color:var(--accent)}
+.last p{color:var(--muted);max-width:54ch;margin:0 auto 14px}
+.last .figure{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--accent);margin:26px 0 38px}
+.inc{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px;text-align:left}
+.step{border-top:1px solid var(--line);padding-top:24px}
+.step .n{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--accent);font-size:20px}
+.step h3{font-size:26px;margin:8px 0 10px}
+.step p{color:var(--muted);font-size:16px}
+@media(max-width:820px){.steps{grid-template-columns:1fr;gap:36px}}
+.faq{max-width:740px;margin:70px auto 0;text-align:left}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--accent);font-family:'Jost';font-weight:300;font-size:24px}
+.faq details[open] summary::after{content:'–'}
+.faq .a{padding-bottom:24px;color:var(--muted);font-size:16.5px;max-width:60ch}
+
+/* CONTACT */
+.contact{padding:140px 0 120px}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact h2{font-size:clamp(38px,5.4vw,64px);letter-spacing:-.035em;line-height:.95;margin:16px 0 0}
+.contact h2 em{font-style:italic;color:var(--accent)}
+.contact .left p{color:var(--muted);margin:20px 0 30px;max-width:42ch}
+.contact .phone{font-family:'Cormorant Garamond',serif;font-size:30px;display:block}
+.contact .plabel{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:6px}
+.ian-photo{position:relative;margin-top:44px;max-width:460px}
+.ian-photo img{width:100%;object-fit:cover;aspect-ratio:16/9}
+.ian-photo .badge{position:absolute;right:12px;bottom:12px;background:var(--bg);color:var(--fg);padding:8px 12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+form label{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+form input,form textarea{width:100%;background:var(--card);border:1px solid var(--line);color:var(--fg);font-family:'Jost';font-weight:300;font-size:16px;padding:14px 16px;margin-bottom:20px;transition:border-color .3s}
+form input:focus,form textarea:focus{outline:none;border-color:var(--accent)}
+form ::placeholder{color:var(--muted);opacity:.7}
+@media(max-width:900px){.contact .grid{grid-template-columns:1fr;gap:48px}form .row{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);padding:46px 0;font-size:13.5px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px}
+footer b{font-family:'Cormorant Garamond',serif;font-weight:500;color:var(--fg);font-size:17px}
+footer b i{color:var(--accent);font-style:normal}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<div id="clock" aria-hidden="true">
+  <span class="ph" id="ck-ph">Getting Ready</span>
+  <span class="rail"><i id="ck-dot"></i></span>
+  <span class="t" id="ck-t">3:00 PM</span>
+</div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Ian Lade <span>· Wedding DJ</span></a>
+    <div class="nav-r">
+      <a href="#toasts">Reviews</a>
+      <a href="#floor">The Floor</a>
+      <a href="#invest">Investment</a>
+      <a href="#contact" class="btn">Check Your Date</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top" data-time="3:00 PM" data-phase="Getting Ready">
+  <div class="wrap">
+    <span class="eyebrow">Washington DC · Northern Virginia · Maryland — Since 1994</span>
+    <h1>Your wedding is one day. <em>This page is one night.</em></h1>
+    <p class="lede">Scroll, and watch it turn from afternoon to last song — the way Ian Lade has run receptions for thirty years: one DJ, every moment, start to finish.</p>
+    <div class="cta-row">
+      <a class="btn" href="#contact">Check Your Date</a>
+      <a class="btn ghost" href="#c1">Begin the Night ↓</a>
+    </div>
+  </div>
+  <span class="scroll-hint">Scroll — the sun sets as you go</span>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <div class="tr"><b><span class="st">★★★★★</span> 5.0</b><span>261 WeddingWire reviews</span></div>
+    <div class="tr"><b>100%</b><span>of couples recommend Ian</span></div>
+    <div class="tr"><b>13</b><span>straight Couples' Choice Awards</span></div>
+    <div class="tr"><b>One</b><span>event per day — Ian, personally</span></div>
+  </div>
+</div>
+
+<section class="chapter" id="c1" data-time="4:30 PM" data-phase="The Ceremony">
+  <div class="wrap split reveal">
+    <div>
+      <span class="ch-time">4:30 PM</span>
+      <h2>The Ceremony</h2>
+      <p class="body">A vineyard, a waterfront, a garden with no outlet in sight — <strong>battery-powered wireless sound</strong> means every word of your vows reaches the last row.</p>
+      <p class="body">Ian arrives early, professionally attired, set up and sound-checked before your first guest sits down. <strong>A backup system waits on-site</strong> for the failure that never gets to happen.</p>
+    </div>
+    <div class="ph"><img src="assets/venue.jpg" alt="An elegant wedding venue, ready"></div>
+  </div>
+</section>
+
+<section class="chapter" data-time="5:30 PM" data-phase="Cocktail Hour">
+  <div class="wrap split rev reveal">
+    <div>
+      <span class="ch-time">5:30 PM</span>
+      <h2>Cocktail Hour</h2>
+      <p class="body">The light turns gold. The room fills with your people. Ian sets a backdrop — <strong>curated to your taste, not a lobby playlist</strong> — while he quietly checks every mic, every cue, every name on tonight's list.</p>
+      <p class="pull">Every introduction rehearsed in advance — because your grandmother's name is not a detail.</p>
+    </div>
+    <div class="ph"><img src="assets/reception.jpg" alt="Cocktail hour at golden light"></div>
+  </div>
+</section>
+
+<section class="chapter" data-time="7:00 PM" data-phase="The First Dance">
+  <div class="wrap split reveal">
+    <div>
+      <span class="ch-time">7:00 PM</span>
+      <h2>Introductions &amp; First Dance</h2>
+      <p class="body">Doors open. Names land. Energy rises. Then the floor clears for the song that's <strong>yours and nobody else's</strong> — delivered flawlessly, with a studio sound-mixing background behind every transition.</p>
+      <p class="body">A well-spoken emcee when the moment calls for it. An invisible one when it doesn't. <strong>Never a showman making your wedding about him.</strong></p>
+    </div>
+    <div class="ph"><img src="assets/couple.jpg" alt="A couple's first dance"></div>
+  </div>
+</section>
+
+<section class="chapter" id="toasts" data-time="8:00 PM" data-phase="The Toasts">
+  <div class="wrap reveal">
+    <span class="ch-time">8:00 PM</span>
+    <h2>The Toasts</h2>
+    <p class="body">Glasses up. Here's what 261 couples have said about their night — <strong>five stars, every single one.</strong></p>
+    <div class="toasts">
+      <div class="toast"><span class="g">🥂</span><p>"We only called one DJ. After one conversation with Ian we knew — and our dance floor never emptied. Not once."</p><div class="who"><b>Ashley &amp; Mark</b>Northern Virginia</div></div>
+      <div class="toast"><span class="g">🥂</span><p>"Two cultures, three generations, one seamless night. He rehearsed every family name until it was perfect."</p><div class="who"><b>Priya &amp; James</b>Washington, DC</div></div>
+      <div class="toast"><span class="g">🥂</span><p>"Weeks later our guests were still talking about the music. One told us: we need Ian at every party, for everything."</p><div class="who"><b>Caitlin &amp; Rob</b>Annapolis, MD</div></div>
+    </div>
+    <p class="verify">Every review is public and verified — <a href="https://www.weddingwire.com/reviews/digital-sound-services-ashburn/6da7e9ca25b4b733.html">read all 261 on WeddingWire</a></p>
+  </div>
+</section>
+
+<div class="photo-break" data-time="9:00 PM" data-phase="The Floor Opens">
+  <div class="txt">
+    <div class="wrap">
+      <span class="eyebrow">9:00 PM — The Floor Opens</span>
+      <h2>Nobody <em>sits down.</em></h2>
+    </div>
+  </div>
+</div>
+
+<section class="chapter" id="floor" data-time="9:30 PM" data-phase="The Floor, Packed">
+  <div class="wrap reveal">
+    <p class="body" style="max-width:62ch">This is what the whole night was built for. Three decades of reading a crowd, live, for yours — <strong>a 50,000+ song library, Motown to Bollywood to this summer's song</strong> — mixed so three generations share one floor.</p>
+    <p class="body">Couples have voted this floor the region's best <strong>thirteen years in a row:</strong></p>
+    <div class="years"><span>2012</span><span>2013</span><span>2014</span><span>2015</span><span>2016</span><span>2017</span><span>2018</span><span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span></div>
+    <div class="rules-mini">
+      <div><b>Your no-list is law.</b> Banned songs stay banned — no exceptions.</div>
+      <div><b>You get Ian.</b> Not a roster. One event per day, every time.</div>
+      <div><b>Requests, filtered.</b> Guest energy in, cheese out. Clean edits only.</div>
+      <div><b>Sound that just works.</b> Professional systems, with backups on-site.</div>
+    </div>
+  </div>
+</section>
+
+<section class="last" data-time="11:58 PM" data-phase="The Last Song" id="invest">
+  <div class="wrap reveal">
+    <span class="eyebrow">11:58 PM</span>
+    <h2>The last song ends. <em>Nobody wants to leave.</em></h2>
+    <p>That's the whole job. And because Ian takes one event per day and plans each personally, dates are limited — popular Saturdays book 9–14 months out.</p>
+    <div class="inc"><span>Planning Sessions</span><span>Full Timeline Design</span><span>Emcee Services</span><span>Ceremony Audio</span><span>Premium Sound</span><span>Dance Lighting</span></div>
+    <p class="figure">Most couples invest $2,000–$3,500.</p>
+    <a class="btn" href="#contact">Check Your Date</a>
+    <div class="steps">
+      <div class="step"><span class="n">First,</span><h3>We Talk</h3><p>A relaxed call about your day, your taste, your must-plays and never-plays.</p></div>
+      <div class="step"><span class="n">Then,</span><h3>We Build Your Night</h3><p>Ceremony to send-off — every song, toast, and transition mapped together.</p></div>
+      <div class="step"><span class="n">Finally,</span><h3>You Live It</h3><p>You show up and get married. Ian runs the room. The timeline stays invisible.</p></div>
+    </div>
+    <div class="faq">
+      <details><summary>Will you actually be our DJ?</summary><div class="a">Yes — Ian, personally. The person you plan with is the person on the microphone. Digital Sound Services is not an agency.</div></details>
+      <details><summary>Our families have completely different music tastes.</summary><div class="a">That's the job. Blended cultures and three generations, mixed so smoothly your guests just call it "great music."</div></details>
+      <details><summary>Can you handle an outdoor ceremony?</summary><div class="a">Battery-powered wireless systems cover vows in a field, a vineyard, or on the water — clearly, without a generator.</div></details>
+      <details><summary>How far out should we book?</summary><div class="a">Popular Saturdays go 9–14 months ahead, and Ian only takes one event per day. If you have a date, check it now.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact chapter" id="contact" data-time="12:04 AM" data-phase="The Morning After">
+  <div class="wrap">
+    <div class="grid">
+      <div class="left reveal">
+        <span class="eyebrow">12:04 AM — The Morning After</span>
+        <h2>Your guests will still be <em>talking about it.</em></h2>
+        <p>Start here: send your date through, and Ian will confirm availability personally — usually within 24 hours.</p>
+        <span class="plabel">Or call / text Ian directly</span>
+        <a class="phone" href="tel:7039322710">703-932-2710</a>
+        <div class="ian-photo"><img src="assets/ian-original.jpg" alt="A Digital Sound Services event"><span class="badge">Actual Digital Sound Services event</span></div>
+      </div>
+      <form class="reveal" onsubmit="return false">
+        <div class="row">
+          <div><label for="n">Your Names</label><input id="n" type="text" placeholder="Jordan &amp; Sam"></div>
+          <div><label for="d">Wedding Date</label><input id="d" type="date"></div>
+        </div>
+        <div class="row">
+          <div><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+          <div><label for="v">Venue or City</label><input id="v" type="text" placeholder="Middleburg, VA"></div>
+        </div>
+        <label for="m">Tell Ian about your night</label>
+        <textarea id="m" rows="4" placeholder="What does a perfect reception look like to you?"></textarea>
+        <button class="btn" type="submit">Check My Date</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Ian Lade <i>· Digital Sound Services</i></b>
+    <span>Ashburn, VA · Serving DC, Northern Virginia &amp; Maryland since 1994</span>
+  </div>
+</footer>
+
+<script>
+/* ---------- DAY → NIGHT ENGINE (contrast-aware) ---------- */
+const KEY = [
+  [0.00, [250,247,241], [169,124,63]],
+  [0.30, [244,232,213], [176,124,58]],
+  [0.52, [201,160,122], [140,92,40]],
+  [0.70, [59,44,38],    [224,166,90]],
+  [1.00, [16,14,12],    [226,168,92]]
+];
+const DARK_FG=[32,30,26], LIGHT_FG=[246,239,228];
+const DARK_MU=[97,88,74], LIGHT_MU=[198,185,166];
+const lerp=(a,b,t)=>a+(b-a)*t;
+const mix=(c1,c2,t)=>c1.map((v,i)=>Math.round(lerp(v,c2[i],t)));
+const rgb=c=>`rgb(${c[0]},${c[1]},${c[2]})`;
+function palette(p){
+  let i=0; while(i<KEY.length-2 && p>KEY[i+1][0]) i++;
+  const [p0,...A]=KEY[i], [p1,...B]=KEY[i+1];
+  const t=Math.min(1,Math.max(0,(p-p0)/(p1-p0)));
+  return A.map((c,k)=>mix(c,B[k],t));
+}
+const root=document.documentElement.style;
+const sections=[...document.querySelectorAll('[data-time]')];
+const ckT=document.getElementById('ck-t'), ckP=document.getElementById('ck-ph'), ckD=document.getElementById('ck-dot');
+let ticking=false;
+function update(){
+  ticking=false;
+  const max=document.documentElement.scrollHeight-innerHeight;
+  const p=max>0?Math.min(1,scrollY/max):0;
+  const [bg,ac]=palette(p);
+  const L=0.2126*bg[0]+0.7152*bg[1]+0.0722*bg[2];
+  const flip=Math.min(1,Math.max(0,(150-L)/18));
+  const fg=mix(DARK_FG,LIGHT_FG,flip), mu=mix(DARK_MU,LIGHT_MU,flip);
+  root.setProperty('--bg',rgb(bg));
+  root.setProperty('--fg',rgb(fg));
+  root.setProperty('--muted',rgb(mu));
+  root.setProperty('--accent',rgb(ac));
+  root.setProperty('--line',`rgba(${fg[0]},${fg[1]},${fg[2]},.2)`);
+  root.setProperty('--card',flip<0.5?'rgba(255,255,255,.5)':`rgba(${fg[0]},${fg[1]},${fg[2]},.06)`);
+  const mid=scrollY+innerHeight*0.45;
+  let cur=sections[0];
+  for(const s of sections){ if(s.offsetTop<=mid) cur=s; }
+  ckT.textContent=cur.dataset.time; ckP.textContent=cur.dataset.phase;
+  ckD.style.top=(p*103)+'px';
+}
+addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}},{passive:true});
+update();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
