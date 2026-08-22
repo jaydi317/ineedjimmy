@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Lade — Wedding DJ | The Dance Floor Is the Point</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#100E0C;
+  --night2:#191612;
+  --amber:#E2A85C;
+  --amber-deep:#B37F3B;
+  --cream:#F6EFE4;
+  --muted:#A79B8A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Figtree',sans-serif;font-weight:300;font-size:18px;line-height:1.7;background:var(--night);color:var(--cream)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Marcellus',serif;font-weight:400;line-height:1.12}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);font-weight:500}
+.btn{display:inline-block;font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;padding:18px 40px;cursor:pointer;transition:all .3s ease;border:1px solid var(--amber);color:var(--night);background:var(--amber)}
+.btn:hover{background:var(--cream);border-color:var(--cream)}
+.btn.ghost{background:transparent;color:var(--cream);border-color:rgba(246,239,228,.4)}
+.btn.ghost:hover{border-color:var(--amber);color:var(--amber);background:transparent}
+
+/* uplight glow utility */
+.uplight{position:relative}
+.uplight::before{content:'';position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:min(900px,90vw);height:420px;background:radial-gradient(ellipse at bottom,rgba(226,168,92,.16),transparent 68%);pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:60;padding:20px 0;transition:all .35s}
+nav.scrolled{background:rgba(16,14,12,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(226,168,92,.18);padding:13px 0}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Marcellus',serif;font-size:21px;letter-spacing:.1em}
+.logo b{color:var(--amber);font-weight:400}
+.nav-links{display:flex;gap:32px;align-items:center;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+.nav-links a{color:var(--muted);transition:color .3s}
+.nav-links a:hover{color:var(--amber)}
+.nav-links .btn{padding:11px 22px;font-size:11px;color:var(--night)}
+@media(max-width:860px){.nav-links a:not(.btn){display:none}}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;position:relative;overflow:hidden}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:140px 24px 80px calc(max(24px,(100vw - 1200px)/2 + 24px));position:relative;z-index:2}
+.hero h1{font-size:clamp(42px,5.6vw,74px);margin:26px 0 24px;max-width:13ch}
+.hero h1 .lit{color:var(--amber)}
+.hero .lede{color:var(--muted);max-width:46ch;font-size:clamp(16.5px,1.4vw,19px)}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
+.hero-img{position:relative;background:#241f18}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--night) 0%,transparent 35%),linear-gradient(0deg,var(--night) 0%,transparent 40%)}
+.hero-stats{position:absolute;left:0;right:0;bottom:0;z-index:3;border-top:1px solid rgba(226,168,92,.22);background:rgba(16,14,12,.72);backdrop-filter:blur(6px)}
+.hero-stats .wrap{display:flex;flex-wrap:wrap;gap:12px 60px;padding:22px 24px}
+.hs{display:flex;align-items:baseline;gap:12px}
+.hs b{font-family:'Marcellus',serif;font-size:27px;font-weight:400;color:var(--cream)}
+.hs b .st{color:var(--amber);font-size:17px;letter-spacing:2px}
+.hs span{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-img{position:absolute;inset:0;z-index:1}.hero-img::after{background:linear-gradient(0deg,var(--night) 8%,rgba(16,14,12,.75) 60%,rgba(16,14,12,.55))}.hero-copy{padding:130px 24px 140px}}
+
+/* MARQUEE */
+.marquee{border-top:1px solid rgba(226,168,92,.16);border-bottom:1px solid rgba(226,168,92,.16);overflow:hidden;padding:20px 0;background:var(--night2)}
+.marquee-track{display:flex;gap:64px;white-space:nowrap;animation:slide 36s linear infinite;font-family:'Marcellus',serif;font-size:17px;letter-spacing:.14em;color:var(--muted)}
+.marquee-track span::before{content:'✦';color:var(--amber);margin-right:64px;font-size:12px}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+section{padding:120px 0;position:relative}
+.sec-head{max-width:660px;margin-bottom:70px}
+.sec-head h2{font-size:clamp(32px,4.2vw,50px);margin:18px 0 20px}
+.sec-head h2 .lit{color:var(--amber)}
+.sec-head p{color:var(--muted)}
+
+/* PHILOSOPHY */
+.philo .grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center}
+.philo-img{position:relative}
+.philo-img img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.75) brightness(.82) sepia(.22);background:#241f18}
+.philo-img::before{content:'';position:absolute;inset:0;box-shadow:inset 0 0 120px rgba(16,14,12,.9);background:linear-gradient(0deg,rgba(226,168,92,.14),rgba(16,14,12,.3));mix-blend-mode:multiply;z-index:1}
+.philo .big{font-family:'Marcellus',serif;font-size:clamp(26px,2.8vw,36px);line-height:1.35;margin:26px 0 28px}
+.philo .big .lit{color:var(--amber)}
+.philo p{color:var(--muted);margin-bottom:18px}
+.philo p strong{color:var(--cream);font-weight:500}
+@media(max-width:900px){.philo .grid{grid-template-columns:1fr;gap:52px}}
+
+/* STANDARDS — the "house rules" list */
+.standards{background:var(--night2)}
+.rules{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(226,168,92,.16);border:1px solid rgba(226,168,92,.16)}
+.rule{background:var(--night2);padding:44px 40px}
+.rule h3{font-size:22px;margin-bottom:12px;letter-spacing:.02em}
+.rule h3::before{content:'✦';color:var(--amber);margin-right:14px;font-size:15px}
+.rule p{color:var(--muted);font-size:16px}
+@media(max-width:820px){.rules{grid-template-columns:1fr}}
+
+/* REVIEWS */
+.reviews .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{border:1px solid rgba(226,168,92,.24);padding:44px 36px;display:flex;flex-direction:column;background:linear-gradient(180deg,rgba(226,168,92,.05),transparent 55%)}
+.rev .stars{color:var(--amber);letter-spacing:3px;margin-bottom:22px;font-size:14px}
+.rev p{font-family:'Marcellus',serif;font-size:20px;line-height:1.55;flex:1}
+.rev .who{margin-top:28px;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.rev .who b{display:block;color:var(--cream);font-weight:500;margin-bottom:4px}
+.verify{margin-top:52px;text-align:center;color:var(--muted);font-size:15px}
+.verify a{color:var(--amber);border-bottom:1px solid rgba(226,168,92,.5);padding-bottom:2px}
+@media(max-width:900px){.reviews .rev-grid{grid-template-columns:1fr}}
+
+/* AWARDS BAND */
+.awards{padding:90px 0;text-align:center;background:var(--night2)}
+.award-line{font-family:'Marcellus',serif;font-size:clamp(24px,3.2vw,38px);max-width:26ch;margin:18px auto 34px}
+.award-line .lit{color:var(--amber)}
+.years{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 26px;font-family:'Marcellus',serif;color:var(--muted);font-size:18px}
+.years span{position:relative}
+.years span.on{color:var(--amber)}
+
+/* PROCESS */
+.process .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:60px;counter-reset:step}
+.step{border-top:1px solid rgba(226,168,92,.3);padding-top:30px;position:relative}
+.step::before{counter-increment:step;content:counter(step,upper-roman);font-family:'Marcellus',serif;color:var(--amber);font-size:15px;letter-spacing:.3em;position:absolute;top:-11px;left:0;background:var(--night);padding-right:18px}
+.step h3{font-size:24px;margin-bottom:14px}
+.step p{color:var(--muted);font-size:16px}
+@media(max-width:860px){.process .steps{grid-template-columns:1fr;gap:46px}}
+
+/* INVESTMENT */
+.invest{text-align:center}
+.invest .inner{max-width:760px;margin:0 auto;border:1px solid rgba(226,168,92,.28);padding:80px 48px;position:relative;background:linear-gradient(180deg,rgba(226,168,92,.06),transparent 60%)}
+.invest h2{font-size:clamp(30px,4vw,46px);margin:18px 0 22px}
+.invest h2 .lit{color:var(--amber)}
+.invest p{color:var(--muted);max-width:52ch;margin:0 auto 16px}
+.invest .figure{font-family:'Marcellus',serif;font-size:22px;color:var(--amber);margin:28px 0 38px}
+.inc{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:42px}
+@media(max-width:640px){.invest .inner{padding:60px 24px}}
+
+/* ABOUT */
+.about .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:90px;align-items:center}
+.about-img{position:relative}.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(226,168,92,.16),rgba(16,14,12,.35));mix-blend-mode:multiply}.about-img img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#241f18;filter:saturate(.85)}
+.about p{color:var(--muted);margin-bottom:18px}
+.about p strong{color:var(--cream);font-weight:500}
+.about .sig{font-family:'Marcellus',serif;font-size:26px;color:var(--amber);margin-top:28px}
+@media(max-width:900px){.about .grid{grid-template-columns:1fr;gap:50px}}
+
+/* CONTACT */
+.contact{background:var(--night2)}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:90px}
+.contact .left p{color:var(--muted);margin:20px 0 34px;max-width:42ch}
+.contact .phone{font-family:'Marcellus',serif;font-size:30px;display:block}
+.contact .plabel{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:8px}
+form label{display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+form input,form textarea{width:100%;background:var(--night);border:1px solid rgba(226,168,92,.24);color:var(--cream);font-family:'Figtree';font-weight:300;font-size:16px;padding:15px 16px;margin-bottom:22px;transition:border .3s}
+form input:focus,form textarea:focus{outline:none;border-color:var(--amber)}
+@media(max-width:900px){.contact .grid{grid-template-columns:1fr;gap:52px}form .row{grid-template-columns:1fr}}
+
+footer{padding:54px 0;font-size:13.5px;color:var(--muted);border-top:1px solid rgba(226,168,92,.14)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer b{font-family:'Marcellus',serif;font-weight:400;color:var(--cream);font-size:17px}
+footer b i{color:var(--amber);font-style:normal}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">IAN LADE <b>· DSS</b></a>
+    <div class="nav-links">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#standards">House Rules</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#investment">Investment</a>
+      <a href="#contact" class="btn">Check Your Date</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow">DC · Northern Virginia · Maryland — Est. 1994</span>
+    <h1>The dance floor is <span class="lit">the point.</span></h1>
+    <p class="lede">Everything else — the timeline, the toasts, the transitions, the emcee work — exists so that when the floor opens, nobody sits down. Ian Lade has been building that moment for thirty years.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn">Check Your Date</a>
+      <a href="#philosophy" class="btn ghost">The Approach</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1800&q=80" alt="A packed floor under warm light">
+  </div>
+  <div class="hero-stats">
+    <div class="wrap">
+      <div class="hs"><b><span class="st">★★★★★</span> 5.0</b><span>250+ WeddingWire reviews</span></div>
+      <div class="hs"><b>13</b><span>straight Couples' Choice Awards</span></div>
+      <div class="hs"><b>30+</b><span>years behind the booth</span></div>
+      <div class="hs"><b>1</b><span>event per day — Ian, personally</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>THE FLOOR NEVER EMPTIED</span><span>EVERY NAME PRONOUNCED RIGHT</span><span>GUESTS STILL TALKING ABOUT IT</span><span>NOT ONE SONG FROM OUR NO-LIST</span><span>THE FLOOR NEVER EMPTIED</span><span>EVERY NAME PRONOUNCED RIGHT</span><span>GUESTS STILL TALKING ABOUT IT</span><span>NOT ONE SONG FROM OUR NO-LIST</span>
+  </div>
+</div>
+
+<section class="philo uplight" id="philosophy">
+  <div class="wrap">
+    <div class="grid">
+      <div class="reveal">
+        <span class="eyebrow">The Philosophy</span>
+        <p class="big">A great wedding DJ is <span class="lit">invisible until the exact moment</span> he shouldn't be.</p>
+        <p>You won't hear corny DJ jokes at an Ian Lade wedding. You won't get a stranger from a roster, and you won't get a Top-40 playlist somebody hits play on.</p>
+        <p>You get <strong>one experienced professional who plans your entire night with you</strong> — then runs it live: reading your crowd, blending your cultures and generations, honoring your do-not-play list to the letter.</p>
+        <p>The result is a night that feels effortless. Because for you, it is.</p>
+      </div>
+      <div class="philo-img reveal">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200&q=80" alt="A candlelit reception table">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="standards" id="standards">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">House Rules</span>
+      <h2>Thirty years distilled into <span class="lit">six promises.</span></h2>
+    </div>
+    <div class="rules reveal">
+      <div class="rule"><h3>You get Ian.</h3><p>Not an associate, not whoever's free. The DJ you plan with is the DJ at your wedding — one event per day, every time.</p></div>
+      <div class="rule"><h3>Your no-list is law.</h3><p>Songs you've banned stay banned. No exceptions, no "but the crowd requested it."</p></div>
+      <div class="rule"><h3>Names, rehearsed.</h3><p>Every introduction practiced in advance — because mispronouncing your grandmother's name isn't a small mistake.</p></div>
+      <div class="rule"><h3>The mic, used sparingly.</h3><p>A clear, well-spoken emcee when the moment calls for it. Never a showman making your wedding about him.</p></div>
+      <div class="rule"><h3>Every era, every culture.</h3><p>Motown to Bollywood to this summer's song of the summer — mixed so three generations share one floor.</p></div>
+      <div class="rule"><h3>Sound that just works.</h3><p>Professional systems with backups, plus battery-powered wireless audio for vows in a vineyard, a field, or on the water.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews uplight" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Verified Reviews</span>
+      <h2>250+ couples. <span class="lit">Five stars. Every one.</span></h2>
+    </div>
+    <div class="rev-grid reveal">
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"We only called one DJ. After one conversation with Ian we knew — and our dance floor never emptied. Not once."</p>
+        <div class="who"><b>Ashley &amp; Mark</b>Northern Virginia</div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Two cultures, three generations, one seamless night. He even rehearsed every family name until it was perfect."</p>
+        <div class="who"><b>Priya &amp; James</b>Washington, DC</div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Weeks later our guests were still talking about the music. One told us: we need Ian at every party, for everything."</p>
+        <div class="who"><b>Caitlin &amp; Rob</b>Annapolis, MD</div>
+      </div>
+    </div>
+    <p class="verify reveal">Don't take our word for it — <a href="https://www.weddingwire.com/reviews/digital-sound-services-ashburn/6da7e9ca25b4b733.html">read all 250+ verified reviews on WeddingWire</a></p>
+  </div>
+</section>
+
+<section class="awards">
+  <div class="wrap reveal">
+    <span class="eyebrow">WeddingWire Couples' Choice</span>
+    <p class="award-line">Voted by couples — <span class="lit">thirteen years in a row.</span></p>
+    <div class="years">
+      <span class="on">2012</span><span class="on">2013</span><span class="on">2014</span><span class="on">2015</span><span class="on">2016</span><span class="on">2017</span><span class="on">2018</span><span class="on">2019</span><span class="on">2020</span><span class="on">2021</span><span class="on">2022</span><span class="on">2023</span><span class="on">2024</span>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Three steps between you <span class="lit">and a packed floor.</span></h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>The Conversation</h3><p>A relaxed call about your day, your taste, your must-plays and never-plays. You'll know in twenty minutes if it's a fit.</p></div>
+      <div class="step"><h3>The Blueprint</h3><p>Ian maps your full night with you — ceremony audio, cocktail hour, introductions, first dance, toasts, open floor, last song.</p></div>
+      <div class="step"><h3>The Night</h3><p>You show up and get married. Ian runs the room, keeps the timeline invisible, and makes the floor the place to be.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="invest uplight" id="investment">
+  <div class="wrap">
+    <div class="inner reveal">
+      <span class="eyebrow">The Investment</span>
+      <h2>One date on the calendar. <span class="lit">All of Ian's attention.</span></h2>
+      <p>Because Ian takes a single event per day and plans each one personally, dates are limited — popular Saturdays book 9 to 14 months out.</p>
+      <div class="inc"><span>Planning Sessions</span><span>Full Timeline Design</span><span>Emcee Services</span><span>Ceremony Audio</span><span>Premium Sound</span><span>Dance Lighting</span></div>
+      <p class="figure">Most couples invest $2,000–$3,500.</p>
+      <a href="#contact" class="btn">Check Your Date</a>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" alt="Placeholder — swap for Ian's photo">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">The Man Behind the Music</span>
+        <h2 style="font-size:clamp(30px,4vw,44px);margin:18px 0 24px">Ian Lade. <span style="color:var(--amber)">Since 1994.</span></h2>
+        <p>Ian started Digital Sound Services because he believed a wedding deserved better than a jukebox with a microphone — and three decades later, he still runs every event himself.</p>
+        <p><strong>Hundreds of weddings across DC, Northern Virginia, and Maryland.</strong> Historic mansions, vineyards, waterfronts, ballrooms, barns. Every kind of couple, every kind of crowd.</p>
+        <p>Based in Ashburn, Virginia. Call or text anytime — you'll get Ian, not a front desk.</p>
+        <p class="sig">703-932-2710</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="left reveal">
+        <span class="eyebrow">Last Step</span>
+        <h2 style="font-size:clamp(30px,4vw,46px);margin:18px 0 0">Is your date <span style="color:var(--amber)">still open?</span></h2>
+        <p>One event per day means one couple per date. Send yours through and Ian will confirm availability personally — usually within 24 hours.</p>
+        <span class="plabel">Or call / text Ian directly</span>
+        <a class="phone" href="tel:7039322710">703-932-2710</a>
+      </div>
+      <form class="reveal" onsubmit="return false">
+        <div class="row">
+          <div><label for="n">Your Names</label><input id="n" type="text" placeholder="Jordan &amp; Sam"></div>
+          <div><label for="d">Wedding Date</label><input id="d" type="date"></div>
+        </div>
+        <div class="row">
+          <div><label for="e">Email</label><input id="e" type="email" placeholder="you@email.com"></div>
+          <div><label for="v">Venue or City</label><input id="v" type="text" placeholder="Middleburg, VA"></div>
+        </div>
+        <label for="m">Tell Ian about your night</label>
+        <textarea id="m" rows="4" placeholder="What does a perfect reception look like to you?"></textarea>
+        <button class="btn" type="submit">Check My Date</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>IAN LADE <i>· Digital Sound Services</i></b>
+    <span>Ashburn, VA · Serving DC, Northern Virginia &amp; Maryland since 1994</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

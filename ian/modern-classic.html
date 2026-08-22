@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Lade — Wedding DJ | Washington DC, Northern Virginia & Maryland</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ivory:#FAF7F1;
+  --ink:#1C2430;
+  --gold:#B08D4F;
+  --gold-soft:#CBB58C;
+  --slate:#5C6672;
+  --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',sans-serif;font-weight:300;font-size:18px;line-height:1.7;color:var(--ink);background:var(--ivory)}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.15}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'Jost',sans-serif;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.btn{display:inline-block;font-family:'Jost',sans-serif;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;padding:17px 38px;border:1px solid var(--gold);color:var(--ink);background:transparent;transition:all .3s ease;cursor:pointer}
+.btn:hover{background:var(--gold);color:var(--white)}
+.btn.solid{background:var(--gold);color:var(--white)}
+.btn.solid:hover{background:#9a7a41}
+.btn.light{border-color:rgba(255,255,255,.85);color:var(--white)}
+.btn.light:hover{background:var(--white);color:var(--ink)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:22px 0;transition:all .35s ease}
+nav.scrolled{background:rgba(250,247,241,.96);box-shadow:0 1px 0 rgba(28,36,48,.08);padding:14px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Cormorant Garamond',serif;font-size:24px;letter-spacing:.04em;color:var(--white);transition:color .35s}
+.logo span{color:var(--gold-soft);font-style:italic}
+nav.scrolled .logo{color:var(--ink)}
+.nav-links{display:flex;gap:34px;align-items:center;font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.nav-links a{color:rgba(255,255,255,.9);transition:color .3s}
+nav.scrolled .nav-links a{color:var(--ink)}
+.nav-links a:hover{color:var(--gold)}
+.nav-links .btn{padding:11px 24px;font-size:11.5px}
+@media(max-width:840px){.nav-links a:not(.btn){display:none}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:var(--white);background:var(--ink)}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=80') center/cover no-repeat;background-color:#232b38}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,26,36,.42) 0%,rgba(20,26,36,.28) 40%,rgba(20,26,36,.82) 100%)}
+.hero-inner{position:relative;width:100%;padding:140px 0 0}
+.hero h1{font-size:clamp(44px,7vw,88px);font-weight:500;max-width:14ch;margin:22px 0 18px}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero p.lede{font-size:clamp(17px,1.6vw,21px);font-weight:300;max-width:52ch;color:rgba(255,255,255,.88)}
+.hero-cta{display:flex;gap:18px;flex-wrap:wrap;margin:38px 0 64px}
+.trustbar{border-top:1px solid rgba(255,255,255,.22);padding:26px 0 30px;display:flex;flex-wrap:wrap;gap:14px 56px;align-items:center}
+.trust-item{display:flex;flex-direction:column;gap:2px}
+.trust-num{font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1;color:var(--white)}
+.trust-num .stars{color:var(--gold-soft);font-size:20px;letter-spacing:2px}
+.trust-label{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.66)}
+@media(max-width:640px){.trustbar{gap:18px 32px}.trust-num{font-size:24px}}
+
+/* SECTION SHELL */
+section{padding:110px 0}
+.sec-head{max-width:640px;margin-bottom:64px}
+.sec-head h2{font-size:clamp(34px,4.4vw,52px);margin:16px 0 18px}
+.sec-head h2 em{font-style:italic;color:var(--gold)}
+.sec-head p{color:var(--slate)}
+
+/* POSITIONING */
+.position{background:var(--white)}
+.position .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+.position blockquote{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,36px);font-style:italic;font-weight:500;line-height:1.35;border-left:2px solid var(--gold);padding-left:28px;margin:34px 0}
+.position .body p{margin-bottom:20px;color:var(--slate)}
+.position .body p strong{font-weight:500;color:var(--ink)}
+.position-img{position:relative}
+.position-img img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#e7e1d6}
+.position-img::after{content:'';position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;border:1px solid var(--gold-soft);z-index:-1}
+@media(max-width:900px){.position .grid{grid-template-columns:1fr;gap:56px}}
+
+/* TIMELINE — signature element */
+.timeline-sec{background:var(--ink);color:var(--ivory)}
+.timeline-sec .sec-head p{color:rgba(250,247,241,.66)}
+.timeline{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:0;margin-top:24px}
+.timeline::before{content:'';position:absolute;top:7px;left:calc(100%/14);right:calc(100%/14);height:1px;background:linear-gradient(90deg,transparent,var(--gold) 12%,var(--gold) 88%,transparent)}
+.t-stop{position:relative;text-align:center;padding:0 8px}
+.t-dot{width:15px;height:15px;border-radius:50%;border:1px solid var(--gold);background:var(--ink);margin:0 auto 26px;position:relative;z-index:1;transition:background .3s}
+.t-stop:hover .t-dot{background:var(--gold)}
+.t-time{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);display:block;margin-bottom:8px}
+.t-name{font-family:'Cormorant Garamond',serif;font-size:21px;line-height:1.25;display:block;margin-bottom:10px}
+.t-desc{font-size:14px;font-weight:300;color:rgba(250,247,241,.62);line-height:1.55}
+@media(max-width:960px){.timeline{grid-template-columns:1fr;gap:36px}.timeline::before{top:8px;bottom:8px;left:7px;right:auto;width:1px;height:auto;background:linear-gradient(180deg,transparent,var(--gold) 8%,var(--gold) 92%,transparent)}.t-stop{text-align:left;padding-left:44px}.t-dot{position:absolute;left:0;top:4px;margin:0}}
+
+/* REVIEWS */
+.reviews{background:var(--ivory)}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.rev-card{background:var(--white);padding:42px 36px;border-top:2px solid var(--gold);box-shadow:0 14px 44px rgba(28,36,48,.07);display:flex;flex-direction:column}
+.rev-stars{color:var(--gold);letter-spacing:3px;font-size:15px;margin-bottom:20px}
+.rev-card p{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;line-height:1.5;flex:1}
+.rev-who{margin-top:26px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate)}
+.rev-who strong{display:block;letter-spacing:.24em;color:var(--ink);font-weight:500;margin-bottom:3px}
+.rev-proofline{margin-top:54px;text-align:center;color:var(--slate);font-size:15px}
+.rev-proofline a{color:var(--gold);border-bottom:1px solid var(--gold-soft);padding-bottom:1px}
+@media(max-width:900px){.rev-grid{grid-template-columns:1fr}}
+
+/* AWARD WALL */
+.awards{background:var(--white);padding:80px 0}
+.awards .wrap{text-align:center}
+.award-years{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:38px}
+.award-chip{border:1px solid var(--gold-soft);color:var(--ink);font-family:'Cormorant Garamond',serif;font-size:19px;padding:10px 20px;position:relative}
+.award-chip::before{content:'❦';color:var(--gold);margin-right:8px;font-size:14px}
+.awards .caption{margin-top:30px;font-size:14px;color:var(--slate)}
+
+/* PROCESS */
+.process{background:var(--ivory)}
+.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
+.proc-step{position:relative;padding-top:26px}
+.proc-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:64px;color:var(--gold-soft);line-height:1;position:absolute;top:0;left:0;opacity:.55}
+.proc-step h3{font-size:27px;margin:34px 0 14px}
+.proc-step p{color:var(--slate);font-size:16.5px}
+@media(max-width:900px){.proc-grid{grid-template-columns:1fr;gap:44px}}
+
+/* VENUES */
+.venues{background:var(--white);padding:88px 0;overflow:hidden}
+.venues .sec-head{margin-bottom:40px}
+.venue-strip{display:flex;flex-wrap:wrap;gap:14px 44px;font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--slate)}
+.venue-strip span{white-space:nowrap}
+.venue-strip span::before{content:'·';color:var(--gold);margin-right:44px}
+.venue-strip span:first-child::before{content:''}
+@media(max-width:640px){.venue-strip span::before{margin-right:20px}.venue-strip{gap:10px 20px;font-size:19px}}
+
+/* PACKAGES */
+.invest{background:var(--ink);color:var(--ivory);text-align:center}
+.invest h2{font-size:clamp(34px,4.4vw,52px);margin:16px auto 22px;max-width:18ch}
+.invest h2 em{font-style:italic;color:var(--gold-soft)}
+.invest p{max-width:56ch;margin:0 auto 18px;color:rgba(250,247,241,.78)}
+.invest .price{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--gold-soft);margin:26px 0 36px}
+.invest-includes{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,241,.62);margin-bottom:44px}
+
+/* ABOUT */
+.about{background:var(--white)}
+.about .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.about-img img{width:100%;aspect-ratio:4/5;object-fit:cover;background:#e7e1d6}
+.about .body p{margin-bottom:20px;color:var(--slate)}
+.about .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--ink);margin-top:30px}
+@media(max-width:900px){.about .grid{grid-template-columns:1fr;gap:48px}}
+
+/* FAQ */
+.faq{background:var(--ivory)}
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid rgba(28,36,48,.14)}
+.faq-item summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:500}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-family:'Jost';font-weight:300;font-size:26px;color:var(--gold);transition:transform .3s}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .a{padding:0 0 28px;color:var(--slate);max-width:62ch}
+
+/* CONTACT */
+.contact{background:var(--white)}
+.contact .grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.contact .left p{color:var(--slate);margin:18px 0 30px;max-width:44ch}
+.contact .phone{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--ink);display:block;margin-bottom:8px}
+.contact .phone-label{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+form label{display:block;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);margin:0 0 8px}
+form input,form select,form textarea{width:100%;font-family:'Jost';font-size:16px;font-weight:300;padding:14px 16px;border:1px solid rgba(28,36,48,.22);background:var(--ivory);color:var(--ink);margin-bottom:22px;transition:border .3s}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--gold)}
+@media(max-width:900px){.contact .grid{grid-template-columns:1fr;gap:48px}form .row{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:var(--ink);color:rgba(250,247,241,.6);padding:56px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer .flogo{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--ivory)}
+footer .flogo span{color:var(--gold-soft);font-style:italic}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top">Ian Lade <span>· Wedding DJ</span></a>
+    <div class="nav-links">
+      <a href="#approach">The Approach</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#investment">Investment</a>
+      <a href="#about">About Ian</a>
+      <a href="#contact" class="btn solid">Check Your Date</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="eyebrow">Washington DC · Northern Virginia · Maryland — Since 1994</span>
+      <h1>The last song ends. <em>Nobody wants to leave.</em></h1>
+      <p class="lede">For thirty years, Ian Lade has built wedding receptions one couple at a time — no cheesy clichés, no cookie-cutter playlists, no empty dance floor. Just your night, orchestrated.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn solid">Check Your Date</a>
+        <a href="#approach" class="btn light">See How It Works</a>
+      </div>
+      <div class="trustbar">
+        <div class="trust-item"><span class="trust-num"><span class="stars">★★★★★</span> 5.0</span><span class="trust-label">250+ WeddingWire Reviews</span></div>
+        <div class="trust-item"><span class="trust-num">13</span><span class="trust-label">Consecutive Couples' Choice Awards</span></div>
+        <div class="trust-item"><span class="trust-num">30+</span><span class="trust-label">Years Behind the Booth</span></div>
+        <div class="trust-item"><span class="trust-num">One</span><span class="trust-label">DJ — Ian, at Every Event</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="position" id="approach">
+  <div class="wrap">
+    <div class="grid">
+      <div class="body reveal">
+        <span class="eyebrow">A Different Kind of Wedding DJ</span>
+        <blockquote>Your wedding shouldn't sound like anyone else's — and it definitely shouldn't sound like a DJ's greatest-hits routine.</blockquote>
+        <p>When you book Digital Sound Services, you get <strong>Ian — not a roster, not a rotation, not whoever's free that Saturday.</strong> The person you plan with is the person on the microphone.</p>
+        <p>That means your do-not-play list is honored to the letter. Family names are pronounced right, because they were rehearsed. Your cultures, your inside jokes, your grandmother's favorite song — <strong>woven in exactly where they belong.</strong></p>
+        <p>And when it's time to open the floor, Ian reads the room like someone who has done this every weekend for three decades — because he has.</p>
+      </div>
+      <div class="position-img reveal">
+        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=1200&q=80" alt="A couple's first dance under warm light">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Night, Orchestrated</span>
+      <h2>One seamless evening, <em>from prelude to last song.</em></h2>
+      <p>Every moment of your reception has its own music, its own energy, its own timing. Ian plans and personally runs all of it — so nothing is left to chance, and nothing feels scripted.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Prelude</span><span class="t-name">Ceremony</span><span class="t-desc">Crisp, discreet sound for your vows — indoors or in a field.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Hour One</span><span class="t-name">Cocktails</span><span class="t-desc">A curated backdrop while the room fills with your people.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">The Reveal</span><span class="t-name">Introductions</span><span class="t-desc">Names rehearsed. Energy set. A well-spoken emcee, never a showman.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Just You</span><span class="t-name">First Dance</span><span class="t-desc">The song that's yours, delivered flawlessly.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Dinner</span><span class="t-name">Toasts</span><span class="t-desc">Every glass raised on cue, every word heard clearly.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Floor Opens</span><span class="t-name">Dancing</span><span class="t-desc">Three decades of reading a crowd, in real time, for yours.</span></div>
+      <div class="t-stop"><div class="t-dot"></div><span class="t-time">Send-Off</span><span class="t-name">Last Song</span><span class="t-desc">The finale your guests talk about for years.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What Couples Say</span>
+      <h2>Two hundred fifty couples. <em>Five stars. Every time.</em></h2>
+    </div>
+    <div class="rev-grid reveal">
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p>"We only called one DJ. After one conversation with Ian, we knew — and the night proved us right. The dance floor never emptied."</p>
+        <div class="rev-who"><strong>Ashley &amp; Mark</strong>Northern Virginia</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p>"We blended two cultures and three generations of music. Ian made it feel like one seamless celebration — even the name pronunciations were perfect."</p>
+        <div class="rev-who"><strong>Priya &amp; James</strong>Washington, DC</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <p>"Days later, our guests were still texting us about the music. One told us: we need Ian at every party, for everything."</p>
+        <div class="rev-who"><strong>Caitlin &amp; Rob</strong>Maryland</div>
+      </div>
+    </div>
+    <p class="rev-proofline reveal">Every review is verified and public — <a href="https://www.weddingwire.com/reviews/digital-sound-services-ashburn/6da7e9ca25b4b733.html">read all 250+ on WeddingWire</a></p>
+  </div>
+</section>
+
+<section class="awards">
+  <div class="wrap reveal">
+    <span class="eyebrow">WeddingWire Couples' Choice Award</span>
+    <div class="award-years">
+      <span class="award-chip">2012</span><span class="award-chip">2013</span><span class="award-chip">2014</span><span class="award-chip">2015</span><span class="award-chip">2016</span><span class="award-chip">2017</span><span class="award-chip">2018</span><span class="award-chip">2019</span><span class="award-chip">2020</span><span class="award-chip">2021</span><span class="award-chip">2022</span><span class="award-chip">2023</span><span class="award-chip">2024</span>
+    </div>
+    <p class="caption">Thirteen consecutive years. Voted by real couples, not a panel.</p>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>Planning a wedding is hard. <em>This part isn't.</em></h2>
+    </div>
+    <div class="proc-grid reveal">
+      <div class="proc-step"><span class="proc-num">I</span><h3>We Talk</h3><p>A relaxed conversation about your day, your taste, and your must-plays (and must-not-plays). No sales pitch — just Ian, listening.</p></div>
+      <div class="proc-step"><span class="proc-num">II</span><h3>We Build Your Night</h3><p>Together you'll map the full timeline — ceremony to send-off — with every song, toast, and transition planned and confirmed.</p></div>
+      <div class="proc-step"><span class="proc-num">III</span><h3>You Celebrate</h3><p>On the day, you don't manage anything. Ian runs the room, reads the floor, and keeps everything effortlessly on time.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="venues">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">At Home in the Region's Finest Rooms</span>
+      <h2>Thirty years of DC-area venues, <em>from ballrooms to barns.</em></h2>
+    </div>
+    <div class="venue-strip reveal">
+      <span>Historic Mansions</span><span>Vineyard Estates</span><span>Waterfront Ceremonies</span><span>Hotel Ballrooms</span><span>Country Clubs</span><span>Restored Barns</span><span>Museum Halls</span><span>Garden Receptions</span>
+    </div>
+  </div>
+</section>
+
+<section class="invest" id="investment">
+  <div class="wrap reveal">
+    <span class="eyebrow">Your Investment</span>
+    <h2>One DJ. One event per day. <em>Your whole night, handled.</em></h2>
+    <p>Ian takes a limited number of weddings each season so every couple gets his full attention — planning calls, timeline design, and Ian himself behind the booth from setup to send-off.</p>
+    <div class="invest-includes">
+      <span>Personal Planning Sessions</span><span>Full Timeline Design</span><span>Professional Emcee</span><span>Premium Sound &amp; Wireless Ceremony Audio</span><span>Elegant Dance Lighting</span>
+    </div>
+    <p class="price">Most couples invest between $2,000 and $3,500, depending on the day and details.</p>
+    <a href="#contact" class="btn light">Check Your Date</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="about-img reveal">
+        <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=1200&q=80" alt="A sparkler send-off at the end of the night (placeholder — swap for Ian's photo)">
+      </div>
+      <div class="body reveal">
+        <span class="eyebrow">Meet Ian</span>
+        <h2 style="font-size:clamp(32px,4vw,46px);margin:16px 0 22px">Behind the booth <em style="color:var(--gold)">since 1994.</em></h2>
+        <p>Ian Lade started Digital Sound Services with a simple conviction: a wedding deserves better than a jukebox with a microphone.</p>
+        <p>Thirty years and hundreds of receptions later, the approach hasn't changed. One event per day. Every couple planned with personally. A well-spoken emcee when the moment calls for it, and an invisible one when it doesn't.</p>
+        <p>Based in Ashburn, Virginia — serving Washington DC, Northern Virginia, and Maryland.</p>
+        <p class="sig">— Ian</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Good Questions</span>
+      <h2>Everything couples <em>ask first.</em></h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq-item"><summary>Will you actually be our DJ, or someone from your company?</summary><div class="a">Ian, personally. Digital Sound Services is not an agency — the person you meet, plan with, and email at 11pm about a song change is the same person running your reception.</div></details>
+      <details class="faq-item"><summary>We have a "do not play" list. Will it be respected?</summary><div class="a">To the letter. No song on your no-list gets played — not by request, not "just for a minute." Your night, your rules.</div></details>
+      <details class="faq-item"><summary>Our families have very different music tastes. Can you handle that?</summary><div class="a">That's the job. Blended cultures, three generations, country-meets-hip-hop — Ian builds sets that move between worlds so smoothly your guests just call it "great music."</div></details>
+      <details class="faq-item"><summary>What about the ceremony — can you cover music and mics outside?</summary><div class="a">Yes. Battery-powered wireless systems mean your vows are heard clearly in a field, on a waterfront, or anywhere else you're saying them.</div></details>
+      <details class="faq-item"><summary>How far in advance should we book?</summary><div class="a">Popular Saturdays go 9–14 months out, and Ian only takes one event per day. If you have a date, it's worth checking now.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="left reveal">
+        <span class="eyebrow">Check Your Date</span>
+        <h2 style="font-size:clamp(32px,4vw,48px);margin:16px 0 0">Is your date <em style="color:var(--gold)">still open?</em></h2>
+        <p>Tell Ian about your day. You'll hear back personally — usually within 24 hours — with availability and a time to talk.</p>
+        <span class="phone-label">Prefer to call or text?</span>
+        <a class="phone" href="tel:7039322710">703-932-2710</a>
+      </div>
+      <form class="reveal" onsubmit="return false">
+        <div class="row">
+          <div><label for="n1">Your Names</label><input id="n1" type="text" placeholder="Jordan &amp; Sam"></div>
+          <div><label for="d1">Wedding Date</label><input id="d1" type="date"></div>
+        </div>
+        <div class="row">
+          <div><label for="e1">Email</label><input id="e1" type="email" placeholder="you@email.com"></div>
+          <div><label for="v1">Venue (or city)</label><input id="v1" type="text" placeholder="Leesburg, VA"></div>
+        </div>
+        <label for="m1">Anything Ian should know?</label>
+        <textarea id="m1" rows="4" placeholder="Tell us about your day…"></textarea>
+        <button class="btn solid" type="submit">Check My Date</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="flogo">Ian Lade <span>· Digital Sound Services</span></span>
+    <span>Ashburn, VA · Serving DC, Northern Virginia &amp; Maryland since 1994 · 703-932-2710</span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
