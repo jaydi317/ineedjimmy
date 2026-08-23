@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Turbines — Market Development Command Center</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#0a0f1a;--card:#111827;--card-hover:#1a2332;--border:#1e293b;
+--text:#e2e8f0;--muted:#94a3b8;--accent:#3b82f6;--accent2:#06b6d4;
+--hot:#ef4444;--hot-bg:rgba(239,68,68,.08);--hot-border:rgba(239,68,68,.25);
+--warm:#f59e0b;--warm-bg:rgba(245,158,11,.08);--warm-border:rgba(245,158,11,.25);
+--cool:#22c55e;--cool-bg:rgba(34,197,94,.08);--cool-border:rgba(34,197,94,.25);
+}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.header{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%);border-bottom:1px solid var(--border);padding:24px 32px;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.header h1{font-size:22px;font-weight:700;letter-spacing:-.5px}
+.header h1 span{color:var(--accent2);font-weight:400}
+.header .sub{color:var(--muted);font-size:13px;margin-top:4px}
+.controls{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.controls button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px;font-weight:500;transition:all .2s}
+.controls button:hover,.controls button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.controls button.active-hot{background:var(--hot);border-color:var(--hot);color:#fff}
+.controls button.active-warm{background:var(--warm);border-color:var(--warm);color:#000}
+.stats{display:flex;gap:16px;padding:16px 32px;border-bottom:1px solid var(--border)}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 20px;flex:1;max-width:200px}
+.stat .num{font-size:28px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.stat .label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+.stat.hot .num{color:var(--hot)}.stat.warm .num{color:var(--warm)}.stat.cool .num{color:var(--accent2)}
+.main{padding:24px 32px;max-width:1400px}
+.section-header{display:flex;align-items:center;gap:12px;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.section-header:first-child{margin-top:0}
+.section-header h2{font-size:16px;font-weight:600;letter-spacing:-.3px}
+.section-header .badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.badge-hot{background:var(--hot-bg);color:var(--hot);border:1px solid var(--hot-border)}
+.badge-warm{background:var(--warm-bg);color:var(--warm);border:1px solid var(--warm-border)}
+.badge-cool{background:var(--cool-bg);color:var(--cool);border:1px solid var(--cool-border)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:all .2s}
+.card:hover{border-color:#334155;transform:translateY(-1px);box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.card.priority-hot{border-left:3px solid var(--hot)}
+.card.priority-warm{border-left:3px solid var(--warm)}
+.card.priority-cold{border-left:3px solid var(--accent2)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;padding:16px 20px 12px;cursor:pointer}
+.card-top h3{font-size:15px;font-weight:600}
+.card-top .meta{display:flex;gap:8px;align-items:center}
+.card-top .tag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.tag-hot{background:var(--hot);color:#fff}.tag-warm{background:var(--warm);color:#000}.tag-cold{background:#334155;color:#94a3b8}
+.card-body{padding:0 20px 16px;display:none}
+.card.open .card-body{display:block}
+.card-body .row{display:grid;grid-template-columns:140px 1fr;gap:8px;margin-bottom:10px;font-size:13px}
+.card-body .row .label{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.card-body .row .value{color:var(--text)}
+.hook-box{background:#0c1425;border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:12px 0;position:relative;font-size:13px;line-height:1.7}
+.hook-box::before{content:'COLD CALL HOOK';position:absolute;top:-8px;left:12px;background:var(--accent);color:#fff;font-size:9px;padding:1px 8px;border-radius:3px;font-weight:700;letter-spacing:1px}
+.contact-box{background:linear-gradient(135deg,rgba(6,182,212,.06),rgba(59,130,246,.06));border:1px solid rgba(6,182,212,.2);border-radius:8px;padding:14px 16px;margin:12px 0}
+.contact-box h4{font-size:12px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:600}
+.contact-item{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.contact-item:last-child{border-bottom:none}
+.contact-item .name{font-weight:600;font-size:14px}.contact-item .title{color:var(--muted);font-size:12px}
+.contact-item .phone{font-family:'JetBrains Mono',monospace;color:var(--accent2);font-size:13px}
+.btn-copy{background:var(--accent);color:#fff;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;transition:all .15s}
+.btn-copy:hover{background:#2563eb;transform:scale(1.03)}
+.btn-copy.copied{background:var(--cool)}
+.btn-row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chevron{transition:transform .2s;color:var(--muted);font-size:18px}
+.card.open .chevron{transform:rotate(90deg)}
+.poc-badge{font-size:11px;background:rgba(59,130,246,.15);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:500}
+.hidden{display:none!important}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--cool);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transition:opacity .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:768px){
+.stats{flex-wrap:wrap}.stat{max-width:none;flex:1 1 45%}
+.main{padding:16px}.card-body .row{grid-template-columns:1fr}
+.controls{gap:6px}.controls button{padding:6px 10px;font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>Solar Turbines <span>Market Development Command Center</span></h1>
+<div class="sub">Prepared for Kevin Jensen — Updated April 7, 2026 — Data valid ~30 days</div>
+<div class="controls">
+<button class="active" onclick="filterAll(this)">All Accounts</button>
+<button onclick="filterPOC(this,'Ben M')">Ben M</button>
+<button onclick="filterPOC(this,'Erik')">Erik</button>
+<button onclick="filterPOC(this,'Ricky')">Ricky</button>
+<button onclick="filterPOC(this,'Lisa')">Lisa</button>
+<button onclick="filterPOC(this,'Marco')">Marco</button>
+<button onclick="filterPOC(this,'Kevin')">Kevin</button>
+<button onclick="filterPOC(this,'Geordie')">Geordie</button>
+<span style="width:1px;background:var(--border);margin:0 4px"></span>
+<button onclick="filterPriority(this,'hot')" class="">🔴 Active RFPs</button>
+<button onclick="filterPriority(this,'warm')" class="">🟡 Top Priority</button>
+<button onclick="filterPriority(this,'cold')" class="">🔵 All Cold</button>
+</div>
+</div>
+
+<div class="stats">
+<div class="stat hot"><div class="num" id="stat-hot">2</div><div class="label">Active RFPs</div></div>
+<div class="stat warm"><div class="num" id="stat-warm">8</div><div class="label">Top Priority</div></div>
+<div class="stat cool"><div class="num" id="stat-total">25</div><div class="label">Total Accounts</div></div>
+<div class="stat"><div class="num" style="color:var(--accent)">6</div><div class="label">Salespeople</div></div>
+</div>
+
+<div class="main" id="main"></div>
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+const accounts=[
+{name:"Entergy Texas",type:"IOU",hq:"The Woodlands, TX",constrained:"SEVERELY",poc:"Ricky",priority:"hot",status:"ACTIVE RFP — 1 GW gas CCCT (issued Feb 2026)",
+portfolio:"~30 GW across subsidiaries. Building aggressively — 7+ new gas plants for Meta alone. Orange County CCGT (1.2 GW) nearly complete.",
+opportunity:"RFP for 1 GW combined cycle gas. 7-12 GW data center pipeline. $41B capex plan. Already procured 4.5 GW of power island equipment.",
+hook:`Abby, I saw Entergy Texas just issued the 2026 CCCT RFP seeking 1 GW of gas generation for Southeast Texas. With the extraordinary growth you're seeing — and Legend and Lone Star already approved — I'd love to discuss how Solar Turbines' fast-deploy gas turbines could complement your buildout, especially for peaking applications where you need capacity faster than a full combined cycle timeline allows.`,
+contacts:[
+{name:"Abby Weaver",title:"VP, Business Operations & Strategy, Entergy Texas",phone:"Look up via LinkedIn Sales Nav",email:"aweaver@entergy.com (likely format)"},
+{name:"Eliecer Viamontes",title:"President & CEO, Entergy Texas",phone:"Executive — approach via Abby first",email:"eviamontes@entergy.com (likely)"},
+{name:"Stuart Barrett",title:"VP Customer Service (fmr Dir. Resource Planning), Entergy Texas",phone:"Look up via LinkedIn",email:"sbarrett@entergy.com (likely)"},
+]},
+
+{name:"Austin Energy",type:"Municipal",hq:"Austin, TX (ERCOT)",constrained:"SEVERELY",poc:"Ricky",priority:"hot",status:"ACTIVE RFP — All-Resource RFP (up to 400 MW, issued Dec 2025)",
+portfolio:"~3 GW. Gas (Decker Creek, Sand Hill), 16% nuclear (STNP), coal (Fayette, retiring), solar, wind.",
+opportunity:"400 MW All-Resource RFP open. GM stated publicly 'we do not have enough local power generation.' 6.2% supply shortfall by summer 2026, growing to 32.4% by 2029. Approved building gas peaker plant.",
+hook:`Stuart, your General Manager said it publicly — Austin doesn't have enough local generation capacity. With a 32% supply shortfall projected by 2029 and the all-resource RFP on the table, Solar Turbines' fast-start peakers are built for exactly this: local reliability, right-sized for a municipal utility, and deployable on a timeline that matters. I'd love 15 minutes to show you what we can do.`,
+contacts:[
+{name:"Stuart Reilly",title:"General Manager, Austin Energy",phone:"512-322-6000 (main)",email:"stuart.reilly@austinenergy.com (likely)"},
+{name:"Resource Planning Team",title:"Dir. Power Production / Resource Planning",phone:"512-322-6000 (main)",email:"EnergySupply@austinenergy.com (RFP contact)"},
+]},
+
+{name:"AEP (American Electric Power)",type:"IOU",hq:"Columbus, OH (11 states)",constrained:"SEVERELY",poc:"Kevin",priority:"warm",status:"12.8 GW gas in IRP — massive buildout planned",
+portfolio:"~31 GW diverse. Largest US transmission system. Coal retiring, gas + renewables growing fast.",
+opportunity:"IRP calls for 12.8 GW gas-fired generation through 2035. Secured 10+ GW turbine capacity from OEMs. 56 GW incremental load by 2030. $72B 5-year capex. Peak demand surging from 37 GW to 65 GW.",
+hook:`Joel, AEP just doubled its load forecast to 56 gigawatts — that's unprecedented in this industry. With 12.8 GW of gas generation in the IRP, I know the big frame OEMs have multi-year backlogs. Solar Turbines' fast-deploy peakers can help you fill capacity gaps right now, especially in the I&M and Ohio territories where data center load is ramping fastest. Worth 15 minutes?`,
+contacts:[
+{name:"Joel (VP Generation Planning)",title:"VP, Generation Planning — per Kevin's direct knowledge",phone:"Kevin knows this contact",email:"Kevin to provide"},
+{name:"Benjamin Himmel",title:"SVP, Infrastructure Development (fmr VP Gen Resource Dev)",phone:"614 area code — look up via Apollo/ZoomInfo",email:"bshimmel@aep.com (likely format)"},
+]},
+
+{name:"DTE Electric",type:"IOU",hq:"Detroit, MI",constrained:"YES",poc:"Ben M",priority:"warm",status:"1.5 GW CCGT planned — Monroe replacement + 7 GW data center pipeline",
+portfolio:"~12 GW system. Retiring coal fleet. Converting Belle River to gas 2026. Nuclear (Fermi). Growing renewables.",
+opportunity:"1.5 GW CCGT by 2032. Monroe coal replacing with CCGT. 2026 IRP filing with all-source RFP. 1.4 GW Oracle data center deal. 7 GW pipeline. $36.5B 5-year capex (22% increase).",
+hook:`Ms. Harris's team, congratulations on the Oracle data center deal — 1.4 GW is transformational for DTE. With the Monroe replacement CCGT and the 2026 IRP coming up, I'd love to discuss how Solar Turbines' smaller, modular gas turbines could complement your buildout — especially for peaking capacity that deploys faster while you wait on the big combined cycle units. Who on the generation planning team would be best to connect with?`,
+contacts:[
+{name:"Joi Harris",title:"President & CEO, DTE Energy",phone:"Executive — find Dir. Generation Planning instead",email:"313-235-4000 (corporate)"},
+{name:"Generation Planning Team",title:"Dir. IRP / Generation Planning",phone:"313-235-4000 (main) — ask for Generation Planning",email:"Look up via LinkedIn Sales Nav"},
+]},
+
+{name:"Dominion Energy",type:"IOU",hq:"Richmond, VA (VA, NC, SC)",constrained:"SEVERELY",poc:"Ben M",priority:"warm",status:"5,934 MW gas planned 2030-2036",
+portfolio:"~30 GW. 40% gas, 20% renewables, 13% nuclear, 10% coal. Building 2.6 GW offshore wind.",
+opportunity:"IRP calls for 5,934 MW new gas 2030-2036. 100%+ demand increase projected over 15 years (data centers). PJM most capacity-constrained region in US. Next IRP due Oct 2026.",
+hook:`I saw Dominion's IRP projects a 70% increase in peak demand by 2045 — driven almost entirely by data center growth in Virginia. With nearly 6 GW of gas generation in the plan, and the big frame turbine manufacturers quoting multi-year backlogs, Solar Turbines' fast-start peakers could fill the gap. I'd love to show your generation planning team how we've done this for other utilities facing the same crunch.`,
+contacts:[
+{name:"Resource Planning Team",title:"VP Generation Construction / Dir. Resource Planning",phone:"804-819-2000 (corporate)",email:"Look up via LinkedIn Sales Nav"},
+{name:"Aaron Ruby",title:"Spokesperson (can route to right team)",phone:"Media line",email:"aruby@dominionenergy.com"},
+]},
+
+{name:"Ameren Missouri",type:"IOU",hq:"St. Louis, MO",constrained:"YES",poc:"Erik",priority:"warm",status:"1,600 MW gas by 2030 — Castle Bluff 800 MW under construction",
+portfolio:"~10 GW. Coal retiring. Gas, nuclear, hydro, growing solar. Castle Bluff 800 MW peaker under construction.",
+opportunity:"Updated IRP Feb 2025: 6,100 MW gas by 2045. 1.5 GW new demand by 2032. Castle Bluff under construction. $5B incremental investment by 2030.",
+hook:`I see Ameren's updated IRP added 1,600 MW of gas by 2030 — and Castle Bluff is exactly the kind of fast-start peaker application where Solar Turbines excels. As you plan the next wave beyond Castle Bluff, I'd love to show you what our turbines can do at the 15-50 MW scale. Who on the generation planning team is leading the next tranche of capacity additions?`,
+contacts:[
+{name:"Generation Planning Team",title:"VP Power Operations / Dir. Generation Planning",phone:"314-621-3222 (corporate)",email:"Look up via LinkedIn Sales Nav"},
+]},
+
+{name:"CPS Energy (San Antonio)",type:"Municipal",hq:"San Antonio, TX (ERCOT)",constrained:"YES",poc:"Ricky",priority:"warm",status:"5,703 MW new capacity by 2030 — just acquired 1,632 MW peakers",
+portfolio:"Largest US municipal utility. 970K electric customers. Retiring 2,249 MW by 2030. Adding solar, wind, storage, gas.",
+opportunity:"Acquired 1,632 MW peakers from PROENERGY ($1.387B). Plans 2,257 MW new gas total. 5,703 MW total new capacity by 2030. Host utility POWERGEN 2026. Horizon 2050 plan in development.",
+hook:`Rudy, congratulations on the PROENERGY acquisition — 1,632 MW of peakers in one deal is a bold move. As you build out the next wave under Vision 2030 and Horizon 2050, Solar Turbines' gas turbines could be ideal for the distributed sites where aeroderivative units outperform frame machines. We met at POWERGEN — I'd love to continue that conversation. Who on your team is leading the next generation procurement?`,
+contacts:[
+{name:"Rudy D. Garza",title:"President & CEO, CPS Energy",phone:"210-353-2222 (corporate)",email:"Executive — find VP Generation"},
+{name:"Elaina Ball",title:"Chief Strategy Officer, CPS Energy",phone:"Look up via LinkedIn",email:"eball@cpsenergy.com (likely)"},
+]},
+
+{name:"Vistra",type:"IPP",hq:"Irving, TX (multi-state)",constrained:"N/A (IPP)",poc:"Ricky",priority:"warm",status:"Acquiring 8+ GW gas — building 860 MW new in Permian",
+portfolio:"~50 GW total after acquisitions. ~26 GW gas, 6.4 GW nuclear, 4.6 GW coal, 1.4 GW solar/storage.",
+opportunity:"Acquired 2,600 MW from Lotus ($1.9B). Acquiring 5,500 MW Cogentrix ($4B, closing mid-2026). Building 860 MW new gas in Permian Basin. Portfolio approaching 35+ GW gas.",
+hook:`Jim, Vistra's been on an incredible gas acquisition run — 8+ GW in the last year. As you look at greenfield builds like the Permian Basin 860 MW project, Solar Turbines' smaller turbines could be ideal for distributed peaking sites where a full combined cycle doesn't pencil. I'd love to connect with whoever's leading your new-build development.`,
+contacts:[
+{name:"Jim Burke",title:"President & CEO, Vistra Corp",phone:"Executive — find VP Development",email:"214-812-4600 (corporate)"},
+{name:"Development Team",title:"VP Development / Dir. Engineering - Gas Operations",phone:"214-812-4600 (corporate)",email:"Look up via LinkedIn Sales Nav"},
+]},
+
+{name:"XCEL Energy",type:"IOU",hq:"Minneapolis, MN (8 states)",constrained:"YES",poc:"Ricky",priority:"warm",status:"5,000+ MW new capacity by 2030 — BUT already buying Siemens/GE Vernova",
+portfolio:"~20 GW. Coal retiring. Nuclear extending. Strong wind. Buying 10 Siemens F-class + GE Vernova alliance.",
+opportunity:"CAUTION: Already bought 10 Siemens F-class (2,088 MW) and allied with GE Vernova for 5 more. BUT: 6 GW data center pipeline. Multiple active RFPs across territories. Need differentiated angle.",
+hook:`I know Xcel has locked in Siemens F-class and GE Vernova for the big builds — smart moves given the backlog environment. But with 6 GW of data center load in the pipeline and RFPs across all your territories, there's a strong case for Solar Turbines' smaller, faster-deploy peakers as complements — especially for sites where a full F-class doesn't fit. Different tool for a different job. Worth a conversation?`,
+contacts:[
+{name:"Adrian J. Rodriguez",title:"President, Xcel Energy – Texas/New Mexico (SPS)",phone:"Look up via LinkedIn",email:"Look up — Amarillo, TX office"},
+{name:"Resource Planning Team",title:"VP Generation / Dir. Resource Planning",phone:"612-330-5500 (corporate)",email:"Look up via LinkedIn Sales Nav"},
+]},
+
+{name:"RWE (3 TX/IN projects)",type:"IPP/Developer",hq:"Essen, Germany / US",constrained:"N/A",poc:"Marco",priority:"warm",status:"~1 GW gas projects: Papalote 350 MW, Sand Bluff 500 MW, Bluesteam 150 MW",
+portfolio:"Global energy company. Massive development pipeline worldwide. US gas projects in TX and IN.",
+opportunity:"Three active projects totaling ~1 GW. Large developer with deep pockets. Ongoing global pipeline.",
+hook:`Your US team has roughly 1 GW of gas projects across Texas and Indiana — Solar Turbines' modular approach could be ideal for distributed project portfolios like RWE's. I'd love to discuss total cost of ownership for Papalote and Sand Bluff versus the big frame alternatives. Who's leading the US gas development pipeline?`,
+contacts:[
+{name:"US Development Team",title:"VP Development - US / Project Director",phone:"Look up via LinkedIn",email:"Look up RWE Clean Energy US office"},
+]},
+
+{name:"Tri-State G&T",type:"Co-op (G&T)",hq:"Westminster, CO",constrained:"YES",poc:"Ricky",priority:"cold",status:"290 MW CCGT (2028) + 307 MW gas CT planned",
+portfolio:"Wholesale power to 45 member co-ops. Coal (Craig, retiring 2028). Gas, hydro, growing renewables.",
+opportunity:"Preferred plan: 290 MW CCGT 2028 + 307 MW gas CT w/ hydrogen-blend in Moffat County. 1,250 MW renewables by 2031. Joining SPP RTO.",
+hook:`Tri-State's Moffat County gas CT with hydrogen-blend capability is forward-thinking — that's exactly the size range and fuel flexibility where Solar Turbines has deep experience. As you build for reliability beyond the Craig coal retirement, I'd love to show you what our machines can do. Worth a conversation at the Denver meeting?`,
+contacts:[
+{name:"Generation Planning Team",title:"VP Generation / Dir. Resource Planning",phone:"303-254-3600 (corporate)",email:"Look up via LinkedIn"},
+]},
+
+{name:"Buckeye Power",type:"Co-op (G&T)",hq:"Columbus, OH (PJM)",constrained:"YES",poc:"Ricky",priority:"cold",status:"PJM capacity crunch — identified as 'strong potential' by Solar marketing",
+portfolio:"G&T for 25 Ohio electric co-ops. ~1.5 GW capacity. Primarily gas + purchased power.",
+opportunity:"PJM region severely capacity-constrained. Ohio epicenter of data center + industrial load growth. Co-ops move faster than IOUs on procurement.",
+hook:`Ohio is ground zero for load growth right now — PJM capacity prices are through the roof, and AEP's 56 GW of new load is going to stress every generator in the state. For a G&T co-op serving 25 members, Solar Turbines' right-sized peakers let you add capacity without overbuilding. Worth a quick call to explore?`,
+contacts:[
+{name:"CEO / VP Power Supply",title:"Look up via LinkedIn — small org",phone:"614-846-5757 (likely corporate)",email:"Look up via LinkedIn"},
+]},
+
+{name:"Colorado Springs Utilities",type:"Municipal",hq:"Colorado Springs, CO",constrained:"YES",poc:"Ricky",priority:"cold",status:"Drake coal retiring — needs replacement generation",
+portfolio:"Municipal utility ~500K. Gas, coal (Drake retiring), solar, hydro.",
+opportunity:"Drake coal retirement creating capacity gap. Growing Colorado Springs metro population.",
+hook:`With Drake coal coming offline, Colorado Springs needs reliable replacement generation. Solar Turbines' peakers are perfectly sized for a municipal system — modular, fast-start, right-scaled for your load. I'd love to discuss options at the Denver meeting.`,
+contacts:[
+{name:"Dir. Generation / Engineering Mgr",title:"Colorado Springs Utilities",phone:"719-448-4800 (main)",email:"Look up via LinkedIn"},
+]},
+
+{name:"Hoosier Energy",type:"Co-op (G&T)",hq:"Bloomington, IN",constrained:"MODERATE",poc:"Ben M",priority:"cold",status:"Merom coal retired — needs replacement capacity",
+portfolio:"G&T for 18 IN/IL member co-ops. Coal (Merom, retired). Transitioning to gas + renewables.",
+opportunity:"Post-Merom retirement needs. Indiana capacity-constrained. Favorable regulatory environment.",
+hook:`With Merom retired, Hoosier Energy needs reliable replacement capacity that your 18 member co-ops can count on. Solar Turbines' peakers are right-sized for a co-op — fast to deploy, and you keep the generation local. I'd love to discuss how we've helped other G&T co-ops in similar situations.`,
+contacts:[
+{name:"CEO / VP Power Production",title:"Hoosier Energy",phone:"812-876-2021 (corporate)",email:"Look up via LinkedIn"},
+]},
+
+{name:"NiSource (NIPSCO)",type:"IOU",hq:"Merrillville, IN",constrained:"MODERATE",poc:"Ben M",priority:"cold",status:"Coal retiring — capacity gap growing",
+portfolio:"~500K electric customers in northern IN. Retiring coal (Michigan City, Schahfer). Transitioning to renewables + gas.",
+opportunity:"Coal retirement creating capacity gap. Already has some gas peakers. Indiana regulatory environment favorable for gas.",
+hook:`NIPSCO's coal retirements are creating a gap that renewables alone can't fill during peak demand and extreme weather. Solar Turbines' fast-start peakers are the perfect complement — they run only when needed and keep the lights on when it matters most. Quick call to explore?`,
+contacts:[
+{name:"VP Generation / Dir. Resource Planning",title:"NiSource / NIPSCO",phone:"219-647-5990 (corporate)",email:"Look up via LinkedIn"},
+]},
+
+{name:"Golden Spread Electric Co-op",type:"Co-op (G&T)",hq:"Amarillo, TX (SPP)",constrained:"MODERATE",poc:"Ricky",priority:"cold",status:"Wind-heavy portfolio needs gas backup",
+portfolio:"G&T for 16 member co-ops in TX panhandle. ~1.5 GW. Gas + wind.",
+opportunity:"SPP region capacity requirements increasing. Wind portfolio needs dispatchable backup.",
+hook:`Golden Spread's wind portfolio is impressive, but SPP's increasing reserve margins mean you need more dispatchable backup. Solar Turbines' fast-start peakers are the perfect wind-firming complement — running only when the wind doesn't blow. Worth a conversation?`,
+contacts:[
+{name:"CEO / VP Power Supply",title:"Golden Spread Electric Cooperative",phone:"806-379-7766 (corporate)",email:"Look up via LinkedIn"},
+]},
+];
+
+const main=document.getElementById('main');
+let currentFilter='all';
+let currentPriority=null;
+
+function render(){
+main.innerHTML='';
+const groups={};
+const filtered=accounts.filter(a=>{
+if(currentFilter!=='all'&&a.poc!==currentFilter)return false;
+if(currentPriority&&a.priority!==currentPriority)return false;
+return true;
+});
+
+// Group by priority
+const order={hot:0,warm:1,cold:2};
+const sorted=[...filtered].sort((a,b)=>order[a.priority]-order[b.priority]);
+
+const sections={hot:[],warm:[],cold:[]};
+sorted.forEach(a=>sections[a.priority].push(a));
+
+const sectionMeta={
+hot:{label:'🔴 ACTIVE RFPs — MOVE NOW',cls:'badge-hot'},
+warm:{label:'🟡 TOP PRIORITY — Massive Gas Buildout Planned',cls:'badge-warm'},
+cold:{label:'🔵 COLD ACCOUNTS — Opportunity Developing',cls:'badge-cool'}
+};
+
+Object.entries(sections).forEach(([key,items])=>{
+if(!items.length)return;
+const m=sectionMeta[key];
+const sec=document.createElement('div');
+sec.innerHTML=`<div class="section-header"><h2>${m.label}</h2><span class="badge ${m.cls}">${items.length}</span></div>`;
+items.forEach(a=>{
+const card=document.createElement('div');
+card.className=`card priority-${a.priority}`;
+card.dataset.poc=a.poc;
+card.dataset.priority=a.priority;
+const tagCls=a.priority==='hot'?'tag-hot':a.priority==='warm'?'tag-warm':'tag-cold';
+const tagText=a.priority==='hot'?'ACTIVE RFP':a.priority==='warm'?'TOP PRIORITY':'DEVELOPING';
+card.innerHTML=`
+<div class="card-top" onclick="this.parentElement.classList.toggle('open')">
+<div><h3>${a.name}</h3><div style="display:flex;gap:6px;margin-top:4px"><span class="poc-badge">${a.poc}</span><span style="color:var(--muted);font-size:12px">${a.type} · ${a.hq}</span></div></div>
+<div class="meta"><span class="tag ${tagCls}">${tagText}</span><span class="chevron">›</span></div>
+</div>
+<div class="card-body">
+<div class="row"><div class="label">Capacity</div><div class="value">${a.constrained}</div></div>
+<div class="row"><div class="label">Status</div><div class="value" style="color:${a.priority==='hot'?'var(--hot)':a.priority==='warm'?'var(--warm)':'var(--text)'};font-weight:600">${a.status}</div></div>
+<div class="row"><div class="label">Portfolio</div><div class="value">${a.portfolio}</div></div>
+<div class="row"><div class="label">Opportunity</div><div class="value">${a.opportunity}</div></div>
+<div class="hook-box" id="hook-${a.name.replace(/[^a-zA-Z]/g,'')}">${a.hook}</div>
+<div class="btn-row"><button class="btn-copy" onclick="copyText(\`${a.hook.replace(/`/g,"\\`")}\`,this)">📋 Copy Hook</button></div>
+<div class="contact-box"><h4>Key Contacts</h4>${a.contacts.map(c=>`
+<div class="contact-item"><div><div class="name">${c.name}</div><div class="title">${c.title}</div></div><div class="phone">${c.phone}</div></div>`).join('')}
+</div>
+</div>`;
+sec.appendChild(card);
+});
+main.appendChild(sec);
+});
+if(!filtered.length){main.innerHTML='<p style="text-align:center;color:var(--muted);padding:60px">No accounts match this filter.</p>';}
+}
+
+function filterAll(btn){
+currentFilter='all';currentPriority=null;
+document.querySelectorAll('.controls button').forEach(b=>b.className='');
+btn.className='active';render();
+}
+function filterPOC(btn,poc){
+currentFilter=poc;currentPriority=null;
+document.querySelectorAll('.controls button').forEach(b=>b.className='');
+btn.className='active';render();
+}
+function filterPriority(btn,p){
+currentPriority=p;currentFilter='all';
+document.querySelectorAll('.controls button').forEach(b=>b.className='');
+btn.className=p==='hot'?'active-hot':p==='warm'?'active-warm':'active';render();
+}
+
+function copyText(text,btn){
+navigator.clipboard.writeText(text).then(()=>{
+btn.textContent='✅ Copied!';btn.classList.add('copied');
+const toast=document.getElementById('toast');toast.classList.add('show');
+setTimeout(()=>{toast.classList.remove('show');btn.textContent='📋 Copy Hook';btn.classList.remove('copied')},1800);
+});
+}
+
+render();
+</script>
+</body>
+</html>

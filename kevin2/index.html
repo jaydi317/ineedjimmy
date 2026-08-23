@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Turbines — Monday Morning Ops Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0f1a;--card:#111827;--border:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--accent:#3b82f6;--accent2:#06b6d4;--hot:#ef4444;--warm:#f59e0b;--cool:#22c55e}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.header{background:linear-gradient(135deg,#0f172a,#1e293b);border-bottom:1px solid var(--border);padding:24px 32px;position:sticky;top:0;z-index:100}
+.header h1{font-size:22px;font-weight:700}.header h1 span{color:var(--accent2);font-weight:400}
+.header .sub{color:var(--muted);font-size:13px;margin-top:4px}
+.tabs{display:flex;gap:4px;margin-top:16px;flex-wrap:wrap}
+.tabs button{background:var(--card);border:1px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:8px 8px 0 0;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:all .2s;border-bottom:2px solid transparent}
+.tabs button.active{background:var(--bg);color:var(--text);border-color:var(--accent);border-bottom-color:var(--bg)}
+.tabs button:hover{color:var(--text)}
+.tab-content{display:none;padding:24px 32px;max-width:1200px}
+.tab-content.active{display:block}
+.filter-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.filter-row button{background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 14px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:500;transition:all .2s}
+.filter-row button:hover,.filter-row button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.email-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;padding:20px;position:relative}
+.email-card.hot{border-left:3px solid var(--hot)}.email-card.warm{border-left:3px solid var(--warm)}.email-card.cold{border-left:3px solid var(--accent2)}
+.email-card h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.email-card .meta{font-size:12px;color:var(--muted);margin-bottom:12px;display:flex;gap:8px;align-items:center}
+.email-card .poc-tag{font-size:10px;background:rgba(59,130,246,.15);color:var(--accent);padding:2px 8px;border-radius:4px;font-weight:600}
+.email-card .subject{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent2);margin-bottom:8px;padding:8px 12px;background:rgba(6,182,212,.06);border-radius:6px;border:1px solid rgba(6,182,212,.15)}
+.email-card .body{font-size:13px;line-height:1.8;white-space:pre-wrap;padding:12px 16px;background:#0c1425;border-radius:8px;border:1px solid var(--border)}
+.btn-copy{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-family:inherit;font-size:12px;font-weight:600;transition:all .15s;margin-top:10px}
+.btn-copy:hover{background:#2563eb}.btn-copy.copied{background:var(--cool)}
+.btn-row{display:flex;gap:8px;flex-wrap:wrap}
+.briefing{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;padding:24px}
+.briefing h3{font-size:17px;font-weight:700;margin-bottom:4px;color:var(--accent2)}
+.briefing .subtitle{font-size:12px;color:var(--muted);margin-bottom:16px}
+.briefing-item{padding:12px 0;border-bottom:1px solid var(--border)}
+.briefing-item:last-child{border-bottom:none}
+.briefing-item h4{font-size:14px;font-weight:600}.briefing-item .priority{display:inline-block;font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;margin-left:8px}
+.priority-hot{background:var(--hot);color:#fff}.priority-warm{background:var(--warm);color:#000}.priority-cold{background:#334155;color:#94a3b8}
+.briefing-item .detail{font-size:13px;color:var(--muted);margin-top:4px}
+.briefing-item .action{font-size:13px;color:var(--cool);font-weight:600;margin-top:6px}
+.prompt-box{background:#0c1425;border:1px solid var(--border);border-radius:12px;padding:20px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.8;white-space:pre-wrap;max-height:600px;overflow-y:auto}
+.instructions{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px}
+.instructions h3{font-size:15px;font-weight:600;margin-bottom:8px;color:var(--accent2)}
+.instructions p{font-size:13px;color:var(--muted);margin-bottom:8px}
+.instructions ol{padding-left:20px;font-size:13px;color:var(--text)}
+.instructions ol li{margin-bottom:6px}
+.conf-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:16px;padding:20px}
+.conf-card h3{font-size:15px;font-weight:600;color:var(--accent2);margin-bottom:4px}
+.conf-card .detail{font-size:13px;color:var(--muted);margin-bottom:12px}
+.toast{position:fixed;bottom:24px;right:24px;background:var(--cool);color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;opacity:0;transition:opacity .3s;z-index:999;pointer-events:none}
+.toast.show{opacity:1}
+.section-title{font-size:18px;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+@media(max-width:768px){.tab-content{padding:16px}.email-card{padding:14px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>Solar Turbines <span>Monday Morning Ops Kit</span></h1>
+<div class="sub">Kevin Jensen — Week of April 14, 2026 — Everything you need to hit the ground running</div>
+<div class="tabs">
+<button class="active" onclick="showTab('emails',this)">📧 Cold Emails (16)</button>
+<button onclick="showTab('briefings',this)">📋 Team Briefings</button>
+<button onclick="showTab('morning',this)">☀️ Morning Briefing Prompt</button>
+<button onclick="showTab('denver',this)">🏔️ Denver Conference Prep</button>
+</div>
+</div>
+
+<!-- TAB 1: COLD EMAILS -->
+<div class="tab-content active" id="tab-emails">
+<div class="section-title">Ready-to-Send Cold Emails — Copy, Tweak, Send</div>
+<div class="filter-row">
+<button class="active" onclick="filterEmails('all',this)">All</button>
+<button onclick="filterEmails('Ben M',this)">Ben M</button>
+<button onclick="filterEmails('Erik',this)">Erik</button>
+<button onclick="filterEmails('Ricky',this)">Ricky</button>
+<button onclick="filterEmails('Lisa',this)">Lisa</button>
+<button onclick="filterEmails('Marco',this)">Marco</button>
+<button onclick="filterEmails('Kevin',this)">Kevin</button>
+</div>
+<div id="email-list"></div>
+</div>
+
+<!-- TAB 2: TEAM BRIEFINGS -->
+<div class="tab-content" id="tab-briefings">
+<div class="section-title">Weekly Team Briefings — One Per Salesperson</div>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px">Click "Copy Briefing" to copy the full briefing for each team member. Paste into an email and send.</p>
+<div id="briefing-list"></div>
+</div>
+
+<!-- TAB 3: MORNING BRIEFING -->
+<div class="tab-content" id="tab-morning">
+<div class="section-title">Morning Industry Briefing — Daily AI Prompt</div>
+<div class="instructions">
+<h3>How to Use This Every Morning</h3>
+<ol>
+<li>Open <strong>claude.ai</strong> (free or Pro — Pro is better for this)</li>
+<li>Copy the prompt below</li>
+<li>Paste it into a new Claude conversation</li>
+<li>Then copy/paste the morning's <strong>Utility Dive newsletter</strong> (or any industry email) right after it</li>
+<li>Claude will tell you exactly what matters for your accounts — in 2 minutes instead of 60</li>
+</ol>
+<p style="color:var(--accent2);font-weight:600;margin-top:8px">Pro tip: Create a Claude "Project" and save this prompt as the system instruction. Then you just paste the newsletter each morning — no need to re-paste the prompt.</p>
+</div>
+<div class="btn-row" style="margin-bottom:16px">
+<button class="btn-copy" onclick="copyEl('morning-prompt',this)">📋 Copy Full Prompt</button>
+</div>
+<div class="prompt-box" id="morning-prompt">You are Kevin Jensen's AI briefing assistant. Kevin is a Market Development Manager at Solar Turbines Incorporated. Solar Turbines manufactures industrial gas turbines (approximately 5-50 MW range) for power generation, oil & gas, and industrial applications.
+
+Kevin's job: Introduce Solar Turbines to the electric utility market and build relationships with key decision-makers so that when utilities issue RFPs for gas generation, Solar Turbines is included.
+
+Here are Kevin's active target accounts. Flag ANY mention of these companies, their subsidiaries, their executives, their regions, or anything that would affect their generation planning:
+
+ACTIVE RFPs (URGENT):
+- Entergy Texas — 1 GW gas CCCT RFP issued Feb 2026. Key contact: Abby Weaver (VP Business Ops). CEO: Eliecer Viamontes.
+- Austin Energy — All-Resource RFP up to 400 MW (issued Dec 2025). GM: Stuart Reilly.
+
+TOP PRIORITY (Massive gas buildout):
+- AEP (American Electric Power) — 12.8 GW gas in IRP, 56 GW new load by 2030. Columbus, OH. 11-state service territory.
+- DTE Electric — 1.5 GW CCGT planned. Monroe coal replacement. 7 GW data center pipeline. Detroit, MI.
+- Dominion Energy — 5,934 MW gas planned 2030-2036. Virginia. PJM region.
+- Ameren Missouri — 1,600 MW gas by 2030. Castle Bluff 800 MW peaker under construction. St. Louis.
+- CPS Energy — 5,703 MW new capacity by 2030. Largest US municipal utility. San Antonio, TX.
+- Vistra — IPP acquiring 8+ GW gas. Building 860 MW Permian Basin. Irving, TX.
+- XCEL Energy — 5,000+ MW new capacity. Already buying Siemens F-class. Minneapolis, MN. 8 states.
+- RWE — 3 gas projects (~1 GW): Papalote TX, Sand Bluff TX, Bluesteam IN.
+
+DEVELOPING:
+- Tri-State G&T (Westminster, CO) — 290 MW CCGT + 307 MW gas CT planned
+- Buckeye Power (Columbus, OH) — PJM capacity crunch
+- Colorado Springs Utilities — Drake coal retiring
+- Hoosier Energy (Bloomington, IN) — Merom coal retired
+- NiSource/NIPSCO (Merrillville, IN) — Coal retiring
+- Golden Spread Electric Co-op (Amarillo, TX) — Wind needs gas backup
+- HECO/Hawaiian Electric — Renewable naphtha opportunity
+- Idaho Power — Hydro risk, long-term gas backup need
+- UAMPS (Utah JAA) — Asking for 3-4 T350s
+- Duke Energy Indiana — Purdue project connection
+- Hanwha Energy — 250 MW Odessa TX project
+- TransAlta — L&L completed March 2026
+
+Also flag:
+- Any new utility RFPs for gas generation anywhere in the US
+- PJM, ERCOT, MISO, or SPP capacity market news
+- Gas turbine supply chain news (backlogs, pricing, delivery timelines)
+- Data center power demand news
+- Competitor moves by Siemens Energy, GE Vernova, Mitsubishi Power, Wärtsilä
+- Coal retirement announcements at any US utility
+- IRP filings by any US utility
+
+INSTRUCTIONS:
+When I paste an industry newsletter or article below, analyze it and give me:
+
+1. 🔴 URGENT — Anything directly related to my Active RFP accounts
+2. 🟡 IMPORTANT — Anything related to my Top Priority or Developing accounts
+3. 🔵 MARKET INTEL — Broader trends that affect my pipeline (capacity markets, turbine supply chain, competitor moves, new RFPs)
+4. 📞 ACTION ITEMS — Specific calls or emails I should make today based on this news
+
+Keep it concise. Lead with the most actionable items. No fluff.
+
+---
+
+Paste today's Utility Dive newsletter or industry email below:</div>
+</div>
+
+<!-- TAB 4: DENVER CONFERENCE -->
+<div class="tab-content" id="tab-denver">
+<div class="section-title">🏔️ Denver 2-Day Conference Prep — April 2026</div>
+<p style="color:var(--muted);font-size:13px;margin-bottom:20px">Three of Kevin's target accounts are attending the Denver 2-day in April: Tri-State G&T, Colorado Springs Utilities, and PRPA. Here are pre-conference outreach emails and meeting prep for each.</p>
+<div id="denver-list"></div>
+</div>
+
+<div class="toast" id="toast">Copied to clipboard!</div>
+
+<script>
+const emails=[
+// HOT - Entergy
+{to:"Abby Weaver",account:"Entergy Texas",poc:"Ricky",priority:"hot",
+subject:"Solar Turbines — Re: 2026 CCCT RFP for Southeast Texas",
+body:`Dear Abby,
+
+I saw that Entergy Texas issued the 2026 CCCT RFP seeking gas-fired generation to support the approximately 1 GW of projected load growth in Southeast Texas. Congratulations on the Legend and Lone Star approvals — that's tremendous momentum.
+
+I'm reaching out because Solar Turbines manufactures industrial gas turbines in the 5-50 MW range that could complement your larger combined cycle builds. Specifically, our turbines are well-suited for:
+
+• Fast-start peaking applications where you need capacity online faster than a full CCGT timeline
+• Distributed reliability — smaller units deployed closer to load centers
+• Fuel flexibility — our machines can run on natural gas, liquid fuels, and hydrogen blends
+
+I'd welcome 15 minutes to share how Solar Turbines is supporting other utilities facing similar growth challenges, including CPS Energy, UAMPS, and others in the ERCOT region.
+
+Would next week work for a brief call?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// HOT - Austin Energy
+{to:"Stuart Reilly / Resource Planning Team",account:"Austin Energy",poc:"Ricky",priority:"hot",
+subject:"Solar Turbines — Response to All-Resource RFP / Local Generation Capacity",
+body:`Dear Mr. Reilly,
+
+Your recent public comments about Austin Energy's local generation capacity gap resonated with us. The 32% supply shortfall projected by 2029 — combined with your all-resource RFP seeking up to 400 MW — represents exactly the kind of challenge Solar Turbines was built to solve.
+
+Our industrial gas turbines (5-50 MW range) offer several advantages for a municipal utility like Austin Energy:
+
+• Fast-start capability — online in minutes, not hours
+• Right-sized for municipal systems — modular deployment without overbuilding
+• Proven in ERCOT — we understand the market dynamics and reliability requirements
+• Dual-fuel capable with hydrogen-blend pathway for long-term sustainability
+
+I'd welcome the opportunity to present Solar Turbines' capabilities to your resource planning team. We're also attending the April 2026 Energy Reliability Workshops and would be happy to connect there.
+
+Would a brief introductory call work in the coming weeks?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - AEP
+{to:"Joel / Benjamin Himmel",account:"AEP (American Electric Power)",poc:"Kevin",priority:"warm",
+subject:"Solar Turbines — Supporting AEP's Generation Buildout",
+body:`Dear Joel,
+
+AEP's updated load forecast — 56 GW of incremental demand by 2030, backed by signed agreements — is the most significant capacity expansion announcement in the US utility industry. With 12.8 GW of gas-fired generation in the IRP, I know the execution challenge is immense.
+
+I'm reaching out because Solar Turbines' industrial gas turbines (5-50 MW range) can play a meaningful role in AEP's buildout, specifically:
+
+• Faster deployment timelines than large frame units — no multi-year backlog
+• Distributed peaking capacity — ideal for load pockets where transmission is constrained
+• Proven reliability across thousands of installations worldwide
+• Fuel flexibility including hydrogen-blend capability
+
+I'd welcome 20 minutes to discuss where Solar Turbines fits in AEP's generation strategy, particularly for the I&M and Ohio territories where data center load is ramping fastest.
+
+Would a call next week work?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - DTE
+{to:"Generation Planning Team",account:"DTE Electric",poc:"Ben M",priority:"warm",
+subject:"Solar Turbines — Complementing DTE's Generation Expansion",
+body:`Dear DTE Generation Planning Team,
+
+Congratulations on the Oracle data center agreement — 1.4 GW of new load is a transformational milestone for DTE and for Michigan. With the Monroe coal replacement CCGT and the 2026 IRP on the horizon, DTE's generation buildout is one of the most significant in the Midwest.
+
+I'm reaching out from Solar Turbines to introduce our industrial gas turbines (5-50 MW range) as a complement to your larger combined cycle investments. Our turbines are particularly well-suited for:
+
+• Fast-start peaking applications — online in minutes for reliability during extreme weather
+• Bridge capacity while larger CCGT projects are under construction
+• Distributed generation closer to Southeast Michigan load centers
+• Fuel flexibility with hydrogen-blend pathway for long-term sustainability
+
+I'd appreciate the opportunity to present Solar Turbines' capabilities to the appropriate person on your generation planning or IRP team.
+
+Would a brief introductory call work?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - Dominion
+{to:"Resource Planning Team",account:"Dominion Energy",poc:"Ben M",priority:"warm",
+subject:"Solar Turbines — Fast-Deploy Gas Peakers for Virginia's Capacity Crunch",
+body:`Dear Dominion Resource Planning Team,
+
+Dominion's IRP paints a clear picture: a 70% increase in peak demand by 2045, nearly 6 GW of gas generation planned, and a PJM region that is the most capacity-constrained in the country. The execution challenge is significant — especially when large frame turbine manufacturers are quoting multi-year delivery timelines.
+
+Solar Turbines manufactures industrial gas turbines in the 5-50 MW range that can help Dominion fill capacity gaps faster:
+
+• Significantly shorter lead times than large frame units
+• Fast-start capability for grid reliability during peak demand
+• Modular deployment — add capacity incrementally as load materializes
+• Hydrogen-blend capable for alignment with Virginia's clean energy goals
+
+I'd welcome 15 minutes to discuss where Solar Turbines fits in Dominion's generation strategy, particularly for peaking and distributed reliability applications.
+
+Who on the team would be best to connect with?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - Ameren
+{to:"Generation Planning Team",account:"Ameren Missouri",poc:"Erik",priority:"warm",
+subject:"Solar Turbines — Next Wave After Castle Bluff",
+body:`Dear Ameren Generation Planning Team,
+
+Ameren's updated IRP — 1,600 MW of gas by 2030 and 6,100 MW by 2045 — signals a major commitment to dispatchable generation. With Castle Bluff's 800 MW simple-cycle peaker under construction, you clearly understand the value of fast-start gas capacity.
+
+I'm reaching out to introduce Solar Turbines for the next wave of capacity additions. Our industrial gas turbines (5-50 MW range) complement large peaker builds like Castle Bluff:
+
+• Ideal for smaller sites where 800 MW doesn't fit
+• Same fast-start, quick-deploy advantages at a modular scale
+• Proven in peaking applications across hundreds of utility installations
+• Fuel flexibility including hydrogen-blend capability
+
+As Ameren plans beyond Castle Bluff, I'd welcome the chance to present Solar Turbines' capabilities. Would a brief introductory call work?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - CPS
+{to:"Rudy Garza / Elaina Ball",account:"CPS Energy",poc:"Ricky",priority:"warm",
+subject:"Solar Turbines — Following Up from POWERGEN 2026",
+body:`Dear Rudy,
+
+It was great seeing CPS Energy in action as host utility at POWERGEN 2026. Your leadership on the PROENERGY acquisition — 1,632 MW of peakers in one deal — was a bold and smart move for San Antonio.
+
+As CPS Energy develops Vision 2030 and Horizon 2050, I wanted to follow up on Solar Turbines' capabilities for the next wave of generation investment. Our industrial gas turbines (5-50 MW range) are particularly well-suited for:
+
+• Distributed sites across your service territory where full-size peakers don't fit
+• Fast-start reliability for ERCOT's challenging market conditions
+• Dual-fuel capability with hydrogen-blend pathway — aligned with your clean energy goals
+• Lower capital commitment per unit for phased capacity additions
+
+I'd welcome the opportunity to present to your generation planning team. Who would be the best person to connect with as you plan the next tranche of capacity?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - Vistra
+{to:"Development Team",account:"Vistra",poc:"Ricky",priority:"warm",
+subject:"Solar Turbines — Distributed Peaking for Vistra's Greenfield Pipeline",
+body:`Dear Vistra Development Team,
+
+Vistra's gas acquisition strategy over the past year — 8+ GW from Lotus and Cogentrix — has been the most aggressive portfolio expansion in the competitive power sector. Combined with the 860 MW Permian Basin greenfield, Vistra is clearly positioned as the leading gas generation platform in the US.
+
+I'm reaching out because Solar Turbines' industrial gas turbines (5-50 MW range) could complement your portfolio for sites where a full combined cycle or large frame peaker doesn't pencil:
+
+• Distributed peaking at smaller sites across ERCOT, PJM, and ISO-NE
+• Fast-deploy capacity — shorter permitting and construction timelines
+• Lower capital threshold for incremental capacity additions
+• Proven reliability across thousands of industrial installations
+
+I'd welcome a conversation with whoever leads new-build development to explore where Solar Turbines fits in Vistra's growth strategy.
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - XCEL
+{to:"Adrian Rodriguez / Resource Planning",account:"XCEL Energy",poc:"Ricky",priority:"warm",
+subject:"Solar Turbines — Complementary Peaking for Xcel's Multi-Territory Buildout",
+body:`Dear Adrian,
+
+Xcel's strategy is impressive — locking in Siemens F-class and the GE Vernova alliance for the big builds, while pursuing 6 GW of data center load across your territories. Smart moves in a tight turbine supply market.
+
+I'm reaching out because Solar Turbines' industrial gas turbines (5-50 MW range) serve a different niche than the F-class machines — and could complement your buildout:
+
+• Smaller sites where an F-class unit is oversized
+• Faster deployment for near-term reliability gaps
+• Distributed peaking across SPS, NSP, and PSCo territories
+• Hydrogen-blend capability aligned with your carbon reduction goals
+
+Different tool for a different job — but one that fills real gaps as you scale across 8 states simultaneously. Worth 15 minutes to explore?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// WARM - RWE
+{to:"US Development Team",account:"RWE",poc:"Marco",priority:"warm",
+subject:"Solar Turbines — Gas Turbine Solutions for RWE's US Pipeline",
+body:`Dear RWE US Development Team,
+
+I see RWE has approximately 1 GW of gas projects in the US pipeline — Papalote (350 MW) and Sand Bluff (500 MW) in Texas, and Bluesteam (150 MW) in Indiana. That's a significant commitment to US gas generation.
+
+Solar Turbines manufactures industrial gas turbines in the 5-50 MW range that could be well-suited for RWE's project model:
+
+• Modular approach — deploy multiple smaller units for phased capacity additions
+• Competitive total cost of ownership versus large frame alternatives
+• Faster permitting and construction timelines
+• Proven across thousands of installations in power generation applications
+
+I'd welcome the opportunity to discuss how Solar Turbines compares for your US gas projects. Who on the team is leading equipment procurement for Papalote and Sand Bluff?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+// COLD accounts
+{to:"Generation Planning Team",account:"Tri-State G&T",poc:"Ricky",priority:"cold",
+subject:"Solar Turbines — Gas CT Solutions for Tri-State's Resource Plan",
+body:`Dear Tri-State Generation Planning Team,
+
+I see Tri-State's Phase II Implementation Report includes a 307 MW gas combustion turbine with hydrogen-blend capability at Moffat County — that's forward-thinking resource planning that positions Tri-State well for the energy transition.
+
+Solar Turbines manufactures industrial gas turbines in exactly that size range, and our machines offer:
+
+• Proven hydrogen-blend capability — already deployed in multiple applications
+• Fast-start peaking performance — ideal for complementing your renewable portfolio
+• High reliability in the demanding conditions of rural western operations
+• Competitive lifecycle cost for cooperative wholesale power operations
+
+I'll be at the Denver event in April and would welcome the chance to meet in person. Could we schedule 20 minutes to discuss how Solar Turbines fits into Tri-State's generation plan?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+{to:"Director of Generation",account:"Colorado Springs Utilities",poc:"Ricky",priority:"cold",
+subject:"Solar Turbines — Replacement Generation for Drake Retirement",
+body:`Dear Colorado Springs Utilities Generation Team,
+
+As Drake coal transitions offline, Colorado Springs faces a familiar challenge: replacing reliable baseload capacity while managing costs for your ratepayers. As a fellow municipal utility customer, I understand the importance of right-sizing your generation investments.
+
+Solar Turbines' industrial gas turbines (5-50 MW range) are ideally suited for municipal systems like Colorado Springs:
+
+• Right-sized — add capacity without overbuilding for your load profile
+• Fast-start reliability — online in minutes for peak demand and extreme weather
+• Lower capital commitment — phased additions as your community grows
+• Fuel flexibility including hydrogen-blend pathway
+
+I'll be at the Denver meeting in April and would welcome the chance to connect. Could we schedule a brief conversation?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+{to:"VP Power Supply",account:"Buckeye Power",poc:"Ricky",priority:"cold",
+subject:"Solar Turbines — Right-Sized Peaking for Ohio's Capacity Crunch",
+body:`Dear Buckeye Power Team,
+
+Ohio is at the epicenter of the PJM capacity crunch — with AEP projecting 56 GW of new load and PJM capacity prices at historic highs, every generating cooperative in the state needs to be thinking about how to add reliable capacity.
+
+For a G&T cooperative serving 25 member co-ops, Solar Turbines' industrial gas turbines offer a compelling proposition:
+
+• Right-sized (5-50 MW) — add capacity without overbuilding
+• Fast deployment — shorter lead times than large frame units
+• Cost-effective peaking — runs only when your members need it most
+• Proven reliability across thousands of installations
+
+I'd welcome 15 minutes to discuss how Solar Turbines is helping cooperatives in capacity-constrained regions. Would next week work?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+{to:"CEO / VP Power Production",account:"Hoosier Energy",poc:"Ben M",priority:"cold",
+subject:"Solar Turbines — Replacement Capacity After Merom Retirement",
+body:`Dear Hoosier Energy Team,
+
+With the Merom coal plant retired, Hoosier Energy's 18 member cooperatives need reliable replacement capacity they can count on — especially during Indiana's extreme weather events.
+
+Solar Turbines' industrial gas turbines are purpose-built for this situation:
+
+• Right-sized for cooperative operations (5-50 MW per unit)
+• Fast-start — online in minutes when your members need power most
+• Modular — deploy capacity incrementally as load grows
+• Local generation — keep power production close to your member service territories
+
+Indiana's regulatory environment is favorable for gas generation, and the capacity needs are real. I'd welcome a conversation about how Solar Turbines can support Hoosier Energy's generation plan.
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+{to:"VP Generation / Dir. Resource Planning",account:"NiSource (NIPSCO)",poc:"Ben M",priority:"cold",
+subject:"Solar Turbines — Peaking Complement for NIPSCO's Clean Energy Transition",
+body:`Dear NIPSCO Resource Planning Team,
+
+NIPSCO's coal retirements and clean energy transition are well underway — and I know the planning team is thoughtfully building a portfolio that balances reliability, affordability, and sustainability.
+
+As you add renewables and storage, fast-start gas peakers become the essential reliability complement. Solar Turbines' industrial gas turbines (5-50 MW) are ideal for this role:
+
+• Run only when needed — very low capacity factor, low emissions
+• Fast-start capability for extreme weather events and demand spikes
+• Right-sized for NIPSCO's service territory in northern Indiana
+• Fuel flexibility including hydrogen-blend pathway
+
+I'd welcome 15 minutes to discuss where Solar Turbines fits in NIPSCO's generation mix. Would a call next week work?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+
+{to:"CEO / VP Power Supply",account:"Golden Spread Electric Co-op",poc:"Ricky",priority:"cold",
+subject:"Solar Turbines — Wind-Firming Gas Peakers for the Texas Panhandle",
+body:`Dear Golden Spread Team,
+
+Golden Spread's wind portfolio in the Texas panhandle is one of the strongest in the SPP region. But as SPP increases reserve margin requirements, having dispatchable gas backup becomes even more critical.
+
+Solar Turbines' industrial gas turbines are the perfect wind-firming complement:
+
+• Fast-start — online in minutes when wind output drops
+• Right-sized (5-50 MW) for cooperative peak demand profiles
+• Proven in the demanding conditions of West Texas operations
+• Lower capital threshold than large frame peakers
+
+I'd welcome a conversation about how Solar Turbines can help Golden Spread meet SPP's evolving reliability requirements while protecting your members' rates.
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`},
+];
+
+const denverAccounts=[
+{name:"Tri-State G&T",detail:"307 MW gas CT w/ H2-blend planned for Moffat County. Coal retiring 2028. Joining SPP RTO. 45 member co-ops across CO, NE, NM, WY.",
+meetingRequest:`Dear [Tri-State Contact],
+
+I'll be attending the Denver event in April and would love to schedule 20 minutes to discuss Solar Turbines' gas turbine solutions — specifically as they relate to the Moffat County CT project in your resource plan.
+
+Our turbines are in exactly the size and fuel-flexibility range you're planning for, and I think there's a strong fit worth exploring. Could we find time during the event?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`,
+talkingPoints:"• Ask about Moffat County CT timeline and procurement process\n• Discuss hydrogen-blend experience — Solar Turbines has deployed this\n• Understand their SPP RTO transition implications for capacity planning\n• Ask about Craig coal retirement (2028) and replacement timeline\n• Offer San Diego factory tour for their generation team"},
+
+{name:"Colorado Springs Utilities",detail:"Municipal utility. Drake coal plant retiring. Growing metro area. Needs replacement generation.",
+meetingRequest:`Dear [Colorado Springs Utilities Contact],
+
+I'll be at the Denver event in April and would welcome the chance to introduce Solar Turbines' gas turbine solutions. With Drake coal transitioning offline, I know Colorado Springs is evaluating replacement generation options.
+
+Our turbines are right-sized for municipal systems — modular, fast-start, and cost-effective for the capacity you need. Could we schedule a brief meeting during the event?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`,
+talkingPoints:"• Ask about Drake retirement timeline and replacement plans\n• Understand their resource planning process — who makes generation decisions?\n• Discuss municipal utility advantages of modular gas turbines\n• Learn about their renewable portfolio and how gas peakers complement it\n• Offer to do a lunch-and-learn with their engineering team"},
+
+{name:"PRPA (Platte River Power Authority)",detail:"Joint action agency serving Fort Collins, Longmont, Loveland, Estes Park. Coal (Rawhide) transitioning. Active resource planning.",
+meetingRequest:`Dear PRPA Resource Planning Team,
+
+I'll be attending the Denver event in April and would love to introduce Solar Turbines' gas turbine solutions to the Platte River team. As PRPA plans for the future beyond Rawhide, our industrial gas turbines (5-50 MW range) offer right-sized, reliable, fast-start capacity that fits a joint action agency's needs.
+
+Could we schedule 15-20 minutes during the event?
+
+Best regards,
+[Name]
+Solar Turbines Incorporated`,
+talkingPoints:"• Ask about resource plan timeline — what generation are they adding?\n• Understand the joint action agency procurement process\n• Discuss how smaller turbines serve municipal members better than overbuilding\n• Ask about their renewable portfolio and gas backup needs\n• Offer San Diego factory tour"},
+];
+
+// RENDER EMAILS
+function renderEmails(filter='all'){
+const el=document.getElementById('email-list');
+el.innerHTML='';
+const filtered=filter==='all'?emails:emails.filter(e=>e.poc===filter);
+filtered.forEach((e,i)=>{
+const cls=e.priority==='hot'?'hot':e.priority==='warm'?'warm':'cold';
+const fullEmail=`Subject: ${e.subject}\n\n${e.body}`;
+el.innerHTML+=`
+<div class="email-card ${cls}" data-poc="${e.poc}">
+<h3>${e.account}</h3>
+<div class="meta"><span class="poc-tag">${e.poc}</span> To: ${e.to}</div>
+<div class="subject">Subject: ${e.subject}</div>
+<div class="body">${e.body}</div>
+<div class="btn-row">
+<button class="btn-copy" onclick="copyText(\`${fullEmail.replace(/`/g,'\\`').replace(/\\/g,'\\\\')}\`,this)">📋 Copy Full Email</button>
+<button class="btn-copy" style="background:var(--accent2)" onclick="copyText(\`${e.body.replace(/`/g,'\\`').replace(/\\/g,'\\\\')}\`,this)">📋 Copy Body Only</button>
+</div>
+</div>`;
+});
+}
+
+function filterEmails(filter,btn){
+document.querySelectorAll('#tab-emails .filter-row button').forEach(b=>b.className='');
+btn.className='active';
+renderEmails(filter);
+}
+
+// RENDER BRIEFINGS
+function renderBriefings(){
+const el=document.getElementById('briefing-list');
+const pocs=['Ben M','Erik','Ricky','Lisa','Marco','Kevin'];
+pocs.forEach(poc=>{
+const accts=emails.filter(e=>e.poc===poc);
+if(!accts.length)return;
+let briefingText=`WEEKLY BRIEFING — ${poc.toUpperCase()}\nSolar Turbines Market Development\nWeek of April 14, 2026\n${'='.repeat(50)}\n\n`;
+accts.forEach(a=>{
+const pLabel=a.priority==='hot'?'🔴 ACTIVE RFP':a.priority==='warm'?'🟡 TOP PRIORITY':'🔵 DEVELOPING';
+briefingText+=`${pLabel} — ${a.account}\nContact: ${a.to}\nAction: Send introductory email (draft provided)\n\n`;
+});
+briefingText+=`\nPlease review and send the attached email drafts this week.\nLet me know if you need any adjustments before sending.\n\n— Kevin Jensen`;
+
+let html=`<div class="briefing"><h3>📋 ${poc}</h3><div class="subtitle">${accts.length} accounts · Week of April 14, 2026</div>`;
+accts.forEach(a=>{
+const pCls=a.priority==='hot'?'priority-hot':a.priority==='warm'?'priority-warm':'priority-cold';
+const pLabel=a.priority==='hot'?'ACTIVE RFP':a.priority==='warm'?'TOP PRIORITY':'DEVELOPING';
+html+=`<div class="briefing-item"><h4>${a.account}<span class="priority ${pCls}">${pLabel}</span></h4><div class="detail">Contact: ${a.to}</div><div class="action">→ Send introductory email (draft ready in Emails tab)</div></div>`;
+});
+html+=`<div class="btn-row" style="margin-top:12px"><button class="btn-copy" onclick="copyText(\`${briefingText.replace(/`/g,'\\`')}\`,this)">📋 Copy Full Briefing for ${poc}</button></div></div>`;
+el.innerHTML+=html;
+});
+}
+
+// RENDER DENVER
+function renderDenver(){
+const el=document.getElementById('denver-list');
+denverAccounts.forEach(d=>{
+el.innerHTML+=`
+<div class="conf-card">
+<h3>${d.name}</h3>
+<div class="detail">${d.detail}</div>
+<div style="margin-bottom:12px">
+<div style="font-size:12px;color:var(--accent2);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Pre-Conference Meeting Request Email</div>
+<div class="body" style="font-size:13px">${d.meetingRequest}</div>
+<div class="btn-row" style="margin-top:8px"><button class="btn-copy" onclick="copyText(\`${d.meetingRequest.replace(/`/g,'\\`')}\`,this)">📋 Copy Meeting Request</button></div>
+</div>
+<div>
+<div style="font-size:12px;color:var(--warm);font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px">Talking Points for the Meeting</div>
+<div class="body" style="font-size:13px;white-space:pre-wrap">${d.talkingPoints}</div>
+<div class="btn-row" style="margin-top:8px"><button class="btn-copy" onclick="copyText(\`${d.talkingPoints.replace(/`/g,'\\`')}\`,this)">📋 Copy Talking Points</button></div>
+</div>
+</div>`;
+});
+}
+
+// TAB NAVIGATION
+function showTab(id,btn){
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+document.getElementById('tab-'+id).classList.add('active');
+btn.classList.add('active');
+}
+
+function copyText(text,btn){
+navigator.clipboard.writeText(text).then(()=>{
+btn.textContent='✅ Copied!';btn.classList.add('copied');
+const toast=document.getElementById('toast');toast.classList.add('show');
+setTimeout(()=>{toast.classList.remove('show');btn.textContent='📋 Copy';btn.classList.remove('copied')},1800);
+}).catch(()=>{
+const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);
+btn.textContent='✅ Copied!';btn.classList.add('copied');
+setTimeout(()=>{btn.textContent='📋 Copy';btn.classList.remove('copied')},1800);
+});
+}
+
+function copyEl(id,btn){
+const text=document.getElementById(id).textContent;
+copyText(text,btn);
+}
+
+// INIT
+renderEmails();
+renderBriefings();
+renderDenver();
+</script>
+</body>
+</html>
