@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="description" content="A private design preview for Suzanne Oppedisano and The Missing Piece Method.">
+  <title>Suzanne Oppedisano — The Missing Piece Method</title>
+  <style>
+    :root {
+      --serif: "Iowan Old Style", "Palatino Linotype", Baskerville, Georgia, serif;
+      --sans: Inter, Avenir, "Helvetica Neue", Arial, sans-serif;
+      --script: "Segoe Print", "Bradley Hand", "Comic Sans MS", cursive;
+      --shadow: 0 24px 70px rgba(42, 35, 30, .10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 68px; }
+    body { margin: 0; color: #302d2a; background: #eee9e2; font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    button, summary { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+    p { margin: 0 0 1.1em; }
+    h1, h2, h3 { margin: 0; text-wrap: balance; }
+    section { position: relative; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .narrow { width: min(760px, calc(100% - 40px)); margin-inline: auto; }
+    .private-bar { position: sticky; top: 0; z-index: 20; padding: 10px 20px; background: #252422; color: #fff; text-align: center; font-size: 10px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; }
+    .style-nav { display: flex; justify-content: center; gap: 8px; padding: 14px; background: rgba(255,255,255,.93); border-bottom: 1px solid rgba(35,30,27,.12); }
+    .style-nav a { padding: 8px 15px; border: 1px solid #c8bdb3; border-radius: 99px; text-decoration: none; font-size: 11px; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+    .style-label { display: inline-flex; gap: 11px; align-items: center; margin-bottom: 28px; font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    .style-label::before { content: ""; width: 34px; height: 1px; background: currentColor; }
+    .eyebrow { margin: 0 0 18px; font-size: 11px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .lead { font-size: clamp(18px, 2vw, 22px); line-height: 1.65; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 15px 25px; border: 0; border-radius: 2px; color: #fff; font-weight: 750; text-decoration: none; transition: transform .2s ease, filter .2s ease; }
+    .btn::after { content: "→"; margin-left: 25px; font-size: 20px; }
+    .btn:hover { transform: translateY(-2px); filter: brightness(1.05); }
+    .btn:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid #337c77; outline-offset: 5px; }
+    .micro { margin-top: 12px; font-size: 11px; line-height: 1.6; opacity: .7; }
+    .section { padding: clamp(70px, 9vw, 120px) 0; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(45px, 8vw, 100px); align-items: center; }
+    .section-title { max-width: 720px; font-family: var(--serif); font-size: clamp(42px, 5vw, 67px); font-weight: 500; line-height: 1.02; letter-spacing: -.04em; }
+    .prose { max-width: 660px; font-size: 18px; line-height: 1.72; }
+    .emphasis { font-family: var(--serif); font-size: clamp(29px, 3vw, 42px); line-height: 1.22; }
+    .portrait { position: relative; display: grid; min-height: 530px; place-items: center; overflow: hidden; }
+    .portrait::before { content: "SO"; font-family: var(--serif); font-size: clamp(110px, 16vw, 210px); line-height: 1; opacity: .12; }
+    .portrait span { position: absolute; inset: auto 24px 24px; padding-top: 13px; border-top: 1px solid currentColor; font-size: 10px; font-weight: 800; letter-spacing: .16em; text-align: center; text-transform: uppercase; }
+    .steps { display: grid; gap: 1px; margin-top: 52px; }
+    .step { display: grid; grid-template-columns: 52px 1fr; gap: 22px; padding: 25px 0; border-top: 1px solid currentColor; }
+    .step-num { font-family: var(--serif); font-size: 26px; line-height: 1; opacity: .55; }
+    .step h3 { margin-bottom: 7px; font-size: 21px; }
+    .step p { margin: 0; font-size: 16px; line-height: 1.6; opacity: .83; }
+    .packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; align-items: stretch; }
+    .package { display: flex; flex-direction: column; padding: 32px; background: #fff; border: 1px solid rgba(47,40,36,.14); box-shadow: 0 8px 35px rgba(44,35,30,.04); }
+    .package.featured { position: relative; transform: translateY(-12px); box-shadow: var(--shadow); }
+    .popular { position: absolute; top: 0; right: 0; padding: 8px 12px; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .package h3 { padding-right: 36px; font-family: var(--serif); font-size: 28px; font-weight: 500; line-height: 1.05; }
+    .duration { margin: 16px 0 4px; font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .68; }
+    .price { margin-bottom: 16px; font-family: var(--serif); font-size: 22px; line-height: 1.3; }
+    .promise { min-height: 50px; font-weight: 750; line-height: 1.5; }
+    .package ul { padding: 20px 0 0; margin: 0 0 28px; border-top: 1px solid rgba(47,40,36,.14); list-style: none; }
+    .package li { position: relative; padding: 0 0 11px 20px; font-size: 14px; line-height: 1.48; }
+    .package li::before { content: "·"; position: absolute; left: 3px; font-weight: 900; }
+    .package .btn { width: 100%; margin-top: auto; }
+    .qualifier { padding: clamp(70px, 9vw, 115px) 0; text-align: center; }
+    .qualifier blockquote { max-width: 900px; margin: 0 auto; font-family: var(--serif); font-size: clamp(34px, 4.5vw, 61px); line-height: 1.15; letter-spacing: -.025em; }
+    .proof { padding: 36px; border: 1px dashed currentColor; text-align: center; }
+    .proof-blank { display: grid; width: 74px; height: 74px; margin: 0 auto 18px; place-items: center; border-radius: 50%; background: rgba(255,255,255,.42); font-family: var(--serif); font-size: 25px; }
+    .proof strong { display: block; margin-bottom: 8px; font-family: var(--serif); font-size: 25px; font-weight: 500; }
+    .proof span { font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    .faq-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(45px, 8vw, 100px); align-items: start; }
+    details { border-top: 1px solid currentColor; }
+    details:last-child { border-bottom: 1px solid currentColor; }
+    summary { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0; cursor: pointer; font-size: 17px; font-weight: 750; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 24px; font-weight: 400; }
+    details[open] summary::after { content: "−"; }
+    details p { padding: 0 35px 22px 0; font-size: 15px; line-height: 1.65; opacity: .82; }
+    .closing { padding: clamp(82px, 11vw, 140px) 0; text-align: center; }
+    .closing .section-title { margin-inline: auto; }
+    .closing .lead { max-width: 760px; margin: 28px auto; }
+    .footer-note { padding: 27px 20px; font-size: 10px; line-height: 1.7; letter-spacing: .06em; text-align: center; text-transform: uppercase; opacity: .7; }
+
+    /* Style A — clinical editorial */
+    .style-a { --bg: #f7f1e8; --ink: #2f332f; --accent: #a8543c; --sage: #677567; background: var(--bg); color: var(--ink); }
+    .style-a .hero { min-height: 760px; padding: 90px 0; overflow: hidden; }
+    .style-a .hero::after { content: ""; position: absolute; right: -12%; bottom: -38%; width: 48vw; height: 48vw; border: 1px solid rgba(103,117,103,.26); border-radius: 50%; }
+    .style-a .hero-grid { display: grid; grid-template-columns: 1.25fr .75fr; gap: 70px; align-items: center; }
+    .style-a h1 { max-width: 800px; font-family: var(--serif); font-size: clamp(58px, 7.8vw, 108px); font-weight: 500; line-height: .96; letter-spacing: -.055em; }
+    .style-a h1 em { color: var(--accent); font-weight: 400; }
+    .style-a .hero-copy { max-width: 660px; }
+    .style-a .hero .lead { margin: 29px 0; }
+    .style-a .btn, .style-a .popular { background: var(--accent); }
+    .style-a .portrait { min-height: 580px; background: #dce0d5; border: 1px solid #aeb7a7; color: #4a5b4c; box-shadow: 20px 20px 0 #e9dfd2; }
+    .style-a .problem { background: var(--ink); color: #f6efe6; }
+    .style-a .problem .eyebrow { color: #d99a83; }
+    .style-a .problem strong { color: #edb6a2; }
+    .style-a .origin { background: #e5e6dc; }
+    .style-a .origin .emphasis { color: var(--accent); }
+    .style-a .method { background: var(--bg); }
+    .style-a .method .eyebrow, .style-a .offers .eyebrow { color: var(--accent); }
+    .style-a .step { border-color: #bfc4b9; }
+    .style-a .offers { background: #e8e2d8; }
+    .style-a .qualifier { background: var(--sage); color: #fff; }
+    .style-a .qualifier blockquote::before { content: "“"; color: #dca08b; }
+    .style-a .proof-section { background: #f7f1e8; }
+    .style-a .proof { color: #7b6f67; }
+    .style-a .faq { background: #f2eadf; }
+    .style-a .closing { background: var(--accent); color: #fff; }
+    .style-a .closing .btn { background: #fff; color: var(--ink); }
+
+    /* Divider */
+    .style-divider { padding: 60px 20px; background: #252422; color: #fff; text-align: center; }
+    .style-divider span { display: block; margin-bottom: 12px; font-size: 11px; font-weight: 800; letter-spacing: .25em; text-transform: uppercase; }
+    .style-divider h2 { font-family: var(--serif); font-size: clamp(37px, 5vw, 62px); font-weight: 500; }
+    .style-divider p { margin: 14px auto 0; max-width: 650px; font-size: 14px; line-height: 1.6; opacity: .72; }
+
+    /* Style B — soft intimate */
+    .style-b { --bg: #fcf9f7; --ink: #443737; --accent: #9d5d68; --blush: #f0dfe0; background: var(--bg); color: var(--ink); }
+    .style-b .hero { padding: 105px 0 95px; overflow: hidden; }
+    .style-b .hero::before { content: ""; position: absolute; top: 40px; left: -110px; width: 320px; height: 320px; border-radius: 50%; background: #f4e4e5; filter: blur(1px); }
+    .style-b .hero-grid { display: grid; grid-template-columns: 1fr .7fr; gap: 80px; align-items: end; }
+    .style-b h1 { position: relative; max-width: 800px; font-family: var(--serif); font-size: clamp(58px, 7.5vw, 104px); font-weight: 400; line-height: .98; letter-spacing: -.05em; }
+    .style-b h1 em { display: inline-block; color: var(--accent); font-weight: 400; }
+    .style-b .hero-copy { position: relative; }
+    .style-b .hero .lead { margin: 31px 0; }
+    .style-b .btn, .style-b .popular { background: var(--accent); }
+    .style-b .portrait { min-height: 555px; background: linear-gradient(145deg, #f1e3e3, #ded1cc); color: #76575d; border-radius: 180px 180px 12px 12px; box-shadow: var(--shadow); }
+    .style-b .hand-note { position: absolute; right: 5%; bottom: 25px; z-index: 2; max-width: 330px; color: var(--accent); font-family: var(--script); font-size: clamp(22px, 3vw, 35px); line-height: 1.2; transform: rotate(-4deg); }
+    .style-b .problem { padding: 125px 0; background: #fff; }
+    .style-b .problem .section-title { color: var(--accent); }
+    .style-b .origin { background: var(--blush); }
+    .style-b .origin .portrait { min-height: 500px; background: #fff8f6; }
+    .style-b .origin .emphasis { color: #7e4b54; }
+    .style-b .method { background: var(--bg); }
+    .style-b .method .section-title { margin-inline: auto; text-align: center; }
+    .style-b .method > .wrap > .eyebrow { text-align: center; color: var(--accent); }
+    .style-b .steps { grid-template-columns: repeat(5, 1fr); gap: 15px; }
+    .style-b .step { display: block; padding: 29px 22px; border: 0; border-radius: 120px 120px 16px 16px; background: #fff; box-shadow: 0 10px 35px rgba(84,53,58,.06); }
+    .style-b .step-num { margin-bottom: 55px; color: var(--accent); }
+    .style-b .step h3 { min-height: 51px; }
+    .style-b .offers { background: #f4e9e8; }
+    .style-b .package { border-radius: 110px 110px 9px 9px; padding-top: 54px; }
+    .style-b .package.featured { border-color: var(--accent); }
+    .style-b .popular { top: -1px; right: 50%; transform: translateX(50%); border-radius: 0 0 12px 12px; white-space: nowrap; }
+    .style-b .qualifier { background: #704c52; color: #fff; }
+    .style-b .qualifier blockquote { font-family: var(--script); font-size: clamp(30px, 4.2vw, 52px); line-height: 1.35; }
+    .style-b .proof-section { background: #fff; }
+    .style-b .proof { border-radius: 100px; color: #8d7477; }
+    .style-b .faq { background: var(--bg); }
+    .style-b .closing { background: var(--blush); }
+    .style-b .closing .hand-close { margin-bottom: 18px; color: var(--accent); font-family: var(--script); font-size: 28px; transform: rotate(-2deg); }
+
+    dialog { width: min(560px, calc(100% - 32px)); padding: 38px; border: 1px solid #cdbdb6; color: #302d2a; background: #fffaf5; box-shadow: var(--shadow); }
+    dialog::backdrop { background: rgba(33, 29, 27, .74); backdrop-filter: blur(4px); }
+    dialog h2 { margin: 0 0 18px; font-family: var(--serif); font-size: 40px; font-weight: 500; line-height: 1.05; }
+    dialog p { line-height: 1.65; }
+    dialog .btn { width: 100%; margin-top: 12px; background: #9d5d68; }
+    .modal-x { float: right; padding: 5px 9px; border: 0; background: transparent; font-size: 26px; }
+
+    @media (max-width: 940px) {
+      .split, .style-a .hero-grid, .style-b .hero-grid, .faq-grid { grid-template-columns: 1fr; }
+      .style-a .hero-grid, .style-b .hero-grid { gap: 45px; }
+      .style-a .portrait, .style-b .portrait { min-height: 460px; }
+      .packages { grid-template-columns: 1fr; }
+      .package.featured { transform: none; }
+      .promise { min-height: 0; }
+      .style-b .steps { grid-template-columns: 1fr 1fr; }
+      .style-b .step:last-child { grid-column: 1 / -1; }
+      .style-b .hand-note { position: relative; right: auto; bottom: auto; margin: 35px 0 0; }
+    }
+
+    @media (max-width: 600px) {
+      .wrap, .narrow { width: min(100% - 30px, 1120px); }
+      .private-bar { font-size: 8px; }
+      .style-nav { position: relative; overflow-x: auto; justify-content: flex-start; }
+      .style-nav a { flex: 0 0 auto; }
+      .section { padding: 68px 0; }
+      .style-a .hero, .style-b .hero { padding: 65px 0; }
+      .style-a h1, .style-b h1 { font-size: 56px; }
+      .section-title { font-size: 41px; }
+      .portrait, .style-a .portrait, .style-b .portrait { min-height: 370px; }
+      .steps, .style-b .steps { grid-template-columns: 1fr; gap: 0; }
+      .style-b .step, .style-b .step:last-child { grid-column: auto; margin-bottom: 12px; border-radius: 70px 70px 10px 10px; }
+      .style-b .step-num { margin-bottom: 28px; }
+      .package { padding: 27px 24px; }
+      .style-b .package { padding-top: 50px; }
+      .proof { padding: 32px 22px; }
+      dialog { padding: 30px 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="private-bar">Private concept preview · design only · applications are not open</div>
+  <nav class="style-nav" aria-label="Jump between design treatments">
+    <a href="#style-a">Style A · Clinical editorial</a>
+    <a href="#style-b">Style B · Soft intimate</a>
+  </nav>
+
+  <main>
+    <article class="style-a" id="style-a">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="style-label">Style A · Clinical editorial</p>
+            <p class="eyebrow">For the woman who is tired of starting over</p>
+            <h1>“Why can’t I just be <em>normal</em> around food?”</h1>
+            <p class="lead">You’ve read every book, tried every plan, and you still can’t tell if you’re hungry, stressed, bored, or just tired. That’s not a willpower problem — there’s a piece missing, and it’s not the one you think.</p>
+            <button class="btn" type="button" data-apply>See If You’re a Fit</button>
+            <p class="micro">Private application · No checkout · Mockup only</p>
+          </div>
+          <div class="portrait" role="img" aria-label="Placeholder for a portrait of Suzanne"><span>Suzanne portrait</span></div>
+        </div>
+      </section>
+
+      <section class="section problem">
+        <div class="narrow">
+          <p class="eyebrow">It was never just the food</p>
+          <h2 class="section-title">You keep starting over because every plan starts too late.</h2>
+          <div class="prose" style="margin-top:34px">
+            <p>Monday’s rules. Tuesday’s resolve. The guilt after eating. Then another promise to be “good” tomorrow. You’ve spent years feeling as if food controls you — while well-meaning doctors and diets keep treating the problem like a lack of discipline.</p>
+            <p>But the hardest part isn’t the number on the scale. It’s losing trust in your own body. It’s not knowing what you need. It’s the exhaustion of always beginning again.</p>
+            <p><strong>You do not need a stricter plan. You need to understand the pattern the plan never touched.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section origin">
+        <div class="wrap split">
+          <div class="portrait" role="img" aria-label="Placeholder for a portrait of Suzanne"><span>Suzanne portrait</span></div>
+          <div>
+            <p class="eyebrow">Hi, I’m Suzanne</p>
+            <h2 class="section-title">I kept seeing the same missing piece.</h2>
+            <p class="emphasis" style="margin-top:30px">“For years I watched women try every diet, every rule, and still not be able to explain why they couldn’t just be normal around food.”</p>
+            <div class="prose" style="margin-top:24px">
+              <p>I kept feeling like there was a missing piece nobody was looking for — not more willpower, but the real root: where the pattern started. So I created <strong>The Missing Piece Method.</strong></p>
+              <p>My 21 years as a registered dietitian taught me how to read the clinical picture. Listening to women taught me where the real work often begins.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section method">
+        <div class="wrap">
+          <p class="eyebrow">The Missing Piece Method</p>
+          <h2 class="section-title">What we actually do together</h2>
+          <div class="steps">
+            <article class="step"><span class="step-num">01</span><div><h3>Read your body again</h3><p>Learn the real difference between physical hunger, emotional hunger, boredom, and thirst.</p></div></article>
+            <article class="step"><span class="step-num">02</span><div><h3>Find the missing piece</h3><p>Trace the pattern back to where it started — often childhood or family of origin.</p></div></article>
+            <article class="step"><span class="step-num">03</span><div><h3>Reconnect without fear</h3><p>Notice how food feels before and after, instead of grading yourself for it.</p></div></article>
+            <article class="step"><span class="step-num">04</span><div><h3>Rebuild strength and energy</h3><p>Choose movement around what you actually like, never punishment.</p></div></article>
+            <article class="step"><span class="step-num">05</span><div><h3>Make it stick</h3><p>Use structured accountability built to outlast the day-three urge to quit.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section offers">
+        <div class="wrap">
+          <p class="eyebrow">Three ways to work together</p>
+          <h2 class="section-title">Choose the depth of support that fits this season.</h2>
+          <div class="packages">
+            <article class="package">
+              <h3>Root Cause Reset</h3><p class="duration">90 days</p><p class="price">$3,500 <small>or 3 × $1,250</small></p><p class="promise">For getting real answers, fast.</p>
+              <ul><li>Weekly private sessions</li><li>Full intake and pattern tracing</li><li>A personal plan across all five steps</li><li>Biweekly accountability check-ins</li></ul>
+              <button class="btn" type="button" data-apply>Apply</button>
+            </article>
+            <article class="package featured">
+              <span class="popular">Most Popular</span><h3>The Missing Piece Method Immersion</h3><p class="duration">Flagship · 4–6 months</p><p class="price">$6,500–$7,500 <small>· plan available</small></p><p class="promise">Go beyond answers and rebuild the pattern.</p>
+              <ul><li>Everything in Root Cause Reset</li><li>Deeper origin-tracing work</li><li>Movement and strength programming</li><li>Direct messaging between sessions</li><li>Quarterly recalibration</li></ul>
+              <button class="btn" type="button" data-apply>Apply</button>
+            </article>
+            <article class="package">
+              <h3>Total Reinvention VIP</h3><p class="duration">6 months · 2–3 women</p><p class="price">$10,000–$12,000</p><p class="promise">A fully custom, high-touch reinvention.</p>
+              <ul><li>Everything in the Immersion</li><li>Coordinated trusted-practitioner referrals</li><li>Acupuncture or hypnotherapy support where appropriate</li><li>Higher-touch access to Suzanne</li><li>A fully custom pace</li></ul>
+              <button class="btn" type="button" data-apply>Apply by Invitation</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="qualifier">
+        <div class="wrap"><blockquote>This is for the woman who has an open mind and is genuinely looking for a change — who already knows that what she’s been doing hasn’t worked.</blockquote></div>
+      </section>
+
+      <section class="section proof-section">
+        <div class="narrow"><div class="proof"><div class="proof-blank">CP</div><strong>Client testimonial — to be added</strong><span>Client placeholder · no quote supplied</span></div></div>
+      </section>
+
+      <section class="section faq">
+        <div class="wrap faq-grid">
+          <div><p class="eyebrow">Before you apply</p><h2 class="section-title">Good questions deserve calm answers.</h2></div>
+          <div>
+            <details><summary>Do I need to already know what’s wrong?</summary><p>No. You can begin with what you notice — the times, feelings, or situations around eating. Finding the pattern is part of the work, not homework you must finish first.</p></details>
+            <details><summary>What if therapy or dietitians didn’t work before?</summary><p>Bring that history with you. We’ll look at what helped, what didn’t, and whether this approach fills a gap rather than asking you to repeat the same experience.</p></details>
+            <details><summary>How is this different from another diet?</summary><p>This is not another set of food rules. We work on reading your body, understanding the roots of the pattern, rebuilding trust, and creating support that lasts.</p></details>
+            <details><summary>What happens after I apply?</summary><p>Suzanne reviews your application, then you have a private fit conversation. There is no automatic checkout and no pressure to choose a package before your questions are answered.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="wrap">
+          <p class="eyebrow">When you’re ready for a different answer</p>
+          <h2 class="section-title">This is for the woman who already knows what she’s been doing hasn’t worked.</h2>
+          <p class="lead">You do not need to promise to be perfect. You only need an open mind and a genuine desire for change.</p>
+          <button class="btn" type="button" data-apply>See If You’re a Fit</button>
+        </div>
+      </section>
+      <p class="footer-note">Style A ends here · Private concept mockup · No applications, payments, or personal information are collected</p>
+    </article>
+
+    <section class="style-divider" aria-label="Divider between design treatments">
+      <span>Same brand · same offer · new visual language</span>
+      <h2>STYLE B</h2>
+      <p>Softer, more intimate, and more personal — so Suzanne can react to the feeling without comparing two different businesses.</p>
+    </section>
+
+    <article class="style-b" id="style-b">
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <p class="style-label">Style B · Soft intimate</p>
+            <p class="eyebrow">A gentler place to start</p>
+            <h1>“Why can’t I just be <em>normal</em> around food?”</h1>
+            <p class="lead">You’ve read every book, tried every plan, and you still can’t tell if you’re hungry, stressed, bored, or just tired. That’s not a willpower problem — there’s a piece missing, and it’s not the one you think.</p>
+            <button class="btn" type="button" data-apply>See If You’re a Fit</button>
+            <p class="micro">A private conversation, not a checkout</p>
+          </div>
+          <div class="portrait" role="img" aria-label="Placeholder for a portrait of Suzanne"><span>Suzanne portrait</span></div>
+        </div>
+        <p class="hand-note">You were never failing at food. You were missing the part that made the pattern make sense.</p>
+      </section>
+
+      <section class="problem">
+        <div class="narrow">
+          <p class="eyebrow">If this feels familiar</p>
+          <h2 class="section-title">The rules keep changing. The exhaustion doesn’t.</h2>
+          <div class="prose" style="margin-top:34px">
+            <p>You start again. You try to be “good.” Then life gets loud, food feels complicated, and guilt rushes in before you’ve even put the plate away.</p>
+            <p>Doctors and diets may have called it discipline. But the real cost has been quieter: losing trust in your body, second-guessing every signal, and wondering why you still don’t feel free.</p>
+            <p><strong>You don’t need another plan that begins with blame.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section origin">
+        <div class="wrap split">
+          <div>
+            <p class="eyebrow">Hi, I’m Suzanne</p>
+            <h2 class="section-title">I wanted to understand what the diets kept missing.</h2>
+            <p class="emphasis" style="margin-top:30px">“For years I watched women try every diet, every rule, and still not be able to explain why they couldn’t just be normal around food.”</p>
+            <div class="prose" style="margin-top:24px">
+              <p>I kept feeling like there was a missing piece nobody was looking for — not more willpower, but the real root: where the pattern started. So I created <strong>The Missing Piece Method.</strong></p>
+              <p>After 21 years as a registered dietitian, I bring clinical experience to the table — but I begin by listening to the woman sitting across from me.</p>
+            </div>
+          </div>
+          <div class="portrait" role="img" aria-label="Placeholder for a portrait of Suzanne"><span>Suzanne portrait</span></div>
+        </div>
+      </section>
+
+      <section class="section method">
+        <div class="wrap">
+          <p class="eyebrow">The Missing Piece Method</p>
+          <h2 class="section-title">Five steps back to trusting yourself</h2>
+          <div class="steps">
+            <article class="step"><span class="step-num">01</span><div><h3>Read your body again</h3><p>Know physical hunger, emotional hunger, boredom, and thirst.</p></div></article>
+            <article class="step"><span class="step-num">02</span><div><h3>Find the missing piece</h3><p>Trace the pattern to where it started — often childhood or family.</p></div></article>
+            <article class="step"><span class="step-num">03</span><div><h3>Reconnect without fear</h3><p>Notice what food feels like before and after, without judgment.</p></div></article>
+            <article class="step"><span class="step-num">04</span><div><h3>Rebuild strength and energy</h3><p>Move in ways you actually like, never as punishment.</p></div></article>
+            <article class="step"><span class="step-num">05</span><div><h3>Make it stick</h3><p>Use accountability designed to outlast day three.</p></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section offers">
+        <div class="wrap">
+          <p class="eyebrow">Choose your level of support</p>
+          <h2 class="section-title">The right container for the change you’re ready to make.</h2>
+          <div class="packages">
+            <article class="package">
+              <h3>Root Cause Reset</h3><p class="duration">90 days</p><p class="price">$3,500 <small>or 3 × $1,250</small></p><p class="promise">For getting real answers, fast.</p>
+              <ul><li>Weekly private sessions</li><li>Full intake and pattern tracing</li><li>A personal plan across all five steps</li><li>Biweekly accountability check-ins</li></ul>
+              <button class="btn" type="button" data-apply>Apply</button>
+            </article>
+            <article class="package featured">
+              <span class="popular">Most Popular</span><h3>The Missing Piece Method Immersion</h3><p class="duration">Flagship · 4–6 months</p><p class="price">$6,500–$7,500 <small>· plan available</small></p><p class="promise">Go beyond answers and rebuild the pattern.</p>
+              <ul><li>Everything in Root Cause Reset</li><li>Deeper origin-tracing work</li><li>Movement and strength programming</li><li>Direct messaging between sessions</li><li>Quarterly recalibration</li></ul>
+              <button class="btn" type="button" data-apply>Apply</button>
+            </article>
+            <article class="package">
+              <h3>Total Reinvention VIP</h3><p class="duration">6 months · 2–3 women</p><p class="price">$10,000–$12,000</p><p class="promise">A fully custom, high-touch reinvention.</p>
+              <ul><li>Everything in the Immersion</li><li>Coordinated trusted-practitioner referrals</li><li>Acupuncture or hypnotherapy support where appropriate</li><li>Higher-touch access to Suzanne</li><li>A fully custom pace</li></ul>
+              <button class="btn" type="button" data-apply>Apply by Invitation</button>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="qualifier">
+        <div class="wrap"><blockquote>“This is for the woman who has an open mind and is genuinely looking for a change — who already knows that what she’s been doing hasn’t worked.”</blockquote></div>
+      </section>
+
+      <section class="section proof-section">
+        <div class="narrow"><div class="proof"><div class="proof-blank">CP</div><strong>Client testimonial — to be added</strong><span>Client placeholder · no quote supplied</span></div></div>
+      </section>
+
+      <section class="section faq">
+        <div class="wrap faq-grid">
+          <div><p class="eyebrow">A few honest answers</p><h2 class="section-title">You don’t have to know everything before you begin.</h2></div>
+          <div>
+            <details><summary>Do I need to already know what’s wrong?</summary><p>No. Start with what you notice around eating — the time, feeling, or situation. Discovering where it leads is part of our work together.</p></details>
+            <details><summary>What if therapy or dietitians didn’t work before?</summary><p>That history matters. We’ll talk about what helped, what didn’t, and whether this method offers a genuinely different missing piece.</p></details>
+            <details><summary>How is this different from another diet?</summary><p>There is no new list of rules to follow. The focus is understanding your signals and roots, rebuilding trust, and creating support that can hold up in real life.</p></details>
+            <details><summary>What happens after I apply?</summary><p>Suzanne reads your application and invites you to a private fit conversation. Nothing is purchased automatically, and your questions come before any decision.</p></details>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing">
+        <div class="wrap">
+          <p class="hand-close">for the woman who knows what she’s been doing hasn’t worked</p>
+          <h2 class="section-title">You are allowed to look for the missing piece.</h2>
+          <p class="lead">Come with an open mind and a genuine desire for change. We’ll begin with a conversation.</p>
+          <button class="btn" type="button" data-apply>See If You’re a Fit</button>
+        </div>
+      </section>
+      <p class="footer-note">Style B ends here · Private concept mockup · No applications, payments, or personal information are collected</p>
+    </article>
+  </main>
+
+  <dialog id="application" aria-labelledby="dialog-title">
+    <button class="modal-x" type="button" data-close aria-label="Close application preview">×</button>
+    <p class="eyebrow">Application preview</p>
+    <h2 id="dialog-title">This is where a private fit conversation would begin.</h2>
+    <p>On the finished site, Suzanne’s application would open here. This concept page is not live yet, so nothing is collected or sent.</p>
+    <p><strong>No checkout. No personal information. No pressure.</strong></p>
+    <button class="btn" type="button" data-close>Back to the Mockup</button>
+  </dialog>
+
+  <script>
+    const dialog = document.getElementById('application');
+    let opener;
+    document.querySelectorAll('[data-apply]').forEach(button => button.addEventListener('click', () => {
+      opener = button;
+      dialog.showModal();
+    }));
+    document.querySelectorAll('[data-close]').forEach(button => button.addEventListener('click', () => dialog.close()));
+    dialog.addEventListener('click', event => {
+      if (event.target !== dialog) return;
+      const box = dialog.getBoundingClientRect();
+      if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) dialog.close();
+    });
+    dialog.addEventListener('close', () => opener?.focus());
+  </script>
+</body>
+</html>
