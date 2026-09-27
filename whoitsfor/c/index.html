@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hand the pile over | Reverse Selling</title>
+<meta name="description" content="Pick your trade. Watch the job you hate get printed, handled, and stamped off your plate. You get back to what you're great at.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#1E1B18; --ink:#F3EBDD; --word:#C8743C; --pat:none;
+  --copper:#C8743C;
+  --sans:"Archivo", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px;border-radius:4px}
+
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,48px);color:var(--ink);transition:color .6s}
+.brand{font-weight:800;font-stretch:112%;font-size:16px;text-decoration:none;letter-spacing:.01em}
+.bar .call{font-weight:700;font-size:14px;text-decoration:none;padding:10px 16px;border-radius:6px;border:2px solid currentColor}
+
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#steps{position:relative;pointer-events:none;margin-top:-100vh;margin-top:-100svh}
+.step{height:150vh;height:150svh}
+
+/* material backgrounds: one layer per world, crossfaded */
+.mats{position:absolute;inset:0}
+.mat{position:absolute;inset:0;opacity:0;transition:opacity .7s ease}
+.mat.on{opacity:1}
+.m0{background:radial-gradient(rgba(243,235,221,.07) 1.2px,transparent 1.4px) 0 0/18px 18px,#1E1B18}
+.m1{background:
+  linear-gradient(#262a30 0 0) 0 0/100% 100%;
+  background-image:
+   repeating-linear-gradient(to bottom,transparent 0 30px,rgba(0,0,0,.35) 30px 33px),
+   repeating-linear-gradient(to right,transparent 0 58px,rgba(0,0,0,.28) 58px 60px),
+   linear-gradient(#30353c,#262a30)}
+.m2{background:
+   radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.6px) 0 0/23px 19px,
+   radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.6px) 9px 7px/31px 27px,
+   repeating-linear-gradient(to bottom,#e3bf92 0 22px,#dcb485 22px 24px,#e6c498 24px 60px),#E3BF92}
+.m3{background:repeating-linear-gradient(to right,transparent 0 26px,rgba(232,198,106,.16) 26px 27px),radial-gradient(ellipse at 30% 20%,#5b1d29,#3b0f18)}
+.m4{background:repeating-linear-gradient(115deg,#7BB85C 0 90px,#86C466 90px 180px)}
+.m5{background:linear-gradient(rgba(255,255,255,.75) 2px,transparent 2px) 0 0/44px 44px,linear-gradient(90deg,rgba(255,255,255,.75) 2px,transparent 2px) 0 0/44px 44px,#CDEBE5}
+.m6{background:repeating-linear-gradient(to bottom,#E8DDF7 0 70px,#F4D9CB 70px 140px,#DDEBDD 140px 210px,#F3E7C4 210px 280px)}
+.m7{background:linear-gradient(rgba(140,160,255,.14) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(140,160,255,.14) 1px,transparent 1px) 0 0/24px 24px,#15204A}
+.m8{background:radial-gradient(rgba(30,15,6,.12) 1.2px,transparent 1.4px) 0 0/16px 16px,#C8743C}
+
+/* the giant trade word */
+.bigword{position:absolute;left:0;top:50%;white-space:nowrap;font-weight:900;font-stretch:62%;line-height:.8;font-size:clamp(170px,34vw,520px);letter-spacing:-.01em;color:transparent;-webkit-text-stroke:2px var(--word);opacity:.55;transform:translate(var(--wx,0px),-50%);will-change:transform;pointer-events:none;user-select:none;transition:-webkit-text-stroke-color .6s}
+
+/* copy */
+.copy{position:absolute;left:clamp(16px,6vw,96px);top:50%;transform:translateY(-50%);width:min(40vw,560px);z-index:5}
+.copy article{position:absolute;left:0;right:0;top:50%;opacity:0;visibility:hidden;transform:translateY(calc(-50% + 16px));transition:opacity .4s,transform .6s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+.copy article.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .5s .1s,transform .7s cubic-bezier(.2,.8,.2,1) .1s,visibility 0s}
+.who{font-weight:700;font-stretch:112%;font-size:clamp(13px,1.1vw,15px);letter-spacing:.02em;opacity:.85}
+h1,h2{font-weight:900;font-stretch:78%;line-height:.92;letter-spacing:-.005em;font-size:clamp(40px,5vw,86px);margin-top:10px;text-wrap:balance}
+.copy p{font-size:clamp(15px,1.2vw,18px);line-height:1.5;margin-top:14px;max-width:38ch}
+.cta{display:inline-block;margin-top:22px;font-weight:800;font-stretch:108%;font-size:18px;text-decoration:none;padding:16px 24px;border-radius:6px;background:#1E0F06;color:#F7E6D3;box-shadow:5px 5px 0 rgba(30,15,6,.35)}
+.cta:active{transform:translate(3px,3px);box-shadow:2px 2px 0 rgba(30,15,6,.35)}
+
+/* printer (the constant) */
+.desk{position:absolute;right:clamp(16px,9vw,170px);top:0;bottom:0;width:clamp(300px,30vw,430px);z-index:6}
+.printer{position:absolute;left:-18px;right:-18px;top:clamp(64px,10vh,96px);height:58px;border-radius:12px 12px 6px 6px;background:linear-gradient(#3a3733,#23211e);box-shadow:0 10px 24px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12);z-index:3}
+.printer::after{content:"";position:absolute;left:14px;right:14px;bottom:10px;height:8px;border-radius:4px;background:#0c0b0a;box-shadow:inset 0 2px 3px rgba(0,0,0,.8)}
+.printer .led{position:absolute;right:16px;top:12px;width:8px;height:8px;border-radius:50%;background:#58e08a;box-shadow:0 0 8px #58e08a}
+.printer .nm{position:absolute;left:16px;top:10px;font-family:var(--mono);font-size:11px;color:#9b948a;letter-spacing:.04em}
+.well{position:absolute;left:0;right:0;top:calc(clamp(64px,10vh,96px) + 44px);bottom:0;overflow:hidden;z-index:2}
+.receipt{position:absolute;left:0;right:0;top:0;background:#FBFAF6;color:#211d18;font-family:var(--mono);font-size:clamp(12px,1.05vw,15px);line-height:1.5;padding:26px 22px 34px;box-shadow:0 14px 28px rgba(0,0,0,.25);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 10px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/16px 10px repeat-x;
+  transform:translateY(-102%)}
+.receipt.gone{transform:translateY(125%) rotate(7deg)!important;opacity:0;transition:transform .8s cubic-bezier(.5,0,.8,.4),opacity .8s}
+.receipt.thud{animation:thud .35s ease-out}
+@keyframes thud{30%{transform:translateY(0) scale(.985)}}
+.receipt .hd{text-align:center;font-weight:600;letter-spacing:.06em}
+.receipt .sub{text-align:center;color:#7a7268;font-size:.9em}
+.receipt hr{border:0;border-top:1.5px dashed #b9b1a4;margin:12px 0}
+.receipt .k{color:#7a7268;font-size:.86em;letter-spacing:.06em;margin-top:8px}
+.receipt .q{font-style:italic}
+.receipt .big{font-family:var(--sans);font-weight:900;font-stretch:80%;font-size:1.9em;line-height:1;margin-top:4px;color:#211d18}
+.receipt ul{list-style:none}
+.receipt li{display:flex;gap:.6em}
+.receipt li::before{content:"[ ]";color:#7a7268}
+.receipt .blank{border-bottom:1.5px solid #211d18;height:1.6em;margin-top:4px}
+.stamp{position:absolute;right:10px;bottom:70px;padding:8px 14px;border:4px solid var(--copper);border-radius:8px;color:var(--copper);font-family:var(--sans);font-weight:900;font-stretch:75%;font-size:30px;line-height:.9;text-align:center;letter-spacing:.01em;opacity:0;transform:rotate(-13deg) scale(2.3);filter:url(#rough);mix-blend-mode:multiply;pointer-events:none}
+.stamp small{display:block;font-size:.42em;font-stretch:100%;letter-spacing:.08em;margin-top:3px}
+.stamp.hit{opacity:.9;transform:rotate(-13deg) scale(1);transition:transform .22s cubic-bezier(.6,0,.9,.5),opacity .1s}
+
+/* progress: a torn-ticket counter */
+.count{position:absolute;left:clamp(16px,6vw,96px);bottom:clamp(16px,4vh,36px);z-index:8;font-family:var(--mono);font-size:13px;letter-spacing:.04em;display:flex;gap:10px;align-items:center}
+.count button{font:inherit;color:inherit;background:none;border:1.5px solid currentColor;border-radius:4px;padding:3px 7px;cursor:pointer;opacity:.55}
+.count button[aria-current="true"]{opacity:1;background:var(--ink);color:var(--bg)}
+
+@media (max-width:820px){
+  .copy{left:18px;right:18px;width:auto;top:64px;transform:none;height:190px}
+  .copy article{top:0;transform:translateY(12px)}
+  .copy article.on{transform:none}
+  h1,h2{font-size:clamp(34px,10vw,46px);margin-top:4px}
+  .who{font-size:12.5px}
+  .copy p{display:none}
+  .copy p.keep{display:block;font-size:14px;margin-top:8px}
+  .cta{margin-top:12px;font-size:16px;padding:13px 18px}
+  .desk{left:50%;right:auto;transform:translateX(-50%);width:min(82vw,330px);top:262px}
+  .printer{top:0;height:50px}
+  .well{top:36px}
+  .receipt{font-size:12.5px;padding:20px 18px 30px}
+  .stamp{font-size:26px;bottom:60px}
+  .bigword{font-size:clamp(150px,52vw,260px);top:auto;bottom:-2%;transform:translate(var(--wx,0px),0)}
+  .count{left:0;right:0;justify-content:center;bottom:10px}
+  #cbtns{display:flex;gap:3px;background:var(--bg);padding:4px;border-radius:6px}
+  .count .lbl{display:none}
+  .count button{padding:2px 6px;font-size:11px}
+}
+@media (max-width:820px) and (max-height:700px){ .desk{top:226px} .receipt{font-size:11.5px} .copy p.keep{display:none} }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".8" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3.5" xChannelSelector="R" yChannelSelector="G" result="d"/><feComponentTransfer in="n" result="speck"><feFuncA type="discrete" tableValues="1 1 1 0 1 1 1 1"/></feComponentTransfer><feComposite in="d" in2="speck" operator="in"/></filter>
+</svg>
+<header class="bar">
+  <a class="brand" href="https://reversesellingsystem.com">Reverse Selling</a>
+  <a class="call" href="https://reversesellingsystem.com/call">Book a call</a>
+</header>
+
+<main class="track" id="track">
+  <div class="stage" id="stage">
+    <div class="mats" aria-hidden="true">
+      <div class="mat m0 on"></div><div class="mat m1"></div><div class="mat m2"></div><div class="mat m3"></div><div class="mat m4"></div><div class="mat m5"></div><div class="mat m6"></div><div class="mat m7"></div><div class="mat m8"></div>
+    </div>
+    <div class="bigword" id="bigword" aria-hidden="true">THE PILE</div>
+
+    <div class="copy">
+      <article data-w="0">
+        <p class="who">Who this is for</p>
+        <h1>Hand the pile to AI. Keep the work you love.</h1>
+        <p class="keep">You don't have to become a tech person. Scroll, find your trade, and watch the job you hate get handled.</p>
+      </article>
+      <article data-w="1"><p class="who">Roofers, builders and the trades</p><h2>Get the call back before the other guy does.</h2><p>Every missed call on a job site is a job that goes to whoever picked up.</p></article>
+      <article data-w="2"><p class="who">Bakeries, restaurants and shops</p><h2>Close the shoebox of receipts for good.</h2><p>The one night you're not at the shop, you're still doing shop work.</p></article>
+      <article data-w="3"><p class="who">Attorneys, accountants and advisors</p><h2>Stop rebuilding your month from memory.</h2><p>Every hour you forget to bill is an hour you worked for free.</p></article>
+      <article data-w="4"><p class="who">Realtors and agents</p><h2>Follow up with all forty, not four.</h2><p>The open house is the easy part. The follow-up is where the deals are.</p></article>
+      <article data-w="5"><p class="who">Clinics, med spas and dental offices</p><h2>Fill the empty chair at 3:30.</h2><p>Your front desk can't be on the phone and at the counter at the same time.</p></article>
+      <article data-w="6"><p class="who">Designers and creative studios</p><h2>Turn the drive home into a finished proposal.</h2><p>The walk-through is the fun part. Writing it up eats your evening.</p></article>
+      <article data-w="7"><p class="who">Consultants, coaches and busy pros</p><h2>Your inbox is a second job nobody pays you for.</h2><p>"Just checking email" at 7 am turns into 10:30 with nothing done.</p></article>
+      <article data-w="8">
+        <p class="who">Your turn</p>
+        <h2>Bring the job you'd pay to never do again.</h2>
+        <p>Thirty minutes, plain English, no tech homework. We'll show you how AI takes it off your plate.</p>
+        <a class="cta" href="https://reversesellingsystem.com/call">Book your 30-minute call</a>
+      </article>
+    </div>
+
+    <div class="desk" aria-hidden="true">
+      <div class="printer"><span class="nm">REVERSE SELLING</span><span class="led"></span></div>
+      <div class="well">
+        <div class="receipt" data-w="0">
+          <div class="hd">TODAY'S PILE</div><div class="sub">printed for every owner, every day</div><hr>
+          <ul><li>call back 3 missed calls</li><li>receipts to the bookkeeper</li><li>billing, the whole month</li><li>40 open-house notes</li><li>confirm tomorrow's patients</li><li>write up the proposal</li><li>87 unread emails</li></ul>
+          <hr><div class="k">WHO SHOULD DO THIS</div><div class="big">Not you.</div>
+        </div>
+        <div class="receipt" data-w="1">
+          <div class="hd">WORK ORDER 01</div><div class="sub">roofing and the trades</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Phone rings while I'm on a roof. By the time I climb down, they hired someone else."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Texts every missed caller in a minute. Gets the address and a photo. Screens out tire-kickers. Books the estimate.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">Running the job.</div>
+          <div class="k">MONEY IN</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="2">
+          <div class="hd">WORK ORDER 02</div><div class="sub">bakeries, restaurants, shops</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Sunday night. Shoebox of receipts. A spreadsheet I hate."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Snap each receipt when you get it. AI files and sorts it. Your bookkeeper gets a clean week every Monday.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">Baking.</div>
+          <div class="k">HOURS BACK</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="3">
+          <div class="hd">WORK ORDER 03</div><div class="sub">attorneys, accountants, advisors</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Billing day. Digging through my calendar, guessing what that call on the 9th was."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Reads your calendar and sent mail. Drafts every time entry. You approve over coffee. Nothing goes out unseen.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">Advising clients.</div>
+          <div class="k">MONEY IN</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="4">
+          <div class="hd">WORK ORDER 04</div><div class="sub">realtors and agents</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Forty names on the sign-in sheet. It's Thursday and I've written four."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Snap the sheet. AI writes a personal note to every visitor that night, in your voice, and tells you who to call first.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">Showing houses.</div>
+          <div class="k">CUSTOMERS KEPT</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="5">
+          <div class="hd">WORK ORDER 05</div><div class="sub">clinics, med spas, dental</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Confirming tomorrow by phone while today's patient waits. The 3:30 cancel sits empty."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Confirms and reschedules by text. Offers open slots to the waitlist. Invites back patients you haven't seen in a year.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">The patient in front of you.</div>
+          <div class="k">CUSTOMERS KEPT</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="6">
+          <div class="hd">WORK ORDER 06</div><div class="sub">designers and studios</div><hr>
+          <div class="k">THE JOB</div><div class="q">"A notebook full of scribbles, and my whole evening turning it into a proposal."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Talk it through on the drive. AI turns the voice memo into a clean proposal and shopping list before you're home.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">Designing.</div>
+          <div class="k">HOURS BACK</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="7">
+          <div class="hd">WORK ORDER 07</div><div class="sub">consultants, coaches, busy pros</div><hr>
+          <div class="k">THE JOB</div><div class="q">"Answer all my email."</div>
+          <div class="k">HOW AI HANDLES IT</div><div>Sorts the morning mail. Flags the few that need you. Drafts replies that sound like you. You read, tweak, send.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">The work clients pay for.</div>
+          <div class="k">HOURS BACK</div>
+          <div class="stamp">OFF YOUR<br>PLATE<small>HANDLED BY AI</small></div>
+        </div>
+        <div class="receipt" data-w="8">
+          <div class="hd">WORK ORDER 08</div><div class="sub">you</div><hr>
+          <div class="k">THE JOB</div><div class="blank"></div><div class="blank"></div>
+          <div class="k">HOW AI HANDLES IT</div><div>That's what the call is for. 30 minutes, plain English.</div>
+          <hr><div class="k">YOU GET BACK TO</div><div class="big">What you're great at.</div>
+          <div class="stamp" style="bottom:auto;top:78px;right:14px;font-size:24px">YOUR<br>TURN<small>BOOK THE CALL</small></div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="count" aria-label="Jump to a work order"><span class="lbl">WORK ORDER</span><span id="cbtns"></span></nav>
+  </div>
+  <div id="steps"></div>
+</main>
+
+<script>
+(function(){
+  var W=[
+    {w:"THE PILE",   ink:"#F3EBDD", word:"#C8743C", bg:"#1E1B18"},
+    {w:"ROOFERS",    ink:"#F4F1EA", word:"#F2A33A", bg:"#262a30"},
+    {w:"BAKERS",     ink:"#3E1E0C", word:"#8A4A20", bg:"#E3BF92"},
+    {w:"ATTORNEYS",  ink:"#F6E9D0", word:"#E8C66A", bg:"#4a1520"},
+    {w:"REALTORS",   ink:"#10280C", word:"#F7F1E3", bg:"#7BB85C"},
+    {w:"CLINICS",    ink:"#0F3B3A", word:"#2A7F77", bg:"#CDEBE5"},
+    {w:"DESIGNERS",  ink:"#2E1A4E", word:"#9C7FCB", bg:"#E8DDF7"},
+    {w:"CONSULTANTS",ink:"#E8ECFF", word:"#FFC857", bg:"#15204A"},
+    {w:"YOU",        ink:"#1E0F06", word:"#1E0F06", bg:"#C8743C"}
+  ];
+  var N=W.length, root=document.documentElement;
+  var track=document.getElementById('track'), steps=document.getElementById('steps');
+  for (var i=0;i<N;i++){ var d=document.createElement('div'); d.className='step'; steps.appendChild(d); }
+  var mats=document.querySelectorAll('.mat'), arts=document.querySelectorAll('.copy article');
+  var recs=document.querySelectorAll('.receipt'), word=document.getElementById('bigword');
+  var cb=document.getElementById('cbtns'), btns=[];
+  W.forEach(function(w,i){ var b=document.createElement('button'); b.textContent=(i<10?'0':'')+i; b.setAttribute('aria-label', w.w.toLowerCase());
+    b.addEventListener('click',function(){ scrollTo({top:track.offsetTop+i*seg()+seg()*0.1, behavior:reduce()?'auto':'smooth'}); }); cb.appendChild(b); btns.push(b); });
+  function reduce(){ return matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  function seg(){ return steps.firstChild.getBoundingClientRect().height; }
+  var cur=-1;
+  function setWorld(i){
+    if(i===cur) return; var prev=cur; cur=i; var w=W[i];
+    root.style.setProperty('--ink',w.ink); root.style.setProperty('--word',w.word); root.style.setProperty('--bg',w.bg);
+    mats.forEach(function(m,k){ m.classList.toggle('on',k===i); });
+    arts.forEach(function(a){ var on=+a.dataset.w===i; a.classList.toggle('on',on); a.setAttribute('aria-hidden',on?'false':'true'); });
+    word.textContent=w.w;
+    btns.forEach(function(b,k){ b.setAttribute('aria-current',k===i?'true':'false'); });
+    recs.forEach(function(r){ var k=+r.dataset.w;
+      r.classList.remove('thud');
+      if (k<i){ r.classList.add('gone'); }
+      else { r.classList.remove('gone'); if (k>i){ r.style.transform=''; } }
+      var st=r.querySelector('.stamp'); if(st && k!==i && k>i) st.classList.remove('hit');
+    });
+  }
+  function ease(t){ return 1-Math.pow(1-t,3); }
+  function tick(){
+    var h=seg(), y=scrollY-track.offsetTop, f=Math.max(0,y/h);
+    var i=Math.min(N-1,Math.max(0,Math.floor(f+0.15)));
+    var local=Math.min(1,Math.max(0,f-i+0.15));
+    if (i===0) local=Math.max(local,0.5);
+    if (i===N-1) local=Math.max(local,0.8);
+    setWorld(i);
+    var r=recs[i], p=reduce()?1:ease(Math.min(1,local/0.42));
+    r.style.transform='translateY('+(-(1-p)*102)+'%)';
+    var st=r.querySelector('.stamp');
+    if (st){ var hit=local>0.5; if(hit && !st.classList.contains('hit')){ st.classList.add('hit'); if(!reduce()){ r.classList.remove('thud'); void r.offsetWidth; r.classList.add('thud'); } } else if(!hit) st.classList.remove('hit'); }
+    // giant word drifts across as you scroll
+    var vw=innerWidth, ww=word.scrollWidth;
+    var x = vw*0.9 - (vw*0.9 + ww*0.35) * Math.min(1,Math.max(0,f-i+0.15));
+    word.style.setProperty('--wx', (reduce()? vw*0.05 : x)+'px');
+  }
+  var raf=0; function on(){ if(!raf) raf=requestAnimationFrame(function(){ raf=0; tick(); }); }
+  addEventListener('scroll',on,{passive:true}); addEventListener('resize',on);
+  tick();
+})();
+</script>
+</body>
+</html>
