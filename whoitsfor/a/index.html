@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Who it's for | Reverse Selling</title>
+<meta name="description" content="Roofers, bakers, attorneys, realtors, clinics, designers, consultants. You don't have to become a tech person. AI takes the work you hate off your plate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#173B35; --ink:#F4EDE1; --surface:#0F2A25; --accent:#D9823F;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body:"Figtree", system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);transition:background-color .8s var(--ease)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,48px);color:var(--ink);transition:color .8s var(--ease)}
+.brand{font-family:var(--display);font-weight:800;font-size:18px;letter-spacing:-.01em;text-decoration:none;display:flex;align-items:center;gap:8px}
+.brand i{display:inline-block;width:14px;height:14px;border-radius:50%;background:#C8743C;border:2px solid var(--ink);box-shadow:inset -3px -3px 0 rgba(0,0,0,.25)}
+.bar .call{font-weight:700;font-size:14px;text-decoration:none;padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--bg);transition:background-color .8s var(--ease),color .8s var(--ease)}
+
+/* scroll track + sticky stage */
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--bg);transition:background-color .8s var(--ease);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center}
+.step{height:130vh;height:130svh}
+#steps{position:relative;pointer-events:none}
+
+/* copy */
+.copy{position:relative;height:100%;padding:0 clamp(16px,5vw,80px)}
+.copy article{position:absolute;left:clamp(16px,5vw,80px);right:clamp(8px,2vw,32px);top:50%;transform:translateY(calc(-50% + 18px));opacity:0;visibility:hidden;transition:opacity .5s var(--ease),transform .7s var(--ease),visibility 0s .5s}
+.copy article.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .6s var(--ease) .15s,transform .8s var(--ease) .15s,visibility 0s}
+.who{font-family:var(--display);font-weight:500;font-size:clamp(15px,1.3vw,18px);opacity:.8;margin-bottom:14px}
+h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.025em;line-height:.98;font-size:clamp(32px,4.6vw,68px);max-width:12ch;text-wrap:balance}
+h1{font-size:clamp(38px,5.6vw,84px);max-width:11ch}
+.copy p{font-size:clamp(15px,1.25vw,19px);line-height:1.5;max-width:40ch;margin-top:16px}
+.copy p.pain{opacity:.85}
+.copy p.fix b{font-weight:700}
+.outcome{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-weight:700;font-size:14px;padding:7px 14px 7px 10px;border-radius:999px;background:var(--ink);color:var(--bg);transition:background-color .8s,color .8s}
+.outcome::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.cta{display:inline-block;margin-top:26px;font-family:var(--display);font-weight:800;font-size:clamp(18px,1.6vw,22px);text-decoration:none;padding:16px 26px;border-radius:14px;background:var(--ink);color:var(--bg);box-shadow:0 5px 0 rgba(0,0,0,.35);transition:transform .15s}
+.cta:hover{transform:translateY(-2px)}
+.cta:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.35)}
+.fine{font-size:14px!important;opacity:.8}
+.cue{display:inline-flex;gap:10px;align-items:center;margin-top:28px;font-weight:500;font-size:15px;opacity:.85}
+.cue span{width:22px;height:34px;border:2px solid currentColor;border-radius:12px;position:relative}
+.cue span::after{content:"";position:absolute;left:50%;top:6px;width:4px;height:7px;margin-left:-2px;border-radius:2px;background:currentColor;animation:cue 1.6s infinite var(--ease)}
+@keyframes cue{0%{transform:translateY(0);opacity:1}80%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+
+/* scene */
+.scene{position:relative;height:100%;min-height:0}
+.scene svg.world{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.floor{position:absolute;left:0;right:0;bottom:0;height:var(--counter-h,16%);background:var(--surface);box-shadow:inset 0 6px 0 rgba(0,0,0,.12);transition:background-color .8s var(--ease);z-index:0}
+.scene{z-index:1}
+.props .p{transform-box:fill-box;transform-origin:50% 100%;transform:translateY(40px) scale(.6);opacity:0;transition:transform .55s var(--ease),opacity .35s var(--ease)}
+.props.on .p{transform:none;opacity:1;transition:transform .9s cubic-bezier(.3,1.5,.4,1) calc(var(--d,0)*90ms + 250ms),opacity .4s var(--ease) calc(var(--d,0)*90ms + 250ms)}
+.float{animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+
+/* phone (the constant) */
+.phone{position:absolute;left:50%;bottom:calc(var(--counter-h,16%) + 2px);height:66%;aspect-ratio:9/18.6;transform:translateX(-50%);background:#16171A;border-radius:clamp(18px,3.2vh,34px);padding:clamp(5px,.9vh,9px);box-shadow:0 18px 40px rgba(0,0,0,.28),inset 0 0 0 2px #2c2e33;z-index:2}
+.phone::before{content:"";position:absolute;top:clamp(9px,1.5vh,15px);left:50%;width:28%;height:clamp(10px,1.8vh,18px);transform:translateX(-50%);background:#16171A;border-radius:999px;z-index:3}
+.screen-wrap{position:relative;width:100%;height:100%;border-radius:clamp(14px,2.6vh,27px);overflow:hidden;background:#F7F5F0}
+.screen{position:absolute;inset:0;display:flex;flex-direction:column;padding:clamp(30px,5vh,48px) clamp(7px,1vh,11px) clamp(10px,1.6vh,16px);font-size:clamp(9px,1.28vh,13px);line-height:1.3;color:#1b1b1b;opacity:0;transition:opacity .4s}
+.screen.on{opacity:1;transition:opacity .5s .2s}
+.screen .top{flex:none;text-align:center;font-weight:700;font-size:1em;color:#555;border-bottom:1px solid #e5e2da;padding-bottom:6px;margin-bottom:6px}
+.screen .top small{display:block;font-weight:500;font-size:.85em;color:#888}
+.feed{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(4px,.7vh,7px)}
+.m{max-width:86%;padding:.55em .8em;border-radius:1.1em;flex:none}
+.m:not(.show){display:none}
+.m.show{animation:pop .45s var(--ease) both}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.95)}}
+.m.in{align-self:flex-start;background:#E6E3DC;border-bottom-left-radius:.3em}
+.m.ai{align-self:flex-end;background:#2F6FEB;color:#fff;border-bottom-right-radius:.3em}
+.m.sys{align-self:center;max-width:95%;background:none;color:#777;font-size:.88em;padding:.2em}
+.m.card{align-self:stretch;max-width:none;background:#fff;border:1px solid #e3dfd6;border-radius:.9em;box-shadow:0 2px 0 #e3dfd6}
+.m.card b{display:block;font-size:1.02em}
+.m.card .ok{color:#1f8a4c;font-weight:700}
+.row{display:flex;justify-content:space-between;gap:6px;padding:.25em 0;border-top:1px dashed #e3dfd6}
+.row:first-of-type{border-top:0}
+.note{align-self:stretch;background:rgba(255,255,255,.92);border-radius:.9em;padding:.6em .8em;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.note b{display:block}
+.lock{position:absolute;top:13%;left:0;right:0;text-align:center;color:#fff}
+.lock .t{font-family:var(--display);font-weight:800;font-size:3.6em;letter-spacing:-.03em;line-height:1}
+.lock .d{font-size:1em;opacity:.85}
+.screen.hero{background:linear-gradient(170deg,#2b4f47,#0f2a25)}
+.screen.hero .note{color:#1b1b1b}
+.screen.hero .feed{padding-top:38%}
+.wave{display:flex;gap:2px;align-items:center;height:1.8em}
+.wave i{flex:1;background:#fff;border-radius:2px;opacity:.9}
+
+/* dots nav */
+.dots{position:fixed;z-index:15;left:clamp(16px,5vw,80px);bottom:clamp(16px,4vh,36px);display:flex;align-items:center;gap:12px}
+.dots{background:rgba(255,255,255,.92);padding:5px 14px 5px 5px;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.dots ol{list-style:none;display:flex;gap:6px;padding:4px}
+.dots button{width:14px;height:14px;border-radius:50%;border:2px solid rgba(0,0,0,.15);cursor:pointer;background:var(--c);transition:transform .3s,border-color .3s}
+.dots button[aria-current="true"]{transform:scale(1.35);border-color:#1b1b1b}
+.dots .label{font-family:var(--display);font-weight:800;font-size:15px;color:#1b1b1b}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* mobile */
+@media (max-width:820px){
+  .stage{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+  .copy{padding:0}
+  .copy article{left:18px;right:18px;top:auto;bottom:0;transform:translateY(14px)}
+  .copy article.on{transform:none}
+  h2{font-size:clamp(27px,7.6vw,40px);max-width:15ch}
+  h1{font-size:clamp(34px,10vw,52px)}
+  .who{margin-bottom:8px;font-size:14px}
+  .copy p{font-size:14.5px;margin-top:9px;line-height:1.42}
+  .outcome{margin-top:12px;font-size:13px}
+  .cta{margin-top:16px}
+  .cue{margin-top:16px}
+  .phone{height:80%}
+  .lock .t{font-size:2.6em}
+  .dots{left:50%;transform:translateX(-50%);bottom:10px}
+  .dots .label{display:none}
+  .dots{padding:4px}
+  .dots button{width:12px;height:12px}
+}
+@media (max-width:820px) and (max-height:700px){
+  .copy p.pain{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+}
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="brand" href="https://reversesellingsystem.com"><i aria-hidden="true"></i>Reverse Selling</a>
+  <a class="call" href="https://reversesellingsystem.com/call">Book a call</a>
+</header>
+
+<main class="track" id="track">
+  <div class="stage" id="stage">
+    <div class="floor" aria-hidden="true"></div>
+    <div class="copy" id="copy">
+      <article data-w="0">
+        <p class="who">Who this is for</p>
+        <h1>You didn't start a business to do this part.</h1>
+        <p>Every owner is great at something, and buried under a pile of work they hate. AI can take the pile. You don't have to become a tech person to make that happen.</p>
+        <p class="cue"><span aria-hidden="true"></span>Scroll to find your counter</p>
+      </article>
+      <article data-w="1">
+        <p class="who">Roofers, builders and the trades</p>
+        <h2>Get the call back before the other guy does.</h2>
+        <p class="pain">You're on a roof at 2 pm. The phone rings three times. By the time you climb down, two of them hired whoever picked up.</p>
+        <p class="fix"><b>The fix:</b> AI texts every missed caller within a minute, asks for the address and a photo, screens out the tire-kickers, and puts real estimates on your calendar.</p>
+        <span class="outcome">Money in</span>
+      </article>
+      <article data-w="2">
+        <p class="who">Bakeries, restaurants and shops</p>
+        <h2>Close the shoebox of receipts for good.</h2>
+        <p class="pain">Sunday night. Shoebox. Laptop. A spreadsheet you hate. The one night you're not at the shop, you're still doing shop work.</p>
+        <p class="fix"><b>The fix:</b> snap a photo of each receipt when you get it. AI files it, sorts it, and hands your bookkeeper a clean week every Monday.</p>
+        <span class="outcome">Hours back</span>
+      </article>
+      <article data-w="3">
+        <p class="who">Attorneys, accountants and advisors</p>
+        <h2>Stop rebuilding your month from memory.</h2>
+        <p class="pain">Billing day. You're digging through your calendar and sent folder, guessing what that call on the 9th was. Every hour you forget is an hour you worked for free.</p>
+        <p class="fix"><b>The fix:</b> AI reads your calendar and sent mail, drafts the time entries, and you approve them over coffee. Nothing goes out without your eyes on it.</p>
+        <span class="outcome">Money in</span>
+      </article>
+      <article data-w="4">
+        <p class="who">Realtors and agents</p>
+        <h2>Follow up with all forty, not four.</h2>
+        <p class="pain">The open house went great. Forty names on the sign-in sheet. You meant to write every one of them. It's Thursday, and you've written four.</p>
+        <p class="fix"><b>The fix:</b> snap the sign-in sheet. AI writes a personal note to every visitor that night, in your voice, and tells you who to call first.</p>
+        <span class="outcome">Customers kept</span>
+      </article>
+      <article data-w="5">
+        <p class="who">Clinics, med spas and dental offices</p>
+        <h2>Fill the empty chair at 3:30.</h2>
+        <p class="pain">Your front desk is on the phone confirming tomorrow while today's patient waits at the counter. And the cancellation still leaves a hole in the afternoon.</p>
+        <p class="fix"><b>The fix:</b> AI confirms and reschedules by text, offers open slots to your waitlist, and quietly invites back the patients you haven't seen in a year.</p>
+        <span class="outcome">Customers kept</span>
+      </article>
+      <article data-w="6">
+        <p class="who">Designers and creative studios</p>
+        <h2>Turn the drive home into a finished proposal.</h2>
+        <p class="pain">You walk a client's house, fill a notebook with scribbles, then lose your whole evening turning it into something you can send.</p>
+        <p class="fix"><b>The fix:</b> talk through the walk-through on the drive. AI turns the voice memo into a clean proposal and a shopping list before you're in the driveway.</p>
+        <span class="outcome">Hours back</span>
+      </article>
+      <article data-w="7">
+        <p class="who">Consultants, coaches and busy pros</p>
+        <h2>Your inbox is a second job nobody pays you for.</h2>
+        <p class="pain">You open email at 7 am "just to check." You look up and it's 10:30, and you haven't done one thing you're actually paid for.</p>
+        <p class="fix"><b>The fix:</b> AI sorts the morning mail, flags the few that need you, and drafts replies that sound like you. You read, tweak, tap send.</p>
+        <span class="outcome">Hours back</span>
+      </article>
+      <article data-w="8">
+        <p class="who">Different counters. Same deal.</p>
+        <h2>You stay the expert. AI takes the part you hate.</h2>
+        <p>No tech degree. No new software to babysit. We find the one job eating your week, and we show you how AI takes it off your plate.</p>
+        <a class="cta" href="https://reversesellingsystem.com/call">Book your 30-minute call</a>
+        <p class="fine">Bring the one job you'd pay to never do again.</p>
+      </article>
+    </div>
+
+    <div class="scene" aria-hidden="true">
+      <svg class="world" viewBox="0 0 800 600" preserveAspectRatio="xMidYMax meet">
+        <!-- WORLD 0: hero, the pile -->
+        <g class="props" data-w="0">
+          <g class="p" style="--d:0"><circle cx="150" cy="170" r="54" fill="#D9823F"/><circle cx="150" cy="170" r="54" fill="#000" opacity=".12" transform="translate(8 8)"/></g>
+          <g class="p" style="--d:1"><rect x="560" y="330" width="150" height="170" rx="10" fill="#D9823F"/><rect x="575" y="345" width="120" height="16" rx="4" fill="#F4EDE1" opacity=".8"/><rect x="575" y="370" width="90" height="10" rx="4" fill="#F4EDE1" opacity=".5"/><rect x="575" y="388" width="100" height="10" rx="4" fill="#F4EDE1" opacity=".5"/></g>
+          <g class="p" style="--d:2"><rect x="570" y="290" width="140" height="44" rx="8" fill="#F4EDE1" transform="rotate(-6 640 312)"/><rect x="585" y="302" width="80" height="9" rx="4" fill="#173B35" opacity=".5" transform="rotate(-6 640 312)"/></g>
+          <g class="p" style="--d:3"><rect x="90" y="410" width="160" height="90" rx="8" fill="#F4EDE1"/><rect x="105" y="425" width="110" height="10" rx="4" fill="#173B35" opacity=".45"/><rect x="105" y="445" width="130" height="10" rx="4" fill="#173B35" opacity=".3"/><rect x="105" y="465" width="70" height="10" rx="4" fill="#173B35" opacity=".3"/></g>
+          <g class="p" style="--d:4"><rect x="110" y="380" width="120" height="38" rx="6" fill="#E9B98B" transform="rotate(5 170 399)"/></g>
+        </g>
+        <!-- WORLD 1: roofer -->
+        <g class="props" data-w="1">
+          <g class="p" style="--d:0"><circle cx="660" cy="120" r="46" fill="#FFD66B"/></g>
+          <g class="p" style="--d:1"><polygon points="-40,500 -40,300 230,170 300,210 300,500" fill="#6B4A3A"/><polygon points="-60,300 230,160 320,212 300,232 230,196 -40,330" fill="#3A4048"/><g stroke="#2A2F35" stroke-width="3" opacity=".7"><line x1="-20" y1="316" x2="240" y2="190"/></g><rect x="40" y="360" width="70" height="80" rx="4" fill="#9FD3F5"/><rect x="170" y="330" width="60" height="170" fill="#4B3328"/></g>
+          <g class="p" style="--d:2"><g transform="rotate(12 640 330)"><rect x="600" y="170" width="12" height="330" rx="3" fill="#F2A33A"/><rect x="668" y="170" width="12" height="330" rx="3" fill="#F2A33A"/><g fill="#F2A33A"><rect x="606" y="210" width="68" height="9"/><rect x="606" y="260" width="68" height="9"/><rect x="606" y="310" width="68" height="9"/><rect x="606" y="360" width="68" height="9"/><rect x="606" y="410" width="68" height="9"/><rect x="606" y="460" width="68" height="9"/></g></g></g>
+          <g class="p" style="--d:3"><path d="M520 500 q0-52 52-52 q52 0 52 52z" fill="#F2A33A"/><rect x="508" y="490" width="128" height="12" rx="6" fill="#D98A22"/><rect x="566" y="450" width="12" height="44" rx="5" fill="#D98A22"/></g>
+          <g class="p" style="--d:4"><rect x="210" y="470" width="80" height="14" rx="4" fill="#8A5A3B" transform="rotate(-8 250 477)"/><rect x="270" y="450" width="26" height="40" rx="4" fill="#5A6069" transform="rotate(-8 283 470)"/></g>
+        </g>
+        <!-- WORLD 2: bakery -->
+        <g class="props" data-w="2">
+          <g class="p" style="--d:0"><line x1="400" y1="0" x2="400" y2="40" stroke="#4A2412" stroke-width="3"/><path d="M360 40 h80 l20 40 h-120z" fill="#7B3A1B"/><circle cx="400" cy="84" r="10" fill="#FFE7A8"/></g>
+          <g class="p" style="--d:1"><rect x="40" y="400" width="210" height="100" rx="6" fill="#E8E0D0"/><rect x="40" y="400" width="210" height="22" fill="#D2C6B0"/><g fill="#fff" stroke="#c9bfae"><rect x="70" y="340" width="54" height="80" rx="3" transform="rotate(-14 97 380)"/><rect x="120" y="330" width="54" height="90" rx="3" transform="rotate(8 147 375)"/><rect x="170" y="350" width="54" height="70" rx="3" transform="rotate(-4 197 385)"/></g><g stroke="#4A2412" stroke-width="3" opacity=".35"><line x1="130" y1="350" x2="160" y2="354"/><line x1="128" y1="365" x2="165" y2="369"/><line x1="176" y1="366" x2="210" y2="364"/></g></g>
+          <g class="p" style="--d:2"><ellipse cx="620" cy="470" rx="95" ry="38" fill="#C9772F"/><ellipse cx="620" cy="462" rx="90" ry="32" fill="#DE9748"/><g stroke="#F6D9A8" stroke-width="6" stroke-linecap="round"><line x1="570" y1="455" x2="590" y2="470"/><line x1="605" y1="452" x2="625" y2="467"/><line x1="640" y1="452" x2="660" y2="467"/></g></g>
+          <g class="p" style="--d:3"><ellipse cx="700" cy="420" rx="48" ry="24" fill="#B0632A"/><ellipse cx="700" cy="414" rx="44" ry="19" fill="#C9772F"/></g>
+          <g class="p" style="--d:4"><path d="M600 180 q60-20 120 0 v170 q-60 20-120 0z" fill="#F7EFE2"/><text x="660" y="275" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="26" fill="#7B3A1B">FLOUR</text></g>
+        </g>
+        <!-- WORLD 3: attorney -->
+        <g class="props" data-w="3">
+          <g class="p" style="--d:0"><rect x="30" y="130" width="250" height="370" fill="#3A1018"/><g fill="#E8C66A"><rect x="45" y="150" width="30" height="100"/><rect x="80" y="160" width="26" height="90" fill="#C9A24A"/><rect x="110" y="145" width="34" height="105"/><rect x="148" y="158" width="26" height="92" fill="#F6E9D0"/><rect x="178" y="150" width="30" height="100" fill="#C9A24A"/><rect x="212" y="162" width="28" height="88"/></g><rect x="30" y="250" width="250" height="10" fill="#2a0b11"/><g fill="#C9A24A"><rect x="45" y="280" width="34" height="100"/><rect x="83" y="290" width="30" height="90" fill="#F6E9D0"/><rect x="117" y="276" width="30" height="104"/><rect x="151" y="288" width="36" height="92" fill="#E8C66A"/></g><rect x="30" y="380" width="250" height="10" fill="#2a0b11"/></g>
+          <g class="p" style="--d:1"><rect x="560" y="400" width="140" height="100" rx="4" fill="#E8D7B5"/><rect x="560" y="400" width="140" height="18" fill="#D1BD95"/><rect x="605" y="440" width="50" height="20" rx="4" fill="#fff" opacity=".7"/><rect x="580" y="310" width="120" height="90" rx="4" fill="#DCC8A2"/><rect x="580" y="310" width="120" height="16" fill="#C4AE84"/></g>
+          <g class="p" style="--d:2"><circle cx="660" cy="170" r="52" fill="#F6E9D0"/><circle cx="660" cy="170" r="52" fill="none" stroke="#E8C66A" stroke-width="8"/><line x1="660" y1="170" x2="660" y2="135" stroke="#3A1018" stroke-width="6" stroke-linecap="round"/><line x1="660" y1="170" x2="688" y2="182" stroke="#3A1018" stroke-width="5" stroke-linecap="round"/></g>
+          <g class="p" style="--d:3"><rect x="240" y="470" width="70" height="30" rx="3" fill="#F6E9D0" transform="rotate(-6 275 485)"/><rect x="250" y="440" width="12" height="46" fill="#E8C66A" transform="rotate(-30 256 463)"/></g>
+        </g>
+        <!-- WORLD 4: realtor -->
+        <g class="props" data-w="4">
+          <g class="p" style="--d:0"><polygon points="20,500 20,300 150,200 280,300 280,500" fill="#F7F1E3"/><polygon points="0,310 150,190 300,310 280,322 150,218 20,322" fill="#D6452B"/><rect x="60" y="340" width="60" height="60" fill="#BFE3F2"/><rect x="180" y="380" width="54" height="120" fill="#1F3B1A"/><circle cx="222" cy="440" r="4" fill="#E8C66A"/></g>
+          <g class="p" style="--d:1"><rect x="648" y="230" width="10" height="270" fill="#6B4A2F"/><rect x="600" y="250" width="160" height="10" fill="#6B4A2F"/><rect x="610" y="266" width="140" height="84" rx="6" fill="#fff" stroke="#D6452B" stroke-width="6"/><text x="680" y="323" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="38" fill="#D6452B">SOLD</text></g>
+          <g class="p" style="--d:2"><rect x="530" y="400" width="96" height="100" rx="6" fill="#8B5E3C"/><rect x="540" y="415" width="76" height="85" fill="#fff"/><rect x="560" y="394" width="36" height="14" rx="3" fill="#C9C9C9"/><g stroke="#1F3B1A" stroke-width="3" opacity=".35"><line x1="548" y1="430" x2="606" y2="430"/><line x1="548" y1="445" x2="600" y2="445"/><line x1="548" y1="460" x2="608" y2="460"/><line x1="548" y1="475" x2="596" y2="475"/></g></g>
+          <g class="p" style="--d:3"><circle cx="260" cy="484" r="14" fill="none" stroke="#E8C66A" stroke-width="6"/><rect x="270" y="480" width="40" height="8" rx="3" fill="#E8C66A"/></g>
+          <g class="p" style="--d:4"><circle cx="720" cy="120" r="30" fill="#fff" opacity=".8"/><circle cx="750" cy="130" r="24" fill="#fff" opacity=".8"/><circle cx="695" cy="134" r="20" fill="#fff" opacity=".8"/></g>
+        </g>
+        <!-- WORLD 5: clinic -->
+        <g class="props" data-w="5">
+          <g class="p" style="--d:0"><rect x="60" y="120" width="190" height="200" rx="10" fill="#fff"/><rect x="60" y="120" width="190" height="40" rx="10" fill="#2A7F77"/><g fill="#CFEFE7"><rect x="78" y="176" width="26" height="22" rx="4"/><rect x="112" y="176" width="26" height="22" rx="4"/><rect x="146" y="176" width="26" height="22" rx="4"/><rect x="180" y="176" width="26" height="22" rx="4"/><rect x="214" y="176" width="22" height="22" rx="4"/><rect x="78" y="208" width="26" height="22" rx="4"/><rect x="112" y="208" width="26" height="22" rx="4"/><rect x="146" y="208" width="26" height="22" rx="4"/><rect x="180" y="208" width="26" height="22" rx="4"/><rect x="214" y="208" width="22" height="22" rx="4"/><rect x="78" y="240" width="26" height="22" rx="4"/><rect x="112" y="240" width="26" height="22" rx="4"/><rect x="146" y="240" width="26" height="22" rx="4"/><rect x="180" y="240" width="26" height="22" rx="4"/></g><circle cx="159" cy="251" r="18" fill="none" stroke="#F08A5D" stroke-width="4"/></g>
+          <g class="p" style="--d:1"><rect x="590" y="360" width="130" height="80" rx="18" fill="#2A7F77"/><rect x="600" y="300" width="110" height="80" rx="18" fill="#3A9B92"/><rect x="600" y="440" width="10" height="60" fill="#0F3B3A"/><rect x="700" y="440" width="10" height="60" fill="#0F3B3A"/></g>
+          <g class="p" style="--d:2"><rect x="120" y="440" width="60" height="60" rx="6" fill="#F7F7F2"/><path d="M150 440 c-40-30-30-80 0-90 c30 10 40 60 0 90z" fill="#3E9E6B"/><path d="M150 440 c-50-10-60-50-50-60 c30 0 50 30 50 60z" fill="#2F8358"/></g>
+          <g class="p" style="--d:3"><path d="M248 500 q0-36 36-36 q36 0 36 36z" fill="#E8C66A"/><rect x="240" y="494" width="88" height="8" rx="4" fill="#C9A24A"/><circle cx="284" cy="460" r="6" fill="#C9A24A"/></g>
+        </g>
+        <!-- WORLD 6: designer -->
+        <g class="props" data-w="6">
+          <g class="p" style="--d:0"><g transform="translate(150 470)"><rect x="-12" y="-230" width="44" height="230" rx="6" fill="#F08A5D" transform="rotate(-36)"/><rect x="-12" y="-230" width="44" height="230" rx="6" fill="#F4C95D" transform="rotate(-18)"/><rect x="-12" y="-230" width="44" height="230" rx="6" fill="#6FC3B2"/><rect x="-12" y="-230" width="44" height="230" rx="6" fill="#5C7CFA" transform="rotate(18)"/><rect x="-12" y="-230" width="44" height="230" rx="6" fill="#2E1A4E" transform="rotate(36)"/><circle cx="10" cy="0" r="12" fill="#fff"/></g></g>
+          <g class="p" style="--d:1"><rect x="684" y="180" width="8" height="320" fill="#2E1A4E"/><path d="M620 180 h136 l-26 -80 h-84z" fill="#F4C95D"/><ellipse cx="688" cy="500" rx="46" ry="8" fill="#2E1A4E"/></g>
+          <g class="p" style="--d:2"><rect x="520" y="430" width="90" height="70" rx="6" fill="#F08A5D"/><rect x="540" y="410" width="90" height="70" rx="6" fill="#6FC3B2" transform="rotate(8 585 445)"/><path d="M548 420 h70 v6 h-70z" fill="#fff" opacity=".4" transform="rotate(8 585 445)"/></g>
+          <g class="p" style="--d:3"><circle cx="270" cy="480" r="22" fill="#F4C95D"/><circle cx="270" cy="480" r="9" fill="#2E1A4E"/><rect x="286" y="490" width="60" height="10" fill="#F4C95D"/></g>
+        </g>
+        <!-- WORLD 7: consultant -->
+        <g class="props" data-w="7">
+          <g class="p" style="--d:0"><rect x="60" y="90" width="220" height="240" rx="8" fill="#0C1430" stroke="#2C3A6B" stroke-width="10"/><line x1="170" y1="90" x2="170" y2="330" stroke="#2C3A6B" stroke-width="8"/><line x1="60" y1="210" x2="280" y2="210" stroke="#2C3A6B" stroke-width="8"/><circle cx="230" cy="150" r="24" fill="#FFF4D6"/><circle cx="240" cy="142" r="22" fill="#0C1430"/><circle cx="100" cy="130" r="2.5" fill="#fff"/><circle cx="130" cy="170" r="2" fill="#fff"/><circle cx="210" cy="260" r="2" fill="#fff"/></g>
+          <g class="p" style="--d:1"><g class="float"><rect x="80" y="380" width="80" height="54" rx="6" fill="#E8ECFF" transform="rotate(-10 120 407)"/><path d="M80 380 l40 30 l40 -30" fill="none" stroke="#9AA4D6" stroke-width="4" transform="rotate(-10 120 407)"/><rect x="170" y="410" width="80" height="54" rx="6" fill="#E8ECFF" transform="rotate(12 210 437)"/><path d="M170 410 l40 30 l40 -30" fill="none" stroke="#9AA4D6" stroke-width="4" transform="rotate(12 210 437)"/></g></g>
+          <g class="p" style="--d:2"><polygon points="590,240 700,240 730,320 560,320" fill="#FFC857"/><rect x="640" y="320" width="10" height="170" fill="#E8ECFF"/><ellipse cx="645" cy="496" rx="50" ry="8" fill="#E8ECFF"/><polygon points="560,320 730,320 800,500 490,500" fill="#FFC857" opacity=".12"/></g>
+          <g class="p" style="--d:3"><rect x="236" y="450" width="44" height="50" rx="6" fill="#E8ECFF"/><path d="M280 462 q20 0 20 16 q0 16 -20 16" fill="none" stroke="#E8ECFF" stroke-width="6"/></g>
+        </g>
+        <!-- WORLD 8: close -->
+        <g class="props" data-w="8">
+          <g class="p" style="--d:0"><circle cx="160" cy="200" r="90" fill="#1E0F06" opacity=".1"/></g>
+          <g class="p" style="--d:1"><rect x="560" y="360" width="150" height="140" rx="10" fill="#F7EBDD"/><rect x="560" y="360" width="150" height="34" rx="10" fill="#1E0F06"/><text x="635" y="462" text-anchor="middle" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="56" fill="#1E0F06">30</text><text x="635" y="486" text-anchor="middle" font-family="Figtree,sans-serif" font-weight="700" font-size="14" fill="#1E0F06">minutes</text></g>
+          <g class="p" style="--d:2"><rect x="120" y="440" width="120" height="60" rx="8" fill="#1E0F06"/><path d="M150 470 l16 16 l34 -32" fill="none" stroke="#C8743C" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g>
+        </g>
+      </svg>
+
+      <div class="phone">
+        <div class="screen-wrap">
+          <div class="screen hero on" data-w="0">
+            <div class="lock"><div class="t">6:58</div><div class="d">Tuesday</div></div>
+            <div class="note m show" data-at="0"><b>3 missed calls</b>Voicemail from an unknown number</div>
+            <div class="note m show" data-at="0"><b>Receipts</b>Due to bookkeeper. Again.</div>
+            <div class="note m show" data-at="0"><b>Inbox</b>87 unread</div>
+            <div class="note m show" data-at="0"><b>Reminder</b>Follow up with open-house people</div>
+          </div>
+          <div class="screen" data-w="1">
+            <div class="top">Ridgeline Roofing<small>Texts, handled by your AI</small></div>
+            <div class="m sys" data-at=".05">Missed call · 2:14 pm</div>
+            <div class="m ai" data-at=".15">Sorry we missed you! We're up on a roof. What's the address, and can you text a photo of the damage?</div>
+            <div class="m in" data-at=".3">412 Maple. Shingles came off in the storm [photo]</div>
+            <div class="m ai" data-at=".45">Got it. Could we come look Thursday at 10?</div>
+            <div class="m in" data-at=".55">Perfect</div>
+            <div class="m card" data-at=".68"><b>Estimate booked</b>Thu 10:00 · 412 Maple · photo attached <span class="ok">✓</span></div>
+          </div>
+          <div class="screen" data-w="2">
+            <div class="top">Receipts<small>Snap it and forget it</small></div>
+            <div class="m in" data-at=".08">[photo of receipt]</div>
+            <div class="m ai" data-at=".22">Filed: flour and sugar, $86.40, under Ingredients.</div>
+            <div class="m in" data-at=".36">[photo of receipt]</div>
+            <div class="m ai" data-at=".48">Filed: oven repair, $210, under Equipment.</div>
+            <div class="m card" data-at=".62"><b>This week, sorted</b><div class="row"><span>Ingredients</span><span>$412</span></div><div class="row"><span>Equipment</span><span>$210</span></div><div class="row"><span>Packaging</span><span>$64</span></div></div>
+            <div class="m sys" data-at=".75">Sends to your bookkeeper Monday 8 am</div>
+          </div>
+          <div class="screen" data-w="3">
+            <div class="top">Time entries<small>Drafted from your calendar and email</small></div>
+            <div class="m ai" data-at=".08">I drafted 14 entries from yesterday. 2 need a quick look.</div>
+            <div class="m card" data-at=".25"><div class="row"><span>Call re: lease terms</span><span>0.4</span></div><div class="row"><span>Draft response letter</span><span>1.2</span></div><div class="row"><span>Review closing docs</span><span>0.8</span></div><div class="row"><span>Email: title questions</span><span>0.3</span></div></div>
+            <div class="m in" data-at=".5">Looks right. Approve all.</div>
+            <div class="m card" data-at=".65"><b>Approved <span class="ok">✓</span></b>14 entries · 6.9 hours ready to bill</div>
+          </div>
+          <div class="screen" data-w="4">
+            <div class="top">Open house follow-up<small>Saturday sign-in sheet</small></div>
+            <div class="m in" data-at=".08">[photo of sign-in sheet]</div>
+            <div class="m ai" data-at=".22">Read 38 names. Personal notes drafted for each one, in your voice.</div>
+            <div class="m ai" data-at=".38">3 people said they're thinking of selling this spring. Want to call them first?</div>
+            <div class="m in" data-at=".52">Yes. Send the rest tonight.</div>
+            <div class="m card" data-at=".66"><b>35 notes sent <span class="ok">✓</span></b>3 calls on your list for tomorrow</div>
+          </div>
+          <div class="screen" data-w="5">
+            <div class="top">Appointments<small>Texts, handled by your AI</small></div>
+            <div class="m ai" data-at=".06">Hi! Confirming your 3:30 tomorrow. Reply C to confirm or R to reschedule.</div>
+            <div class="m in" data-at=".2">R, sorry!</div>
+            <div class="m ai" data-at=".32">No problem. Wednesday 9:15 or Thursday 2:00?</div>
+            <div class="m in" data-at=".44">Thursday</div>
+            <div class="m card" data-at=".58"><b>3:30 slot filled <span class="ok">✓</span></b>Offered to the waitlist, taken in 11 min</div>
+            <div class="m sys" data-at=".72">4 patients invited back after a year away</div>
+          </div>
+          <div class="screen" data-w="6">
+            <div class="top">Voice memo<small>Kitchen and living room walk-through</small></div>
+            <div class="m ai" data-at=".06" style="background:#5C3FA0"><div class="wave"><i style="height:30%"></i><i style="height:70%"></i><i style="height:45%"></i><i style="height:90%"></i><i style="height:55%"></i><i style="height:80%"></i><i style="height:35%"></i><i style="height:65%"></i><i style="height:95%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:30%"></i></div>6:12</div>
+            <div class="m ai" data-at=".25">Proposal drafted: 2 rooms, 22 items, your usual terms.</div>
+            <div class="m card" data-at=".42"><b>Shopping list</b><div class="row"><span>Pendant lights (3)</span><span>✓</span></div><div class="row"><span>Rug, 9x12, warm gray</span><span>✓</span></div><div class="row"><span>Paint: 2 gal, trim white</span><span>✓</span></div></div>
+            <div class="m in" data-at=".62">Send it to her after I look it over tonight</div>
+          </div>
+          <div class="screen" data-w="7">
+            <div class="top">This morning's mail<small>Sorted before you woke up</small></div>
+            <div class="m card" data-at=".06"><div class="row"><span>New</span><span>87</span></div><div class="row"><span>Need you</span><span><b>3</b></span></div><div class="row"><span>Replies drafted</span><span>61</span></div><div class="row"><span>Archived</span><span>23</span></div></div>
+            <div class="m ai" data-at=".28">Top one: a client wants to move Friday's meeting. Draft reply is ready.</div>
+            <div class="m in" data-at=".45">Send it</div>
+            <div class="m card" data-at=".6"><b>Inbox clear <span class="ok">✓</span></b>7:14 am. The rest of the day is yours.</div>
+          </div>
+          <div class="screen" data-w="8">
+            <div class="top">Book a call<small>30 minutes with Jimmy</small></div>
+            <div class="m card" data-at=".05"><b>What do we talk about?</b>The one job eating your week, and how AI takes it off your plate.</div>
+            <div class="m in" data-at=".2">Can I really do this without being a tech person?</div>
+            <div class="m ai" data-at=".35">That's the whole point. You bring the business. We bring the AI.</div>
+            <div class="m card" data-at=".5"><b>Pick a time</b>reversesellingsystem.com/call</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="steps"></div>
+</main>
+
+<nav class="dots" aria-label="Jump to a business type">
+  <ol id="dotlist"></ol>
+  <span class="label" id="dotlabel" aria-live="polite">welcome</span>
+</nav>
+
+<script>
+(function(){
+  var W = [
+    {n:"welcome",       bg:"#173B35", ink:"#F4EDE1", s:"#0F2A25", a:"#D9823F"},
+    {n:"trades",        bg:"#8FCAF0", ink:"#0E2A3F", s:"#3A4048", a:"#F2A33A"},
+    {n:"bakeries & shops", bg:"#F2D3A2", ink:"#4A2412", s:"#B97842", a:"#7B3A1B"},
+    {n:"attorneys & CPAs", bg:"#5E1C28", ink:"#F6E9D0", s:"#3A1018", a:"#E8C66A"},
+    {n:"realtors",      bg:"#BFE3A5", ink:"#1F3B1A", s:"#8B5E3C", a:"#D6452B"},
+    {n:"clinics",       bg:"#CFEFE7", ink:"#0F3B3A", s:"#7FC6B8", a:"#2A7F77"},
+    {n:"designers",     bg:"#D8C7F2", ink:"#2E1A4E", s:"#9C7FCB", a:"#F08A5D"},
+    {n:"consultants",   bg:"#16203F", ink:"#E8ECFF", s:"#0C1430", a:"#FFC857"},
+    {n:"your turn",     bg:"#C8743C", ink:"#1E0F06", s:"#9E5424", a:"#1E0F06"}
+  ];
+  var N = W.length, root = document.documentElement;
+  var track = document.getElementById('track');
+  var steps = document.getElementById('steps');
+  // spacer steps (stage is sticky over them). first step overlaps the stage itself
+  steps.style.marginTop = "-100svh";
+  for (var i=0;i<N;i++){ var d=document.createElement('div'); d.className='step'; steps.appendChild(d); }
+  document.querySelectorAll('.screen').forEach(function(sc){
+    var f=document.createElement('div'); f.className='feed';
+    Array.prototype.slice.call(sc.children).forEach(function(c){ if(!c.classList.contains('top') && !c.classList.contains('lock')) f.appendChild(c); });
+    sc.appendChild(f);
+  });
+  var sceneEl=document.querySelector('.scene');
+  function sizeFloor(){ var r=sceneEl.getBoundingClientRect(); var k=Math.min(r.width/800, r.height/600); root.style.setProperty('--counter-h', (100*k)+'px'); }
+  var arts = document.querySelectorAll('.copy article');
+  var props = document.querySelectorAll('.props');
+  var screens = document.querySelectorAll('.screen');
+  var dl = document.getElementById('dotlist'), lab = document.getElementById('dotlabel');
+  var btns = [];
+  W.forEach(function(w,i){
+    var li=document.createElement('li'), b=document.createElement('button');
+    b.style.setProperty('--c', w.bg); b.setAttribute('aria-label', w.n);
+    b.addEventListener('click', function(){ window.scrollTo({top: track.offsetTop + i*seg() + 2, behavior: reduce()? 'auto':'smooth'}); });
+    li.appendChild(b); dl.appendChild(li); btns.push(b);
+  });
+  function reduce(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  function seg(){ return steps.firstChild.getBoundingClientRect().height; }
+  var cur = -1;
+  function setWorld(i){
+    if (i===cur) return; cur=i; var w=W[i];
+    root.style.setProperty('--bg', w.bg); root.style.setProperty('--ink', w.ink);
+    root.style.setProperty('--surface', w.s); root.style.setProperty('--accent', w.a);
+    var meta=document.querySelector('meta[name=theme-color]'); if(meta) meta.content=w.bg;
+    arts.forEach(function(a){ var on=+a.dataset.w===i; a.classList.toggle('on',on); a.setAttribute('aria-hidden', on?'false':'true'); });
+    props.forEach(function(p){ p.classList.toggle('on', +p.dataset.w===i); });
+    screens.forEach(function(s){ s.classList.toggle('on', +s.dataset.w===i); });
+    btns.forEach(function(b,k){ b.setAttribute('aria-current', k===i?'true':'false'); });
+    lab.textContent = w.n;
+  }
+  function tick(){
+    var y = window.scrollY - track.offsetTop, h = seg();
+    var f = Math.max(0, y/h);
+    var i = Math.min(N-1, Math.max(0, Math.floor(f + 0.35)));
+    var local = Math.min(1, Math.max(0, f - i + 0.35));
+    if (i === N-1) local = Math.max(local, 1);
+    setWorld(i);
+    var sc = screens[i];
+    if (sc) sc.querySelectorAll('.m').forEach(function(m){
+      var at = parseFloat(m.dataset.at||0);
+      m.classList.toggle('show', reduce() || local >= at*0.9);
+    });
+  }
+  var raf=0;
+  function onScroll(){ if(!raf) raf=requestAnimationFrame(function(){ raf=0; tick(); }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', function(){ sizeFloor(); onScroll(); });
+  sizeFloor();
+  var m=document.createElement('meta'); m.name='theme-color'; m.content=W[0].bg; document.head.appendChild(m);
+  tick();
+})();
+</script>
+</body>
+</html>
