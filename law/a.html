@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Take it up to Suite 550 | Ammeen &amp; Associates, LLC, Indianapolis</title>
+<meta name="description" content="Indianapolis attorneys for families in probate, business owners in disputes, credit unions that need outside general counsel, and people who would rather mediate. Barrister Building, Suite 550, 155 E. Market St.">
+<meta name="theme-color" content="#121516">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,700;6..96,800&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#121516; --cab:#1B2022; --brass:#C29A5B; --brass2:#8E6B37; --brassL:#E6C88E; --teal:#005267; --teal2:#0B6C84; --bronze:#4D4020; --paper:#F7F5F1;
+  --door:0; --needle:-75deg; --view:100%; --zoom:2.3;
+  --d:"Bodoni Moda", Georgia, serif; --f:"Public Sans", system-ui, -apple-system, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--f);color:#F4EFE6;background:var(--ink);overflow-x:hidden;font-size:17px}
+a{color:inherit} img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--brassL);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:#fff;color:#000;padding:10px 14px}.skip:focus{left:8px}
+.confirm{background:#FFE9A8;color:#4a3300;font-family:var(--f);font-weight:800;font-size:12px;padding:1px 6px;border-radius:3px;letter-spacing:0;font-style:normal;white-space:normal}
+
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:10px clamp(14px,3vw,40px);background:rgba(18,21,22,.95);border-bottom:1px solid rgba(230,200,142,.18)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{height:46px;width:auto}
+.logo span{font-family:var(--d);font-weight:700;font-size:19px;letter-spacing:.01em}
+.acts{display:flex;gap:8px;align-items:center}
+.phone{font-weight:700;font-size:15px;text-decoration:none;padding:10px 14px;border:1px solid rgba(230,200,142,.55);min-height:44px;display:flex;align-items:center;gap:8px;border-radius:2px}
+.phone svg{width:16px;height:16px}
+.book{font-weight:800;font-size:15px;text-decoration:none;padding:10px 18px;background:var(--brass);color:#1a1307;min-height:44px;display:flex;align-items:center;border-radius:2px}
+@media (max-width:640px){.phone .num,.logo span{display:none}.book{display:none}}
+
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(80% 90% at 30% 55%,#262C2E,var(--ink) 70%)}
+#steps{position:relative;pointer-events:none;margin-top:-100vh;margin-top:-100svh}
+.step{height:130vh;height:130svh}
+
+/* the elevator */
+.lift{position:absolute;left:clamp(12px,5vw,90px);top:0;bottom:0;width:min(46vw,640px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px}
+.dial{position:relative;width:min(62%,300px);aspect-ratio:2/1.08;margin-bottom:-2px}
+.dial svg{width:100%;height:100%;overflow:visible}
+.needle{transform-origin:150px 150px;transform:rotate(var(--needle));transition:transform .15s linear}
+.lantern{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;border-bottom:12px solid #3a3325;transition:border-color .3s}
+.stage.moving .lantern{border-bottom-color:#FFD58A;filter:drop-shadow(0 0 6px #FFB84A)}
+.frame{position:relative;height:min(66vh,720px);height:min(66svh,720px);aspect-ratio:.8;background:linear-gradient(90deg,#6F5227,var(--brass) 18%,#E3C386 50%,var(--brass) 82%,#6F5227);padding:14px 14px 0;border-radius:3px 3px 0 0;box-shadow:0 40px 80px rgba(0,0,0,.55)}
+.shaft{position:relative;width:100%;height:100%;overflow:hidden;background:#0d1112}
+.view{position:absolute;inset:0;background:url(assets/skyline.jpg) 64% var(--view)/auto calc(var(--zoom) * 100%) no-repeat;transition:background-position .7s ease,background-size .7s ease}
+.view::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.45))}
+.suite{position:absolute;inset:0;background:url(assets/partners-library.jpg) center 22%/cover no-repeat;opacity:0;transition:opacity .5s}
+.stage.s5 .suite{opacity:1}
+.plaque{position:absolute;left:50%;top:9%;transform:translateX(-50%);background:linear-gradient(#2A2F31,#15191A);border:2px solid var(--brass);padding:10px 18px;text-align:center;min-width:62%;box-shadow:0 10px 30px rgba(0,0,0,.5);z-index:2}
+.plaque small{display:block;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--brassL);font-weight:700}
+.plaque b{display:block;font-family:var(--d);font-weight:700;font-size:clamp(18px,1.9vw,28px);margin-top:4px;line-height:1.1}
+.doors{position:absolute;inset:0;display:flex;z-index:3;pointer-events:none}
+.door{flex:1;background:linear-gradient(90deg,rgba(0,0,0,.25),transparent 30%,rgba(255,255,255,.12) 60%,transparent),repeating-linear-gradient(90deg,#9D7A45 0 1px,#B28D55 1px 3px,#A9854F 3px 4px);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25)}
+.door.l{transform:translateX(calc(var(--door) * -98%));border-right:1px solid #5b4523}
+.door.r{transform:translateX(calc(var(--door) * 98%));border-left:1px solid #5b4523}
+.door::after{content:"";display:block;margin:38% auto 0;width:40%;height:22%;border:1px solid rgba(60,40,15,.35);box-shadow:inset 0 0 0 6px rgba(255,255,255,.04)}
+.sill{width:min(46vw,620px);height:12px;background:linear-gradient(#D9B676,#6F5227)}
+.call{position:absolute;right:-10%;top:52%;width:34px;padding:8px 0;background:linear-gradient(#2c3133,#171b1c);border:1px solid var(--brass2);border-radius:18px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.call i{width:14px;height:14px;border-radius:50%;background:#3b3526;border:1px solid var(--brass2);font-style:normal;font-size:8px;display:grid;place-items:center;color:#caa}
+.call i.on{background:#FFD58A;box-shadow:0 0 10px #FFB84A}
+
+/* text */
+.chart{position:absolute;right:clamp(16px,5vw,80px);top:50%;transform:translateY(-50%);width:min(500px,40vw);z-index:12}
+.case{position:absolute;left:0;top:50%;width:100%;transform:translateY(calc(-50% + 16px));opacity:0;visibility:hidden;transition:opacity .45s,transform .7s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+.case.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .55s .15s,transform .8s cubic-bezier(.2,.8,.2,1) .15s,visibility 0s}
+.fl{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:14px;letter-spacing:.06em;color:var(--brassL)}
+.fl b{font-family:var(--d);font-size:22px;width:38px;height:38px;border:1.5px solid var(--brass);border-radius:50%;display:grid;place-items:center;letter-spacing:0;color:#fff}
+h1,h2,h3{font-family:var(--d);font-weight:700;line-height:1.04;letter-spacing:-.01em}
+h1{font-size:clamp(44px,4.6vw,76px);margin-top:14px}
+h2{font-size:clamp(32px,3.2vw,52px);margin-top:12px}
+.t{font-size:clamp(17px,1.25vw,19px);line-height:1.55;margin-top:14px;color:#DCD6CB}
+.tags{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:16px;list-style:none}
+.tags li{font-size:15px;font-weight:600;padding:6px 10px;border:1px solid rgba(230,200,142,.35);color:#EFE6D5}
+.who{margin-top:16px;padding:12px 14px;border-left:3px solid var(--brass);background:rgba(255,255,255,.04);font-size:16px;line-height:1.5;color:#E8E1D4}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.cta{display:inline-flex;align-items:center;font-weight:800;font-size:17px;text-decoration:none;padding:14px 22px;background:var(--brass);color:#1a1307;min-height:50px;border-radius:2px}
+.ghost{display:inline-flex;align-items:center;font-weight:700;font-size:16px;text-decoration:none;padding:13px 20px;border:1.5px solid rgba(230,200,142,.7);min-height:50px;border-radius:2px}
+.trust{margin-top:16px;font-size:15px;line-height:1.5;color:#CFC6B6}
+.trust b{color:#fff}
+.acu{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:15px;color:#CFC6B6}
+.acu img{height:44px;width:auto;border-radius:2px}
+
+@media (max-width:900px){
+  .lift{left:0;right:0;width:auto;top:74px;bottom:auto;height:calc(40svh);padding-top:0;justify-content:flex-start}
+  .dial{width:104px}
+  .frame{height:calc(40svh - 70px);aspect-ratio:.9;padding:8px 8px 0}
+  .sill{width:calc((40svh - 70px)*.9 + 20px)}
+  .plaque{padding:6px 10px;min-width:80%}.plaque small{font-size:10px}.plaque b{font-size:16px}
+  .call{display:none}
+  .chart{left:18px;right:18px;width:auto;top:calc(40svh + 86px);bottom:80px;transform:none}
+  .case{top:0;transform:translateY(12px)}
+  .case.on{transform:none}
+  h1{font-size:clamp(31px,8.6vw,40px);margin-top:6px}
+  h2{font-size:clamp(26px,7vw,34px);margin-top:6px}
+  .t{font-size:17px;margin-top:8px;line-height:1.45}
+  .fl{font-size:12px}.fl b{width:30px;height:30px;font-size:17px}
+  .tags{margin-top:10px}.tags li{font-size:14px;padding:4px 8px}
+  .who{font-size:17px;margin-top:10px;padding:8px 10px}
+  .ctas{margin-top:12px}.case .ghost{display:none}
+  .trust{font-size:14px;margin-top:8px}
+}
+@media (max-width:900px){.case[data-w="0"] .trust{display:none}}
+@media (max-width:900px){.acu{display:none}}
+@media (max-width:900px) and (max-height:900px){.who,.tags{display:none}}
+
+.mbar{display:none}
+@media (max-width:900px){
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(18,21,22,.97);border-top:1px solid rgba(230,200,142,.3)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:48px;font-weight:800;text-decoration:none;font-size:16px;border-radius:2px}
+  .mbar .c{border:1.5px solid rgba(230,200,142,.6)}
+  .mbar .s{background:var(--brass);color:#1a1307}
+  body{padding-bottom:70px}
+}
+
+/* after */
+.after{background:var(--paper);color:#1C1F20;padding:clamp(60px,8vw,110px) clamp(18px,5vw,80px) 30px}
+.wrap{max-width:1160px;margin:0 auto}
+.kk{font-weight:800;font-size:14px;letter-spacing:.08em;color:var(--teal)}
+.after h2{font-size:clamp(38px,5vw,70px);max-width:18ch}
+.sub{font-size:clamp(17px,1.4vw,20px);line-height:1.55;margin-top:14px;max-width:60ch;color:#3A3F41}
+.people{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,40px);margin-top:44px}
+.person{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start}
+.person img{width:200px;height:auto;aspect-ratio:.8;object-fit:cover;object-position:50% 12%}
+.person h3{font-size:28px}
+.person .role{font-weight:700;color:var(--teal);margin-top:4px;font-size:16px}
+.person ul{margin-top:10px;padding-left:18px;font-size:17px;line-height:1.5}
+.person li{margin-top:4px}
+.person a{font-weight:700;color:var(--teal)}
+.steps3{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;border-top:2px solid #1C1F20}
+.steps3 li{padding:20px 22px 20px 0}
+.steps3 li+li{padding-left:22px;border-left:1px solid #D4CEC3}
+.steps3 b{display:block;font-family:var(--d);font-size:26px;line-height:1.1}
+.steps3 p{font-size:17px;line-height:1.55;margin-top:8px;color:#3A3F41}
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,5vw,70px);margin-top:70px;align-items:start}
+.form{background:#fff;border:1px solid #DDD6CA;padding:24px}
+.form h3{font-size:30px}
+.form label{display:block;font-weight:700;font-size:15px;margin-top:14px}
+.form input,.form textarea{width:100%;margin-top:6px;font:inherit;font-size:17px;padding:12px;border:1.5px solid #B9B2A6;border-radius:2px;background:#FDFCFA;min-height:48px}
+.form textarea{min-height:96px;resize:vertical}
+.form button{margin-top:16px;width:100%;font:inherit;font-weight:800;font-size:17px;padding:14px;background:var(--teal);color:#fff;border:0;min-height:52px;border-radius:2px;cursor:pointer}
+.form .disc{font-size:14px;line-height:1.5;margin-top:12px;color:#555}
+.endorse figure{padding:18px 0;border-top:1px solid #D4CEC3}
+.endorse figure:first-of-type{border-top:2px solid #1C1F20}
+.endorse blockquote{font-family:var(--d);font-size:21px;line-height:1.4}
+.endorse figcaption{font-size:15px;margin-top:8px;color:#4A4F51;font-weight:600}
+.note{font-size:14px;color:#555;margin-top:10px;line-height:1.5}
+.also{margin-top:64px}
+.also ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.also li{border:1px solid #CFC7BA;padding:8px 12px;font-size:17px;font-weight:600}
+.faq{margin-top:60px}
+.faq details{border-top:1px solid #D4CEC3;padding:10px 0}
+.faq summary{cursor:pointer;font-weight:800;font-size:19px;min-height:44px;display:flex;align-items:center}
+.faq details p{font-size:17px;line-height:1.55;margin-top:6px;max-width:72ch;color:#3A3F41}
+.foot{margin-top:50px;padding-top:22px;border-top:2px solid #1C1F20;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;font-size:17px;line-height:1.6}
+.foot h4{font-size:14px;font-weight:800;letter-spacing:.06em;margin-bottom:6px;color:var(--teal)}
+.fine{margin-top:26px;font-size:14px;line-height:1.55;max-width:95ch;color:#4A4F51}
+.fine b{color:#1C1F20}
+.btm{margin-top:16px;font-size:13px;color:#6A6F71}
+@media (max-width:900px){.people,.split,.steps3,.foot{grid-template-columns:1fr}.person{grid-template-columns:120px 1fr}.person img{width:120px}.steps3 li+li{padding-left:0;border-left:0;border-top:1px solid #D4CEC3}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contact">Skip to contact</a>
+<header class="bar">
+  <a class="logo" href="https://avalawin.com/" aria-label="Ammeen &amp; Associates home"><img src="assets/logo-monogram-white.png" alt="Ammeen &amp; Associates LLC" width="1022" height="298"></a>
+  <nav class="acts" aria-label="Contact">
+    <a class="phone" href="tel:+13174237505" aria-label="Call (317) 423-7505"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span class="num">(317) 423-7505</span></a>
+    <a class="book" href="#contact">Request a consultation</a>
+  </nav>
+</header>
+
+<main>
+<section class="track" id="track" aria-label="Five floors: who we help">
+  <div class="stage" id="stage">
+    <div class="lift" aria-hidden="true">
+      <div class="dial">
+        <svg viewBox="0 0 300 162">
+          <path d="M20 150 A130 130 0 0 1 280 150" fill="none" stroke="#8E6B37" stroke-width="3"/>
+          <path d="M34 150 A116 116 0 0 1 266 150" fill="#1A1E1F" stroke="#C29A5B" stroke-width="1.5"/>
+          <g font-family="Bodoni Moda, serif" font-weight="700" font-size="20" fill="#E6C88E" text-anchor="middle" id="nums"></g>
+          <g class="needle"><line x1="150" y1="150" x2="150" y2="52" stroke="#E6C88E" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="150" r="9" fill="#C29A5B"/></g>
+        </svg>
+        <span class="lantern"></span>
+      </div>
+      <div class="frame">
+        <div class="shaft">
+          <div class="view"></div>
+          <div class="suite"></div>
+          <div class="plaque" id="plaque"><small id="pk">Lobby &middot; 155 E. Market St.</small><b id="pb">Barrister Building</b></div>
+          <div class="doors"><div class="door l"></div><div class="door r"></div></div>
+        </div>
+        <div class="call" id="call"><i>5</i><i>4</i><i>3</i><i>2</i><i>1</i></div>
+      </div>
+      <div class="sill"></div>
+    </div>
+
+    <div class="chart">
+      <article class="case on" data-w="0">
+        <p class="fl"><b>L</b> Barrister Building &middot; 155 E. Market St., Indianapolis</p>
+        <h1>Bring the hard part up to Suite&nbsp;550.</h1>
+        <p class="t">Estates that turned into arguments. Contracts that turned into lawsuits. Credit unions that need a general counsel on call. Two senior Indianapolis attorneys, downtown since 2007.</p>
+        <div class="ctas"><a class="cta" href="tel:+13174237505">Call or text (317) 423-7505</a><a class="ghost" href="#contact">Request a consultation</a></div>
+        <p class="trust"><b>Former law clerk to Indiana Chief Justice Randall T. Shepard</b> &middot; 14 years as in-house counsel &middot; Registered civil &amp; family mediator</p>
+      </article>
+      <article class="case" data-w="1">
+        <p class="fl"><b>1</b> Families &amp; estates</p>
+        <h2>Someone you love died, and now there&rsquo;s a court case with their name on it.</h2>
+        <p class="t">We help personal representatives and heirs through probate in Indiana, and we represent families when a will, a guardianship or an estate turns into a dispute.</p>
+        <ul class="tags"><li>Probate administration</li><li>Will &amp; estate disputes</li><li>Guardianships</li><li>Wills, trusts &amp; powers of attorney</li></ul>
+      </article>
+      <article class="case" data-w="2">
+        <p class="fl"><b>2</b> Business owners</p>
+        <h2>A customer stopped paying. A partner stopped talking. A lease wants your personal guarantee.</h2>
+        <p class="t">Entity formation, governance, contracts and succession, and the disputes that follow when a deal goes sideways: breach of contract, collections, fraud and breach-of-duty claims.</p>
+        <p class="who">Gene Wheeler spent 7 years in court on creditors&rsquo; rights, then 14 years as in-house counsel for a Fortune 1000 commercial lender and one of the largest private companies in the U.S.</p>
+      </article>
+      <article class="case" data-w="3">
+        <p class="fl"><b>3</b> Credit unions</p>
+        <h2>Your credit union needs a general counsel. Not necessarily a full-time one.</h2>
+        <p class="t">Outside general counsel for regulatory compliance, contracts and vendors, HR questions, litigation and strategy.</p>
+        <p class="who">Gene has sat on the other side of this desk. As in-house counsel he hired and managed a network of outside litigation counsel, so he knows what a client needs from a firm.</p>
+        <p class="acu"><img src="assets/acu-logo.png" alt="America's Credit Unions" width="711" height="400"> Proud sponsor of America&rsquo;s Credit Unions</p>
+      </article>
+      <article class="case" data-w="4">
+        <p class="fl"><b>4</b> The conference room</p>
+        <h2>Some fights are better settled at a table than in a courtroom.</h2>
+        <p class="t">We mediate and arbitrate civil matters, from family disputes to bankruptcy. When it can&rsquo;t be settled, we litigate in state and federal court.</p>
+        <p class="who">James Ammeen is a registered civil and family mediator.</p>
+      </article>
+      <article class="case" data-w="5">
+        <p class="fl"><b>5</b> Suite 550</p>
+        <h2>You&rsquo;ll sit down with the attorneys, not a call center.</h2>
+        <p class="t">James J. Ammeen, Jr. clerked for the Chief Justice of Indiana, practiced at Baker &amp; Daniels and Lewis &amp; Kappes, and opened this firm in 2007. Gene A. Wheeler has been both the litigator and the client. <span class="confirm">[CONFIRM: attorney handles every first call]</span></p>
+        <div class="ctas"><a class="cta" href="tel:+13174237505">Call or text (317) 423-7505</a><a class="ghost" href="#contact">Send a message</a></div>
+        <p class="trust">Open 9 AM &ndash; 4 PM <span class="confirm">[CONFIRM: days]</span></p>
+      </article>
+    </div>
+  </div>
+  <div id="steps"></div>
+</section>
+
+<section class="after" id="contact" aria-labelledby="meetH">
+  <div class="wrap">
+    <p class="kk">Suite 550 &middot; Barrister Building</p>
+    <h2 id="meetH">Two attorneys. One floor. Your whole matter.</h2>
+    <p class="sub">A small firm on purpose. The attorney you meet is the attorney who works on your case. <span class="confirm">[CONFIRM wording + role of paralegal Michelle J. Reynolds]</span></p>
+    <div class="people">
+      <div class="person"><img src="assets/james-portrait.jpg" alt="James J. Ammeen, Jr., Esq." loading="lazy" width="1000" height="1101">
+        <div><h3>James J. Ammeen, Jr.</h3><p class="role">Managing Partner</p>
+          <ul><li>Law clerk to Chief Justice Randall T. Shepard, Indiana Supreme Court, 1995&ndash;97</li><li>Baker &amp; Daniels; Director at Lewis &amp; Kappes; opened the firm in 2007</li><li>Registered civil &amp; domestic relations mediator (Indiana)</li><li>Admitted: Indiana, 7th Circuit, S.D. &amp; N.D. Indiana, N.D. Illinois</li><li>21 years on the board of the Neighborhood Christian Legal Clinic</li></ul>
+          <p style="margin-top:10px"><a href="mailto:jamesa@avalawin.com">jamesa@avalawin.com</a></p></div></div>
+      <div class="person"><img src="assets/gene-portrait.jpg" alt="Gene A. Wheeler, Esq." loading="lazy" width="1000" height="1101">
+        <div><h3>Gene A. Wheeler</h3><p class="role">Attorney</p>
+          <ul><li>7 years of courtroom and appellate work in state and federal courts</li><li>14 years in-house: a Fortune 1000 commercial secured lender, then one of the largest private U.S. companies</li><li>Credit union law, regulatory compliance, governance, contracts</li><li>IU McKinney School of Law, cum laude; lives in Fishers</li></ul>
+          <p style="margin-top:10px"><a href="mailto:genew@avalawin.com">genew@avalawin.com</a></p></div></div>
+    </div>
+
+    <ol class="steps3" aria-label="What happens when you reach out">
+      <li><b>1. Call, text or write</b><p>(317) 423-7505, 9 to 4, or the short form below. Don&rsquo;t send confidential details yet.</p></li>
+      <li><b>2. We check for conflicts</b><p>Then an attorney gets back to you to hear what&rsquo;s going on. <span class="confirm">[CONFIRM: how fast, e.g. one business day]</span></p></li>
+      <li><b>3. You get a plan</b><p>We meet at Suite 550 or by phone, and you leave knowing the options and what they cost. <span class="confirm">[ASK: consultation free? how long?]</span></p></li>
+    </ol>
+
+    <div class="split">
+      <div class="endorse">
+        <p class="kk">What other lawyers say about James</p>
+        <figure><blockquote>&ldquo;I&rsquo;ve known Jim since he started in private practice and clerked for Chief Justice Shepard. You will not find a smarter lawyer more dedicated to thoroughly representing his clients in an ethical and exceptional manner.&rdquo;</blockquote><figcaption>Jeffrey Heinzmann, business lawyer &middot; Avvo peer endorsement</figcaption></figure>
+        <figure><blockquote>&ldquo;Jim is a highly intelligent and professional lawyer. He works with his clients to solve complex problems. I highly recommend him.&rdquo;</blockquote><figcaption>Brad Galbraith, litigation lawyer &middot; Avvo peer endorsement</figcaption></figure>
+        <figure><blockquote>&ldquo;Mr. Ammeen displayed extraordinary compassion for his client and zealously defended her best interests throughout his representation of one of my criminal clients in a recent divorce matter. I strongly endorse this lawyer.&rdquo;</blockquote><figcaption>Joel Hand, divorce &amp; separation lawyer &middot; Avvo peer endorsement</figcaption></figure>
+        <figure><blockquote>&ldquo;His entire team took so many calls from me and handled my case like I was family.&rdquo;</blockquote><figcaption>Client, family-law matter &middot; excerpt from a Google review <span class="confirm">[CONFIRM: James + reviewer OK to quote]</span></figcaption></figure>
+        <p class="note">Three endorsements are from fellow lawyers; one is a client. Past results and reviews do not guarantee or predict any outcome. <span class="confirm">[ASK: 3 more client reviews we may quote]</span></p>
+      </div>
+      <form class="form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Preview only: not sent';" aria-labelledby="formH">
+        <h3 id="formH">Request a consultation</h3>
+        <label for="n">Name</label><input id="n" name="name" autocomplete="name" required>
+        <label for="p">Phone</label><input id="p" name="phone" type="tel" autocomplete="tel" required>
+        <label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email">
+        <label for="m">In a sentence, what&rsquo;s going on?</label><textarea id="m" name="message"></textarea>
+        <button type="submit">Send to the firm</button>
+        <p class="disc">DISCLAIMER: The use of the internet or this form for communication with the firm or any individual member of the firm does not establish an attorney-client relationship. Confidential or time-sensitive information should not be sent through this form.</p>
+      </form>
+    </div>
+
+    <div class="also">
+      <p class="kk">Also on the directory</p>
+      <ul><li>Electoral &amp; political law: recounts, ballot access, campaign finance</li><li>Real property &amp; land use</li><li>Estate planning &amp; business succession</li><li>Bankruptcy &amp; creditors&rsquo; rights</li><li>Family law</li><li>Professional licensing defense</li><li>Local counsel for out-of-state firms</li><li>Personal injury co-counsel</li></ul>
+    </div>
+
+    <div class="faq">
+      <details><summary>Is the first consultation free?</summary><p><span class="confirm">[ASK James: free or paid, how long, in person or by phone]</span></p></details>
+      <details><summary>Will I actually talk to an attorney?</summary><p>Yes. We&rsquo;re a two-attorney firm, so the person you speak with is the person who works on your matter. <span class="confirm">[CONFIRM]</span></p></details>
+      <details><summary>We&rsquo;re a law firm outside Central Indiana. Can you serve as local counsel?</summary><p>Yes. We act as local counsel for out-of-state firms and for firms from counties outside Central Indiana, in state and federal courts.</p></details>
+      <details><summary>Can you mediate a dispute we haven&rsquo;t filed yet?</summary><p>James Ammeen is a registered civil and family mediator, and we handle mediation and arbitration across civil matters. Call to talk through whether mediation fits.</p></details>
+    </div>
+
+    <div class="foot">
+      <div><h4>Office</h4><p>Barrister Building, Suite 550<br>155 E. Market Street<br>Indianapolis, IN 46204</p></div>
+      <div><h4>Call or text</h4><p><a href="tel:+13174237505">(317) 423-7505</a><br>Fax (800) 613-4707<br>9 AM &ndash; 4 PM <span class="confirm">[CONFIRM: days]</span></p></div>
+      <div><h4>Email</h4><p><a href="mailto:jamesa@avalawin.com">jamesa@avalawin.com</a><br><a href="mailto:genew@avalawin.com">genew@avalawin.com</a></p></div>
+    </div>
+    <p class="fine"><b>Attorney advertising.</b> This website is general information, not legal advice. Contacting Ammeen &amp; Associates, LLC through this site, by phone, text or email does not create an attorney-client relationship, and confidential or time-sensitive information should not be sent until one exists. Past results and endorsements do not guarantee or predict a similar outcome; every matter depends on its own facts. No attorney at the firm is described here as a certified specialist. Attorney responsible for this content: James J. Ammeen, Jr. <span class="confirm">[CONFIRM final disclaimer wording with James]</span></p>
+    <p class="btm">Design preview for Ammeen &amp; Associates, LLC &middot; not the live site &middot; Sept 2026</p>
+  </div>
+</section>
+</main>
+
+<nav class="mbar" aria-label="Quick actions"><a class="c" href="tel:+13174237505">Call</a><a class="c" href="sms:+13174237505">Text</a><a class="s" href="#contact">Consultation</a></nav>
+
+<script>
+(function(){
+  var N=6, stage=document.getElementById('stage'), track=document.getElementById('track'), steps=document.getElementById('steps'), R=document.documentElement.style;
+  for(var i=0;i<N;i++){var s=document.createElement('div');s.className='step';steps.appendChild(s);}
+  var cases=[].slice.call(document.querySelectorAll('.case'));
+  var labels=['L','1','2','3','4','5'], g=document.getElementById('nums'), h='';
+  labels.forEach(function(l,n){var a=(-75+n*30)*Math.PI/180;h+='<text x="'+(150+100*Math.sin(a)).toFixed(1)+'" y="'+(156-100*Math.cos(a)).toFixed(1)+'">'+l+'</text>';});
+  g.innerHTML=h;
+  var plaque=[['Lobby · 155 E. Market St.','Barrister Building'],['Floor 1','Families & Estates'],['Floor 2','Business Owners'],['Floor 3','Credit Unions'],['Floor 4','The Conference Room'],['Suite 550','Ammeen & Associates']];
+  var pk=document.getElementById('pk'), pb=document.getElementById('pb'), bulbs=[].slice.call(document.querySelectorAll('#call i')).reverse();
+  function cl(v){return Math.max(0,Math.min(1,v));}
+  function reduce(){return matchMedia('(prefers-reduced-motion: reduce)').matches;}
+  var cur=-1;
+  function setStep(i){
+    if(i===cur)return;cur=i;
+    cases.forEach(function(c){var on=+c.dataset.w===i;c.classList.toggle('on',on);c.setAttribute('aria-hidden',on?'false':'true');});
+    for(var k=0;k<N;k++)stage.classList.toggle('s'+k,k===i);
+    pk.textContent=plaque[i][0]; pb.textContent=plaque[i][1];
+    bulbs.forEach(function(b,n){b.classList.toggle('on',n===i-1);});
+    R.setProperty('--view',(100-i*15)+'%'); R.setProperty('--zoom',(2.3-i*.26).toFixed(2));
+  }
+  function tick(){
+    var hh=steps.firstChild.getBoundingClientRect().height, y=window.scrollY-track.offsetTop;
+    var f=Math.max(0,Math.min(N-1,y/hh)), i=Math.min(N-1,Math.round(f));
+    setStep(i);
+    var d=Math.abs(f-Math.round(f));
+    var open=cl(1-(d-0.1)/0.26);
+    if(reduce()) open=d<0.3?1:0;
+    R.setProperty('--door',open.toFixed(3));
+    R.setProperty('--needle',(-75+f*30).toFixed(1)+'deg');
+    stage.classList.toggle('moving',d>0.2);
+  }
+  var raf=0;function onS(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});}
+  addEventListener('scroll',onS,{passive:true});
+  addEventListener('resize',function(){cur=-1;onS();});
+  tick();
+})();
+</script>
+</body>
+</html>
