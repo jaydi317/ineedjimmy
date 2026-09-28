@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Excell · Questions for Dr. McCray</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@800&family=Jost:wght@500&display=swap">
+<style>
+:root{--navy:#06205C;--deep:#031640;--orange:#EF8903;--paper:#F3F5F9;--card:#FFFFFF;--ink:#0E1A33;--muted:#4D5A75;--line:#D9DFEA;--green:#16704A;--red:#B42A24;--accentText:#A85400}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.5 'Barlow',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+header.hero{background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 28px) 0 30px}
+.wm{font:500 26px/1 'Jost',system-ui,sans-serif;letter-spacing:.06em}.wm b{font-weight:500;color:var(--orange)}
+.wm small{display:block;font-size:9px;letter-spacing:.24em;margin-top:5px;color:#C9D3EA}
+h1{font:800 clamp(34px,8vw,52px)/.95 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;margin:22px 0 12px;text-wrap:balance}
+h1 span{color:var(--orange)}
+.hero p{color:#DCE3F2;margin:0 0 10px;max-width:60ch}
+.how{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.how li{display:flex;gap:10px;align-items:flex-start;color:#fff}
+.how b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--navy);font-weight:800}
+.bar{position:sticky;top:0;z-index:20;background:rgba(3,22,64,.96);color:#fff;padding:10px 0 12px;padding-top:calc(env(safe-area-inset-top,0px) + 10px)}
+.bar .wrap{display:flex;align-items:center;gap:12px}
+.track{flex:1;height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--orange);transition:width .3s}
+.count{font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.notice{margin:16px 0 0;padding:14px 16px;border-radius:10px;background:#FFF3D6;color:#6B3B00;border:1px solid #F5C77A;font-size:16px}
+section.sec{padding-top:28px}
+.sec h2{font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--navy);margin:0}
+.sec .sub{color:var(--muted);margin:6px 0 14px;font-size:16px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;margin-bottom:14px;scroll-margin-top:70px}
+.q.done{border-color:#9BD3B5;box-shadow:inset 4px 0 0 var(--green)}
+.qn{font:700 13px/1 'Barlow',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accentText)}
+.q h3{font-size:20px;line-height:1.3;margin:6px 0 4px;font-weight:700;text-wrap:balance}
+.q .hint{color:var(--muted);font-size:16px;margin:0 0 12px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 10px}
+.talk{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;border:0;border-radius:999px;background:var(--orange);color:var(--navy);font-weight:800;font-size:18px;cursor:pointer}
+.talk svg{width:22px;height:22px}
+.talk.rec{background:var(--red);color:#fff}
+.talk.rec .dot{width:12px;height:12px;border-radius:50%;background:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.talk.rec .dot{animation:none}}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--red)}
+.ghost{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:15px;color:var(--muted)}
+.clips{display:grid;gap:10px;margin:4px 0 10px}
+.clip{background:var(--paper);border-radius:10px;padding:10px 12px}
+.clip audio{width:100%;height:40px}
+.clip .st{font-size:14px;font-weight:600;margin-top:6px}
+.st.ok{color:var(--green)}.st.wait{color:var(--muted)}.st.err{color:var(--red)}
+.clip .heard{font-size:15px;color:var(--ink);margin-top:6px;white-space:pre-wrap}
+.clip .heard b{color:var(--muted);font-weight:600}
+.retry{margin-top:6px}
+textarea,input.short{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;font-size:17px;line-height:1.4}
+textarea{min-height:84px;resize:vertical}
+textarea:focus,input.short:focus{outline:none;border-color:var(--orange)}
+.typed-st{font-size:14px;margin-top:6px;min-height:20px}
+.or{font-size:14px;color:var(--muted);margin:2px 0 6px}
+.done-box{margin:32px 0 16px;background:var(--navy);color:#fff;border-radius:14px;padding:24px 20px}
+.done-box h2{font:800 32px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:0 0 8px}
+.done-box p{color:#DCE3F2;margin:0 0 14px}
+.send{min-height:56px;width:100%;border:0;border-radius:12px;background:var(--orange);color:var(--navy);font-weight:800;font-size:19px;cursor:pointer}
+.send:disabled{opacity:.6}
+.memo{margin-top:16px;font-size:15px;color:#C9D3EA}
+.memo b{color:#fff}
+footer{color:var(--muted);font-size:14px;padding:10px 0 40px;text-align:center}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.jump a{font-size:14px;font-weight:600;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 12px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+ <div class="wm">EX<b>C</b>ELL<small>SPORTS CHIROPRACTIC</small></div>
+ <h1>Marcus, just <span>talk.</span></h1>
+ <p>Answer these like we're sitting in your office. Talk as long as you want, ramble, tell stories. That's the good stuff. I'll turn it into your website, your videos and a plan.</p>
+ <ul class="how">
+  <li><b>1</b><span>Tap the orange <strong>Talk</strong> button and allow the microphone.</span></li>
+  <li><b>2</b><span>Talk. Tap <strong>Stop</strong> when you're done. It saves itself.</span></li>
+  <li><b>3</b><span>Skip anything. Come back anytime on the same phone. The first five matter most.</span></li>
+ </ul>
+ <nav class="jump" aria-label="Sections" id="jump"></nav>
+ <div id="notice"></div>
+</div></header>
+<div class="bar" aria-live="polite"><div class="wrap"><div class="track"><div class="fill" id="fill"></div></div><div class="count" id="count">0 answered</div></div></div>
+<main class="wrap" id="main"></main>
+<div class="wrap">
+ <div class="done-box" id="finish">
+  <h2>All done for now?</h2>
+  <p>Everything you've answered is already saved. Tap below and I'll get a copy of all of it. You can still come back and add more later.</p>
+  <button class="send" id="sendAll" type="button">Send everything to Jimmy</button>
+  <p class="st" id="sendSt" style="margin-top:10px"></p>
+  <p class="memo"><b>Rather use Voice Memos?</b> Open the Voice Memos app, read the questions out loud and answer them, then text the recording to Jimmy. That works too.</p>
+ </div>
+</div>
+<footer>Private page for Dr. Marcus McCray · prepared by Jimmy Davis, iNeedJimmy.com</footer>
+
+<script>
+const QUESTIONS = [{"section": "start", "title": "Start here: the big five", "sub": "If you only have 10 minutes, answer these five. They matter most.", "items": [{"id": "b1", "type": "talk", "q": "Picture three years from now. The practice is exactly how you want it. Walk me through a normal week.", "hint": "How many days are you adjusting? Who else works there? What are you doing with the rest of your time?", "unlocks": "The target everything else gets measured against. Tells us if the goal is money, time, freedom, legacy, or all of it."}, {"id": "b2", "type": "talk", "q": "You said it's almost time to step away a little and bring in a new doctor. What's your timeline, and what would the right person look like?", "hint": "What would they need to be great at? What worries you about it?", "unlocks": "The real project: an associate model. The site, videos and patient 'funnel' get built to feed a second doctor, not just him."}, {"id": "b3", "type": "talk", "q": "Describe the patient you'd clone if you could. Then the one you don't want walking in.", "hint": "You said someone who already knows what's wrong with them. Tell me more. Who's the 8-to-80 sweet spot?", "unlocks": "The filter. Any ads or funnel only attract people he wants. Also decides who goes to him vs. a new associate."}, {"id": "b4", "type": "talk", "q": "If I sent you 20 new patients next month, could you see them? Would you want to?", "hint": "Which days or times have room? Where do you feel stretched?", "unlocks": "Capacity. If he's full, growth = memberships, services and an associate, not more patients."}, {"id": "b5", "type": "talk", "q": "If I could take one thing off your plate this month, what would it be?", "hint": "Anything. Phones, scheduling, marketing, paperwork, the website, something at home.", "unlocks": "Our first project and the fastest way to earn trust."}]}, {"section": "numbers", "title": "Your numbers", "sub": "Ballpark is fine. If ChiroTouch has a report, even better. Skip anything you'd rather not share.", "items": [{"id": "n1", "type": "short", "q": "New patients in a typical month", "unlocks": "Baseline for growth and for how many an associate could inherit."}, {"id": "n2", "type": "short", "q": "Patient visits in a typical week", "unlocks": "Utilization vs. capacity."}, {"id": "n3", "type": "short", "q": "Most visits you can comfortably handle in a week", "unlocks": "Ceiling. The gap to n2 is the room we have."}, {"id": "n4", "type": "short", "q": "Average visits per patient (you mentioned 24, still right?)", "unlocks": "Lifetime value. 24 visits is exceptional retention, which makes every new patient worth a lot."}, {"id": "n5", "type": "short", "q": "Roughly how many patients are on monthly maintenance?", "unlocks": "Base for a membership offer."}, {"id": "n6", "type": "short", "q": "Past patients who haven't been in for 6+ months (ChiroTouch can pull this)", "unlocks": "Reactivation list, usually the fastest money."}, {"id": "n7", "type": "short", "q": "No-shows or late cancels in a typical week", "unlocks": "Reminder and policy fixes."}, {"id": "n8", "type": "short", "q": "Hyperbaric and decompression sessions in a typical week", "unlocks": "How busy the equipment is. Idle machines become packages."}, {"id": "n9", "type": "short", "q": "Optional: rough monthly revenue, or average collected per visit", "unlocks": "Lets us size ideas in dollars. Totally optional."}]}, {"section": "referrals", "title": "How people find you", "sub": "You're 98% referrals. This is how we make that engine even stronger.", "items": [{"id": "r1", "type": "talk", "q": "When a patient sends you a friend, what do they usually say about you?", "hint": "The actual words, if you've heard them.", "unlocks": "The copy for the referral video, the site, and a 'send this to a friend' link."}, {"id": "r2", "type": "talk", "q": "Who sends you the most people? Patients, other doctors, trainers, gyms, coaches, Invoke?", "hint": "Any names or types that come to mind.", "unlocks": "Top referral sources to thank, nurture and partner with."}, {"id": "r3", "type": "talk", "q": "Do you do anything to thank people who refer? Anything to prompt it?", "unlocks": "A simple referral system: thank-you text, referral card, a 'bring a friend' visit."}, {"id": "r4", "type": "talk", "q": "The retired NFL players through Cigna: how many come through, and do they know each other?", "hint": "Is there an alumni group in Indy?", "unlocks": "A private referral network with a payer attached. One page and one email to the alumni group could be huge."}, {"id": "r5", "type": "talk", "q": "You mentioned you looked at your Google stats with ChatGPT. What did you find?", "hint": "People click Schedule and leave, or check the About page. Anything else?", "unlocks": "What the site must fix. Also: access to Google Business Profile and Analytics."}, {"id": "r6", "type": "talk", "q": "Your kids are athletes. Do their teammates' parents come to you? Any clubs, schools or teams that have you on call?", "unlocks": "A youth-athlete channel: parents are the best referrers there are."}]}, {"section": "money", "title": "How you get paid", "sub": "No wrong answers. You've seen what works and what doesn't for you.", "items": [{"id": "m1", "type": "talk", "q": "Walk me through what a new patient pays: first visit, then after.", "hint": "I found $129 for the exam, $65 for an adjustment, and $80 per x-ray region. Still right? OK to show prices on the site?", "unlocks": "The 'what it costs' section and receipt video, confirmed."}, {"id": "m2", "type": "talk", "q": "How does monthly maintenance work today, and what does it cost?", "unlocks": "The foundation of a membership."}, {"id": "m3", "type": "talk", "q": "You saw prepaid care plans at the Carmel practice and only about 20% paid up front. What would a membership need to look like for you to love it?", "hint": "And what would make it feel wrong?", "unlocks": "A membership designed around his values (no pressure, no long contracts) instead of the industry's."}, {"id": "m4", "type": "talk", "q": "Which services do you wish more people used?", "hint": "Hyperbaric, decompression, AllCore360, orthotics, stretching with Brittany, products.", "unlocks": "Which service pages and explainer videos to build first."}, {"id": "m5", "type": "talk", "q": "Is Brittany's schedule full? Could she take more people?", "unlocks": "Growth that doesn't cost him more hours."}]}, {"section": "story", "title": "Your story", "sub": "These become the website and the videos. You loved the explainer videos. This is where they come from.", "items": [{"id": "s1", "type": "talk", "q": "What do you find yourself explaining over and over in the office? Give me your top five.", "hint": "Each one can become a 60-second video, so you never have to film and edit it yourself.", "unlocks": "The video library. His favorite part of Monday."}, {"id": "s2", "type": "talk", "q": "Why did you become a chiropractor?", "unlocks": "The origin story for the About section and a 'Meet Dr. McCray' video."}, {"id": "s3", "type": "talk", "q": "Is there a Colts story you're allowed to tell? And how can we describe the Colts on your site?", "unlocks": "Proof, with the right permission and wording."}, {"id": "s4", "type": "talk", "q": "What do the pros get from you that regular people don't realize they can get too?", "unlocks": "The strongest headline we don't have yet."}, {"id": "s5", "type": "talk", "q": "What's the biggest misconception about chiropractors you're tired of fighting?", "unlocks": "A myth-busting section and a video."}, {"id": "s6", "type": "talk", "q": "Tell me about helping your kids reach their goals. Is it OK to share on the site?", "unlocks": "The human story behind 'what he's proudest of.'"}]}, {"section": "site", "title": "Your website", "sub": "Short and practical.", "items": [{"id": "w1", "type": "talk", "q": "Which looks or pieces did you like most? Anything you didn't like?", "hint": "You mentioned the explainer videos, the simple last page, and the football scrolling one.", "unlocks": "The final direction."}, {"id": "w2", "type": "talk", "q": "The out-of-office banner matters to you. How often do you post one? Would it help to just text 'Out Thursday' and have the site update itself?", "unlocks": "A text-to-update banner. Small thing he'll use every week."}, {"id": "w3", "type": "talk", "q": "If someone sticks around on your site, what do you want them to explore or learn?", "unlocks": "What goes on the site beyond the Schedule button."}, {"id": "w4", "type": "talk", "q": "Who has the logins: GoDaddy, WordPress, Google Business Profile, ChiroTouch? Would you want your own AI assistant you can text to make changes?", "unlocks": "Access to launch, plus a possible 'Jarvis for McCray' setup."}]}, {"section": "last", "title": "Two last ones", "sub": "Optional, but they'd mean a lot to me.", "items": [{"id": "t1", "type": "talk", "q": "In a sentence or two, what was it like seeing all of that on Monday?", "hint": "OK if I quote you on iNeedJimmy.com? Just say yes or no at the end.", "unlocks": "The testimonial."}, {"id": "t2", "type": "talk", "q": "Who are two or three business owners you know who are working in their business instead of on it, and would love to see what you saw?", "hint": "OK to mention your name when I reach out?", "unlocks": "Referrals for Jimmy."}]}];
+const CONFIG = { endpoint: "__ENDPOINT__", token: "excell-mccray-2026", name: "Dr. Marcus McCray" };
+(function(){
+ var qs = new URLSearchParams(location.search);
+ var ENDPOINT = qs.get('endpoint') || CONFIG.endpoint;
+ if (ENDPOINT.indexOf('__') === 0) ENDPOINT = '';
+ var LS = 'excell-mccray-answers-v1';
+ var state = {}; try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e) {}
+ if (!state.session) state.session = 'S' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+ state.answers = state.answers || {};
+ function persist(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e) {} }
+ persist();
+
+ var main = document.getElementById('main'), jump = document.getElementById('jump');
+ var all = [];
+ QUESTIONS.forEach(function(sec){
+  var s = document.createElement('section'); s.className='sec'; s.id='sec-'+sec.section;
+  s.innerHTML = '<h2>'+sec.title+'</h2><p class="sub">'+sec.sub+'</p>';
+  var a = document.createElement('a'); a.href='#sec-'+sec.section; a.textContent=sec.title.replace('Start here: the big five','The big five'); jump.appendChild(a);
+  sec.items.forEach(function(it){ all.push(it); s.appendChild(card(it)); });
+  main.appendChild(s);
+ });
+ if (!ENDPOINT) {
+  document.getElementById('notice').innerHTML = '<div class="notice"><b>Heads up:</b> voice saving isn\'t switched on for this link yet, so recordings stay on this phone. Typed answers are saved here too. Ask Jimmy for the final link, or use the Voice Memos option at the bottom.</div>';
+ }
+ updateProgress();
+
+ function micSvg(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>'; }
+
+ function card(it){
+  var el = document.createElement('div'); el.className='q'; el.id='q-'+it.id;
+  var num = it.id.toUpperCase();
+  var html = '<div class="qn">'+num+'</div><h3>'+esc(it.q)+'</h3>' + (it.hint ? '<p class="hint">'+esc(it.hint)+'</p>' : '<p class="hint"></p>');
+  if (it.type === 'talk') {
+   html += '<div class="controls"><button class="talk" type="button">'+micSvg()+'<span>Talk</span></button><span class="timer" hidden></span></div><div class="clips"></div><p class="or">Or type it:</p><textarea rows="3" aria-label="Type your answer to '+esc(it.q)+'"></textarea>';
+  } else {
+   html += '<input class="short" type="text" inputmode="text" aria-label="'+esc(it.q)+'" placeholder="Your answer">';
+  }
+  html += '<div class="typed-st st"></div>';
+  el.innerHTML = html;
+  var field = el.querySelector('textarea, input.short');
+  var saved = state.answers[it.id] || {};
+  if (saved.text) field.value = saved.text;
+  if (saved.done) el.classList.add('done');
+  var tst = el.querySelector('.typed-st');
+  var lastSent = saved.text || '';
+  var saveTimer;
+  function saveTyped(){
+   var v = field.value.trim();
+   state.answers[it.id] = Object.assign(state.answers[it.id]||{}, {text: field.value});
+   if (v) { state.answers[it.id].done = true; el.classList.add('done'); }
+   persist(); updateProgress();
+   if (v === lastSent.trim()) return;
+   if (!ENDPOINT) { tst.className='typed-st st ok'; tst.textContent='Saved on this phone'; return; }
+   tst.className='typed-st st wait'; tst.textContent='Saving…';
+   send({kind:'text', qid:it.id, question:it.q, text:v}).then(function(){ lastSent=v; tst.className='typed-st st ok'; tst.textContent='Saved ✓'; })
+    .catch(function(){ tst.className='typed-st st err'; tst.textContent='Not sent yet. It will retry when you tap "Send everything".'; });
+  }
+  field.addEventListener('input', function(){ state.answers[it.id]=Object.assign(state.answers[it.id]||{}, {text: field.value}); persist(); clearTimeout(saveTimer); saveTimer=setTimeout(saveTyped, 2500); });
+  field.addEventListener('blur', function(){ clearTimeout(saveTimer); saveTyped(); });
+  if (it.type === 'talk') wireRecorder(el, it);
+  return el;
+ }
+
+ var active = null;
+ function wireRecorder(el, it){
+  var btn = el.querySelector('.talk'), timer = el.querySelector('.timer'), clips = el.querySelector('.clips');
+  var savedInit = state.answers[it.id] || {};
+  (savedInit.clips||[]).forEach(function(c){ var d=document.createElement('div'); d.className='clip'; d.innerHTML=(c.ok?'<div class="st ok">Recording '+c.n+' saved ✓ ('+fmt(c.secs)+')</div>':'<div class="st wait">Recording '+c.n+' ('+fmt(c.secs)+') is on this phone only. Record it again to send it.</div>')+(c.heard?'<div class="heard"><b>What I heard:</b> '+esc(c.heard)+'</div>':''); clips.appendChild(d); });
+  btn.addEventListener('click', function(){
+   if (active && active.el === el) { active.stop(); return; }
+   if (active) active.stop();
+   start();
+  });
+  function start(){
+   if (!navigator.mediaDevices || !window.MediaRecorder) { showErr('This browser can\'t record. Please type, or use Voice Memos (see bottom).'); return; }
+   navigator.mediaDevices.getUserMedia({audio:true}).then(function(stream){
+    var mime = ['audio/webm;codecs=opus','audio/mp4','audio/webm','audio/ogg;codecs=opus'].find(function(m){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m); }) || '';
+    var rec = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+    var chunks = [], t0 = Date.now(), iv;
+    rec.ondataavailable = function(e){ if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = function(){
+     stream.getTracks().forEach(function(t){ t.stop(); });
+     clearInterval(iv); timer.hidden = true;
+     btn.classList.remove('rec'); btn.innerHTML = micSvg()+'<span>Talk again</span>';
+     var secs = Math.round((Date.now()-t0)/1000);
+     var blob = new Blob(chunks, {type: rec.mimeType || mime || 'audio/webm'});
+     if (secs < 1 || !blob.size) return;
+     addClip(blob, secs);
+    };
+    rec.start(1000);
+    btn.classList.add('rec'); btn.innerHTML = '<span class="dot"></span><span>Stop</span>';
+    timer.hidden = false; timer.textContent = '0:00';
+    iv = setInterval(function(){ var s=Math.round((Date.now()-t0)/1000); timer.textContent = fmt(s); if (s >= 900) active && active.stop(); }, 500);
+    active = { el: el, stop: function(){ if (rec.state !== 'inactive') rec.stop(); active = null; } };
+   }).catch(function(){ showErr('I couldn\'t use the microphone. Check that this site is allowed to use it, or type your answer.'); });
+  }
+  function addClip(blob, secs){
+   var saved = state.answers[it.id] = state.answers[it.id] || {};
+   saved.clips = saved.clips || [];
+   var n = saved.clips.length + 1;
+   var d = document.createElement('div'); d.className='clip';
+   var url = URL.createObjectURL(blob);
+   d.innerHTML = '<audio controls preload="metadata" src="'+url+'"></audio><div class="st wait">Saving recording '+n+'…</div><div class="heard" hidden></div>';
+   clips.appendChild(d);
+   el.classList.add('done'); saved.done = true; persist(); updateProgress();
+   var st = d.querySelector('.st'), heard = d.querySelector('.heard');
+   var entry = {n:n, secs:secs}; saved.clips.push(entry); persist();
+   function upload(){
+    if (!ENDPOINT) { st.className='st ok'; st.textContent='Recorded ('+fmt(secs)+'). Saved on this phone only; voice saving isn\'t switched on yet.'; return; }
+    st.className='st wait'; st.textContent='Saving recording '+n+'…';
+    toBase64(blob).then(function(b64){
+     return send({kind:'audio', qid:it.id, question:it.q, clip:n, seconds:secs, mime:blob.type, audio:b64});
+    }).then(function(res){
+     st.className='st ok'; st.textContent='Recording '+n+' saved ✓ ('+fmt(secs)+')'; entry.ok = true; persist();
+     if (res && res.transcript) { heard.hidden=false; heard.innerHTML='<b>What I heard:</b> '+esc(res.transcript); entry.heard = res.transcript; persist(); }
+    }).catch(function(){
+     st.className='st err'; st.innerHTML='Didn\'t save. Check your connection. <button class="ghost retry" type="button">Try again</button>';
+     st.querySelector('button').onclick = upload;
+    });
+   }
+   upload();
+  }
+  function showErr(msg){ var d=document.createElement('div'); d.className='clip'; d.innerHTML='<div class="st err">'+esc(msg)+'</div>'; clips.appendChild(d); }
+ }
+
+ function send(payload){
+  payload.token = CONFIG.token; payload.session = state.session; payload.name = CONFIG.name; payload.sentAt = new Date().toISOString();
+  var body = JSON.stringify(payload);
+  return fetch(ENDPOINT, {method:'POST', body: body, redirect:'follow'}).then(function(r){
+   if (!r.ok) throw new Error('HTTP '+r.status);
+   return r.json().catch(function(){ return {}; });
+  }).then(function(j){ if (j && j.ok === false) throw new Error(j.error||'error'); return j; })
+  .catch(function(err){
+   // Fallback for strict CORS: send without reading the reply.
+   return fetch(ENDPOINT, {method:'POST', body: body, mode:'no-cors'}).then(function(){ return {}; });
+  });
+ }
+
+ document.getElementById('sendAll').addEventListener('click', function(){
+  var b = this, st = document.getElementById('sendSt');
+  document.querySelectorAll('textarea, input.short').forEach(function(f){ f.blur(); });
+  if (!ENDPOINT) { st.style.color='#FFD08A'; st.textContent='Voice saving isn\'t switched on for this link yet. Your typed answers are saved on this phone.'; return; }
+  b.disabled = true; st.style.color='#DCE3F2'; st.textContent='Sending…';
+  var answers = all.map(function(it){ var a=state.answers[it.id]||{}; return {qid:it.id, question:it.q, text:(a.text||'').trim(), clips:(a.clips||[]).length}; });
+  send({kind:'final', answers: answers}).then(function(){
+   st.style.color='#9BE3BE'; st.textContent='Sent ✓ Thank you, Marcus. Jimmy has everything.'; b.textContent='Sent ✓';
+  }).catch(function(){ b.disabled=false; st.style.color='#FFD08A'; st.textContent='Couldn\'t send. Check your connection and try again.'; });
+ });
+
+ function updateProgress(){
+  var n = all.filter(function(it){ var a=state.answers[it.id]; return a && a.done; }).length;
+  document.getElementById('count').textContent = n + ' of ' + all.length + ' answered';
+  document.getElementById('fill').style.width = (all.length ? (n/all.length*100) : 0) + '%';
+ }
+ function toBase64(blob){ return new Promise(function(res, rej){ var r=new FileReader(); r.onload=function(){ res(String(r.result).split(',')[1]); }; r.onerror=rej; r.readAsDataURL(blob); }); }
+ function fmt(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+ function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+})();
+</script>
+</body>
+</html>
