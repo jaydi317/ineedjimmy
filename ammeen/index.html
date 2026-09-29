@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <link rel="icon" href="data:,">
-  <title>Ammeen &amp; Associates | Nine Website Concepts</title>
-  <meta name="description" content="Nine website concepts for Ammeen & Associates: three Codex Astra directions, three Claude directions, and three scrolling experiences.">
+  <title>Ammeen &amp; Associates | Website and Video Concepts</title>
+  <meta name="description" content="Nine website concepts and three short videos for Ammeen & Associates.">
   <style>
     :root{color-scheme:light;--ink:#102d36;--teal:#00576a;--gold:#bd9755;--paper:#f3f6f6;--white:#fff;--line:#c9d4d5;--muted:#526770}
     *{box-sizing:border-box}
@@ -17,7 +17,7 @@
     .skip{position:absolute;left:-9999px;top:10px;background:#fff;padding:12px;z-index:10}.skip:focus{left:10px}
     .masthead{background:var(--ink);color:var(--white);padding:22px max(24px,calc((100vw - 1220px)/2));border-bottom:4px solid var(--gold);display:flex;justify-content:space-between;align-items:center;gap:20px}
     .wordmark{font-family:Georgia,serif;font-size:21px;letter-spacing:-.03em}.wordmark span{color:#d3b477}
-    .masthead-note{font-size:14px;color:#c6d7dc;white-space:nowrap}
+    .masthead-note{font-size:14px;color:#c6d7dc;white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
     .hero{max-width:1220px;margin:auto;padding:70px 24px 58px;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:38px;align-items:end}
     h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(42px,6.7vw,88px);line-height:1.02;letter-spacing:-.055em;max-width:940px;margin:0}
     .intro{font-size:20px;max-width:640px;margin:24px 0 0;color:var(--muted)}
@@ -37,6 +37,11 @@
     .card h3{font-family:Georgia,serif;font-weight:400;line-height:1.13;font-size:27px;letter-spacing:-.03em;margin:0 0 9px}
     .card p{font-size:15px;line-height:1.45;color:var(--muted);margin:0 0 21px}
     .open{margin-top:auto;color:var(--teal);font-weight:700;font-size:15px;border-top:1px solid var(--line);padding-top:13px}
+    .video-card{min-width:0;margin:0;background:var(--white);border:1px solid var(--line)}
+    .video-card video{display:block;width:100%;aspect-ratio:16/9;background:var(--ink)}
+    .video-card figcaption{padding:19px 20px 22px}
+    .video-card h3{font-family:Georgia,serif;font-weight:400;line-height:1.13;font-size:27px;letter-spacing:-.03em;margin:0 0 9px}
+    .video-card p{font-size:15px;line-height:1.45;color:var(--muted);margin:0}
     .foot{border-top:1px solid var(--line);margin-top:47px;padding-top:22px;color:var(--muted);font-size:15px;max-width:760px}
     @media(max-width:850px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-template-columns:minmax(0,1fr) 100px;padding-top:48px}.hero-count{font-size:120px}}
     @media(max-width:620px){.masthead{padding:16px 20px}.wordmark{font-size:18px}.masthead-note{font-size:12px}.hero{display:block;padding:40px 20px 37px}.hero-count{display:none}.intro{font-size:18px;margin-top:16px}.content{padding:0 20px 58px}.group{padding-top:18px;margin-top:19px}.group-heading{display:block}.group-heading p{text-align:left;margin-top:5px}.grid{grid-template-columns:1fr;gap:16px}.card h3{font-size:25px}.thumb{aspect-ratio:1.65}.foot{margin-top:35px}}
@@ -47,12 +52,12 @@
   <a class="skip" href="#concepts">Skip to concepts</a>
   <header class="masthead">
     <div class="wordmark">Ammeen <span>&amp;</span> Associates</div>
-    <div class="masthead-note">Indianapolis website concepts</div>
+    <a class="masthead-note" href="#video-heading">Watch the 3 videos</a>
   </header>
   <div class="hero">
     <div>
       <h1>Which one feels like your firm?</h1>
-      <p class="intro">Nine different ways to introduce Ammeen &amp; Associates online. Open a concept, scroll through it, then come back and compare.</p>
+      <p class="intro">Nine website directions and three short videos. Open a concept, watch a film, then come back and compare.</p>
     </div>
     <div class="hero-count" aria-hidden="true">9</div>
   </div>
@@ -81,7 +86,24 @@
         <a class="card" href="/law/c.html"><span class="thumb"><img src="assets/scroll-c.png" alt="The Table scrolling page preview" loading="lazy"></span><span class="card-body"><h3>The Table</h3><p>A visual journey to the right table for a difficult legal decision.</p><span class="open">Open scrolling page ↗</span></span></a>
       </div>
     </section>
-    <p class="foot">These are design previews for discussion, not the firm’s current website. Details marked for confirmation still need the firm’s approval.</p>
+    <section class="group" aria-labelledby="video-heading">
+      <div class="group-heading"><h2 id="video-heading">Short films</h2><p>Three silent videos from Claude</p></div>
+      <div class="grid">
+        <figure class="video-card">
+          <video controls playsinline preload="none" poster="videos/mile-square.jpg" aria-label="Play Mile Square video"><source src="videos/mile-square.mp4" type="video/mp4">Your browser does not support video playback.</video>
+          <figcaption><h3>Mile Square</h3><p>Downtown Indianapolis and the firm’s place at Suite 550.</p></figcaption>
+        </figure>
+        <figure class="video-card">
+          <video controls playsinline preload="none" poster="videos/the-signature.jpg" aria-label="Play The Signature video"><source src="videos/the-signature.mp4" type="video/mp4">Your browser does not support video playback.</video>
+          <figcaption><h3>The Signature</h3><p>The firm’s mark, its attorneys, and its identity.</p></figcaption>
+        </figure>
+        <figure class="video-card">
+          <video controls playsinline preload="none" poster="videos/the-docket.jpg" aria-label="Play The Docket video"><source src="videos/the-docket.mp4" type="video/mp4">Your browser does not support video playback.</video>
+          <figcaption><h3>The Docket</h3><p>A case-file look at the firm’s history and experience.</p></figcaption>
+        </figure>
+      </div>
+    </section>
+    <p class="foot">These website and video concepts are previews for discussion, not the firm’s current website. Details marked for confirmation still need the firm’s approval.</p>
   </main>
 </body>
 </html>
