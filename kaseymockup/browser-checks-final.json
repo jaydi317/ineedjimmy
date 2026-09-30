@@ -1,0 +1,637 @@
+[
+  {
+    "size": "320x700",
+    "file": "quiet-way-out.html",
+    "clientWidth": 305,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 697,
+    "heroCtaTop": 630,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03214.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03224.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03545.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 305,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "THE QUIET WAY OUT",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "320x700",
+    "file": "undo-the-pattern.html",
+    "clientWidth": 305,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 644,
+    "heroCtaTop": 577,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03355.jpg"
+      }
+    ],
+    "mechanismCards": [
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      }
+    ],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 305,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "FIND · RELEASE · REBUILD",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "320x700",
+    "file": "monday-is-just-monday.html",
+    "clientWidth": 305,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 618,
+    "heroCtaTop": 551,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07116.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07060.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 305,
+    "scrollX": 0,
+    "sections": 6,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "MONDAY IS JUST MONDAY",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "375x812",
+    "file": "quiet-way-out.html",
+    "clientWidth": 360,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 670,
+    "heroCtaTop": 603,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03214.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03224.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03545.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 360,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "THE QUIET WAY OUT",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "375x812",
+    "file": "undo-the-pattern.html",
+    "clientWidth": 360,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 693,
+    "heroCtaTop": 626,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03355.jpg"
+      }
+    ],
+    "mechanismCards": [
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      }
+    ],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 360,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "FIND · RELEASE · REBUILD",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "375x812",
+    "file": "monday-is-just-monday.html",
+    "clientWidth": 360,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 631,
+    "heroCtaTop": 564,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07116.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07060.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 360,
+    "scrollX": 0,
+    "sections": 6,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "MONDAY IS JUST MONDAY",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "768x1024",
+    "file": "quiet-way-out.html",
+    "clientWidth": 753,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 738,
+    "heroCtaTop": 687,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03214.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03224.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03545.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 753,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "THE QUIET WAY OUT",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "768x1024",
+    "file": "undo-the-pattern.html",
+    "clientWidth": 753,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 667,
+    "heroCtaTop": 616,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03355.jpg"
+      }
+    ],
+    "mechanismCards": [
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      }
+    ],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 753,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "FIND · RELEASE · REBUILD",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "768x1024",
+    "file": "monday-is-just-monday.html",
+    "clientWidth": 753,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 594,
+    "heroCtaTop": 544,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07116.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07060.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 753,
+    "scrollX": 0,
+    "sections": 6,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "MONDAY IS JUST MONDAY",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1440x900",
+    "file": "quiet-way-out.html",
+    "clientWidth": 1425,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 820,
+    "heroCtaTop": 770,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03214.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03224.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03545.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1425,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "THE QUIET WAY OUT",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1440x900",
+    "file": "undo-the-pattern.html",
+    "clientWidth": 1425,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 842,
+    "heroCtaTop": 791,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03355.jpg"
+      }
+    ],
+    "mechanismCards": [
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      }
+    ],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1425,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "FIND · RELEASE · REBUILD",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1440x900",
+    "file": "monday-is-just-monday.html",
+    "clientWidth": 1425,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 608,
+    "heroCtaTop": 558,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07116.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07060.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1425,
+    "scrollX": 0,
+    "sections": 6,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "MONDAY IS JUST MONDAY",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1920x1080",
+    "file": "quiet-way-out.html",
+    "clientWidth": 1905,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 873,
+    "heroCtaTop": 823,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03214.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03224.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03545.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1905,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "THE QUIET WAY OUT",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1920x1080",
+    "file": "undo-the-pattern.html",
+    "clientWidth": 1905,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 872,
+    "heroCtaTop": 821,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSA03355.jpg"
+      }
+    ],
+    "mechanismCards": [
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      },
+      {
+        "bg": "rgb(255, 255, 255)",
+        "body": "rgb(23, 23, 25)",
+        "heading": "rgb(23, 23, 25)"
+      }
+    ],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1905,
+    "scrollX": 0,
+    "sections": 7,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "FIND · RELEASE · REBUILD",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  },
+  {
+    "size": "1920x1080",
+    "file": "monday-is-just-monday.html",
+    "clientWidth": 1905,
+    "forms": 0,
+    "h1": 1,
+    "heroCtaBottom": 704,
+    "heroCtaTop": 653,
+    "heroCtaVisible": true,
+    "images": [
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07116.jpg"
+      },
+      {
+        "alt": true,
+        "loaded": true,
+        "src": "assets/photos/DSC07060.jpg"
+      }
+    ],
+    "mechanismCards": [],
+    "offerHeadings": 1,
+    "robots": "noindex,nofollow",
+    "scrollWidth": 1905,
+    "scrollX": 0,
+    "sections": 6,
+    "stamp": {
+      "background": "rgb(255, 255, 255)",
+      "color": "rgb(23, 23, 25)",
+      "text": "MONDAY IS JUST MONDAY",
+      "visible": true
+    },
+    "modalOpened": true,
+    "escapeClosedAndFocusReturned": true,
+    "pageOriginConsoleErrors": 0
+  }
+]
