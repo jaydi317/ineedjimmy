@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Love the home you're coming home to | Designed By Kim, Interior Design in Fishers, IN</title>
+<meta name="description" content="Interior design by Kim Tokach in Fishers and the Indianapolis area. One house, eight rooms, the lights coming on one at a time.">
+<meta name="theme-color" content="#0B1020">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--night:#0B1020;--ivory:#EFE6D3;--gold:#D4AE6A;--warm:#FFD99A;
+  --serif:"Cormorant Garamond",Georgia,serif;--sans:"Jost",system-ui,-apple-system,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-weight:300;color:var(--ivory);background:var(--night);overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:#fff;color:#000;padding:10px 14px}.skip:focus{left:8px}
+
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(14px,3vw,44px);background:linear-gradient(rgba(11,16,32,.55),rgba(11,16,32,0))}
+.mark{text-decoration:none;display:flex;flex-direction:column;line-height:1}
+.mark b{font-family:var(--serif);font-weight:400;font-size:25px;letter-spacing:.01em}
+.mark b i{font-weight:300}
+.mark span{font-size:9.5px;letter-spacing:.32em;text-transform:uppercase;margin-top:5px;opacity:.7}
+.acts{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 22px;text-decoration:none;font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;border-radius:2px}
+.btn svg{width:15px;height:15px}
+.btn.line{border:1px solid rgba(239,230,211,.45)}
+.btn.gold{background:var(--gold);color:#1a1408}
+.mbar{display:none}
+@media (max-width:760px){
+  .bar .acts{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(11,16,32,.94);backdrop-filter:blur(10px);border-top:1px solid rgba(239,230,211,.12)}
+  .mbar .btn{font-size:12px;letter-spacing:.12em}
+}
+
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+#house{position:absolute;left:0;top:0;width:100%;height:100%}
+.scrim{position:absolute;inset:0 0 0 auto;width:46vw;background:linear-gradient(90deg,rgba(11,16,32,0),rgba(11,16,32,.72) 38%,rgba(11,16,32,.86));z-index:2;pointer-events:none}
+#steps{position:relative;pointer-events:none;margin-top:-100vh;margin-top:-100svh}
+.step{height:180vh;height:180svh}.step.tail{height:110vh;height:110svh}
+
+.copy{position:absolute;right:clamp(18px,4vw,72px);top:50%;transform:translateY(-50%);width:min(430px,32vw);z-index:5}
+.card{position:absolute;left:0;top:50%;width:100%;transform:translateY(calc(-50% + 18px));opacity:0;visibility:hidden;transition:opacity .5s,transform .8s cubic-bezier(.2,.8,.2,1),visibility 0s .5s}
+.card.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .6s .15s,transform .9s cubic-bezier(.2,.8,.2,1) .15s,visibility 0s}
+.k{font-size:11px;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.time{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.sw{width:30px;height:16px;border-radius:9px;border:1px solid rgba(239,230,211,.5);position:relative;transition:background .3s}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:10px;height:10px;border-radius:50%;background:var(--ivory);transition:transform .3s}
+.card.lit .sw{background:var(--gold);border-color:var(--gold)}
+.card.lit .sw::after{transform:translateX(14px);background:#1a1408}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.02;letter-spacing:-.005em}
+h1{font-size:clamp(50px,5.6vw,92px);margin-top:16px}
+h1 em,h2 em,h3 em{font-style:italic;color:var(--gold)}
+h2{font-size:clamp(34px,3.2vw,52px);margin-top:14px}
+.lede{font-size:clamp(16px,1.2vw,18.5px);line-height:1.65;margin-top:18px;max-width:40ch;opacity:.88}
+.card p.body{font-size:clamp(15px,1.08vw,17px);line-height:1.65;margin-top:14px;opacity:.88}
+.seen{margin-top:14px;padding-top:12px;border-top:1px solid rgba(239,230,211,.16);font-size:12.5px;letter-spacing:.06em;line-height:1.55;opacity:.7}
+.hint{margin-top:24px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.6}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.cf{font-size:9.5px;letter-spacing:.12em;color:#F2B79A;vertical-align:super;margin-left:3px}
+.rooms{position:absolute;left:clamp(16px,3vw,44px);bottom:20px;z-index:5;display:flex;gap:6px;align-items:center;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;opacity:.8}
+.rooms i{width:9px;height:9px;border:1px solid rgba(239,230,211,.5);border-radius:50%;transition:all .4s}
+.rooms i.on{background:var(--warm);border-color:var(--warm);box-shadow:0 0 10px var(--warm)}
+.rooms span{margin-left:8px}
+
+@media (max-width:900px){
+  #house{width:100%;height:56svh;top:56px}
+  .scrim{width:auto;left:0;top:calc(56px + 56svh - 40px);background:linear-gradient(rgba(11,16,32,0),var(--night) 40px)}
+  .copy{left:20px;right:20px;width:auto;top:calc(56px + 56svh + 4px);bottom:84px;transform:none}
+  .card{top:0;transform:translateY(16px)}.card.on{transform:none}
+  h1{font-size:clamp(34px,10vw,46px);margin-top:6px}
+  h2{font-size:clamp(26px,7.4vw,34px);margin-top:6px}
+  .lede{font-size:15px;margin-top:8px;line-height:1.55}
+  .card p.body{font-size:14.5px;margin-top:6px;line-height:1.5}
+  .seen,.cta-row{display:none}
+  .time{margin-top:4px;font-size:11px}
+  .hint{margin-top:10px}
+  .rooms{left:auto;right:16px;bottom:auto;top:calc(56px + 56svh - 22px)}
+  .rooms span{display:none}
+}
+@media (max-width:900px) and (max-height:720px){#house{height:50svh}.copy{top:calc(56px + 50svh + 2px)}.rooms{top:calc(56px + 50svh - 20px)}.card p.body{display:none}}
+
+/* after */
+.after{position:relative;background:radial-gradient(90% 60% at 50% 0%,#1B2442,var(--night) 70%);padding:clamp(80px,10vw,150px) clamp(20px,5vw,80px) 44px}
+.wrap{max-width:1140px;margin:0 auto}
+.after h2{font-size:clamp(46px,6vw,96px);max-width:14ch;margin-top:12px}
+.after .sub{font-size:clamp(17px,1.35vw,20px);line-height:1.65;margin-top:20px;max-width:54ch;opacity:.88}
+.offers{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:54px;background:rgba(239,230,211,.16);border:1px solid rgba(239,230,211,.16)}
+.offer{background:var(--night);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
+.offer h3{font-size:clamp(30px,2.8vw,44px);margin-top:10px}
+.offer .price{font-size:13px;letter-spacing:.2em;text-transform:uppercase;margin-top:12px;color:var(--gold)}
+.offer p{font-size:16px;line-height:1.65;margin-top:12px;opacity:.86}
+.offer .btn{margin-top:22px;align-self:flex-start}
+.kim{display:grid;grid-template-columns:320px 1fr;gap:clamp(28px,5vw,72px);align-items:center;margin-top:100px}
+.kim img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 18%;filter:saturate(.9)}
+.kim h3{font-size:clamp(38px,3.6vw,58px)}
+.kim p{font-size:16.5px;line-height:1.75;margin-top:16px;max-width:58ch;opacity:.88}
+.kim blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(24px,2.2vw,34px);line-height:1.25;margin-top:26px;max-width:32ch;color:var(--gold)}
+.kim cite{display:block;font-family:var(--sans);font-size:11px;letter-spacing:.24em;font-style:normal;margin-top:10px;text-transform:uppercase;color:var(--ivory);opacity:.65}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:84px;padding-top:30px;border-top:1px solid rgba(239,230,211,.16);font-size:15px;line-height:1.7}
+.info h4{font-size:11px;letter-spacing:.3em;margin-bottom:8px;font-weight:500;text-transform:uppercase;color:var(--gold)}
+.btm{margin-top:52px;padding-top:18px;border-top:1px solid rgba(239,230,211,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55}
+@media (max-width:900px){.offers,.info{grid-template-columns:1fr}.kim{grid-template-columns:1fr}.kim img{width:230px}.after{padding-bottom:110px}}
+body.past .bar{background:rgba(11,16,32,.94);backdrop-filter:blur(10px)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Skip to booking</a>
+<header class="bar">
+  <a class="mark" href="#top"><b>Designed <i>by</i> Kim</b><span>Interior Design &middot; Fishers</span></a>
+  <nav class="acts" aria-label="Contact">
+    <a class="btn line" href="tel:+13175083369"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>(317) 508-3369</a>
+    <a class="btn gold" href="https://designedbykim.net/ola/services/initial-consultation">Book a consultation</a>
+  </nav>
+</header>
+<div class="mbar"><a class="btn line" href="tel:+13175083369">Call Kim</a><a class="btn gold" href="https://designedbykim.net/ola/services/initial-consultation">Book a consult</a></div>
+
+<main id="top">
+<section class="track" id="track" aria-label="One house, eight rooms, lights coming on">
+  <div class="stage" id="stage">
+    <svg id="house" aria-hidden="true"></svg>
+    <div class="scrim"></div>
+    <div class="copy" id="copy">
+      <article class="card on" data-w="0">
+        <p class="k">Interior design &middot; Fishers &amp; Indianapolis</p>
+        <h1>Love the home you&rsquo;re <em>coming home to.</em></h1>
+        <p class="lede">Kim Tokach designs the rooms people actually live in: kitchens, baths, basements, whole homes. Scroll, and the lights come on one room at a time. Every room inside is her real work.</p>
+        <div class="cta-row"><a class="btn gold" href="https://designedbykim.net/ola/services/initial-consultation">Book a consultation</a><a class="btn line" href="tel:+13175083369">(317) 508-3369</a></div>
+        <p class="hint">Scroll to turn on the lights</p>
+      </article>
+    </div>
+    <div class="rooms" id="rooms" aria-hidden="true"></div>
+  </div>
+  <div id="steps"></div>
+</section>
+
+<section class="after" id="start" aria-labelledby="ctaH">
+  <div class="wrap">
+    <p class="k">The ninth room</p>
+    <h2 id="ctaH">Every light on. <em>Yours is next.</em></h2>
+    <p class="sub">It starts with one hour in your home. Kim walks through your project with you, you talk through scope and the items to be specified, and afterward you decide how you want to work together.</p>
+    <div class="offers">
+      <div class="offer">
+        <p class="k">Begin here</p>
+        <h3>Initial Consultation</h3>
+        <p class="price">One hour &middot; $150 &middot; $100 deposit<span class="cf">[CONFIRM]</span></p>
+        <p>In your home. A walkthrough of the project and an honest conversation about scope.</p>
+        <a class="btn gold" href="https://designedbykim.net/ola/services/initial-consultation">Book the consultation</a>
+      </div>
+      <div class="offer">
+        <p class="k">Only the color</p>
+        <h3>Home Color Consultation</h3>
+        <p class="price">One hour &middot; $175<span class="cf">[CONFIRM]</span></p>
+        <p>Kim comes to you and helps you choose the colors for your home, in your own light.</p>
+        <a class="btn line" href="https://designedbykim.net/ola/services/home-color-consultation">Book a color consultation</a>
+      </div>
+    </div>
+    <div class="kim">
+      <img src="assets/kim.jpg" alt="Kim Tokach, interior designer" loading="lazy" width="675" height="900">
+      <div>
+        <p class="k">The designer</p>
+        <h3>Kim Tokach</h3>
+        <p>A lifelong Hoosier. Born in Elkhart, a graduate of Butler University, and at home in Fishers since 1995. She and her husband have five children between them, and a very adorable, mischievous dog named Bentley. Her practice covers interior design, color consultations and full-scale remodels.</p>
+        <blockquote>&ldquo;The best part of what I do is the final reveal when all the planning, sourcing and dreaming come together.&rdquo;<cite>Kim, on designedbykim.net</cite></blockquote>
+      </div>
+    </div>
+    <div class="info">
+      <div><h4>Call</h4><p><a href="tel:+13175083369">(317) 508-3369</a></p></div>
+      <div><h4>Studio</h4><p>Fishers, Indiana. Homes across the Indianapolis area.<span class="cf">[CONFIRM AREA]</span></p></div>
+      <div><h4>Book online</h4><p><a href="https://designedbykim.net/ola/services/initial-consultation">Initial consultation</a><br><a href="https://designedbykim.net/ola/services/home-color-consultation">Home color consultation</a></p></div>
+    </div>
+    <div class="btm"><span>Designed by Kim &middot; Fishers, Indiana</span><span>Design preview for Kim Tokach &middot; not the live site &middot; Oct 2026</span></div>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+"use strict";
+var NS='http://www.w3.org/2000/svg';
+// rooms in house coordinates. sketch = polylines in 0..100 room space; c = circles [cx,cy,r(% of min side)]
+var RM={
+ great:{x:856,y:492,w:324,h:256,label:'Great room',photo:'chars-stairs.jpg',
+   s:[[[4,100],[4,88],[10,88],[10,76],[16,76],[16,64],[22,64],[22,52],[28,52],[28,40],[34,40],[34,28],[40,28],[40,16],[46,16],[46,0]],[[8,84],[48,6]],[[56,10],[90,10],[90,66],[56,66],[56,10]],[[73,10],[73,66]],[[56,40],[90,40]],[[52,100],[52,84],[56,80],[90,80],[94,84],[94,100]],[[56,89],[90,89]]]},
+ kitchen:{x:484,y:492,w:360,h:256,label:'Kitchen',photo:'chars-kitchen.jpg',
+   s:[[[4,8],[34,8],[34,38],[4,38],[4,8]],[[19,8],[19,38]],[[66,8],[96,8],[96,38],[66,38],[66,8]],[[81,8],[81,38]],[[42,6],[58,6],[61,32],[39,32],[42,6]],[[0,60],[100,60]],[[0,64],[100,64],[100,100]],[[24,70],[76,70],[76,100],[24,100],[24,70]],[[24,74],[76,74]],[[38,0],[38,44]],[[33,52],[38,44],[43,52],[33,52]],[[62,0],[62,44]],[[57,52],[62,44],[67,52],[57,52]],[[30,100],[30,84],[36,84],[36,100]],[[47,100],[47,84],[53,84],[53,100]],[[64,100],[64,84],[70,84],[70,100]]]},
+ mud:{x:20,y:492,w:250,h:256,label:'Back hall',photo:'char-back-hall.jpg',
+   s:[[[8,6],[72,6],[72,26],[8,26],[8,6]],[[29,6],[29,26]],[[51,6],[51,26]],[[8,30],[8,66]],[[24,30],[24,66]],[[40,30],[40,66]],[[56,30],[56,66]],[[72,30],[72,66]],[[8,66],[72,66],[72,78],[8,78],[8,66]],[[10,78],[10,100]],[[70,78],[70,100]],[[10,62],[70,62]],[[80,18],[98,18],[98,100],[80,100],[80,18]],[[80,50],[98,50]]],
+   c:[[16,40,2],[32,40,2],[48,40,2],[64,40,2]]},
+ office:{x:20,y:232,w:340,h:236,label:'Office',photo:'chars-office.jpg',
+   s:[[[2,14],[22,14],[22,100],[2,100],[2,14]],[[2,34],[22,34]],[[2,54],[22,54]],[[2,74],[22,74]],[[44,70],[44,30],[46,22],[52,14],[60,10],[68,14],[74,22],[76,30],[76,70],[44,70]],[[60,10],[60,70]],[[44,40],[76,40]],[[34,74],[86,74],[86,78],[34,78],[34,74]],[[38,78],[38,100]],[[82,78],[82,100]],[[56,100],[56,82],[64,82],[64,100]],[[55,82],[55,66],[65,66],[65,82]]]},
+ bath:{x:372,y:232,w:330,h:236,label:'Primary bath',photo:'char-tub.jpg',
+   s:[[[3,6],[30,6],[30,100],[3,100],[3,6]],[[16,6],[16,100]],[[8,18],[12,18],[12,14]],[[58,14],[88,14],[88,56],[58,56],[58,14]],[[73,14],[73,56]],[[38,74],[90,74],[86,92],[80,100],[48,100],[42,92],[38,74]],[[40,74],[88,74]]]},
+ bar:{x:20,y:772,w:700,h:196,label:'Lower level',photo:'cooper-bar.jpg',
+   s:[[[6,10],[56,10]],[[6,26],[56,26]],[[6,42],[56,42]],[[6,52],[56,52],[56,72],[6,72],[6,52]],[[12,62],[72,62],[72,100],[12,100],[12,62]],[[12,66],[72,66]],[[18,100],[18,76],[23,76],[23,100]],[[32,100],[32,76],[37,76],[37,100]],[[46,100],[46,76],[51,76],[51,100]],[[60,100],[60,76],[65,76],[65,100]],[[78,6],[98,6],[98,100],[78,100],[78,6]],[[83,6],[83,100]],[[88,6],[88,100]],[[93,6],[93,100]],[[78,30],[98,30]],[[78,54],[98,54]],[[78,78],[98,78]],[[86,0],[86,0]],[[25,0],[25,30]],[[40,0],[40,30]],[[55,0],[55,30]]],
+   c:[[25,34,4],[40,34,4],[55,34,4]]},
+ bed:{x:714,y:232,w:466,h:236,label:'Primary suite',photo:'bedroom.jpg',
+   s:[[[30,38],[70,38],[70,100]],[[30,100],[30,38]],[[22,100],[22,72],[78,72],[78,100]],[[22,80],[78,80]],[[34,72],[34,62],[48,62],[48,72]],[[52,72],[52,62],[66,62],[66,72]],[[10,78],[20,78],[20,100],[10,100],[10,78]],[[80,78],[90,78],[90,100],[80,100],[80,78]],[[13,78],[13,66],[17,66],[17,78]],[[83,78],[83,66],[87,66],[87,78]],[[11,66],[19,66],[17,58],[13,58],[11,66]],[[81,66],[89,66],[87,58],[83,58],[81,66]],[[40,10],[60,10],[60,30],[40,30],[40,10]]]},
+ powder:{x:282,y:492,w:190,h:256,label:'Powder room',photo:'chars-powderrm.jpg',
+   s:[[[12,66],[88,66],[88,100],[12,100],[12,66]],[[12,72],[88,72]],[[50,72],[50,100]],[[34,12],[66,12],[66,18],[34,18],[34,12]],[[48,66],[48,60],[56,60]]],
+   c:[[50,38,19]]}
+};
+// worlds: [roomKey, title, persona, kim line, seen, time]
+var W=[null,
+ ['great','The new build','&ldquo;Four hundred finish choices. <em>All due Friday.</em>&rdquo;','Builder selections come at you fast. Kim walks the house with you, listens to how you actually live, and plans the finishes so every room tells the same story.','Open stair, black railing, black-framed windows.','4:40 pm'],
+ ['kitchen','The kitchen remodel','&ldquo;We live in this kitchen. <em>It&rsquo;s been wrong for years.</em>&rdquo;','Full-scale remodels are one of Kim&rsquo;s three core services. Layout first, then the surfaces, hardware and light, then the reveal.','White marble-look island, black hardware, black-framed window.','5:25 pm'],
+ ['mud','The family drop zone','&ldquo;Backpacks. Cleats. A dog. <em>Every day at 3:30.</em>&rdquo;','Kim gets it. She and her husband have five children between them and a mischievous dog named Bentley. Some rooms have to work harder than they look.','Built-in bench, hooks, cubbies, black-framed back door.','5:50 pm'],
+ ['office','The work-from-home','&ldquo;My office is <em>the dining room table.</em>&rdquo;','A room you spend all day in deserves a real plan. Kim designs it around the way you work, then sources the pieces that make you want to walk in.','Arched windows, beamed ceiling, black glass-front cabinet.','6:30 pm'],
+ ['bath','The bath retreat','&ldquo;I want one room <em>that&rsquo;s just for me.</em>&rdquo;','From a powder room to a full primary bath remodel, Kim plans the tile, fixtures and light so the finished room feels like a retreat.','Freestanding tub, black-framed window, warm art on white.','7:15 pm'],
+ ['bar','The entertainers','&ldquo;Everybody <em>ends up downstairs.</em>&rdquo;','Basements, bars and wine rooms: the rooms where the party actually happens. Kim designs them to be lived in, not just looked at.','Stone bar, rattan stools, coffered ceiling.','8:05 pm'],
+ ['bed','The empty nesters','&ldquo;The kids moved out. <em>Now it&rsquo;s our turn.</em>&rdquo;','The house finally gets to be about you. Kim listens first, then designs a space that tells your story, not a catalog&rsquo;s.','Iron bed, cowhide rug, warm wood and soft light.','9:20 pm'],
+ ['powder','The color decision','&ldquo;Forty swatches taped to the wall. <em>Still not sure.</em>&rdquo;','A Home Color Consultation is one hour in your home with Kim<span class="cf">[$175 CONFIRM]</span>. Your real rooms, in your real light, decided together.','Grasscloth walls, round gold mirror, marble vanity.','9:45 pm']
+];
+var N=W.length, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function cl(v){return v<0?0:v>1?1:v;}
+function ss(a,b,v){v=cl((v-a)/(b-a));return v*v*(3-2*v);}
+function lerp(a,b,t){return a+(b-a)*t;}
+function hex(h){h=h.replace('#','');return [0,2,4].map(function(i){return parseInt(h.substr(i,2),16);});}
+function mixc(a,b,t){a=hex(a);b=hex(b);return 'rgb('+a.map(function(v,i){return Math.round(lerp(v,b[i],t));}).join(',')+')';}
+function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);if(parent)parent.appendChild(e);return e;}
+
+var svg=document.getElementById('house');
+/* ---------- build the scene once ---------- */
+var defs=el('defs',{},svg);
+var sky=el('linearGradient',{id:'sky',x1:0,y1:0,x2:0,y2:1},defs);
+var s0=el('stop',{offset:'0'},sky),s1=el('stop',{offset:'.75'},sky),s2=el('stop',{offset:'1'},sky);
+var glow=el('radialGradient',{id:'lamp',cx:'.5',cy:'.25',r:'.8'},defs);
+el('stop',{offset:'0','stop-color':'#FFD99A','stop-opacity':'.95'},glow);el('stop',{offset:'1','stop-color':'#7A4E22','stop-opacity':'.55'},glow);
+var halo=el('radialGradient',{id:'halo'},defs);
+el('stop',{offset:'0','stop-color':'#FFD99A','stop-opacity':'.5'},halo);el('stop',{offset:'1','stop-color':'#FFD99A','stop-opacity':'0'},halo);
+var sun=el('radialGradient',{id:'sun'},defs);
+el('stop',{offset:'0','stop-color':'#FFF2D6','stop-opacity':'1'},sun);el('stop',{offset:'.35','stop-color':'#FFE0A8','stop-opacity':'.8'},sun);el('stop',{offset:'1','stop-color':'#FFE0A8','stop-opacity':'0'},sun);
+
+var world=el('g',{},svg);
+var skyR=el('rect',{x:-3000,y:-2000,width:7200,height:3000,fill:'url(#sky)'},world);
+var stars=el('g',{},world);
+for(var i=0;i<140;i++){el('circle',{cx:(Math.random()*4400-1600).toFixed(0),cy:(Math.random()*1900-1200).toFixed(0),r:(Math.random()*1.6+.4).toFixed(1),fill:'#fff',opacity:(Math.random()*.7+.3).toFixed(2)},stars);}
+var sunC=el('circle',{r:160,fill:'url(#sun)'},world);
+var moon=el('g',{},world);el('circle',{cx:0,cy:0,r:34,fill:'#F4EBD8'},moon);el('circle',{cx:14,cy:-8,r:30,fill:'#0E1426',opacity:.0},moon);
+// ground + earth
+el('rect',{x:-3000,y:760,width:7200,height:1400,fill:'#0E1322'},world);
+var hatch=el('g',{stroke:'rgba(239,230,211,.07)','stroke-width':2},world);
+for(var hx=-1400;hx<2600;hx+=34){el('line',{x1:hx,y1:770,x2:hx+260,y2:1030},hatch);}
+el('line',{x1:-3000,y1:760,x2:4200,y2:760,stroke:'#4E5A44','stroke-width':6},world);
+// tree + lamp post
+var tree=el('g',{},world);
+el('path',{d:'M-210 760 L-210 600',stroke:'#1A2030','stroke-width':16},tree);
+el('ellipse',{cx:-210,cy:520,rx:120,ry:150,fill:'#141B2B'},tree);
+el('ellipse',{cx:-150,cy:470,rx:80,ry:100,fill:'#18203A'},tree);
+var post=el('g',{},world);
+el('line',{x1:1400,y1:760,x2:1400,y2:480,stroke:'#2A3146','stroke-width':8},post);
+el('path',{d:'M1380 480 h40 l-8 -34 h-24 z',fill:'#2A3146'},post);
+var lampGlow=el('circle',{cx:1400,cy:466,r:120,fill:'url(#halo)',opacity:0},post);
+var lampBulb=el('circle',{cx:1400,cy:466,r:9,fill:'#FFD99A',opacity:0},post);
+// yard sign
+var sign=el('g',{transform:'translate(1250,660)'},world);
+el('line',{x1:10,y1:0,x2:10,y2:100,stroke:'#C9BFA8','stroke-width':5},sign);el('line',{x1:150,y1:0,x2:150,y2:100,stroke:'#C9BFA8','stroke-width':5},sign);
+el('rect',{x:-6,y:-6,width:172,height:70,fill:'#EFE6D3'},sign);
+var sign1=el('text',{x:80,y:22,'text-anchor':'middle','font-family':'Cormorant Garamond, serif','font-style':'italic','font-size':22,fill:'#0B1020'},sign);sign1.textContent='Designed by Kim';
+var sign2=el('text',{x:80,y:46,'text-anchor':'middle','font-family':'Jost, sans-serif','font-size':11,'letter-spacing':2,fill:'#6B5A3A'},sign);sign2.textContent='COMING SOON';
+
+// house shell
+var house=el('g',{},world);
+el('rect',{x:0,y:220,width:1200,height:760,fill:'#0D1222'},house);
+el('path',{d:'M-50 226 L600 14 L1250 226 Z',fill:'#121933',stroke:'#EFE6D3','stroke-width':3,'stroke-linejoin':'round'},house);
+el('path',{d:'M140 210 L600 60 L1060 210',fill:'none',stroke:'rgba(239,230,211,.18)','stroke-width':2},house);
+el('rect',{x:880,y:40,width:70,height:120,fill:'#121933',stroke:'#EFE6D3','stroke-width':3},house);
+// attic window
+var attic=el('circle',{cx:600,cy:140,r:32,fill:'#0B1020',stroke:'#EFE6D3','stroke-width':2.5},house);
+// slabs
+[[0,220,1200,12],[0,480,1200,12],[0,760,1200,12],[0,968,1200,12]].forEach(function(r){el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:'#EFE6D3',opacity:.85},house);});
+el('rect',{x:0,y:220,width:12,height:760,fill:'#EFE6D3',opacity:.85},house);el('rect',{x:1188,y:220,width:12,height:760,fill:'#EFE6D3',opacity:.85},house);
+// interior walls between rooms
+[[360,232,12,236],[702,232,12,236],[270,492,12,256],[472,492,12,256],[844,492,12,256],[720,772,12,196]].forEach(function(r){el('rect',{x:r[0],y:r[1],width:r[2],height:r[3],fill:'#EFE6D3',opacity:.6},house);});
+// storage room (never designed): dark with a few boxes
+el('rect',{x:732,y:772,width:448,height:196,fill:'#0A0E1A'},house);
+el('text',{x:956,y:880,'text-anchor':'middle','font-family':'Jost, sans-serif','font-size':14,'letter-spacing':4,fill:'rgba(239,230,211,.25)'},house).textContent='UNFINISHED. FOR NOW.';
+
+// rooms
+var R={};
+Object.keys(RM).forEach(function(k){
+  var r=RM[k],g=el('g',{},house);
+  var cp=el('clipPath',{id:'cp-'+k},defs);el('rect',{x:r.x,y:r.y,width:r.w,height:r.h},cp);
+  var dark=el('rect',{x:r.x,y:r.y,width:r.w,height:r.h,fill:'#10162A'},g);
+  var lit=el('rect',{x:r.x,y:r.y,width:r.w,height:r.h,fill:'url(#lamp)',opacity:0},g);
+  var img=el('image',{href:'assets/'+r.photo,x:r.x,y:r.y,width:r.w,height:r.h,preserveAspectRatio:'xMidYMid slice','clip-path':'url(#cp-'+k+')',opacity:0},g);
+  var warm=el('rect',{x:r.x,y:r.y,width:r.w,height:r.h,fill:'#FFB866',opacity:0,style:'mix-blend-mode:multiply'},g);
+  var sk=el('g',{fill:'none',stroke:'#EFE6D3','stroke-width':2,'stroke-linecap':'round','stroke-linejoin':'round'},g);
+  var lines=[];
+  (r.s||[]).forEach(function(pl){var d=pl.map(function(p,n){return (n?'L':'M')+(r.x+p[0]/100*r.w).toFixed(1)+' '+(r.y+p[1]/100*r.h).toFixed(1);}).join(' ');
+    lines.push(el('path',{d:d,pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1},sk));});
+  (r.c||[]).forEach(function(c){var m=Math.min(r.w,r.h);lines.push(el('circle',{cx:r.x+c[0]/100*r.w,cy:r.y+c[1]/100*r.h,r:c[2]/100*m,pathLength:1,'stroke-dasharray':1,'stroke-dashoffset':1},sk));});
+  var lab=el('text',{x:r.x+14,y:r.y+26,'font-family':'Jost, sans-serif','font-size':13,'letter-spacing':3,fill:'#D4AE6A'},g);lab.textContent=r.label.toUpperCase();
+  var frame=el('rect',{x:r.x+1,y:r.y+1,width:r.w-2,height:r.h-2,fill:'none',stroke:'#FFD99A','stroke-width':3,opacity:0},g);
+  var spill=el('ellipse',{cx:r.x+r.w/2,cy:r.y+r.h,rx:r.w*0.7,ry:40,fill:'url(#halo)',opacity:0},house);
+  R[k]={r:r,lit:lit,img:img,warm:warm,sk:sk,lines:lines,lab:lab,frame:frame,spill:spill};
+});
+
+/* ---------- copy + steps ---------- */
+var copy=document.getElementById('copy');
+for(i=1;i<N;i++){var w=W[i],a=document.createElement('article');a.className='card';a.dataset.w=i;a.setAttribute('aria-hidden','true');
+  a.innerHTML='<p class="k">Room 0'+i+' &middot; '+w[1]+'</p><p class="time"><span class="sw"></span>'+RM[w[0]].label+' &middot; '+w[5]+'</p><h2>'+w[2]+'</h2><p class="body">'+w[3]+'</p><p class="seen">In Kim&rsquo;s photo: '+w[4]+'</p>';
+  copy.appendChild(a);}
+var cards=[].slice.call(copy.querySelectorAll('.card'));
+var rooms=document.getElementById('rooms');
+for(i=1;i<N;i++)rooms.appendChild(document.createElement('i'));
+var roomDots=[].slice.call(rooms.querySelectorAll('i'));
+var rlabel=document.createElement('span');rooms.appendChild(rlabel);
+var steps=document.getElementById('steps'),track=document.getElementById('track');
+for(i=0;i<N;i++){var s=document.createElement('div');s.className='step';steps.appendChild(s);}
+var tl=document.createElement('div');tl.className='step tail';steps.appendChild(tl);
+
+/* ---------- camera ---------- */
+var OV={x:-260,y:-40,w:1720,h:1080};
+function fitBox(b,aspect,pad){var x=b.x-pad,y=b.y-pad,w=b.w+pad*2,h=b.h+pad*2;
+  if(w/h>aspect){var nh=w/aspect;y-=(nh-h)/2;h=nh;}else{var nw=h*aspect;x-=(nw-w)/2;w=nw;}return {x:x,y:y,w:w,h:h};}
+function lerpBox(a,b,t){return {x:lerp(a.x,b.x,t),y:lerp(a.y,b.y,t),w:lerp(a.w,b.w,t),h:lerp(a.h,b.h,t)};}
+
+var cur=-1;
+function setWorld(i){
+  if(i===cur)return;cur=i;
+  cards.forEach(function(c){var on=+c.dataset.w===i;c.classList.toggle('on',on);c.setAttribute('aria-hidden',on?'false':'true');});
+  rlabel.textContent=i>0?(i+' of 8 rooms'):'8 rooms';
+  sign2.textContent=i===0?'COMING SOON':(i>=N-1?'YOUR HOME, NEXT':RM[W[i][0]].label.toUpperCase()+' IN PROGRESS');
+}
+function tick(){
+  var h=steps.firstChild.getBoundingClientRect().height,y=window.scrollY-track.offsetTop;
+  var f=Math.max(0,Math.min(N+0.6,y/h)), i=Math.min(N-1,Math.floor(f)), t=Math.min(1,f-i);
+  var tail=f>=N?1:0;
+  if(reduce&&i>0)t=0.7;
+  setWorld(i);
+  var vw=svg.clientWidth,vh=svg.clientHeight,mob=vw<900,frac=mob?1:0.6,aspect=vw*frac/vh;
+  function place(b,pad){var fb=fitBox(b,aspect,pad);fb.w/=frac;return fb;}
+  var ov=place(OV,mob?-40:0); if(mob&&ov.y+ov.h>1050)ov.y=1050-ov.h;
+  // camera
+  var box=ov;
+  if(i>0&&tail===0){
+    var rm=RM[W[i][0]], zin=reduce?1:ss(0.04,0.28,t)*(1-ss(0.86,1,t));
+    var tgt=place(rm,mob?24:Math.max(rm.w,rm.h)*0.3);
+    box=lerpBox(ov,tgt,zin);
+  } else if(i===0){
+    var hz=place({x:-120,y:0,w:1440,h:1000},0); box=lerpBox(ov,hz,0.5*(1-ss(0,1,t)));
+  }
+  svg.setAttribute('viewBox',box.x.toFixed(1)+' '+box.y.toFixed(1)+' '+box.w.toFixed(1)+' '+box.h.toFixed(1));
+  // sky: afternoon -> sunset -> night across the whole page
+  var g=cl(f/(N-0.2));
+  var top,mid,bot;
+  if(g<0.5){var u=g/0.5;top=mixc('#6F8DB3','#3A3F6B',u);mid=mixc('#C9D3DC','#D98A5F',u);bot=mixc('#EAD9BE','#F0B57E',u);}
+  else{var u2=(g-0.5)/0.5;top=mixc('#3A3F6B','#060A17',u2);mid=mixc('#D98A5F','#151C38',u2);bot=mixc('#F0B57E','#222B4A',u2);}
+  s0.setAttribute('stop-color',top);s1.setAttribute('stop-color',mid);s2.setAttribute('stop-color',bot);
+  stars.setAttribute('opacity',ss(0.55,0.9,g).toFixed(2));
+  sunC.setAttribute('cx',lerp(1500,1700,g).toFixed(0));sunC.setAttribute('cy',lerp(60,820,ss(0,0.6,g)).toFixed(0));sunC.setAttribute('opacity',(1-ss(0.45,0.62,g)).toFixed(2));
+  moon.setAttribute('transform','translate('+lerp(-500,-300,g).toFixed(0)+','+lerp(500,-60,ss(0.5,1,g)).toFixed(0)+')');moon.setAttribute('opacity',ss(0.55,0.75,g).toFixed(2));
+  var lampOn=ss(0.35,0.45,g);lampGlow.setAttribute('opacity',lampOn.toFixed(2));lampBulb.setAttribute('opacity',lampOn.toFixed(2));
+  attic.setAttribute('fill',(tail>0||(i===N-1&&t>0.9))?'#FFD99A':'#0B1020');
+  // rooms
+  for(var n=1;n<N;n++){
+    var o=R[W[n][0]], st;
+    if(n<i||tail>0) st={draw:1,lit:1,img:1,frame:0};
+    else if(n>i) st={draw:0,lit:0,img:0,frame:0};
+    else st={draw:reduce?1:ss(0.18,0.46,t),lit:reduce?1:ss(0.46,0.54,t),img:reduce?1:ss(0.56,0.8,t),frame:reduce?0:ss(0.5,0.56,t)*(1-ss(0.62,0.8,t))};
+    // flicker when the switch flips
+    var lit=st.lit; if(!reduce&&n===i&&lit>0.05&&lit<0.95&&Math.random()<0.4)lit*=0.35;
+    o.lit.setAttribute('opacity',lit.toFixed(3));
+    o.img.setAttribute('opacity',(st.img).toFixed(3));
+    o.warm.setAttribute('opacity',(st.img*0.18).toFixed(3));
+    o.frame.setAttribute('opacity',st.frame.toFixed(3));
+    o.spill.setAttribute('opacity',(lit*(n===6?0:0.8)).toFixed(3));
+    var dOp=st.draw*(1-st.img);
+    o.lines.forEach(function(L,k){var stg=k/o.lines.length*0.5;var d=cl((st.draw-stg)/0.5);L.setAttribute('stroke-dashoffset',(1-d).toFixed(3));});
+    o.sk.setAttribute('opacity',((0.25+0.75*dOp)*(1-st.img*0.92)).toFixed(3));
+    o.sk.setAttribute('stroke',lit>0.5?'#2B2016':'#EFE6D3');
+    o.lab.setAttribute('fill',st.img>0.5?'#FFF4DE':'#D4AE6A');
+    o.lab.setAttribute('opacity',(n===i&&t>0.1&&t<0.86?0:1).toFixed(2));
+  }
+  roomDots.forEach(function(d,k){d.classList.toggle('on',(k+1<i)||(k+1===i&&t>0.5)||tail>0);});
+  var c=cards[i]; if(c&&i>0)c.classList.toggle('lit',reduce||t>0.5);
+}
+var raf=0;function onS(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});}
+addEventListener('scroll',onS,{passive:true});
+addEventListener('scroll',function(){document.body.classList.toggle('past',window.scrollY>track.offsetTop+track.offsetHeight-90);},{passive:true});
+addEventListener('resize',function(){cur=-1;onS();});
+function jump(){var m=location.hash.match(/^#s(\d+)(?:p(\d+))?$/);if(!m)return;var n=+m[1],p=m[2]?+m[2]/100:0.7;
+  window.scrollTo(0,track.offsetTop+(n+p)*steps.firstChild.getBoundingClientRect().height);}
+jump();tick();
+addEventListener('hashchange',function(){jump();tick();});
+})();
+</script>
+</body>
+</html>

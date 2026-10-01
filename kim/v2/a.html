@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Every room starts as a pencil line | Designed By Kim, Interior Design in Fishers, IN</title>
+<meta name="description" content="Kim Tokach designs interiors in Fishers and the Indianapolis area. Watch eight real rooms go from pencil line to reveal.">
+<meta name="theme-color" content="#E9E4DA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400&family=Manrope:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F3EC; --ink:#1E2226; --graphite:#4B5058; --brass:#A9824B; --line:rgba(30,34,38,.14);
+  --desk:#D9D2C4;
+  --serif:"Fraunces", Georgia, serif; --sans:"Manrope", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace; --hand:"Caveat", "Bradley Hand", cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--desk);overflow-x:hidden}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:#fff;padding:10px 14px;border-radius:8px}
+.skip:focus{left:8px}
+
+/* top bar */
+.bar{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:12px clamp(14px,3vw,40px)}
+.mark{text-decoration:none;display:flex;align-items:baseline;gap:8px}
+.mark b{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:-.01em}
+.mark b i{font-weight:300}
+.mark span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;opacity:.65;text-transform:uppercase}
+.acts{display:flex;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px}
+.btn.ghost{border:1.5px solid rgba(30,34,38,.35);background:rgba(246,243,236,.6);backdrop-filter:blur(6px)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn svg{width:16px;height:16px}
+
+/* sticky mobile action bar */
+.mbar{display:none}
+@media (max-width:760px){
+  .bar .acts{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(246,243,236,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+  .mbar .btn{justify-content:center}
+}
+
+/* stage */
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--desk);transition:background-color .8s ease}
+.stage::before{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 35% 45%,rgba(255,255,255,.45),transparent 70%);pointer-events:none}
+#steps{position:relative;pointer-events:none;margin-top:-100vh;margin-top:-100svh}
+.step{height:190vh;height:190svh}
+.step.tail{height:100vh;height:100svh}
+
+.sheet{position:absolute;left:clamp(16px,3vw,48px);top:76px;bottom:28px;width:calc(58vw);background:var(--paper);border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 30px 60px -20px rgba(40,30,10,.35),0 8px 18px rgba(40,30,10,.12);overflow:hidden;transform:rotate(-.6deg)}
+.sheet::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:24px 24px;opacity:.55}
+.sheet::after{content:"";position:absolute;inset:14px;border:1.5px solid rgba(30,34,38,.55);pointer-events:none}
+#draw{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.tblock{position:absolute;right:14px;bottom:14px;display:grid;grid-template-columns:auto auto;border-left:1.5px solid rgba(30,34,38,.55);border-top:1.5px solid rgba(30,34,38,.55);background:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;z-index:3}
+.tblock div{padding:6px 10px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.tblock div:nth-child(2n){border-right:0}
+.tblock b{display:block;font-weight:600;font-size:12px;letter-spacing:.04em;margin-top:2px;color:var(--ink)}
+.tblock .wide{grid-column:1/3;border-right:0}
+.tape{position:absolute;top:-10px;width:90px;height:28px;background:rgba(240,228,190,.75);box-shadow:0 1px 2px rgba(0,0,0,.08);z-index:4}
+.tape.l{left:30px;transform:rotate(-4deg)}.tape.r{right:40px;transform:rotate(3deg)}
+.chips{position:absolute;left:28px;bottom:22px;display:flex;gap:6px;z-index:3}
+.chips i{width:30px;height:42px;border-radius:2px;box-shadow:0 2px 4px rgba(0,0,0,.18);background:#ccc;transition:background-color .6s, transform .6s}
+.chips i:nth-child(2){transform:rotate(4deg)}.chips i:nth-child(3){transform:rotate(-3deg)}
+
+/* reveal print */
+.print{position:absolute;z-index:6;right:calc(42vw - 58vw*.06);bottom:60px;width:clamp(180px,17vw,270px);aspect-ratio:3/4;background:#fff;padding:9px 9px 34px;box-shadow:0 20px 40px rgba(30,20,0,.35);transform:translate(40px,30px) rotate(7deg);opacity:0;transition:opacity .5s, transform .8s cubic-bezier(.2,.8,.2,1)}
+.print.on{opacity:1;transform:rotate(3deg)}
+.print .ph{position:relative;width:100%;height:100%;overflow:hidden;background:#ddd}
+.print img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.print .sk{filter:grayscale(1) contrast(1.9) brightness(1.15);mix-blend-mode:multiply;opacity:.9}
+.print .col{clip-path:inset(0 calc(100% - var(--rev,0) * 100%) 0 0)}
+.print figcaption{position:absolute;left:10px;right:10px;bottom:8px;font-family:var(--hand);font-size:19px;line-height:1;color:var(--graphite)}
+.print .stamp{position:absolute;right:-14px;top:-14px;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.22em;color:#9a3d2a;border:2px solid #9a3d2a;padding:5px 8px;border-radius:4px;background:rgba(255,255,255,.7);transform:rotate(12deg) scale(1.8);opacity:0;transition:transform .3s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.print.stamped .stamp{transform:rotate(12deg) scale(1);opacity:1}
+
+/* copy panel */
+.copy{position:absolute;right:clamp(16px,3.5vw,60px);top:50%;transform:translateY(-50%);width:min(440px,calc(42vw - 9vw));z-index:5}
+.card{position:absolute;left:0;top:50%;width:100%;transform:translateY(calc(-50% + 18px));opacity:0;visibility:hidden;transition:opacity .4s,transform .7s cubic-bezier(.2,.8,.2,1),visibility 0s .4s}
+.card.on{opacity:1;visibility:visible;transform:translateY(-50%);transition:opacity .5s .1s,transform .8s cubic-bezier(.2,.8,.2,1) .1s,visibility 0s}
+.k{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--brass)}
+h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.02em;line-height:1.02}
+h1{font-size:clamp(44px,5vw,80px);margin-top:12px}
+h1 em,h2 em{font-style:italic;font-weight:300;color:var(--brass)}
+h2{font-size:clamp(30px,2.9vw,46px);margin-top:12px}
+.lede{font-size:clamp(16px,1.25vw,19px);line-height:1.55;margin-top:16px;max-width:42ch}
+.card p.body{font-size:clamp(15px,1.1vw,17px);line-height:1.55;margin-top:14px}
+.seen{margin-top:12px;font-size:13.5px;line-height:1.45;color:var(--graphite)}
+.seen b{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-right:6px}
+.phases{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.phases li{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:6px 9px;border-radius:999px;border:1px solid rgba(30,34,38,.25);color:rgba(30,34,38,.5);transition:all .3s}
+.phases li.done{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.hint{margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;opacity:.6}
+.cta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.word{position:absolute;right:2vw;bottom:44px;font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(90px,10vw,180px);line-height:.9;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px rgba(30,34,38,.22);white-space:nowrap;pointer-events:none;z-index:1;transition:opacity .5s}
+body.dk .word{-webkit-text-stroke-color:rgba(246,243,236,.22)}
+body.dk .copy,body.dk .count,body.dk .bar .mark{color:#F3EEE4}
+body.dk .k{color:#E2C48F}
+body.dk .phases li{border-color:rgba(246,243,236,.35);color:rgba(246,243,236,.55)}
+body.dk .phases li.done{background:#F3EEE4;color:#1E2226;border-color:#F3EEE4}
+body.dk .seen{color:rgba(246,243,236,.75)}
+body.dk .cf{color:#F2A88F}
+body.dk .bar .btn.ghost{background:rgba(246,243,236,.85)}
+.count{position:absolute;right:clamp(16px,3.5vw,60px);bottom:22px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;opacity:.55;z-index:5}
+.cf{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:#9a3d2a;vertical-align:super;margin-left:3px}
+
+@media (max-width:900px){
+  .word{font-size:96px;bottom:auto;top:calc(62px + 52svh - 40px);opacity:.0}
+  .sheet{left:10px;right:10px;width:auto;top:62px;bottom:auto;height:52svh;transform:rotate(-.4deg)}
+  .tblock{font-size:8.5px}.tblock b{font-size:10px}.tblock div{padding:4px 7px}
+  .tblock{display:none}
+  .chips{left:20px;bottom:16px}.chips i{width:20px;height:28px}
+  .print{right:16px;left:auto;top:calc(62px + 52svh - 150px);bottom:auto;width:118px;padding:6px 6px 22px}
+  .print figcaption{font-size:13px;bottom:4px;left:7px;right:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .print .stamp{font-size:9px;padding:3px 5px;right:-10px;top:-10px}
+  .copy{left:18px;right:18px;width:auto;top:calc(62px + 52svh + 16px);bottom:84px;transform:none}
+  .card{top:0;transform:translateY(16px)}
+  .card.on{transform:none}
+  h1{font-size:clamp(32px,9.4vw,42px);margin-top:6px}
+  h2{font-size:clamp(25px,7vw,32px);margin-top:6px}
+  .lede{font-size:15px;margin-top:10px}
+  .card p.body{font-size:14.5px;margin-top:8px}
+  .seen{display:none}
+  .phases{margin-top:10px;gap:4px}.phases li{font-size:9px;padding:4px 7px}
+  .hint{margin-top:12px}
+  .count{display:none}
+  .cta-row{display:none}
+}
+@media (max-width:900px) and (max-height:720px){ .sheet{height:46svh} .copy{top:calc(62px + 46svh + 12px)} .print{top:calc(62px + 46svh - 140px)} .card p.body{display:none} }
+
+/* after */
+.after{position:relative;background:var(--paper);padding:clamp(70px,9vw,130px) clamp(18px,5vw,80px) 40px}
+.after::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:24px 24px;opacity:.35;pointer-events:none}
+.wrap{position:relative;max-width:1160px;margin:0 auto}
+.after h2{font-size:clamp(40px,5.6vw,84px);max-width:15ch}
+.after .sub{font-size:clamp(17px,1.4vw,20px);line-height:1.55;margin-top:18px;max-width:54ch}
+.offers{display:grid;grid-template-columns:1.3fr 1fr;gap:18px;margin-top:44px}
+.offer{background:#fff;border:1.5px solid rgba(30,34,38,.55);padding:26px;position:relative}
+.offer .k{color:var(--graphite)}
+.offer h3{font-size:clamp(28px,2.6vw,40px);margin-top:8px}
+.offer .price{font-family:var(--mono);font-size:14px;letter-spacing:.06em;margin-top:10px}
+.offer p{font-size:15.5px;line-height:1.55;margin-top:10px}
+.offer .btn{margin-top:18px}
+.offer.main{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.offer.main .k{color:#d9bf8f}
+.offer.main .btn.solid{background:var(--paper);color:var(--ink)}
+.offer.main .cf{color:#f0a48f}
+.kim{display:grid;grid-template-columns:300px 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:80px}
+.kim img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:50% 20%;border:10px solid #fff;box-shadow:0 20px 40px rgba(30,20,0,.2);transform:rotate(-2deg)}
+.kim h3{font-size:clamp(34px,3.4vw,52px)}
+.kim p{font-size:16.5px;line-height:1.65;margin-top:14px;max-width:60ch}
+.kim blockquote{font-family:var(--hand);font-size:clamp(24px,2.2vw,32px);line-height:1.15;margin-top:20px;color:var(--graphite);max-width:34ch}
+.kim cite{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;font-style:normal;margin-top:8px;text-transform:uppercase}
+.info{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:70px;padding-top:28px;border-top:1.5px solid rgba(30,34,38,.55);font-size:15px;line-height:1.6}
+.info h4{font-family:var(--mono);font-size:11px;letter-spacing:.2em;margin-bottom:6px;font-weight:600;text-transform:uppercase;color:var(--brass)}
+.btm{margin-top:48px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;opacity:.65}
+@media (max-width:900px){.offers,.info{grid-template-columns:1fr}.kim{grid-template-columns:1fr}.kim img{width:220px}.after{padding-bottom:110px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}}
+body.past .bar{background:rgba(246,243,236,.92);backdrop-filter:blur(10px);color:#1E2226}
+body.past .bar .mark{color:#1E2226}
+</style>
+</head>
+<body>
+<a class="skip" href="#start">Skip to booking</a>
+<header class="bar">
+  <a class="mark" href="#top" aria-label="Designed By Kim"><b>Designed <i>by</i> Kim</b><span>Fishers, IN</span></a>
+  <nav class="acts" aria-label="Contact">
+    <a class="btn ghost" href="tel:+13175083369"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>(317) 508-3369</a>
+    <a class="btn solid" href="https://designedbykim.net/ola/services/initial-consultation">Book a consult</a>
+  </nav>
+</header>
+<div class="mbar"><a class="btn ghost" href="tel:+13175083369">Call Kim</a><a class="btn solid" href="https://designedbykim.net/ola/services/initial-consultation">Book a consult</a></div>
+
+<main id="top">
+<section class="track" id="track" aria-label="Eight rooms, from pencil line to reveal">
+  <div class="stage" id="stage">
+    <div class="sheet" id="sheet" aria-hidden="true">
+      <span class="tape l"></span><span class="tape r"></span>
+      <svg id="draw"></svg>
+      <div class="chips" id="chips"><i></i><i></i><i></i></div>
+      <div class="tblock">
+        <div class="wide">Project<b id="tbP">Your home</b></div>
+        <div>Sheet<b id="tbS">A-00</b></div>
+        <div class="hide-m">Scale<b>1/4" = 1'-0"</b></div>
+        <div class="hide-m">Designer<b>K. Tokach</b></div>
+        <div class="hide-m">Fishers<b>Indiana</b></div>
+      </div>
+    </div>
+    <figure class="print" id="print" aria-hidden="true">
+      <div class="ph"><img class="sk" id="pSk" alt=""><img class="col" id="pCol" alt=""></div>
+      <figcaption id="pCap"></figcaption>
+      <span class="stamp">THE REVEAL</span>
+    </figure>
+
+    <div class="copy" id="copy">
+      <article class="card on" data-w="0">
+        <p class="k">Interior design &middot; Fishers &amp; Indianapolis</p>
+        <h1>Every room starts as a pencil line. <em>It ends with the reveal.</em></h1>
+        <p class="lede">Kim Tokach designs kitchens, baths and whole homes, and she comes to you. Scroll, and watch eight real rooms from her portfolio get designed from a blank sheet.</p>
+        <div class="cta-row"><a class="btn solid" href="https://designedbykim.net/ola/services/initial-consultation">Book a consult</a><a class="btn ghost" href="tel:+13175083369">Call (317) 508-3369</a></div>
+        <p class="hint">SCROLL TO START DRAWING &darr;</p>
+      </article>
+    </div>
+    <div class="word" id="word" aria-hidden="true"></div>
+    <div class="count" id="count">SHEET 00 / 08</div>
+  </div>
+  <div id="steps"></div>
+</section>
+
+<section class="after" id="start" aria-labelledby="ctaH">
+  <div class="wrap">
+    <p class="k">Sheet 09 &middot; Your home</p>
+    <h2 id="ctaH">Every room starts as a pencil line. <em>Yours starts with one hour.</em></h2>
+    <p class="sub">Kim comes to your home and walks through your project with you. You talk through scope and the pieces to be specified. After the visit, you decide how you want to bring her into it.</p>
+    <div class="offers">
+      <div class="offer main">
+        <p class="k">Start here</p>
+        <h3>Initial Consultation</h3>
+        <p class="price">1 hour &middot; $150 &middot; $100 deposit to book<span class="cf">[CONFIRM]</span></p>
+        <p>In your home. A walkthrough of the project and a straight conversation about scope.</p>
+        <a class="btn solid" href="https://designedbykim.net/ola/services/initial-consultation">Book the consultation &rarr;</a>
+      </div>
+      <div class="offer">
+        <p class="k">Just the color</p>
+        <h3>Home Color Consultation</h3>
+        <p class="price">1 hour &middot; $175<span class="cf">[CONFIRM]</span></p>
+        <p>Kim comes to you to help choose the colors for your home.</p>
+        <a class="btn solid" href="https://designedbykim.net/ola/services/home-color-consultation">Book color &rarr;</a>
+      </div>
+    </div>
+    <div class="kim">
+      <img src="assets/kim.jpg" alt="Kim Tokach, interior designer, standing beside a plant and a black stair rail" loading="lazy" width="675" height="900">
+      <div>
+        <p class="k">The designer</p>
+        <h3>Kim Tokach</h3>
+        <p>A Hoosier all her life. Born in Elkhart, graduated from Butler University, and has made Fishers home since 1995. She and her husband have five children between them and a very adorable, mischievous dog named Bentley. Interior design, color consultations and full-scale remodels.</p>
+        <blockquote>&ldquo;The best part of what I do is the final reveal when all the planning, sourcing and dreaming come together.&rdquo;<cite>Kim, on designedbykim.net</cite></blockquote>
+      </div>
+    </div>
+    <div class="info">
+      <div><h4>Call</h4><p><a href="tel:+13175083369">(317) 508-3369</a></p></div>
+      <div><h4>Where</h4><p>Based in Fishers, Indiana. Designing for homes across the Indianapolis area.<span class="cf">[CONFIRM AREA]</span></p></div>
+      <div><h4>Book online</h4><p><a href="https://designedbykim.net/ola/services/initial-consultation">Initial consultation</a><br><a href="https://designedbykim.net/ola/services/home-color-consultation">Home color consultation</a></p></div>
+    </div>
+    <div class="btm"><span>DESIGNED BY KIM &middot; FISHERS, INDIANA</span><span>Design preview for Kim Tokach &middot; not the live site &middot; Oct 2026</span></div>
+  </div>
+</section>
+</main>
+
+<script>
+(function(){
+"use strict";
+/* ---------- the eight rooms ----------
+   units = feet. x runs along the back wall, y comes toward you, z is up.
+   b = box [x,y,w,d,h,fill,z0,top], e = ellipse prism [cx,cy,rx,ry,h,fill,z0,inner]
+   wall items: [wall 'A'|'B', type, u, v, w, h]   A = back wall, B = left wall          */
+var C={oak:'#C69C6D',oakD:'#8A6643',white:'#F4F2EE',marble:'#F7F6F3',char:'#2A2C2F',black:'#16181A',brass:'#B68A4A',stone:'#B9AE9C',rattan:'#A27B4F',navy:'#2F3A4A',green:'#6E7F5B',linen:'#E7DFD2',taupe:'#8E857A',rug:'#E9E3D8',hide:'#6B5442',glass:'rgba(220,235,240,.28)'};
+var R=[
+ null,
+ {key:'newbuild',name:'The new build',W:16,D:13,H:9.5,floor:'plank',floorC:'#CDA678',wallC:'#F3F1EC',desk:'#BCC8D2',dark:0,word:'New build',
+  chips:['#F3F1EC','#CDA678','#16181A'],photo:'chars-stairs.jpg',cap:'open stair, black rail',
+  b:[[0,9.6,3.4,1.6,0.8,C.oak],[0,8.4,3.4,1.2,1.6,C.oak],[0,7.2,3.4,1.2,2.4,C.oak],[0,6,3.4,1.2,3.2,C.oak],[0,4.8,3.4,1.2,4,C.oak],[0,3.6,3.4,1.2,4.8,C.oak],[0,2.4,3.4,1.2,5.6,C.oak],[0,0,3.4,2.4,6.4,C.oak],
+     [6,0,7,1.4,1.8,C.char],[5.4,4,8.6,6,0.05,C.rug],[8.4,5.8,3,2,1.3,C.oakD],[6.6,9.2,6.6,2.6,1.5,C.linen],[6.6,11.1,6.6,0.8,2.8,C.linen],[14,0.6,1.2,1.2,1.6,C.char],[13.8,0.4,1.6,1.6,2.6,C.green,1.6]],
+  rail:[[3.4,11.2,3.2],[3.4,1,9.6]],
+  wi:[['A','win',5.6,1.2,2,6.4],['A','win',8,1.2,2,6.4],['A','win',10.4,1.2,2,6.4],['A','win',12.8,1.2,2,6.4]],
+  notes:[[9,13.8,0,'tall windows, black frames'],[1.6,12.4,0,'open stair = the "wow"']]},
+ {key:'kitchen',name:'The kitchen remodel',W:14,D:12,H:9,floor:'plank',floorC:'#B98B5C',wallC:'#F2F0EB',desk:'#D3D6D3',dark:0,word:'Kitchen',
+  chips:['#F7F6F3','#B98B5C','#16181A'],photo:'chars-kitchen.jpg',cap:'marble island, black hardware',
+  b:[[2.1,0,11.9,2.1,3,C.white,0,C.marble],[0,0,2.1,9,3,C.white,0,C.marble],[2.1,0,4,1.1,3,C.white,5.4],[9.6,0,4.4,1.1,3,C.white,5.4],[6.6,0,2.6,1.5,2,'#C9CCCF',6.4],
+     [4.6,4.6,7,3.4,3,C.char,0,C.marble],[5.1,8.6,1.3,1.3,2.5,C.rattan],[7.6,8.6,1.3,1.3,2.5,C.rattan],[10.1,8.6,1.3,1.3,2.5,C.rattan],[6.2,5.7,1.2,1.2,0.7,C.black,6.2],[9.9,5.7,1.2,1.2,0.7,C.black,6.2]],
+  hang:[[6.8,6.3,6.9],[10.5,6.3,6.9]],
+  wi:[['B','win',3.4,4,3.6,3.6],['A','tile',2.1,3,11.9,2.4]],
+  notes:[[8,13.4,0,'seats for 3 at the island'],[-2.4,6,3,'sink under the window']]},
+ {key:'family',name:'The family drop zone',W:10,D:8,H:9,floor:'tile',floorC:'#D8D3CA',wallC:'#F4F2EE',desk:'#D6BF98',dark:0,word:'Mudroom',
+  chips:['#F4F2EE','#2F3A4A','#16181A'],photo:'char-back-hall.jpg',cap:'bench, hooks, cubbies',
+  b:[[1,0,6,1.8,1.6,C.white],[1.2,0.2,5.6,1.4,0.35,'#E9E6DF',1.6],[1,0,6,1.2,2.2,C.white,5.8],[2.2,2.8,2.4,4.8,0.04,C.navy],[8.2,0.8,0.9,0.9,0.3,C.brass]],
+  wi:[['A','panel',1,1.6,6,4.2],['A','hook',1.9,4.7,0.3,0.3],['A','hook',3.3,4.7,0.3,0.3],['A','hook',4.7,4.7,0.3,0.3],['A','hook',6.1,4.7,0.3,0.3],['B','door',2.2,0,3,7.2]],
+  notes:[[4,9.4,0,'a hook for every kid'],[8.6,-1.2,0,'the dog bowl spot']]},
+ {key:'office',name:'The work-from-home',W:12,D:11,H:10,floor:'plank',floorC:'#9C7552',wallC:'#EFEDE8',desk:'#5E4836',dark:1,word:'Office',
+  chips:['#EFEDE8','#9C7552','#16181A'],photo:'chars-office.jpg',cap:'arched windows, beams',
+  b:[[0,1.2,1.5,5.6,7,'#2B2A28'],[3.6,3.6,7,6,0.04,C.hide],[4.6,4.4,5,2.4,2.5,C.oakD],[6.3,7.4,1.6,1.6,1.6,'#5B4A3B'],[6.3,8.7,1.6,0.35,3.2,'#5B4A3B']],
+  shelves:0,
+  hang:[[7,5.6,7.4]],
+  wi:[['A','arch',4.2,1.4,4,6.6],['A','win',9.4,1.4,1.6,5.2]],
+  notes:[[7.1,12.4,0,'light from the left, no glare'],[-2.2,5,7,'glass-front built-ins']]},
+ {key:'bath',name:'The bath retreat',W:11,D:9,H:9,floor:'tile',floorC:'#3E4043',wallC:'#F1F0ED',desk:'#B4C3B8',dark:0,word:'Bath',
+  chips:['#F1F0ED','#3E4043','#B68A4A'],photo:'char-tub.jpg',cap:'freestanding tub, black frame',
+  e:[[5.6,5.4,2.9,1.45,2,C.white,0,'#DCE3E4']],
+  b:[[0,1,2,5,2.8,C.white,0,C.marble],[7.4,0,3.6,3.6,7,C.glass]],
+  wi:[['A','win',3,3.6,3,3.8],['B','mirror',1.4,4.2,1.8,2.8],['B','mirror',3.7,4.2,1.8,2.8],['A','tile',7.4,0,3.6,7]],
+  notes:[[5.6,9.6,0,'soak-in tub, room to walk around'],[9.2,-1.4,0,'black-frame glass']]},
+ {key:'bar',name:'The entertainers',W:15,D:12,H:8.6,floor:'plank',floorC:'#A88563',wallC:'#E8E2D8',desk:'#35302D',dark:1,word:'Bar',
+  chips:['#B9AE9C','#A27B4F','#16181A'],photo:'cooper-bar.jpg',cap:'stone bar, rattan stools',
+  b:[[2,0,10,1.8,3,C.char,0,C.stone],[3,5,8,2,3.5,C.stone],[2.7,4.7,8.6,2.6,0.25,'#D9CDB8',3.5],[3.3,7.7,1.3,1.3,2.6,C.rattan],[5.3,7.7,1.3,1.3,2.6,C.rattan],[7.3,7.7,1.3,1.3,2.6,C.rattan],[9.3,7.7,1.3,1.3,2.6,C.rattan],[12.6,5,1.2,1.2,8.6,C.white],[4.4,5.6,.9,.9,.8,C.black,6.4],[6.9,5.6,.9,.9,.8,C.black,6.4],[9.4,5.6,.9,.9,.8,C.black,6.4]],
+  hang:[[4.85,6.05,7.2],[7.35,6.05,7.2],[9.85,6.05,7.2]],
+  wi:[['A','stone',2,3,10,5.6],['B','rack',2,0.6,6,6.6]],
+  notes:[[7,12.2,0,'stools for four'],[-2.4,4.6,4,'wine wall']]},
+ {key:'nest',name:'The empty nesters',W:14,D:13,H:9,floor:'plank',floorC:'#8E7258',wallC:'#E4DED3',desk:'#D7C3AE',dark:0,word:'Suite',
+  chips:['#E4DED3','#6B5442','#16181A'],photo:'bedroom.jpg',cap:'iron bed, cowhide rug',
+  b:[[3.2,5.4,8.6,6.4,0.04,C.hide],[4.3,0.2,6.4,0.5,4.8,C.black],[4.5,0.7,6,7,2,'#E9E5DE'],[4.6,0.8,5.8,1.4,0.5,'#FFFFFF',2],[2.5,0.4,1.6,1.5,2.2,C.oakD],[10.9,0.4,1.6,1.5,2.2,C.oakD],[2.9,0.8,0.8,0.8,1.3,C.linen,2.2],[11.3,0.8,0.8,0.8,1.3,C.linen,2.2],[5,8.2,5,1.4,1.6,'#3E3A36'],[11.6,9.6,2,2,1.8,'#7A6F63']],
+  wi:[['B','win',4,2.4,4,4.6],['A','art',5.6,5.6,3.8,2]],
+  notes:[[12.6,13.6,0,'a reading chair, finally'],[7.5,-1.4,0,'a bed with presence']]},
+ {key:'color',name:'The color decision',W:7.5,D:6.5,H:9,floor:'tile',floorC:'#2E2F31',wallC:'#5D574F',desk:'#9A5A42',dark:1,word:'Color',wallpaper:true,cycle:['#A9B7A3','#D3B48C','#3E4C5E','#7B6E64','#5D574F'],
+  chips:['#5D574F','#2E2F31','#B68A4A'],photo:'chars-powderrm.jpg',cap:'grasscloth, gold mirror',
+  b:[[1.6,0,4.3,1.8,2.8,C.white,0,C.marble]],
+  wi:[['A','round',3.75,5.3,1.25,1.25],['A','sconce',3.15,7.1,1.2,0.35]],
+  notes:[[3.7,7.8,0,'go darker than you think'],[-2,3.6,0,'one bold room']]}
+];
+var COPY=[null,
+ ['The new build','&ldquo;Four hundred finish choices. All due Friday.&rdquo;','Builder selections come at you fast. Kim walks the house with you, listens to how you actually live, and plans the finishes so every room tells the same story.','Open stair, black railing, black-framed windows.'],
+ ['The kitchen remodel','&ldquo;We live in this kitchen. It&rsquo;s been wrong for years.&rdquo;','Full-scale remodels are one of Kim&rsquo;s three core services. Layout first, then the surfaces, hardware and light, then the reveal.','White marble-look island, black hardware, black-framed window.'],
+ ['The family drop zone','&ldquo;Backpacks. Cleats. A dog. Every day at 3:30.&rdquo;','Kim gets it. She and her husband have five children between them and a mischievous dog named Bentley. Some rooms have to work harder than they look.','Built-in bench, hooks, cubbies, black-framed back door.'],
+ ['The work-from-home','&ldquo;My office is the dining room table.&rdquo;','A room you spend all day in deserves a real plan. Kim designs it around the way you work, then sources the pieces that make you want to walk in.','Arched windows, beamed ceiling, black glass-front cabinet.'],
+ ['The bath retreat','&ldquo;I want one room that&rsquo;s just for me.&rdquo;','From a powder room to a full primary bath remodel, Kim plans the tile, fixtures and light so the finished room feels like a retreat.','Freestanding tub, black-framed window, warm art on white.'],
+ ['The entertainers','&ldquo;Everybody ends up downstairs.&rdquo;','Basements, bars and wine rooms: the rooms where the party actually happens. Kim designs them to be lived in, not just looked at.','Stone bar, rattan stools, coffered ceiling, wine wall.'],
+ ['The empty nesters','&ldquo;The kids moved out. Now it&rsquo;s our turn.&rdquo;','The house finally gets to be about you. Kim listens first, then designs a space that tells your story, not a catalog&rsquo;s.','Iron bed, cowhide rug, warm wood and soft light.'],
+ ['The color decision','&ldquo;Forty swatches taped to the wall. Still not sure.&rdquo;','A Home Color Consultation is one hour in your home with Kim<span class="cf">[$175 CONFIRM]</span>. You look at your real rooms in your real light, together.','Grasscloth walls, round gold mirror, marble vanity.']
+];
+var PH=['Plan','Walls','Pieces','Finishes','Reveal'];
+var N=R.length; // 9 steps incl. hero
+
+/* ---------- build copy cards ---------- */
+var copy=document.getElementById('copy');
+for(var i=1;i<N;i++){
+  var c=COPY[i],a=document.createElement('article');a.className='card';a.dataset.w=i;a.setAttribute('aria-hidden','true');
+  a.innerHTML='<p class="k">Sheet 0'+i+' &middot; '+c[0]+'</p><h2>'+c[1]+'</h2><p class="body">'+c[2]+'</p><p class="seen"><b>In Kim&rsquo;s photo</b>'+c[3]+'</p><ul class="phases">'+PH.map(function(p){return '<li>'+p+'</li>';}).join('')+'</ul>';
+  copy.appendChild(a);
+}
+var cards=[].slice.call(copy.querySelectorAll('.card'));
+var steps=document.getElementById('steps');
+for(i=0;i<N;i++){var s=document.createElement('div');s.className='step';steps.appendChild(s);}
+var tail=document.createElement('div');tail.className='step tail';steps.appendChild(tail);
+
+var svg=document.getElementById('draw'),sheet=document.getElementById('sheet'),stage=document.getElementById('stage'),track=document.getElementById('track');
+var print=document.getElementById('print'),pSk=document.getElementById('pSk'),pCol=document.getElementById('pCol'),pCap=document.getElementById('pCap');
+var chips=[].slice.call(document.querySelectorAll('#chips i'));
+var tbP=document.getElementById('tbP'),tbS=document.getElementById('tbS'),count=document.getElementById('count');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function cl(v){return v<0?0:v>1?1:v;}
+function ss(a,b,v){v=cl((v-a)/(b-a));return v*v*(3-2*v);}
+function lerp(a,b,t){return a+(b-a)*t;}
+function hex(h){h=h.replace('#','');return [parseInt(h.substr(0,2),16),parseInt(h.substr(2,2),16),parseInt(h.substr(4,2),16)];}
+function shade(col,k){ if(col.indexOf('rgba')===0)return col; var c=hex(col);return '#'+c.map(function(v){var n=Math.round(Math.max(0,Math.min(255,v*k)));return (n<16?'0':'')+n.toString(16);}).join('');}
+
+/* ---------- projection ---------- */
+var cam={yaw:0,tilt:0,s:20,ox:0,oy:0}, room=null;
+function P(x,y,z){ // room coords -> screen
+  var X=x-room.W/2,Y=y-room.D/2,cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
+  var xr=X*cy-Y*sy, yr=X*sy+Y*cy;
+  return [cam.ox+xr*cam.s, cam.oy+(yr*Math.cos(cam.tilt)-z*Math.sin(cam.tilt))*cam.s];
+}
+function depth(x,y,z){var X=x-room.W/2,Y=y-room.D/2;return X*Math.sin(cam.yaw)+Y*Math.cos(cam.yaw)+z*0.02;}
+function pts(a){return a.map(function(p){var q=P(p[0],p[1],p[2]);return q[0].toFixed(1)+','+q[1].toFixed(1);}).join(' ');}
+function faceVis(nx,ny){return nx*Math.sin(cam.yaw)+ny*Math.cos(cam.yaw)>0.001;}
+
+/* ---------- drawing ---------- */
+var out=[];
+function poly(p,fill,stroke,sw,draw,extra){
+  var d=draw==null?1:draw; if(d<=0&&(!fill||fill==='none'))return;
+  var dash=d<1?' pathLength="1" stroke-dasharray="1" stroke-dashoffset="'+(1-d).toFixed(3)+'"':'';
+  out.push('<polygon points="'+pts(p)+'" fill="'+(fill||'none')+'" stroke="'+stroke+'" stroke-width="'+sw+'" stroke-linejoin="round"'+dash+(extra||'')+'/>');
+}
+function line(a,b,stroke,sw,draw,extra){
+  var d=draw==null?1:draw; if(d<=0)return; var p=P(a[0],a[1],a[2]),q=P(b[0],b[1],b[2]);
+  var e=[p[0]+(q[0]-p[0])*d,p[1]+(q[1]-p[1])*d];
+  out.push('<line x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+e[0].toFixed(1)+'" y2="'+e[1].toFixed(1)+'" stroke="'+stroke+'" stroke-width="'+sw+'" stroke-linecap="round"'+(extra||'')+'/>');
+}
+function boxFaces(x,y,w,d,h,z0){
+  var z1=z0+h, f=[];
+  f.push({n:[0,1],p:[[x,y+d,z0],[x+w,y+d,z0],[x+w,y+d,z1],[x,y+d,z1]]});
+  f.push({n:[1,0],p:[[x+w,y,z0],[x+w,y+d,z0],[x+w,y+d,z1],[x+w,y,z1]]});
+  f.push({n:[0,-1],p:[[x,y,z0],[x+w,y,z0],[x+w,y,z1],[x,y,z1]]});
+  f.push({n:[-1,0],p:[[x,y,z0],[x,y+d,z0],[x,y+d,z1],[x,y,z1]]});
+  return f;
+}
+
+/* palette for the graphite stage vs the finished stage */
+var GR='#4B5058';
+
+function render(i,t){
+  out=[];
+  var W=sheet.clientWidth,H=sheet.clientHeight;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var hero=i===0;
+  room=hero?R[2]:R[i];
+  // phases
+  var pPlan=reduce?1:ss(0.02,0.24,t), pCam=reduce?1:ss(0.22,0.42,t), pWall=reduce?1:ss(0.3,0.46,t),
+      pPiece=reduce?1:ss(0.44,0.62,t), pMat=reduce?1:ss(0.6,(room&&room.cycle)?0.84:0.74,t), alpha=reduce?1:ss(0,0.03,t)*(1-ss(0.965,0.995,t));
+  var orbit=reduce?0:(t-0.5)*0.18;
+  if(hero){pPlan=pCam=pWall=pPiece=1;pMat=0;alpha=reduce?1:1-ss(0.8,0.99,t);orbit=reduce?0:-0.12+t*0.3;}
+  cam.yaw=lerp(0,0.70,pCam)+orbit*pCam; cam.tilt=lerp(0,0.98,pCam);
+  // fit
+  var mob=W<600, padT=mob?18:40, padB=mob?44:96;
+  var wh=room.H*pWall, th=0.5;
+  var corners=[[-th,-th,0],[room.W,-th,0],[room.W,room.D,0],[-th,room.D,0],[-th,-th,wh],[room.W,-th,wh],[-th,room.D,wh]];
+  cam.s=1;cam.ox=0;cam.oy=0;
+  var mnx=1e9,mxx=-1e9,mny=1e9,mxy=-1e9;
+  corners.forEach(function(c){var q=P(c[0],c[1],c[2]);mnx=Math.min(mnx,q[0]);mxx=Math.max(mxx,q[0]);mny=Math.min(mny,q[1]);mxy=Math.max(mxy,q[1]);});
+  var availW=W*(mob?0.9:0.74), availH=H-padT-padB;
+  var s=Math.min(availW/(mxx-mnx),availH/(mxy-mny));
+  cam.s=s; cam.ox=W*(mob?0.5:0.5)-(mnx+mxx)/2*s; cam.oy=padT+availH/2-(mny+mxy)/2*s;
+
+  var ink=mixInk(pMat), sw=mob?1.1:1.4;
+  out.push('<g opacity="'+alpha.toFixed(3)+'">');
+  // floor
+  var fl=[[0,0,0],[room.W,0,0],[room.W,room.D,0],[0,room.D,0]];
+  poly(fl, pMat>0?withA(room.floorC,pMat):'none', ink, sw*1.2, pPlan);
+  floorPattern(pMat, ink);
+  // dimension strings (plan phase)
+  var dimA=pPlan*(1-pMat);
+  if(dimA>0.01) dims(dimA,sw);
+  // walls (poché in plan, extrude up)
+  wallPrism(-th,-th,room.W+th,th,wh,pPlan,pMat,ink,sw);   // back wall A
+  wallPrism(-th,0,th,room.D,wh,pPlan,pMat,ink,sw);        // left wall B
+  // wall items
+  var wiA=ss(0.85,1,pWall);
+  if(wiA>0) (room.wi||[]).forEach(function(w){wallItem(w,wiA,pMat,ink,sw);});
+  // furniture: plan footprints, then extrude
+  var items=[];
+  (room.b||[]).forEach(function(b,k){items.push({k:k,type:'b',v:b,dep:depth(b[0]+b[2]/2,b[1]+b[3]/2,(b[6]||0))});});
+  (room.e||[]).forEach(function(e,k){items.push({k:k,type:'e',v:e,dep:depth(e[0],e[1],e[6]||0)});});
+  items.sort(function(a,b){return a.dep-b.dep;});
+  var nI=items.length;
+  items.forEach(function(it,n){
+    var stg=n/Math.max(1,nI)*0.5;
+    var fp=reduce?1:ss(0.25+stg*0.4,0.55+stg*0.4,pPlan*1.0+0.0001); // footprint draw
+    var ex=reduce?1:ss(stg,stg+0.5,pPiece);
+    if(it.type==='b') drawBox(it.v,fp,ex,pMat,ink,sw); else drawEll(it.v,fp,ex,pMat,ink,sw);
+  });
+  // pendants
+  (room.hang||[]).forEach(function(h){ if(pPiece>0.6){ var a=ss(0.6,1,pPiece); line([h[0],h[1],room.H],[h[0],h[1],h[2]],ink,sw*0.8,a);} });
+  // stair rail
+  if(room.rail&&pPiece>0.5){var r=room.rail,a=ss(0.5,1,pPiece);line([r[0][0],r[0][1],r[0][2]],[r[1][0],r[1][1],r[1][2]],pMat>0.3?C.black:ink,sw*1.6,a);
+    for(var q=0;q<=6;q++){var u=q/6,x=lerp(r[0][0],r[1][0],u),y=lerp(r[0][1],r[1][1],u),z=lerp(r[0][2],r[1][2],u);line([x,y,z-3.2],[x,y,z],pMat>0.3?C.black:ink,sw*0.8,a);} }
+  // pencil notes
+  var nA=hero?0:ss(0.12,0.3,t)*(1-ss(0.66,0.76,t));
+  if(hero){var hq=P(room.W*0.55,room.D+3.2,0);out.push('<text x="'+hq[0].toFixed(1)+'" y="'+hq[1].toFixed(1)+'" text-anchor="middle" font-family="Caveat, cursive" font-weight="700" font-size="'+(mob?20:30)+'" fill="#9a3d2a">every room starts here &#8594; yours next</text>');}
+  if(!reduce&&nA>0.01)(room.notes||[]).forEach(function(nt){var q=P(nt[0],nt[1],nt[2]);
+    out.push('<text x="'+q[0].toFixed(1)+'" y="'+q[1].toFixed(1)+'" text-anchor="middle" font-family="Caveat, cursive" font-weight="700" font-size="'+(mob?15:21)+'" fill="#9a3d2a" opacity="'+nA.toFixed(2)+'">'+nt[3]+'</text>');});
+  // light glow at reveal
+  var glow=hero?0:ss(0.74,0.9,t);
+  if(glow>0){var q=P(room.W*0.45,room.D*0.4,room.H*0.6);out.push('<circle cx="'+q[0].toFixed(0)+'" cy="'+q[1].toFixed(0)+'" r="'+(Math.max(W,H)*0.35).toFixed(0)+'" fill="url(#glow)" opacity="'+(glow*0.55).toFixed(2)+'"/>');}
+  out.push('</g>');
+  // pencil that follows the plan line
+  if(!reduce&&pPlan>0&&pPlan<1){var pp=perim(pPlan);pencil(pp[0],pp[1],mob);}
+  if(hero){var hp=P(room.W+0.6,room.D*0.75,0);pencil(hp[0],hp[1],mob);}
+  svg.innerHTML='<defs><radialGradient id="glow"><stop offset="0" stop-color="#FFE7B0" stop-opacity=".9"/><stop offset="1" stop-color="#FFE7B0" stop-opacity="0"/></radialGradient></defs>'+out.join('');
+}
+function mixInk(m){var a=hex('#5A5F67'),b=hex('#1A1C1F');return 'rgb('+a.map(function(v,k){return Math.round(lerp(v,b[k],m));}).join(',')+')';}
+function withA(col,a){ if(col.indexOf('rgba')===0) return col; var c=hex(col);return 'rgba('+c.join(',')+','+a.toFixed(3)+')';}
+function perim(p){ // point along floor outline
+  var L=2*(room.W+room.D),d=p*L,x,y;
+  if(d<room.W){x=d;y=0;}else if(d<room.W+room.D){x=room.W;y=d-room.W;}else if(d<2*room.W+room.D){x=room.W-(d-room.W-room.D);y=room.D;}else{x=0;y=room.D-(d-2*room.W-room.D);}
+  return P(x,y,0);
+}
+function pencil(x,y,mob){
+  var k=mob?0.7:1;
+  out.push('<g transform="translate('+x.toFixed(1)+','+y.toFixed(1)+') rotate(-38) scale('+k+')">'+
+   '<polygon points="0,0 9,-4 9,4" fill="#E4C9A0"/><polygon points="0,0 3.4,-1.5 3.4,1.5" fill="#2A2C2F"/>'+
+   '<rect x="9" y="-4" width="120" height="8" fill="#E9B949"/><rect x="9" y="-4" width="120" height="2.6" fill="#F3CF6E"/>'+
+   '<rect x="129" y="-4.4" width="12" height="8.8" fill="#B9BDC2"/><rect x="141" y="-4" width="12" height="8" rx="2" fill="#E58C8A"/></g>');
+}
+function dims(a,sw){
+  var off=-2.2, col='rgba(90,95,103,'+(0.85*a).toFixed(2)+')';
+  line([0,off,0],[room.W,off,0],col,sw*0.8,1); line([0,off-0.4,0],[0,off+0.4,0],col,sw*0.8,1); line([room.W,off-0.4,0],[room.W,off+0.4,0],col,sw*0.8,1);
+  var q=P(room.W/2,off-0.5,0);
+  out.push('<text x="'+q[0].toFixed(1)+'" y="'+q[1].toFixed(1)+'" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="'+col+'">'+ft(room.W)+'</text>');
+  line([off,0,0],[off,room.D,0],col,sw*0.8,1); line([off-0.4,0,0],[off+0.4,0,0],col,sw*0.8,1); line([off-0.4,room.D,0],[off+0.4,room.D,0],col,sw*0.8,1);
+  q=P(off-0.7,room.D/2,0);
+  out.push('<text x="'+q[0].toFixed(1)+'" y="'+q[1].toFixed(1)+'" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="'+col+'">'+ft(room.D)+'</text>');
+}
+function ft(v){var f=Math.floor(v),i=Math.round((v-f)*12);return f+"'-"+i+'"';}
+function floorPattern(m,ink){
+  if(m<=0)return; var a=(0.35*m).toFixed(2), col=room.floor==='tile'?'rgba(255,255,255,'+a+')':'rgba(60,40,20,'+a+')';
+  if(room.floor==='plank'){ for(var y=0.7;y<room.D;y+=0.7){ line([0,y,0],[room.W,y,0],col,0.8,1);
+      var o=(y*3.7)%3; for(var x=o+1.5;x<room.W;x+=4.2) line([x,y-0.7,0],[x,y,0],col,0.7,1);} }
+  else { var g=room.W<9?1:2; for(var x2=g;x2<room.W;x2+=g) line([x2,0,0],[x2,room.D,0],col,0.8,1); for(var y2=g;y2<room.D;y2+=g) line([0,y2,0],[room.W,y2,0],col,0.8,1); }
+}
+function wallPrism(x,y,w,d,h,pPlan,m,ink,sw){
+  // plan poché: dark fill when flat, then wall color as it rises
+  var top=[[x,y,h],[x+w,y,h],[x+w,y+d,h],[x,y+d,h]];
+  var wc=room.wallC;
+  if(room.cycle&&m>0&&m<1){wc=room.cycle[Math.min(room.cycle.length-1,Math.floor(m*room.cycle.length))];}
+  if(h>0.05){
+    boxFaces(x,y,w,d,h,0).forEach(function(f){ if(faceVis(f.n[0],f.n[1])){
+      var inner=(f.n[1]===1&&d<1)||(f.n[0]===1&&w<1);
+      var fill = m>0 ? withA(inner?wc:shade(wc,0.8),0.25+0.75*m) : 'rgba(246,243,236,.85)';
+      poly(f.p, fill, ink, sw, 1);
+      if(inner&&room.wallpaper&&m>0) wallpaperLines(f.p,m);
+    }});
+  }
+  poly(top, h>0.05? (m>0?shade(room.wallC,0.55):'#3A3E44') : 'rgba(40,44,50,'+(0.85*pPlan).toFixed(2)+')', ink, sw, pPlan);
+}
+function wallpaperLines(p,m){ // fine vertical grasscloth texture on an inner wall face
+  for(var k=1;k<26;k++){var u=k/26;var a=[lerp(p[0][0],p[1][0],u),lerp(p[0][1],p[1][1],u),p[0][2]],b=[a[0],a[1],p[3][2]];line(a,b,'rgba(255,255,255,'+(0.08*m).toFixed(2)+')',0.8,1);}
+}
+function W3(wall,u,v){ return wall==='A'?[u,0,v]:[0,u,v]; }
+function wallItem(w,a,m,ink,sw){
+  var wall=w[0],ty=w[1],u=w[2],v=w[3],ww=w[4],hh=w[5], frame=m>0.3?C.black:ink;
+  var rect=[W3(wall,u,v),W3(wall,u+ww,v),W3(wall,u+ww,v+hh),W3(wall,u,v+hh)];
+  if(ty==='win'||ty==='door'){
+    poly(rect, m>0?'rgba(190,214,226,'+(0.75*m).toFixed(2)+')':'none', frame, sw*(1+m*1.2), a);
+    var mid=W3(wall,u+ww/2,v), midT=W3(wall,u+ww/2,v+hh); if(ty==='win') line(mid,midT,frame,sw*(0.8+m),a);
+    if(ty==='win'){var mv=W3(wall,u,v+hh*0.62),mv2=W3(wall,u+ww,v+hh*0.62);line(mv,mv2,frame,sw*(0.8+m),a);}
+  } else if(ty==='arch'){
+    var r=ww/2, pts3=[W3(wall,u,v),W3(wall,u+ww,v),W3(wall,u+ww,v+hh-r)];
+    for(var k=0;k<=16;k++){var an=k/16*Math.PI;pts3.push(W3(wall,u+r+Math.cos(an)*r,v+hh-r+Math.sin(an)*r));}
+    pts3.push(W3(wall,u,v+hh-r));
+    poly(pts3, m>0?'rgba(190,214,226,'+(0.75*m).toFixed(2)+')':'none', frame, sw*(1+m*1.2), a);
+    line(W3(wall,u+r,v),W3(wall,u+r,v+hh),frame,sw*(0.8+m),a); line(W3(wall,u,v+hh-r),W3(wall,u+ww,v+hh-r),frame,sw*(0.8+m),a);
+  } else if(ty==='mirror'){
+    poly(rect, m>0?'rgba(205,215,220,'+(0.8*m).toFixed(2)+')':'none', m>0.3?C.brass:ink, sw*1.2, a);
+  } else if(ty==='round'){
+    var pr=[];for(var k2=0;k2<32;k2++){var an2=k2/32*Math.PI*2;pr.push(W3(wall,u+Math.cos(an2)*ww,v+Math.sin(an2)*hh));}
+    poly(pr, m>0?'rgba(214,220,222,'+(0.85*m).toFixed(2)+')':'none', m>0.3?C.brass:ink, sw*(1+m*2), a);
+  } else if(ty==='sconce'){ poly(rect, m>0?withA(C.brass,m):'none', m>0.3?C.brass:ink, sw, a);
+  } else if(ty==='hook'){ poly(rect, m>0?withA(C.black,m):'none', ink, sw, a);
+  } else if(ty==='art'){ poly(rect, m>0?'rgba(120,110,95,'+(0.8*m).toFixed(2)+')':'none', frame, sw*1.4, a);
+  } else if(ty==='panel'){ poly(rect,'none',ink,sw*0.8,a*0.8); for(var k3=1;k3<8;k3++){line(W3(wall,u+ww*k3/8,v),W3(wall,u+ww*k3/8,v+hh),ink,sw*0.6,a*0.8);}
+  } else if(ty==='tile'){ if(m>0){ for(var r2=0.4;r2<hh;r2+=0.45) line(W3(wall,u,v+r2),W3(wall,u+ww,v+r2),'rgba(120,120,120,'+(0.4*m).toFixed(2)+')',0.6,1); poly(rect,'rgba(255,255,255,'+(0.5*m).toFixed(2)+')','none',0,1);} }
+  else if(ty==='stone'){ if(m>0){ poly(rect,withA(C.stone,m*0.9),'none',0,1); for(var r3=0.5,row=0;r3<hh;r3+=0.5,row++){ line(W3(wall,u,v+r3),W3(wall,u+ww,v+r3),'rgba(90,80,65,'+(0.5*m).toFixed(2)+')',0.7,1); for(var c3=(row%2)*0.6+0.3;c3<ww;c3+=1.2) line(W3(wall,u+c3,v+r3-0.5),W3(wall,u+c3,v+r3),'rgba(90,80,65,'+(0.4*m).toFixed(2)+')',0.6,1);} } else { poly(rect,'none',ink,sw*0.7,a*0.6);} }
+  else if(ty==='rack'){ poly(rect, m>0?withA(C.char,m):'none', ink, sw, a); for(var k4=1;k4<10;k4++){line(W3(wall,u+ww*k4/10,v),W3(wall,u+ww*k4/10,v+hh),m>0.3?'#555':ink,0.7,a);} for(var k5=1;k5<11;k5++){line(W3(wall,u,v+hh*k5/11),W3(wall,u+ww,v+hh*k5/11),m>0.3?'#555':ink,0.7,a);} }
+}
+function drawBox(b,fp,ex,m,ink,sw){
+  var x=b[0],y=b[1],w=b[2],d=b[3],h=b[4]*Math.max(ex,0.0),fill=b[5],z0=(b[6]||0),top=b[7]||fill;
+  var glass=fill.indexOf('rgba')===0;
+  if(ex<=0.001){ // footprint only, drawn as a pencil outline on the plan
+    poly([[x,y,0],[x+w,y,0],[x+w,y+d,0],[x,y+d,0]],'none',ink,sw*0.9,fp,z0>0?' stroke-dasharray="4 3"':'');
+    return;
+  }
+  var zb=z0*Math.min(1,ex*1.5);
+  boxFaces(x,y,w,d,h,zb).forEach(function(f){ if(faceVis(f.n[0],f.n[1])){
+    var k=f.n[0]===1?0.78:0.9; var col=m>0?(glass?fill:withA(shade(fill,k),0.2+0.8*m)):'rgba(246,243,236,.92)';
+    poly(f.p,col,glass&&m>0.3?C.black:ink,sw*(glass&&m>0.3?1.6:1),1);
+  }});
+  poly([[x,y,zb+h],[x+w,y,zb+h],[x+w,y+d,zb+h],[x,y+d,zb+h]], m>0?(glass?fill:withA(top,0.25+0.75*m)):'rgba(255,255,255,.95)', glass&&m>0.3?C.black:ink, sw, 1);
+  if(top===C.marble&&m>0.4){ var q1=[x+w*0.15,y+d*0.2,zb+h],q2=[x+w*0.55,y+d*0.75,zb+h],q3=[x+w*0.9,y+d*0.35,zb+h]; line(q1,q2,'rgba(120,120,125,'+(0.5*m).toFixed(2)+')',0.8,1); line(q2,q3,'rgba(120,120,125,'+(0.4*m).toFixed(2)+')',0.7,1);}
+}
+function drawEll(e,fp,ex,m,ink,sw){
+  var cx=e[0],cy=e[1],rx=e[2],ry=e[3],h=e[4]*ex,fill=e[5],z0=e[6]||0,inner=e[7];
+  var ring=function(z,sx,sy){var a=[];for(var k=0;k<40;k++){var an=k/40*Math.PI*2;a.push([cx+Math.cos(an)*rx*sx,cy+Math.sin(an)*ry*sy,z]);}return a;};
+  if(ex<=0.001){poly(ring(0,1,1),'none',ink,sw*0.9,fp);return;}
+  // side silhouette = bottom ring front half + top ring front half (approx by drawing bottom then top)
+  poly(ring(z0,1,1), m>0?withA(shade(fill,0.85),0.2+0.8*m):'rgba(246,243,236,.92)', ink, sw, 1);
+  var side=[];for(var k=0;k<=20;k++){var an=k/20*Math.PI;side.push([cx+Math.cos(an)*rx,cy+Math.sin(an)*ry,z0]);}
+  for(k=20;k>=0;k--){var an2=k/20*Math.PI;side.push([cx+Math.cos(an2)*rx,cy+Math.sin(an2)*ry,z0+h]);}
+  poly(side, m>0?withA(shade(fill,0.88),0.2+0.8*m):'rgba(246,243,236,.92)', ink, sw, 1);
+  poly(ring(z0+h,1,1), m>0?withA(fill,0.25+0.75*m):'#fff', ink, sw, 1);
+  if(inner) poly(ring(z0+h,0.8,0.7), m>0?withA(inner,m):'none', ink, sw*0.8, 1);
+}
+function heroDraw(W,H,t){
+  // blank sheet: a room outline sketched lightly with dimension strings + the pencil resting
+  room={W:14,D:11,H:9}; cam.yaw=0;cam.tilt=0;
+  var mob=W<600, s=Math.min(W*0.62/room.W,(H-140)/room.D); cam.s=s; cam.ox=W*0.5; cam.oy=H*0.47;
+  var d=reduce?1:0.35+0.65*ss(0,0.6,t);
+  var col='rgba(75,80,88,.75)';
+  poly([[0,0,0],[room.W,0,0],[room.W,room.D,0],[0,room.D,0]],'none',col,mob?1.1:1.5,d);
+  if(d>=0.999){ dims(0.9,1.2); }
+  var q=P(room.W/2,room.D/2,0);
+  out.push('<text x="'+q[0].toFixed(0)+'" y="'+(q[1]-6).toFixed(0)+'" text-anchor="middle" font-family="Caveat, cursive" font-weight="700" font-size="'+(mob?26:40)+'" fill="#4B5058">your room here</text>');
+  out.push('<text x="'+q[0].toFixed(0)+'" y="'+(q[1]+(mob?22:34)).toFixed(0)+'" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="'+(mob?9:11)+'" letter-spacing="2" fill="#4B5058" opacity=".7">SHEET A-00 &#183; NOT YET DRAWN</text>');
+  var pp=P(room.W*0.92,room.D*0.86,0); pencil(pp[0],pp[1],mob);
+}
+
+/* ---------- scroll ---------- */
+function segH(){return steps.firstChild.getBoundingClientRect().height;}
+var cur=-1, lastPhoto='';
+function setWorld(i){
+  if(i===cur)return; cur=i;
+  cards.forEach(function(c){var on=+c.dataset.w===i;c.classList.toggle('on',on);c.setAttribute('aria-hidden',on?'false':'true');});
+  var r=R[i];
+  stage.style.backgroundColor=r?r.desk:'#D9D2C4';
+  document.body.classList.toggle('dk',!!(r&&r.dark)); document.getElementById('word').textContent=r?r.word:'';
+  document.querySelector('meta[name=theme-color]').setAttribute('content',r?r.desk:'#D9D2C4');
+  chips.forEach(function(c,k){c.style.backgroundColor=r?r.chips[k]:['#E9E4DA','#C69C6D','#16181A'][k];});
+  tbP.textContent=r?r.name:'Your home'; tbS.textContent='A-0'+i; count.textContent='SHEET 0'+i+' / 08';
+  if(r&&r.photo!==lastPhoto){pSk.src=pCol.src='assets/'+r.photo;lastPhoto=r.photo;pCap.textContent=r.cap;pCol.alt='From Kim’s portfolio: '+r.cap;}
+}
+function tick(){
+  var h=segH(), y=window.scrollY-track.offsetTop, f=Math.max(0,Math.min(N-0.001,y/h));
+  var i=Math.floor(f), t=f-i;
+  setWorld(i);
+  render(i,t);
+  var rv=reduce?(i>0?1:0):ss(0.74,0.9,t);
+  var on=i>0&&(reduce||(t>0.7&&t<0.97));
+  print.classList.toggle('on',on); print.style.setProperty('--rev',rv.toFixed(3));
+  print.classList.toggle('stamped',on&&(reduce||t>0.88));
+  var c=cards[i]; if(c&&i>0){var lis=c.querySelectorAll('.phases li'),th=[0.2,0.44,0.6,0.73,0.88];for(var k=0;k<5;k++)lis[k].classList.toggle('done',reduce||t>th[k]);}
+}
+var raf=0;function onS(){if(!raf)raf=requestAnimationFrame(function(){raf=0;tick();});}
+addEventListener('scroll',onS,{passive:true});
+addEventListener('scroll',function(){document.body.classList.toggle('past',window.scrollY>track.offsetTop+track.offsetHeight-90);},{passive:true});
+addEventListener('resize',function(){cur=-1;onS();});
+// deep link for reviews: #s3 or #s3p60 jumps to world 3 at 60% through its drawing
+function jump(){var m=location.hash.match(/^#s(\d+)(?:p(\d+))?$/);if(!m)return;var n=+m[1],p=m[2]?+m[2]/100:0.5;
+  document.documentElement.style.scrollBehavior='auto';window.scrollTo(0,track.offsetTop+(n+p)*segH());}
+jump(); tick();
+addEventListener('hashchange',function(){jump();tick();});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){tick();});
+})();
+</script>
+</body>
+</html>
