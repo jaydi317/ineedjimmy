@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Ian Borgerhoff · The fusion of art and weddings</title>
+<meta name="description" content="Ian Borgerhoff photographs a small number of weddings each year, in Indianapolis and wherever you are married.">
+<meta name="theme-color" content="#0b0a09">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Manrope:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/veil-fresco.jpg">
+<style>
+:root{
+  --ink:#0b0a09; --ink2:#141210; --bone:#ece6da; --bone2:#cfc8bb; --silver:#8f8a82; --amber:#d6a25b; --amber2:#f0c88a;
+  --serif:'Bodoni Moda',Didot,'Bodoni 72',Georgia,serif; --sans:'Manrope',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--ink);color:var(--bone);-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-weight:300;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--amber);color:var(--ink)}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+/* grain */
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.075;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.4 -.2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  animation:grain 1.2s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+
+/* loader */
+#loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:grid;place-items:center;transition:opacity 1s var(--ease),visibility 1s}
+#loader.done{opacity:0;visibility:hidden}
+#loader svg{width:min(42vw,220px);height:auto;overflow:visible}
+#loader circle{fill:none;stroke:var(--bone);stroke-width:1;stroke-dasharray:1260;stroke-dashoffset:1260;animation:draw 1.6s var(--ease) forwards}
+#loader circle.g{stroke:var(--amber);stroke-width:.8;animation-delay:.25s}
+@keyframes draw{to{stroke-dashoffset:0}}
+#loader .lw{position:absolute;bottom:12vh;left:0;right:0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.42em;color:var(--silver);text-transform:uppercase}
+#loader .lw b{color:var(--bone);font-weight:400}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:26px clamp(20px,3.4vw,52px);pointer-events:none;mix-blend-mode:normal}
+header>*{pointer-events:auto}
+header{transition:background .6s,padding .6s}header.solid{background:rgba(11,10,9,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:14px;padding-bottom:14px;border-bottom:1px solid rgba(236,230,218,.08)}
+.mark{display:flex;flex-direction:column;line-height:1}
+.mark b{font-family:var(--serif);font-weight:400;font-size:21px;letter-spacing:.32em;text-transform:uppercase}
+.mark i{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--silver);letter-spacing:.06em;margin-top:6px}
+.hbtns{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;padding:15px 22px;border-radius:999px;border:1px solid rgba(236,230,218,.28);color:var(--bone);background:rgba(11,10,9,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:background .5s var(--ease),color .5s var(--ease),border-color .5s}
+.btn:hover{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.btn.solid{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.btn.solid:hover{background:var(--amber2);border-color:var(--amber2)}
+.btn .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 12px var(--amber)}
+.tel{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--bone2);padding:0 14px}
+.tel:hover{color:var(--amber2)}
+
+/* ===== the lens stage ===== */
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+.photo{position:absolute;inset:0;will-change:clip-path}
+.photo .im{position:absolute;inset:0;opacity:0;visibility:hidden}
+.photo .im.on{visibility:visible;opacity:1}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
+.photo img.soft{filter:blur(22px) saturate(1.1) brightness(.9);transform:scale(1.08)}
+.vign{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent 20%),radial-gradient(120% 90% at 50% 45%,transparent 45%,rgba(0,0,0,.55) 100%),linear-gradient(to top,rgba(0,0,0,.85),rgba(0,0,0,.35) 30%,transparent 55%),linear-gradient(to right,rgba(0,0,0,.45),transparent 50%)}
+#blades{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#lens{position:absolute;left:0;top:0;width:10px;height:10px;overflow:visible;pointer-events:none;will-change:transform,opacity;filter:drop-shadow(0 40px 80px rgba(0,0,0,.8))}
+.flash{position:absolute;inset:0;background:#fff8ec;opacity:0;pointer-events:none;mix-blend-mode:screen}
+.black{position:absolute;inset:0;background:var(--ink);opacity:0;pointer-events:none}
+
+/* intro copy beside the lens */
+.intro{position:absolute;left:clamp(20px,6vw,96px);top:50%;transform:translateY(-50%);width:min(36vw,520px);z-index:5;pointer-events:none}
+.intro .eb{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);display:flex;gap:14px;align-items:center}
+.intro .eb::before{content:"";width:34px;height:1px;background:currentColor;opacity:.7}
+.intro h2,.intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(40px,4.6vw,78px);line-height:1.02;letter-spacing:-.01em;margin:22px 0 22px}
+.intro h1{font-size:clamp(48px,5.6vw,96px)}
+.intro em{font-style:italic;color:var(--bone)}
+.intro p{font-size:16px;line-height:1.7;color:var(--bone2);max-width:410px}
+.intro .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
+.intro .w>span{display:inline-block;transform:translateY(105%);transition:transform 1.1s var(--ease)}
+.intro .fade{opacity:0;transform:translateY(14px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.intro.on .w>span{transform:none}
+.intro.on .fade{opacity:1;transform:none}
+.intro.on .fade.d2{transition-delay:.25s}
+.intro .cue{margin-top:38px;font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--silver);display:flex;align-items:center;gap:14px}
+.intro .cue i{display:block;width:1px;height:40px;background:linear-gradient(var(--bone),transparent);animation:cue 2.2s var(--ease) infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* the lens readout under the lens */
+.readout{position:absolute;z-index:5;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bone2);text-transform:uppercase;display:flex;gap:22px;white-space:nowrap;transform:translate(-50%,0);transition:opacity .6s}
+.readout b{color:var(--bone);font-weight:500}
+.readout .am{color:var(--amber)}
+
+/* full-bleed caption + viewfinder */
+.hud{position:absolute;inset:clamp(18px,3vw,44px);pointer-events:none;opacity:0;transition:opacity .7s var(--ease);z-index:4}
+.hud.on{opacity:1}
+.hud .c{position:absolute;width:34px;height:34px;border:1px solid rgba(236,230,218,.75)}
+.hud .c.tl{left:0;top:62px;border-right:0;border-bottom:0}.hud .c.tr{right:0;top:62px;border-left:0;border-bottom:0}
+.hud .c.bl{left:0;bottom:0;border-right:0;border-top:0}.hud .c.br{right:0;bottom:0;border-left:0;border-top:0}
+.hud .af{position:absolute;left:50%;top:48%;width:58px;height:42px;margin:-21px 0 0 -29px;border:1px solid rgba(236,230,218,.6);transition:border-color .4s .5s,transform .5s var(--ease) .3s;transform:scale(1.5)}
+.hud.on .af{border-color:var(--amber);transform:scale(1)}
+.hud .lcd{position:absolute;right:56px;bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--bone);display:flex;gap:22px;text-transform:uppercase}
+.hud .lcd .am{color:var(--amber)}
+.cap{position:absolute;left:clamp(20px,6vw,96px);bottom:clamp(64px,10vh,110px);z-index:5;max-width:min(560px,80vw);pointer-events:none}
+.cap .eb{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber)}
+.cap h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,3.4vw,56px);line-height:1.06;margin:14px 0 0}
+.cap .eb,.cap h3{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.cap.on .eb,.cap.on h3{opacity:1;transform:none}.cap.on h3{transition-delay:.12s}
+.strip{position:absolute;right:clamp(20px,4vw,64px);bottom:clamp(64px,10vh,110px);display:flex;gap:14px;z-index:5;pointer-events:none}
+.strip figure{width:clamp(120px,12vw,190px);opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.strip.on figure{opacity:1;transform:none}.strip.on figure:nth-child(2){transition-delay:.15s}
+.strip .fr{aspect-ratio:4/5;overflow:hidden;background:#000;outline:1px solid rgba(236,230,218,.25);outline-offset:5px}
+.strip img{width:100%;height:100%;object-fit:cover}
+.strip figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;color:var(--bone2);margin-top:12px;text-transform:uppercase}
+
+/* rail */
+.rail{transition:opacity .6s;position:absolute;right:clamp(16px,2.2vw,34px);top:50%;transform:translateY(-50%);z-index:6;display:flex;flex-direction:column;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:rgba(236,230,218,.35)}
+.rail span{display:flex;align-items:center;justify-content:flex-end;gap:10px;transition:color .4s}
+.rail span::after{content:"";width:12px;height:1px;background:currentColor;transition:width .5s var(--ease)}
+.rail span.on{color:var(--bone)}.rail span.on::after{width:30px;background:var(--amber)}
+.rail span em{font-style:normal;opacity:0;transition:opacity .4s}
+.rail span.on em{opacity:1}
+
+/* ===== after the lens ===== */
+section.after{position:relative;z-index:2;background:var(--ink);padding:clamp(90px,14vh,170px) clamp(20px,6vw,96px)}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--amber);display:flex;gap:14px;align-items:center}
+.kicker::before{content:"";width:34px;height:1px;background:currentColor;opacity:.7}
+.big{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.2vw,88px);line-height:1.04;letter-spacing:-.01em;max-width:1100px;margin:26px 0 0}
+.big em{font-style:italic;color:var(--amber2)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(60px,9vh,110px);border-top:1px solid rgba(236,230,218,.14)}
+.fact{padding:34px 34px 38px 0;border-bottom:1px solid rgba(236,230,218,.14)}
+.fact:not(:nth-child(3n+1)){padding-left:34px;border-left:1px solid rgba(236,230,218,.14)}
+.fact b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(46px,4.4vw,72px);line-height:1;color:var(--bone)}
+.fact b sup{font-size:.4em;color:var(--amber);vertical-align:top;margin-left:4px}
+.fact span{display:block;margin-top:16px;font-size:14px;color:var(--bone2);max-width:280px}
+.bag{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(40px,7vw,120px);align-items:start}
+.bag .list{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--bone2);columns:2;column-gap:40px}
+.bag .list div{break-inside:avoid;padding:11px 0;border-bottom:1px solid rgba(236,230,218,.1);display:flex;justify-content:space-between;gap:12px}
+.bag .list div span{color:var(--silver)}
+.bag p{color:var(--bone2);font-size:16px;max-width:430px;margin-top:26px}
+.reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(30px,5vw,80px);margin-top:70px}
+.reviews blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,1.9vw,30px);line-height:1.32}
+.reviews cite{display:block;margin-top:20px;font-family:var(--mono);font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver)}
+.inq{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(40px,7vw,120px);align-items:center}
+.inq .photo-sm{aspect-ratio:4/5;overflow:hidden;position:relative}
+.inq .photo-sm img{width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+form.q{display:grid;gap:26px;margin-top:40px}
+form.q label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--silver)}
+form.q input,form.q textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(236,230,218,.25);color:var(--bone);font-family:var(--serif);font-size:24px;padding:10px 0 12px;outline:none;border-radius:0;transition:border-color .4s}
+form.q textarea{font-size:19px;resize:none;height:56px}
+form.q input:focus,form.q textarea:focus{border-color:var(--amber)}
+form.q .row{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+form.q button{justify-self:start;cursor:pointer;margin-top:8px}
+.note{font-size:13.5px;color:var(--silver);margin-top:22px;max-width:440px}
+.note a{color:var(--bone);border-bottom:1px solid rgba(236,230,218,.3)}
+footer{padding:50px clamp(20px,6vw,96px) 120px;border-top:1px solid rgba(236,230,218,.12);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* mobile sticky inquire */
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:70;display:none;gap:8px}
+.sticky a{flex:1;justify-content:center;padding:16px 14px;font-size:11.5px}
+.sticky a.ph{flex:0 0 54px;padding:0}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:150;pointer-events:none;mix-blend-mode:difference}
+.cur .d{position:absolute;width:6px;height:6px;margin:-3px;border-radius:50%;background:#fff}
+.cur .r{position:absolute;width:38px;height:38px;margin:-19px;border:1px solid rgba(255,255,255,.7);border-radius:50%;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),border-radius .4s}
+.cur.af .r{border-radius:2px;width:54px;height:40px;margin:-20px -27px}
+.cur.hov .r{width:74px;height:74px;margin:-37px}
+@media (hover:none),(pointer:coarse){.cur{display:none}}
+@media (hover:hover) and (pointer:fine){body,a,button,input,textarea{cursor:none}}
+
+@media (max-width:860px){
+  header{padding:18px 18px}
+  .mark b{font-size:16px;letter-spacing:.26em}.mark i{font-size:11px}
+  .hbtns .btn,.hbtns .tel{display:none}
+  .sticky{display:flex}
+  .intro{left:22px;right:22px;width:auto;top:auto;bottom:calc(96px + env(safe-area-inset-bottom));transform:none}
+  .intro h2{font-size:clamp(32px,9vw,44px);margin:14px 0 12px}
+  .intro h1{font-size:clamp(38px,11vw,52px);margin:14px 0 12px}
+  .intro p{font-size:14.5px;line-height:1.6}
+  .intro .cue{display:none}
+  .readout{font-size:9.5px;gap:14px;letter-spacing:.16em}
+  .rail{display:none}
+  .cap{left:22px;right:22px;bottom:calc(206px + env(safe-area-inset-bottom))}
+  .cap h3{font-size:30px}
+  .strip{left:22px;right:auto;bottom:calc(84px + env(safe-area-inset-bottom));gap:10px}
+  .strip figure{width:76px}.strip figcaption{display:none}
+  .hud .lcd{right:auto;left:0;bottom:auto;top:62px;margin-left:48px;font-size:9.5px;gap:12px}
+  .hud .c.bl,.hud .c.br{bottom:64px}
+  .facts{grid-template-columns:1fr}
+  .fact,.fact:not(:nth-child(3n+1)){padding:26px 0;border-left:0}
+  .bag,.inq{grid-template-columns:1fr}
+  .bag .list{columns:1}
+  .reviews{grid-template-columns:1fr}
+  form.q .row{grid-template-columns:1fr}
+  .inq .photo-sm{aspect-ratio:4/3}
+}
+
+/* reduced motion: a calm, static editorial version */
+@media (prefers-reduced-motion:reduce){
+  .grain{animation:none}
+  *{transition-duration:.01s!important;animation-duration:.01s!important}
+}
+.rm .track{height:auto!important}
+.rm .stage{display:none}
+.rmlist{display:none}
+.rm .rmlist{display:block}
+.rmlist article{padding:16vh clamp(20px,6vw,96px) 0}
+.rmlist img{width:100%;max-height:82vh;object-fit:cover}
+.rmlist h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,64px);line-height:1.05;margin:16px 0}
+.rmlist p{color:var(--bone2);max-width:560px}
+.rmlist .ro{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--silver);margin-top:14px;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true">
+  <svg viewBox="-210 -210 420 420"><circle r="200"/><circle class="g" r="182"/></svg>
+  <div class="lw"><b>Ian Borgerhoff</b> &nbsp;·&nbsp; focusing</div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cur" aria-hidden="true"><div class="r"></div><div class="d"></div></div>
+
+<header>
+  <a class="mark" href="#top" aria-label="Ian Borgerhoff Photography, home"><b>Ian Borgerhoff</b><i>Photography · Indianapolis</i></a>
+  <div class="hbtns">
+    <a class="tel" href="tel:+13175226626">317 · 522 · 6626</a>
+    <a class="btn solid" href="#inquire"><span class="dot"></span>Inquire for your date</a>
+  </div>
+</header>
+
+<main id="top">
+  <div class="track" id="track">
+    <div class="stage" id="stage">
+      <div class="photo" id="photo"></div>
+      <div class="vign"></div>
+      <canvas id="blades"></canvas>
+      <svg id="lens" viewBox="-500 -500 1000 1000" aria-hidden="true">
+        <defs>
+          <radialGradient id="barrel" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="486"><stop offset=".6" stop-color="#1b1917"/><stop offset=".86" stop-color="#0d0c0b"/><stop offset="1" stop-color="#030303"/></radialGradient>
+          <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a3733"/><stop offset=".45" stop-color="#121110"/><stop offset=".7" stop-color="#2b2926"/><stop offset="1" stop-color="#0a0a09"/></linearGradient>
+          <radialGradient id="coat" cx=".34" cy=".3" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".18" stop-color="#cbb8ff" stop-opacity=".07"/><stop offset=".5" stop-color="#6fe0c2" stop-opacity=".03"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+          <radialGradient id="innershadow" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="298"><stop offset=".86" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".85"/></radialGradient>
+          <path id="frontPath" d="M 0,-314 a 314,314 0 1,1 0,628 a 314,314 0 1,1 0,-628"/>
+        </defs>
+        <!-- outer barrel + focus grip -->
+        <circle r="393" fill="none" stroke="url(#barrel)" stroke-width="188"/>
+        <g id="gFocus">
+          <circle r="452" fill="none" stroke="#121110" stroke-width="56"/>
+          <circle r="452" fill="none" stroke="#2c2a27" stroke-width="48" stroke-dasharray="3.2 6.2"/>
+          <circle r="452" fill="none" stroke="#000" stroke-opacity=".5" stroke-width="48" stroke-dasharray="1.2 8.2" stroke-dashoffset="4"/>
+        </g>
+        <circle r="480" fill="none" stroke="#fff" stroke-opacity=".1" stroke-width="1.5"/>
+        <circle r="424" fill="none" stroke="#fff" stroke-opacity=".08" stroke-width="1.2"/>
+        <!-- distance scale -->
+        <circle r="401" fill="none" stroke="#0b0a0a" stroke-width="40"/>
+        <g id="gDist" font-family="IBM Plex Mono, monospace" font-size="15" fill="#d9d3c7" text-anchor="middle"></g>
+        <path d="M -7,-498 L 7,-498 L 0,-487 Z" fill="#ece6da"/>
+        <rect x="-.9" y="-424" width="1.8" height="20" fill="#ece6da"/>
+        <!-- gold ring -->
+        <circle r="377" fill="none" stroke="#c9a35c" stroke-width="2.6"/>
+        <!-- zoom ring -->
+        <circle r="352" fill="none" stroke="url(#metal)" stroke-width="44"/>
+        <g id="gZoom" font-family="IBM Plex Mono, monospace" font-size="17" fill="#ece6da" text-anchor="middle" font-weight="500"></g>
+        <rect x="-1" y="-378" width="2" height="12" fill="#d6a25b"/>
+        <!-- front bezel with engraving -->
+        <circle r="315" fill="none" stroke="#090808" stroke-width="30"/>
+        <text font-family="IBM Plex Mono, monospace" font-size="12.5" letter-spacing="3.2" fill="#bdb6aa"><textPath href="#frontPath" id="frontText">IAN BORGERHOFF · 12–24 mm 1:2.8 · THE FUSION OF ART AND WEDDINGS · Ø82 ·</textPath></text>
+        <circle r="300" fill="none" stroke="#000" stroke-width="4"/>
+        <!-- glass -->
+        <circle r="298" fill="url(#innershadow)"/>
+        <circle r="298" fill="url(#coat)"/>
+        <path d="M -190,-200 A 270 270 0 0 1 120,-262" fill="none" stroke="#fff" stroke-opacity=".16" stroke-width="5" stroke-linecap="round"/>
+        <path d="M 150,236 A 285 285 0 0 0 250,120" fill="none" stroke="#a7f0d8" stroke-opacity=".10" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <div class="readout" id="readout"></div>
+      <div class="flash" id="flash"></div>
+      <div class="hud" id="hud"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div><div class="af"></div><div class="lcd" id="lcd"></div></div>
+      <div class="intro" id="intro"></div>
+      <div class="cap" id="cap"></div>
+      <div class="strip" id="strip"></div>
+      <div class="rail" id="rail"></div>
+      <div class="black" id="black"></div>
+    </div>
+  </div>
+  <div class="rmlist" id="rmlist"></div>
+
+  <section class="after" id="practice">
+    <div class="kicker reveal">The practice</div>
+    <h2 class="big reveal">Seven hundred weddings in, he still takes <em>very few</em>, so that each one gets all of him.</h2>
+    <div class="facts">
+      <div class="fact reveal"><b>700<sup>+</sup></b><span>Weddings photographed.</span></div>
+      <div class="fact reveal"><b>20</b><span>Weddings a year. Most Saturdays, the answer is no.</span></div>
+      <div class="fact reveal"><b>1 yr</b><span>How far ahead he usually books. Couples reach out early.</span></div>
+      <div class="fact reveal"><b>Full</b><span>Day coverage in every wedding package, from the first button to the last dance.</span></div>
+      <div class="fact reveal"><b>2</b><span>Finished editions of every edited image, colour and black&#8209;and&#8209;white.</span></div>
+      <div class="fact reveal"><b>4K</b><span>Wedding film by two videographers, if you'd like the day to move as well.</span></div>
+    </div>
+  </section>
+
+  <section class="after" id="bag">
+    <div class="bag">
+      <div>
+        <div class="kicker reveal">In the bag</div>
+        <h2 class="big reveal" style="font-size:clamp(36px,3.8vw,62px)">He tells you <em>exactly</em> what he carries.</h2>
+        <p class="reveal">Flagship Nikon and Sony bodies, the fastest glass made, and studio light he brings to you. "Never chance the most important day of your life to equipment that will not capture its true beauty."</p>
+        <p class="reveal" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--silver)">Ian, on his equipment page</p>
+      </div>
+      <div class="list reveal">
+        <div>12–24 mm <span>f/2.8</span></div><div>14–24 mm <span>f/2.8</span></div><div>16–35 mm <span>f/2.8</span></div><div>24 mm <span>f/1.4</span></div>
+        <div>35 mm <span>f/1.2</span></div><div>50 mm <span>f/1.4</span></div><div>85 mm <span>f/1.4</span></div><div>105 mm <span>f/1.4</span></div>
+        <div>135 mm <span>f/1.8</span></div><div>70–200 mm <span>f/2.8</span></div><div>200 mm <span>f/2.0</span></div><div>300 mm <span>f/2.8</span></div>
+        <div>Profoto <span>B1 · B2 · A1</span></div><div>Bodies <span>D5 · Z7 · A9</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="after" id="words">
+    <div class="kicker reveal">In their words</div>
+    <div class="reviews">
+      <blockquote class="reveal">“If you’re considering Ian, stop searching: you have found your photographer.”<cite>Meghann · WeddingWire, 2012</cite></blockquote>
+      <blockquote class="reveal">“Above all, Ian is an artist and photographing your wedding is his masterpiece.”<cite>Brian · WeddingWire, 2014</cite></blockquote>
+      <blockquote class="reveal">“He’s on another level! He basically ran the whole day.. he is calm &amp; knows his stuff, so my family was able to relax!”<cite>Chelsey · WeddingWire, 2017</cite></blockquote>
+      <blockquote class="reveal">“With Ian’s editing, the colors feel vibrant and beautiful without feeling artificial, forced, or overly trendy.”<cite>Hayden &amp; D. · Zola, 2024</cite></blockquote>
+    </div>
+    <p class="reveal" style="margin-top:60px;font-family:var(--mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--silver)">4.9 of 5 · 23 reviews on WeddingWire &nbsp;·&nbsp; 5 of 5 on Zola</p>
+  </section>
+
+  <section class="after" id="inquire">
+    <div class="inq">
+      <div class="photo-sm reveal"><img src="images/dance-bokeh-sm.jpg" srcset="images/dance-bokeh-sm.jpg 820w, images/dance-bokeh.jpg 1600w" sizes="(max-width:860px) 100vw, 45vw" alt="A couple dancing close, warm lights behind them" loading="lazy" decoding="async"></div>
+      <div>
+        <div class="kicker reveal">Private inquiry</div>
+        <h2 class="big reveal" style="font-size:clamp(40px,4.6vw,76px)">Inquire for <em>your date.</em></h2>
+        <form class="q reveal" id="q">
+          <div class="row"><div><label for="n">Your names</label><input id="n" autocomplete="name" placeholder="Claire &amp; James"></div>
+          <div><label for="d">Wedding date</label><input id="d" placeholder="June 2027"></div></div>
+          <div><label for="v">Venue, or where in the world</label><input id="v" placeholder="Indianapolis · Lake Como · not sure yet"></div>
+          <div><label for="m">Anything Ian should know</label><textarea id="m" placeholder="Optional"></textarea></div>
+          <button class="btn solid" type="submit"><span class="dot"></span>Send my inquiry</button>
+        </form>
+        <p class="note reveal">Opens a note to Ian at <a href="mailto:ian.borgerhoff@gmail.com">ian.borgerhoff@gmail.com</a>. Or call <a href="tel:+13175226626">317-522-6626</a>. Most couples write about a year before their date.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <span>© Ian Borgerhoff Photography</span><span>Indianapolis, Indiana</span><span>The fusion of art and weddings</span>
+</footer>
+<div class="sticky"><a class="btn solid" href="#inquire"><span class="dot"></span>Inquire for your date</a><a class="btn ph" href="tel:+13175226626" aria-label="Call Ian"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+/* Worlds. Lens / focal length / shutter / ISO are the real EXIF from each photograph. */
+const W=[
+ {k:'veil-fresco',no:'00',name:'The veil',lens:'12–24 mm 1:2.8',mm:12,sh:'1/800',iso:4000,hero:1,
+  t:'The fusion of <em>art</em> and weddings.',b:'Ian Borgerhoff photographs twenty weddings a year, in Indianapolis and wherever you are married.',
+  cap:'One veil, one frescoed room.',strip:[['veil-window','16 mm'],['veil-doors','14 mm']]},
+ {k:'cath-basilica',no:'01',name:'The cathedral',lens:'14–24 mm 1:2.8',mm:14,sh:'1/80',iso:2800,
+  t:'Under a vaulted ceiling, <em>every word</em> carries.',b:'The aisle, the altar, and the painted ceiling nobody remembers to look up at. He takes in the whole nave.',
+  cap:'The vows, and the ceiling above them.',strip:[['cath-aisle','35 mm'],['cath-gothic','14 mm']]},
+ {k:'ball-monogram',no:'02',name:'The grand ballroom',lens:'14–24 mm 1:2.8',mm:14,sh:'1/50',iso:2200,
+  t:'Your monogram, <em>lit</em> across the floor.',b:'Before the doors open, he photographs the room exactly as you dreamed it. Then the night begins.',
+  cap:'The room, a moment before everyone arrives.',strip:[['ball-cake','90 mm'],['ball-party','14 mm']]},
+ {k:'city-candles',no:'03',name:'The city after dark',lens:'200 mm 1:2',mm:200,sh:'1/30',iso:1250,
+  t:'When the guests go in, <em>he takes you out.</em>',b:'Candlelit steps, blue hour at the station, downtown after midnight. Lit with his own studio strobes, like a film set.',
+  cap:'Ten minutes away from your own party.',strip:[['city-station','24 mm'],['city-street','35 mm']]},
+ {k:'sa-portrait',no:'04',name:'The South Asian celebration',lens:'85 mm 1:1.4',mm:85,sh:'1/100',iso:3600,
+  t:'Red, gold, and <em>every</em> detail of the jewelry.',b:'Colour that keeps its depth. Portraits that hold the room. All of it, across the whole celebration.',
+  cap:'The bride, in her own light.',strip:[['sa-couple','50 mm'],['sa-mirror','105 mm']]},
+ {k:'italy-hall',no:'05',name:'Married in Italy',lens:'14–24 mm 1:2.8',mm:14,sh:'1/200',iso:4000,
+  t:'Wherever you say yes, <em>he’ll be there.</em>',b:'Frescoed halls, marble staircases, terracotta rooftops at first light.',
+  cap:'Set for dinner, under the frescoes.',strip:[['italy-stairs','35 mm'],['italy-shoes','85 mm']]},
+ {k:'garden-estate',no:'06',name:'The garden estate',lens:'14–24 mm 1:2.8',mm:14,sh:'1/200',iso:450,
+  t:'A cathedral-length veil, <em>on the lawn.</em>',b:'Portico ceremonies, chandeliers in the tent, the last gold light through the trees.',
+  cap:'Walking up the aisle, under the portico.',strip:[['garden-sunset','24 mm'],['garden-flowers','120 mm']]},
+ {k:'museum-love',no:'07',name:'The modern couple',lens:'70–200 mm 1:2.8',mm:80,sh:'1/640',iso:10000,
+  t:'For two people who’d rather be <em>in a gallery.</em>',b:'Clean lines, glass atriums, and one very famous sculpture that spells it out.',
+  cap:'Some art, in front of other art.',strip:[['museum-love-bw','85 mm'],['museum-glass','16 mm']]}
+];
+const N=W.length, SEG=3.1; // viewport-heights of scroll per world
+const $=s=>document.querySelector(s);
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
+const ramp=(t,a,b)=>clamp((t-a)/(b-a));
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+const eo=t=>1-Math.pow(1-t,3);
+const lerp=(a,b,t)=>a+(b-a)*t;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const src=(k,sm)=>`images/${k}${sm?'-sm':''}.jpg`;
+const srcset=k=>`${src(k,1)} 820w, ${src(k)} 1600w`;
+
+/* build photo layers */
+const photo=$('#photo');
+W.forEach((w,i)=>{
+  const d=document.createElement('div');d.className='im';d.dataset.i=i;
+  d.innerHTML=`<img class="soft" alt="" aria-hidden="true" decoding="async"><img class="sharp" alt="${w.cap}" decoding="async" sizes="100vw">`;
+  photo.appendChild(d); w.el=d;
+});
+function load(i){const w=W[i];if(!w||w.loaded)return;w.loaded=1;const [s,h]=w.el.querySelectorAll('img');s.src=src(w.k,1);h.srcset=srcset(w.k);h.src=src(w.k);}
+/* rail */
+$('#rail').innerHTML=W.map(w=>`<span><em>${w.name}</em>${w.no}</span>`).join('');
+const railEls=[...document.querySelectorAll('#rail span')];
+
+/* lens scales */
+const ZOOM=[12,14,16,20,24,35,50,70,85,105,120,135,200];
+const zAng=mm=>Math.log(mm/12)/Math.log(200/12)*300;
+$('#gZoom').innerHTML=ZOOM.map(m=>`<text transform="rotate(${zAng(m).toFixed(2)}) translate(0,-346)">${m}</text>`).join('')+`<text transform="rotate(312) translate(0,-346)" fill="#d6a25b" font-size="13">mm</text>`;
+const DIST=['∞','30','15','10','7','5','4','3','2.5','2','1.5'];
+$('#gDist').innerHTML=DIST.map((m,i)=>`<text transform="rotate(${(-i*24).toFixed(1)}) translate(0,-396)">${m}</text>`).join('')+`<text transform="rotate(-262) translate(0,-396)" fill="#d6a25b">ft</text>`+DIST.map((m,i)=>`<rect transform="rotate(${(-i*24-12).toFixed(1)})" x="-.6" y="-416" width="1.2" height="9" fill="#8f8a82"/>`).join('');
+
+const lens=$('#lens'),gZoom=$('#gZoom'),gFocus=$('#gFocus'),gDist=$('#gDist'),frontText=$('#frontText');
+const cv=$('#blades'),ctx=cv.getContext('2d');
+let vw=innerWidth,vh=innerHeight,dpr=Math.min(2,devicePixelRatio||1),mob=vw<=860;
+function size(){vw=innerWidth;vh=$('#stage').clientHeight||innerHeight;mob=vw<=860;dpr=Math.min(2,devicePixelRatio||1);cv.width=vw*dpr;cv.height=vh*dpr;
+  $('#track').style.height=(N*SEG*100+100)+'vh';}
+size();addEventListener('resize',()=>{size();frame(true)});
+
+function drawBlades(cx,cy,G,h,rot,s){
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,vw,vh);
+  if(h>=G*1.07*s-0.5&&s>1.01) return;
+  ctx.save();ctx.translate(cx,cy);
+  const n=9,P=[];for(let i=0;i<n;i++){const a=rot+i*2*Math.PI/n;P.push([h*Math.cos(a),h*Math.sin(a)]);}
+  const R=G*s;
+  ctx.beginPath();ctx.arc(0,0,R,0,Math.PI*2);ctx.moveTo(P[0][0],P[0][1]);for(let i=n-1;i>=0;i--)ctx.lineTo(P[i][0],P[i][1]);ctx.closePath();
+  const g=ctx.createRadialGradient(-R*.3,-R*.35,0,0,0,R);g.addColorStop(0,'#2a2724');g.addColorStop(.6,'#141210');g.addColorStop(1,'#060505');
+  ctx.fillStyle=g;ctx.fill('evenodd');
+  ctx.save();ctx.beginPath();ctx.arc(0,0,R,0,Math.PI*2);ctx.clip();
+  for(let i=0;i<n;i++){
+    const p=P[i],q=P[(i+n-1)%n],p2=P[(i+1)%n];let dx=p[0]-q[0],dy=p[1]-q[1];const L=Math.hypot(dx,dy)||1;dx/=L;dy/=L;
+    let ex=p[0]+dx*R*2.2,ey=p[1]+dy*R*2.2;
+    let dx2=p2[0]-p[0],dy2=p2[1]-p[1];const L2=Math.hypot(dx2,dy2)||1;dx2/=L2;dy2/=L2;
+    ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(ex,ey);ctx.lineTo(p2[0]+dx2*R*2.2,p2[1]+dy2*R*2.2);ctx.lineTo(p2[0],p2[1]);ctx.closePath();
+    ctx.fillStyle=`rgba(255,240,220,${[.035,.012,.022][i%3]})`;ctx.fill();
+    ctx.beginPath();ctx.moveTo(p[0],p[1]);ctx.lineTo(ex,ey);ctx.strokeStyle='rgba(0,0,0,.7)';ctx.lineWidth=2.2;ctx.stroke();
+    ctx.strokeStyle='rgba(255,245,230,.13)';ctx.lineWidth=.8;ctx.stroke();
+  }
+  ctx.restore();
+  ctx.beginPath();ctx.moveTo(P[0][0],P[0][1]);for(let i=1;i<n;i++)ctx.lineTo(P[i][0],P[i][1]);ctx.closePath();
+  ctx.strokeStyle='rgba(255,236,205,.22)';ctx.lineWidth=1;ctx.stroke();
+  ctx.restore();
+}
+
+/* copy builders */
+const intro=$('#intro'),cap=$('#cap'),strip=$('#strip'),hud=$('#hud'),lcd=$('#lcd'),readout=$('#readout'),flash=$('#flash'),black=$('#black');
+const words=html=>html.split(/(<em>.*?<\/em>)/).map(seg=>{if(seg.startsWith('<em>'))return seg.replace(/<\/?em>/g,'').split(' ').map(x=>`<span class="w"><span><em>${x}</em></span></span>`).join(' ');return seg.trim().split(' ').filter(Boolean).map(x=>`<span class="w"><span>${x}</span></span>`).join(' ');}).join(' ');
+let cur=-1;
+function setWorld(i){
+  if(i===cur)return;cur=i;const w=W[i];
+  load(i);load(i+1);load(i-1);
+  W.forEach((x,j)=>x.el.classList.toggle('on',j===i));
+  const H=w.hero?'h1':'h2';
+  intro.innerHTML=`<div class="eb fade">${w.hero?'Indianapolis · 700+ weddings':'No. '+w.no+' · '+w.name}</div><${H}>${words(w.t)}</${H}><p class="fade d2">${w.b}</p>${w.hero?'<div class="cue fade d2"><i></i>Scroll to focus</div>':''}`;
+  intro.querySelectorAll('.w>span').forEach((s,j)=>s.style.transitionDelay=(j*0.045)+'s');
+  cap.innerHTML=`<div class="eb">No. ${w.no} · ${w.name}</div><h3>${w.cap}</h3>`;
+  strip.innerHTML=w.strip.map(([k,mm])=>`<figure><div class="fr"><img src="${src(k,1)}" alt="" loading="lazy" decoding="async"></div><figcaption>${mm} · same day</figcaption></figure>`).join('');
+  lcd.innerHTML=`<span class="am">●</span><span>${w.mm} mm</span><span>${w.sh}</span><span>ISO ${w.iso}</span><span>${w.no}/${String(N-1).padStart(2,'0')}</span>`;
+  frontText.textContent=`IAN BORGERHOFF · ${w.lens} · THE FUSION OF ART AND WEDDINGS · Ø82 ·`;
+  railEls.forEach((r,j)=>r.classList.toggle('on',j===i));
+  intro.classList.remove('on');cap.classList.remove('on');strip.classList.remove('on');hud.classList.remove('on');
+  readout.dataset.w=i;
+}
+
+let introT=0, lastKey='';
+function frame(force){
+  const tr=$('#track');document.querySelector('header').classList.toggle('solid',scrollY>tr.offsetTop+tr.offsetHeight-innerHeight-10);const y=scrollY-tr.offsetTop;const segPx=SEG*vh;
+  let g=clamp(y/segPx,0,N-0.0001);
+  let i=Math.floor(g),t=g-i;
+  if(y<0){i=0;t=0}
+  const w=W[i];setWorld(i);
+  if(i===0) t=Math.max(t,introT*0.36);
+  const key=i+':'+t.toFixed(4)+':'+vw+':'+vh;if(key===lastKey&&!force)return;lastKey=key;
+
+  /* geometry */
+  const D=mob?Math.min(vw*.84,vh*.46):Math.min(vh*.8,vw*.47);
+  const L=D/2,G=L*298/480;
+  const push=ease(ramp(t,.48,.68));
+  const cx0=mob?vw*.5:vw*.64,cy0=mob?vh*.33:vh*.5;
+  const cx=lerp(cx0,vw*.5,push),cy=lerp(cy0,vh*.5,push);
+  const sMax=Math.hypot(vw,vh)/G*1.08;
+  const s=lerp(1,sMax,Math.pow(push,1.6));
+  const enter=eo(ramp(t,0,.1));
+  const es=(i===0?1:lerp(.86,1,enter))*s;
+
+  /* aperture: open, blink (shutter), then fully open */
+  let h;
+  const open=ease(ramp(t,.08,.34));
+  h=lerp(.05,.8,open);
+  const blink=ramp(t,.4,.46);if(blink>0&&blink<1){h*=Math.abs(Math.cos(blink*Math.PI));}
+  h=lerp(h,1.07,ease(ramp(t,.48,.56)));
+  const hp=h*G*es;
+  const rot=-0.6+h*0.9;
+  /* clip the photo to the iris */
+  const mR=Math.min(h,1)*G*es;
+  photo.style.clipPath=push>.999?'none':`circle(${mR.toFixed(1)}px at ${cx.toFixed(1)}px ${cy.toFixed(1)}px)`;
+  drawBlades(cx,cy,G*es/s,hp,rot,s);
+
+  /* focus: soft -> sharp */
+  const focus=ease(ramp(t,.14,.38));
+  const [soft,sharp]=w.el.querySelectorAll('img');
+  const kb=1.16-0.14*clamp(t/.95);
+  sharp.style.opacity=focus;sharp.style.transform=`scale(${kb.toFixed(4)})`;soft.style.transform=`scale(${(kb+.05).toFixed(4)})`;
+  /* lens body */
+  const lo=(i===0?1:enter)*(1-ramp(t,.54,.64));
+  lens.style.opacity=lo.toFixed(3);
+  lens.style.transform=`translate(${(cx-L*es).toFixed(1)}px,${(cy-L*es).toFixed(1)}px) scale(${(D*es/10).toFixed(4)})`;
+  lens.style.transformOrigin='0 0';
+  const prevMm=i>0?W[i-1].mm:24;
+  const zm=lerp(zAng(prevMm),zAng(w.mm),ease(ramp(t,.04,.3)));
+  gZoom.setAttribute('transform',`rotate(${(-zm).toFixed(2)})`);
+  gFocus.setAttribute('transform',`rotate(${(focus*120).toFixed(2)})`);
+  gDist.setAttribute('transform',`rotate(${(focus*192).toFixed(2)})`);
+  /* readout under the lens */
+  const ro=lo*ramp(t,.06,.14)*(1-ramp(t,.44,.5));
+  readout.style.opacity=ro.toFixed(3);
+  readout.style.left=cx+'px';readout.style.top=(cy+L*es+(mob?14:26))+'px';
+  const shown=Math.round(lerp(prevMm,w.mm,ease(ramp(t,.04,.3))));
+  const fnum=[22,16,11,8,5.6,4,2.8][Math.min(6,Math.floor(open*6.99))];
+  readout.innerHTML=`<span><b>${shown}</b> mm</span><span>f/${fnum}</span><span class="am">${focus>.98?'● in focus':'○ focusing'}</span>`;
+  if(mob){readout.style.display=(cy+L*es+40>vh*.6)?'none':'flex';}
+  /* flash at the shutter */
+  flash.style.opacity=(blink>0&&blink<1?Math.sin(blink*Math.PI)*.35:0).toFixed(3);
+  /* copy */
+  const introOn=(i===0?t<.46:(t>.06&&t<.46));
+  intro.classList.toggle('on',introOn);
+  const fb=t>.64&&t<.93;
+  cap.classList.toggle('on',fb);strip.classList.toggle('on',fb&&t>.68);hud.classList.toggle('on',t>.6&&t<.93);$('#rail').style.opacity=(t>.47&&t<.95)?0:1;
+  /* black between worlds */
+  let bo=0;if(t>.955&&i<N-1)bo=ramp(t,.955,1);if(i>0&&t<.03)bo=1-ramp(t,0,.03);if(i===N-1&&t>.93)bo=ramp(t,.93,1)*.0;
+  black.style.opacity=bo.toFixed(3);
+}
+
+/* reduced motion: static list */
+function buildRM(){
+  document.documentElement.classList.add('rm');
+  $('#rmlist').innerHTML=W.map(w=>`<article><div class="kicker">No. ${w.no} · ${w.name}</div><h2>${w.t}</h2><p>${w.b}</p><img src="${src(w.k,1)}" srcset="${srcset(w.k)}" sizes="100vw" alt="${w.cap}" loading="lazy"><div class="ro">${w.lens} · ${w.mm} mm · ${w.sh} · ISO ${w.iso}</div></article>`).join('');
+}
+
+/* reveal on scroll for after-sections */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* inquiry -> email */
+$('#q').addEventListener('submit',e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();
+  const sub=`Wedding inquiry${v('d')?' · '+v('d'):''}${v('n')?' · '+v('n'):''}`;
+  const body=`Hi Ian,\n\nWe'd love to know if you're available.\n\nNames: ${v('n')}\nDate: ${v('d')}\nVenue / location: ${v('v')}\n\n${v('m')}\n`;
+  location.href=`mailto:ian.borgerhoff@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;});
+
+/* cursor */
+const curEl=$('.cur');if(matchMedia('(hover:hover) and (pointer:fine)').matches){let mx=-99,my=-99,rx=-99,ry=-99;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const t=e.target;curEl.classList.toggle('hov',!!t.closest('a,button,input,textarea'));curEl.classList.toggle('af',!!t.closest('.stage')&&!t.closest('a,button'));});
+  const d=curEl.querySelector('.d'),r=curEl.querySelector('.r');(function m(){rx+=(mx-rx)*.18;ry+=(my-ry)*.18;d.style.transform=`translate(${mx}px,${my}px)`;r.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(m)})();}
+
+/* boot */
+function jumpHash(){const m=location.hash.match(/^#s(\d+)(?:p(\d+))?$/);if(!m)return false;const i=+m[1],p=(+m[2]||0)/100;
+  window.scrollTo(0,$('#track').offsetTop+(i+p)*SEG*vh);introT=1;return true;}
+if(RM){buildRM();$('#loader').classList.add('done');}
+else{
+  setWorld(0);load(0);
+  const hero=W[0].el.querySelector('.sharp');
+  const start=()=>{ $('#loader').classList.add('done');
+    if(jumpHash()){frame(true);return;}
+    const t0=performance.now();(function a(now){introT=eo(clamp((now-t0)/2600));frame(true);if(introT<1)requestAnimationFrame(a)})(t0);};
+  let started=0;const go=()=>{if(started)return;started=1;setTimeout(start,700)};
+  if(hero.complete&&hero.naturalWidth)go();else hero.addEventListener('load',go);setTimeout(go,2600);
+  addEventListener('hashchange',()=>{jumpHash();frame(true)});
+  let lenis=null;
+  addEventListener('load',()=>{if(window.Lenis&&!location.hash){lenis=new Lenis({lerp:.085,smoothWheel:true});}});
+  (function loop(time){if(lenis)lenis.raf(time);frame();requestAnimationFrame(loop)})(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const id=a.getAttribute('href');const el=id.length>1&&document.querySelector(id);if(el){e.preventDefault();lenis?lenis.scrollTo(el,{duration:2.2}):el.scrollIntoView({behavior:'smooth'})}}));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Ian Borgerhoff · The day, told</title>
+<meta name="description" content="Wedding photography by Ian Borgerhoff, Indianapolis. The whole day, from the first button to the last dance.">
+<meta name="theme-color" content="#e9e1d3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--linen:#e9e1d3;--paper:#f8f3e9;--paper2:#efe7d8;--ink:#2a211c;--ink2:#5b4f45;--ox:#5b2323;--ox2:#3d1717;--gold:#b48a4a;--gold2:#d8b77a;
+  --serif:'Cormorant Garamond',Garamond,Georgia,serif;--sans:'Jost',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.1,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--linen);color:var(--ink);-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--gold2);color:var(--ink)}
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}
+.grain{position:fixed;inset:-50%;width:200%;height:200%;pointer-events:none;z-index:90;opacity:.09;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 1.2 -.15'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain 1.4s steps(6) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}25%{transform:translate(-2%,3%)}50%{transform:translate(3%,-2%)}75%{transform:translate(-3%,-3%)}}
+
+/* loader: a ribbon draws and the monogram foils in */
+#loader{position:fixed;inset:0;z-index:200;background:var(--ox2);display:grid;place-items:center;transition:opacity 1.1s var(--ease),visibility 1.1s}
+#loader.done{opacity:0;visibility:hidden}
+#loader .m{font-family:var(--serif);font-style:italic;font-weight:300;font-size:64px;color:var(--gold2);letter-spacing:.08em;opacity:0;animation:foil 1.6s .2s var(--ease) forwards;background:linear-gradient(100deg,#b48a4a 20%,#f4dfae 45%,#b48a4a 70%);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:250% 100%}
+#loader .s{position:absolute;bottom:14vh;left:0;right:0;text-align:center;font-size:10.5px;letter-spacing:.42em;text-transform:uppercase;color:rgba(216,183,122,.7)}
+@keyframes foil{0%{opacity:0;background-position:100% 0;transform:translateY(8px)}100%{opacity:1;background-position:0 0;transform:none}}
+
+header{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:24px clamp(20px,3.4vw,52px);pointer-events:none}
+header>*{pointer-events:auto}
+header{transition:background .6s,padding .6s}header.solid{background:rgba(248,243,233,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding-top:14px;padding-bottom:14px}.dk header.solid{background:rgba(61,23,23,.92)}
+.mark{font-family:var(--serif);font-size:24px;font-weight:400;letter-spacing:.02em;line-height:1;color:var(--ink);transition:color 1s}
+.mark i{font-weight:300}
+.mark small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.36em;text-transform:uppercase;color:var(--ink2);margin-top:7px;transition:color 1s}
+.dk header .mark,.dk header .tel{color:#f3e9d8}.dk header .mark small{color:rgba(243,233,216,.6)}
+.hb{display:flex;align-items:center;gap:8px}
+.tel{font-size:12px;letter-spacing:.16em;color:var(--ink2);padding:0 14px;transition:color 1s}
+.btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--sans);font-size:11.5px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;padding:15px 24px;border-radius:999px;background:var(--ox);color:#f6ead7;border:1px solid var(--ox);transition:background .5s var(--ease),transform .5s var(--ease)}
+.btn:hover{background:var(--ox2)}
+.btn .h{width:7px;height:7px;background:var(--gold2);transform:rotate(45deg)}
+
+/* ===== the table ===== */
+.track{position:relative}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--linen)}
+.table{position:absolute;inset:-4%;background-color:#e9e1d3;
+  background-image:repeating-linear-gradient(0deg,rgba(90,70,50,.035) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(90,70,50,.03) 0 1px,transparent 1px 4px),radial-gradient(120% 90% at 50% 50%,rgba(255,255,255,.25),rgba(80,60,40,.18));transition:none}
+.sun{position:absolute;left:50%;top:50%;width:150vmax;height:110vmax;margin:-55vmax 0 0 -75vmax;pointer-events:none;mix-blend-mode:soft-light;will-change:transform,opacity}
+.sun .win{position:absolute;left:28%;top:22%;width:44%;height:56%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:3.2%;filter:blur(18px)}
+.sun .win i{background:var(--sunc,#fff6e0)}
+.night{position:absolute;inset:0;pointer-events:none;background:#0f1420;mix-blend-mode:multiply;opacity:0}
+.glow{position:absolute;inset:0;pointer-events:none;opacity:0;background:radial-gradient(40vmax 30vmax at 12% 88%,rgba(255,170,80,.55),transparent 70%),radial-gradient(30vmax 22vmax at 92% 12%,rgba(255,190,110,.25),transparent 70%);mix-blend-mode:screen}
+.bokeh{position:absolute;inset:0;pointer-events:none;opacity:0}
+.bokeh i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,214,150,.9),rgba(255,190,110,.25) 55%,transparent 70%);filter:blur(2px)}
+
+/* hero copy on the table */
+.hero{position:absolute;left:clamp(22px,6vw,100px);top:50%;transform:translateY(-50%);width:min(34vw,470px);z-index:4;transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.hero.off{opacity:0;transform:translateY(-46%);pointer-events:none}
+.hero .k{font-size:10.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--ink2)}
+.hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(52px,6vw,104px);line-height:.95;letter-spacing:-.01em;margin:22px 0 26px}
+.hero h1 em{font-style:italic;color:var(--ox)}
+.hero p{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink2);max-width:380px}
+.hero .cue{margin-top:34px;font-size:10px;letter-spacing:.36em;text-transform:uppercase;color:var(--ink2);display:flex;gap:14px;align-items:center}
+.hero .cue i{width:44px;height:1px;background:var(--ink2);transform-origin:left;animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleX(0)}60%{transform:scaleX(1)}100%{transform:scaleX(1);opacity:0}}
+
+/* clock */
+.clock{position:absolute;right:clamp(20px,3.4vw,52px);bottom:clamp(22px,4vh,40px);z-index:5;text-align:right;transition:color 1s}
+.clock b{display:block;font-family:var(--serif);font-weight:300;font-style:italic;font-size:36px;line-height:1}
+.clock span{font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;opacity:.7}
+.dk .clock{color:#f3e9d8}
+
+/* ===== the album ===== */
+.book{position:absolute;left:50%;top:50%;z-index:3;transform-style:preserve-3d;will-change:transform}
+.book .shadow{position:absolute;inset:2% -1% -3% -1%;background:rgba(40,25,15,.55);filter:blur(26px);transform:translateY(18px);border-radius:6px;z-index:-1}
+.slot{position:absolute;top:0;height:100%;width:50%}
+.slot.l{left:0}.slot.r{left:50%}
+.pg{position:absolute;inset:0;background:var(--paper);overflow:hidden;visibility:hidden}
+.pg.on{visibility:visible}
+.slot.l .pg{border-radius:4px 0 0 4px;box-shadow:inset -38px 0 40px -30px rgba(70,50,30,.35)}
+.slot.r .pg{border-radius:0 4px 4px 0;box-shadow:inset 38px 0 40px -30px rgba(70,50,30,.35)}
+.pg::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,rgba(120,100,70,.025) 0 1px,transparent 1px 3px)}
+.edge{position:absolute;top:.6%;bottom:-.8%;width:50.6%;background:repeating-linear-gradient(0deg,#e9dfcc 0 1px,#f7f1e4 1px 3px);z-index:-1;border-radius:3px}
+.edge.l{left:-.9%}.edge.r{right:-.9%}
+.cover-base{position:absolute;top:-1.4%;bottom:-1.4%;background:var(--ox2);z-index:-2}.cover-base.l{left:-1.2%;width:51.2%;border-radius:6px 0 0 6px}.cover-base.r{right:-1.2%;width:51.2%;border-radius:0 6px 6px 0}
+.book.closed .cover-base.l,.book.closed .edge.l,.book.closed .slot.l{visibility:hidden}.book.closed .shadow{left:50%}
+.leaf{position:absolute;top:0;left:50%;width:50%;height:100%;transform-origin:0 50%;transform-style:preserve-3d;visibility:hidden;will-change:transform}
+.leaf.on{visibility:visible}
+.leaf .f,.leaf .b{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;background:var(--paper)}
+.leaf .f{border-radius:0 4px 4px 0}
+.leaf .b{transform:rotateY(180deg);border-radius:4px 0 0 4px}
+.leaf .sh{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(60,40,20,.35),transparent 40%,rgba(255,255,255,.18) 80%,rgba(60,40,20,.15));opacity:0}
+.leaf .pg{visibility:inherit}
+
+/* page content */
+.mount{position:absolute;left:9%;right:9%;top:8%;bottom:13%;display:grid;place-items:center}
+.ph{position:relative;max-width:100%;max-height:100%;box-shadow:0 1px 1px rgba(0,0,0,.1),0 10px 22px -10px rgba(60,40,20,.45);transform:scale(1.035) translateY(6px);opacity:.0;transition:transform 1.4s var(--ease),opacity 1s var(--ease),box-shadow 1.4s}
+.ph img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.ph.land{width:100%}.ph.land img{width:100%}
+.ph.port{height:100%}.ph.port img{height:100%;width:auto}
+.ph::before,.ph::after,.ph i::before,.ph i::after{content:"";position:absolute;width:22px;height:22px;background:linear-gradient(135deg,#1f1a16 50%,transparent 50%);opacity:.92;z-index:2}
+.ph::before{left:-5px;top:-5px}
+.ph::after{right:-5px;top:-5px;transform:rotate(90deg)}
+.ph i::before{right:-5px;bottom:-5px;transform:rotate(180deg)}
+.ph i::after{left:-5px;bottom:-5px;transform:rotate(270deg)}
+.set .ph{transform:none;opacity:1;box-shadow:0 1px 1px rgba(0,0,0,.12),0 3px 8px -3px rgba(60,40,20,.4)}
+.leaf .ph{transform:none;opacity:1}
+.folio{position:absolute;bottom:5.4%;left:0;right:0;text-align:center;font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink2);opacity:.8}
+.txt{position:absolute;left:12%;right:11%;top:10%;bottom:12%;display:flex;flex-direction:column}
+.txt .hr{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(40px,4vw,66px);line-height:1;color:var(--gold)}
+.txt .k{font-size:10.5px;line-height:1.7;letter-spacing:.32em;text-transform:uppercase;color:var(--ink2);margin-top:18px}
+.txt h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.5vw,42px);line-height:1.12;margin:16px 0 14px;color:var(--ink)}
+.txt h2 em{font-style:italic;color:var(--ox)}
+.txt p{font-family:var(--serif);font-size:clamp(16px,1.3vw,20px);line-height:1.5;color:var(--ink2);max-width:34ch}
+.txt .k,.txt h2,.txt p{opacity:0;transform:translateY(10px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.set .txt .k,.set .txt h2,.set .txt p,.leaf .txt .k,.leaf .txt h2,.leaf .txt p{opacity:1;transform:none}
+.set .txt h2{transition-delay:.12s}.set .txt p{transition-delay:.24s}
+.tuck{position:absolute;right:11%;bottom:12%;width:44%;transform:rotate(2.5deg)}
+.tuck .ph{transition-delay:.35s}
+.txt .rule{width:40px;height:1px;background:var(--gold);margin-top:18px}
+.mob-ph{display:none}
+/* cover */
+.cov{position:absolute;inset:0;background:radial-gradient(120% 90% at 30% 20%,#6c2b2b,#4a1c1c 55%,#331212);border-radius:0 6px 6px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--gold2)}
+.cov::before{content:"";position:absolute;inset:6%;border:1px solid rgba(216,183,122,.45);border-radius:2px}
+.cov::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='turbulence' baseFrequency='.6' numOctaves='3'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:.55;mix-blend-mode:multiply;border-radius:inherit}
+.cov .mono{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(40px,4.4vw,72px);line-height:1;background:linear-gradient(100deg,#a8803f 10%,#f4dfae 40%,#b48a4a 60%,#e8c98c 85%);-webkit-background-clip:text;background-clip:text;color:transparent;position:relative;z-index:1}
+.cov .sub{margin-top:18px;font-size:10px;letter-spacing:.42em;text-transform:uppercase;color:rgba(216,183,122,.8);position:relative;z-index:1}
+.cov .line{width:46px;height:1px;background:rgba(216,183,122,.6);margin:22px auto;position:relative;z-index:1}
+.endp{position:absolute;inset:0;background:#efe5d2;background-image:radial-gradient(rgba(180,138,74,.18) 1px,transparent 1.2px);background-size:14px 14px;display:grid;place-items:center}
+.endp p{font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.8vw,28px);color:var(--ink2);text-align:center;line-height:1.4;padding:0 14%}
+.ribbon{position:absolute;left:calc(50% + 6px);top:-2%;width:14px;height:106%;z-index:4;pointer-events:none;background:linear-gradient(90deg,#6e2727,#8e3a3a 45%,#5a1f1f);clip-path:polygon(0 0,100% 0,100% 100%,50% 97.5%,0 100%);box-shadow:0 0 6px rgba(0,0,0,.3);opacity:0;transition:opacity .8s}
+.ribbon.on{opacity:.95}
+
+/* progress chapters */
+.chap{position:absolute;left:clamp(20px,3.4vw,52px);bottom:clamp(22px,4vh,40px);z-index:5;display:flex;gap:7px;align-items:center}
+.chap i{width:22px;height:2px;background:currentColor;opacity:.22;transition:opacity .5s,width .5s var(--ease)}
+.chap i.on{opacity:.9;width:40px}
+.dk .chap{color:#f3e9d8}
+
+/* ===== after ===== */
+section.after{position:relative;z-index:2;background:var(--paper);padding:clamp(90px,14vh,160px) clamp(22px,6vw,100px)}
+.kk{font-size:10.5px;letter-spacing:.38em;text-transform:uppercase;color:var(--ink2);display:flex;gap:14px;align-items:center}
+.kk::before{content:"";width:30px;height:1px;background:var(--gold)}
+.h2{font-family:var(--serif);font-weight:300;font-size:clamp(40px,5vw,86px);line-height:1.02;margin-top:24px;max-width:1000px}
+.h2 em{font-style:italic;color:var(--ox)}
+.quotes{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(30px,6vw,100px);margin-top:70px;align-items:start}
+.q1{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(28px,2.8vw,46px);line-height:1.2;color:var(--ink)}
+.qs blockquote{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--ink2);padding:26px 0;border-top:1px solid rgba(90,70,50,.18)}
+cite{display:block;font-family:var(--sans);font-style:normal;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8a6630;margin-top:14px}
+.included{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:70px;border-top:1px solid rgba(90,70,50,.18)}
+.included div{padding:30px 26px 34px 0}
+.included div+div{padding-left:26px;border-left:1px solid rgba(90,70,50,.18)}
+.included b{display:block;font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.15}
+.included span{display:block;font-size:14px;color:var(--ink2);margin-top:10px}
+.inq{background:var(--ox2)!important;color:#f3e9d8;text-align:center}
+.inq .kk{justify-content:center;color:rgba(243,233,216,.7)}
+.inq .h2{margin:24px auto 0;color:#f3e9d8}.inq .h2 em{color:var(--gold2)}
+.inq p.lead{font-family:var(--serif);font-size:22px;color:rgba(243,233,216,.75);max-width:560px;margin:24px auto 0}
+form.q{max-width:680px;margin:50px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:22px;text-align:left}
+form.q .full{grid-column:1/-1}
+form.q label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,233,216,.55)}
+form.q input,form.q textarea{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(243,233,216,.3);color:#f3e9d8;font-family:var(--serif);font-size:23px;padding:8px 0 10px;outline:none;border-radius:0}
+form.q textarea{height:52px;resize:none;font-size:19px}
+form.q input:focus,form.q textarea:focus{border-color:var(--gold2)}
+form.q button{grid-column:1/-1;justify-self:center;margin-top:16px;cursor:pointer;background:var(--gold2);color:var(--ox2);border-color:var(--gold2)}
+form.q button .h{background:var(--ox2)}
+.inq .note{margin-top:26px;font-size:13.5px;color:rgba(243,233,216,.6)}
+.inq .note a{color:#f3e9d8;border-bottom:1px solid rgba(243,233,216,.35)}
+footer{background:var(--ox2);color:rgba(243,233,216,.5);padding:30px clamp(22px,6vw,100px) 110px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;border-top:1px solid rgba(243,233,216,.1)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease)}.reveal.in{opacity:1;transform:none}
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:70;display:none;gap:8px}
+.sticky .btn{flex:1;justify-content:center;padding:16px 12px;box-shadow:0 10px 30px -10px rgba(40,10,10,.6)}
+.sticky .btn.ph2{flex:0 0 54px;padding:0;background:var(--paper);color:var(--ox);border-color:rgba(91,35,35,.25)}
+.cur{position:fixed;left:0;top:0;z-index:150;pointer-events:none}
+.cur .r{position:absolute;width:30px;height:30px;margin:-15px;border:1px solid var(--ox);border-radius:50%;transition:width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease),background .4s;display:grid;place-items:center;font-size:8.5px;letter-spacing:.2em;color:var(--paper);text-transform:uppercase}
+.cur.turn .r{width:76px;height:76px;margin:-38px;background:var(--ox)}
+.cur.turn .r::after{content:"Turn"}
+.cur.hov .r{width:56px;height:56px;margin:-28px;background:rgba(91,35,35,.12)}
+.dk .cur .r{border-color:#f3e9d8}
+@media (hover:none),(pointer:coarse){.cur{display:none}}
+@media (hover:hover) and (pointer:fine){body,a,button,input,textarea{cursor:none}}
+
+@media (max-width:860px){
+  header{padding:16px 18px}.mark{font-size:20px}.mark small{font-size:8.5px}
+  .hb .btn,.hb .tel{display:none}
+  .sticky{display:flex}
+  .hero{left:22px;right:22px;width:auto;top:86px;transform:none}
+  .hero.off{transform:translateY(-12px)}
+  .hero h1{font-size:46px;margin:12px 0 12px}
+  .hero p{font-size:17px}
+  .hero .cue{display:none}
+  .slot.l,.edge.l{display:none}
+  .slot.r{left:0;width:100%}
+  .edge.r{right:-1.6%;width:101.6%}
+  .leaf{left:0;width:100%}
+  .ribbon{left:auto;right:18%}
+  .cover-base.l{display:none}.cover-base.r{left:-1%;right:-2.2%;width:auto}
+  .txt{left:9%;right:9%;height:auto}
+  .txt .hr{font-size:34px}
+  .txt .k{margin-top:10px;font-size:9px}
+  .txt h2{font-size:22px;margin:8px 0 6px}
+  .txt p{font-size:14.5px;max-width:none}
+  .txt .rule{display:none}
+  .tuck{display:none}
+  .mob-ph{display:block;position:absolute;left:8%;right:8%;top:5%;height:46%}
+  .mob-ph .ph{width:100%;height:100%;opacity:1;transform:none}.mob-ph .ph img{width:100%;height:100%;object-fit:cover;max-height:none}
+  .ribbon{display:none}
+  .txt{top:54%;bottom:auto}
+  .txt .hr{font-size:28px}.txt h2{font-size:20px;line-height:1.15}.txt p{font-size:14px;line-height:1.45}
+  .clock{transition:opacity .5s}
+  .clock{bottom:auto;top:64px;right:18px}.clock b{font-size:30px}.clock span{font-size:8px}
+  .chap{display:none}
+  .quotes,.included{grid-template-columns:1fr}
+  .included div,.included div+div{padding:22px 0;border-left:0;border-bottom:1px solid rgba(90,70,50,.18)}
+  form.q{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}*{transition-duration:.01s!important;animation-duration:.01s!important}}
+.rm .track{height:auto!important}.rm .stage{display:none}
+.rmlist{display:none}.rm .rmlist{display:block;background:var(--paper);padding:120px clamp(22px,6vw,100px) 40px}
+.rmlist article{margin:0 auto 90px;max-width:900px}
+.rmlist .hr{font-family:var(--serif);font-style:italic;font-size:44px;color:var(--gold)}
+.rmlist h2{font-family:var(--serif);font-weight:400;font-size:34px;margin:6px 0 10px}
+.rmlist img{width:100%;max-height:80vh;object-fit:contain;margin-top:20px}
+.rmlist p{font-family:var(--serif);font-size:19px;color:var(--ink2)}
+</style>
+</head>
+<body>
+<div id="loader" aria-hidden="true"><div class="m">I · B</div><div class="s">The day, told</div></div>
+<div class="grain" aria-hidden="true"></div>
+<header>
+  <a class="mark" href="#top">Ian <i>Borgerhoff</i><small>Wedding photography · Indianapolis</small></a>
+  <div class="hb"><a class="tel" href="tel:+13175226626">317 522 6626</a><a class="btn" href="#inquire"><span class="h"></span>Inquire for your date</a></div>
+</header>
+<main id="top">
+  <div class="track" id="track">
+    <div class="stage" id="stage">
+      <div class="table" id="table"></div>
+      <div class="sun" id="sun"><div class="win"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="bokeh" id="bokeh"></div>
+      <div class="hero" id="hero">
+        <div class="k">Ian Borgerhoff · Indianapolis</div>
+        <h1>The day,<br><em>told.</em></h1>
+        <p>From the first button to the last dance, one wedding at a time. Only twenty a year.</p>
+        <div class="cue"><i></i>Open the album</div>
+      </div>
+      <div class="book" id="book">
+        <div class="cover-base l"></div><div class="cover-base r"></div>
+        <div class="edge l"></div><div class="edge r"></div>
+        <div class="shadow"></div>
+        <div class="slot l" id="slotL"></div>
+        <div class="slot r" id="slotR"></div>
+        <div id="leaves"></div>
+        <div class="ribbon" id="ribbon"></div>
+      </div>
+      <div class="night" id="night"></div>
+      <div class="glow" id="glow"></div>
+      <div class="clock" id="clock"><b id="clockT">10:00</b><span id="clockL">The morning</span></div>
+      <div class="chap" id="chap"></div>
+    </div>
+  </div>
+  <div class="rmlist" id="rmlist"></div>
+
+  <section class="after" id="words">
+    <div class="kk reveal">What couples remember</div>
+    <h2 class="h2 reveal">Not just the pictures. <em>How the day felt</em> with him in it.</h2>
+    <div class="quotes">
+      <blockquote class="q1 reveal">“When your photographer is with you ALL day, in heat and rain AND fans you down, steams your veil, mops water out of a rained in tent AND pulls off the best photos of your sweltering wedding party and guests how could you not hire this man.”<cite>Kourtni · WeddingWire, 2014</cite></blockquote>
+      <div class="qs">
+        <blockquote class="reveal">“He’s on another level! He basically ran the whole day.. he is calm &amp; knows his stuff, so my family was able to relax!”<cite>Chelsey · WeddingWire, 2017</cite></blockquote>
+        <blockquote class="reveal">“He also kept everyone on schedule and went out of his way to know everyone’s names!”<cite>Brittney · WeddingWire, 2021</cite></blockquote>
+        <blockquote class="reveal">“Ian Borgerhoff will forever be the vendor I recommend most!!!”<cite>Hayden &amp; D. · Zola, 2024</cite></blockquote>
+      </div>
+    </div>
+    <div class="included">
+      <div class="reveal"><b>The whole day</b><span>Every wedding package includes full-day coverage.</span></div>
+      <div class="reveal"><b>Colour &amp; black-and-white</b><span>Every edited image, delivered both ways.</span></div>
+      <div class="reveal"><b>Film, too</b><span>Two videographers, full day, in 4K, if you'd like it.</span></div>
+      <div class="reveal"><b>A year ahead</b><span>He usually books about a year out.</span></div>
+    </div>
+  </section>
+
+  <section class="after inq" id="inquire">
+    <div class="kk reveal">Your chapter</div>
+    <h2 class="h2 reveal">Inquire for <em>your date.</em></h2>
+    <p class="lead reveal">Tell Ian when and where. He’ll tell you, personally, whether the day is still open.</p>
+    <form class="q reveal" id="q">
+      <div><label for="n">Your names</label><input id="n" placeholder="Claire &amp; James"></div>
+      <div><label for="d">Your date</label><input id="d" placeholder="September 2027"></div>
+      <div class="full"><label for="v">Where</label><input id="v" placeholder="The venue, or the country"></div>
+      <div class="full"><label for="m">A little about the two of you</label><textarea id="m" placeholder="Optional"></textarea></div>
+      <button class="btn" type="submit"><span class="h"></span>Send to Ian</button>
+    </form>
+    <p class="note reveal">Opens an email to <a href="mailto:ian.borgerhoff@gmail.com">ian.borgerhoff@gmail.com</a> · or call <a href="tel:+13175226626">317-522-6626</a></p>
+  </section>
+</main>
+<footer><span>© Ian Borgerhoff Photography</span><span>Indianapolis, Indiana</span><span>The fusion of art and weddings</span></footer>
+<div class="sticky"><a class="btn" href="#inquire"><span class="h"></span>Inquire for your date</a><a class="btn ph2" href="tel:+13175226626" aria-label="Call Ian"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></a></div>
+<div class="cur" aria-hidden="true"><div class="r"></div></div>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script>
+/* The day, hour by hour. Each hour is a kind of couple Ian photographs. */
+const W=[
+ {hr:'11:00',lbl:'Getting ready',min:660,k:'The South Asian celebration',m:'sa-portrait',mo:'p',t:'mehndi',
+  h:'Red and gold, and <em>one last look</em> in the mirror.',p:'Hours of jewelry, family in and out, a room full of colour. He finds the quiet minute inside all of it.',tk:'sa-mirror',tko:'l'},
+ {hr:'2:00',lbl:'The vows',min:840,k:'The cathedral wedding',m:'cath-basilica',mo:'l',
+  h:'A painted ceiling, <em>a full church,</em> and two voices.',p:'He stays out of the aisle and keeps the whole nave in frame, so you’ll see who was there and where you stood.',tk:'cath-aisle',tko:'l'},
+ {hr:'3:30',lbl:'The portrait',min:930,k:'The bride who wants art',m:'veil-doors',mo:'p',
+  h:'For the bride who wants <em>a portrait,</em> not a snapshot.',p:'A veil thrown through a doorway, light from behind. This is the picture that ends up framed in the hall.',tk:'veil-window',tko:'l'},
+ {hr:'5:45',lbl:'Golden hour',min:1065,k:'The garden estate',m:'garden-sunset',mo:'l',
+  h:'The sun goes down <em>behind the trees,</em> and he’s already there.',p:'Portico ceremonies, lawns, long gold light. He walks you out for ten minutes and you come back with this.',tk:'garden-flowers',tko:'l'},
+ {hr:'7:30',lbl:'Dinner',min:1170,k:'The grand ballroom',m:'ball-monogram',mo:'l',
+  h:'Your monogram on the floor, <em>before anyone</em> walks across it.',p:'The room exactly as you planned it, photographed in the minute before the doors open.',tk:'ball-cake',tko:'l'},
+ {hr:'9:40',lbl:'Blue hour',min:1300,k:'The city after dark',m:'city-station2',mo:'p',
+  h:'Ten minutes away <em>from your own party.</em>',p:'Downtown at blue hour, lit by his own strobes. Your guests won’t even notice you left.',tk:'city-candles',tko:'l'},
+ {hr:'11:50',lbl:'The last dance',min:1430,k:'The couples who close the place down',m:'ball-confetti',mo:'l',
+  h:'Confetti, a crowd, and <em>everyone you love</em> in one frame.',p:'He’s still there for the last song. Full-day coverage is how he works.',tk:'dance-bokeh',tko:'l'},
+ {hr:'Another day',lbl:'Somewhere else',min:1500,k:'Married in Italy',m:'italy-stairs',mo:'l',
+  h:'And sometimes, the whole day <em>is somewhere else.</em>',p:'Frescoed halls, marble stairs, terracotta rooftops at first light. Wherever the day is, he can be there.',tk:'italy-shoes',tko:'p'}
+];
+const N=W.length, SEG=2.6, HERO=1.3, CLOSE=1.2;
+const $=s=>document.querySelector(s);
+const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v)),ramp=(t,a,b)=>clamp((t-a)/(b-a));
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2,eo=t=>1-Math.pow(1-t,3),lerp=(a,b,t)=>a+(b-a)*t;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const img=(k,o,sz)=>`<div class="ph ${o==='p'?'port':'land'}"><i></i><img data-k="${k}" alt="" decoding="async" sizes="${sz||'40vw'}"></div>`;
+/* page html */
+const Lp=(w,i)=>`<div class="mount">${img(w.m,w.mo)}</div><div class="folio">${i*2+2}</div>`;
+const Rp=(w,i)=>`<div class="mob-ph">${img(w.m,w.mo,'90vw')}</div><div class="txt"><div class="hr">${w.hr}${/\d/.test(w.hr)?(w.min<720?' am':' pm'):''}</div><div class="k">${w.lbl} · ${w.k}</div><h2>${w.h}</h2><p>${w.p}</p><div class="rule"></div></div><div class="tuck">${img(w.tk,w.tko,'16vw')}</div><div class="folio">${i*2+3}</div>`;
+const COVER=`<div class="cov"><div class="mono">The Day</div><div class="line"></div><div class="sub">Ian Borgerhoff</div></div>`;
+const ENDP=`<div class="endp"><p>For the two of you,<br>and everyone who was there.</p></div>`;
+const FINAL=`<div class="cov"><div class="mono">Your names,<br>here.</div><div class="line"></div><div class="sub">Twenty, ${new Date().getFullYear()+1}</div></div>`;
+/* build: static pages per world, leaves between worlds */
+const slotL=$('#slotL'),slotR=$('#slotR'),leaves=$('#leaves');
+const mk=(cls,html)=>{const d=document.createElement('div');d.className=cls;d.innerHTML=html;return d};
+const Ls=[mk('pg',ENDP)],Rs=[];
+W.forEach((w,i)=>{Ls.push(mk('pg',Lp(w,i)));Rs.push(mk('pg',Rp(w,i)));});
+Ls.forEach(e=>slotL.appendChild(e));Rs.forEach(e=>slotR.appendChild(e));
+const LV=[];
+// leaf 0 = cover (front cover, back endpaper). leaf i (1..N-1): front R[i-1], back L[i+1]? see below
+function leaf(fh,bh){const l=mk('leaf',`<div class="f">${fh}<div class="sh"></div></div><div class="b">${bh}<div class="sh"></div></div>`);leaves.appendChild(l);LV.push(l);return l}
+leaf(COVER,`<div class="pg">${Lp(W[0],0)}</div>`);
+for(let i=1;i<N;i++) leaf(`<div class="pg">${Rp(W[i-1],i-1)}</div>`,`<div class="pg">${Lp(W[i],i)}</div>`);
+const CL=leaf(FINAL,`<div class="pg">${Lp(W[N-1],N-1)}</div>`); // closing cover turns back
+LV.forEach(l=>l.querySelectorAll('.f .pg,.b .pg').forEach(p=>p.classList.add('on')));
+function loadAround(i){document.querySelectorAll('img[data-k]').forEach(im=>{if(im.src)return;const k=im.dataset.k;const idx=W.findIndex(w=>w.m===k||w.tk===k);if(Math.abs(idx-i)<=1){im.srcset=`images/${k}-sm.jpg 820w, images/${k}.jpg 1600w`;im.src=`images/${k}-sm.jpg`;}})}
+/* chapters */
+$('#chap').innerHTML=W.map(()=>'<i></i>').join('');const chapI=[...document.querySelectorAll('#chap i')];
+/* bokeh dots */
+$('#bokeh').innerHTML=Array.from({length:26},(_,i)=>{const s=20+((i*37)%70);return `<i style="left:${(i*53)%100}%;top:${(i*29+7)%100}%;width:${s}px;height:${s}px;opacity:${.25+((i*13)%10)/16}"></i>`}).join('');
+
+/* time-of-day light: [minute, table color, sun color, sun angle, sun x, sun y, sun opacity, night, glow, bokeh] */
+const LIGHT=[
+ [600, [232,226,214],[255,250,238], -24,-18,-10,.85,0,0,0],
+ [840, [236,228,214],[255,252,240], -6, -4,-14,.95,0,0,0],
+ [930, [236,226,208],[255,240,210], 12,  8,-8,.9,0,0,0],
+ [1065,[232,214,186],[255,196,120], 28, 18, 6,1,.06,0,0],
+ [1170,[214,196,176],[255,180,110], 40, 26, 14,.45,.38,.75,0],
+ [1300,[150,160,182],[170,190,255], 52, 30, 20,.25,.62,.5,.0],
+ [1430,[110,100,96], [255,190,120], 60, 34, 24,.1,.74,.85,.9],
+ [1500,[238,222,200],[255,226,180],-30,-20,-6,.95,0,0,0]
+];
+function light(min){let a=LIGHT[0],b=LIGHT[LIGHT.length-1];for(let i=0;i<LIGHT.length-1;i++){if(min>=LIGHT[i][0]&&min<=LIGHT[i+1][0]){a=LIGHT[i];b=LIGHT[i+1];break}}
+  const u=b[0]===a[0]?0:clamp((min-a[0])/(b[0]-a[0]));const mix=(x,y)=>x.map((v,j)=>Math.round(lerp(v,y[j],u)));
+  return {tc:mix(a[1],b[1]),sc:mix(a[2],b[2]),ang:lerp(a[3],b[3],u),x:lerp(a[4],b[4],u),y:lerp(a[5],b[5],u),so:lerp(a[6],b[6],u),nt:lerp(a[7],b[7],u),gl:lerp(a[8],b[8],u),bk:lerp(a[9],b[9],u)}}
+const fmt=m=>{if(m>=1500)return['','Another day'];m=Math.floor(m/5)*5;const h=Math.floor(m/60),mm=m%60;const h12=((h+11)%12)+1;return[`${h12}:${String(mm).padStart(2,'0')}`,h<12?'am':'pm']};
+
+let vw,vh,mob,BW,BH;
+function size(){vw=innerWidth;vh=$('#stage').clientHeight||innerHeight;mob=vw<=860;
+  if(mob){BW=Math.min(vw*.86,(vh-250)/1.45);BH=BW*1.45;}else{BW=Math.min(vw*.78,(vh*.72)/.64,1240);BH=BW*.64;}
+  const b=$('#book');b.style.width=BW+'px';b.style.height=BH+'px';b.style.marginLeft=(-BW/2)+'px';b.style.marginTop=(-BH/2)+'px';
+  $('#track').style.height=((HERO+N*SEG+CLOSE)*100+100)+'vh';}
+size();addEventListener('resize',()=>{size();frame(1)});
+
+const book=$('#book'),table=$('#table'),sun=$('#sun'),night=$('#night'),glow=$('#glow'),bokeh=$('#bokeh'),hero=$('#hero'),stage=$('#stage'),ribbon=$('#ribbon');
+let introT=0,last='',state={};
+function setOn(list,idx){list.forEach((e,j)=>{const on=j===idx;if(e._on!==on){e._on=on;e.classList.toggle('on',on)}})}
+function frame(force){
+  const y=scrollY-$('#track').offsetTop;const u=y/vh;
+  const key=u.toFixed(4)+introT.toFixed(3)+vw;if(key===last&&!force)return;last=key;
+  // phases: hero (cover opens), worlds, close
+  const heroT=clamp(u/HERO);
+  const wu=clamp((u-HERO)/SEG,0,N-0.0001);let wi=Math.floor(wu),t=wu-wi;if(u<HERO){wi=0;t=0}
+  const closeT=clamp((u-HERO-N*SEG)/CLOSE);
+  loadAround(wi);
+  /* cover leaf 0 */
+  const coverA=ease(ramp(heroT,.12,.85));
+  const tx= mob?0:lerp(-BW*.25,0,ease(ramp(heroT,.05,.8)));
+  const intro=mob?1:introT;
+  const ty=lerp(30,0,eo(intro))+(mob?lerp(vh*.13,0,ease(ramp(heroT,.05,.6))):0);
+  // closing: final cover swings back, book recentres on the right half
+  const cA=ease(ramp(closeT,.1,.7));
+  const tx2=mob?0:lerp(0,-BW*.25,ease(ramp(closeT,.45,1)));
+  const sc=mob?lerp(.8,1,ease(ramp(heroT,.05,.6))):lerp(1,.86,ease(ramp(closeT,.45,1)));
+  book.style.transform=`translate(${(tx+tx2).toFixed(1)}px,${ty.toFixed(1)}px) scale(${sc.toFixed(4)})`;
+  book.style.opacity=intro.toFixed(3);
+  hero.classList.toggle('off',heroT>.18);$('#clock').style.opacity=(mob&&heroT<.2)?0:1;
+  ribbon.classList.toggle('on',heroT>.9&&closeT<.2);
+  /* leaves */
+  LV.forEach(l=>{l.style.display='none'});
+  const turn=(l,a)=>{l.style.display='block';l.style.visibility='visible';l.style.transform=`perspective(${BW*4}px) rotateY(${a.toFixed(2)}deg)`;
+    const f=Math.sin(Math.abs(a)*Math.PI/180);l.querySelectorAll('.sh').forEach(s=>s.style.opacity=(f*.9).toFixed(3));};
+  // static pages
+  let Li=0,Ri=-1;
+  if(u<HERO){ if(coverA<1){turn(LV[0],-180*coverA)} Li=0;Ri=0; if(coverA<=0.001){Ri=0} }
+  else if(closeT<=0){
+    const p=ease(ramp(t,.0,.32));
+    if(wi>0&&p<1){turn(LV[wi],-180*p);Li=wi;Ri=wi;} // underneath: left still previous (L index wi = world wi-1), right already next
+    else {Li=wi+1;Ri=wi;}
+    if(wi>0&&p<1){Li=wi}else Li=wi+1;
+  } else {Li=N;Ri=N-1; turn(CL,-180*(1-cA)); if(cA>.5){Li=N} }
+  if(u<HERO){Li=coverA>=1?1:-1}
+  if(closeT>0&&cA>=1){Li=-1}
+  book.classList.toggle('closed',(u<HERO&&coverA<.5)||(closeT>0&&cA>.5));
+  setOn(Ls,Li);setOn(Rs,Ri);
+  // settle class on visible pages once the turn has landed
+  const settled=(u<HERO)?heroT>.8:(closeT>0?true:ease(ramp(t,0,.32))>=1||wi===0);
+  Rs.forEach((e,j)=>e.classList.toggle('set',j===Ri&&settled));Ls.forEach((e,j)=>e.classList.toggle('set',j===Li));
+  /* clock + light */
+  let min;
+  if(u<HERO) min=lerp(600,W[0].min,heroT);
+  else if(closeT>0) min=1500;
+  else {const a=W[wi].min,b=wi<N-1?W[wi+1].min:W[wi].min;min=lerp(a,b,ramp(t,.55,1));}
+  const L=light(min);
+  table.style.backgroundColor=`rgb(${L.tc})`;
+  sun.style.setProperty('--sunc',`rgb(${L.sc})`);
+  sun.style.transform=`translate(${L.x}vmax,${L.y}vmax) rotate(${L.ang}deg) skewX(${(-L.ang*.5).toFixed(2)}deg)`;
+  sun.style.opacity=L.so.toFixed(3);
+  night.style.opacity=L.nt.toFixed(3);glow.style.opacity=L.gl.toFixed(3);bokeh.style.opacity=L.bk.toFixed(3);
+  document.querySelector('header').classList.toggle('solid',u>HERO+N*SEG+CLOSE);const inq=$('#inquire').getBoundingClientRect().top<70;const dk=(L.nt>.45&&u<HERO+N*SEG+.2)||inq;document.body.classList.toggle('dk',dk);stage.classList.toggle('dk',dk);
+  const [hh,ap]=fmt(min);
+  $('#clockT').textContent=closeT>0?'Your day':(min>=1500?'Another day':`${hh} ${ap}`);
+  $('#clockL').textContent=u<HERO?'The morning':(closeT>0?'Next year':W[wi].lbl);
+  chapI.forEach((c,j)=>c.classList.toggle('on',u>=HERO&&closeT<=0&&j===wi));
+}
+
+/* reduced motion */
+function buildRM(){document.documentElement.classList.add('rm');
+  $('#rmlist').innerHTML=W.map(w=>`<article><div class="hr">${w.hr}</div><h2>${w.h}</h2><p>${w.lbl} · ${w.k}. ${w.p}</p><img src="images/${w.m}-sm.jpg" srcset="images/${w.m}-sm.jpg 820w, images/${w.m}.jpg 1600w" sizes="90vw" alt="" loading="lazy"></article>`).join('');}
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+$('#q').addEventListener('submit',e=>{e.preventDefault();const v=id=>document.getElementById(id).value.trim();
+  const sub=`Wedding inquiry${v('d')?' · '+v('d'):''}${v('n')?' · '+v('n'):''}`;
+  const body=`Hi Ian,\n\nWe'd love to know if our date is still open.\n\nNames: ${v('n')}\nDate: ${v('d')}\nWhere: ${v('v')}\n\n${v('m')}\n`;
+  location.href=`mailto:ian.borgerhoff@gmail.com?subject=${encodeURIComponent(sub)}&body=${encodeURIComponent(body)}`;});
+const curEl=$('.cur');if(matchMedia('(hover:hover) and (pointer:fine)').matches){let mx=-99,my=-99,rx=-99,ry=-99;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;const t=e.target;curEl.classList.toggle('hov',!!t.closest('a,button,input,textarea'));curEl.classList.toggle('turn',!!t.closest('#book'));});
+  const r=curEl.querySelector('.r');(function m(){rx+=(mx-rx)*.2;ry+=(my-ry)*.2;r.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(m)})();}
+
+function jumpHash(){const m=location.hash.match(/^#s(\d+)(?:p(\d+))?$/);if(!m)return false;const i=+m[1],p=(+m[2]||0)/100;
+  let u; if(i===0)u=p*HERO; else if(i<=N)u=HERO+(i-1+p)*SEG; else u=HERO+N*SEG+p*CLOSE;
+  window.scrollTo(0,$('#track').offsetTop+u*vh);introT=1;return true;}
+if(RM){buildRM();$('#loader').classList.add('done')}
+else{
+  loadAround(0);
+  setTimeout(()=>{$('#loader').classList.add('done');if(jumpHash()){frame(1);return}
+    const t0=performance.now();(function a(n){introT=eo(clamp((n-t0)/1600));frame(1);if(introT<1)requestAnimationFrame(a)})(t0)},1500);
+  addEventListener('hashchange',()=>{jumpHash();frame(1)});
+  let lenis=null;addEventListener('load',()=>{if(window.Lenis&&!location.hash)lenis=new Lenis({lerp:.09})});
+  (function loop(tm){if(lenis)lenis.raf(tm);frame();requestAnimationFrame(loop)})(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const el=a.getAttribute('href').length>1&&document.querySelector(a.getAttribute('href'));if(el){e.preventDefault();lenis?lenis.scrollTo(el,{duration:2.2}):el.scrollIntoView({behavior:'smooth'})}}));
+}
+</script>
+</body>
+</html>
