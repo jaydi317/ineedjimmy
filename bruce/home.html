@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Bruce the Piano Man</title>
+<meta name="description" content="Bruce Barker, Indiana's piano man since 1995. Requests on a sticky note. Sing-alongs till last call.">
+<meta name="theme-color" content="#0E1A2B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1A2B'/%3E%3Cpath d='M38 44V14c6 4 12 6 11 16' fill='none' stroke='%23FF4FA3' stroke-width='5' stroke-linecap='round'/%3E%3Cellipse cx='29' cy='45' rx='10' ry='7.5' transform='rotate(-20 29 45)' fill='%23FF4FA3'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --piano:#15131A; --night:#0E1A2B; --night-2:#16263D; --night-3:#0A1322; --night-4:#05080F;
+  --shirt:#2B8CE0; --shirt-deep:#1A5FA8;
+  --cream:#FFF4E0; --sand:#F5E6C8; --palm:#2FA36B;
+  --note-pink:#FF8DC1; --note-yellow:#FFE36E; --note-blue:#8ED8F8;
+  --neon-pink:#FF4FA3; --neon-teal:#33E1D0; --gold:#F2B33D;
+  --stamp:#D93445; --muted:#C3CEDF; --ink-soft:#4A4452;
+  --hdr:60px; --gutter:16px;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --drop:#03060C;
+}
+@media (min-width:760px){:root{--gutter:28px}}
+@media (min-width:900px){:root{--hdr:72px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--hdr) + 10px);-webkit-text-size-adjust:100%;background:var(--night)}
+body{margin:0;background:var(--night);color:var(--cream);font-family:Nunito,system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.55;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+p{margin:0 0 1em}
+.wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 var(--gutter)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+section{position:relative;overflow:hidden}
+@supports (overflow:clip){section,.lastcall{overflow:clip}}
+.sec{padding:76px 0}
+@media (min-width:900px){.sec{padding:108px 0}}
+
+/* ---------- type ---------- */
+.kicker{display:inline-block;font-family:'Permanent Marker',cursive;color:var(--gold);font-size:19px;line-height:1.2;transform:rotate(-2deg);margin:0 0 8px}
+.h2{font-family:Bungee,Impact,sans-serif;font-weight:400;font-size:clamp(31px,8.4vw,56px);line-height:1.04;margin:0 0 16px;color:#FFF5FA;
+  text-shadow:0 0 1px #fff,0 0 8px var(--neon-pink),0 0 20px var(--neon-pink),0 0 42px rgba(255,79,163,.5)}
+.h2.teal{color:#F2FFFD;text-shadow:0 0 1px #fff,0 0 8px var(--neon-teal),0 0 20px var(--neon-teal),0 0 42px rgba(51,225,208,.45)}
+.h2.ink{color:var(--piano);text-shadow:none}
+.lead{font-size:19px;line-height:1.5;max-width:34em}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:12px 22px;border-radius:999px;border:3px solid var(--piano);
+  font:900 16.5px/1.1 Nunito,sans-serif;text-decoration:none;cursor:pointer;color:var(--piano);box-shadow:0 5px 0 var(--drop);
+  transition:transform .15s ease,box-shadow .15s ease,filter .15s ease;white-space:nowrap}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--drop)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-pink{background:var(--neon-pink)}
+.btn-yellow{background:var(--note-yellow)}
+.btn-cream{background:var(--cream)}
+.btn-sm{min-height:44px;padding:9px 16px;font-size:15px}
+:focus-visible{outline:3px solid var(--neon-teal);outline-offset:3px}
+
+/* ---------- string lights ---------- */
+.lights{position:absolute;pointer-events:none;z-index:3}
+.lights .wire{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bulb{position:absolute;width:12px;height:18px;margin-left:-6px;transform-origin:50% 0}
+.bulb i{position:absolute;left:3px;top:0;width:6px;height:6px;border-radius:1.5px;background:#2C2A33;border:1px solid #000}
+.bulb b{position:absolute;left:0;top:5px;width:12px;height:13px;border-radius:50% 50% 50% 50%/42% 42% 58% 58%;background:var(--c);
+  box-shadow:0 0 5px 1px var(--c),0 0 16px 4px var(--cg);transition:background .45s,box-shadow .45s,opacity .45s}
+.bulb.off b{background:#3A4150;box-shadow:none}
+.c1{--c:#FFE36E;--cg:rgba(255,227,110,.42)} .c2{--c:#FF6FB5;--cg:rgba(255,79,163,.45)} .c3{--c:#4CEADB;--cg:rgba(51,225,208,.42)} .c4{--c:#9EDFFF;--cg:rgba(142,216,248,.42)}
+.lights.twinkle .bulb b{animation:tw 3.2s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes tw{50%{opacity:.62}}
+.lights.sm .bulb{transform:scale(.62)}
+.lights.dim .bulb b{opacity:.22;box-shadow:none;transition:opacity 1s ease calc(var(--i)*.16s),box-shadow 1s ease calc(var(--i)*.16s);animation:none}
+.lights.dim .bulb:last-child b{opacity:1;box-shadow:0 0 5px 1px var(--c),0 0 16px 4px var(--cg)}
+
+/* ---------- header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(9,17,31,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:2px solid #000}
+.hdr-in{height:var(--hdr);max-width:1140px;margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;gap:12px}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1;min-height:44px;justify-content:center}
+.brand-b{font-family:Bungee,sans-serif;font-size:27px;color:#FFE8F4;
+  text-shadow:0 0 1px #fff,0 0 6px var(--neon-pink),0 0 14px var(--neon-pink),0 0 28px rgba(255,79,163,.6);animation:flickerOn 1.3s .15s both}
+.brand-s{font-family:Bungee,sans-serif;font-size:10.5px;letter-spacing:.13em;color:#E4FFFC;margin-top:3px;
+  text-shadow:0 0 1px #fff,0 0 6px var(--neon-teal),0 0 14px rgba(51,225,208,.7);animation:flickerOn 1.3s .55s both}
+@keyframes flickerOn{0%{opacity:.08}7%{opacity:1}11%{opacity:.25}18%{opacity:1}22%{opacity:.45}30%,100%{opacity:1}}
+.hdr .spacer{flex:1}
+.home-chip{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:999px;font:800 13px/1 Nunito,sans-serif;text-decoration:none;
+  color:var(--cream);background:rgba(255,244,224,.08);border:1.5px solid rgba(255,244,224,.28);white-space:nowrap}
+.home-chip:hover{background:rgba(255,244,224,.16)}
+.hdr-cta{display:none;gap:10px}
+.hdr-lights{left:0;right:0;top:100%;height:16px}
+@media (min-width:900px){
+  .brand{flex-direction:row;align-items:baseline;gap:10px}
+  .brand-b{font-size:32px}.brand-s{font-size:14px;letter-spacing:.08em;margin:0}
+  .hdr-cta{display:flex}
+  .hdr .btn{min-height:46px;padding:9px 18px;font-size:15.5px}
+}
+
+/* ---------- decorations ---------- */
+.deco{position:absolute;z-index:0;pointer-events:none}
+.deco svg{width:100%;height:100%;display:block;overflow:visible}
+
+/* ---------- hero ---------- */
+.hero{padding:30px 0 64px;background:
+  radial-gradient(70% 45% at 75% 38%,rgba(255,79,163,.20),transparent 70%),
+  radial-gradient(55% 40% at 10% 85%,rgba(51,225,208,.12),transparent 70%),var(--night)}
+.hero-grid{display:grid;grid-template-areas:"head" "photo" "body";gap:22px}
+.hero-head{grid-area:head}.hero-photo{grid-area:photo}.hero-body{grid-area:body}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Permanent Marker',cursive;color:var(--gold);font-size:18px;line-height:1.2;margin:0}
+.eyebrow svg{width:26px;height:26px;flex:none}
+.h1{font-family:Bungee,Impact,sans-serif;font-weight:400;font-size:clamp(40px,11.2vw,86px);line-height:.98;margin:10px 0 0;color:var(--cream);letter-spacing:-.005em}
+.h1 .glow{display:block;color:#FFD3EA;text-shadow:0 0 1px #fff,0 0 10px var(--neon-pink),0 0 24px var(--neon-pink),0 0 50px rgba(255,79,163,.55)}
+.sub{font-size:19px;line-height:1.5;margin:0 0 22px;max-width:30em}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+@media (max-width:430px){.hero .cta-row .btn,.lastcall .cta-row .btn{padding:12px 14px;font-size:16px}}
+.hero-photo{position:relative;margin:18px 4px 30px}
+@media (min-width:900px){
+  .hero{padding:70px 0 110px}
+  .hero-grid{grid-template-columns:1fr 1.05fr;grid-template-areas:"head photo" "body photo";column-gap:56px;row-gap:22px;align-items:end}
+  .hero-body{align-self:start}
+  .hero-photo{margin:28px 0 30px}
+  .sub{font-size:20px}
+  .h1{font-size:clamp(52px,5.1vw,70px)}
+}
+
+.marquee{position:relative;padding:20px;border-radius:26px;border:3px solid var(--piano);
+  background-color:#7C1745;
+  background-image:radial-gradient(circle,#FFF8DA 0 2.3px,#F2B33D 2.8px 4.5px,rgba(242,179,61,0) 5.3px),radial-gradient(circle,rgba(255,206,110,.5),rgba(255,206,110,0) 9px);
+  background-size:20px 20px;background-repeat:round;
+  box-shadow:0 0 0 3px #3A0A20 inset,0 0 34px rgba(255,79,163,.45),7px 9px 0 var(--drop);transition:box-shadow .3s}
+.photo{position:relative;border:3px solid var(--piano);border-radius:12px;overflow:hidden;aspect-ratio:1400/1166;background:#000;box-shadow:0 0 0 3px rgba(0,0,0,.35)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease,transform .5s var(--spring)}
+.photo .rock-img{opacity:0;object-position:50% 16%;transform:scale(1.12)}
+.marquee.rock .rock-img{opacity:1;transform:scale(1)}
+.marquee.rock{box-shadow:0 0 0 3px #3A0A20 inset,0 0 44px rgba(51,225,208,.65),7px 9px 0 var(--drop);animation:rockShake .45s ease}
+@keyframes rockShake{0%,100%{transform:none}20%{transform:rotate(-1.4deg)}45%{transform:rotate(1.2deg)}70%{transform:rotate(-.6deg)}}
+.wig-btn{position:absolute;left:41%;top:33%;width:27%;height:31%;border-radius:50%;background:transparent;border:0;cursor:pointer;z-index:2;padding:0}
+.marquee.rock .wig-btn{left:0;top:0;width:100%;height:100%;border-radius:0}
+.wig-btn:focus-visible{outline:3px dashed var(--note-yellow);outline-offset:-3px}
+.hero-lights{left:-4px;right:-4px;top:-30px;height:46px}
+
+.sticky{position:absolute;z-index:4;font-family:'Permanent Marker',cursive;color:#221D27;line-height:1.1;padding:14px 12px 10px;
+  background-image:linear-gradient(172deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%,rgba(0,0,0,.05));
+  box-shadow:0 10px 12px -8px rgba(0,0,0,.6),0 1px 0 rgba(0,0,0,.12);border-radius:2px}
+.tape{position:absolute;width:58px;height:19px;background:rgba(255,250,236,.66);box-shadow:0 1px 2px rgba(0,0,0,.18);
+  clip-path:polygon(0 12%,5% 0,10% 10%,90% 4%,95% 0,100% 14%,97% 50%,100% 88%,94% 100%,6% 94%,0 100%,3% 50%)}
+.req-note{left:-14px;top:-18px;width:112px;background-color:var(--note-pink);font-size:17px;transform:rotate(-8deg);text-align:center}
+.req-note .tape{top:-9px;left:28px;transform:rotate(4deg)}
+.hint-note{right:-10px;bottom:-26px;width:124px;background-color:var(--note-yellow);font-size:15.5px;transform:rotate(4deg);text-align:center}
+.hint-note .tape{top:-9px;left:34px;transform:rotate(-5deg)}
+.hint-arrow{position:absolute;right:76%;bottom:78%;width:58px;height:62px;pointer-events:none}
+.marquee.rock ~ .hint-note .hint-arrow{opacity:0}
+
+.sticker-retired{position:absolute;z-index:5;right:-6px;top:-26px;width:104px;height:104px;border-radius:50%;
+  background:var(--neon-teal);border:3px solid var(--piano);box-shadow:0 0 0 6px #fff,5px 7px 0 6px rgba(0,0,0,.4);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--piano);
+  transform:rotate(12deg);animation:slap .55s .75s var(--spring) both}
+.sticker-retired .s1{font-family:Bungee,sans-serif;font-size:15px;line-height:1}
+.sticker-retired .s2{font-family:'Permanent Marker',cursive;font-size:21px;line-height:1;margin-top:4px;transform:rotate(-6deg)}
+@keyframes slap{0%{transform:scale(2.4) rotate(40deg);opacity:0}60%{transform:scale(.9) rotate(9deg);opacity:1}100%{transform:scale(1) rotate(12deg);opacity:1}}
+@media (min-width:900px){.sticker-retired{width:126px;height:126px;right:-22px;top:-34px}.sticker-retired .s1{font-size:18px}.sticker-retired .s2{font-size:25px}.req-note{width:132px;font-size:20px}}
+
+/* rock mode: cartoon wig sticker slapped on the frame */
+.wig-slap{position:absolute;z-index:6;left:-8px;bottom:-34px;width:128px;pointer-events:none;
+  transform:rotate(-34deg) scale(1.9);opacity:0;transition:transform .45s var(--spring),opacity .16s ease}
+.marquee.rock .wig-slap{transform:rotate(-11deg) scale(1);opacity:1}
+.wig-sticker{width:100%;height:auto;filter:drop-shadow(4px 6px 0 rgba(0,0,0,.45))}
+.rock-sticker{position:absolute;z-index:1;left:50%;bottom:-6px;display:flex;align-items:center;gap:5px;padding:6px 11px;border-radius:11px;
+  background:var(--neon-pink);border:3px solid var(--piano);box-shadow:0 0 0 3px #fff,3px 4px 0 3px rgba(0,0,0,.4);
+  font-family:Bungee,sans-serif;font-size:14px;line-height:1;color:var(--piano);white-space:nowrap;
+  transform:translateX(-50%) rotate(6deg) scale(0);transition:transform .35s var(--spring) .12s}
+.rock-sticker svg{width:15px;height:19px;flex:none}
+.marquee.rock .rock-sticker{transform:translateX(-50%) rotate(6deg) scale(1)}
+@media (min-width:900px){.wig-slap{width:178px;left:-34px;bottom:-46px}.rock-sticker{font-size:17px;padding:8px 14px}.rock-sticker svg{width:18px;height:22px}}
+
+/* ---------- where's bruce ---------- */
+.where{background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
+.where-grid{display:grid;gap:34px}
+@media (min-width:900px){.where-grid{grid-template-columns:5fr 6.4fr;gap:56px;align-items:start}}
+.letterboard{position:relative;margin:30px 10px 10px;padding:22px 20px 24px;border-radius:10px;color:#F5F2EA;
+  background:repeating-linear-gradient(180deg,#1E1C23 0 7px,#111015 7px 9px);border:3px solid var(--piano);
+  box-shadow:0 0 0 8px #8A5B36,0 0 0 11px var(--piano),9px 12px 0 11px var(--drop)}
+.lb-label{display:inline-block;font:900 12px/1 Nunito,sans-serif;letter-spacing:.18em;text-transform:uppercase;background:var(--neon-pink);color:var(--piano);padding:6px 10px;border-radius:4px;margin:0 0 12px}
+.lb-text{font-family:Bungee,sans-serif;font-size:clamp(23px,6.6vw,31px);line-height:1.12;letter-spacing:.04em;margin:0 0 6px;text-shadow:0 2px 0 #000}
+.lb-sub{font-size:18px;font-weight:800;color:#E9E4DA;margin:0 0 16px}
+.polaroid{position:relative;width:min(300px,80%);margin:34px auto 0;padding:10px 10px 0;background:#FFFDF8;color:var(--piano);border-radius:3px;
+  box-shadow:0 14px 22px -10px rgba(0,0,0,.7);transform:rotate(3deg)}
+.polaroid img{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:72% 50%;filter:saturate(1.05) contrast(1.03)}
+.polaroid figcaption{font-family:'Permanent Marker',cursive;font-size:18px;text-align:center;padding:10px 4px 12px}
+.polaroid .tape{top:-10px;left:50%;margin-left:-29px;transform:rotate(-3deg)}
+.lately-h{display:flex;align-items:baseline;gap:10px;font-family:Bungee,sans-serif;font-weight:400;font-size:26px;margin:0 0 14px;color:var(--cream)}
+.lately-h span{font-family:'Permanent Marker',cursive;font-size:20px;color:var(--note-yellow)}
+.shows{list-style:none;margin:0;padding:0;display:grid;gap:13px}
+.gig{position:relative;display:grid;grid-template-columns:70px 1fr;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:14px;box-shadow:4px 5px 0 var(--drop);overflow:hidden}
+.gig .date{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10px 2px;text-align:center;border-right:3px dashed var(--piano);background:var(--note-yellow)}
+.gig:nth-child(3n+2) .date{background:var(--note-pink)}
+.gig:nth-child(3n+3) .date{background:var(--note-blue)}
+.date .dow{font:900 11.5px/1 Nunito,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.date .d{font-family:Bungee,sans-serif;font-size:30px;line-height:1.05}
+.date .mo{font-family:Bungee,sans-serif;font-size:13px;line-height:1}
+.gig .info{padding:12px 14px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:4px;min-width:0}
+.venue{font-weight:900;font-size:18.5px;line-height:1.2}
+.place{font-size:15.5px;font-weight:700;color:var(--ink-soft);line-height:1.25}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.tags:empty{display:none}
+.tag{font:900 12px/1 Nunito,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:999px;border:2px solid var(--piano)}
+.tag-band{background:var(--shirt-deep);color:#fff}
+.tag-free{background:var(--palm);color:var(--piano)}
+.tag-last{background:var(--neon-pink);color:var(--piano)}
+.gig.sold .venue,.gig.sold .place{padding-right:92px}
+.stamp{position:absolute;right:10px;top:13px;transform:rotate(-11deg);font-family:Bungee,sans-serif;font-size:13.5px;line-height:1;color:var(--stamp);
+  border:3px solid var(--stamp);border-radius:6px;padding:5px 7px;box-shadow:inset 0 0 0 2px var(--cream),inset 0 0 0 4px var(--stamp);opacity:.92;letter-spacing:.03em;white-space:nowrap}
+.next-btn{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;padding:8px 13px;border-radius:12px;border:2.5px solid var(--piano);background:#fff;
+  font:800 14px/1.2 Nunito,sans-serif;text-decoration:none;color:var(--piano);box-shadow:2px 3px 0 var(--piano)}
+.next-btn:active{transform:translate(2px,2px);box-shadow:none}
+
+/* ---------- alert ---------- */
+.alert-sec{background:radial-gradient(60% 50% at 50% 40%,rgba(255,227,110,.10),transparent 70%),var(--night-2)}
+.alert-note{position:relative;max-width:660px;margin:0 auto;background:var(--note-yellow);color:var(--piano);border:3px solid var(--piano);
+  border-radius:6px 6px 30px 6px;padding:40px 20px 28px;transform:rotate(-1deg);box-shadow:9px 11px 0 var(--drop)}
+.alert-note::after{content:"";position:absolute;right:-3px;bottom:-3px;width:42px;height:42px;border-radius:0 0 28px 0;
+  background:linear-gradient(135deg,rgba(0,0,0,0) 50%,#E9C94D 50%,#F7DC6A);border-left:3px solid var(--piano);border-top:3px solid var(--piano);border-top-left-radius:8px}
+.alert-note > .tape{top:-12px;left:50%;margin-left:-45px;width:90px;height:24px;transform:rotate(-2deg)}
+.alert-bell{position:absolute;right:16px;top:-30px;width:70px;height:70px;transform:rotate(14deg)}
+.alert-bell svg{width:100%;height:100%;overflow:visible}
+.alert-note .h2{font-size:clamp(30px,8vw,46px);margin-bottom:10px}
+.alert-line{font-size:18px;font-weight:700;margin:0 0 22px;max-width:28em}
+@media (min-width:760px){.alert-note{padding:48px 44px 36px}.alert-bell{width:90px;height:90px;right:30px;top:-40px}}
+
+/* ---------- forms ---------- */
+.field{display:grid;gap:7px;margin:0 0 20px}
+.field > label,.legend{font-weight:900;font-size:16.5px;line-height:1.3;color:var(--piano)}
+.opt{font-weight:700;color:var(--ink-soft);font-size:14.5px}
+fieldset{border:0;margin:0 0 20px;padding:0;min-width:0}
+legend{padding:0;margin:0 0 9px}
+.input{width:100%;min-height:52px;padding:12px 14px;border:2.5px solid var(--piano);border-radius:12px;background:#fff;color:var(--piano);font:600 17px/1.3 Nunito,sans-serif;-webkit-appearance:none;appearance:none}
+.input::placeholder{color:#8A8392}
+.input:focus{outline:3px solid var(--shirt);outline-offset:1px}
+textarea.input{min-height:112px;resize:vertical}
+input[type=date].input{min-height:52px}
+.pills{display:flex;flex-wrap:wrap;gap:9px}
+.pill{position:relative;display:inline-flex}
+.pill input{position:absolute;opacity:0;width:1px;height:1px;margin:0}
+.pill span{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:9px 16px;border:2.5px solid var(--piano);border-radius:999px;background:#fff;
+  font-weight:800;font-size:15.5px;line-height:1.15;cursor:pointer;user-select:none;-webkit-user-select:none;transition:background .15s,transform .15s var(--spring),box-shadow .15s}
+.pill span:active{transform:scale(.96)}
+.pill input:checked + span{background:var(--neon-pink);box-shadow:2px 3px 0 var(--piano)}
+.pill input[type=checkbox]:checked + span::before{content:"";width:14px;height:8px;border-left:3px solid var(--piano);border-bottom:3px solid var(--piano);transform:rotate(-45deg) translate(1px,-2px)}
+.pill input:focus-visible + span{outline:3px solid var(--shirt);outline-offset:2px}
+.switch{position:relative;display:inline-flex;align-items:center;gap:11px;min-height:44px;cursor:pointer;font-weight:800;color:var(--piano)}
+.switch input{position:absolute;opacity:0;width:1px;height:1px}
+.switch .track{position:relative;flex:none;width:52px;height:31px;border-radius:999px;background:#D8D0C0;border:2.5px solid var(--piano);transition:background .2s}
+.switch .track::after{content:"";position:absolute;top:1.5px;left:1.5px;width:18px;height:18px;border-radius:50%;background:#fff;border:2.5px solid var(--piano);transition:transform .28s var(--spring)}
+.switch input:checked + .track{background:var(--palm)}
+.switch input:checked + .track::after{transform:translateX(21px)}
+.switch input:focus-visible + .track{outline:3px solid var(--shirt);outline-offset:2px}
+.form-submit{margin-top:6px}
+.form-submit .btn{width:100%;min-height:56px;font-size:18px}
+@media (min-width:600px){.form-submit .btn{width:auto;padding:14px 34px}}
+.date-row{display:grid;gap:10px}
+@media (min-width:600px){.date-row{grid-template-columns:1fr auto;align-items:center;gap:16px}}
+.row2,.row3{display:grid;gap:0 16px}
+@media (min-width:700px){.row2{grid-template-columns:1fr 1fr}.row3{grid-template-columns:1fr 1fr 1fr}}
+.reveal{animation:revealIn .35s var(--spring)}
+@keyframes revealIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ---------- a bruce night ---------- */
+.night{background:radial-gradient(50% 40% at 90% 10%,rgba(51,225,208,.10),transparent 70%),radial-gradient(60% 40% at 0% 90%,rgba(255,79,163,.10),transparent 70%),var(--night)}
+.night-grid{display:grid;gap:26px}
+@media (min-width:900px){.night-grid{grid-template-columns:4fr 7fr;gap:56px}.night-intro{position:sticky;top:calc(var(--hdr) + 40px);align-self:start}}
+.night-intro p{font-size:19px;color:var(--muted)}
+.moon{display:none;width:92px;height:92px;margin:6px 0 0}
+@media (min-width:900px){.moon{display:block}}
+.timeline{position:relative;list-style:none;margin:0;padding:0 0 0 44px}
+.timeline::before{content:"";position:absolute;left:16px;top:10px;bottom:30px;width:3px;border-radius:2px;background:#05070C;box-shadow:0 0 0 1px #24324A}
+.beat{position:relative;margin:0 0 20px}
+.beat:last-child{margin-bottom:0}
+.marker{position:absolute;left:-41px;top:16px;width:28px;height:38px}
+.marker i{position:absolute;left:8px;top:0;width:12px;height:9px;border-radius:2px;background:#2C2A33;border:2px solid #000}
+.marker b{position:absolute;left:0;top:7px;width:28px;height:30px;border-radius:50% 50% 50% 50%/44% 44% 56% 56%;background:#3A4150;border:2px solid #000;
+  display:grid;place-items:center;font:400 13px/1 Bungee,sans-serif;color:#8792A6;transition:background .4s,box-shadow .4s,color .4s}
+.beat.lit .marker b{background:var(--note-yellow);color:var(--piano);box-shadow:0 0 10px 2px rgba(255,227,110,.75),0 0 28px 8px rgba(255,227,110,.35)}
+.beat-card{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start;padding:16px;border-radius:18px;background:var(--night-2);border:3px solid #000;
+  box-shadow:5px 6px 0 var(--drop);transition:transform .4s var(--spring),border-color .4s}
+.beat.lit .beat-card{border-color:#000}
+.beat-art{width:62px;height:62px;border-radius:14px;overflow:hidden;border:3px solid var(--piano);background:var(--bg,var(--cream))}
+.beat-art svg{width:100%;height:100%;display:block}
+.beat h3{font-family:Bungee,sans-serif;font-weight:400;font-size:20px;line-height:1.14;margin:2px 0 6px;color:var(--cream)}
+.beat p{margin:0;color:var(--muted);font-size:17px}
+.beat .song{display:inline-block;font-family:'Permanent Marker',cursive;font-size:22px;line-height:1.2;color:var(--note-yellow);transform:rotate(-1.5deg);margin-top:2px}
+@media (min-width:600px){.beat-card{grid-template-columns:84px 1fr;gap:20px;padding:20px 22px}.beat-art{width:84px;height:84px}.beat h3{font-size:24px}}
+.beat-social .beat-card{grid-template-columns:1fr;background:linear-gradient(160deg,#20325A,#16263D 60%);border-color:#000}
+.social-play{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"bruce side" "room room";gap:14px 14px;margin-top:16px;align-items:end}
+.social-bruce{grid-area:bruce;position:relative;justify-self:center;width:min(100%,132px)}
+.social-bruce img{width:100%;height:auto;transform-origin:50% 100%;filter:drop-shadow(3px 5px 0 rgba(0,0,0,.35))}
+.social-play.toasting .social-bruce img{animation:toastUp .6s var(--spring)}
+@keyframes toastUp{0%{transform:none}35%{transform:translateY(-9px) rotate(-3deg)}100%{transform:none}}
+.room{grid-area:room;position:relative;height:96px;border:3px solid #000;border-radius:14px;overflow:hidden;
+  background:radial-gradient(60% 95% at 50% 0%,rgba(255,79,163,.6),transparent 72%),radial-gradient(40% 80% at 8% 0%,rgba(51,225,208,.38),transparent 70%),radial-gradient(40% 80% at 92% 0%,rgba(242,179,61,.38),transparent 70%),linear-gradient(180deg,#45598C,#26395F)}
+.crowd{position:absolute;left:50%;bottom:-6px;height:104%;width:auto;max-width:none;transform:translateX(-50%);transition:opacity .16s ease}
+.crowd-cheers{opacity:0}
+.social-play.cheers .crowd-cheers{opacity:1}
+.social-play.cheers .crowd-sing{opacity:0}
+.crowd-sing{animation:sway 2.8s ease-in-out infinite}
+@keyframes sway{50%{transform:translateX(-50%) translateY(3px)}}
+.glass-stage{position:absolute;z-index:2;left:50%;bottom:-10px;width:104px;transform:translateX(-50%)}
+@media (min-width:600px){
+  .social-play{grid-template-columns:140px minmax(0,1fr) auto;grid-template-areas:"bruce room side";gap:16px}
+  .social-bruce{width:140px}
+  .room{height:124px;align-self:end;margin-bottom:8px}
+  .crowd{height:96%}
+  .glass-stage{width:112px}
+}
+.glasses{width:100%;height:auto;display:block;overflow:visible}
+.gl{transform-origin:0 0;transform-box:view-box}
+.glasses.clink .gl-l{animation:clinkL .6s cubic-bezier(.3,.9,.4,1)}
+.glasses.clink .gl-r{animation:clinkR .6s cubic-bezier(.3,.9,.4,1)}
+@keyframes clinkL{0%{transform:none}34%{transform:rotate(9deg)}46%{transform:rotate(6deg)}58%{transform:rotate(7.5deg)}100%{transform:none}}
+@keyframes clinkR{0%{transform:none}34%{transform:rotate(-9deg)}46%{transform:rotate(-6deg)}58%{transform:rotate(-7.5deg)}100%{transform:none}}
+.burst{opacity:0;transform-origin:120px 36px;transform-box:view-box}
+.glasses.clink .burst{animation:burst .6s ease-out .16s}
+@keyframes burst{0%{opacity:0;transform:scale(.3)}25%{opacity:1}100%{opacity:0;transform:scale(1.35)}}
+.social-pop{position:absolute;left:50%;top:-8px;font-family:Bungee,sans-serif;font-size:22px;color:var(--note-yellow);white-space:nowrap;pointer-events:none;opacity:0;
+  text-shadow:0 0 10px rgba(255,227,110,.7),0 2px 0 #000;transform:translate(-50%,0)}
+.social-pop.go{animation:popUp .9s ease-out}
+@keyframes popUp{0%{opacity:0;transform:translate(-50%,10px) scale(.5) rotate(var(--rot,-6deg))}25%{opacity:1;transform:translate(-50%,-6px) scale(1.15) rotate(var(--rot,-6deg))}100%{opacity:0;transform:translate(-50%,-34px) scale(1) rotate(var(--rot,-6deg))}}
+.social-side{display:flex;flex-direction:column;align-items:center;gap:10px}
+.social-btn{width:112px;height:112px;border-radius:50%;border:4px solid var(--piano);cursor:pointer;
+  background:radial-gradient(circle at 34% 28%,#FFB3D7 0,#FF4FA3 46%,#D22E80 100%);font-family:Bungee,sans-serif;font-size:19px;color:var(--piano);
+  box-shadow:0 7px 0 #000,0 0 0 5px rgba(255,79,163,.25),0 0 30px rgba(255,79,163,.6);transition:transform .12s ease,box-shadow .12s ease}
+.social-btn:hover{transform:translateY(-2px)}
+.social-btn:active{transform:translateY(6px);box-shadow:0 1px 0 #000,0 0 0 5px rgba(255,79,163,.25),0 0 20px rgba(255,79,163,.5)}
+.social-count{max-width:124px;font-weight:900;font-size:15px;line-height:1.25;color:var(--note-yellow);text-align:center}
+.social-count b{font-family:Bungee,sans-serif;font-weight:400;font-size:20px}
+@media (min-width:600px){.social-btn{width:132px;height:132px;font-size:22px}}
+@media (max-width:359px){.social-btn{width:96px;height:96px;font-size:17px}.social-count{max-width:100px}}
+
+/* ---------- jukebox ---------- */
+.juke{background-color:#45212A;
+  background-image:linear-gradient(180deg,rgba(9,17,31,.72),rgba(9,17,31,.45) 40%,rgba(9,17,31,.78)),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='44'%3E%3Crect width='72' height='44' fill='%2348222B'/%3E%3Crect x='2' y='2' width='32' height='18' fill='%23542832'/%3E%3Crect x='38' y='24' width='32' height='18' fill='%234F2530'/%3E%3Cpath d='M0 21h72M0 43h72M36 0v22M0 22v22M72 22v22' stroke='%232A1419' stroke-width='3'/%3E%3C/svg%3E")}
+.juke-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+.juke-grid > *{min-width:0}
+.juke-head .sub2{font-size:18px;color:var(--muted);margin:0 0 14px}
+.sound-toggle{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 15px;border-radius:999px;border:2px solid rgba(255,244,224,.4);background:rgba(0,0,0,.35);
+  font-weight:800;font-size:15px;cursor:pointer;color:var(--cream)}
+.sound-toggle svg{width:20px;height:20px}
+.sound-toggle .w-on{display:none}
+.sound-toggle[aria-pressed="true"]{background:var(--neon-teal);color:var(--piano);border-color:var(--piano)}
+.sound-toggle[aria-pressed="true"] .w-on{display:inline}
+.sound-toggle[aria-pressed="true"] .w-off{display:none}
+.says{--A:88px;--P:26px;position:sticky;top:calc(var(--hdr) + 8px);z-index:6;display:flex;align-items:flex-start;gap:14px;padding:6px 0}
+@media (max-width:359px){.says{--A:74px;--P:22px}}
+/* cartoon Bruce pops up out of a gold porthole: head + arms break the frame, the rest is clipped to the circle */
+.avatar-wrap{position:relative;flex:none;width:var(--A);height:calc(var(--A) + var(--P))}
+.av-stage{position:absolute;inset:0}
+.avatar{position:absolute;left:0;top:var(--P);width:var(--A);height:var(--A);border-radius:50%;border:3px solid var(--piano);
+  background:radial-gradient(circle at 50% 28%,#FFC2DF 0,#FF5FAE 45%,#A8195F 100%);
+  box-shadow:0 0 0 4px var(--gold),0 0 24px rgba(242,179,61,.55)}
+.av-pop{position:absolute;top:0;bottom:0;left:calc(var(--A) * -.45);right:calc(var(--A) * -.45);pointer-events:none;
+  -webkit-mask:linear-gradient(#000,#000) 0 0/100% calc(var(--P) + var(--A) / 2) no-repeat,radial-gradient(circle calc(var(--A) / 2 - 3px) at 50% calc(var(--P) + var(--A) / 2),#000 calc(100% - .6px),transparent 100%) 0 0/100% 100% no-repeat;
+          mask:linear-gradient(#000,#000) 0 0/100% calc(var(--P) + var(--A) / 2) no-repeat,radial-gradient(circle calc(var(--A) / 2 - 3px) at 50% calc(var(--P) + var(--A) / 2),#000 calc(100% - .6px),transparent 100%) 0 0/100% 100% no-repeat}
+.pose{position:absolute;left:50%;top:var(--y);width:var(--w);max-width:none;height:auto;margin-left:calc(var(--w) / -2 + var(--x,0px));
+  opacity:0;transform:translateY(45%);transition:opacity .14s ease,transform .42s var(--spring)}
+.pose.on{opacity:1;transform:none}
+.pose{--w:calc(var(--A) * 1.6);--y:calc(var(--A) * .02)}
+.pose[data-pose=grin]{--w:calc(var(--A) * 1.2);--y:calc(var(--P) - var(--A) * .2)}
+.pose[data-pose=point]{--x:calc(var(--A) * .1)}
+.pose[data-pose=million]{--x:calc(var(--A) * -.08)}
+.avatar-wrap[data-pose=million]{z-index:2} /* he holds the request slip up over the bubble */
+.pose[data-pose=roads]{--x:calc(var(--A) * .04)}
+.pose[data-pose=bow]{--x:calc(var(--A) * .09)}
+.avatar-wrap.groaning .av-stage{animation:shake .7s ease}
+@keyframes shake{0%,100%{transform:none}12%{transform:translateX(-6px) rotate(-9deg)}26%{transform:translateX(6px) rotate(8deg)}40%{transform:translateX(-5px) rotate(-7deg)}54%{transform:translateX(4px) rotate(5deg)}70%{transform:translateX(-2px) rotate(-2deg)}}
+.groan-fx{position:absolute;inset:0;pointer-events:none;opacity:0}
+.avatar-wrap.groaning .groan-fx{animation:groanFx 2.2s ease forwards}
+@keyframes groanFx{0%{opacity:0}10%,80%{opacity:1}100%{opacity:0}}
+.groan-fx{z-index:3}
+.groan-fx .ugh{position:absolute;left:calc(var(--A) * -.12);top:-4px;font-family:'Permanent Marker',cursive;font-size:20px;color:var(--note-yellow);transform:rotate(-14deg);text-shadow:0 2px 0 #000,0 0 6px #000;white-space:nowrap}
+.groan-fx svg{position:absolute;left:calc(var(--A) * .66);top:calc(var(--P) * .5);width:16px;height:22px}
+.bubble{position:relative;flex:1;min-width:0;min-height:calc(var(--A) + var(--P));padding:12px 16px 13px;border-radius:20px;background:var(--cream);color:var(--piano);border:3px solid var(--piano);box-shadow:4px 5px 0 #000}
+.bubble::before,.bubble::after{content:"";position:absolute;top:30px;width:0;height:0;border-style:solid}
+.bubble::before{left:-17px;border-width:10px 17px 10px 0;border-color:transparent var(--piano) transparent transparent}
+.bubble::after{left:-11px;top:33px;border-width:7px 12px 7px 0;border-color:transparent var(--cream) transparent transparent}
+.bubble-label{display:block;font:900 12px/1 Nunito,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#B8216C;margin-bottom:6px}
+.bubble-text{margin:0;font-weight:800;font-size:18px;line-height:1.35}
+.bubble-note{margin:7px 0 0;font-family:'Permanent Marker',cursive;font-size:15.5px;line-height:1.25;color:#B8216C;transform:rotate(-1.2deg);transform-origin:0 50%}
+.bubble-note[hidden]{display:none}
+.bubble.pop{animation:bubPop .35s var(--spring)}
+@keyframes bubPop{0%{transform:scale(.9)}100%{transform:scale(1)}}
+.avatar-wrap.groaning ~ .bubble{animation:shake .7s ease}
+.lid{position:relative;border-radius:24px 24px 16px 16px;padding:26px 14px 70px;border:3px solid #000;
+  background:linear-gradient(165deg,#34303D 0%,#17151C 34%,#0B0A0E 100%);box-shadow:0 22px 44px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,255,255,.14)}
+.lid::before{content:"";position:absolute;left:10px;right:10px;top:8px;height:38%;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,0));pointer-events:none}
+.lid-keys{position:absolute;left:0;right:0;bottom:0;height:52px;border-top:3px solid #000;border-radius:0 0 13px 13px;overflow:hidden}
+.lid-keys svg{width:100%;height:100%;display:block}
+.notes{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px 12px}
+.note{position:relative;min-width:0;aspect-ratio:1/1;border:0;border-radius:2px;padding:14px 6px 8px;background:var(--bg);color:#221D27;cursor:pointer;
+  font-family:'Permanent Marker',cursive;font-size:clamp(14.5px,3.9vw,21px);line-height:1.12;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  background-image:linear-gradient(172deg,rgba(255,255,255,.3),rgba(255,255,255,0) 46%,rgba(0,0,0,.06));
+  transform:rotate(var(--r));box-shadow:0 9px 10px -7px rgba(0,0,0,.75),1px 2px 0 rgba(0,0,0,.25);
+  transition:transform .3s var(--spring),box-shadow .3s ease}
+.note:hover{transform:rotate(var(--r)) translateY(-3px)}
+.note .tape{top:-9px;left:50%;margin-left:-24px;width:48px;height:17px;transform:rotate(calc(var(--r) * -1.4))}
+.note .doodle{font-size:.82em;color:#C2186B;line-height:1}
+.note.blank{color:#6C6474}
+.note.blank .pen{width:26px;height:26px}
+.note.picked{z-index:3;transform:translateY(-10px) rotate(0deg) scale(1.08);box-shadow:0 22px 22px -10px rgba(0,0,0,.85),0 0 0 3px var(--note-yellow);animation:peel .45s var(--spring)}
+@keyframes peel{0%{transform:rotate(var(--r))}40%{transform:translateY(-16px) rotate(0) rotateX(24deg) scale(1.1)}100%{transform:translateY(-10px) rotate(0) scale(1.08)}}
+.n-y{--bg:var(--note-yellow)} .n-p{--bg:var(--note-pink)} .n-b{--bg:var(--note-blue)}
+@media (min-width:900px){
+  .juke-grid{grid-template-columns:5fr 6.6fr;grid-template-rows:auto 1fr;grid-template-areas:"head lid" "says lid";column-gap:56px;row-gap:10px;align-items:start}
+  .juke-head{grid-area:head}.says{grid-area:says;top:calc(var(--hdr) + 30px)}.lid{grid-area:lid}
+  .lid{padding:34px 26px 84px}.notes{gap:22px 20px}.lid-keys{height:64px}
+  .says{--A:112px;--P:32px}
+  .bubble{padding:16px 20px}.bubble-text{font-size:20px}.bubble-note{font-size:17px}
+  .bubble::before{top:40px}.bubble::after{top:43px}
+}
+
+/* ---------- origin comic ---------- */
+.origin{background:var(--night-2)}
+.narr{position:relative;display:inline-block;max-width:34em;margin:14px 0 0;padding:12px 16px 13px;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:4px;
+  font:800 17px/1.4 Nunito,sans-serif;box-shadow:6px 7px 0 var(--drop);transform:rotate(-.8deg)}
+.narr b{font-family:Bungee,sans-serif;font-weight:400;font-size:19px;color:#B8216C}
+.strip{display:grid;gap:22px;margin-top:28px}
+@media (min-width:760px){.strip{grid-template-columns:1fr 1fr;gap:26px}}
+.panel img{display:block;width:100%;height:auto;aspect-ratio:960/640;background:#F6EEDC}
+.panel-room .cap{background:var(--neon-pink)}
+.comic-note{margin:22px 0 0;font-size:14.5px;line-height:1.4;font-weight:700;color:#9FB0C9;font-style:italic}
+.panel{margin:0;background:#fff;border:3px solid var(--piano);border-radius:6px;overflow:hidden;box-shadow:7px 8px 0 var(--drop);transform:rotate(var(--r,0deg))}
+.panel .cap{margin:0;padding:11px 14px 12px;background:var(--note-yellow);color:var(--piano);border-bottom:3px solid var(--piano);font:800 16.5px/1.38 Nunito,sans-serif}
+.panel .cap b{font-family:Bungee,sans-serif;font-weight:400}
+.panel .cap .big{font-family:Bungee,sans-serif;font-size:24px;line-height:1.1}
+.panel .cap .lbl{font-family:'Permanent Marker',cursive;font-size:19px;margin-right:6px}
+.origin-close{max-width:40em;margin:40px auto 0;text-align:center}
+.origin-close p{font-size:20px;line-height:1.5;margin:0 0 10px}
+.origin-close .later{font-family:Bungee,sans-serif;font-size:clamp(24px,6.4vw,38px);line-height:1.15;margin:16px 0 0;color:#F2FFFD;
+  text-shadow:0 0 1px #fff,0 0 8px var(--neon-teal),0 0 20px var(--neon-teal),0 0 40px rgba(51,225,208,.45)}
+
+/* ---------- watch ---------- */
+.watch{background:var(--night)}
+.watch-grid{display:grid;gap:20px;margin-top:26px}
+@media (min-width:860px){.watch-grid{grid-template-columns:repeat(3,1fr);gap:24px}}
+.watch-card{display:flex;flex-direction:column;text-decoration:none;background:var(--night-2);border:3px solid #000;border-radius:18px;overflow:hidden;
+  box-shadow:6px 7px 0 var(--drop);transition:transform .25s var(--spring),box-shadow .25s}
+.watch-card:hover{transform:translateY(-4px) rotate(-.5deg)}
+.watch-card:active{transform:translateY(2px)}
+.screen{position:relative;aspect-ratio:16/9;border-bottom:3px solid #000;overflow:hidden;background:radial-gradient(90% 90% at 50% 30%,#1F3A66,#0B1424 75%)}
+.screen.s2{background:radial-gradient(90% 90% at 50% 20%,#3A1E4D,#0D0B18 75%)}
+.screen.s3{background:radial-gradient(90% 90% at 50% 30%,#2A3424,#0E120C 75%)}
+.screen::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 3px);pointer-events:none}
+.screen > svg.scr-art{position:absolute;inset:0;width:100%;height:100%}
+.play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;transition:transform .25s var(--spring);z-index:2}
+.watch-card:hover .play{transform:scale(1.1)}
+.badge{position:absolute;right:10px;top:10px;z-index:2;font:900 12.5px/1 Nunito,sans-serif;letter-spacing:.06em;padding:6px 8px;border-radius:6px;background:rgba(0,0,0,.72);color:#fff}
+.meta{padding:15px 17px 19px;display:flex;flex-direction:column;gap:6px;flex:1}
+.platform{font:900 12px/1 Nunito,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--neon-teal)}
+.watch-card h3{font:900 19.5px/1.28 Nunito,sans-serif;margin:0;color:var(--cream)}
+.go{margin-top:auto;padding-top:4px;font-weight:900;color:var(--note-yellow)}
+
+/* ---------- proof ---------- */
+.proof{background:var(--shirt-deep)}
+.shirt-pat{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.proof::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(14,26,43,.78),rgba(14,26,43,.35) 280px,rgba(26,95,168,0) 520px,rgba(26,95,168,0) 75%,rgba(14,26,43,.5))}
+.proof .h2{text-shadow:0 0 1px #fff,0 0 8px var(--neon-pink),0 0 20px var(--neon-pink),0 3px 0 #000}
+.proof .kicker{color:var(--note-yellow);text-shadow:0 2px 0 rgba(0,0,0,.5)}
+.stats{display:grid;grid-template-columns:1fr 1fr;grid-auto-flow:row dense;gap:16px;margin-top:26px}
+.stat{background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:18px;padding:16px 16px 18px;box-shadow:6px 7px 0 rgba(0,0,0,.45);transform:rotate(var(--r,0deg))}
+.stat.wide{grid-column:span 2}
+.stat .pre{display:block;font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft)}
+.stat .big{display:block;font-family:Bungee,sans-serif;font-size:clamp(34px,10vw,56px);line-height:1;color:var(--shirt-deep);margin:4px 0 6px}
+.stat .lbl{display:block;font-weight:900;font-size:17px;line-height:1.25}
+.stat .sm{display:block;font-size:14.5px;font-weight:700;color:var(--ink-soft);margin-top:3px}
+.stat .big.pink{color:#D22E80}
+.stat .plane{display:inline-block;width:.9em;height:.9em;vertical-align:-.06em;margin-right:.12em}
+@media (min-width:900px){.stats{grid-template-columns:repeat(4,1fr);gap:20px}.stat.wide{grid-column:auto}.stat .big{font-size:clamp(34px,3.6vw,52px)}}
+.quotes{display:grid;gap:30px;max-width:980px;margin:46px auto 0;padding:0 6px}
+@media (min-width:760px){.quotes{grid-template-columns:1fr 1fr;gap:40px;padding:0}}
+.qnote{position:relative;margin:0;padding:28px 22px 20px;color:#221D27;transform:rotate(var(--r));box-shadow:0 16px 18px -10px rgba(0,0,0,.6);border-radius:2px;
+  background-image:linear-gradient(172deg,rgba(255,255,255,.3),rgba(255,255,255,0) 46%,rgba(0,0,0,.05))}
+.qnote .tape{top:-11px;left:50%;margin-left:-34px;width:68px;height:22px}
+.qnote blockquote{margin:0 0 12px;font-family:'Permanent Marker',cursive;font-size:clamp(22px,6vw,29px);line-height:1.2}
+.qnote figcaption{font-weight:800;font-size:15.5px;color:#3E3846}
+
+/* ---------- book ---------- */
+.book{background:radial-gradient(60% 40% at 50% 0%,rgba(255,79,163,.12),transparent 70%),var(--night)}
+.book-cards{display:grid;gap:22px;margin-top:28px}
+@media (min-width:760px){.book-cards{grid-template-columns:1fr 1fr;gap:28px}}
+.book-card{display:flex;flex-direction:column;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:20px;overflow:hidden;box-shadow:7px 8px 0 var(--drop)}
+.book-card .art{position:relative;height:170px;border-bottom:3px solid var(--piano);overflow:hidden}
+.book-card .art svg{position:absolute;inset:0;width:100%;height:100%}
+.art-bar{background:radial-gradient(60% 70% at 50% 60%,rgba(255,79,163,.35),transparent 70%),var(--night-2)}
+.art-band{background:radial-gradient(60% 70% at 50% 60%,rgba(255,255,255,.18),transparent 70%),var(--shirt)}
+.book-card .body{padding:18px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.book-card h3{font-family:Bungee,sans-serif;font-weight:400;font-size:26px;line-height:1.1;margin:0}
+.book-card p{margin:0 0 6px;font-size:17px;font-weight:600}
+.book-card .btn{align-self:flex-start;margin-top:auto}
+.same{font-family:'Permanent Marker',cursive;font-size:clamp(26px,7vw,36px);color:var(--note-yellow);text-align:center;transform:rotate(-2deg);margin:34px 0 8px;text-shadow:0 3px 0 #000}
+/* "Same Bruce. Bigger party." + cartoon Bruce leaning over the top of the gig sheet */
+.gig-wrap{position:relative;max-width:820px;margin:30px auto 0}
+.same-row{--bw:134px;position:relative;display:flex;align-items:center;min-height:calc(var(--bw) * .87);padding:0 calc(var(--bw) + 4px) 20px 0}
+.same-row .same{flex:1;margin:0}
+.book-bruce{position:absolute;z-index:0;right:6px;bottom:calc(var(--bw) * -.62);width:var(--bw);max-width:none;height:auto;transform:rotate(3deg);transform-origin:50% 100%}
+@media (min-width:760px){.gig-wrap{margin-top:40px}.same-row{--bw:168px;padding-right:calc(var(--bw) + 40px)}.book-bruce{right:34px}}
+.clipboard{position:relative;z-index:1;max-width:820px;margin:0 auto;padding:40px 12px 12px;border-radius:24px;background:linear-gradient(160deg,#B47C4A,#9A6538);border:3px solid var(--piano);box-shadow:9px 11px 0 var(--drop)}
+.clip{position:absolute;top:-26px;left:50%;width:150px;height:58px;margin-left:-75px}
+.sheet{background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:8px;padding:24px 18px 26px;
+  background-image:repeating-linear-gradient(180deg,transparent 0 33px,rgba(43,140,224,.10) 33px 34px)}
+.sheet-title{font-family:Bungee,sans-serif;font-size:clamp(22px,6vw,30px);line-height:1.1;margin:0 0 4px}
+.sheet-sub{font-family:'Permanent Marker',cursive;font-size:18px;color:#B8216C;margin:0 0 22px}
+@media (min-width:760px){.clipboard{padding:46px 18px 18px}.sheet{padding:34px 36px 36px}}
+
+/* ---------- last call ---------- */
+.closing{background:var(--night-4)}
+.lastcall{position:relative;overflow:hidden;padding:88px 0 56px;text-align:center;background:linear-gradient(180deg,var(--night-3),var(--night-4) 60%)}
+@media (min-width:900px){.lastcall{padding:112px 0 64px}}
+.foot-lights{left:-10px;right:-10px;top:0;height:54px}
+.lc-stage{position:relative;display:flex;align-items:flex-end;justify-content:center;margin:0 auto 6px;padding-bottom:6px}
+.lc-stage::after{content:"";position:absolute;left:50%;bottom:0;width:min(320px,88%);height:16px;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,227,110,.22),rgba(255,227,110,0));pointer-events:none}
+.lc-bruce{position:relative;z-index:1;width:150px;height:auto;margin-right:-26px;transform-origin:42% 100%}
+.lc-bruce.bow{animation:bow 1.5s ease-in-out .3s}
+@keyframes bow{0%,100%{transform:none}35%,60%{transform:translateY(5px) rotate(4deg) scaleY(.97)}}
+.bucket-art{position:relative;z-index:0;width:132px;height:145px;margin:0 0 2px;display:block;flex:none;filter:drop-shadow(0 0 30px rgba(255,227,110,.12))}
+@media (min-width:900px){.lc-bruce{width:200px;margin-right:-34px}.bucket-art{width:170px;height:187px}}
+.bucket-cap{font-family:'Permanent Marker',cursive;font-size:18px;color:var(--note-yellow);transform:rotate(-2deg);margin:0 0 26px}
+.lastcall .h2{font-size:clamp(46px,13vw,90px);animation:neonDim 6s ease-in-out infinite}
+@keyframes neonDim{0%,100%{opacity:1}46%{opacity:1}48%{opacity:.55}50%{opacity:1}52%{opacity:.7}54%{opacity:1}}
+.lastcall .story{max-width:31em;margin:0 auto 28px;font-size:19.5px;line-height:1.55;color:#E6E9F0}
+.lastcall .story em{font-style:normal;font-family:'Permanent Marker',cursive;color:var(--note-yellow);font-size:1.08em}
+.lastcall .cta-row{justify-content:center}
+.socials{display:flex;justify-content:center;gap:14px;margin:34px 0 0}
+.soc{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--night-2);border:2px solid #2A3A55;color:var(--cream);transition:background .2s,transform .2s var(--spring)}
+.soc:hover{background:var(--shirt-deep);transform:translateY(-2px)}
+.soc svg{width:22px;height:22px}
+.site-foot{padding:8px var(--gutter) calc(30px + env(safe-area-inset-bottom));text-align:center}
+.credit{margin:0;font-size:14px;color:#8E9DB4}
+
+/* ---------- mobile bar + toast ---------- */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+  background:rgba(9,17,31,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:2px solid #000;transform:translateY(115%);transition:transform .35s var(--spring)}
+.mbar.show{transform:none}
+.mbar .btn{flex:1;min-height:50px;padding:10px 8px;font-size:15.5px;box-shadow:0 4px 0 #000}
+.mbar .btn svg{width:18px;height:18px}
+@media (min-width:900px){.mbar{display:none}}
+.toast{position:fixed;left:16px;right:16px;margin:0 auto;bottom:calc(22px + env(safe-area-inset-bottom));z-index:80;max-width:440px;text-align:center;padding:14px 18px;border-radius:16px;
+  background:var(--cream);color:var(--piano);border:3px solid var(--piano);box-shadow:5px 6px 0 #000;font-weight:800;font-size:16px;line-height:1.35;
+  opacity:0;transform:translateY(16px);transition:opacity .25s ease,transform .35s var(--spring);pointer-events:none}
+.toast.show{opacity:1;transform:none}
+body.bar-on .toast{bottom:calc(86px + env(safe-area-inset-bottom))}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .lights.twinkle .bulb b,.lastcall .h2,.crowd-sing{animation:none!important}
+}
+</style>
+<style id="tour-next-css">
+.tour-next{position:relative;z-index:5;padding:34px 18px 30px;background:#0E1A2B;font-family:Nunito,system-ui,-apple-system,sans-serif;text-align:center;color:#FFF4E0}
+.tour-next .tn-card{max-width:560px;margin:0 auto;background:#FFE36E;color:#15131A;border:3px solid #15131A;border-radius:20px;box-shadow:0 7px 0 #15131A;padding:20px 18px 18px;transform:rotate(-.8deg)}
+.tour-next .tn-dots{display:flex;justify-content:center;gap:7px;margin-bottom:10px}
+.tour-next .tn-dots i{width:12px;height:12px;border-radius:50%;border:2px solid #15131A;background:transparent;display:block}
+.tour-next .tn-dots i.on{background:#15131A}
+.tour-next .tn-kick{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+.tour-next .tn-title{font-family:Bungee,"Arial Black",sans-serif;font-size:22px;line-height:1.1;margin:0 0 14px}
+.tour-next .tn-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;background:#FF4FA3;color:#fff;font-family:Bungee,"Arial Black",sans-serif;font-size:18px;text-decoration:none;border:3px solid #15131A;border-radius:999px;box-shadow:0 5px 0 #15131A}
+.tour-next .tn-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #15131A}
+.tour-next .tn-all{display:inline-block;margin-top:14px;font-weight:800;font-size:15px;color:#15131A;text-decoration:underline;text-underline-offset:3px;min-height:44px;line-height:44px}
+</style></head>
+<body id="top">
+
+<!-- ================= SVG sprite ================= -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="fl" d="M34 119Q53 134 74 133Q55 122 34 119ZM34 119Q18 106 21 89Q33 104 34 119ZM48 105Q71 122 98 124Q74 111 48 105ZM48 105Q32 85 37 64Q47 85 48 105ZM61 92Q88 112 119 117Q92 101 61 92ZM61 92Q49 66 56 43Q64 69 61 92ZM76 80Q105 103 139 112Q109 93 76 80ZM76 80Q67 50 78 26Q82 55 76 80ZM92 70Q121 95 157 108Q126 86 92 70ZM92 70Q87 38 102 14Q102 45 92 70ZM108 62Q136 89 173 104Q142 81 108 62ZM108 62Q108 28 127 6Q122 37 108 62ZM124 55Q151 84 188 101Q158 76 124 55ZM124 55Q129 22 152 2Q143 32 124 55ZM142 50Q166 80 201 98Q174 72 142 50ZM142 50Q150 18 176 2Q163 30 142 50ZM160 46Q181 76 213 94Q189 68 160 46ZM160 46Q171 17 199 6Q183 31 160 46ZM179 44Q196 72 224 89Q205 64 179 44ZM179 44Q192 19 219 12Q202 33 179 44ZM198 43Q210 69 235 83Q220 61 198 43ZM198 43Q211 22 236 21Q220 37 198 43ZM219 44Q226 66 246 76Q236 58 219 44ZM219 44Q229 27 250 30Q237 42 219 44ZM240 46Q241 63 256 67Q251 54 240 46ZM240 46Q245 33 260 40Q252 48 240 46ZM261 50Q257 61 268 60Q268 52 261 50ZM261 50Q262 40 271 48Q268 54 261 50ZM261 50Q272 59 283 59Q274 49 261 50Z"/>
+    <path id="pt" d="M0 0C-22-6-33-30-21-44C-13-53-4-49 0-45C5-50 14-53 22-43C33-28 22-6 0 0Z"/>
+    <g id="petals"><use href="#pt"/><use href="#pt" transform="rotate(72)"/><use href="#pt" transform="rotate(144)"/><use href="#pt" transform="rotate(216)"/><use href="#pt" transform="rotate(288)"/></g>
+    <g id="veins"><path d="M0-9V-33"/><path d="M0-9V-33" transform="rotate(72)"/><path d="M0-9V-33" transform="rotate(144)"/><path d="M0-9V-33" transform="rotate(216)"/><path d="M0-9V-33" transform="rotate(288)"/></g>
+    <g id="hand">
+      <rect x="8" y="26" width="30" height="30" rx="11"/>
+      <rect x="8" y="9" width="7" height="27" rx="3.5"/>
+      <rect x="16" y="3" width="7" height="32" rx="3.5"/>
+      <rect x="24" y="5" width="7" height="30" rx="3.5"/>
+      <rect x="31.5" y="12" width="6.5" height="23" rx="3.25"/>
+      <rect x="0" y="31" width="8" height="20" rx="4" transform="rotate(-38 4 44)"/>
+      <rect x="14" y="50" width="18" height="18" rx="4"/>
+    </g>
+    <g id="pint">
+      <path d="M-34-120H34L28-4Q0 4-28-4Z" fill="#DFF3FF" fill-opacity=".28"/>
+      <path d="M-31-88H31L27-6Q0 1-27-6Z" fill="#F2B33D"/>
+      <path d="M-31-30H29L27-6Q0 1-27-6Z" fill="#E09A22"/>
+      <circle cx="-10" cy="-58" r="3.2" fill="#FFE9A8"/><circle cx="9" cy="-40" r="2.6" fill="#FFE9A8"/><circle cx="15" cy="-70" r="2.2" fill="#FFE9A8"/><circle cx="-3" cy="-24" r="2" fill="#FFE9A8"/>
+      <path d="M-33-96Q-25-106-17-97T-1-97T15-97T33-97L31-84H-31Z" fill="#FFF4E0" stroke="#15131A" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M-22-78L-18-14" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".5"/>
+      <path d="M-34-120H34L28-4Q0 4-28-4Z" fill="none" stroke="#15131A" stroke-width="4.5" stroke-linejoin="round"/>
+    </g>
+    <clipPath id="bkClip"><path d="M16 54H144L131 160Q80 172 29 160Z"/></clipPath>
+    <linearGradient id="bkSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FD3FF"/><stop offset="1" stop-color="#E6F8FF"/></linearGradient>
+    <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5B2A86"/><stop offset=".55" stop-color="#FF6FB5"/><stop offset="1" stop-color="#FFC46B"/></linearGradient>
+    <pattern id="octave" width="140" height="64" patternUnits="userSpaceOnUse">
+      <rect width="140" height="64" fill="#FBF6EA"/>
+      <rect y="56" width="140" height="8" fill="#E2D9C6"/>
+      <path d="M1 0V64M20 0V64M40 0V64M60 0V64M80 0V64M100 0V64M120 0V64" stroke="#15131A" stroke-width="2"/>
+      <g fill="#15131A"><rect x="13.5" width="13" height="38" rx="2"/><rect x="33.5" width="13" height="38" rx="2"/><rect x="73.5" width="13" height="38" rx="2"/><rect x="93.5" width="13" height="38" rx="2"/><rect x="113.5" width="13" height="38" rx="2"/></g>
+      <g fill="#4A4652"><rect x="16" y="2" width="3" height="30" rx="1.5"/><rect x="36" y="2" width="3" height="30" rx="1.5"/><rect x="76" y="2" width="3" height="30" rx="1.5"/><rect x="96" y="2" width="3" height="30" rx="1.5"/><rect x="116" y="2" width="3" height="30" rx="1.5"/></g>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+
+  <symbol id="frond" viewBox="0 -6 292 162">
+    <use href="#fl" fill="#15131A" stroke="#15131A" stroke-width="5" stroke-linejoin="round"/>
+    <use href="#fl" style="fill:var(--frond,#2FA36B)"/>
+    <path d="M12 150Q100 12 268 52" fill="none" stroke="#15131A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M12 150Q100 12 268 52" fill="none" style="stroke:var(--rib,#5CC48E)" stroke-width="2.6" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="hibiscus" viewBox="-56 -56 112 112">
+    <use href="#petals" fill="#15131A" stroke="#15131A" stroke-width="6" stroke-linejoin="round"/>
+    <use href="#petals" style="fill:var(--petal,#FFF4E0)"/>
+    <use href="#veins" fill="none" stroke="#FF8DC1" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+    <circle r="13" fill="#FF4FA3" opacity=".32"/><circle r="7" fill="#FF4FA3" opacity=".6"/>
+    <path d="M2-2Q11-12 15-29" stroke="#15131A" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M2-2Q11-12 15-29" stroke="#F2B33D" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <circle cx="15" cy="-31" r="5" fill="#F2B33D" stroke="#15131A" stroke-width="2.2"/>
+    <circle cx="8" cy="-26" r="2.4" fill="#F2B33D" stroke="#15131A" stroke-width="1.4"/><circle cx="21" cy="-24" r="2.4" fill="#F2B33D" stroke="#15131A" stroke-width="1.4"/>
+  </symbol>
+
+  <symbol id="mnote" viewBox="0 0 36 46">
+    <path d="M22 34V6C26 10 32 12 31 22" fill="none" stroke="#15131A" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="14" cy="35" rx="11" ry="8.5" transform="rotate(-20 14 35)" fill="#15131A"/>
+    <path d="M22 34V6C26 10 32 12 31 22" fill="none" style="stroke:var(--nc,#FF4FA3)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="14" cy="35" rx="8.2" ry="5.9" transform="rotate(-20 14 35)" style="fill:var(--nc,#FF4FA3)"/>
+  </symbol>
+
+  <symbol id="bucket" viewBox="0 0 160 176">
+    <path d="M20 58C18 2 142 2 140 58" fill="none" stroke="#15131A" stroke-width="8" stroke-linecap="round"/>
+    <path d="M20 58C18 2 142 2 140 58" fill="none" stroke="#C9D1DB" stroke-width="3.2" stroke-linecap="round"/>
+    <ellipse cx="80" cy="54" rx="64" ry="11" fill="#2B2F38" stroke="#15131A" stroke-width="4"/>
+    <g stroke="#15131A" stroke-width="3" stroke-linejoin="round">
+      <g transform="rotate(-16 54 44)"><rect x="38" y="24" width="32" height="40" rx="2" fill="#86C98A"/><rect x="43" y="29" width="22" height="30" rx="1" fill="none" stroke="#3E8A4A" stroke-width="1.6"/><circle cx="54" cy="44" r="6" fill="none" stroke="#3E8A4A" stroke-width="1.6"/></g>
+      <rect x="74" y="20" width="28" height="28" fill="#FF8DC1" transform="rotate(10 88 34)"/>
+      <rect x="98" y="30" width="26" height="26" fill="#FFE36E" transform="rotate(24 111 43)"/>
+      <rect x="58" y="32" width="26" height="26" fill="#8ED8F8" transform="rotate(-5 71 45)"/>
+    </g>
+    <g clip-path="url(#bkClip)">
+      <rect x="0" y="50" width="160" height="130" fill="url(#bkSky)"/>
+      <circle cx="118" cy="80" r="13" fill="#FFD25E"/>
+      <g fill="#fff"><ellipse cx="44" cy="76" rx="14" ry="5.5"/><ellipse cx="53" cy="72" rx="9" ry="6"/><ellipse cx="92" cy="68" rx="9" ry="3.5"/></g>
+      <path d="M0 110Q20 104 40 110T80 110T120 110T160 110V128H0Z" fill="#2B8CE0"/>
+      <path d="M14 117h16M68 119h20M116 116h18" stroke="#BFE8FF" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M0 125Q60 117 160 127V180H0Z" fill="#F5E6C8"/>
+      <path d="M46 152C44 128 46 108 56 92" stroke="#15131A" stroke-width="8.5" fill="none" stroke-linecap="round"/>
+      <path d="M46 152C44 128 46 108 56 92" stroke="#9A6634" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <path d="M114 154C116 130 112 110 102 94" stroke="#15131A" stroke-width="8.5" fill="none" stroke-linecap="round"/>
+      <path d="M114 154C116 130 112 110 102 94" stroke="#9A6634" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <g id="palmtop" fill="#2FA36B" stroke="#15131A" stroke-width="1.8" stroke-linejoin="round">
+        <path d="M56 92C46 80 34 82 27 89C38 84 48 86 56 92Z"/><path d="M56 92C58 78 70 73 79 77C68 78 62 84 56 92Z"/>
+        <path d="M56 92C49 84 49 72 55 65C54 75 56 84 56 92Z"/><path d="M56 92C66 86 78 88 83 96C73 90 64 90 56 92Z"/><path d="M56 92C46 92 36 98 34 106C42 98 50 94 56 92Z"/>
+      </g>
+      <use href="#palmtop" transform="translate(158 2) scale(-1 1)"/>
+      <path d="M48 113L53 119M109 115L105 121" stroke="#6B4A33" stroke-width="1.6"/>
+      <path d="M53 119Q79 138 105 121" stroke="#15131A" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M53 119Q79 138 105 121" stroke="#FF4FA3" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M30 70L38 152" stroke="#fff" stroke-width="5" opacity=".3" stroke-linecap="round"/>
+    </g>
+    <path d="M16 54H144L131 160Q80 172 29 160Z" fill="none" stroke="#15131A" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M16 54Q80 72 144 54" fill="none" stroke="#15131A" stroke-width="10" stroke-linecap="round"/>
+    <path d="M16 54Q80 72 144 54" fill="none" stroke="#D5DCE4" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="21" cy="60" r="4" fill="#D5DCE4" stroke="#15131A" stroke-width="2.4"/><circle cx="139" cy="60" r="4" fill="#D5DCE4" stroke="#15131A" stroke-width="2.4"/>
+  </symbol>
+
+  <symbol id="play" viewBox="0 0 80 80">
+    <circle cx="42" cy="44" r="32" fill="#000" opacity=".5"/>
+    <circle cx="40" cy="40" r="32" fill="#F2B33D" stroke="#15131A" stroke-width="4"/>
+    <circle cx="40" cy="40" r="25" fill="none" stroke="#FFF1C4" stroke-width="2.4" stroke-dasharray="3.5 5.5" opacity=".95"/>
+    <path d="M33 26L56 40L33 54Z" fill="#15131A" stroke="#15131A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M24 26a20 20 0 0 1 12-8" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" opacity=".75"/>
+  </symbol>
+
+  <symbol id="ibell" viewBox="0 0 24 24"><path d="M12 3.2a6 6 0 0 0-6 6v4.1L4.2 16.5h15.6L18 13.3V9.2a6 6 0 0 0-6-6zM9.6 19a2.4 2.4 0 0 0 4.8 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+  <symbol id="ikeys" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.3"/><path d="M8.5 5v8M15.5 5v8M12 13v6M5.5 13v6M18.5 13v6" stroke="currentColor" stroke-width="2"/><path d="M7.3 5h2.4v8H7.3zM14.3 5h2.4v8h-2.4z" fill="currentColor"/></symbol>
+</svg>
+
+<a class="sr-only" href="#main">Skip to the good stuff</a>
+
+<!-- ================= HEADER ================= -->
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top" aria-label="Bruce the Piano Man, back to top">
+      <span class="brand-b">Bruce</span><span class="brand-s">the Piano Man</span>
+    </a>
+    <span class="spacer"></span>
+    <a class="home-chip" href="index.html">&larr; All gifts</a>
+    <div class="hdr-cta">
+      <a class="btn btn-pink" href="#alert"><svg aria-hidden="true"><use href="#ibell"/></svg>Get a Bruce Alert</a>
+      <a class="btn btn-yellow" href="#book">Book Bruce</a>
+    </div>
+  </div>
+  <div class="lights sm hdr-lights" id="hdrLights" data-gap="30" data-swagsper="3" data-sag="7" aria-hidden="true"></div>
+</header>
+
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero" aria-labelledby="h1">
+  <div class="deco" style="right:-90px;top:-10px;width:250px;height:140px;transform:scaleX(-1) rotate(-14deg);--frond:#1F7A50;opacity:.75" aria-hidden="true"><svg><use href="#frond"/></svg></div>
+  <div class="deco" style="left:-110px;bottom:-30px;width:300px;height:170px;transform:rotate(-28deg);--frond:#1F7A50;opacity:.8" aria-hidden="true"><svg><use href="#frond"/></svg></div>
+  <div class="deco" style="right:-26px;bottom:-30px;width:90px;height:90px;transform:rotate(18deg);opacity:.9" aria-hidden="true"><svg><use href="#hibiscus"/></svg></div>
+  <div class="wrap hero-grid">
+    <div class="hero-head">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#hibiscus"/></svg>Indiana's piano man since 1995</p>
+      <h1 class="h1" id="h1">Bruce plays <span class="glow">the room.</span></h1>
+    </div>
+
+    <div class="hero-photo">
+      <div class="marquee" id="heroFrame">
+        <div class="lights twinkle hero-lights" data-n="9" data-swags="2" data-sag="15" aria-hidden="true"></div>
+        <div class="photo">
+          <img src="img/bruce-wig-scene.jpg" width="1400" height="1166" alt="Bruce in a curly blonde rock-star wig and a blue Hawaiian shirt, throwing rock horns at the piano while the crowd behind him cracks up. Sticky-note requests and the painted tip bucket sit on the piano.">
+          <img class="rock-img" src="img/bruce-wig-close.jpg" width="800" height="908" alt="" aria-hidden="true">
+          <button class="wig-btn" id="wigBtn" type="button" aria-pressed="false" aria-label="Tap the wig for rock mode"></button>
+        </div>
+        <div class="wig-slap" aria-hidden="true">
+          <img class="wig-sticker" id="wigSticker" data-src="art/sticker-bruce-wig.webp" width="600" height="654" alt="">
+          <div class="rock-sticker">
+            <svg viewBox="0 0 18 22"><path d="M11 1L2 13h6l-2 8 10-13h-6l2-7z" fill="#FFE36E" stroke="#15131A" stroke-width="2" stroke-linejoin="round"/></svg>
+            Rock mode: ON
+            <svg viewBox="0 0 18 22"><path d="M11 1L2 13h6l-2 8 10-13h-6l2-7z" fill="#FFE36E" stroke="#15131A" stroke-width="2" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="sticky req-note" aria-hidden="true"><span class="tape"></span>Piano Man!!</div>
+      </div>
+      <div class="sticky hint-note" aria-hidden="true"><span class="tape"></span>
+        <svg class="hint-arrow" viewBox="0 0 58 62"><path d="M52 58C50 34 34 18 10 10" fill="none" stroke="#15131A" stroke-width="7" stroke-linecap="round"/><path d="M52 58C50 34 34 18 10 10" fill="none" stroke="#FFE36E" stroke-width="3" stroke-linecap="round"/><path d="M20 4L8 10L16 21" fill="none" stroke="#15131A" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4L8 10L16 21" fill="none" stroke="#FFE36E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span id="hintText">psst&hellip; tap the wig</span>
+      </div>
+      <div class="sticker-retired" aria-label="Say social!"><span class="s1">Say</span><span class="s2">social!</span></div>
+    </div>
+
+    <div class="hero-body">
+      <p class="sub">Requests on a sticky note. Sing-alongs till last call. Solo at the piano, or with the whole 8-piece band.</p>
+      <div class="cta-row" id="heroCtas">
+        <a class="btn btn-pink" href="#alert"><svg aria-hidden="true"><use href="#ibell"/></svg>Get a Bruce Alert</a>
+        <a class="btn btn-yellow" href="#book">Book Bruce</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHERE'S BRUCE ================= -->
+<section class="where sec" id="where" aria-labelledby="whereH">
+  <div class="wrap where-grid">
+    <div>
+      <p class="kicker">Before the doors open</p>
+      <h2 class="h2 teal" id="whereH">Where's Bruce?</h2>
+      <p class="lead">New dates land here first. Get a Bruce Alert and you'll know before the boat sells out.</p>
+      <div class="letterboard">
+        <p class="lb-label">Coming up</p>
+        <p class="lb-text">Next dates<br>post here first.</p>
+        <p class="lb-sub">Be first to know.</p>
+        <a class="btn btn-pink btn-sm" href="#alert"><svg aria-hidden="true"><use href="#ibell"/></svg>Tell me first</a>
+      </div>
+      <figure class="polaroid">
+        <span class="tape"></span>
+        <img src="img/bruce-guitar.jpg" width="1200" height="611" loading="lazy" alt="Bruce singing with his guitar at MashCraft Fishers, with a guest singer beside him and the painted bucket in front.">
+        <figcaption>MashCraft Fishers, Oct 3</figcaption>
+      </figure>
+    </div>
+    <div>
+      <h3 class="lately-h">Lately <span>2026</span></h3>
+      <ol class="shows">
+        <li class="gig">
+          <div class="date"><span class="dow">Sat</span><span class="d">3</span><span class="mo">Oct</span></div>
+          <div class="info"><span class="venue">MashCraft</span><span class="place">Fishers</span><div class="tags"><span class="tag tag-last" id="lastNight" hidden>Last night!</span></div></div>
+        </li>
+        <li class="gig sold">
+          <div class="date"><span class="dow">Sat</span><span class="d">26</span><span class="mo">Sep</span></div>
+          <div class="info"><span class="venue">Madam Carroll</span><span class="place">On the boat</span><a class="next-btn" href="#alert">Tell me when the next one opens</a></div>
+          <span class="stamp">Sold out</span>
+        </li>
+        <li class="gig">
+          <div class="date"><span class="dow">Sat</span><span class="d">15</span><span class="mo">Aug</span></div>
+          <div class="info"><span class="venue">MashCraft</span><span class="place">Fishers</span><div class="tags"><span class="tag tag-band">Full band</span></div></div>
+        </li>
+        <li class="gig sold">
+          <div class="date"><span class="dow">Sat</span><span class="d">25</span><span class="mo">Jul</span></div>
+          <div class="info"><span class="venue">Madam Carroll</span><span class="place">On the boat</span><a class="next-btn" href="#alert">Tell me when the next one opens</a></div>
+          <span class="stamp">Sold out</span>
+        </li>
+        <li class="gig">
+          <div class="date"><span class="dow">Fri</span><span class="d">17</span><span class="mo">Jul</span></div>
+          <div class="info"><span class="venue">Fountain Park Chautauqua</span><span class="place">Remington</span></div>
+        </li>
+        <li class="gig">
+          <div class="date"><span class="dow">Sat</span><span class="d">4</span><span class="mo">Jul</span></div>
+          <div class="info"><span class="venue">Columbian Park</span><span class="place">Lafayette</span><div class="tags"><span class="tag tag-band">Full 8-piece band</span><span class="tag tag-free">Free show</span></div></div>
+        </li>
+        <li class="gig sold">
+          <div class="date"><span class="dow">Sat</span><span class="d">6</span><span class="mo">Jun</span></div>
+          <div class="info"><span class="venue">Madam Carroll</span><span class="place">On the boat</span><a class="next-btn" href="#alert">Tell me when the next one opens</a></div>
+          <span class="stamp">Sold out</span>
+        </li>
+        <li class="gig">
+          <div class="date"><span class="dow">Sat</span><span class="d">30</span><span class="mo">May</span></div>
+          <div class="info"><span class="venue">MashCraft</span><span class="place">Fishers</span></div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRUCE ALERT ================= -->
+<section class="alert-sec sec" id="alert" aria-labelledby="alertH">
+  <div class="wrap">
+    <form class="alert-note" id="alertForm" novalidate>
+      <span class="tape"></span>
+      <div class="alert-bell" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path d="M6 20C4 26 4 32 6 38M58 20C60 26 60 32 58 38M12 16C9 22 9 30 12 36M52 16C55 22 55 30 52 36" fill="none" stroke="#FF4FA3" stroke-width="3" stroke-linecap="round"/>
+          <path d="M32 8c-11 0-17 9-17 20v10l-6 8h46l-6-8V28c0-11-6-20-17-20z" fill="#F2B33D" stroke="#15131A" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M25 47a7 7 0 0 0 14 0" fill="#F2B33D" stroke="#15131A" stroke-width="4"/>
+          <circle cx="32" cy="7" r="4" fill="#F2B33D" stroke="#15131A" stroke-width="3"/>
+          <path d="M22 24c1-5 4-8 8-9" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".75"/>
+        </svg>
+      </div>
+      <h2 class="h2 ink" id="alertH">Get a Bruce Alert</h2>
+      <p class="alert-line">Where he's playing, before it sells out. A few emails a year. Just dates.</p>
+      <div class="field">
+        <label for="aEmail">Your email</label>
+        <input class="input" id="aEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" required>
+      </div>
+      <fieldset>
+        <legend class="legend">Where do you want to see him?</legend>
+        <div class="pills">
+          <label class="pill"><input type="checkbox" name="region" value="Lafayette"><span>Lafayette</span></label>
+          <label class="pill"><input type="checkbox" name="region" value="Indy & Fishers"><span>Indy &amp; Fishers</span></label>
+          <label class="pill"><input type="checkbox" name="region" value="Anywhere"><span>Anywhere</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="aYear">Purdue class year <span class="opt">(or &ldquo;just a fan&rdquo;)</span></label>
+        <input class="input" id="aYear" name="year" type="text" autocomplete="off" placeholder="Optional">
+      </div>
+      <div class="form-submit"><button class="btn btn-pink" type="submit">Count me in</button></div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= A BRUCE NIGHT ================= -->
+<section class="night sec" id="night" aria-labelledby="nightH">
+  <div class="deco" style="right:-120px;top:120px;width:300px;height:170px;transform:scaleX(-1) rotate(-30deg);--frond:#1C6E48;opacity:.55" aria-hidden="true"><svg><use href="#frond"/></svg></div>
+  <div class="wrap night-grid">
+    <div class="night-intro">
+      <p class="kicker">Here's how it goes</p>
+      <h2 class="h2" id="nightH">A Bruce night</h2>
+      <p>From the first song to last call.</p>
+      <svg class="moon" viewBox="0 0 92 92" aria-hidden="true">
+        <circle cx="46" cy="46" r="40" fill="rgba(255,227,110,.12)"/>
+        <path d="M58 14a32 32 0 1 0 20 50A26 26 0 1 1 58 14z" fill="#FFE36E" stroke="#15131A" stroke-width="3.5" stroke-linejoin="round"/>
+        <circle cx="38" cy="58" r="4" fill="#F2B33D"/><circle cx="30" cy="40" r="2.6" fill="#F2B33D"/>
+        <path d="M80 18l2 5 5 2-5 2-2 5-2-5-5-2 5-2z" fill="#fff"/><path d="M14 16l1.4 3.6 3.6 1.4-3.6 1.4L14 26l-1.4-3.6L9 21l3.6-1.4z" fill="#fff"/>
+      </svg>
+    </div>
+    <ol class="timeline">
+      <li class="beat">
+        <span class="marker" aria-hidden="true"><i></i><b>1</b></span>
+        <div class="beat-card">
+          <div class="beat-art" style="--bg:#16263D" aria-hidden="true">
+            <svg viewBox="0 0 80 80">
+              <rect x="11" y="8" width="6" height="68" rx="3" fill="#9A6634" stroke="#15131A" stroke-width="3"/>
+              <path d="M17 11L77 29L17 47Z" fill="#F2B33D" stroke="#15131A" stroke-width="3.5" stroke-linejoin="round"/>
+              <text x="22" y="33.5" font-family="Bungee, sans-serif" font-size="10" fill="#15131A">HAIL!</text>
+              <use href="#mnote" x="44" y="46" width="20" height="26" style="--nc:#FF4FA3"/>
+              <use href="#mnote" x="60" y="52" width="14" height="18" style="--nc:#33E1D0"/>
+            </svg>
+          </div>
+          <div><h3>It starts with Hail Purdue.</h3></div>
+        </div>
+      </li>
+      <li class="beat">
+        <span class="marker" aria-hidden="true"><i></i><b>2</b></span>
+        <div class="beat-card">
+          <div class="beat-art" style="--bg:#FFF4E0" aria-hidden="true">
+            <svg viewBox="0 0 80 80">
+              <use href="#mnote" x="28" y="1" width="22" height="28" style="--nc:#33E1D0"/>
+              <path d="M40 30C30 17 18 22 27 30ZM40 30C50 17 62 22 53 30Z" fill="#33E1D0" stroke="#15131A" stroke-width="3" stroke-linejoin="round"/>
+              <rect x="14" y="40" width="52" height="34" rx="3" fill="#FF8DC1" stroke="#15131A" stroke-width="3.5"/>
+              <rect x="10" y="30" width="60" height="13" rx="3" fill="#FF8DC1" stroke="#15131A" stroke-width="3.5"/>
+              <rect x="35" y="30" width="10" height="44" fill="#33E1D0" stroke="#15131A" stroke-width="3"/>
+              <g transform="rotate(-14 63 58)"><rect x="49" y="51" width="28" height="15" rx="3" fill="#FFE36E" stroke="#15131A" stroke-width="2.5"/><text x="52.5" y="62.5" font-family="Bungee, sans-serif" font-size="8.6" fill="#15131A">FREE</text></g>
+            </svg>
+          </div>
+          <div>
+            <h3>The first hour's on Bruce.</h3>
+            <p>No tips in the first hour. His rule: &ldquo;People love free stuff! Give them a free song!&rdquo;</p>
+          </div>
+        </div>
+      </li>
+      <li class="beat beat-social">
+        <span class="marker" aria-hidden="true"><i></i><b>3</b></span>
+        <div class="beat-card">
+          <div>
+            <h3>Say social!</h3>
+            <p>When Bruce calls it, the whole room drinks at once.</p>
+            <div class="social-play" id="socialPlay">
+              <div class="social-bruce">
+                <img src="art/bruce-pose-say-social.webp" width="640" height="960" loading="lazy" alt="Cartoon Bruce raising his glass with a hand cupped to his ear, waiting for the room to yell it back.">
+                <span class="social-pop" id="socialPop" aria-hidden="true">SOCIAL!</span>
+              </div>
+              <div class="room" aria-hidden="true">
+                <img class="crowd crowd-sing" src="art/world-crowd-singing.svg" width="1700" height="320" loading="lazy" alt="">
+                <img class="crowd crowd-cheers" src="art/world-crowd-social.svg" width="1700" height="320" loading="lazy" alt="">
+                <div class="glass-stage">
+                <svg class="glasses" id="glasses" viewBox="0 0 240 172" aria-hidden="true">
+                  <ellipse cx="120" cy="164" rx="100" ry="6" fill="#000" opacity=".35"/>
+                  <g transform="translate(70 162)"><g class="gl gl-l"><use href="#pint"/></g></g>
+                  <g transform="translate(170 162)"><g class="gl gl-r"><use href="#pint"/></g></g>
+                  <g class="burst">
+                    <path d="M120 6V20M100 14L108 24M140 14L132 24M92 34H104M136 34H148" stroke="#FFE36E" stroke-width="4.5" stroke-linecap="round"/>
+                    <circle cx="110" cy="4" r="3.2" fill="#FF8DC1"/><circle cx="133" cy="2" r="2.6" fill="#33E1D0"/><circle cx="96" cy="24" r="2.4" fill="#8ED8F8"/><circle cx="146" cy="22" r="2.8" fill="#FF8DC1"/>
+                  </g>
+                </svg>
+                </div>
+              </div>
+              <div class="social-side">
+                <button class="social-btn" id="socialBtn" type="button">SOCIAL!</button>
+                <div class="social-count" aria-live="polite">Socials tonight: <b id="socialCount">0</b></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="beat">
+        <span class="marker" aria-hidden="true"><i></i><b>4</b></span>
+        <div class="beat-card">
+          <div class="beat-art" style="--bg:#8ED8F8" aria-hidden="true">
+            <svg viewBox="0 0 80 80">
+              <path d="M0 64Q20 52 40 62T80 58V80H0Z" fill="#2FA36B" stroke="#15131A" stroke-width="3"/>
+              <path d="M30 80Q38 70 44 63" stroke="#F5E6C8" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <g transform="translate(3 6) scale(.82) rotate(-14 23 40)"><use href="#hand" fill="#15131A" stroke="#15131A" stroke-width="5.5" stroke-linejoin="round"/><use href="#hand" fill="#F4C69A"/></g>
+              <g transform="translate(77 6) scale(-.82 .82) rotate(-14 23 40)"><use href="#hand" fill="#15131A" stroke="#15131A" stroke-width="5.5" stroke-linejoin="round"/><use href="#hand" fill="#F4C69A"/></g>
+              <path d="M5 8Q1 15 3 22M75 8Q79 15 77 22M12 2Q9 5 9 9M68 2Q71 5 71 9" stroke="#FF4FA3" stroke-width="3" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Country Roads, with the moves.</h3>
+            <p>Sign-language moves Bruce made up with his wife, Sabrina. Learn them before you come.</p>
+          </div>
+        </div>
+      </li>
+      <li class="beat">
+        <span class="marker" aria-hidden="true"><i></i><b>5</b></span>
+        <div class="beat-card">
+          <div class="beat-art" style="--bg:#5B2A86" aria-hidden="true">
+            <svg viewBox="0 0 80 80">
+              <rect width="80" height="80" fill="url(#dusk)"/>
+              <circle cx="14" cy="12" r="1.4" fill="#fff"/><circle cx="62" cy="9" r="1.2" fill="#fff"/><circle cx="34" cy="18" r="1" fill="#fff"/>
+              <circle cx="40" cy="52" r="19" fill="#FFE36E" stroke="#15131A" stroke-width="2.5"/>
+              <rect y="52" width="80" height="28" fill="#1A5FA8"/>
+              <path d="M0 52H80" stroke="#15131A" stroke-width="2.5"/>
+              <path d="M8 60h14M36 64h18M60 59h12M18 71h16M50 73h18" stroke="#8ED8F8" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M44 52H68L63 58H49Z" fill="#15131A"/>
+              <path d="M56 50V28L68 50Z" fill="#FFF4E0" stroke="#15131A" stroke-width="2.2" stroke-linejoin="round"/>
+              <path d="M54 50V33L46 50Z" fill="#FF8DC1" stroke="#15131A" stroke-width="2.2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h3>It ends the same way. Every time.</h3>
+            <span class="song">A Pirate Looks at Forty.</span>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= REQUEST JUKEBOX ================= -->
+<section class="juke sec" id="requests" aria-labelledby="jukeH">
+  <div class="wrap juke-grid">
+    <div class="juke-head">
+      <p class="kicker">Requests are open</p>
+      <h2 class="h2" id="jukeH">Write it on a sticky note.</h2>
+      <p class="sub2">Tap a request. See what Bruce says.</p>
+      <button class="sound-toggle" id="soundBtn" type="button" aria-pressed="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><g class="w-on" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M15.5 9a4 4 0 0 1 0 6"/><path d="M18 6.5a7.5 7.5 0 0 1 0 11"/></g><g class="w-off" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M16 9.5l5 5M21 9.5l-5 5"/></g></svg>
+        <span class="w-off">Sound off</span><span class="w-on">Sound on</span>
+      </button>
+    </div>
+    <div class="says" aria-live="polite">
+      <div class="avatar-wrap" id="avatarWrap" data-pose="grin" aria-hidden="true">
+        <div class="av-stage">
+          <div class="avatar"></div>
+          <div class="av-pop">
+            <img class="pose on" data-pose="grin" src="art/sticker-bruce-grin.webp" width="600" height="629" loading="lazy" alt="">
+            <img class="pose" data-pose="point" src="art/bruce-pose-pointing.webp" width="640" height="960" loading="lazy" alt="">
+            <img class="pose" data-pose="wink" src="art/bruce-pose-winking.webp" width="640" height="960" loading="lazy" alt="">
+            <img class="pose" data-pose="roads" src="art/bruce-pose-country-roads-study.webp" width="640" height="960" loading="lazy" alt="">
+            <img class="pose" data-pose="million" src="art/bruce-pose-million-dollars-lettered.webp" width="640" height="960" loading="lazy" alt="">
+            <img class="pose" data-pose="bow" src="art/bruce-pose-last-call-bow.webp" width="640" height="960" loading="lazy" alt="">
+          </div>
+        </div>
+        <div class="groan-fx" aria-hidden="true">
+          <svg viewBox="0 0 16 22"><path d="M8 1C5 7 2 10 2 14a6 6 0 0 0 12 0c0-4-3-7-6-13z" fill="#8ED8F8" stroke="#15131A" stroke-width="2"/></svg>
+          <span class="ugh">ugh.</span>
+        </div>
+      </div>
+      <div class="bubble" id="bubble">
+        <span class="bubble-label" id="saysLabel">Requests are open</span>
+        <p class="bubble-text" id="saysText">Tap a sticky note.</p>
+        <p class="bubble-note" id="saysNote" hidden>Sabrina gets the final say on the moves.</p>
+      </div>
+    </div>
+    <div class="lid">
+      <div class="notes" id="notes"></div>
+      <div class="lid-keys" aria-hidden="true"><svg preserveAspectRatio="none"><rect width="100%" height="100%" fill="url(#octave)"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT STARTED ================= -->
+<section class="origin sec" id="origin" aria-labelledby="originH">
+  <div class="wrap">
+    <p class="kicker">Between sets</p>
+    <h2 class="h2 teal" id="originH">How it started</h2>
+    <p class="narr"><b>1988.</b> A Purdue residence hall. A piano, a cassette player and two sets of batteries.</p>
+    <div class="strip">
+      <figure class="panel" style="--r:-.6deg">
+        <figcaption class="cap"><span class="lbl">Song one:</span><span class="big">7 hours.</span></figcaption>
+        <img src="art/comic-panel-1-seven-hours.webp" width="960" height="640" loading="lazy" decoding="async" alt="Comic: young Bruce, with a full head of brown hair, sweats at a keyboard in his dorm room, crumpled paper everywhere, a little cassette player beside him.">
+      </figure>
+      <figure class="panel" style="--r:.5deg">
+        <figcaption class="cap"><span class="lbl">Song two:</span><span class="big">1 hour.</span></figcaption>
+        <img src="art/comic-panel-2-one-hour.webp" width="960" height="640" loading="lazy" decoding="async" alt="Comic: same dorm room. Bruce is grinning now, and the cassette player is smiling too.">
+      </figure>
+      <figure class="panel" style="--r:.4deg">
+        <figcaption class="cap"><span class="lbl">Song three:</span><span class="big">15 minutes.</span></figcaption>
+        <img src="art/comic-panel-3-fifteen-minutes.webp" width="960" height="640" loading="lazy" decoding="async" alt="Comic: Bruce plays with both hands, relaxed and confident. The cassette player winks.">
+      </figure>
+      <figure class="panel panel-room" style="--r:-.5deg">
+        <figcaption class="cap"><span class="big">A whole room.</span></figcaption>
+        <img src="art/comic-panel-4-whole-room.webp" width="960" height="640" loading="lazy" decoding="async" alt="Comic: today's Bruce, grinning in his Hawaiian shirt at a black piano covered in sticky notes, points out at a cheering crowd. The cassette player sits on the piano.">
+      </figure>
+    </div>
+    <p class="comic-note">Illustrated dramatization. The learning story is real; the dorm and the hair are imagined.</p>
+    <div class="origin-close">
+      <p>He'd never touched a piano before college. His family couldn't afford one.</p>
+      <p class="later">Since then? About 1.5 million people, by his count.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WATCH ================= -->
+<section class="watch sec" id="watch" aria-labelledby="watchH">
+  <div class="wrap">
+    <p class="kicker">Can't wait for the next one?</p>
+    <h2 class="h2" id="watchH">Hit play.</h2>
+    <div class="watch-grid">
+      <a class="watch-card" href="https://vimeo.com/1162270589/a2afa8b102" target="_blank" rel="noopener">
+        <div class="screen">
+          <svg class="scr-art" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" filter="url(#glow)">
+              <path d="M10 150H310" stroke="#33E1D0"/>
+              <rect x="22" y="96" width="74" height="14" rx="3" stroke="#FF4FA3"/><path d="M34 99v8M44 99v8M54 99v8M64 99v8M74 99v8M84 99v8" stroke="#FF4FA3" stroke-width="2"/>
+              <path d="M34 110L82 148M82 110L34 148" stroke="#FF4FA3"/>
+              <path d="M114 148V70M106 148h16" stroke="#8ED8F8"/><circle cx="114" cy="64" r="6" stroke="#8ED8F8"/>
+              <circle cx="232" cy="122" r="25" stroke="#F2B33D"/><circle cx="232" cy="122" r="13" stroke="#F2B33D" stroke-width="2"/>
+              <path d="M250 80h40M270 80v68M196 92h30M211 92v56" stroke="#F2B33D"/>
+              <path d="M290 40c0 40-2 66 10 74c10 6 18-6 12-16" stroke="#33E1D0"/><path d="M290 40q-2-12-14-12" stroke="#33E1D0"/>
+            </g>
+          </svg>
+          <svg class="play" aria-hidden="true"><use href="#play"/></svg>
+        </div>
+        <div class="meta">
+          <span class="platform">Vimeo</span>
+          <h3>The Bruce Barker Band, booking reel</h3>
+          <span class="go">Watch &rarr;</span>
+        </div>
+      </a>
+      <a class="watch-card" href="https://www.youtube.com/watch?v=b5c6JikJ4S4" target="_blank" rel="noopener">
+        <div class="screen s2">
+          <svg class="scr-art" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <path d="M70 0L10 180H150Z" fill="#33E1D0" opacity=".14"/><path d="M250 0L170 180H310Z" fill="#FF4FA3" opacity=".16"/><path d="M160 0L110 180H210Z" fill="#FFE36E" opacity=".08"/>
+            <g fill="#04050A">
+              <circle cx="20" cy="150" r="13"/><circle cx="52" cy="146" r="14"/><circle cx="86" cy="152" r="13"/><circle cx="118" cy="144" r="14"/><circle cx="150" cy="150" r="13"/><circle cx="184" cy="145" r="14"/><circle cx="216" cy="151" r="13"/><circle cx="248" cy="146" r="14"/><circle cx="280" cy="150" r="13"/><circle cx="310" cy="146" r="13"/>
+              <rect x="0" y="158" width="320" height="22"/>
+            </g>
+            <g stroke="#04050A" stroke-width="7" stroke-linecap="round"><path d="M40 146L30 108M64 142L74 104M130 140L124 100M196 141L206 104M262 142L254 102M292 146L302 110"/></g>
+            <g fill="#04050A"><circle cx="30" cy="104" r="5"/><circle cx="74" cy="100" r="5"/><circle cx="124" cy="96" r="5"/><circle cx="206" cy="100" r="5"/><circle cx="254" cy="98" r="5"/><circle cx="302" cy="106" r="5"/></g>
+          </svg>
+          <span class="badge">4:36:30</span>
+          <svg class="play" aria-hidden="true"><use href="#play"/></svg>
+        </div>
+        <div class="meta">
+          <span class="platform">YouTube</span>
+          <h3>The whole farewell show, Dec 7, 2023 (over 4&frac12; hours!)</h3>
+          <span class="go">Watch &rarr;</span>
+        </div>
+      </a>
+      <a class="watch-card" href="https://www.youtube.com/watch?v=JLrNLRLQ12M" target="_blank" rel="noopener">
+        <div class="screen s3">
+          <svg class="scr-art" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <g fill="none" stroke="#fff" stroke-width="3" opacity=".75"><path d="M14 34V14h20M306 34V14h-20M14 146v20h20M306 146v20h-20"/></g>
+            <circle cx="30" cy="30" r="5" fill="#FF3B3B"/>
+            <text x="42" y="35" font-family="Nunito, sans-serif" font-weight="900" font-size="14" fill="#fff">REC</text>
+            <text x="296" y="36" text-anchor="end" font-family="Courier New, monospace" font-weight="700" font-size="15" fill="#FFE36E">2007</text>
+            <g transform="rotate(-10 70 92)"><rect x="36" y="64" width="5" height="70" rx="2" fill="#9A6634"/><path d="M41 66L110 84L41 102Z" fill="#F2B33D" stroke="#15131A" stroke-width="3" stroke-linejoin="round"/></g>
+            <g fill="#0A0C08"><circle cx="190" cy="160" r="14"/><circle cx="226" cy="156" r="15"/><circle cx="262" cy="162" r="13"/><circle cx="150" cy="164" r="13"/><rect x="120" y="168" width="200" height="12"/></g>
+            <g stroke="#0A0C08" stroke-width="7" stroke-linecap="round"><path d="M214 152L204 118M240 150L252 116M176 156L170 124"/></g>
+          </svg>
+          <svg class="play" aria-hidden="true"><use href="#play"/></svg>
+        </div>
+        <div class="meta">
+          <span class="platform">YouTube</span>
+          <h3>Hail Purdue at the Cactus, 2007 (a fan's video)</h3>
+          <span class="go">Watch &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROOF ================= -->
+<section class="proof sec" id="proof" aria-labelledby="proofH">
+  <svg class="shirt-pat" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="shirtPat" width="250" height="250" patternUnits="userSpaceOnUse" patternTransform="rotate(-10)">
+        <g stroke="#3E9BEA" stroke-width="7" fill="none" stroke-linecap="round" opacity=".9"><path d="M200 246C198 214 204 190 218 168"/><path d="M60 120C58 96 62 78 74 62"/></g>
+        <g fill="#3E9BEA" opacity=".9">
+          <path d="M218 168c-14-10-28-8-36 0c14-4 26-2 36 0zM218 168c4-14 18-20 30-14c-14 0-24 6-30 14zM218 168c-8-10-8-24 0-32c-2 12 0 22 0 32zM218 168c14-4 28 0 32 10c-12-6-22-8-32-10z"/>
+          <path d="M74 62c-14-10-28-8-36 0c14-4 26-2 36 0zM74 62c4-14 18-20 30-14c-14 0-24 6-30 14zM74 62c-8-10-8-24 0-32c-2 12 0 22 0 32zM74 62c14-4 28 0 32 10c-12-6-22-8-32-10z"/>
+        </g>
+        <use href="#frond" x="120" y="0" width="120" height="66" style="--frond:#2FA36B"/>
+        <use href="#frond" x="-6" y="170" width="112" height="62" style="--frond:#2FA36B"/>
+        <use href="#hibiscus" x="12" y="96" width="72" height="72"/>
+        <use href="#hibiscus" x="150" y="96" width="54" height="54"/>
+        <use href="#hibiscus" x="108" y="196" width="44" height="44"/>
+      </pattern>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#shirtPat)" opacity=".8"/>
+  </svg>
+  <div class="wrap">
+    <p class="kicker">Bruce won't brag, so&hellip;</p>
+    <h2 class="h2" id="proofH">The receipts.</h2>
+    <div class="stats">
+      <div class="stat" style="--r:-1.5deg"><span class="pre">Since</span><span class="big">1995</span></div>
+      <div class="stat wide" style="--r:1deg"><span class="big pink" data-to="13000">13,000</span><span class="lbl">watching at once</span><span class="sm">(his shows from home, 2020)</span></div>
+      <div class="stat" style="--r:1.6deg"><span class="big" data-to="2200">2,200</span><span class="lbl">at the farewell</span></div>
+      <div class="stat wide" style="--r:-.8deg"><span class="pre">Fans flew in from</span><span class="big pink"><svg class="plane" viewBox="0 0 48 48" aria-hidden="true"><path d="M46 24c0-2.2-2-3.5-4.5-3.5H31L21 6h-5l5 14.5H11L7 15H3l2.5 9L3 33h4l4-5h10l-5 14h5l10-14.5h10.5C44 27.5 46 26.2 46 24z" fill="#FF4FA3" stroke="#15131A" stroke-width="2.5" stroke-linejoin="round"/></svg>Germany</span></div>
+    </div>
+    <div class="quotes">
+      <figure class="qnote" style="--r:-2.5deg;background-color:var(--note-yellow)">
+        <span class="tape"></span>
+        <blockquote>&ldquo;Bruce is a national treasure.&rdquo;</blockquote>
+        <figcaption>&mdash; a Purdue fan on Reddit</figcaption>
+      </figure>
+      <figure class="qnote" style="--r:2deg;background-color:var(--note-pink)">
+        <span class="tape"></span>
+        <blockquote>&ldquo;A master at working the crowd.&rdquo;</blockquote>
+        <figcaption>&mdash; a Neon Cactus review</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BOOK BRUCE ================= -->
+<section class="book sec" id="book" aria-labelledby="bookH">
+  <div class="deco" style="left:-40px;bottom:90px;width:110px;height:110px;transform:rotate(-20deg);opacity:.85" aria-hidden="true"><svg><use href="#hibiscus"/></svg></div>
+  <div class="deco" style="right:-120px;top:20px;width:280px;height:160px;transform:scaleX(-1) rotate(-22deg);--frond:#1C6E48;opacity:.6" aria-hidden="true"><svg><use href="#frond"/></svg></div>
+  <div class="wrap">
+    <p class="kicker">Private parties</p>
+    <h2 class="h2" id="bookH">Bring the party to your people.</h2>
+    <div class="book-cards">
+      <article class="book-card">
+        <div class="art art-bar" aria-hidden="true">
+          <svg viewBox="0 0 260 170" preserveAspectRatio="xMidYMid meet">
+            <ellipse cx="130" cy="150" rx="110" ry="9" fill="#000" opacity=".4"/>
+            <path d="M66 82L222 96L108 30Z" fill="#2E2B37" stroke="#05070C" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M112 36L210 92" stroke="#4A4656" stroke-width="2.5"/>
+            <path d="M160 90L148 54" stroke="#05070C" stroke-width="4"/>
+            <path d="M44 84H176C206 84 212 98 232 98C246 98 248 120 232 122H44Z" fill="#15131A" stroke="#05070C" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M52 92H174C202 92 210 106 228 106" stroke="#3E3A4A" stroke-width="3" fill="none"/>
+            <rect x="24" y="86" width="24" height="10" fill="#fff" stroke="#05070C" stroke-width="3"/>
+            <path d="M30 86v6M36 86v6M42 86v6" stroke="#15131A" stroke-width="2"/>
+            <path d="M58 122V146M212 122V146M128 122V140" stroke="#05070C" stroke-width="9" stroke-linecap="round"/>
+            <path d="M58 122V146M212 122V146M128 122V140" stroke="#2E2B37" stroke-width="3.5" stroke-linecap="round"/>
+            <g stroke="#05070C" stroke-width="2"><rect x="66" y="99" width="15" height="15" fill="#FF8DC1" transform="rotate(-8 73 106)"/><rect x="88" y="97" width="15" height="15" fill="#FFE36E" transform="rotate(6 95 104)"/><rect x="110" y="100" width="15" height="15" fill="#8ED8F8" transform="rotate(-4 117 107)"/><rect x="132" y="98" width="15" height="15" fill="#FF8DC1" transform="rotate(9 139 105)"/></g>
+            <use href="#mnote" x="186" y="28" width="22" height="28" style="--nc:#FF4FA3"/>
+            <use href="#mnote" x="214" y="48" width="16" height="21" style="--nc:#33E1D0"/>
+            <use href="#mnote" x="32" y="44" width="18" height="23" style="--nc:#FFE36E"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>The Piano Bar</h3>
+          <p>Bruce solo at the keys. Requests, sing-alongs, &ldquo;Say social!&rdquo; Alumni dinners, reunions, parties.</p>
+          <button class="btn btn-pink btn-sm" type="button" data-pick="Piano Bar">I want the Piano Bar</button>
+        </div>
+      </article>
+      <article class="book-card">
+        <div class="art art-band" aria-hidden="true">
+          <svg viewBox="0 0 260 170" preserveAspectRatio="xMidYMid meet">
+            <ellipse cx="130" cy="152" rx="112" ry="8" fill="#000" opacity=".25"/>
+            <g transform="rotate(-24 52 92)">
+              <rect x="47" y="22" width="11" height="62" rx="3" fill="#6B4A33" stroke="#15131A" stroke-width="3.5"/>
+              <rect x="44" y="12" width="17" height="16" rx="4" fill="#6B4A33" stroke="#15131A" stroke-width="3.5"/>
+              <circle cx="52" cy="122" r="25" fill="#15131A"/><circle cx="52" cy="94" r="18" fill="#15131A"/>
+              <circle cx="52" cy="122" r="21" fill="#D6894A"/><circle cx="52" cy="94" r="14.5" fill="#D6894A"/>
+              <circle cx="52" cy="104" r="7" fill="#15131A"/>
+              <rect x="44" y="128" width="16" height="5" rx="2" fill="#15131A"/>
+              <path d="M50 30V100M54 30V100" stroke="#EADFC6" stroke-width="1.2"/>
+            </g>
+            <path d="M110 66V146M96 146h28" stroke="#15131A" stroke-width="4" stroke-linecap="round"/>
+            <ellipse cx="110" cy="64" rx="22" ry="5" fill="#F2B33D" stroke="#15131A" stroke-width="3" transform="rotate(-10 110 64)"/>
+            <path d="M192 60V146M178 146h28" stroke="#15131A" stroke-width="4" stroke-linecap="round"/>
+            <ellipse cx="192" cy="58" rx="24" ry="5.5" fill="#F2B33D" stroke="#15131A" stroke-width="3" transform="rotate(8 192 58)"/>
+            <circle cx="150" cy="116" r="32" fill="#FFF4E0" stroke="#15131A" stroke-width="4"/>
+            <circle cx="150" cy="116" r="25" fill="none" stroke="#FF4FA3" stroke-width="4"/>
+            <use href="#hibiscus" x="132" y="98" width="36" height="36"/>
+            <g fill="#C9D1DB" stroke="#15131A" stroke-width="2"><rect x="146" y="80" width="8" height="6" rx="1"/><rect x="146" y="146" width="8" height="6" rx="1"/><rect x="114" y="112" width="6" height="8" rx="1"/><rect x="180" y="112" width="6" height="8" rx="1"/></g>
+            <rect x="96" y="96" width="32" height="12" fill="#FF4FA3" stroke="#15131A" stroke-width="3"/>
+            <ellipse cx="112" cy="96" rx="16" ry="5" fill="#E6ECF2" stroke="#15131A" stroke-width="3"/>
+            <path d="M226 26C226 70 222 100 236 110C248 118 258 104 252 92" fill="none" stroke="#15131A" stroke-width="14" stroke-linecap="round"/>
+            <path d="M226 26C226 70 222 100 236 110C248 118 258 104 252 92" fill="none" stroke="#F2B33D" stroke-width="8" stroke-linecap="round"/>
+            <path d="M246 96L254 74L266 82L256 100Z" fill="#F2B33D" stroke="#15131A" stroke-width="3.5" stroke-linejoin="round"/>
+            <path d="M226 26Q224 14 212 16" fill="none" stroke="#15131A" stroke-width="7" stroke-linecap="round"/>
+            <path d="M226 26Q224 14 212 16" fill="none" stroke="#F2B33D" stroke-width="3" stroke-linecap="round"/>
+            <g fill="#FFF4E0" stroke="#15131A" stroke-width="1.6"><circle cx="227" cy="48" r="3"/><circle cx="227" cy="62" r="3"/><circle cx="226" cy="76" r="3"/><circle cx="228" cy="90" r="3"/></g>
+            <use href="#mnote" x="76" y="14" width="18" height="24" style="--nc:#FFE36E"/>
+            <use href="#mnote" x="160" y="18" width="20" height="26" style="--nc:#FF4FA3"/>
+          </svg>
+        </div>
+        <div class="body">
+          <h3>The Full Band</h3>
+          <p>The whole 8-piece Bruce Barker Band. Reunions, festivals, big rooms.</p>
+          <button class="btn btn-yellow btn-sm" type="button" data-pick="Full Band">I want the Full Band</button>
+        </div>
+      </article>
+    </div>
+    <div class="gig-wrap">
+    <div class="same-row">
+      <p class="same">Same Bruce. Bigger party.</p>
+      <img class="book-bruce" src="art/bruce-pose-pointing.webp" width="640" height="960" loading="lazy" decoding="async" alt="Cartoon Bruce leaning over the gig sheet, pointing right at you.">
+    </div>
+    <div class="clipboard">
+      <svg class="clip" viewBox="0 0 150 58" aria-hidden="true">
+        <path d="M34 50V26Q34 13 47 13H60Q62 2 75 2Q88 2 90 13H103Q116 13 116 26V50Z" fill="#C9D1DB" stroke="#15131A" stroke-width="4" stroke-linejoin="round"/>
+        <circle cx="75" cy="13" r="5" fill="#15131A"/>
+        <path d="M44 28H106" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/>
+        <rect x="24" y="42" width="102" height="13" rx="4" fill="#AEB8C4" stroke="#15131A" stroke-width="4"/>
+      </svg>
+      <form class="sheet" id="bookForm" novalidate>
+        <h3 class="sheet-title" id="book-form">Gig sheet</h3>
+        <p class="sheet-sub">Tell Bruce about your night.</p>
+
+        <fieldset>
+          <legend class="legend">What kind of night?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="kind" value="Piano Bar"><span>Piano Bar</span></label>
+            <label class="pill"><input type="radio" name="kind" value="Full Band"><span>Full Band</span></label>
+            <label class="pill"><input type="radio" name="kind" value="Not sure" checked><span>Not sure</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend class="legend">What's the event?</legend>
+          <div class="pills" id="eventPills">
+            <label class="pill"><input type="radio" name="event" value="Reunion or alumni"><span>Reunion or alumni</span></label>
+            <label class="pill"><input type="radio" name="event" value="Corporate"><span>Corporate</span></label>
+            <label class="pill"><input type="radio" name="event" value="Fundraiser"><span>Fundraiser</span></label>
+            <label class="pill"><input type="radio" name="event" value="Party"><span>Party</span></label>
+            <label class="pill"><input type="radio" name="event" value="Festival"><span>Festival</span></label>
+            <label class="pill"><input type="radio" name="event" value="Wedding"><span>Wedding</span></label>
+            <label class="pill"><input type="radio" name="event" value="Other"><span>Other</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset id="crowdQ" hidden>
+          <legend class="legend">Draw a crowd, or entertain people already coming?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="crowd" value="Draw a crowd"><span>Draw a crowd</span></label>
+            <label class="pill"><input type="radio" name="crowd" value="Entertain people already coming"><span>Entertain people already coming</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="bDate">Date</label>
+          <div class="date-row">
+            <input class="input" id="bDate" name="date" type="date">
+            <label class="switch"><input type="checkbox" name="flexible"><span class="track" aria-hidden="true"></span><span>My date is flexible</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="bCity">City or venue</label>
+          <input class="input" id="bCity" name="city" type="text" autocomplete="address-level2" placeholder="West Lafayette, a backyard, a ballroom&hellip;">
+        </div>
+
+        <fieldset>
+          <legend class="legend">How many guests?</legend>
+          <div class="pills">
+            <label class="pill"><input type="radio" name="guests" value="Under 50"><span>Under 50</span></label>
+            <label class="pill"><input type="radio" name="guests" value="50-150"><span>50&ndash;150</span></label>
+            <label class="pill"><input type="radio" name="guests" value="150-400"><span>150&ndash;400</span></label>
+            <label class="pill"><input type="radio" name="guests" value="400+"><span>400+</span></label>
+          </div>
+        </fieldset>
+
+        <div class="row3">
+          <div class="field"><label for="bName">Your name</label><input class="input" id="bName" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="bEmail">Email</label><input class="input" id="bEmail" name="email" type="email" inputmode="email" autocomplete="email" required></div>
+          <div class="field"><label for="bPhone">Phone <span class="opt">(optional)</span></label><input class="input" id="bPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+        </div>
+
+        <div class="field">
+          <label for="bNotes">Anything else?</label>
+          <textarea class="input" id="bNotes" name="notes" placeholder="Your crowd's class year, must-hear songs&hellip;"></textarea>
+        </div>
+
+        <div class="form-submit"><button class="btn btn-pink" type="submit">Check my date</button></div>
+      </form>
+    </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ================= LAST CALL ================= -->
+<div class="closing" id="closing">
+<section class="lastcall" id="lastcall" aria-labelledby="lastH">
+  <div class="lights twinkle foot-lights" id="footLights" data-gap="44" data-swagsper="4" data-sag="20" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="lc-stage">
+      <img class="lc-bruce" id="lcBruce" src="art/bruce-pose-last-call-bow.webp" width="640" height="960" loading="lazy" decoding="async" alt="Cartoon Bruce taking a bow, one hand over his heart, the other waving toward his tip bucket.">
+      <svg class="bucket-art" viewBox="0 0 160 176" role="img" aria-label="Bruce's hand-painted beach tip bucket"><use href="#bucket"/></svg>
+    </div>
+    <p class="bucket-cap">Tips go here. After the first hour.</p>
+    <h2 class="h2" id="lastH">Last call.</h2>
+    <p class="story">For decades, every show has ended with <em>&ldquo;A Pirate Looks at Forty.&rdquo;</em> A guy once offered Bruce $100 to play two more songs after it. He said no.</p>
+    <div class="cta-row" id="lastCtas">
+      <a class="btn btn-pink" href="#alert"><svg aria-hidden="true"><use href="#ibell"/></svg>Get a Bruce Alert</a>
+      <a class="btn btn-yellow" href="#book">Book Bruce</a>
+    </div>
+    <div class="socials">
+      <a class="soc" href="https://www.facebook.com/PianoManBruce/" target="_blank" rel="noopener" aria-label="Bruce on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v6h4v-6H17l.5-4h-4V9c0-.6.4-1 1-1z" fill="currentColor"/></svg></a>
+      <a class="soc" href="https://www.instagram.com/brucethepianoman/" target="_blank" rel="noopener" aria-label="Bruce on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"/></svg></a>
+      <a class="soc" href="https://x.com/PianoManBruce" target="_blank" rel="noopener" aria-label="Bruce on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5l14 15M19 4.5l-14 15" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></a>
+    </div>
+  </div>
+</section>
+<section class="tour-next" aria-label="Next gift"><div class="tn-card"><div class="tn-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><p class="tn-kick">That was gift 3 of 7</p><p class="tn-title">Up next: Pick your look</p><a class="tn-btn" href="looks.html">Open gift 4 <span aria-hidden="true">→</span></a><br><a class="tn-all" href="index.html">See all 7 gifts</a></div></section>
+<footer class="site-foot">
+  <p class="credit">Made for Bruce by Jimmy Davis</p>
+</footer>
+</div>
+
+<div class="mbar" id="mbar">
+  <a class="btn btn-pink" href="#alert"><svg aria-hidden="true"><use href="#ibell"/></svg>Get a Bruce Alert</a>
+  <a class="btn btn-yellow" href="#book">Book Bruce</a>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function retrigger(el,cls){el.classList.remove(cls);void el.getBoundingClientRect();el.classList.add(cls)}
+
+  /* ---------- string lights ---------- */
+  var COLS=['c1','c2','c3','c4'];
+  function makeLights(el){
+    var w=el.clientWidth||300, H=el.clientHeight||40;
+    var n=+el.dataset.n||Math.max(6,Math.round(w/(+el.dataset.gap||36)));
+    var k=+el.dataset.swags||Math.max(1,Math.round(n/(+el.dataset.swagsper||3)));
+    var sag=+el.dataset.sag||12, d='M0 3';
+    for(var j=0;j<k;j++){var x0=j*1000/k,x1=(j+1)*1000/k;d+=' Q'+((x0+x1)/2)+' '+(3+2*sag)+' '+x1+' 3'}
+    var h='<svg class="wire" viewBox="0 0 1000 '+H+'" preserveAspectRatio="none"><path d="'+d+'" fill="none" stroke="#03050A" stroke-width="2.4" vector-effect="non-scaling-stroke"/></svg>';
+    for(var i=0;i<n;i++){
+      var f=(i+.5)/n, g=(f*k)%1, y=3+4*g*(1-g)*sag;
+      h+='<span class="bulb '+COLS[i%4]+'" style="left:'+(f*100).toFixed(2)+'%;top:'+(y-3).toFixed(1)+'px;--i:'+i+';--d:'+((i*0.73)%2.6).toFixed(2)+'s"><i></i><b></b></span>';
+    }
+    el.innerHTML=h;
+  }
+  var lightEls=$$('.lights');
+  lightEls.forEach(makeLights);
+
+  /* header lights = progress through the night */
+  var hdrLights=$('#hdrLights');
+  function progress(){
+    var max=document.documentElement.scrollHeight-innerHeight;
+    var p=max>0?Math.min(1,Math.max(0,scrollY/max)):0;
+    var bulbs=hdrLights.querySelectorAll('.bulb'), lit=Math.max(1,Math.round(p*bulbs.length));
+    for(var i=0;i<bulbs.length;i++)bulbs[i].classList.toggle('off',i>=lit);
+  }
+  var ticking=false;
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(function(){progress();ticking=false})}},{passive:true});
+  var rT, lastW=innerWidth;
+  addEventListener('resize',function(){clearTimeout(rT);rT=setTimeout(function(){if(innerWidth!==lastW){lastW=innerWidth;lightEls.forEach(makeLights)}progress()},150)});
+  progress();
+
+  /* footer lights dim at last call */
+  var foot=$('#footLights');
+  if('IntersectionObserver' in window){
+    var lcBruce=$('#lcBruce'), bowed=false;
+    new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){foot.classList.add('dim')},reduce?0:900);if(!bowed&&!reduce){bowed=true;lcBruce.classList.add('bow')}}})},{threshold:.6}).observe($('.bucket-art'));
+  }
+
+  /* ---------- sound (off by default, synthesized only) ---------- */
+  var ctx=null, soundOn=false;
+  function ac(){if(!ctx){var C=window.AudioContext||window.webkitAudioContext;if(!C)return null;ctx=new C()}if(ctx.state==='suspended')ctx.resume();return ctx}
+  function tone(f,t0,dur,type,vol){var c=ac();if(!c)return;var o=c.createOscillator(),g=c.createGain(),t=c.currentTime+t0;o.type=type||'triangle';o.frequency.setValueAtTime(f,t);
+    g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol||.2,t+.012);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+dur+.05)}
+  function slide(f1,f2,t0,dur,vol){var c=ac();if(!c)return;var o=c.createOscillator(),g=c.createGain(),lp=c.createBiquadFilter(),t=c.currentTime+t0;lp.type='lowpass';lp.frequency.value=1100;o.type='sawtooth';
+    o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+dur);g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(vol||.1,t+.03);g.gain.setValueAtTime(vol||.1,t+dur*.7);g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+    o.connect(lp);lp.connect(g);g.connect(c.destination);o.start(t);o.stop(t+dur+.05)}
+  var PENTA=[523.25,587.33,659.25,783.99,880,1046.5,1174.66,1318.51,1567.98];
+  var sfx={
+    plink:function(i){if(!soundOn)return;var f=PENTA[i%PENTA.length];tone(f,0,.8,'triangle',.24);tone(f*2,0,.35,'sine',.05)},
+    groan:function(){if(!soundOn)return;slide(300,240,0,.32,.09);slide(250,150,.34,.7,.1)},
+    clink:function(){if(!soundOn)return;tone(2093,0,.22,'sine',.16);tone(2637,.035,.3,'sine',.12);tone(3136,.06,.18,'sine',.05)},
+    rock:function(){if(!soundOn)return;slide(110,104,0,.7,.08);slide(165,156,0,.7,.06)}
+  };
+  var soundBtn=$('#soundBtn');
+  soundBtn.addEventListener('click',function(){soundOn=!soundOn;soundBtn.setAttribute('aria-pressed',soundOn);if(soundOn){ac();tone(784,0,.5,'triangle',.2)}});
+
+  /* ---------- rock mode easter egg ---------- */
+  var frame=$('#heroFrame'), wig=$('#wigBtn'), hint=$('#hintText'), wigSticker=$('#wigSticker');
+  /* the cartoon wig sticker only shows in rock mode: fetch it after the page is up, or the moment someone reaches for the wig */
+  function loadWig(){if(!wigSticker.getAttribute('src'))wigSticker.src=wigSticker.dataset.src}
+  ['pointerenter','touchstart','focus'].forEach(function(ev){wig.addEventListener(ev,loadWig,{passive:true,once:true})});
+  if(document.readyState==='complete')setTimeout(loadWig,400);else addEventListener('load',function(){setTimeout(loadWig,400)});
+  wig.addEventListener('click',function(){
+    loadWig();
+    var on=!frame.classList.contains('rock');
+    frame.classList.toggle('rock',on);
+    wig.setAttribute('aria-pressed',on);
+    wig.setAttribute('aria-label',on?'Rock mode is on. Tap to turn it off':'Tap the wig for rock mode');
+    hint.textContent=on?'tap again to un-rock':'psst… tap the wig';
+    if(on)sfx.rock();
+  });
+
+  /* ---------- last night tag ---------- */
+  var now=new Date();
+  if(now.getFullYear()===2026&&now.getMonth()===9&&now.getDate()===4){$('#lastNight').hidden=false}
+
+  /* ---------- toast + mock forms ---------- */
+  var toast=$('#toast'), tT;
+  function showToast(msg){toast.textContent=msg;toast.classList.add('show');clearTimeout(tT);tT=setTimeout(function(){toast.classList.remove('show')},4200)}
+  var DRAFT='Draft site: nothing was sent. When this goes live, this lands with Bruce.';
+  ['#alertForm','#bookForm'].forEach(function(id){
+    var f=$(id);
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!f.reportValidity())return;
+      showToast(DRAFT);
+      var b=f.querySelector('button[type=submit]'), old=b.textContent;
+      b.textContent=id==='#alertForm'?'You’re on the list (draft)':'Got it (draft)';
+      setTimeout(function(){b.textContent=old},3200);
+    });
+  });
+
+  /* booking: card buttons + conditional question */
+  $$('[data-pick]').forEach(function(b){b.addEventListener('click',function(){
+    var r=document.querySelector('input[name=kind][value="'+b.dataset.pick+'"]');if(r)r.checked=true;
+    $('#book-form').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  })});
+  var crowdQ=$('#crowdQ'), NEED={'Corporate':1,'Fundraiser':1,'Festival':1};
+  $$('input[name=event]').forEach(function(r){r.addEventListener('change',function(){
+    var show=!!NEED[r.value];
+    if(show&&crowdQ.hidden){crowdQ.hidden=false;retrigger(crowdQ,'reveal')}
+    if(!show)crowdQ.hidden=true;
+  })});
+
+  /* ---------- a bruce night: bulbs light up as you go ---------- */
+  var beats=$$('.beat');
+  if('IntersectionObserver' in window){
+    var bio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('lit');bio.unobserve(e.target)}})},{rootMargin:'0px 0px -30% 0px'});
+    beats.forEach(function(b){bio.observe(b)});
+  } else beats.forEach(function(b){b.classList.add('lit')});
+
+  /* say social */
+  var socials=0, glasses=$('#glasses'), pop=$('#socialPop'), splay=$('#socialPlay'), cheerT;
+  $('#socialBtn').addEventListener('click',function(){
+    socials++;$('#socialCount').textContent=socials;
+    retrigger(glasses,'clink');
+    pop.style.setProperty('--rot',(Math.random()*16-8).toFixed(1)+'deg');retrigger(pop,'go');
+    retrigger(splay,'toasting');
+    splay.classList.add('cheers');clearTimeout(cheerT);
+    cheerT=setTimeout(function(){splay.classList.remove('cheers')},1600);
+    sfx.clink();
+  });
+
+  /* ---------- request jukebox ---------- */
+  var SONGS=[
+    {t:'Hail Purdue',c:'n-y',r:-4,d:'♥',pose:'point',say:'That’s how we start. Every single night.'},
+    {t:'Sweet Caroline',c:'n-p',r:3,d:'!!!',say:'You already know what the room yells next.'},
+    {t:'Piano Man',c:'n-b',r:-2,d:'',say:'Thousands of times. Never mailed it in once.'},
+    {t:'Livin’ on a Prayer',c:'n-p',r:4,d:'',say:'Hold on to your drink. The key change is coming.'},
+    {t:'Creep',c:'n-b',r:-3,d:'★',pose:'wink',say:'My favorite to sing. Don’t tell the others.'},
+    {t:'Country Roads',c:'n-y',r:2,d:'',pose:'roads',note:true,say:'Hands up. You know the moves.'},
+    {t:'If I Had a Million Dollars',c:'n-b',r:-5,d:'again pls!!',pose:'million',say:'Three times a night. Fifteen years. …Fine. Pass the bucket.',groan:true},
+    {t:'A Pirate Looks at Forty',c:'n-y',r:3,d:'',pose:'bow',say:'That’s last call. Not even for a hundred bucks.'},
+    {t:'Your song here',c:'n-p',r:-1,blank:true,say:'Write it on a sticky note. That’s how this works.'}
+  ];
+  var notesEl=$('#notes'), html='';
+  SONGS.forEach(function(s,i){
+    html+='<button type="button" class="note '+s.c+(s.blank?' blank':'')+'" style="--r:'+s.r+'deg" data-i="'+i+'" aria-pressed="false"><span class="tape" aria-hidden="true"></span>'+
+      (s.blank?'<svg class="pen" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4.6L16 4.6a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L8.6 18.8z" fill="#fff" stroke="#15131A" stroke-width="2" stroke-linejoin="round"/><path d="M14.5 6l3.5 3.5" stroke="#15131A" stroke-width="2"/></svg>':'')+
+      '<span>'+s.t+'</span>'+(s.d?'<span class="doodle" aria-hidden="true">'+s.d+'</span>':'')+'</button>';
+  });
+  notesEl.innerHTML=html;
+  var saysText=$('#saysText'), saysLabel=$('#saysLabel'), saysNote=$('#saysNote'), bubble=$('#bubble'), avatar=$('#avatarWrap'), poses=$$('.pose',avatar);
+  function setPose(p){
+    if(avatar.dataset.pose===p)return;
+    avatar.dataset.pose=p;
+    poses.forEach(function(img){img.classList.toggle('on',img.dataset.pose===p)});
+  }
+  /* warm the cache for every pose once the jukebox is close (the imgs are lazy too) */
+  function warmPoses(){poses.forEach(function(img){var im=new Image();im.decoding='async';im.src=img.getAttribute('src')})}
+  if('IntersectionObserver' in window){
+    var wio=new IntersectionObserver(function(es){if(es[0].isIntersecting){wio.disconnect();warmPoses()}},{rootMargin:'900px 0px'});
+    wio.observe($('#requests'));
+  } else warmPoses();
+  $$('.note',notesEl).forEach(function(btn){btn.addEventListener('click',function(){
+    var i=+btn.dataset.i, s=SONGS[i];
+    $$('.note',notesEl).forEach(function(n){n.classList.remove('picked');n.setAttribute('aria-pressed','false')});
+    void btn.offsetWidth;btn.classList.add('picked');btn.setAttribute('aria-pressed','true');
+    saysLabel.textContent='Bruce says';saysText.textContent=s.say;
+    saysNote.hidden=!s.note;
+    setPose(s.pose||'grin');
+    avatar.classList.remove('groaning');
+    if(s.groan){void avatar.offsetWidth;avatar.classList.add('groaning');sfx.groan()}
+    else{retrigger(bubble,'pop');sfx.plink(i)}
+  })});
+
+  /* ---------- count-up receipts ---------- */
+  var nums=$$('[data-to]');
+  if('IntersectionObserver' in window&&!reduce){
+    var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);
+      var el=e.target,to=+el.dataset.to,t0=performance.now(),dur=1200;
+      (function step(t){var p=Math.min(1,(t-t0)/dur),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=v.toLocaleString('en-US');if(p<1)requestAnimationFrame(step)})(t0);
+    })},{threshold:.7});
+    nums.forEach(function(n){cio.observe(n)});
+  }
+
+  /* ---------- phone bottom bar ---------- */
+  var bar=$('#mbar'), heroOut=false, footIn=false;
+  function upd(){var on=heroOut&&!footIn;bar.classList.toggle('show',on);document.body.classList.toggle('bar-on',on&&innerWidth<900)}
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){var e=es[0];heroOut=!e.isIntersecting&&e.boundingClientRect.top<80;upd()},{rootMargin:'-80px 0px 0px 0px'}).observe($('#heroCtas'));
+    new IntersectionObserver(function(es){footIn=es[0].isIntersecting;upd()}).observe($('#closing'));
+  }
+})();
+</script>
+</body>
+</html>

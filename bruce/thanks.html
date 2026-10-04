@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Behind the scenes · Gift 7</title>
+<meta property="og:title" content="Gift 7: Behind the scenes.">
+<meta property="og:description" content="Everything that went into your gifts, and one easy next step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<script>try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){document.documentElement.classList.add('motion')}}catch(e){}</script>
+<style>
+:root{
+  --piano:#15131A; --night:#0E1A2B; --night-2:#16263D;
+  --shirt:#2B8CE0; --shirt-deep:#1A5FA8; --cream:#FFF4E0; --sand:#F5E6C8; --palm:#2FA36B;
+  --note-pink:#FF8DC1; --note-yellow:#FFE36E; --note-blue:#8ED8F8;
+  --neon-pink:#FF4FA3; --neon-teal:#33E1D0; --gold:#F2B33D;
+  --paper:#FFFDF6; --ink:#24212B; --ink-pink:#C42A73; --wire:#2c3d5a;
+  --mono:ui-monospace,"SF Mono","SFMono-Regular",Menlo,Consolas,"Liberation Mono","Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  font-family:"Nunito",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.5;color:var(--cream);
+  background:var(--night);
+  background-image:radial-gradient(ellipse 120% 50% at 50% 0%, #1f3a5c 0%, var(--night) 60%);
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- all-gifts chip ---------- */
+.home-chip{
+  position:fixed;top:10px;left:10px;z-index:80;
+  display:inline-flex;align-items:center;min-height:44px;padding:0 14px;
+  font-weight:800;font-size:14px;text-decoration:none;color:var(--piano);
+  background:rgba(255,244,224,.94);border:2px solid var(--piano);border-radius:999px;
+  box-shadow:0 3px 0 var(--piano);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:transform .25s cubic-bezier(.3,1.3,.5,1),opacity .2s;
+}
+.home-chip.tuck{transform:translateY(-70px);opacity:0}
+.home-chip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--piano)}
+
+/* ---------- hero: backstage ---------- */
+.hero{position:relative;text-align:center;isolation:isolate}
+.curtains{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none}
+.valance{position:relative;z-index:4;height:34px;
+  background:repeating-linear-gradient(90deg,#6c1543 0 7px,#a8296a 14px,#6c1543 22px);
+  -webkit-mask:radial-gradient(18px 16px at 50% 100%,transparent 98%,#000) 0 0/36px 100% repeat-x;
+          mask:radial-gradient(18px 16px at 50% 100%,transparent 98%,#000) 0 0/36px 100% repeat-x;
+  filter:drop-shadow(0 3px 0 var(--gold));
+}
+.curtain{position:absolute;top:0;bottom:0;width:52%;z-index:3;pointer-events:none;
+  background:repeating-linear-gradient(90deg,#5d1239 0 6px,#9c2461 13px,#c13a7c 16px,#9c2461 19px,#5d1239 26px);
+  box-shadow:inset 0 -40px 40px rgba(0,0,0,.35);
+  transition:transform .9s cubic-bezier(.6,.05,.25,1);
+}
+.curtain.l{left:0;transform:translateX(calc(-100% + 22px))}
+.curtain.r{right:0;transform:translateX(calc(100% - 22px))}
+.motion .hero:not(.open) .curtain.l{transform:translateX(0)}
+.motion .hero:not(.open) .curtain.r{transform:translateX(0)}
+.curtain::after{content:"";position:absolute;top:48%;width:14px;height:30px;border-radius:7px;background:var(--gold);border:2px solid var(--piano)}
+.curtain.l::after{right:2px}
+.curtain.r::after{left:2px}
+.lights{display:block;width:100%;height:44px;position:relative;z-index:2;margin-top:-6px}
+.bulb-s{transition:opacity .2s}
+.motion .lights .bulb-s{animation:twinkle 2.4s ease-in-out infinite}
+.lights .bulb-s:nth-child(3n){animation-delay:.6s}.lights .bulb-s:nth-child(3n+1){animation-delay:1.3s}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.55}}
+
+.hero-in{position:relative;z-index:1;padding:14px 34px 0}
+.eyebrow{display:inline-block;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--piano);background:var(--note-yellow);padding:6px 12px;border-radius:3px;transform:rotate(-2deg);box-shadow:0 3px 0 rgba(0,0,0,.25)}
+h1.neon{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(38px,10.4vw,86px);line-height:1;margin:16px 0 14px;color:#fff;
+  text-shadow:0 0 5px #fff,0 0 12px var(--neon-teal),0 0 26px var(--neon-teal),0 0 46px var(--neon-teal)}
+h1.neon span{display:block}
+.motion h1.neon{animation:flick 4.2s infinite}
+@keyframes flick{0%,91%,100%{opacity:1}92%{opacity:.7}93%{opacity:1}95%{opacity:.82}}
+.hero .lede{font-size:clamp(19px,5vw,23px);line-height:1.4;max-width:520px;margin:0 auto;color:var(--cream)}
+.hero .lede b{color:#fff}
+.stage{position:relative;height:178px;margin-top:6px}
+.peek{position:absolute;left:50%;bottom:22px;width:140px;margin-left:-70px;transform:translateY(16%) rotate(-5deg);transform-origin:50% 100%;
+  transition:transform .55s cubic-bezier(.3,1.5,.5,1) .75s;filter:drop-shadow(0 6px 10px rgba(0,0,0,.4))}
+.motion .hero:not(.open) .peek{transform:translateY(80%) rotate(0deg)}
+.floor{position:absolute;left:0;right:0;bottom:0;height:34px;z-index:2;
+  background:linear-gradient(#c98a2a,#9a6116);border-top:3px solid var(--piano);border-bottom:3px solid var(--piano);
+  box-shadow:0 -2px 0 #f2c062 inset}
+.floor::before{content:"";position:absolute;inset:8px 0 auto;height:2px;background:repeating-linear-gradient(90deg,rgba(0,0,0,.25) 0 60px,transparent 60px 64px)}
+.cue{position:absolute;z-index:3;left:50%;bottom:-2px;transform:translate(-50%,50%);display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 18px;
+  background:var(--piano);color:var(--note-yellow);border:2px solid var(--note-yellow);border-radius:999px;font-weight:900;font-size:15px;text-decoration:none;white-space:nowrap}
+
+/* ---------- sections ---------- */
+.sec{padding:40px 0}
+.sec h2{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(28px,8vw,40px);line-height:1.08;color:var(--note-yellow);text-shadow:0 3px 0 var(--piano);margin-bottom:8px}
+.sec .sub{color:var(--sand);margin-bottom:22px;font-size:18px}
+.reveal{transition:opacity .45s ease,translate .5s cubic-bezier(.2,.9,.3,1.25)}
+.motion .reveal:not(.in){opacity:0;translate:0 18px}
+
+/* ---------- receipt ---------- */
+.receipts{padding-top:64px}
+.tab-zone{position:relative;max-width:440px;margin:0 auto}
+.printer{position:relative;z-index:2;height:54px;margin:0 -12px;background:linear-gradient(#2a2733,var(--piano));border:3px solid #000;border-radius:14px 14px 10px 10px;
+  box-shadow:0 8px 0 #000,0 14px 24px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:space-between;padding:0 16px 8px}
+.printer::after{content:"";position:absolute;left:14px;right:14px;bottom:7px;height:6px;border-radius:3px;background:#000;box-shadow:inset 0 2px 2px rgba(255,255,255,.08)}
+.printer .brand{font-family:"Bungee",sans-serif;font-size:13px;color:var(--note-yellow);letter-spacing:.04em}
+.printer .status{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:#cfd8e6}
+.led{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold)}
+.motion .printing .led{animation:blink .6s steps(2) infinite}
+.done .led{background:#4ee39a;box-shadow:0 0 8px #4ee39a}
+@keyframes blink{50%{opacity:.25}}
+
+.receipt{position:relative;z-index:1;background:var(--paper);color:var(--ink);font-family:var(--mono);font-size:16px;line-height:1.38;
+  padding:24px 18px 26px;margin-top:-6px;
+  background-image:linear-gradient(rgba(0,0,0,.09),transparent 22px),repeating-linear-gradient(0deg,transparent 0 3px,rgba(0,0,0,.012) 3px 4px);
+  box-shadow:0 18px 30px rgba(0,0,0,.45)}
+.receipt::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:8px;
+  background:conic-gradient(from -45deg at 50% 100%,var(--paper) 90deg,transparent 0) 0 0/16px 8px repeat-x;
+  filter:drop-shadow(0 4px 3px rgba(0,0,0,.18))}
+.r-head{text-align:center;padding-bottom:12px}
+.r-head .stars{letter-spacing:.4em;color:var(--ink-pink);font-size:14px}
+.r-head .title{font-family:"Bungee",sans-serif;font-size:30px;line-height:1.05;margin:6px 0 2px;color:var(--ink)}
+.r-head .tag{font-size:14px;color:#5a5562}
+.meta{list-style:none;margin:10px 0 0;font-size:15px}
+.meta li{display:flex;gap:6px;align-items:baseline}
+.meta li span:first-child{flex:none;font-weight:700}
+.meta li i{flex:1;min-width:14px;border-bottom:2px dotted #b9b2a4;transform:translateY(-4px)}
+.meta li span:last-child{flex:none;text-align:right;max-width:62%}
+.rule{border:0;border-top:2px dashed #b9b2a4;margin:14px 0}
+.rule.dbl{border-top:4px double var(--ink);opacity:.8}
+.colhead{display:flex;font-size:13px;font-weight:700;letter-spacing:.12em;color:#6b6574}
+.colhead span:first-child{width:56px;flex:none}
+.items{list-style:none}
+.cat{text-align:center;font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--ink-pink);margin:18px 0 8px}
+.cat:first-child{margin-top:8px}
+.line{display:flex;align-items:flex-start;padding:5px 0}
+.qty{flex:none;width:56px;padding-right:12px;text-align:right;font-family:"Bungee",sans-serif;font-size:27px;line-height:1;color:var(--shirt-deep);font-variant-numeric:tabular-nums;transform-origin:100% 60%}
+.qty.pop{animation:pop .3s cubic-bezier(.3,1.8,.5,1)}
+@keyframes pop{40%{transform:scale(1.28)}}
+.desc{flex:1;min-width:0;padding-top:2px}
+.mod{display:block;color:#5d5866;padding-left:2px}
+.mod.lens{padding-left:1.4em;text-indent:-1.2em}
+.line.total{align-items:center;padding:4px 0}
+.line.total .qty{color:var(--ink-pink);font-size:40px}
+.tlabel{display:block;font-size:13px;font-weight:700;letter-spacing:.16em;color:#6b6574}
+.line.tip{padding-top:12px}
+.line.tip .desc b{font-weight:700}
+.barcode{height:46px;margin:18px 0 6px;max-width:176px;
+  background:repeating-linear-gradient(90deg,var(--ink) 0 2px,transparent 2px 4px,var(--ink) 4px 5px,transparent 5px 8px,var(--ink) 8px 11px,transparent 11px 12px,var(--ink) 12px 13px,transparent 13px 16px,var(--ink) 16px 17px,transparent 17px 19px,var(--ink) 19px 22px,transparent 22px 23px)}
+.thanks{text-align:left;font-size:14px;letter-spacing:.14em;font-weight:700;color:#4d4856}
+.motion .receipt .pl{transition:opacity .28s ease,clip-path .32s ease,transform .32s ease}
+.motion .receipt .pl:not(.in){opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(-5px)}
+
+.stamp{position:absolute;z-index:3;pointer-events:none;font-family:"Bungee",sans-serif;text-align:center;line-height:1;mix-blend-mode:multiply;border-radius:10px;
+  transition:transform .32s cubic-bezier(.3,1.6,.5,1),opacity .2s}
+.settle{position:relative}
+.stamp.house{right:0;top:50%;margin-top:-34px;color:#d02d78;border:4px solid #d02d78;padding:9px 10px 7px;font-size:23px;transform:rotate(-13deg);opacity:.88;
+  box-shadow:inset 0 0 0 3px var(--paper),inset 0 0 0 5px #d02d78}
+.stamp.house small{display:block;font-size:11px;letter-spacing:.2em;margin-top:5px;font-family:var(--mono);font-weight:800}
+.stamp.day{right:8px;top:14px;color:#1d63b4;border:3px solid #1d63b4;padding:6px 8px 5px;font-size:13px;transform:rotate(9deg);opacity:.85}
+.motion .stamp:not(.in){opacity:0;transform:scale(2.3) rotate(-30deg)}
+
+.bucket{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:flex-end;gap:6px;margin:-22px -6px 0 0;pointer-events:none}
+.bucket img{width:150px;height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.45))}
+.bucket figcaption{font-family:"Permanent Marker",cursive;font-size:19px;line-height:1.2;color:var(--note-yellow);transform:rotate(-4deg);max-width:150px;text-align:right;margin-bottom:56px}
+@media(min-width:900px){
+  .bucket{position:absolute;right:-230px;bottom:-20px;margin:0;flex-direction:column;align-items:center;gap:0}
+  .bucket img{width:200px}
+  .bucket figcaption{order:-1;margin:0 0 6px;text-align:center}
+}
+
+/* ---------- timeline: notes on a string of lights ---------- */
+.tl{list-style:none;position:relative;display:grid;gap:26px;padding:6px 0 0 50px}
+.tl::before{content:"";position:absolute;left:22px;top:0;bottom:16px;width:3px;border-radius:3px;background:var(--wire)}
+.tl-wrap{position:relative;margin-top:22px}
+.swag{display:none}
+.tl-item{position:relative}
+.tl-item::before{content:"";position:absolute;left:-26px;top:30px;width:26px;height:3px;background:var(--wire)}
+.bulb{position:absolute;left:-36px;top:18px;width:18px;height:24px;border-radius:50% 50% 46% 46%;background:#34455f;border:2px solid #0a0f18;transition:background .3s,box-shadow .4s}
+.bulb::before{content:"";position:absolute;left:3px;top:-7px;width:8px;height:8px;border-radius:2px;background:#0a0f18}
+.tl-item.in .bulb{background:var(--c);box-shadow:0 0 10px var(--c),0 0 26px var(--c)}
+.tl-note{position:relative;color:var(--piano);padding:18px 16px 16px;border-radius:2px;box-shadow:0 10px 18px rgba(0,0,0,.35);transform:rotate(var(--r))}
+.tl-note .when{display:block;font-family:"Bungee",sans-serif;font-size:14px;letter-spacing:.03em;margin-bottom:4px}
+.tl-note p{font-family:"Permanent Marker",cursive;font-size:20px;line-height:1.3}
+.tl-note .here{display:inline-block;font-family:"Nunito",sans-serif;font-weight:900;font-size:14px;background:var(--piano);color:var(--note-yellow);padding:2px 9px;border-radius:999px;margin-left:6px;vertical-align:3px}
+.tape{position:absolute;width:70px;height:22px;background:rgba(255,244,224,.72);top:-10px;left:50%;transform:translateX(-50%) rotate(3deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.motion .tl-item.last.in .bulb{animation:glow 1.6s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 16px var(--c),0 0 40px var(--c)}}
+@media(min-width:900px){
+  .tl{grid-template-columns:repeat(4,1fr);gap:18px;padding:64px 0 0}
+  .tl::before{display:none}
+  .swag{display:block;position:absolute;left:0;top:0;width:100%;height:48px}
+  .tl-item::before{left:50%;top:-14px;width:3px;height:14px;margin-left:-1px}
+  .bulb{left:50%;top:-40px;margin-left:-9px}
+  .tl-note{min-height:100%}
+}
+
+/* ---------- how ---------- */
+.how-card{position:relative;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:18px;padding:22px 20px;box-shadow:0 7px 0 var(--piano);font-size:18px}
+.how-card .big{font-size:21px;line-height:1.35;font-weight:800;margin-bottom:10px}
+.how-card .big b{background:linear-gradient(transparent 58%,var(--note-yellow) 58%);font-weight:900}
+.witness{display:flex;align-items:center;gap:14px;margin:26px 4px 0}
+.witness .disc{flex:none;width:112px;height:112px;border-radius:50%;background:radial-gradient(circle,#fff9ec 0 60%,var(--sand) 61%);border:3px solid var(--piano);box-shadow:0 5px 0 var(--piano);display:grid;place-items:center;transform:rotate(-6deg)}
+.witness img{width:96px;height:96px}
+.witness figcaption{font-family:"Permanent Marker",cursive;font-size:19px;line-height:1.3;color:var(--cream)}
+.witness figcaption b{color:var(--note-yellow);font-weight:400}
+
+/* ---------- build next ---------- */
+.build{display:grid;gap:16px}
+@media(min-width:680px){.build{grid-template-columns:1fr 1fr}}
+.bcard{display:flex;gap:14px;align-items:flex-start;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:16px;padding:16px;box-shadow:0 6px 0 var(--piano)}
+.bcard .ic{flex:none;width:58px;height:58px;border-radius:14px;border:3px solid var(--piano);display:grid;place-items:center;background:var(--c)}
+.bcard .ic svg{width:38px;height:38px}
+.bcard p{font-size:17px;line-height:1.4}
+.bcard p b{font-weight:900}
+
+/* ---------- one next step ---------- */
+.step{padding-top:96px}
+.step-card{position:relative;background:var(--night-2);border:3px solid var(--neon-pink);border-radius:22px;padding:26px 20px 24px;
+  box-shadow:0 0 0 3px var(--piano),0 0 22px rgba(255,79,163,.55),inset 0 0 24px rgba(255,79,163,.18)}
+.pointer{position:absolute;right:-8px;top:-104px;width:128px;height:auto;filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));pointer-events:none}
+.eyebrow2{display:inline-block;font-weight:900;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--piano);background:var(--note-pink);padding:5px 11px;border-radius:3px;transform:rotate(-2deg)}
+.sec .step-h{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(38px,11vw,62px);line-height:1;color:#fff;margin:14px 0 4px;
+  text-shadow:0 0 5px #fff,0 0 14px var(--neon-pink),0 0 30px var(--neon-pink)}
+.step-h span{display:block}
+.step-sub{font-size:20px;font-weight:800;color:var(--cream)}
+.looks3{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0 6px}
+.looks3 li{position:relative;color:var(--piano);border-radius:3px;padding:10px 6px 9px;text-align:center;font-weight:800;font-size:14px;line-height:1.15;box-shadow:0 6px 10px rgba(0,0,0,.35)}
+.looks3 li b{display:block;font-family:"Bungee",sans-serif;font-weight:400;font-size:32px;line-height:1;margin-bottom:4px}
+.looks3 li:nth-child(1){background:var(--note-yellow);transform:rotate(-2.5deg)}
+.looks3 li:nth-child(2){background:var(--note-pink);transform:rotate(1.5deg)}
+.looks3 li:nth-child(3){background:var(--note-blue);transform:rotate(-1deg)}
+.peeklink{display:inline-flex;align-items:center;min-height:44px;font-weight:800;color:var(--neon-teal);text-underline-offset:3px}
+.then{display:flex;gap:14px;align-items:flex-start;margin-top:14px;padding-top:18px;border-top:2px dashed rgba(255,244,224,.25);font-size:18px;line-height:1.45}
+.then svg{flex:none;width:52px;height:52px;margin-top:2px}
+.then b{color:#fff}
+.fine{text-align:center;font-family:"Permanent Marker",cursive;font-size:21px;line-height:1.35;color:var(--sand);max-width:520px;margin:30px auto 0}
+.fine span{color:var(--note-yellow)}
+@media(min-width:760px){
+  .step{padding-top:48px}
+  .step-card{padding:32px 230px 30px 32px}
+  .pointer{right:10px;top:auto;bottom:0;width:210px}
+}
+
+/* ---------- three questions ---------- */
+.asks{display:grid;gap:20px;list-style:none}
+@media(min-width:760px){.asks{grid-template-columns:repeat(3,1fr)}}
+.ask{position:relative;color:var(--piano);padding:24px 18px 18px;border-radius:2px;box-shadow:0 10px 18px rgba(0,0,0,.35);font-family:"Permanent Marker",cursive;font-size:21px;line-height:1.3}
+.ask .n{display:block;font-family:"Bungee",sans-serif;font-size:14px;letter-spacing:.06em;margin-bottom:6px;opacity:.75}
+.ask:nth-child(1){background:var(--note-yellow);transform:rotate(-1.6deg)}
+.ask:nth-child(2){background:var(--note-pink);transform:rotate(1.4deg)}
+.ask:nth-child(3){background:var(--note-blue);transform:rotate(-1deg)}
+
+/* ---------- ps ---------- */
+.ps{position:relative;background:var(--night-2);border:2px dashed var(--gold);border-radius:14px;padding:18px 18px 18px 64px;color:var(--cream)}
+.ps b{color:var(--gold)}
+.ps .icon{position:absolute;left:16px;top:18px;width:34px;height:34px}
+
+/* ---------- last call ---------- */
+.bow{text-align:center;padding-bottom:20px;isolation:isolate}
+.spot{position:relative;width:230px;margin:0 auto;padding-top:10px}
+.spot::before{content:"";position:absolute;left:50%;top:-30px;width:320px;height:400px;margin-left:-160px;z-index:-1;
+  background:linear-gradient(rgba(255,244,224,.22),rgba(255,244,224,.06));clip-path:polygon(42% 0,58% 0,100% 100%,0 100%);
+  -webkit-mask:linear-gradient(transparent,#000 22%);mask:linear-gradient(transparent,#000 22%)}
+.spot::after{content:"";position:absolute;left:50%;bottom:4px;width:250px;height:46px;margin-left:-125px;z-index:-1;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(255,244,224,.32),rgba(255,244,224,0) 70%)}
+.spot img{width:230px;height:auto;filter:drop-shadow(0 10px 12px rgba(0,0,0,.45))}
+.signoff{position:relative;max-width:360px;margin:-46px auto 0;background:var(--cream);color:var(--piano);border-radius:4px;padding:24px 22px 18px;transform:rotate(-2deg);box-shadow:0 12px 24px rgba(0,0,0,.45)}
+.signoff p{font-family:"Permanent Marker",cursive;font-size:30px;line-height:1.2}
+.signoff .sig{font-family:"Permanent Marker",cursive;font-size:28px;color:var(--shirt-deep);margin-top:6px;text-align:right}
+.lastcall{margin-top:46px}
+.lastcall .lights{height:40px;max-width:420px;margin:0 auto 4px}
+.lc{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(34px,9.6vw,58px);line-height:1.02;color:#fff;
+  text-shadow:0 0 5px #fff,0 0 13px var(--neon-pink),0 0 28px var(--neon-pink),0 0 48px var(--neon-pink)}
+.lc span{display:inline-block}
+.lc-sub{font-size:21px;font-weight:800;color:var(--cream);margin-top:10px}
+.lc-row{display:flex;align-items:center;justify-content:center;gap:10px}
+.lc-row img{width:64px;height:auto;transform:rotate(10deg)}
+.motion .lastcall.in .lc,.motion .lastcall.in .lights{animation:flash 1.3s steps(1) 1}
+@keyframes flash{0%{opacity:1}12%{opacity:.15}24%{opacity:1}36%{opacity:.15}48%{opacity:1}}
+
+footer{text-align:center;color:#9fb0c6;font-size:15px;font-weight:700;padding:36px 16px 44px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+<style id="tour-next-css">
+.tour-next{position:relative;z-index:5;padding:34px 18px 30px;background:#0E1A2B;font-family:Nunito,system-ui,-apple-system,sans-serif;text-align:center;color:#FFF4E0}
+.tour-next .tn-card{max-width:560px;margin:0 auto;background:#FFE36E;color:#15131A;border:3px solid #15131A;border-radius:20px;box-shadow:0 7px 0 #15131A;padding:20px 18px 18px;transform:rotate(-.8deg)}
+.tour-next .tn-dots{display:flex;justify-content:center;gap:7px;margin-bottom:10px}
+.tour-next .tn-dots i{width:12px;height:12px;border-radius:50%;border:2px solid #15131A;background:transparent;display:block}
+.tour-next .tn-dots i.on{background:#15131A}
+.tour-next .tn-kick{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+.tour-next .tn-title{font-family:Bungee,"Arial Black",sans-serif;font-size:22px;line-height:1.1;margin:0 0 14px}
+.tour-next .tn-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;background:#FF4FA3;color:#fff;font-family:Bungee,"Arial Black",sans-serif;font-size:18px;text-decoration:none;border:3px solid #15131A;border-radius:999px;box-shadow:0 5px 0 #15131A}
+.tour-next .tn-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #15131A}
+.tour-next .tn-all{display:inline-block;margin-top:14px;font-weight:800;font-size:15px;color:#15131A;text-decoration:underline;text-underline-offset:3px;min-height:44px;line-height:44px}
+</style><style id="overflow-fix">html{overflow-x:hidden}@supports (overflow:clip){html,body{overflow-x:clip}}</style></head>
+<body>
+
+<a class="home-chip" href="index.html">&larr; All gifts</a>
+
+<header class="hero" id="top">
+  <div class="valance" aria-hidden="true"></div>
+  <div class="curtains" aria-hidden="true"><div class="curtain l"></div><div class="curtain r"></div></div>
+  <svg class="lights" viewBox="0 0 400 44" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 4 Q50 28 100 8 T200 8 T300 8 T400 4" fill="none" stroke="#0a0f18" stroke-width="2"/>
+    <g>
+      <circle class="bulb-s" cx="20" cy="13" r="5" fill="#FFE36E"/><circle class="bulb-s" cx="52" cy="22" r="5" fill="#FF8DC1"/>
+      <circle class="bulb-s" cx="84" cy="14" r="5" fill="#8ED8F8"/><circle class="bulb-s" cx="118" cy="11" r="5" fill="#FFE36E"/>
+      <circle class="bulb-s" cx="152" cy="20" r="5" fill="#33E1D0"/><circle class="bulb-s" cx="186" cy="11" r="5" fill="#FF8DC1"/>
+      <circle class="bulb-s" cx="218" cy="12" r="5" fill="#FFE36E"/><circle class="bulb-s" cx="252" cy="20" r="5" fill="#8ED8F8"/>
+      <circle class="bulb-s" cx="286" cy="11" r="5" fill="#FF8DC1"/><circle class="bulb-s" cx="318" cy="12" r="5" fill="#33E1D0"/>
+      <circle class="bulb-s" cx="352" cy="20" r="5" fill="#FFE36E"/><circle class="bulb-s" cx="384" cy="8" r="5" fill="#FF8DC1"/>
+    </g>
+  </svg>
+  <div class="hero-in">
+    <p class="eyebrow">Gift 7</p>
+    <h1 class="neon"><span>Behind</span> <span>the scenes.</span></h1>
+    <p class="lede">You said you didn't have a website. <b>I may have gotten a little carried away.</b></p>
+  </div>
+  <div class="stage">
+    <img class="peek" src="art/sticker-bruce-grin.webp" width="600" height="629" alt="Cartoon Bruce grinning, peeking up from behind the stage">
+    <div class="floor" aria-hidden="true"></div>
+    <a class="cue" href="#tab">Here's the tab &darr;</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ===== THE RECEIPTS ===== -->
+  <section class="sec receipts" id="tab" aria-labelledby="h-tab">
+    <h2 id="h-tab">The receipts.</h2>
+    <p class="sub">Scroll slow. It's still printing.</p>
+
+    <div class="tab-zone">
+      <div class="printer printing" id="printer" aria-hidden="true">
+        <span class="brand">Bruce's tab</span>
+        <span class="status"><span class="led"></span><span id="pstatus">printing&hellip;</span></span>
+      </div>
+
+      <div class="receipt" id="receipt">
+        <span class="stamp day" id="stampDay" aria-hidden="true">Made in<br>one day</span>
+
+        <div class="r-head pl">
+          <div class="stars">&#9733; &#9733; &#9733;</div>
+          <div class="title">Bruce's Tab</div>
+          <div class="tag">Behind the scenes</div>
+          <ul class="meta">
+            <li><span>Guest</span><i></i><span>Bruce Barker</span></li>
+            <li><span>Server</span><i></i><span>Jimmy Davis</span></li>
+            <li><span>Table</span><i></i><span>the piano</span></li>
+            <li><span>Opened</span><i></i><span>Sat night, MashCraft Fishers</span></li>
+            <li><span>Closed</span><i></i><span>Sun evening</span></li>
+          </ul>
+        </div>
+
+        <hr class="rule pl">
+        <div class="colhead pl" aria-hidden="true"><span>QTY</span><span>ITEM</span></div>
+
+        <ul class="items">
+          <li class="cat pl">&mdash; THE DIGGING &mdash;</li>
+          <li class="line pl"><span class="qty" data-n="18">18</span><span class="desc">piano-bar and entertainer websites studied</span></li>
+          <li class="line pl"><span class="qty" data-n="29">29</span><span class="desc">fan quotes found<span class="mod">+ from 2003 to 2025</span></span></li>
+          <li class="line pl"><span class="qty" data-n="26">26</span><span class="desc">YouTube videos of you found<span class="mod">+ your band's booking reel</span></span></li>
+          <li class="line pl"><span class="qty" data-n="6">6</span><span class="desc">AI research assistants, each reading everything through a different lens:
+            <span class="mod lens">+ the business side</span>
+            <span class="mod lens">+ fans</span>
+            <span class="mod lens">+ brand</span>
+            <span class="mod lens">+ website</span>
+            <span class="mod lens">+ getting the word out</span>
+            <span class="mod lens">+ a skeptic who fact-checked the rest</span></span></li>
+
+          <li class="cat pl">&mdash; THE DRAWING &mdash;</li>
+          <li class="line pl"><span class="qty" data-n="9">9</span><span class="desc">cartoon Bruces</span></li>
+          <li class="line pl"><span class="qty" data-n="14">14</span><span class="desc">stickers</span></li>
+          <li class="line pl"><span class="qty" data-n="6">6</span><span class="desc">logo ideas</span></li>
+          <li class="line pl"><span class="qty" data-n="4">4</span><span class="desc">comic panels</span></li>
+
+          <li class="cat pl">&mdash; THE MAKING &mdash;</li>
+          <li class="line pl"><span class="qty" data-n="3">3</span><span class="desc">website looks</span></li>
+          <li class="line pl"><span class="qty" data-n="1">1</span><span class="desc">Facebook cover</span></li>
+          <li class="line pl"><span class="qty" data-n="3">3</span><span class="desc">Instagram posts</span></li>
+          <li class="line pl"><span class="qty" data-n="1">1</span><span class="desc">table card</span></li>
+
+          <li class="cat pl">&mdash; FROM SATURDAY &mdash;</li>
+          <li class="line pl"><span class="qty" data-n="3">3</span><span class="desc">photos from Saturday night</span></li>
+        </ul>
+
+        <hr class="rule dbl pl">
+        <div class="settle">
+        <div class="line total pl" id="totalLine"><span class="qty" data-n="7">7</span><span class="desc"><span class="tlabel">TOTAL</span>gifts in this link</span></div>
+        <div class="line tip pl"><span class="qty" aria-hidden="true"></span><span class="desc"><span class="tlabel">TIP</span><b>Not accepted.</b><span class="mod">No tips in the first hour. Your rule.</span></span></div>
+        </div>
+        <hr class="rule dbl pl">
+
+        <div class="pl settle" id="lastLine">
+          <span class="stamp house" id="stampHouse">On the<br>house<small>NO STRINGS</small></span>
+          <div class="barcode" aria-hidden="true"></div>
+          <p class="thanks">THANKS FOR THE SHOW</p>
+        </div>
+
+      </div>
+
+      <figure class="bucket" aria-hidden="true">
+        <figcaption>Put the bucket away, Bruce.</figcaption>
+        <img src="art/bruce-pose-tip-bucket.webp" width="640" height="960" alt="" loading="lazy" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== HOW THE DAY WENT ===== -->
+  <section class="sec" aria-labelledby="h-day">
+    <h2 id="h-day">How the day went.</h2>
+    <div class="tl-wrap">
+    <svg class="swag" viewBox="0 0 100 48" preserveAspectRatio="none" aria-hidden="true"><path d="M0 6 Q12.5 44 25 6 T50 6 T75 6 T100 6" fill="none" stroke="#2c3d5a" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>
+    <ol class="tl">
+      <li class="tl-item reveal" style="--c:#FFE36E">
+        <span class="bulb" aria-hidden="true"></span>
+        <div class="tl-note" style="background:var(--note-yellow);--r:-1.6deg"><span class="tape"></span>
+          <span class="when">Saturday night</span>
+          <p>You played MashCraft Fishers. I asked if you had a website.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="--c:#FF8DC1">
+        <span class="bulb" aria-hidden="true"></span>
+        <div class="tl-note" style="background:var(--note-pink);--r:1.4deg"><span class="tape"></span>
+          <span class="when">Sunday morning</span>
+          <p>You texted me thanks. I started digging.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal" style="--c:#8ED8F8">
+        <span class="bulb" aria-hidden="true"></span>
+        <div class="tl-note" style="background:var(--note-blue);--r:-1deg"><span class="tape"></span>
+          <span class="when">Sunday</span>
+          <p>20+ years of fans, 18 websites, 26 videos. Then the drawing started.</p>
+        </div>
+      </li>
+      <li class="tl-item reveal last" style="--c:#33E1D0">
+        <span class="bulb" aria-hidden="true"></span>
+        <div class="tl-note" style="background:var(--cream);--r:1.8deg"><span class="tape"></span>
+          <span class="when">Sunday evening</span>
+          <p>This link. <span class="here">you're here</span></p>
+        </div>
+      </li>
+    </ol>
+    </div>
+  </section>
+
+  <!-- ===== HOW ===== -->
+  <section class="sec" aria-labelledby="h-how">
+    <h2 id="h-how">How'd you do all this in a day?</h2>
+    <div class="how-card reveal">
+      <p class="big">The same way I help businesses: <b>AI tools, pointed at something I care about.</b></p>
+      <p>The heart is your 30 years and your fans' words. The AI just helped me find it and draw it.</p>
+    </div>
+    <figure class="witness reveal">
+      <div class="disc"><img src="art/cassette-happy.png" width="600" height="600" alt="A smiling cartoon cassette tape labeled 1988" loading="lazy" decoding="async"></div>
+      <figcaption>You had a cassette player and two sets of batteries. I had AI. <b>Yours was the harder gig.</b></figcaption>
+    </figure>
+  </section>
+
+  <!-- ===== BUILD NEXT ===== -->
+  <section class="sec" aria-labelledby="h-next">
+    <h2 id="h-next">What I'd build next.</h2>
+    <p class="sub">The real website. Less cartoon, more useful.</p>
+    <div class="build">
+      <article class="bcard reveal">
+        <span class="ic" style="--c:var(--note-yellow)" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 6c-6 0-10 4.5-10 10.5v6.5l-3 4.5h26l-3-4.5v-6.5C30 10.5 26 6 20 6z" fill="#FF4FA3" stroke="#15131A" stroke-width="2.6" stroke-linejoin="round"/><path d="M16.5 31a3.6 3.6 0 0 0 7 0" fill="none" stroke="#15131A" stroke-width="2.6" stroke-linecap="round"/><path d="M5 12a14 14 0 0 1 3.5-6M35 12a14 14 0 0 0-3.5-6" fill="none" stroke="#15131A" stroke-width="2.6" stroke-linecap="round"/></svg></span>
+        <p><b>Bruce Alert goes live.</b> Your fans hear about a show before the boat sells out.</p>
+      </article>
+      <article class="bcard reveal">
+        <span class="ic" style="--c:var(--note-blue)" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="9" width="30" height="22" rx="3" fill="#FFF4E0" stroke="#15131A" stroke-width="2.6"/><path d="M6 11l14 10 14-10" fill="none" stroke="#15131A" stroke-width="2.6" stroke-linejoin="round"/><circle cx="31" cy="28" r="7" fill="#2FA36B" stroke="#15131A" stroke-width="2.4"/><path d="M27.8 28.2l2.2 2.2 4-4.2" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p><b>Booking requests land in your inbox,</b> with the details you need to say yes or no.</p>
+      </article>
+      <article class="bcard reveal">
+        <span class="ic" style="--c:var(--note-pink)" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="7" y="5" width="26" height="30" rx="2" fill="#fff" stroke="#15131A" stroke-width="2.6"/><g fill="#15131A"><rect x="11" y="9" width="7" height="7"/><rect x="22" y="9" width="7" height="7"/><rect x="11" y="20" width="7" height="7"/><rect x="22" y="20" width="3" height="3"/><rect x="26" y="24" width="3" height="3"/><rect x="22" y="27" width="3" height="3"/></g><rect x="13" y="11" width="3" height="3" fill="#fff"/><rect x="24" y="11" width="3" height="3" fill="#fff"/><rect x="13" y="22" width="3" height="3" fill="#fff"/></svg></span>
+        <p><b>A QR card on the piano,</b> so tonight's crowd becomes next month's crowd.</p>
+      </article>
+      <article class="bcard reveal">
+        <span class="ic" style="--c:var(--neon-teal)" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="5" y="9" width="30" height="22" rx="3" fill="#15131A"/><g fill="#FFF4E0"><rect x="8" y="11.5" width="3" height="3" rx=".6"/><rect x="8" y="18.5" width="3" height="3" rx=".6"/><rect x="8" y="25.5" width="3" height="3" rx=".6"/><rect x="29" y="11.5" width="3" height="3" rx=".6"/><rect x="29" y="18.5" width="3" height="3" rx=".6"/><rect x="29" y="25.5" width="3" height="3" rx=".6"/></g><path d="M17 14.5v11l9-5.5z" fill="#FFE36E" stroke="#15131A" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+        <p><b>Your best moments from the farewell show,</b> cut into short clips.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== ONE NEXT STEP ===== -->
+  <section class="sec step" id="step" aria-labelledby="h-step">
+    <div class="step-card reveal">
+      <img class="pointer" src="art/bruce-pose-pointing.webp" width="640" height="960" alt="Cartoon Bruce pointing right at you" loading="lazy" decoding="async">
+      <p class="eyebrow2">One next step</p>
+      <h2 class="step-h" id="h-step"><span>Text me</span> <span>1, 2 or 3</span></h2>
+      <p class="step-sub">for your favorite look.</p>
+      <ul class="looks3" aria-label="The three looks">
+        <li><b>1</b>The Piano&nbsp;Bar</li>
+        <li><b>2</b>Side&nbsp;A /<br>Side&nbsp;B</li>
+        <li><b>3</b>Real Crowd</li>
+      </ul>
+      <a class="peeklink" href="looks.html">See the three looks again &rarr;</a>
+      <div class="then">
+        <svg viewBox="0 0 52 52" aria-hidden="true"><rect x="9" y="10" width="34" height="23" rx="3" fill="#16263D" stroke="#FFF4E0" stroke-width="2.6"/><rect x="13" y="14" width="26" height="15" rx="1.5" fill="#33E1D0"/><path d="M4 37h44l-3 5H7z" fill="#FFF4E0" stroke="#FFF4E0" stroke-width="2.4" stroke-linejoin="round"/><rect x="17" y="17" width="9" height="7" rx="1" fill="#FF8DC1" transform="rotate(-8 21 20)"/></svg>
+        <p><b>Then let's grab 30 minutes this week.</b> I'll bring my laptop, and we'll build the real thing with you in the room, in your words.</p>
+      </div>
+    </div>
+    <p class="fine reveal">No pressure, no catch. You made about 1.5 million people feel special. <span>Figured somebody should return the favor.</span></p>
+  </section>
+
+  <!-- ===== THREE QUESTIONS ===== -->
+  <section class="sec" aria-labelledby="h-ask">
+    <h2 id="h-ask">Three things only you can tell me.</h2>
+    <p class="sub">Bring the answers when we sit down.</p>
+    <ol class="asks">
+      <li class="ask reveal"><span class="tape"></span><span class="n">Q1</span>Who handles your bookings and videos now? Is it Gary?</li>
+      <li class="ask reveal"><span class="tape"></span><span class="n">Q2</span>Piano bar, band, or both? More gigs, or better gigs?</li>
+      <li class="ask reveal"><span class="tape"></span><span class="n">Q3</span>What dates do you have through next summer?</li>
+    </ol>
+  </section>
+
+  <!-- ===== P.S. ===== -->
+  <section class="sec" aria-label="P.S.">
+    <div class="ps reveal">
+      <svg class="icon" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="#F2B33D" stroke="#15131A" stroke-width="2.5"/><path d="M17 9v10M17 23v2" stroke="#15131A" stroke-width="3.5" stroke-linecap="round"/></svg>
+      <b>P.S.</b> The website link on your Facebook and X, pianomanbrucebarker.com, doesn't seem to load, and the domain is set to expire <b>Dec 12</b>. Happy to help sort it out, no strings.
+    </div>
+  </section>
+
+  <!-- ===== SIGN-OFF / LAST CALL ===== -->
+  <section class="sec bow" aria-label="Sign-off">
+    <div class="spot">
+      <img src="art/bruce-pose-last-call-bow.webp" width="640" height="960" alt="Cartoon Bruce taking a bow, hand over his heart" loading="lazy" decoding="async">
+    </div>
+    <div class="signoff reveal">
+      <span class="tape"></span>
+      <p>Thanks for Saturday.</p>
+      <div class="sig">&mdash; Jimmy</div>
+    </div>
+    <div class="lastcall reveal" id="lastcall">
+      <svg class="lights" viewBox="0 0 400 40" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 4 Q100 34 200 8 T400 4" fill="none" stroke="#0a0f18" stroke-width="2"/>
+        <circle cx="30" cy="12" r="5" fill="#FFE36E"/><circle cx="80" cy="19" r="5" fill="#FF8DC1"/><circle cx="130" cy="17" r="5" fill="#8ED8F8"/>
+        <circle cx="180" cy="11" r="5" fill="#33E1D0"/><circle cx="230" cy="9" r="5" fill="#FFE36E"/><circle cx="280" cy="13" r="5" fill="#FF8DC1"/>
+        <circle cx="330" cy="12" r="5" fill="#8ED8F8"/><circle cx="378" cy="7" r="5" fill="#FFE36E"/>
+      </svg>
+      <div class="lc-row">
+        <p class="lc"><span>That's</span> <span>last call.</span></p>
+      </div>
+      <div class="lc-row">
+        <p class="lc-sub">Thanks for coming.</p>
+        <img src="art/sticker-last-call.png" width="600" height="600" alt="" loading="lazy" decoding="async" aria-hidden="true">
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="tour-next" aria-label="Back to the start"><div class="tn-card"><div class="tn-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><p class="tn-kick">That's all 7 gifts</p><p class="tn-title">Thanks for opening them, Bruce.</p><a class="tn-btn" href="index.html">Back to the start <span aria-hidden="true">↺</span></a></div></section>
+<footer>Made for Bruce by Jimmy Davis</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, motion=root.classList.contains('motion');
+  var hero=document.querySelector('.hero');
+
+  /* curtain up */
+  if(motion){ setTimeout(function(){hero.classList.add('open')},220); } else { hero.classList.add('open'); }
+
+  /* tuck the chip while scrolling down */
+  var chip=document.querySelector('.home-chip'), lastY=window.scrollY;
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY; chip.classList.toggle('tuck', y>140 && y>lastY); lastY=y;
+  },{passive:true});
+
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  var lines=[].slice.call(document.querySelectorAll('.receipt .pl'));
+  var stamps=[].slice.call(document.querySelectorAll('.stamp'));
+  var printer=document.getElementById('printer'), pstatus=document.getElementById('pstatus');
+
+  function finish(){ printer.classList.remove('printing'); printer.classList.add('done'); pstatus.textContent='all printed'; }
+
+  if(!motion){
+    reveals.forEach(function(e){e.classList.add('in')});
+    lines.forEach(function(e){e.classList.add('in')});
+    stamps.forEach(function(e){e.classList.add('in')});
+    finish();
+    return;
+  }
+
+  /* simple reveals */
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}
+  })},{threshold:.18});
+  reveals.forEach(function(e){io.observe(e)});
+
+  /* the receipt prints line by line, numbers ring up */
+  function countUp(el){
+    var n=+el.getAttribute('data-n'), d=Math.min(900,380+n*18), t0=null;
+    el.textContent='0';
+    function f(t){
+      if(t0===null)t0=t;
+      var p=Math.min(1,(t-t0)/d), e=1-Math.pow(1-p,3);
+      el.textContent=String(Math.round(n*e));
+      if(p<1){requestAnimationFrame(f)}else{el.textContent=String(n);el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
+    }
+    requestAnimationFrame(f);
+  }
+  var queued=0, printed=0, busy=false, q=[];
+  function enqueueUpTo(idx){
+    for(var i=queued;i<=idx;i++){q.push(lines[i]);}
+    if(idx>=queued)queued=idx+1;
+    if(!busy)pump();
+  }
+  function pump(){
+    if(!q.length){busy=false;return;}
+    busy=true;
+    var el=q.shift();
+    el.classList.add('in');
+    var qty=el.querySelector('.qty[data-n]'); if(qty)countUp(qty);
+    if(el===lines[0]) setTimeout(function(){document.getElementById('stampDay').classList.add('in')},500);
+    if(el.id==='lastLine') setTimeout(function(){document.getElementById('stampHouse').classList.add('in')},450);
+    printed++; if(printed===lines.length)setTimeout(finish,500);
+    setTimeout(pump, q.length>4?70:130);
+  }
+  var lio=new IntersectionObserver(function(es){es.forEach(function(en){
+    if(en.isIntersecting){lio.unobserve(en.target);enqueueUpTo(lines.indexOf(en.target));}
+  })},{rootMargin:'0px 0px -12% 0px',threshold:0});
+  lines.forEach(function(l){lio.observe(l)});
+})();
+</script>
+</body>
+</html>

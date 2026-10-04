@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your Brand Kit</title>
+<meta name="description" content="Gift 6: logo ideas, a sticker pack and ready-to-post graphics, made for Bruce the Piano Man.">
+<meta property="og:title" content="Your brand kit, Bruce.">
+<meta property="og:description" content="Logos, stickers and ready-to-post graphics. Save whatever you like.">
+<meta name="theme-color" content="#0E1A2B">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --piano:#15131A; --night:#0E1A2B; --night-2:#16263D;
+  --shirt:#2B8CE0; --shirt-deep:#1A5FA8; --cream:#FFF4E0; --sand:#F5E6C8; --palm:#2FA36B;
+  --note-pink:#FF8DC1; --note-yellow:#FFE36E; --note-blue:#8ED8F8;
+  --neon-pink:#FF4FA3; --neon-teal:#33E1D0; --gold:#F2B33D;
+  --ink-soft:#4a4452; --muted:#a9b8cc;
+  --spring:cubic-bezier(.3,1.35,.5,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-behavior:smooth}
+body{
+  font-family:Nunito,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.5;color:var(--cream);
+  background:
+    radial-gradient(120% 50% at 50% 0%, #22406a 0%, rgba(34,64,106,0) 62%),
+    radial-gradient(rgba(255,244,224,.05) 1px, transparent 1.6px) 0 0/22px 22px,
+    var(--night);
+  overflow-x:clip;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--neon-teal);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- all-gifts chip ---------- */
+.home-chip{
+  position:fixed;top:10px;left:10px;z-index:80;
+  display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 15px;
+  font-weight:800;font-size:15px;text-decoration:none;color:var(--piano);
+  background:rgba(255,244,224,.95);border:2px solid var(--piano);border-radius:999px;
+  box-shadow:0 3px 0 var(--piano);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  transition:transform .25s var(--spring),opacity .2s;
+}
+.home-chip.tuck{transform:translateY(-70px);opacity:0}
+.home-chip:active{transform:translateY(2px);box-shadow:0 1px 0 var(--piano)}
+
+/* ---------- string lights ---------- */
+.lights{display:block;width:100%;height:46px}
+.bulb{animation:twinkle 2.6s ease-in-out infinite}
+.bulb:nth-of-type(3n){animation-delay:.7s}.bulb:nth-of-type(3n+1){animation-delay:1.4s}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ---------- hero ---------- */
+.hero{text-align:center;padding:26px 0 8px}
+.eyebrow{
+  display:inline-block;position:relative;font-family:"Permanent Marker",cursive;font-size:20px;line-height:1.2;color:var(--piano);
+  background:var(--note-yellow);padding:7px 18px 6px;transform:rotate(-3deg);box-shadow:0 8px 14px -6px rgba(0,0,0,.55);
+}
+.eyebrow::before{content:"";position:absolute;left:50%;top:-9px;width:56px;height:17px;margin-left:-28px;background:rgba(255,255,255,.6);transform:rotate(4deg)}
+h1.neon{
+  font-family:Bungee,Impact,sans-serif;font-weight:400;font-size:clamp(42px,12vw,96px);line-height:.98;margin:20px 0 14px;color:#fff;
+  text-shadow:0 0 5px #fff,0 0 14px var(--neon-pink),0 0 30px var(--neon-pink),0 0 54px rgba(255,79,163,.75);
+  animation:flick 4.2s infinite;
+}
+h1.neon .l1,h1.neon .l2{display:block}
+@media(min-width:760px){h1.neon .l1,h1.neon .l2{display:inline}}
+@keyframes flick{0%,91%,100%{opacity:1}92%{opacity:.72}93%{opacity:1}95.5%{opacity:.84}}
+.hero .sub{font-size:clamp(18px,4.8vw,21px);line-height:1.45;max-width:34ch;margin:0 auto;color:var(--cream);font-weight:700}
+.hero .sub b{color:#fff;font-weight:900}
+
+.hero-grid{display:block}
+@media(min-width:980px){
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:30px 56px;align-items:center;margin-top:18px;text-align:center}
+  .hero-grid .slip{margin-top:0}
+}
+/* the pile */
+.pile{position:relative;width:min(100%,460px);aspect-ratio:10/9;margin:26px auto 6px}
+.pile > *{position:absolute;transform:rotate(var(--r));animation:drop .55s var(--spring) both;animation-delay:var(--d,0s)}
+@keyframes drop{from{opacity:0;transform:translateY(-34px) rotate(calc(var(--r) + 9deg)) scale(.92)}to{opacity:1;transform:rotate(var(--r))}}
+.p-card{right:2%;top:0;width:38%;--r:7deg;--d:.05s;background:#fff;padding:5px;border-radius:6px;box-shadow:0 16px 28px -10px rgba(0,0,0,.7)}
+.p-card img{width:100%;height:auto;border-radius:3px}
+.p-logo{left:3%;top:27%;width:76%;--r:-4deg;--d:.15s;border:3px solid var(--piano);border-radius:14px;overflow:hidden;box-shadow:0 7px 0 var(--piano),0 22px 30px -12px rgba(0,0,0,.75)}
+.p-logo img{width:100%;height:auto}
+.p-grin{left:-3%;bottom:-3%;width:34%;--r:-9deg;--d:.28s;filter:drop-shadow(0 10px 12px rgba(0,0,0,.55))}
+.p-social{left:6%;top:0;width:28%;--r:-11deg;--d:.36s;filter:drop-shadow(0 8px 10px rgba(0,0,0,.5))}
+.p-1995{right:3%;bottom:7%;width:26%;--r:12deg;--d:.44s;filter:drop-shadow(0 8px 10px rgba(0,0,0,.5))}
+.p-tag{left:37%;bottom:5%;--r:-3deg;--d:.5s;font-family:"Permanent Marker",cursive;font-size:clamp(16px,4.4vw,20px);color:var(--piano);background:var(--note-pink);padding:8px 13px 7px;box-shadow:0 8px 12px -6px rgba(0,0,0,.6)}
+.p-tag::before{content:"";position:absolute;left:50%;top:-8px;width:40px;height:14px;margin-left:-20px;background:rgba(255,255,255,.6);transform:rotate(-5deg)}
+
+.tip{display:inline-flex;align-items:center;gap:10px;margin:22px auto 0;padding:10px 16px 10px 12px;border-radius:16px;background:rgba(255,244,224,.08);border:1.5px solid rgba(255,244,224,.22);font-size:16px;font-weight:700;line-height:1.35;text-align:left;max-width:100%}
+.tip svg{flex:none;width:26px;height:26px}
+.credit{margin-top:12px;font-size:14px;color:var(--muted)}
+
+/* packing slip */
+.slip{position:relative;max-width:440px;margin:34px auto 0;background:var(--cream);color:var(--piano);padding:22px 22px 30px;transform:rotate(-1.2deg);box-shadow:0 18px 30px -14px rgba(0,0,0,.7);
+  -webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%;
+          mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/16px 100%}
+.slip h2{font-family:"Permanent Marker",cursive;font-weight:400;font-size:26px;line-height:1.1;text-align:center}
+.slip .slip-sub{text-align:center;font-size:14px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:2px 0 12px}
+.slip ol{list-style:none;border-top:2px dashed rgba(21,19,26,.35)}
+.slip li a{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 2px;text-decoration:none;border-bottom:2px dashed rgba(21,19,26,.18);font-weight:800}
+.slip li .q{flex:none;min-width:36px;font-family:Bungee,sans-serif;font-size:22px;color:var(--shirt-deep)}
+.slip li .arr{margin-left:auto;font-weight:900;color:var(--ink-soft)}
+.slip .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;font-family:Bungee,sans-serif;font-size:19px}
+.slip .total span:last-child{font-family:"Permanent Marker",cursive;font-size:21px;color:var(--neon-pink)}
+
+/* ---------- section heads ---------- */
+.sec{padding:66px 0 10px;scroll-margin-top:12px}
+.head{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-bottom:8px}
+.sec h2.big{font-family:Bungee,sans-serif;font-weight:400;font-size:clamp(30px,8.6vw,52px);line-height:1.02;color:var(--note-yellow);text-shadow:0 3px 0 var(--piano),0 0 22px rgba(255,227,110,.25)}
+.count{display:inline-block;font-family:Bungee,sans-serif;font-size:14px;line-height:1;color:var(--piano);background:var(--neon-teal);border:2.5px solid var(--piano);border-radius:999px;padding:7px 11px 6px;transform:rotate(-4deg);box-shadow:0 3px 0 var(--piano)}
+.lede{color:var(--sand);font-size:17px;max-width:46ch}
+.hint{display:inline-block;position:relative;margin:16px 0 4px;font-family:"Permanent Marker",cursive;font-size:20px;line-height:1.25;color:var(--piano);background:var(--note-pink);padding:10px 16px 9px;transform:rotate(-2deg);box-shadow:0 10px 16px -8px rgba(0,0,0,.6)}
+.hint::before{content:"";position:absolute;left:24px;top:-9px;width:48px;height:16px;background:rgba(255,255,255,.6);transform:rotate(-6deg)}
+
+/* ---------- logo cards ---------- */
+.logos{display:grid;gap:26px;margin-top:26px}
+@media(min-width:700px){.logos{grid-template-columns:1fr 1fr}}
+@media(min-width:1060px){.logos{grid-template-columns:1fr 1fr 1fr}}
+.lc{position:relative;background:var(--cream);color:var(--piano);border:3px solid var(--piano);border-radius:20px;padding:14px 14px 14px;box-shadow:0 7px 0 var(--piano),0 20px 30px -16px rgba(0,0,0,.7);transition:box-shadow .25s,transform .3s var(--spring)}
+.lc-top{display:flex;align-items:center;gap:12px;margin:0 2px 12px}
+.lc-num{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-family:Bungee,sans-serif;font-size:22px;line-height:1;background:var(--note-yellow);box-shadow:0 0 0 2.5px var(--piano),0 3px 0 2.5px var(--piano);transform:rotate(-6deg)}
+.lc:nth-child(2n) .lc-num{background:var(--note-blue);transform:rotate(5deg)}
+.lc:nth-child(3n) .lc-num{background:var(--note-pink)}
+.lc-name{font-family:"Permanent Marker",cursive;font-weight:400;font-size:22px;line-height:1.15}
+.lc-art{position:relative;display:block;width:100%;aspect-ratio:2/1;border-radius:12px;overflow:hidden;border:2.5px solid var(--piano);background:#FFFAF0}
+.lc-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .28s ease}
+.lc-art .im-dark{opacity:0}
+.lc[data-v="dark"] .lc-art .im-dark{opacity:1}
+.lc[data-v="dark"] .lc-art .im-light{opacity:0}
+.lc[data-v="dark"] .lc-art{background:#151D32}
+.lc-art .zoom{position:absolute;right:7px;top:7px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:rgba(21,19,26,.72);color:#fff;z-index:2}
+.lc-art .zoom svg{width:16px;height:16px}
+.lc-row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.seg{display:inline-flex;padding:3px;border-radius:999px;background:#eadfca;box-shadow:inset 0 0 0 2px var(--piano)}
+.seg button{display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:0 13px;border-radius:999px;font-weight:800;font-size:15px;color:var(--ink-soft);transition:background .2s,color .2s}
+.seg button svg{width:17px;height:17px}
+.seg button[aria-pressed="true"]{background:var(--piano);color:var(--cream)}
+.seg button[data-v="light"][aria-pressed="true"] svg{color:var(--note-yellow)}
+.seg button[data-v="dark"][aria-pressed="true"] svg{color:var(--note-blue)}
+.pick{margin-left:auto;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:46px;padding:0 16px;border-radius:14px;font-weight:900;font-size:16px;background:var(--note-yellow);border:2.5px solid var(--piano);box-shadow:0 4px 0 var(--piano);transition:transform .15s,box-shadow .15s,background .2s}
+.pick:active{transform:translateY(3px);box-shadow:0 1px 0 var(--piano)}
+.pick .on{display:none}
+.lc.fav{box-shadow:0 7px 0 var(--piano),0 0 0 6px var(--gold),0 0 34px 6px rgba(242,179,61,.55)}
+.lc.fav .pick{background:var(--palm);color:#fff}
+.lc.fav .pick .off{display:none}.lc.fav .pick .on{display:inline}
+.stamp{position:absolute;right:-10px;top:-14px;z-index:3;font-family:Bungee,sans-serif;font-size:13px;line-height:1;color:var(--piano);background:var(--gold);border:2.5px solid var(--piano);border-radius:999px;padding:8px 11px 7px;transform:rotate(9deg) scale(0);transition:transform .35s var(--spring);box-shadow:0 3px 0 var(--piano)}
+.lc.fav .stamp{transform:rotate(9deg) scale(1)}
+.fineprint{margin-top:22px;font-size:15px;color:var(--muted)}
+
+/* ---------- sticker board ---------- */
+.board{position:relative;margin-top:28px;border-radius:22px 22px 10px 10px;padding:18px 14px 14px;
+  background:linear-gradient(158deg,#34313d 0%,#1b1921 26%,#121016 60%,#0a090d 100%);
+  border:3px solid #000;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -20px 40px rgba(0,0,0,.5),0 26px 40px -18px rgba(0,0,0,.85)}
+.board::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,0) 30%,rgba(255,255,255,.07) 42%,rgba(255,255,255,0) 52%)}
+.hinge{position:absolute;left:12%;right:12%;top:-6px;height:8px;border-radius:4px;background:linear-gradient(#ffd77a,#c98d1c);box-shadow:0 1px 0 #000}
+.stks{position:relative;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:6px}
+@media(min-width:760px){.stks{grid-template-columns:repeat(7,1fr);gap:10px}}
+.stk{position:relative;display:block;aspect-ratio:1;padding:6%;transform:translate(var(--dx,0),var(--dy,0)) rotate(var(--r,0deg));transition:transform .3s var(--spring),filter .3s;filter:drop-shadow(0 6px 6px rgba(0,0,0,.55))}
+.stk img{width:100%;height:100%;object-fit:contain}
+.stk.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto;padding:4%}
+.stk.wig{grid-column:2/span 2}
+@media(min-width:760px){.stk.wig{grid-column:6/span 2;grid-row:1/span 2}}
+.stk:active{transform:translate(var(--dx,0),var(--dy,0)) rotate(0deg) scale(1.06)}
+@media(hover:hover){.stk:hover{transform:translate(var(--dx,0),var(--dy,0)) rotate(0deg) scale(1.08);filter:drop-shadow(0 14px 12px rgba(0,0,0,.6));z-index:2}}
+.stk-note{align-self:center;justify-self:center;position:relative;width:92%;font-family:"Permanent Marker",cursive;font-size:15px;line-height:1.2;color:var(--piano);background:var(--note-yellow);padding:12px 9px 10px;transform:rotate(3deg);box-shadow:0 8px 10px -6px rgba(0,0,0,.6);text-align:center}
+@media(min-width:760px){.stk-note{font-size:17px}}
+.keys{display:block;width:100%;height:34px;margin-top:14px;border-radius:0 0 6px 6px;border:2px solid #000}
+@media(min-width:760px){.keys{height:42px}}
+
+/* ---------- ready to post ---------- */
+.block{margin-top:40px}
+.block h3{display:flex;align-items:center;gap:10px;font-family:Bungee,sans-serif;font-weight:400;font-size:clamp(20px,5.6vw,26px);line-height:1.1;color:#fff;margin-bottom:6px}
+.block h3 .ico{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--note-blue);border:2.5px solid var(--piano);transform:rotate(-5deg);box-shadow:0 3px 0 var(--piano)}
+.block h3 .ico svg{width:22px;height:22px;color:var(--piano)}
+.block .lede{margin-bottom:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 20px;border-radius:16px;font-weight:900;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-a{background:var(--note-yellow);color:var(--piano);border:2.5px solid var(--piano);box-shadow:0 5px 0 var(--piano)}
+.btn-b{background:transparent;color:var(--cream);border:2.5px solid rgba(255,244,224,.55);box-shadow:0 5px 0 rgba(0,0,0,.35)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--piano)}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.note-s{margin-top:12px;font-size:15px;color:var(--muted);font-weight:700}
+
+/* fb mock */
+.fb{max-width:880px;background:#fff;color:#1c1e21;border-radius:18px;overflow:hidden;border:3px solid var(--piano);box-shadow:0 26px 40px -18px rgba(0,0,0,.8)}
+.fb-bar{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;background:#f2f3f5;border-bottom:1px solid #e1e3e8}
+.fb-bar i{display:block;height:24px;border-radius:12px;background:#e1e4ea}
+.fb-bar i:first-child{width:24px;background:var(--shirt)}
+.fb-bar i:nth-child(2){flex:1;max-width:220px}
+.fb-bar i.c{width:24px;margin-left:auto}.fb-bar i.c+i.c{margin-left:0}
+.fb-cover{display:block;position:relative;width:100%;aspect-ratio:1640/624;background:#151D32}
+.fb-cover img{width:100%;height:100%;object-fit:cover}
+.fb-cover .zoom{position:absolute;right:10px;top:10px;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(21,19,26,.75);color:#fff}
+.fb-cover .zoom svg{width:18px;height:18px}
+.fb-body{position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;gap:10px 16px;padding:0 16px 16px}
+.fb-av{flex:none;width:clamp(76px,20vw,116px);aspect-ratio:1;margin-top:calc(clamp(76px,20vw,116px) * -.16);border-radius:50%;border:4px solid #fff;background:radial-gradient(circle at 50% 35%,#58b2ff,#1A5FA8);overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.25);position:relative}
+.fb-av img{position:absolute;left:4%;top:6%;width:92%;height:auto}
+.fb-id{flex:1;min-width:160px;padding-bottom:4px}
+.fb-name{font-weight:900;font-size:clamp(20px,5.4vw,28px);line-height:1.1}
+.fb-tag{font-size:15px;color:#65676b;font-weight:700}
+.fb-btns{display:flex;gap:8px;width:100%}
+@media(min-width:640px){.fb-btns{width:auto;margin-left:auto;padding-bottom:6px}}
+.fb-btns span{display:inline-flex;align-items:center;height:36px;padding:0 16px;border-radius:8px;font-weight:800;font-size:15px;background:#e4e6eb;color:#1c1e21}
+.fb-btns span:first-child{background:var(--shirt);color:#fff}
+
+/* instagram phones */
+.ig-row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:8px 16px 20px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.ig-row::-webkit-scrollbar{display:none}
+.ig{flex:0 0 min(80%,300px);scroll-snap-align:start}
+@media(min-width:900px){.ig-row{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;overflow:visible;margin:0;padding:8px 0 10px}.ig{flex:none}}
+.phone{position:relative;background:#0b0a0e;border-radius:36px;padding:9px;box-shadow:0 0 0 2px #34303d,0 22px 34px -14px rgba(0,0,0,.85)}
+.scr{position:relative;background:#fff;color:#111;border-radius:28px;overflow:hidden}
+.sbar{display:flex;justify-content:space-between;align-items:center;height:30px;padding:2px 22px 0;font-size:12px;font-weight:900}
+.sbar .isl{width:74px;height:20px;border-radius:12px;background:#0b0a0e}
+.sbar .bat{width:22px;height:11px;border-radius:3px;border:1.5px solid #111;position:relative}
+.sbar .bat::after{content:"";position:absolute;inset:1.5px 4px 1.5px 1.5px;background:#111;border-radius:1px}
+.ph{display:flex;align-items:center;gap:8px;padding:6px 12px}
+.ph .av{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 50% 35%,#58b2ff,#1A5FA8);overflow:hidden;position:relative;box-shadow:0 0 0 2px #fff,0 0 0 3.5px var(--neon-pink)}
+.ph .av img{position:absolute;left:4%;top:8%;width:92%;height:auto}
+.ph b{font-size:13px;font-weight:900}
+.ph .dots{margin-left:auto;font-weight:900;letter-spacing:1px;color:#555}
+.ig-img{display:block;position:relative;width:100%;aspect-ratio:4/5;background:#f3efe6}
+.ig-img img{width:100%;height:100%;object-fit:cover}
+.pa{display:flex;align-items:center;gap:14px;padding:9px 12px 4px}
+.pa svg{width:22px;height:22px;fill:none;stroke:#111;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pa svg:last-child{margin-left:auto}
+.pc{padding:0 12px 16px;font-size:13px;line-height:1.35}
+.pc b{font-weight:900}
+.ig-meta{padding:16px 4px 0}
+.ig-meta h4{font-family:"Permanent Marker",cursive;font-weight:400;font-size:21px;line-height:1.15;color:#fff}
+.blank{display:inline-block;margin-top:6px;font-size:15px;font-weight:800;color:var(--piano);background:var(--note-blue);padding:4px 10px;border-radius:6px;transform:rotate(-1deg)}
+.blank.none{background:var(--palm);color:#fff}
+.ig-meta .btn{margin-top:12px;min-height:46px;font-size:16px;padding:0 16px}
+.dotsnav{display:flex;justify-content:center;gap:8px;margin-top:2px}
+.dotsnav i{width:8px;height:8px;border-radius:50%;background:rgba(255,244,224,.3);transition:background .2s,width .2s}
+.dotsnav i.on{width:22px;border-radius:4px;background:var(--note-yellow)}
+@media(min-width:900px){.dotsnav{display:none}}
+.honest{position:relative;display:block;max-width:560px;margin:4px 0 18px;padding:14px 16px 13px 16px;background:var(--note-yellow);color:var(--piano);transform:rotate(-1deg);box-shadow:0 10px 16px -8px rgba(0,0,0,.6);font-weight:700;font-size:16px;line-height:1.4}
+.honest b{font-family:"Permanent Marker",cursive;font-weight:400;font-size:19px}
+
+/* table card on the piano */
+.tc{display:grid;gap:22px;align-items:center}
+@media(min-width:820px){.tc{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px}}
+.ledge{position:relative;height:clamp(380px,100vw,460px);border-radius:20px;overflow:hidden;
+  background:
+    radial-gradient(70% 40% at 50% 100%,rgba(242,179,61,.18),rgba(242,179,61,0)),
+    linear-gradient(180deg,#16263D 0%,#0E1A2B 58%,#15131A 58.2%,#25222d 60%,#121016 72%,#0a090d 100%);
+  border:3px solid #000;box-shadow:0 26px 40px -18px rgba(0,0,0,.85)}
+.ledge .glow{position:absolute;left:50%;top:6%;width:70%;height:50%;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,79,163,.22),rgba(255,79,163,0))}
+.tcard{position:absolute;left:50%;bottom:30%;width:min(46%,210px);transform:translateX(-50%) rotate(-3deg);transform-origin:50% 100%;display:block}
+.tcard .face{display:block;background:#fff;padding:4px;border-radius:4px;box-shadow:0 18px 22px -10px rgba(0,0,0,.8)}
+.tcard .face img{width:100%;height:auto;border-radius:2px}
+.tcard .stand{position:absolute;left:-8%;right:-8%;bottom:-14px;height:18px;border-radius:4px;background:linear-gradient(rgba(220,240,255,.55),rgba(220,240,255,.18));box-shadow:0 6px 10px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.6)}
+.tcard .zoom{position:absolute;right:-12px;top:-12px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--note-yellow);color:var(--piano);border:2.5px solid var(--piano);box-shadow:0 3px 0 var(--piano)}
+.tcard .zoom svg{width:18px;height:18px}
+.ln{position:absolute;width:15%;aspect-ratio:1;box-shadow:0 5px 8px -3px rgba(0,0,0,.6)}
+.ln.a{left:5%;bottom:13%;background:var(--note-pink);transform:rotate(-14deg)}
+.ln.b{left:14%;bottom:6%;background:var(--note-yellow);transform:rotate(9deg)}
+.ln.c{right:6%;bottom:11%;background:var(--note-blue);transform:rotate(12deg)}
+.ln.d{right:16%;bottom:4%;background:var(--note-yellow);transform:rotate(-7deg);width:12%}
+.ln::after{content:"";position:absolute;left:18%;right:18%;top:30%;height:3px;border-radius:2px;background:rgba(21,19,26,.35);box-shadow:0 8px 0 rgba(21,19,26,.35),0 16px 0 rgba(21,19,26,.25)}
+.bucket{position:absolute;right:5%;bottom:27%;width:21%;max-width:104px;transform:rotate(4deg);filter:drop-shadow(0 10px 8px rgba(0,0,0,.6))}
+@media(min-width:820px){.ledge{height:520px}.tcard{bottom:27%}}
+.tc-copy .lede{margin-bottom:0}
+
+/* closing note */
+.closing{position:relative;max-width:520px;margin:70px auto 10px;background:var(--cream);color:var(--piano);padding:26px 22px 20px;transform:rotate(-1.2deg);box-shadow:0 18px 30px -14px rgba(0,0,0,.7);font-size:18px;line-height:1.45;font-weight:700}
+.closing::before{content:"";position:absolute;left:50%;top:-12px;width:96px;height:26px;margin-left:-48px;background:rgba(255,255,255,.62);transform:rotate(3deg)}
+.closing .sig{font-family:"Permanent Marker",cursive;font-weight:400;font-size:32px;color:var(--shirt-deep);margin-top:8px}
+
+footer{text-align:center;color:var(--muted);font-size:15px;font-weight:700;padding:40px 16px 120px}
+
+/* ---------- pick bar ---------- */
+.pickbar{position:fixed;left:50%;bottom:14px;z-index:90;width:max-content;max-width:calc(100vw - 24px);display:flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;background:var(--piano);color:var(--cream);border:2px solid var(--gold);border-radius:20px;font-weight:800;font-size:17px;line-height:1.25;box-shadow:0 14px 30px -10px rgba(0,0,0,.7);transform:translate(-50%,170%);visibility:hidden;transition:transform .35s var(--spring),visibility 0s .35s}
+.pickbar.show{transform:translate(-50%,0);visibility:visible;transition:transform .35s var(--spring)}
+.pickbar b{color:var(--note-yellow);font-weight:900}
+.pickbar small{display:block;font-size:14px;font-weight:700;color:var(--muted)}
+.pickbar button{flex:none;width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.1);font-size:24px;line-height:1}
+
+/* ---------- lightbox ---------- */
+.lbx{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;background:rgba(7,10,18,.975);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:var(--cream);opacity:0;visibility:hidden;transition:opacity .22s,visibility 0s .22s;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+.lbx.open{opacity:1;visibility:visible;transition:opacity .22s}
+.lbx-top{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 0 18px;min-height:60px}
+.lbx-count{font-family:Bungee,sans-serif;font-size:15px;color:var(--note-yellow)}
+.lbx-close{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,244,224,.12);font-size:28px;line-height:1}
+.lbx-stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:10px 14px;touch-action:pan-y}
+.lbx-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:10px;-webkit-touch-callout:default;transition:opacity .22s,transform .28s var(--spring)}
+.lbx.k-stk .lbx-stage{background:radial-gradient(60% 50% at 50% 50%,rgba(43,140,224,.22),rgba(43,140,224,0))}
+.lbx.k-stk .lbx-stage img{border-radius:0;filter:drop-shadow(0 16px 20px rgba(0,0,0,.6))}
+.lbx-stage img.swap{opacity:0;transform:translateX(var(--sx,0)) scale(.97)}
+.lbx-cap{text-align:center;padding:4px 18px 0}
+.lbx-cap h2{font-family:"Permanent Marker",cursive;font-weight:400;font-size:24px;line-height:1.2;color:#fff}
+.lbx-cap p{font-size:16px;color:var(--sand);max-width:40ch;margin:2px auto 0}
+.lbx-act{display:flex;align-items:center;justify-content:center;gap:12px;padding:14px 14px 6px}
+.lbx-nav{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:rgba(255,244,224,.12);border:2px solid rgba(255,244,224,.25)}
+.lbx-nav svg{width:22px;height:22px}
+.lbx-save{min-width:0;flex:0 1 auto}
+.lbx-tip{text-align:center;font-size:14px;color:var(--muted);padding:2px 16px 14px}
+
+.toast{position:fixed;left:50%;bottom:88px;z-index:95;width:max-content;max-width:calc(100vw - 32px);padding:12px 18px;border-radius:16px;background:#2a2733;color:var(--cream);font-weight:800;font-size:16px;text-align:center;box-shadow:0 10px 24px -8px rgba(0,0,0,.6);opacity:0;transform:translate(-50%,10px);pointer-events:none;transition:opacity .2s,transform .25s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* reveal */
+.js .rv{opacity:0;translate:0 22px}
+.js .rv.in{opacity:1;translate:0 0;transition:opacity .45s ease,translate .5s var(--spring)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;translate:none}
+}
+</style>
+<style id="tour-next-css">
+.tour-next{position:relative;z-index:5;padding:34px 18px 30px;background:#0E1A2B;font-family:Nunito,system-ui,-apple-system,sans-serif;text-align:center;color:#FFF4E0}
+.tour-next .tn-card{max-width:560px;margin:0 auto;background:#FFE36E;color:#15131A;border:3px solid #15131A;border-radius:20px;box-shadow:0 7px 0 #15131A;padding:20px 18px 18px;transform:rotate(-.8deg)}
+.tour-next .tn-dots{display:flex;justify-content:center;gap:7px;margin-bottom:10px}
+.tour-next .tn-dots i{width:12px;height:12px;border-radius:50%;border:2px solid #15131A;background:transparent;display:block}
+.tour-next .tn-dots i.on{background:#15131A}
+.tour-next .tn-kick{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+.tour-next .tn-title{font-family:Bungee,"Arial Black",sans-serif;font-size:22px;line-height:1.1;margin:0 0 14px}
+.tour-next .tn-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;background:#FF4FA3;color:#fff;font-family:Bungee,"Arial Black",sans-serif;font-size:18px;text-decoration:none;border:3px solid #15131A;border-radius:999px;box-shadow:0 5px 0 #15131A}
+.tour-next .tn-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #15131A}
+.tour-next .tn-all{display:inline-block;margin-top:14px;font-weight:800;font-size:15px;color:#15131A;text-decoration:underline;text-underline-offset:3px;min-height:44px;line-height:44px}
+</style></head>
+<body>
+
+<a class="home-chip" href="index.html">&larr; All gifts</a>
+
+<svg class="lights" viewBox="0 0 1600 46" preserveAspectRatio="xMidYMin slice" aria-hidden="true">
+  <path d="M0 6 Q50 30 100 6 Q150 30 200 6 Q250 30 300 6 Q350 30 400 6 Q450 30 500 6 Q550 30 600 6 Q650 30 700 6 Q750 30 800 6 Q850 30 900 6 Q950 30 1000 6 Q1050 30 1100 6 Q1150 30 1200 6 Q1250 30 1300 6 Q1350 30 1400 6 Q1450 30 1500 6 Q1550 30 1600 6" fill="none" stroke="#070b12" stroke-width="2"/>
+  <g><path d="M20 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="20" cy="22.7" r="5" fill="#FFE36E"/><path d="M50 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="50" cy="27.0" r="5" fill="#FF8DC1"/><path d="M80 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="80" cy="22.7" r="5" fill="#8ED8F8"/><path d="M120 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="120" cy="22.7" r="5" fill="#33E1D0"/><path d="M150 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="150" cy="27.0" r="5" fill="#FFE36E"/><path d="M180 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="180" cy="22.7" r="5" fill="#FF8DC1"/><path d="M220 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="220" cy="22.7" r="5" fill="#8ED8F8"/><path d="M250 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="250" cy="27.0" r="5" fill="#33E1D0"/><path d="M280 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="280" cy="22.7" r="5" fill="#FFE36E"/><path d="M320 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="320" cy="22.7" r="5" fill="#FF8DC1"/><path d="M350 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="350" cy="27.0" r="5" fill="#8ED8F8"/><path d="M380 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="380" cy="22.7" r="5" fill="#33E1D0"/><path d="M420 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="420" cy="22.7" r="5" fill="#FFE36E"/><path d="M450 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="450" cy="27.0" r="5" fill="#FF8DC1"/><path d="M480 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="480" cy="22.7" r="5" fill="#8ED8F8"/><path d="M520 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="520" cy="22.7" r="5" fill="#33E1D0"/><path d="M550 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="550" cy="27.0" r="5" fill="#FFE36E"/><path d="M580 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="580" cy="22.7" r="5" fill="#FF8DC1"/><path d="M620 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="620" cy="22.7" r="5" fill="#8ED8F8"/><path d="M650 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="650" cy="27.0" r="5" fill="#33E1D0"/><path d="M680 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="680" cy="22.7" r="5" fill="#FFE36E"/><path d="M720 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="720" cy="22.7" r="5" fill="#FF8DC1"/><path d="M750 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="750" cy="27.0" r="5" fill="#8ED8F8"/><path d="M780 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="780" cy="22.7" r="5" fill="#33E1D0"/><path d="M820 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="820" cy="22.7" r="5" fill="#FFE36E"/><path d="M850 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="850" cy="27.0" r="5" fill="#FF8DC1"/><path d="M880 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="880" cy="22.7" r="5" fill="#8ED8F8"/><path d="M920 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="920" cy="22.7" r="5" fill="#33E1D0"/><path d="M950 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="950" cy="27.0" r="5" fill="#FFE36E"/><path d="M980 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="980" cy="22.7" r="5" fill="#FF8DC1"/><path d="M1020 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1020" cy="22.7" r="5" fill="#8ED8F8"/><path d="M1050 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1050" cy="27.0" r="5" fill="#33E1D0"/><path d="M1080 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1080" cy="22.7" r="5" fill="#FFE36E"/><path d="M1120 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1120" cy="22.7" r="5" fill="#FF8DC1"/><path d="M1150 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1150" cy="27.0" r="5" fill="#8ED8F8"/><path d="M1180 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1180" cy="22.7" r="5" fill="#33E1D0"/><path d="M1220 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1220" cy="22.7" r="5" fill="#FFE36E"/><path d="M1250 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1250" cy="27.0" r="5" fill="#FF8DC1"/><path d="M1280 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1280" cy="22.7" r="5" fill="#8ED8F8"/><path d="M1320 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1320" cy="22.7" r="5" fill="#33E1D0"/><path d="M1350 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1350" cy="27.0" r="5" fill="#FFE36E"/><path d="M1380 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1380" cy="22.7" r="5" fill="#FF8DC1"/><path d="M1420 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1420" cy="22.7" r="5" fill="#8ED8F8"/><path d="M1450 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1450" cy="27.0" r="5" fill="#33E1D0"/><path d="M1480 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1480" cy="22.7" r="5" fill="#FFE36E"/><path d="M1520 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1520" cy="22.7" r="5" fill="#FF8DC1"/><path d="M1550 18.0v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1550" cy="27.0" r="5" fill="#8ED8F8"/><path d="M1580 13.7v4" stroke="#070b12" stroke-width="2"/><circle class="bulb" cx="1580" cy="22.7" r="5" fill="#33E1D0"/></g>
+</svg>
+
+<!-- icon sprites -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7"/></g></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.6A8.5 8.5 0 0 1 9.4 4a8.5 8.5 0 1 0 10.6 10.6z" fill="currentColor"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M10.5 7.8v5.4M7.8 10.5h5.4"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11.5M7 10.5l5 5 5-5M4.5 19.5h15"/></g></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 4.5 7.5 12l7.5 7.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 4.5 16.5 12 9 19.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="8.5" cy="14.5" r="2.6" fill="currentColor"/><path d="M3.5 10.5h17" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M10 5.5h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><path d="M7 3.5h10l1 17H6z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><rect x="9.5" y="10" width="5" height="5" fill="currentColor"/><path d="M4 20.5h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+</svg>
+
+<main class="wrap">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="h1">
+    <span class="eyebrow">Gift 6</span>
+    <h1 class="neon" id="h1"><span class="l1">Your</span> <span class="l2">brand kit.</span></h1>
+    <p class="sub">Logos, stickers and ready-to-post graphics. <b>Tap anything to see it big.</b> Save whatever you like.</p>
+
+    <div class="hero-grid">
+    <div class="hero-left">
+    <div class="pile" aria-hidden="true">
+      <div class="p-card"><img src="art/print-table-card-4x6.webp" width="700" height="1050" alt="" fetchpriority="high"></div>
+      <div class="p-logo"><img src="art/wordmark-sign-painter-dark.png" width="1000" height="500" alt=""></div>
+      <img class="p-social" src="art/sticker-say-social.png" width="800" height="800" alt="">
+      <img class="p-1995" src="art/sticker-since-1995.png" width="800" height="800" alt="">
+      <img class="p-grin" src="art/sticker-bruce-grin.webp" width="600" height="629" alt="">
+      <span class="p-tag">For Bruce</span>
+    </div>
+
+    <p class="tip"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>On iPhone: tap, then press and hold the picture to save it.</span></p>
+    <p class="credit">Drawn with AI illustration tools, from Jimmy's Saturday&#8209;night photos.</p>
+    </div>
+
+    <nav class="slip" aria-labelledby="slipH">
+      <h2 id="slipH">Packed for Bruce</h2>
+      <p class="slip-sub">What's in the box</p>
+      <ol>
+        <li><a href="#logos"><span class="q">6</span>Logo ideas<span class="arr">&rarr;</span></a></li>
+        <li><a href="#stickers"><span class="q">14</span>Stickers<span class="arr">&rarr;</span></a></li>
+        <li><a href="#post"><span class="q">1</span>Facebook cover<span class="arr">&rarr;</span></a></li>
+        <li><a href="#post-ig"><span class="q">3</span>Instagram posts<span class="arr">&rarr;</span></a></li>
+        <li><a href="#post-card"><span class="q">1</span>Table card for the piano<span class="arr">&rarr;</span></a></li>
+      </ol>
+      <p class="total"><span>25 pieces.</span><span>All yours.</span></p>
+    </nav>
+    </div>
+  </section>
+
+  <!-- ===================== LOGO IDEAS ===================== -->
+  <section class="sec" id="logos" aria-labelledby="logosH">
+    <div class="head"><h2 class="big" id="logosH">Logo ideas</h2><span class="count">6 ideas</span></div>
+    <p class="lede">Flip each one light or dark. Tap <b>This one</b> on your favorite.</p>
+    <p class="hint">Ideas, not decisions. You pick.</p>
+
+    <div class="logos">
+      <article class="lc rv" data-n="1" data-key="sign-painter" data-v="light">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">1</span><h3 class="lc-name">Painted with a grin</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="1. Painted with a grin" aria-label="See logo 1 big">
+          <img class="im-light" src="art/wordmark-sign-painter-light.png" width="1000" height="500" alt="Bruce, the Piano Man logo, brush script, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-sign-painter-dark.png" width="1000" height="500" alt="Bruce, the Piano Man logo, brush script, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 1 background">
+            <button type="button" data-v="light" aria-pressed="true"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+
+      <article class="lc rv" data-n="2" data-key="neon" data-v="dark">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">2</span><h3 class="lc-name">Neon after dark</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="2. Neon after dark" aria-label="See logo 2 big">
+          <img class="im-light" src="art/wordmark-neon-light.png" width="1000" height="500" alt="Bruce, the Piano Man logo, neon outline, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-neon-dark.png" width="1000" height="500" alt="Bruce, the Piano Man logo, neon outline, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 2 background">
+            <button type="button" data-v="light" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="true"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+
+      <article class="lc rv" data-n="3" data-key="island" data-v="light">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">3</span><h3 class="lc-name">Island shirt</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="3. Island shirt" aria-label="See logo 3 big">
+          <img class="im-light" src="art/wordmark-island-light.png" width="1000" height="500" alt="Bruce, the Piano Man logo with hibiscus flowers, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-island-dark.png" width="1000" height="500" alt="Bruce, the Piano Man logo with hibiscus flowers, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 3 background">
+            <button type="button" data-v="light" aria-pressed="true"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+
+      <article class="lc rv" data-n="4" data-key="piano-key" data-v="dark">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">4</span><h3 class="lc-name">Keys with character</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="4. Keys with character" aria-label="See logo 4 big">
+          <img class="im-light" src="art/wordmark-piano-key-light.png" width="1000" height="500" alt="BRUCE on piano keys, the Piano Man, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-piano-key-dark.png" width="1000" height="500" alt="BRUCE on piano keys, the Piano Man, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 4 background">
+            <button type="button" data-v="light" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="true"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+
+      <article class="lc rv" data-n="5" data-key="cassette-label" data-v="light">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">5</span><h3 class="lc-name">The first cassette</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="5. The first cassette" aria-label="See logo 5 big">
+          <img class="im-light" src="art/wordmark-cassette-label-light.png" width="1000" height="500" alt="BRUCE, the Piano Man on a cassette label, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-cassette-label-dark.png" width="1000" height="500" alt="BRUCE, the Piano Man on a cassette label, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 5 background">
+            <button type="button" data-v="light" aria-pressed="true"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+
+      <article class="lc rv" data-n="6" data-key="sticky-note" data-v="dark">
+        <span class="stamp">Your pick</span>
+        <div class="lc-top"><span class="lc-num">6</span><h3 class="lc-name">Request Bruce</h3></div>
+        <button class="lc-art lb" data-group="logos" data-kind="logo" data-title="6. Request Bruce" aria-label="See logo 6 big">
+          <img class="im-light" src="art/wordmark-sticky-note-light.png" width="1000" height="500" alt="Bruce on a pink sticky note, the Piano Man, light" loading="lazy" decoding="async">
+          <img class="im-dark" src="art/wordmark-sticky-note-dark.png" width="1000" height="500" alt="Bruce on a pink sticky note, the Piano Man, dark" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="lc-row">
+          <div class="seg" role="group" aria-label="Logo 6 background">
+            <button type="button" data-v="light" aria-pressed="false"><svg aria-hidden="true"><use href="#i-sun"/></svg>Light</button>
+            <button type="button" data-v="dark" aria-pressed="true"><svg aria-hidden="true"><use href="#i-moon"/></svg>Dark</button>
+          </div>
+          <button type="button" class="pick" aria-pressed="false"><span class="off">This one</span><span class="on">&#10003; Your pick</span></button>
+        </div>
+      </article>
+    </div>
+    <p class="fineprint">Your pick stays on this phone only. Text me the number.</p>
+  </section>
+
+  <!-- ===================== STICKERS ===================== -->
+  <section class="sec" id="stickers" aria-labelledby="stkH">
+    <div class="head"><h2 class="big" id="stkH">The sticker pack</h2><span class="count">14 stickers</span></div>
+    <p class="lede">For laptops, guitar cases and tip buckets.</p>
+
+    <div class="board rv">
+      <span class="hinge" aria-hidden="true"></span>
+      <div class="stks">
+        <button class="stk big lb" style="--r:-4deg" data-group="stk" data-kind="stk" data-src="art/sticker-bruce-grin.webp" data-full="downloads/sticker-bruce-grin.png" data-save="downloads/sticker-bruce-grin.png" data-w="600" data-h="629" data-title="The grin" data-note="Makes a great profile picture." aria-label="Sticker: Bruce, grinning">
+          <img src="art/sticker-bruce-grin.webp" width="600" height="629" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:7deg;--dy:4px" data-group="stk" data-kind="stk" data-src="art/sticker-say-social.png" data-w="800" data-h="800" data-title="Say Social!" data-note="He calls it. The whole room drinks at once." aria-label="Sticker: Say Social!">
+          <img src="art/sticker-say-social.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-6deg;--dx:-3px" data-group="stk" data-kind="stk" data-src="art/sticker-no-tips-first-hour.png" data-w="800" data-h="800" data-title="No tips. First hour." data-note="&ldquo;People love free stuff! Give them a free song!&rdquo;" aria-label="Sticker: No tips. First hour.">
+          <img src="art/sticker-no-tips-first-hour.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:5deg;--dy:-4px" data-group="stk" data-kind="stk" data-src="art/sticker-since-1995.png" data-w="800" data-h="800" data-title="Since 1995" data-note="Nov 3, 1995. Night one at the Neon Cactus." aria-label="Sticker: Since 1995">
+          <img src="art/sticker-since-1995.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-8deg;--dx:3px" data-group="stk" data-kind="stk" data-src="art/sticker-sticky-note.png" data-w="800" data-h="800" data-title="Request it on a sticky note." data-note="Pink, blue and yellow, all over the piano." aria-label="Sticker: Request it on a sticky note.">
+          <img src="art/sticker-sticky-note.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:9deg" data-group="stk" data-kind="stk" data-src="art/sticker-hibiscus.png" data-w="600" data-h="600" data-title="The hibiscus" data-note="Straight off the shirt." aria-label="Sticker: Hibiscus">
+          <img src="art/sticker-hibiscus.png" width="600" height="600" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-3deg;--dy:3px" data-group="stk" data-kind="stk" data-src="art/sticker-plays-the-room.png" data-w="800" data-h="800" data-title="Bruce plays the room." data-note="&ldquo;An entertainer, not a musician.&rdquo; His words." aria-label="Sticker: Bruce plays the room.">
+          <img src="art/sticker-plays-the-room.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:6deg;--dx:-2px" data-group="stk" data-kind="stk" data-src="art/sticker-cassette.png" data-w="600" data-h="600" data-title="The 1988 cassette" data-note="Feb 1988. One cassette player, two sets of batteries, about 7 hours." aria-label="Sticker: 1988 cassette">
+          <img src="art/sticker-cassette.png" width="600" height="600" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-5deg;--dy:-3px" data-group="stk" data-kind="stk" data-src="art/sticker-retired-mostly.png" data-w="800" data-h="800" data-title="Retired. Mostly." data-note="Farewell show Dec 7, 2023. Back at it in 2024." aria-label="Sticker: Retired. Mostly.">
+          <img src="art/sticker-retired-mostly.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:4deg" data-group="stk" data-kind="stk" data-src="art/sticker-last-call.png" data-w="800" data-h="800" data-title="Last call." data-note="Every show ends with &ldquo;A Pirate Looks at Forty.&rdquo;" aria-label="Sticker: Last call.">
+          <img src="art/sticker-last-call.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk big wig lb" style="--r:5deg" data-group="stk" data-kind="stk" data-src="art/sticker-bruce-wig.webp" data-full="downloads/sticker-bruce-wig.png" data-save="downloads/sticker-bruce-wig.png" data-w="600" data-h="654" data-title="Rock mode" data-note="The curly blonde wig. Rock horns. Crowd cracking up." aria-label="Sticker: Bruce in the wig">
+          <img src="art/sticker-bruce-wig.webp" width="600" height="654" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-7deg;--dx:2px" data-group="stk" data-kind="stk" data-src="art/sticker-tip-bucket.png" data-w="800" data-h="800" data-title="The tip bucket" data-note="Hand-painted. Palms, hammock, ocean." aria-label="Sticker: The painted tip bucket">
+          <img src="art/sticker-tip-bucket.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:8deg;--dy:3px" data-group="stk" data-kind="stk" data-src="art/sticker-nobody-compares.png" data-w="800" data-h="800" data-title="Nobody compares." aria-label="Sticker: Nobody compares.">
+          <img src="art/sticker-nobody-compares.png" width="800" height="800" alt="" loading="lazy" decoding="async"></button>
+        <button class="stk lb" style="--r:-4deg" data-group="stk" data-kind="stk" data-src="art/sticker-piano-key-smile.png" data-w="600" data-h="600" data-title="Piano key smile" data-note="Two black keys. One big grin." aria-label="Sticker: Piano key smile">
+          <img src="art/sticker-piano-key-smile.png" width="600" height="600" alt="" loading="lazy" decoding="async"></button>
+        <p class="stk-note">Tap one to make it big.</p>
+      </div>
+      <svg class="keys" aria-hidden="true" preserveAspectRatio="none">
+        <defs>
+          <pattern id="oct" width="140" height="44" patternUnits="userSpaceOnUse">
+            <rect width="140" height="44" fill="#FFFAF0"/>
+            <g fill="#15131A"><rect x="19" width="2" height="44"/><rect x="39" width="2" height="44"/><rect x="59" width="2" height="44"/><rect x="79" width="2" height="44"/><rect x="99" width="2" height="44"/><rect x="119" width="2" height="44"/><rect x="139" width="2" height="44"/>
+            <rect x="13" width="13" height="22" rx="1.5"/><rect x="34" width="13" height="22" rx="1.5"/><rect x="73" width="13" height="22" rx="1.5"/><rect x="93" width="13" height="22" rx="1.5"/><rect x="113" width="13" height="22" rx="1.5"/></g>
+          </pattern>
+        </defs>
+        <rect width="100%" height="44" fill="url(#oct)"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ===================== READY TO POST ===================== -->
+  <section class="sec" id="post" aria-labelledby="postH">
+    <div class="head"><h2 class="big" id="postH">Ready to post</h2><span class="count">5 pieces</span></div>
+    <p class="lede">Already sized for where they go. Tap any of them to see it big.</p>
+
+    <!-- facebook -->
+    <div class="block">
+      <h3><span class="ico" aria-hidden="true"><svg><use href="#i-fb"/></svg></span>Facebook cover</h3>
+      <div class="fb rv">
+        <div class="fb-bar" aria-hidden="true"><i></i><i></i><i class="c"></i><i class="c"></i><i class="c"></i></div>
+        <button class="fb-cover lb" data-group="post" data-kind="post" data-src="art/print-facebook-cover.webp" data-full="downloads/print-facebook-cover.png" data-save="downloads/print-facebook-cover.png" data-w="1200" data-h="456" data-title="Facebook cover" data-note="Sized for Facebook (1640&times;624)." data-save-label="Save the full-size cover" aria-label="See the Facebook cover big">
+          <img src="art/print-facebook-cover.webp" width="1200" height="456" alt="Facebook cover: neon Bruce, the Piano Man logo, cartoon Bruce at his piano pointing at you, Solo piano bar plus Bruce Barker Band" loading="lazy" decoding="async">
+          <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+        </button>
+        <div class="fb-body">
+          <div class="fb-av" aria-hidden="true"><img src="art/sticker-bruce-grin.webp" width="600" height="629" alt="" loading="lazy" decoding="async"></div>
+          <div class="fb-id">
+            <p class="fb-name">Bruce the Piano Man</p>
+            <p class="fb-tag">Entertainer. Not a musician.</p>
+          </div>
+          <div class="fb-btns" aria-hidden="true"><span>Follow</span><span>Message</span></div>
+        </div>
+      </div>
+      <div class="btns">
+        <a class="btn btn-a" href="downloads/print-facebook-cover.png" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg>Save the full-size cover</a>
+      </div>
+      <p class="note-s">Sized for Facebook (1640&times;624).</p>
+    </div>
+
+    <!-- instagram -->
+    <div class="block" id="post-ig">
+      <h3><span class="ico" aria-hidden="true" style="background:var(--note-pink)"><svg><use href="#i-phone"/></svg></span>Instagram posts</h3>
+      <p class="honest"><b>Honest note:</b> these are templates. Each one has a blank in brackets. I'll fill in the dates and contact when you're ready.</p>
+
+      <div class="ig-row" id="igRow">
+        <div class="ig rv">
+          <div class="phone">
+            <div class="scr">
+              <div class="sbar" aria-hidden="true"><span>9:41</span><span class="isl"></span><span class="bat"></span></div>
+              <div class="ph" aria-hidden="true"><span class="av"><img src="art/sticker-bruce-grin.webp" width="600" height="629" alt="" loading="lazy" decoding="async"></span><b>brucethepianoman</b><span class="dots">&middot;&middot;&middot;</span></div>
+              <button class="ig-img lb" data-group="post" data-kind="post" data-src="art/print-instagram-say-social.webp" data-full="downloads/print-instagram-say-social.png" data-save="downloads/print-instagram-say-social.png" data-w="700" data-h="875" data-title="Say social!" data-note="Blank to fill in: [SHOW DETAILS]" data-save-label="Save full size" aria-label="See the Say social post big">
+                <img src="art/print-instagram-say-social.webp" width="700" height="875" alt="Instagram post: Say social! Cartoon Bruce raising a glass. Everybody in." loading="lazy" decoding="async">
+              </button>
+              <div class="pa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4.5l-.9 3.6A8 8 0 0 1 20 12z"/></svg><svg viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"/></svg></div>
+              <p class="pc" aria-hidden="true"><b>brucethepianoman</b> Say social!</p>
+            </div>
+          </div>
+          <div class="ig-meta">
+            <h4>Say social!</h4>
+            <span class="blank">Blank: [SHOW DETAILS]</span><br>
+            <a class="btn btn-b" href="downloads/print-instagram-say-social.png" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg>Save full size</a>
+          </div>
+        </div>
+
+        <div class="ig rv">
+          <div class="phone">
+            <div class="scr">
+              <div class="sbar" aria-hidden="true"><span>9:41</span><span class="isl"></span><span class="bat"></span></div>
+              <div class="ph" aria-hidden="true"><span class="av"><img src="art/sticker-bruce-grin.webp" width="600" height="629" alt="" loading="lazy" decoding="async"></span><b>brucethepianoman</b><span class="dots">&middot;&middot;&middot;</span></div>
+              <button class="ig-img lb" data-group="post" data-kind="post" data-src="art/print-instagram-next-show.webp" data-full="downloads/print-instagram-next-show.png" data-save="downloads/print-instagram-next-show.png" data-w="700" data-h="875" data-title="Next show" data-note="Blanks to fill in: [DATE] &middot; [TIME] and [VENUE]" data-save-label="Save full size" aria-label="See the Next show post big">
+                <img src="art/print-instagram-next-show.webp" width="700" height="875" alt="Instagram post template: Next show. Cartoon Bruce pointing at you. Date, time and venue are blank." loading="lazy" decoding="async">
+              </button>
+              <div class="pa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4.5l-.9 3.6A8 8 0 0 1 20 12z"/></svg><svg viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"/></svg></div>
+              <p class="pc" aria-hidden="true"><b>brucethepianoman</b> Next show</p>
+            </div>
+          </div>
+          <div class="ig-meta">
+            <h4>Next show</h4>
+            <span class="blank">Blanks: [DATE] &middot; [TIME] &middot; [VENUE]</span><br>
+            <a class="btn btn-b" href="downloads/print-instagram-next-show.png" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg>Save full size</a>
+          </div>
+        </div>
+
+        <div class="ig rv">
+          <div class="phone">
+            <div class="scr">
+              <div class="sbar" aria-hidden="true"><span>9:41</span><span class="isl"></span><span class="bat"></span></div>
+              <div class="ph" aria-hidden="true"><span class="av"><img src="art/sticker-bruce-grin.webp" width="600" height="629" alt="" loading="lazy" decoding="async"></span><b>brucethepianoman</b><span class="dots">&middot;&middot;&middot;</span></div>
+              <button class="ig-img lb" data-group="post" data-kind="post" data-src="art/print-instagram-book-2027.webp" data-full="downloads/print-instagram-book-2027.png" data-save="downloads/print-instagram-book-2027.png" data-w="700" data-h="875" data-title="Book Bruce for 2027" data-note="Blank to fill in: [BOOKING CONTACT]" data-save-label="Save full size" aria-label="See the Book Bruce for 2027 post big">
+                <img src="art/print-instagram-book-2027.webp" width="700" height="875" alt="Instagram post template: Book Bruce for 2027. Cartoon Bruce winking, hands on hips. Solo piano bar, full band. Booking contact is blank." loading="lazy" decoding="async">
+              </button>
+              <div class="pa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4.5l-.9 3.6A8 8 0 0 1 20 12z"/></svg><svg viewBox="0 0 24 24"><path d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/></svg><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17l-6-4.5-6 4.5z"/></svg></div>
+              <p class="pc" aria-hidden="true"><b>brucethepianoman</b> Book Bruce for 2027</p>
+            </div>
+          </div>
+          <div class="ig-meta">
+            <h4>Book Bruce for 2027</h4>
+            <span class="blank">Blank: [BOOKING CONTACT]</span><br>
+            <a class="btn btn-b" href="downloads/print-instagram-book-2027.png" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg>Save full size</a>
+          </div>
+        </div>
+      </div>
+      <div class="dotsnav" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+      <p class="note-s">Sized for Instagram (1080&times;1350). Swipe for all three.</p>
+    </div>
+
+    <!-- table card -->
+    <div class="block" id="post-card">
+      <h3><span class="ico" aria-hidden="true" style="background:var(--note-yellow)"><svg><use href="#i-card"/></svg></span>Table card for the piano</h3>
+      <div class="tc">
+        <div class="ledge rv">
+          <span class="glow" aria-hidden="true"></span>
+          <button class="tcard lb" data-group="post" data-kind="post" data-src="art/print-table-card-4x6.webp" data-full="downloads/print-table-card-4x6.png" data-save="downloads/print-table-card-4x6.png" data-w="700" data-h="1050" data-title="Table card (4&times;6)" data-note="The QR goes live when your Bruce Alert does." data-save-label="Save the picture" aria-label="See the table card big">
+            <span class="face"><img src="art/print-table-card-4x6.webp" width="700" height="1050" alt="4 by 6 table card: Bruce, the Piano Man. Get a Bruce Alert. Scan to know where he's playing next. QR placeholder." loading="lazy" decoding="async"></span>
+            <span class="stand" aria-hidden="true"></span>
+            <span class="zoom" aria-hidden="true"><svg><use href="#i-zoom"/></svg></span>
+          </button>
+          <img class="bucket" src="art/world-tip-bucket.svg" width="600" height="600" alt="" aria-hidden="true" loading="lazy" decoding="async">
+          <span class="ln a" aria-hidden="true"></span><span class="ln b" aria-hidden="true"></span><span class="ln c" aria-hidden="true"></span><span class="ln d" aria-hidden="true"></span>
+        </div>
+        <div class="tc-copy">
+          <p class="lede">A 4&times;6 card for the piano ledge, right next to the sticky notes. People scan it and get a Bruce Alert.</p>
+          <div class="btns">
+            <a class="btn btn-a" href="downloads/print-table-card-4x6.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg>Print-ready PDF (4&times;6)</a>
+            <a class="btn btn-b" href="downloads/print-table-card-4x6.png" target="_blank" rel="noopener">Save the picture</a>
+          </div>
+          <p class="note-s">The QR goes live when your Bruce Alert does.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="closing rv">
+    Every piece here is a first draft. Want a different color, a different word, a whole new idea? Just tell me.
+    <p class="sig">Jimmy</p>
+  </div>
+</main>
+
+<section class="tour-next" aria-label="Next gift"><div class="tn-card"><div class="tn-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><p class="tn-kick">That was gift 6 of 7</p><p class="tn-title">Up next: Behind the scenes</p><a class="tn-btn" href="thanks.html">Open gift 7 <span aria-hidden="true">→</span></a><br><a class="tn-all" href="index.html">See all 7 gifts</a></div></section>
+<footer>Made for Bruce by Jimmy Davis</footer>
+
+<div class="pickbar" role="status" aria-live="polite"><span class="pb-text"></span><button type="button" class="pb-x" aria-label="Clear your pick">&times;</button></div>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<!-- lightbox -->
+<div class="lbx" id="lbx" role="dialog" aria-modal="true" aria-labelledby="lbxTitle" aria-hidden="true">
+  <div class="lbx-top"><span class="lbx-count" id="lbxCount">1 / 1</span><button type="button" class="lbx-close" id="lbxClose" aria-label="Close">&times;</button></div>
+  <div class="lbx-stage" id="lbxStage"><img id="lbxImg" alt=""></div>
+  <div class="lbx-cap"><h2 id="lbxTitle"></h2><p id="lbxNote"></p></div>
+  <div class="lbx-act">
+    <button type="button" class="lbx-nav" id="lbxPrev" aria-label="Previous"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+    <a class="btn btn-a lbx-save" id="lbxSave" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-down"/></svg><span>Save</span></a>
+    <button type="button" class="lbx-nav" id="lbxNext" aria-label="Next"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+  </div>
+  <p class="lbx-tip">On iPhone: press and hold the picture to save it.</p>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function store(k, v){ try{ if(v===null) localStorage.removeItem(k); else localStorage.setItem(k, v); }catch(e){} }
+  function load(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  /* reveal */
+  var rv = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window) || reduce){ rv.forEach(function(e){ e.classList.add('in'); }); }
+  else{
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(e){ io.observe(e); });
+  }
+
+  /* chip tuck */
+  var chip = document.querySelector('.home-chip'), lastY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    chip.classList.toggle('tuck', y > 140 && y > lastY + 2);
+    if(y < lastY - 2 || y <= 140) chip.classList.remove('tuck');
+    lastY = y;
+  }, {passive:true});
+
+  /* toast */
+  var toastEl = document.querySelector('.toast'), tt;
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(tt); tt = setTimeout(function(){ toastEl.classList.remove('show'); }, 2400); }
+
+  /* logo cards: light/dark + favorite */
+  var cards = [].slice.call(document.querySelectorAll('.lc'));
+  function setVariant(card, v){
+    card.setAttribute('data-v', v);
+    card.querySelectorAll('.seg button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-v') === v ? 'true' : 'false'); });
+    var art = card.querySelector('.lc-art'), file = 'art/wordmark-' + card.getAttribute('data-key') + '-' + v + '.png';
+    art.setAttribute('data-src', file); art.setAttribute('data-full', file); art.setAttribute('data-save', file);
+    art.setAttribute('data-w', '1000'); art.setAttribute('data-h', '500');
+    art.setAttribute('data-note', (v === 'dark' ? 'Dark version' : 'Light version') + '. Ideas, not decisions. You pick.');
+    art.setAttribute('data-save-label', 'Save this logo');
+  }
+  cards.forEach(function(card){
+    setVariant(card, card.getAttribute('data-v'));
+    card.querySelectorAll('.seg button').forEach(function(b){
+      b.addEventListener('click', function(){ setVariant(card, b.getAttribute('data-v')); });
+    });
+    card.querySelector('.pick').addEventListener('click', function(){
+      var n = card.getAttribute('data-n');
+      setFav(fav === n ? null : n, true);
+    });
+  });
+  var bar = document.querySelector('.pickbar'), barText = bar.querySelector('.pb-text'), fav = null;
+  function setFav(n, user){
+    fav = n;
+    cards.forEach(function(c){
+      var on = c.getAttribute('data-n') === n;
+      c.classList.toggle('fav', on);
+      c.querySelector('.pick').setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if(n){
+      var c = cards[Number(n) - 1], name = c.querySelector('.lc-name').textContent;
+      barText.innerHTML = 'Tell Jimmy: <b>logo #' + n + '</b><small>' + name + '</small>';
+      bar.classList.add('show');
+    } else {
+      bar.classList.remove('show');
+    }
+    if(user) store('bruceKitLogo', n);
+  }
+  bar.querySelector('.pb-x').addEventListener('click', function(){ setFav(null, true); toast('Pick cleared. Take your time.'); });
+  var saved = load('bruceKitLogo');
+  if(saved && /^[1-6]$/.test(saved)) setFav(saved, false);
+
+  /* instagram dots */
+  var row = document.getElementById('igRow'), dots = document.querySelectorAll('.dotsnav i');
+  if(row){
+    row.addEventListener('scroll', function(){
+      var items = row.querySelectorAll('.ig'), best = 0, bd = 1e9, left = row.getBoundingClientRect().left;
+      items.forEach(function(it, i){ var d = Math.abs(it.getBoundingClientRect().left - left - 16); if(d < bd){ bd = d; best = i; } });
+      dots.forEach(function(d, i){ d.classList.toggle('on', i === best); });
+    }, {passive:true});
+  }
+
+  /* lightbox */
+  var lbx = document.getElementById('lbx'), img = document.getElementById('lbxImg'), stage = document.getElementById('lbxStage'),
+      tEl = document.getElementById('lbxTitle'), nEl = document.getElementById('lbxNote'), cEl = document.getElementById('lbxCount'),
+      save = document.getElementById('lbxSave'), saveTxt = save.querySelector('span'),
+      prev = document.getElementById('lbxPrev'), next = document.getElementById('lbxNext'), closeB = document.getElementById('lbxClose');
+  var items = [], cur = 0, opener = null, isOpen = false;
+
+  function attr(el, k){ return el.getAttribute('data-' + k); }
+  function srcOf(el){ return attr(el, 'src') || (el.querySelector('img') && el.querySelector('img').getAttribute('src')); }
+
+  function render(dir){
+    var t = items[cur], src = srcOf(t), full = attr(t, 'full') || src, myIdx = cur;
+    lbx.className = 'lbx open k-' + (attr(t, 'kind') || 'post');
+    function show(){
+      img.src = src;
+      if(attr(t, 'w')){ img.width = +attr(t, 'w'); img.height = +attr(t, 'h'); }
+      img.alt = attr(t, 'title') || '';
+      img.classList.remove('swap');
+      if(full !== src){
+        var hi = new Image();
+        hi.onload = function(){ if(isOpen && cur === myIdx){ img.src = full; } };
+        hi.src = full;
+      }
+    }
+    if(dir && !reduce){
+      img.style.setProperty('--sx', (dir > 0 ? '-24px' : '24px'));
+      img.classList.add('swap');
+      setTimeout(function(){ img.style.setProperty('--sx', (dir > 0 ? '24px' : '-24px')); show(); }, 140);
+    } else { show(); }
+    tEl.textContent = attr(t, 'title') || '';
+    var note = attr(t, 'note');
+    nEl.textContent = note || ''; nEl.hidden = !note;
+    cEl.textContent = (cur + 1) + ' / ' + items.length;
+    save.href = attr(t, 'save') || src;
+    saveTxt.textContent = attr(t, 'save-label') || (attr(t, 'kind') === 'stk' ? 'Save this sticker' : 'Save');
+    var multi = items.length > 1;
+    prev.style.visibility = multi ? 'visible' : 'hidden'; next.style.visibility = multi ? 'visible' : 'hidden';
+  }
+  function openLb(trigger){
+    var g = attr(trigger, 'group');
+    items = [].slice.call(document.querySelectorAll('.lb[data-group="' + g + '"]'));
+    cur = Math.max(0, items.indexOf(trigger));
+    opener = trigger; isOpen = true;
+    render(0);
+    lbx.setAttribute('aria-hidden', 'false');
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(function(){ closeB.focus({preventScroll:true}); }, 30);
+  }
+  function closeLb(){
+    if(!isOpen) return;
+    isOpen = false;
+    lbx.className = 'lbx';
+    lbx.setAttribute('aria-hidden', 'true');
+    document.documentElement.style.overflow = '';
+    if(opener) opener.focus({preventScroll:true});
+  }
+  function go(d){ if(items.length < 2) return; cur = (cur + d + items.length) % items.length; render(d); }
+
+  document.querySelectorAll('.lb').forEach(function(b){ b.addEventListener('click', function(){ openLb(b); }); });
+  closeB.addEventListener('click', closeLb);
+  prev.addEventListener('click', function(){ go(-1); });
+  next.addEventListener('click', function(){ go(1); });
+  stage.addEventListener('click', function(e){ if(e.target === stage) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if(!isOpen) return;
+    if(e.key === 'Escape'){ e.preventDefault(); closeLb(); }
+    else if(e.key === 'ArrowRight'){ go(1); }
+    else if(e.key === 'ArrowLeft'){ go(-1); }
+    else if(e.key === 'Tab'){
+      var f = [closeB, prev, save, next].filter(function(x){ return x.style.visibility !== 'hidden'; });
+      var i = f.indexOf(document.activeElement);
+      if(e.shiftKey && (i <= 0)){ e.preventDefault(); f[f.length - 1].focus(); }
+      else if(!e.shiftKey && i === f.length - 1){ e.preventDefault(); f[0].focus(); }
+    }
+  });
+  var sx = 0, sy = 0, st = 0;
+  stage.addEventListener('touchstart', function(e){ var t = e.touches[0]; sx = t.clientX; sy = t.clientY; st = Date.now(); }, {passive:true});
+  stage.addEventListener('touchend', function(e){
+    var t = e.changedTouches[0], dx = t.clientX - sx, dy = t.clientY - sy;
+    if(Date.now() - st < 700 && Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3){ go(dx < 0 ? 1 : -1); }
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>

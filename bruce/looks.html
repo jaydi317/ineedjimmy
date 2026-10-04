@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pick Your Look</title>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --piano:#15131A; --night:#0E1A2B; --night-2:#16263D;
+  --shirt:#2B8CE0; --shirt-deep:#1A5FA8;
+  --cream:#FFF4E0; --sand:#F5E6C8; --palm:#2FA36B;
+  --note-pink:#FF8DC1; --note-yellow:#FFE36E; --note-blue:#8ED8F8;
+  --neon-pink:#FF4FA3; --neon-teal:#33E1D0; --gold:#F2B33D;
+  --orange:#F26A21; --teal:#1E9E98;
+  --ink-soft:#4a4452;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  background:
+    radial-gradient(120% 60% at 50% -10%, #fff9ee 0%, rgba(255,249,238,0) 60%),
+    radial-gradient(rgba(21,19,26,.07) 1px, transparent 1.5px) 0 0/20px 20px,
+    var(--cream);
+  color:var(--piano);
+  font-family:Nunito, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size:17px; line-height:1.5;
+  overflow-x:clip;
+}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit}
+img{display:block}
+
+/* ---------- welcome chip ---------- */
+.home-chip{
+  position:fixed; top:10px; left:10px; z-index:80;
+  display:inline-flex; align-items:center; min-height:44px; padding:0 14px;
+  font-weight:800; font-size:14px; text-decoration:none;
+  background:rgba(255,244,224,.94); border:2px solid var(--piano); border-radius:999px;
+  box-shadow:0 3px 0 var(--piano);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+  transition:transform .25s cubic-bezier(.3,1.3,.5,1), opacity .2s;
+}
+.home-chip.tuck{transform:translateY(-70px); opacity:0}
+.home-chip:active{transform:translateY(2px); box-shadow:0 1px 0 var(--piano)}
+
+/* ---------- hero ---------- */
+.hero{padding:84px 16px 12px; text-align:center; max-width:1000px; margin:0 auto}
+.eyebrow{
+  display:inline-block; font-family:"Permanent Marker", cursive; font-size:19px; line-height:1.2;
+  background:var(--note-pink); padding:6px 16px 5px; transform:rotate(-2.5deg);
+  box-shadow:0 6px 10px -5px rgba(21,19,26,.45); position:relative;
+}
+.eyebrow::before{content:""; position:absolute; left:50%; top:-9px; width:54px; height:16px; margin-left:-27px;
+  background:rgba(255,255,255,.62); transform:rotate(3deg); box-shadow:0 0 0 1px rgba(21,19,26,.06)}
+.hero h1{
+  font-family:Bungee, Impact, sans-serif; font-weight:400;
+  font-size:clamp(28px, 7.8vw, 56px); line-height:1.04; letter-spacing:.005em;
+  margin:22px 0 14px;
+}
+.hero h1 .l2{display:block; color:var(--shirt); text-shadow:2px 2px 0 var(--piano)}
+@media (min-width:600px){.hero h1 .l2{text-shadow:3px 3px 0 var(--piano)}}
+.hero .sub{font-size:18px; line-height:1.45; color:var(--ink-soft); max-width:30ch; margin:0 auto; font-weight:700}
+.hero .sub b{color:var(--piano); font-weight:900}
+
+/* ---------- the three looks ---------- */
+.looks{display:grid; gap:40px; padding:44px 0 20px; max-width:1240px; margin:0 auto}
+.look{position:relative; width:min(92vw, 400px); margin:0 auto; padding-bottom:98px; --accent:var(--neon-pink)}
+.look-head{display:flex; align-items:center; gap:14px; margin:0 2px 18px}
+.badge{
+  flex:none; width:66px; height:66px; border-radius:50%; display:grid; place-items:center;
+  font-family:Bungee, sans-serif; font-size:34px; line-height:1; color:var(--piano);
+  background:radial-gradient(circle at 35% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 45%), var(--accent);
+  box-shadow:0 0 0 3px var(--piano), 0 5px 0 3px var(--piano);
+  transform:rotate(-6deg);
+  transition:transform .3s cubic-bezier(.3,1.5,.5,1);
+}
+.look:nth-child(2) .badge{transform:rotate(4deg)}
+.look:nth-child(3) .badge{transform:rotate(-3deg)}
+.look-head h2{font-family:Bungee, sans-serif; font-weight:400; font-size:23px; line-height:1.08; letter-spacing:.01em}
+.vibe{font-size:16px; line-height:1.4; color:var(--ink-soft); margin-top:4px; font-weight:700}
+
+/* phone frame */
+.phone{
+  position:relative; padding:9px; border-radius:54px;
+  background:linear-gradient(145deg, #2c2935 0%, #15131A 35%, #0b0a0e 100%);
+  box-shadow:
+    inset 0 0 0 1.5px #45404f,
+    0 0 0 3px var(--piano),
+    0 26px 44px -18px rgba(21,19,26,.55),
+    10px 12px 0 rgba(21,19,26,.10);
+  transition:box-shadow .3s, transform .3s cubic-bezier(.3,1.4,.5,1);
+}
+.phone::before,.phone::after{content:""; position:absolute; width:4px; border-radius:3px; background:var(--piano)}
+.phone::before{left:-6px; top:22%; height:11%; box-shadow:0 70px 0 var(--piano)}
+.phone::after{right:-6px; top:28%; height:15%}
+.screen{position:relative; aspect-ratio:360/740; border-radius:45px; overflow:hidden; background:#000; isolation:isolate}
+.mini{position:absolute; left:0; top:0; width:360px; height:740px; overflow:hidden;
+  transform:scale(var(--k,.94)); transform-origin:0 0; font-family:Nunito, sans-serif; font-size:15px; line-height:1.35}
+.look.picked .phone{box-shadow:inset 0 0 0 1.5px #45404f, 0 0 0 3px var(--piano), 0 0 0 9px var(--accent), 0 0 0 12px var(--piano), 0 26px 44px -18px rgba(21,19,26,.55)}
+.look.picked .badge{transform:rotate(0) scale(1.1)}
+
+/* the request note (Text Jimmy) */
+.note{
+  position:absolute; right:6px; bottom:0; z-index:5;
+  width:132px; min-height:118px; padding:18px 10px 10px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  font-family:"Permanent Marker", cursive; color:var(--piano);
+  background:linear-gradient(rgba(0,0,0,.05) 0 14px, transparent 14px), var(--nc, var(--note-yellow));
+  box-shadow:0 14px 16px -10px rgba(21,19,26,.55), 0 2px 0 rgba(21,19,26,.08);
+  transform:rotate(5deg);
+  transition:transform .28s cubic-bezier(.3,1.6,.5,1);
+}
+.note::before{content:""; position:absolute; top:-10px; left:50%; width:58px; height:18px; margin-left:-29px;
+  background:rgba(255,255,255,.6); transform:rotate(-4deg); box-shadow:0 0 0 1px rgba(21,19,26,.05)}
+.note .nl{font-size:19px; line-height:1}
+.note .nn{font-size:50px; line-height:.95; margin-top:2px}
+.note .nk{font-size:15px; line-height:1; margin-top:2px; height:0; overflow:hidden; opacity:0; transition:opacity .2s}
+.note:hover{transform:rotate(1deg) translateY(-3px)}
+.note:active{transform:rotate(1deg) scale(.96)}
+.note:focus-visible{outline:3px solid var(--shirt); outline-offset:4px}
+.look.picked .note{transform:rotate(-2deg) scale(1.04)}
+.look.picked .note .nk{height:16px; opacity:1}
+.look:nth-child(2) .note{--nc:var(--note-yellow); transform:rotate(-4deg)}
+.look:nth-child(2).picked .note{transform:rotate(2deg) scale(1.04)}
+.look:nth-child(3) .note{--nc:var(--note-blue); transform:rotate(3deg)}
+
+/* ---------- closer ---------- */
+.closer{max-width:760px; margin:40px auto 0; padding:0 16px}
+.big-note{
+  position:relative; background:var(--note-yellow); padding:30px 24px 22px;
+  transform:rotate(-1.2deg);
+  box-shadow:0 18px 22px -14px rgba(21,19,26,.5);
+  font-weight:800; font-size:21px; line-height:1.38;
+}
+.big-note::before{content:""; position:absolute; top:-11px; left:50%; width:84px; height:22px; margin-left:-42px; background:rgba(255,255,255,.6); transform:rotate(2deg)}
+.big-note .sig{display:block; font-family:"Permanent Marker", cursive; font-weight:400; font-size:24px; margin-top:10px; text-align:right; transform:rotate(-3deg)}
+.cta-row{display:flex; flex-direction:column; gap:14px; margin-top:34px}
+.btn{
+  display:flex; align-items:center; justify-content:center; min-height:56px; padding:0 22px;
+  border-radius:999px; font-weight:900; font-size:17px; text-decoration:none; text-align:center;
+  transition:transform .15s, box-shadow .15s;
+}
+.btn-a{background:var(--piano); color:var(--cream); box-shadow:0 5px 0 var(--shirt-deep)}
+.btn-b{background:var(--cream); color:var(--piano); box-shadow:inset 0 0 0 2.5px var(--piano), 0 5px 0 var(--piano)}
+.btn:active{transform:translateY(3px)}
+.btn-a:active{box-shadow:0 2px 0 var(--shirt-deep)}
+.btn-b:active{box-shadow:inset 0 0 0 2.5px var(--piano), 0 2px 0 var(--piano)}
+.btn:focus-visible{outline:3px solid var(--shirt); outline-offset:4px}
+
+footer{text-align:center; padding:48px 16px 120px; color:#6b6473; font-size:15px; font-weight:700}
+footer .chip{display:inline-flex; align-items:center; min-height:44px; padding:0 16px; margin-top:12px; border-radius:999px; border:2px solid var(--piano); color:var(--piano); text-decoration:none; font-weight:800; background:#fff9ef}
+
+/* pick bar + toast */
+.pickbar{
+  position:fixed; left:50%; bottom:14px; z-index:90; width:max-content; max-width:calc(100vw - 24px);
+  display:flex; align-items:center; gap:10px; padding:8px 8px 8px 18px;
+  background:var(--piano); color:var(--cream); border-radius:20px; font-weight:800; font-size:16px; line-height:1.3;
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.55);
+  transform:translate(-50%, 160%); visibility:hidden; transition:transform .35s cubic-bezier(.3,1.35,.5,1), visibility 0s .35s;
+}
+.pickbar.show{transform:translate(-50%, 0); visibility:visible; transition:transform .35s cubic-bezier(.3,1.35,.5,1)}
+.pickbar b{color:var(--note-yellow); font-weight:900}
+.pickbar button{flex:none; width:44px; height:44px; border-radius:14px; background:rgba(255,255,255,.1); font-size:22px; line-height:1}
+.toast{
+  position:fixed; left:50%; bottom:86px; z-index:91; width:max-content; max-width:calc(100vw - 32px);
+  padding:12px 18px; border-radius:16px; background:#2a2733; color:var(--cream); font-weight:800; font-size:16px; text-align:center;
+  box-shadow:0 10px 24px -8px rgba(0,0,0,.5);
+  opacity:0; transform:translate(-50%, 10px); pointer-events:none; transition:opacity .2s, transform .25s;
+}
+.toast.show{opacity:1; transform:translate(-50%, 0)}
+
+/* ---------- shared mini bits ---------- */
+.sb{position:absolute; left:0; right:0; top:0; height:48px; z-index:40; display:flex; justify-content:space-between; align-items:center;
+  padding:4px 30px 0 34px; font-weight:800; font-size:15px; letter-spacing:.01em; pointer-events:none}
+.sb svg{display:block}
+.island{position:absolute; top:11px; left:124px; width:112px; height:32px; border-radius:20px; background:#000; z-index:60; pointer-events:none}
+.homebar{position:absolute; bottom:8px; left:116px; width:128px; height:5px; border-radius:3px; z-index:60; background:rgba(255,255,255,.78); pointer-events:none}
+
+/* ================= LOOK 1 — THE PIANO BAR ================= */
+.m1{background:radial-gradient(130% 56% at 50% 33%, #22406a 0%, #16263D 40%, #0E1A2B 70%, #08111e 100%); color:var(--cream)}
+.m1 .planks{position:absolute; inset:0; background:repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 43px, rgba(0,0,0,.22) 43px 45px); opacity:.7}
+.m1 .sb{color:var(--cream)}
+.m1 .decor{position:absolute; left:0; top:0; width:360px; height:740px; pointer-events:none}
+.m1 .lights{position:absolute; left:0; top:0; width:360px; height:76px; z-index:30; pointer-events:none}
+.m1 .bulb ellipse:first-of-type{animation:twinkle 2.6s ease-in-out infinite}
+.m1 .bulb:nth-child(3n) ellipse:first-of-type{animation-delay:-.9s}
+.m1 .bulb:nth-child(3n+1) ellipse:first-of-type{animation-delay:-1.7s}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.72}}
+.m1 .halo{position:absolute; left:20px; top:58px; width:320px; height:120px; background:radial-gradient(closest-side, rgba(255,79,163,.30), rgba(255,79,163,0)); z-index:2}
+.m1 .wm{position:absolute; left:0; right:0; top:60px; text-align:center; z-index:5}
+.m1 .wm-b{display:block; font-family:Bungee, sans-serif; font-size:66px; line-height:1; letter-spacing:.035em; color:rgba(255,79,163,.10);
+  -webkit-text-stroke:2.4px #ffe1f0;
+  filter:drop-shadow(0 0 1.5px #ff4fa3) drop-shadow(0 0 5px #ff4fa3) drop-shadow(0 0 12px rgba(255,45,143,.85))}
+.m1 .wm-b .fl{animation:flick 6s infinite}
+@keyframes flick{0%,88%,92%,96%,100%{opacity:1}90%,94%{opacity:.45}}
+.m1 .wm-s{display:block; font-family:"Permanent Marker", cursive; font-size:31px; line-height:1; color:#effffd; margin-top:2px; transform:rotate(-3deg);
+  text-shadow:0 0 2px #fff, 0 0 6px #33E1D0, 0 0 14px #33E1D0, 0 0 26px rgba(51,225,208,.75)}
+.m1 .mq{position:absolute; left:20px; top:176px; width:320px; height:208px; border-radius:18px; z-index:6;
+  background:linear-gradient(170deg, #ffd66e 0%, #f2b33d 45%, #d98a1c 100%);
+  box-shadow:0 0 0 3px #15131A, 0 6px 0 3px #15131A, 0 0 36px rgba(242,179,61,.38)}
+.m1 .mq svg{position:absolute; left:0; top:0}
+.m1 .mq circle{stroke:#15131A; stroke-width:1.4}
+.m1 .mq .ba{fill:#fff8d8; animation:chaseA 1.3s steps(1) infinite}
+.m1 .mq .bb{fill:#a7651a; animation:chaseB 1.3s steps(1) infinite}
+@keyframes chaseA{0%{fill:#fff8d8}50%{fill:#a7651a}}
+@keyframes chaseB{0%{fill:#a7651a}50%{fill:#fff8d8}}
+.m1 .mq img{position:absolute; left:16px; top:16px; width:288px; height:176px; object-fit:cover; object-position:50% 58%; border-radius:6px; box-shadow:0 0 0 2.5px #15131A}
+.m1 .retired{position:absolute; right:6px; top:163px; z-index:8; width:94px; height:94px; border-radius:50%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+  background:var(--note-yellow); color:#15131A; font-family:"Permanent Marker", cursive; font-size:18px; line-height:1;
+  box-shadow:0 0 0 4px #fff, 0 0 0 6.5px #15131A, 0 10px 14px rgba(0,0,0,.45); transform:rotate(13deg)}
+.m1 .retired span{font-size:16px; color:#d92f7f; margin-top:3px}
+.m1 .h1{position:absolute; left:22px; right:16px; top:404px; z-index:6; font-family:Bungee, sans-serif; font-size:34px; line-height:1.04; color:var(--cream); text-shadow:0 3px 0 #15131A}
+.m1 .h1 em{font-style:normal; color:var(--gold); text-shadow:0 3px 0 #15131A, 0 0 18px rgba(242,179,61,.45)}
+.m1 .sub{position:absolute; left:22px; right:30px; top:484px; z-index:6; font-weight:700; font-size:15.5px; line-height:1.38; color:#c3d1e6}
+.m1 .ctas{position:absolute; left:22px; right:16px; top:540px; z-index:9; display:flex; gap:12px}
+.m1 .ctas button{height:48px; padding:0 17px; border-radius:999px; font-weight:900; font-size:15.5px; white-space:nowrap}
+.m1 .c-a{background:var(--gold); color:#15131A; box-shadow:0 0 0 2.5px #15131A, 0 5px 0 2.5px #15131A}
+.m1 .c-b{color:#8ffbf0; background:rgba(51,225,208,.08); box-shadow:inset 0 0 0 2px #33E1D0, 0 0 14px rgba(51,225,208,.45); text-shadow:0 0 8px rgba(51,225,208,.7)}
+.m1 .ledge{position:absolute; left:0; right:0; bottom:0; height:132px; z-index:7;
+  background:linear-gradient(180deg, #34303f 0, #1d1b25 6px, #15131A 36%, #0b0a0f 100%)}
+.m1 .ledge::before{content:""; position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.5) 30%, rgba(255,141,193,.5) 70%, rgba(255,255,255,0))}
+.m1 .ledge::after{content:""; position:absolute; left:10%; right:30%; top:10px; height:30px; background:radial-gradient(closest-side, rgba(255,79,163,.16), rgba(255,79,163,0))}
+.m1 .sn{position:absolute; width:76px; height:68px; padding:12px 5px 5px; display:flex; align-items:center; justify-content:center; text-align:center;
+  font-family:"Permanent Marker", cursive; font-size:15px; line-height:1.02; color:#15131A;
+  background:linear-gradient(rgba(0,0,0,.07) 0 9px, transparent 9px), var(--c);
+  box-shadow:0 8px 10px -4px rgba(0,0,0,.6)}
+.m1 .ledge .bucket{position:absolute; left:254px; top:-30px; width:92px; height:100px}
+.m1 .ledge .marker{position:absolute; left:24px; top:98px; width:132px; height:20px; transform:rotate(-5deg)}
+
+/* ================= LOOK 2 — SIDE A / SIDE B ================= */
+.m2{background:#F3E4C6; color:#2A2118}
+.m2 .grain{position:absolute; inset:0; background:
+  radial-gradient(rgba(90,60,20,.07) 1px, transparent 1.3px) 0 0/7px 7px,
+  radial-gradient(120% 70% at 50% 40%, rgba(255,250,236,.65), rgba(255,250,236,0) 70%)}
+.m2 .sb{color:#2A2118}
+.m2 .bands{position:absolute; left:-10px; right:-10px; top:400px; height:66px; z-index:1;
+  background:linear-gradient(#F26A21 0 33.3%, #F2B33D 33.3% 66.6%, #1E9E98 66.6% 100%);
+  transform:rotate(-4deg); box-shadow:0 0 0 2.5px #15131A}
+.m2 .sun{position:absolute; right:-34px; top:66px; width:120px; height:120px; border-radius:50%; z-index:0;
+  background:repeating-linear-gradient(180deg, #F2B33D 0 14px, rgba(0,0,0,0) 14px 20px); opacity:.55}
+.lblwrap{filter:drop-shadow(0 2px 1.5px rgba(0,0,0,.28))}
+.lbl{display:inline-block; font-family:Bungee, sans-serif; letter-spacing:.07em; color:#fff; white-space:nowrap;
+  background:linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,0) 45%, rgba(0,0,0,.14)), var(--tape, #15131A);
+  padding:6px 12px 5px; border-radius:3px; line-height:1;
+  text-shadow:0 -1px 0 rgba(0,0,0,.55), 0 1px 0 rgba(255,255,255,.3)}
+.lbl.notch{clip-path:polygon(0 0, 100% 0, 100% 36%, calc(100% - 5px) 50%, 100% 64%, 100% 100%, 0 100%, 0 64%, 5px 50%, 0 36%)}
+.m2 .brand{position:absolute; left:18px; top:58px; z-index:5; transform:rotate(-2deg)}
+.m2 .brand .lbl{font-size:14.5px; padding:7px 15px 6px}
+.m2 .vol{position:absolute; right:22px; top:62px; z-index:5; font-family:"Permanent Marker", cursive; font-size:18px; color:#F26A21; transform:rotate(6deg)}
+.m2 .head{position:absolute; left:16px; right:12px; top:104px; z-index:5; margin:0; font-weight:400}
+.m2 .head .tag{font-size:13px; --tape:var(--orange); transform:rotate(2deg); margin-left:4px}
+.m2 .head .ln{display:block; width:max-content; margin-top:7px}
+.m2 .head .ln .lbl{font-size:25px; padding:7px 13px 6px}
+.m2 .head .ln1{transform:rotate(-1.2deg)}
+.m2 .head .ln2{transform:rotate(1deg); margin-left:16px}
+.m2 .head .ln2 .lbl{--tape:var(--teal)}
+.m2.sideB .head .tag{--tape:var(--teal)}
+.m2.sideB .head .ln2 .lbl{--tape:var(--orange)}
+.m2 .head.print .ln .lbl{animation:print .42s cubic-bezier(.4,0,.2,1) both}
+.m2 .head.print .ln2 .lbl{animation-delay:.12s}
+.m2 .head.print .tag{animation:print .3s cubic-bezier(.4,0,.2,1) both}
+@keyframes print{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+
+.m2 .stage{position:absolute; left:0; top:226px; width:360px; height:280px; z-index:4}
+.m2 .jcard{position:absolute; left:14px; top:8px; width:236px; height:108px; transform:rotate(-4deg);
+  background:repeating-linear-gradient(180deg, rgba(0,0,0,0) 0 23px, #bfd5ea 23px 24.5px) 0 41px/100% 100% no-repeat, #FFFBF1;
+  box-shadow:0 0 0 2px #15131A, 0 10px 14px -8px rgba(0,0,0,.4); padding:9px 10px 0 30px}
+.m2 .jcard::before{content:""; position:absolute; left:0; top:0; bottom:0; width:18px; background:linear-gradient(90deg, #F26A21 0 33%, #F2B33D 33% 66%, #1E9E98 66%); border-right:2px solid #15131A}
+.m2 .jcard .jt{font-family:"Permanent Marker", cursive; font-size:29px; line-height:1.1; color:#2A2118}
+.m2 .jcard .jl{display:block; font-family:"Permanent Marker", cursive; font-size:14.5px; line-height:24.5px; color:#2A2118; white-space:nowrap}
+.m2 .jcard .jl i{font-style:normal; padding:0 3px; background:linear-gradient(rgba(0,0,0,0) 52%, rgba(242,106,33,0) 52%); transition:background .3s}
+.m2:not(.sideB) .jcard .ja i, .m2.sideB .jcard .jb i{background:linear-gradient(rgba(0,0,0,0) 50%, rgba(242,179,61,.75) 50%, rgba(242,179,61,.75) 92%, rgba(0,0,0,0) 92%)}
+.m2 .polaroid{position:absolute; right:14px; top:-6px; width:98px; padding:6px 6px 20px; background:#fff; transform:rotate(7deg); z-index:3;
+  box-shadow:0 0 0 1.5px rgba(21,19,26,.5), 0 12px 16px -8px rgba(0,0,0,.45)}
+.m2 .polaroid img{width:86px; height:92px; object-fit:cover; object-position:50% 28%}
+.m2 .polaroid::before{content:""; position:absolute; left:26px; top:-11px; width:56px; height:20px; background:rgba(255,248,226,.78); transform:rotate(-8deg); box-shadow:0 0 0 1px rgba(21,19,26,.08); z-index:2}
+.m2 .polaroid .cap{position:absolute; left:0; right:0; bottom:4px; text-align:center; font-family:"Permanent Marker", cursive; font-size:13px; color:#2A2118}
+.m2 .deck{position:absolute; left:38px; top:100px; width:282px; height:177px; perspective:900px; transform:rotate(2.5deg); z-index:4}
+.m2 .deck::after{content:""; position:absolute; left:10%; right:10%; bottom:-12px; height:20px; background:radial-gradient(closest-side, rgba(0,0,0,.35), rgba(0,0,0,0)); z-index:-1}
+.m2 .flipper{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .55s cubic-bezier(.34,1.38,.52,1)}
+.m2.sideB .flipper{transform:rotateY(180deg)}
+.m2 .face{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden}
+.m2 .face.b{transform:rotateY(180deg)}
+.m2 .face svg{width:100%; height:100%; display:block}
+.m2 .reel{transform-box:fill-box; transform-origin:center; animation:spin 5s linear infinite}
+.m2.spin .reel{animation-duration:.5s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.m2 .fliprow{position:absolute; left:0; right:0; top:512px; z-index:6; height:54px}
+.m2 .flipbtn{position:absolute; left:50%; top:0; transform:translateX(-50%); height:52px; padding:0 18px 0 8px; display:flex; align-items:center; gap:10px;
+  background:#15131A; color:#FFF4E0; border-radius:14px; font-family:Bungee, sans-serif; font-size:15px; letter-spacing:.03em; white-space:nowrap;
+  box-shadow:0 5px 0 #F26A21, 0 5px 0 2.5px #15131A; transition:transform .12s, box-shadow .12s}
+.m2 .flipbtn .ic{width:38px; height:38px; border-radius:10px; background:#F26A21; display:grid; place-items:center; box-shadow:inset 0 0 0 2px #15131A}
+.m2 .flipbtn:active{transform:translateX(-50%) translateY(3px); box-shadow:0 2px 0 #F26A21, 0 2px 0 2.5px #15131A}
+.m2 .flipbtn.nudge{animation:nudge 3.2s ease-in-out 1.2s infinite}
+@keyframes nudge{0%,80%,100%{transform:translateX(-50%) rotate(0)}84%{transform:translateX(-50%) rotate(-3deg)}88%{transform:translateX(-50%) rotate(3deg)}92%{transform:translateX(-50%) rotate(-2deg)}96%{transform:translateX(-50%) rotate(0)}}
+.m2 .tryit{position:absolute; left:10px; top:2px; font-family:"Permanent Marker", cursive; font-size:15px; line-height:1; color:#F26A21; transform:rotate(-10deg); text-align:center}
+.m2 .tryit svg{display:block; margin:2px 0 0 26px}
+.m2 .counter{position:absolute; left:0; right:0; top:584px; z-index:6; display:flex; justify-content:center}
+.m2 .cbox{display:flex; align-items:center; gap:5px; padding:6px 10px; border-radius:10px; background:#2B2730; box-shadow:0 0 0 2.5px #15131A, 0 4px 0 2.5px #15131A}
+.m2 .cbox .cl{font-family:Bungee, sans-serif; font-size:8.5px; line-height:1.05; color:#F2B33D; letter-spacing:.05em; margin-right:4px}
+.m2 .drum{display:inline-grid; place-items:center; min-width:24px; height:28px; padding:0 4px; border-radius:4px; font-family:Bungee, sans-serif; font-size:16px; color:#fff;
+  background:linear-gradient(180deg, #000 0%, #3b3644 30%, #4a4554 50%, #3b3644 70%, #000 100%); box-shadow:inset 0 0 0 1px #000}
+.m2 .unit{font-weight:900; font-size:11px; color:#e9dfcf; text-transform:uppercase; letter-spacing:.04em}
+.m2 .arr{color:#F26A21; font-weight:900; font-size:14px; margin:0 2px}
+.m2.roll .drum{animation:roll .45s cubic-bezier(.3,1.4,.5,1)}
+@keyframes roll{0%{transform:translateY(0)}35%{transform:translateY(-6px) scaleY(.7)}100%{transform:none}}
+.m2 .ccap{position:absolute; left:0; right:0; top:635px; z-index:6; text-align:center; font-weight:800; font-size:13px; color:#6b5638}
+.m2 .ctas{position:absolute; left:16px; right:16px; top:666px; z-index:6; display:flex; gap:10px; justify-content:center}
+.m2 .ctas button{height:50px; padding:0 13px; border-radius:6px; font-family:Bungee, sans-serif; font-size:12.5px; letter-spacing:.05em; color:#fff; white-space:nowrap;
+  background:linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,0) 45%, rgba(0,0,0,.14)), var(--tape);
+  text-shadow:0 -1px 0 rgba(0,0,0,.5); box-shadow:0 0 0 2.5px #15131A, 0 4px 0 2.5px #15131A}
+.m2 .ctas .c-a{--tape:var(--orange)}
+.m2 .ctas .c-b{--tape:var(--teal)}
+.m2 .homebar{background:rgba(21,19,26,.75)}
+
+/* ================= LOOK 3 — REAL CROWD ================= */
+.m3{background:#07070c; color:#fff}
+.m3 .bgph{position:absolute; left:-60px; top:-60px; width:480px; height:860px; object-fit:cover; object-position:40% 50%; filter:blur(26px) brightness(.42) saturate(1.35)}
+.m3 .ph{position:absolute; left:0; top:0; width:360px; height:560px; object-fit:cover; object-position:36% 50%;
+  -webkit-mask-image:linear-gradient(#000 66%, rgba(0,0,0,0) 100%); mask-image:linear-gradient(#000 66%, rgba(0,0,0,0) 100%)}
+.m3 .shade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(6,6,12,.62) 0, rgba(6,6,12,0) 17%, rgba(6,6,12,0) 50%, rgba(6,6,12,.62) 66%, rgba(6,6,12,.92) 80%, #07070c 100%)}
+.m3 .sb{color:#fff}
+.m3 .nav{position:absolute; left:22px; right:18px; top:54px; z-index:20; display:flex; justify-content:space-between; align-items:center}
+.m3 .nav .wm{font-weight:900; font-size:13px; letter-spacing:.2em; text-transform:uppercase; text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.m3 .nav .wm b{display:inline-block; width:8px; height:8px; border-radius:50%; background:#FF4FA3; margin-right:8px; box-shadow:0 0 10px #FF4FA3; vertical-align:1px}
+.m3 .nav .menu{width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:rgba(255,255,255,.14); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4);
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px)}
+.m3 .stk{position:absolute; z-index:15; filter:drop-shadow(0 6px 8px rgba(0,0,0,.5))}
+.m3 .s-since{left:12px; top:104px; width:104px; height:104px; transform:rotate(-13deg)}
+.m3 .s-social{right:8px; top:136px; width:158px; height:76px; transform:rotate(7deg)}
+.m3 .copy{position:absolute; left:22px; right:20px; bottom:30px; z-index:18}
+.m3 .h1{font-weight:900; font-size:70px; line-height:.88; letter-spacing:-.04em; text-shadow:0 6px 24px rgba(0,0,0,.55)}
+.m3 .h1 .stkh{display:inline-block; margin-top:12px; margin-left:-4px; font-size:47px; letter-spacing:-.025em; line-height:1; padding:4px 16px 10px;
+  background:#FF4FA3; color:#fff; border-radius:16px; border:4.5px solid #fff; transform:rotate(-4deg);
+  box-shadow:0 0 0 1.5px rgba(0,0,0,.25), 0 12px 22px rgba(0,0,0,.5); text-shadow:0 2px 0 rgba(0,0,0,.18)}
+.m3 .attr{margin-top:16px; font-weight:700; font-size:14.5px; line-height:1.38; color:rgba(255,255,255,.82); max-width:290px}
+.m3 .ctas{display:flex; gap:10px; margin-top:20px}
+.m3 .ctas button{height:50px; padding:0 17px; border-radius:999px; font-weight:900; font-size:15.5px; white-space:nowrap}
+.m3 .c-a{background:#fff; color:#111}
+.m3 .c-b{background:rgba(255,255,255,.12); color:#fff; box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.65); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px)}
+
+/* ---------- desktop ---------- */
+@media (min-width: 900px){
+  .hero{padding-top:92px}
+  .hero .sub{font-size:20px; max-width:none}
+  .looks{grid-template-columns:repeat(3, 1fr); gap:44px; padding:56px 36px 40px; align-items:start}
+  .look{width:100%; max-width:380px}
+  .look-head{min-height:118px; align-items:flex-start}
+  .phone:hover{transform:translateY(-6px)}
+  .cta-row{flex-direction:row; justify-content:center}
+  .btn{flex:1}
+  .closer{margin-top:72px}
+  .big-note{font-size:24px; padding:36px 40px 26px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+}
+.vh{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+</style>
+<style id="tour-next-css">
+.tour-next{position:relative;z-index:5;padding:34px 18px 30px;background:#0E1A2B;font-family:Nunito,system-ui,-apple-system,sans-serif;text-align:center;color:#FFF4E0}
+.tour-next .tn-card{max-width:560px;margin:0 auto;background:#FFE36E;color:#15131A;border:3px solid #15131A;border-radius:20px;box-shadow:0 7px 0 #15131A;padding:20px 18px 18px;transform:rotate(-.8deg)}
+.tour-next .tn-dots{display:flex;justify-content:center;gap:7px;margin-bottom:10px}
+.tour-next .tn-dots i{width:12px;height:12px;border-radius:50%;border:2px solid #15131A;background:transparent;display:block}
+.tour-next .tn-dots i.on{background:#15131A}
+.tour-next .tn-kick{font-weight:800;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 4px}
+.tour-next .tn-title{font-family:Bungee,"Arial Black",sans-serif;font-size:22px;line-height:1.1;margin:0 0 14px}
+.tour-next .tn-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:12px 22px;background:#FF4FA3;color:#fff;font-family:Bungee,"Arial Black",sans-serif;font-size:18px;text-decoration:none;border:3px solid #15131A;border-radius:999px;box-shadow:0 5px 0 #15131A}
+.tour-next .tn-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #15131A}
+.tour-next .tn-all{display:inline-block;margin-top:14px;font-weight:800;font-size:15px;color:#15131A;text-decoration:underline;text-underline-offset:3px;min-height:44px;line-height:44px}
+</style></head>
+<body>
+
+<a class="home-chip" href="index.html">&larr; All gifts</a>
+
+<header class="hero">
+  <p class="eyebrow">Bruce, pick your look</p>
+  <h1>Same Bruce. <span class="l2">Three different rooms.</span></h1>
+  <p class="sub">Each one is the first thing people would see. <b>Text Jimmy 1, 2 or 3.</b> Or mix them.</p>
+</header>
+
+<main class="looks">
+
+  <!-- ========== LOOK 1 ========== -->
+  <article class="look" data-n="1" style="--accent:var(--neon-pink)">
+    <div class="look-head">
+      <span class="badge" aria-hidden="true">1</span>
+      <div>
+        <h2>The Piano Bar</h2>
+        <p class="vibe">A cartoon night at your piano bar. Neon, string lights, sticky notes.</p>
+      </div>
+    </div>
+    <div class="phone" role="group" aria-label="Preview of look 1, The Piano Bar">
+      <div class="screen">
+        <div class="mini m1">
+          <div class="planks"></div>
+          <svg class="decor" viewBox="0 0 360 740" aria-hidden="true">
+            <defs>
+              <radialGradient id="l1-pet" cx="0" cy="0" r="46" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#FF4FA3"/><stop offset=".38" stop-color="#FF8DC1"/><stop offset=".62" stop-color="#FFF4E0"/><stop offset="1" stop-color="#FFF4E0"/>
+              </radialGradient>
+              <g id="l1-frond">
+                <path d="M6 -2.4Q18.9 12.3 35.4 19.9Q28.5 3.1 18 -6.4Z M6 -2.4Q14.2 -22.4 28 -34.1Q25.8 -16.1 18 -6.4Z M20 -7Q34.9 11.7 53.7 23.5Q44.6 3.3 31.7 -10.1Z M20 -7Q32.1 -29.8 49 -44.1Q42.8 -22.8 31.7 -10.1Z M33.9 -10.6Q49.7 11.3 69.4 26.6Q59.4 3.7 45.4 -12.7Z M33.9 -10.6Q49.7 -34.5 69.5 -49.8Q59.4 -27 45.4 -12.7Z M47.9 -13.1Q63.6 11.3 83.4 29.5Q73.3 4.5 59.1 -14.3Z M47.9 -13.1Q67.1 -36.9 89.2 -52.2Q75.7 -28.9 59.1 -14.3Z M62 -14.5Q76.9 11.7 96.1 32.1Q86.6 5.8 72.8 -14.9Z M62 -14.5Q83.9 -37.3 108.1 -51.6Q91.5 -28.9 72.8 -14.9Z M76.1 -14.9Q89.7 12.5 107.8 34.6Q99.3 7.4 86.4 -14.5Z M76.1 -14.9Q100.2 -35.9 125.8 -48.6Q106.8 -27.3 86.4 -14.5Z M90.2 -14.2Q102.2 13.8 118.8 36.8Q111.6 9.3 100 -13.1Z M90.2 -14.2Q115.8 -33 142.1 -43.5Q121.4 -24.2 100 -13.1Z M104.3 -12.4Q114.5 15.4 129.4 38.7Q123.7 11.7 113.6 -10.7Z M104.3 -12.4Q130.6 -28.6 156.9 -36.8Q135.2 -19.8 113.6 -10.7Z M118.4 -9.6Q126.8 17.5 139.8 40.4Q135.7 14.4 127.1 -7.3Z M118.4 -9.6Q144.6 -23 170.2 -28.9Q148.4 -14.3 127.1 -7.3Z M132.6 -5.6Q139.1 20.1 150.1 41.9Q147.7 17.5 140.7 -2.9Z M132.6 -5.6Q157.9 -16.4 182 -20Q160.8 -7.9 140.7 -2.9Z M146.7 -0.6Q151.4 23.1 160.7 43.2Q159.7 21 154.2 2.5Z M146.7 -0.6Q170.3 -8.8 192.4 -10.4Q172.5 -0.6 154.2 2.5Z M160.9 5.5Q164 26.5 171.6 44.3Q171.9 24.9 167.8 8.8Z M160.9 5.5Q182 -0.5 201.4 -0.3Q183.6 7.4 167.8 8.8Z M175 12.7Q176.7 30.3 182.8 45Q184.2 29.2 181.3 16.2Z M175 12.7Q193 8.6 208.8 10.2Q194 16.1 181.3 16.2Z M189.1 20.9Q189.7 34.1 194.5 44.7Q196.8 33.3 194.9 24.5Z M189.1 20.9Q202.7 18.3 214.1 20.9Q203.3 25.4 194.9 24.5Z M1.9 4.6L11.6 0.8L21.3 -2.5L31 -5.3L40.8 -7.6L50.5 -9.3L60.3 -10.6L70.1 -11.2L79.9 -11.4L89.7 -11L99.6 -10.1L109.5 -8.7L119.4 -6.7L129.3 -4.2L139.3 -1.1L149.3 2.5L159.3 6.6L169.3 11.3L179.4 16.5L189.5 22.3L199.6 28.7L200.4 27.3L190.5 20.6L180.6 14.4L170.7 8.8L160.7 3.6L150.7 -1L140.7 -5L130.7 -8.5L120.6 -11.5L110.5 -14L100.4 -15.9L90.3 -17.2L80.1 -18L69.9 -18.3L59.7 -18L49.5 -17.2L39.2 -15.8L29 -13.8L18.7 -11.3L8.4 -8.3L-1.9 -4.6Z" fill="#15131A" stroke="#15131A" stroke-width="6" stroke-linejoin="round"/>
+                <path d="M6 -2.4Q18.9 12.3 35.4 19.9Q28.5 3.1 18 -6.4Z M6 -2.4Q14.2 -22.4 28 -34.1Q25.8 -16.1 18 -6.4Z M20 -7Q34.9 11.7 53.7 23.5Q44.6 3.3 31.7 -10.1Z M20 -7Q32.1 -29.8 49 -44.1Q42.8 -22.8 31.7 -10.1Z M33.9 -10.6Q49.7 11.3 69.4 26.6Q59.4 3.7 45.4 -12.7Z M33.9 -10.6Q49.7 -34.5 69.5 -49.8Q59.4 -27 45.4 -12.7Z M47.9 -13.1Q63.6 11.3 83.4 29.5Q73.3 4.5 59.1 -14.3Z M47.9 -13.1Q67.1 -36.9 89.2 -52.2Q75.7 -28.9 59.1 -14.3Z M62 -14.5Q76.9 11.7 96.1 32.1Q86.6 5.8 72.8 -14.9Z M62 -14.5Q83.9 -37.3 108.1 -51.6Q91.5 -28.9 72.8 -14.9Z M76.1 -14.9Q89.7 12.5 107.8 34.6Q99.3 7.4 86.4 -14.5Z M76.1 -14.9Q100.2 -35.9 125.8 -48.6Q106.8 -27.3 86.4 -14.5Z M90.2 -14.2Q102.2 13.8 118.8 36.8Q111.6 9.3 100 -13.1Z M90.2 -14.2Q115.8 -33 142.1 -43.5Q121.4 -24.2 100 -13.1Z M104.3 -12.4Q114.5 15.4 129.4 38.7Q123.7 11.7 113.6 -10.7Z M104.3 -12.4Q130.6 -28.6 156.9 -36.8Q135.2 -19.8 113.6 -10.7Z M118.4 -9.6Q126.8 17.5 139.8 40.4Q135.7 14.4 127.1 -7.3Z M118.4 -9.6Q144.6 -23 170.2 -28.9Q148.4 -14.3 127.1 -7.3Z M132.6 -5.6Q139.1 20.1 150.1 41.9Q147.7 17.5 140.7 -2.9Z M132.6 -5.6Q157.9 -16.4 182 -20Q160.8 -7.9 140.7 -2.9Z M146.7 -0.6Q151.4 23.1 160.7 43.2Q159.7 21 154.2 2.5Z M146.7 -0.6Q170.3 -8.8 192.4 -10.4Q172.5 -0.6 154.2 2.5Z M160.9 5.5Q164 26.5 171.6 44.3Q171.9 24.9 167.8 8.8Z M160.9 5.5Q182 -0.5 201.4 -0.3Q183.6 7.4 167.8 8.8Z M175 12.7Q176.7 30.3 182.8 45Q184.2 29.2 181.3 16.2Z M175 12.7Q193 8.6 208.8 10.2Q194 16.1 181.3 16.2Z M189.1 20.9Q189.7 34.1 194.5 44.7Q196.8 33.3 194.9 24.5Z M189.1 20.9Q202.7 18.3 214.1 20.9Q203.3 25.4 194.9 24.5Z M1.9 4.6L11.6 0.8L21.3 -2.5L31 -5.3L40.8 -7.6L50.5 -9.3L60.3 -10.6L70.1 -11.2L79.9 -11.4L89.7 -11L99.6 -10.1L109.5 -8.7L119.4 -6.7L129.3 -4.2L139.3 -1.1L149.3 2.5L159.3 6.6L169.3 11.3L179.4 16.5L189.5 22.3L199.6 28.7L200.4 27.3L190.5 20.6L180.6 14.4L170.7 8.8L160.7 3.6L150.7 -1L140.7 -5L130.7 -8.5L120.6 -11.5L110.5 -14L100.4 -15.9L90.3 -17.2L80.1 -18L69.9 -18.3L59.7 -18L49.5 -17.2L39.2 -15.8L29 -13.8L18.7 -11.3L8.4 -8.3L-1.9 -4.6Z" fill="currentColor"/>
+                <path d="M12 -4.4L30.7 15 M12 -4.4L24.8 -28.2 M25.8 -8.5L48.1 17.1 M25.8 -8.5L44.4 -37 M39.7 -11.6L63.5 19 M39.7 -11.6L63.5 -42.2 M53.5 -13.7L77.4 20.9 M53.5 -13.7L82.1 -44.5 M67.4 -14.7L90.4 22.8 M67.4 -14.7L99.9 -44.2 M81.2 -14.7L102.5 24.7 M81.2 -14.7L116.8 -41.8 M95.1 -13.6L114.1 26.7 M95.1 -13.6L132.7 -37.5 M108.9 -11.5L125.3 28.6 M108.9 -11.5L147.3 -31.8 M122.8 -8.4L136.4 30.6 M122.8 -8.4L160.7 -24.8 M136.6 -4.3L147.4 32.6 M136.6 -4.3L173 -16.8 M150.5 0.9L158.7 34.7 M150.5 0.9L184 -8.1 M164.3 7.2L170.1 36.8 M164.3 7.2L194 1.2 M178.2 14.4L181.9 38.9 M178.2 14.4L202.7 11 M192 22.7L194 40.3 M192 22.7L209.7 21.3" fill="none" stroke="#15131A" stroke-opacity=".28" stroke-width="1.3" stroke-linecap="round"/>
+              </g>
+              <path id="l1-petal" d="M0 0C-22-8-28-38-11-46C-4-50 4-50 11-46C28-38 22-8 0 0Z"/>
+              <g id="l1-hib">
+                <g fill="url(#l1-pet)" stroke="#15131A" stroke-width="2.6" stroke-linejoin="round">
+                  <use href="#l1-petal"/><use href="#l1-petal" transform="rotate(72)"/><use href="#l1-petal" transform="rotate(144)"/><use href="#l1-petal" transform="rotate(216)"/><use href="#l1-petal" transform="rotate(288)"/>
+                </g>
+                <path d="M0 0Q8-18 18-34" fill="none" stroke="#15131A" stroke-width="5.5" stroke-linecap="round"/>
+                <path d="M0 0Q8-18 18-34" fill="none" stroke="#FF4FA3" stroke-width="2.8" stroke-linecap="round"/>
+                <circle cx="19" cy="-36" r="4.4" fill="#FFE36E" stroke="#15131A" stroke-width="2"/>
+                <circle cx="12" cy="-32" r="2.8" fill="#FFE36E" stroke="#15131A" stroke-width="1.6"/>
+              </g>
+            </defs>
+            <!-- left palms -->
+            <g color="#23885a"><use href="#l1-frond" transform="translate(-30 112) rotate(-8) scale(.5)"/></g>
+            <g color="#2FA36B"><use href="#l1-frond" transform="translate(-22 30) rotate(52) scale(.56)"/></g>
+            <!-- right palms -->
+            <g transform="translate(360 0) scale(-1 1)">
+              <g color="#23885a"><use href="#l1-frond" transform="translate(-30 120) rotate(-10) scale(.48)"/></g>
+              <g color="#2FA36B"><use href="#l1-frond" transform="translate(-22 36) rotate(55) scale(.52)"/></g>
+            </g>
+          </svg>
+          <svg class="lights" viewBox="0 0 360 76" aria-hidden="true">
+            <defs><filter id="l1-blur" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="3.2"/></filter></defs>
+            <path d="M-8 4Q86 60 180 4 M180 4Q274 60 368 4" fill="none" stroke="#15131A" stroke-width="2.4"/>
+            <g class="bulb" style="--c:#FFD66B"><circle cx="14.6" cy="25.8" r="9" fill="#FFD66B" opacity=".45" filter="url(#l1-blur)"/><rect x="12" y="14.8" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="14.6" cy="25.8" rx="4.4" ry="5.8" fill="#FFD66B" stroke="#15131A" stroke-width="1.6"/><ellipse cx="13.2" cy="23.8" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FF6FB5"><circle cx="44.6" cy="36.6" r="9" fill="#FF6FB5" opacity=".45" filter="url(#l1-blur)"/><rect x="42" y="25.6" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="44.6" cy="36.6" rx="4.4" ry="5.8" fill="#FF6FB5" stroke="#15131A" stroke-width="1.6"/><ellipse cx="43.2" cy="34.6" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#5BF0E0"><circle cx="74.7" cy="41.6" r="9" fill="#5BF0E0" opacity=".45" filter="url(#l1-blur)"/><rect x="72.1" y="30.6" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="74.7" cy="41.6" rx="4.4" ry="5.8" fill="#5BF0E0" stroke="#15131A" stroke-width="1.6"/><ellipse cx="73.3" cy="39.6" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FFF1C9"><circle cx="104.8" cy="40.9" r="9" fill="#FFF1C9" opacity=".45" filter="url(#l1-blur)"/><rect x="102.2" y="29.9" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="104.8" cy="40.9" rx="4.4" ry="5.8" fill="#FFF1C9" stroke="#15131A" stroke-width="1.6"/><ellipse cx="103.4" cy="38.9" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FFD66B"><circle cx="134.9" cy="34.4" r="9" fill="#FFD66B" opacity=".45" filter="url(#l1-blur)"/><rect x="132.3" y="23.4" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="134.9" cy="34.4" rx="4.4" ry="5.8" fill="#FFD66B" stroke="#15131A" stroke-width="1.6"/><ellipse cx="133.5" cy="32.4" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FF6FB5"><circle cx="165" cy="22.2" r="9" fill="#FF6FB5" opacity=".45" filter="url(#l1-blur)"/><rect x="162.4" y="11.2" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="165" cy="22.2" rx="4.4" ry="5.8" fill="#FF6FB5" stroke="#15131A" stroke-width="1.6"/><ellipse cx="163.6" cy="20.2" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#5BF0E0"><circle cx="202.6" cy="25.8" r="9" fill="#5BF0E0" opacity=".45" filter="url(#l1-blur)"/><rect x="200" y="14.8" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="202.6" cy="25.8" rx="4.4" ry="5.8" fill="#5BF0E0" stroke="#15131A" stroke-width="1.6"/><ellipse cx="201.2" cy="23.8" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FFF1C9"><circle cx="232.6" cy="36.6" r="9" fill="#FFF1C9" opacity=".45" filter="url(#l1-blur)"/><rect x="230" y="25.6" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="232.6" cy="36.6" rx="4.4" ry="5.8" fill="#FFF1C9" stroke="#15131A" stroke-width="1.6"/><ellipse cx="231.2" cy="34.6" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FFD66B"><circle cx="262.7" cy="41.6" r="9" fill="#FFD66B" opacity=".45" filter="url(#l1-blur)"/><rect x="260.1" y="30.6" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="262.7" cy="41.6" rx="4.4" ry="5.8" fill="#FFD66B" stroke="#15131A" stroke-width="1.6"/><ellipse cx="261.3" cy="39.6" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FF6FB5"><circle cx="292.8" cy="40.9" r="9" fill="#FF6FB5" opacity=".45" filter="url(#l1-blur)"/><rect x="290.2" y="29.9" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="292.8" cy="40.9" rx="4.4" ry="5.8" fill="#FF6FB5" stroke="#15131A" stroke-width="1.6"/><ellipse cx="291.4" cy="38.9" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#5BF0E0"><circle cx="322.9" cy="34.4" r="9" fill="#5BF0E0" opacity=".45" filter="url(#l1-blur)"/><rect x="320.3" y="23.4" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="322.9" cy="34.4" rx="4.4" ry="5.8" fill="#5BF0E0" stroke="#15131A" stroke-width="1.6"/><ellipse cx="321.5" cy="32.4" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g><g class="bulb" style="--c:#FFF1C9"><circle cx="353" cy="22.2" r="9" fill="#FFF1C9" opacity=".45" filter="url(#l1-blur)"/><rect x="350.4" y="11.2" width="5.2" height="6" rx="1.2" fill="#15131A"/><ellipse cx="353" cy="22.2" rx="4.4" ry="5.8" fill="#FFF1C9" stroke="#15131A" stroke-width="1.6"/><ellipse cx="351.6" cy="20.2" rx="1.3" ry="2" fill="#fff" opacity=".8"/></g>
+          </svg>
+          <div class="sb"><span>9:41</span><svg width="66" height="13" viewBox="0 0 66 13" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="5" y="5.5" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="9.5" rx="1"/><rect x="15" y=".5" width="3" height="12" rx="1"/><path d="M31 12.2l2.1-2.4a3.2 3.2 0 0 0-4.2 0z"/><path d="M26.6 7.3l1.4 1.6a4.6 4.6 0 0 1 6 0l1.4-1.6a6.8 6.8 0 0 0-8.8 0z"/><path d="M24.4 4.8l1.4 1.6a8 8 0 0 1 10.4 0l1.4-1.6a10.2 10.2 0 0 0-13.2 0z"/><rect x="42" y="1" width="21" height="11" rx="3.2" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="44" y="3" width="15.5" height="7" rx="1.6"/><rect x="64" y="4.6" width="1.6" height="4" rx=".8" opacity=".5"/></svg></div>
+          <div class="halo"></div>
+          <div class="wm" aria-label="Bruce the Piano Man">
+            <span class="wm-b">BR<span class="fl">U</span>CE</span>
+            <span class="wm-s">the Piano Man</span>
+          </div>
+          <div class="mq">
+            <svg viewBox="0 0 320 208" width="320" height="208" aria-hidden="true"><circle class="ba" cx="8" cy="8" r="3.7"/><circle class="bb" cx="24" cy="8" r="3.7"/><circle class="ba" cx="40" cy="8" r="3.7"/><circle class="bb" cx="56" cy="8" r="3.7"/><circle class="ba" cx="72" cy="8" r="3.7"/><circle class="bb" cx="88" cy="8" r="3.7"/><circle class="ba" cx="104" cy="8" r="3.7"/><circle class="bb" cx="120" cy="8" r="3.7"/><circle class="ba" cx="136" cy="8" r="3.7"/><circle class="bb" cx="152" cy="8" r="3.7"/><circle class="ba" cx="168" cy="8" r="3.7"/><circle class="bb" cx="184" cy="8" r="3.7"/><circle class="ba" cx="200" cy="8" r="3.7"/><circle class="bb" cx="216" cy="8" r="3.7"/><circle class="ba" cx="232" cy="8" r="3.7"/><circle class="bb" cx="248" cy="8" r="3.7"/><circle class="ba" cx="264" cy="8" r="3.7"/><circle class="bb" cx="280" cy="8" r="3.7"/><circle class="ba" cx="296" cy="8" r="3.7"/><circle class="bb" cx="312" cy="8" r="3.7"/><circle class="ba" cx="312" cy="24" r="3.7"/><circle class="bb" cx="312" cy="40" r="3.7"/><circle class="ba" cx="312" cy="56" r="3.7"/><circle class="bb" cx="312" cy="72" r="3.7"/><circle class="ba" cx="312" cy="88" r="3.7"/><circle class="bb" cx="312" cy="104" r="3.7"/><circle class="ba" cx="312" cy="120" r="3.7"/><circle class="bb" cx="312" cy="136" r="3.7"/><circle class="ba" cx="312" cy="152" r="3.7"/><circle class="bb" cx="312" cy="168" r="3.7"/><circle class="ba" cx="312" cy="184" r="3.7"/><circle class="bb" cx="312" cy="200" r="3.7"/><circle class="ba" cx="296" cy="200" r="3.7"/><circle class="bb" cx="280" cy="200" r="3.7"/><circle class="ba" cx="264" cy="200" r="3.7"/><circle class="bb" cx="248" cy="200" r="3.7"/><circle class="ba" cx="232" cy="200" r="3.7"/><circle class="bb" cx="216" cy="200" r="3.7"/><circle class="ba" cx="200" cy="200" r="3.7"/><circle class="bb" cx="184" cy="200" r="3.7"/><circle class="ba" cx="168" cy="200" r="3.7"/><circle class="bb" cx="152" cy="200" r="3.7"/><circle class="ba" cx="136" cy="200" r="3.7"/><circle class="bb" cx="120" cy="200" r="3.7"/><circle class="ba" cx="104" cy="200" r="3.7"/><circle class="bb" cx="88" cy="200" r="3.7"/><circle class="ba" cx="72" cy="200" r="3.7"/><circle class="bb" cx="56" cy="200" r="3.7"/><circle class="ba" cx="40" cy="200" r="3.7"/><circle class="bb" cx="24" cy="200" r="3.7"/><circle class="ba" cx="8" cy="200" r="3.7"/><circle class="bb" cx="8" cy="184" r="3.7"/><circle class="ba" cx="8" cy="168" r="3.7"/><circle class="bb" cx="8" cy="152" r="3.7"/><circle class="ba" cx="8" cy="136" r="3.7"/><circle class="bb" cx="8" cy="120" r="3.7"/><circle class="ba" cx="8" cy="104" r="3.7"/><circle class="bb" cx="8" cy="88" r="3.7"/><circle class="ba" cx="8" cy="72" r="3.7"/><circle class="bb" cx="8" cy="56" r="3.7"/><circle class="ba" cx="8" cy="40" r="3.7"/><circle class="bb" cx="8" cy="24" r="3.7"/></svg>
+            <img src="img/bruce-wig-scene.jpg" alt="Bruce in a curly blonde wig doing rock horns at the piano, crowd laughing">
+          </div>
+          <svg viewBox="-50 -50 100 100" width="74" height="74" style="position:absolute;left:2px;top:318px;z-index:9" aria-hidden="true"><use href="#l1-hib" transform="rotate(-20)"/></svg>
+          <div class="retired">Say<span>social!</span></div>
+          <p class="h1">Bruce plays<br><em>the room.</em></p>
+          <p class="sub">Sticky-note requests. Big sing-alongs. A wig, if you're lucky.</p>
+          <div class="ctas"><button class="c-a" data-preview>Get a Bruce Alert</button><button class="c-b" data-preview>Book Bruce</button></div>
+          <div class="ledge" aria-hidden="true">
+            <div class="sn" style="--c:var(--note-yellow);left:12px;top:24px;transform:rotate(-7deg)">Piano Man</div>
+            <div class="sn" style="--c:var(--note-pink);left:92px;top:14px;transform:rotate(5deg)">Sweet Caroline</div>
+            <div class="sn" style="--c:var(--note-blue);left:172px;top:28px;transform:rotate(-3deg)">Hail Purdue</div>
+            <svg class="bucket" viewBox="0 0 92 100">
+              <defs><clipPath id="l1-bk"><path d="M9 30H83L75 93Q46 100 17 93Z"/></clipPath></defs>
+              <path d="M12 33Q46-6 80 33" fill="none" stroke="#15131A" stroke-width="5"/>
+              <path d="M12 33Q46-6 80 33" fill="none" stroke="#c9d1da" stroke-width="2"/>
+              <ellipse cx="46" cy="30" rx="37" ry="6.5" fill="#2a2833"/>
+              <g transform="rotate(-18 52 20)"><rect x="36" y="10" width="34" height="18" rx="2" fill="#9ad6a6" stroke="#15131A" stroke-width="2"/><circle cx="53" cy="19" r="4" fill="none" stroke="#2f7a45" stroke-width="1.6"/></g>
+              <g transform="rotate(10 34 22)"><rect x="22" y="14" width="28" height="15" rx="2" fill="#FF8DC1" stroke="#15131A" stroke-width="2"/></g>
+              <g clip-path="url(#l1-bk)">
+                <rect x="0" y="28" width="92" height="40" fill="#a6e1f7"/>
+                <circle cx="68" cy="44" r="7" fill="#FFE36E"/>
+                <path d="M0 62Q23 57 46 62T92 62V72H0Z" fill="#2BB3C9"/>
+                <rect x="0" y="70" width="92" height="30" fill="#F5E6C8"/>
+                <path d="M24 86Q26 66 22 52" fill="none" stroke="#8a5a32" stroke-width="3" stroke-linecap="round"/>
+                <path d="M22 52Q12 46 6 52M22 52Q32 44 38 50M22 52Q18 42 10 42M22 52Q28 40 36 40" fill="none" stroke="#2FA36B" stroke-width="3.2" stroke-linecap="round"/>
+                <path d="M23 70Q40 80 58 70" fill="none" stroke="#FF4FA3" stroke-width="2.4"/>
+                <path d="M58 86Q60 70 64 60" fill="none" stroke="#8a5a32" stroke-width="2.6" stroke-linecap="round"/>
+                <path d="M64 60Q56 54 52 58M64 60Q72 54 78 58M64 60Q62 52 56 50" fill="none" stroke="#2FA36B" stroke-width="2.8" stroke-linecap="round"/>
+              </g>
+              <path d="M9 30H83L75 93Q46 100 17 93Z" fill="none" stroke="#15131A" stroke-width="3" stroke-linejoin="round"/>
+              <ellipse cx="46" cy="30" rx="37" ry="6.5" fill="none" stroke="#15131A" stroke-width="5"/>
+              <ellipse cx="46" cy="30" rx="37" ry="6.5" fill="none" stroke="#d9dfe6" stroke-width="2.2"/>
+            </svg>
+            <svg class="marker" viewBox="0 0 132 20">
+              <rect x="2" y="3" width="86" height="14" rx="6" fill="#ece8f2" stroke="#15131A" stroke-width="2"/>
+              <rect x="30" y="3" width="22" height="14" fill="#FF4FA3" stroke="#15131A" stroke-width="2"/>
+              <path d="M88 4H112Q122 4 128 10Q122 16 112 16H88Z" fill="#2a2833" stroke="#15131A" stroke-width="2"/>
+              <path d="M95 6H110" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+            </svg>
+          </div>
+          <span class="island"></span><span class="homebar"></span>
+        </div>
+      </div>
+    </div>
+    <button class="note" data-n="1" aria-pressed="false" aria-label="Pick look 1"><span class="nl">Text Jimmy:</span><span class="nn">1</span><span class="nk">&#10003; picked!</span></button>
+  </article>
+
+  <!-- ========== LOOK 2 ========== -->
+  <article class="look" data-n="2" style="--accent:var(--orange)">
+    <div class="look-head">
+      <span class="badge" aria-hidden="true">2</span>
+      <div>
+        <h2>Side A / Side B</h2>
+        <p class="vibe">Your story as a mixtape. Side A is you at the piano. Side B is the whole band.</p>
+      </div>
+    </div>
+    <div class="phone" role="group" aria-label="Preview of look 2, Side A / Side B">
+      <div class="screen">
+        <div class="mini m2">
+          <div class="grain"></div>
+          <div class="sun"></div>
+          <div class="bands"></div>
+          <div class="sb"><span>9:41</span><svg width="66" height="13" viewBox="0 0 66 13" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="5" y="5.5" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="9.5" rx="1"/><rect x="15" y=".5" width="3" height="12" rx="1"/><path d="M31 12.2l2.1-2.4a3.2 3.2 0 0 0-4.2 0z"/><path d="M26.6 7.3l1.4 1.6a4.6 4.6 0 0 1 6 0l1.4-1.6a6.8 6.8 0 0 0-8.8 0z"/><path d="M24.4 4.8l1.4 1.6a8 8 0 0 1 10.4 0l1.4-1.6a10.2 10.2 0 0 0-13.2 0z"/><rect x="42" y="1" width="21" height="11" rx="3.2" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="44" y="3" width="15.5" height="7" rx="1.6"/><rect x="64" y="4.6" width="1.6" height="4" rx=".8" opacity=".5"/></svg></div>
+          <div class="brand lblwrap"><span class="lbl notch">Bruce the Piano Man</span></div>
+          <p class="head lblwrap" aria-live="polite">
+            <span class="lbl notch tag">Side A</span><span class="vh">: </span>
+            <span class="ln ln1"><span class="lbl">Just Bruce</span></span>
+            <span class="ln ln2"><span class="lbl">and a piano.</span></span>
+          </p>
+          <div class="stage">
+            <div class="jcard">
+              <div class="jt">BRUCE &mdash;</div>
+              <span class="jl ja"><i>SIDE A: THE PIANO BAR</i></span>
+              <span class="jl jb"><i>SIDE B: THE FULL BAND</i></span>
+            </div>
+            <div class="polaroid"><img src="img/bruce-smile.jpg" alt="Bruce smiling"></div>
+            <div class="deck">
+              <div class="flipper">
+                <div class="face a"><svg viewBox="0 0 300 188" aria-hidden="true">
+<rect x="2" y="2" width="296" height="184" rx="15" fill="#2B2730" stroke="#15131A" stroke-width="3"/>
+<rect x="10" y="7" width="280" height="5" rx="2.5" fill="#fff" opacity=".09"/>
+<g><circle cx="15" cy="15" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M12.4 15H17.6M15 12.4V17.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="285" cy="15" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M282.4 15H287.6M285 12.4V17.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="15" cy="173" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M12.4 173H17.6M15 170.4V175.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="285" cy="173" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M282.4 173H287.6M285 170.4V175.6" stroke="#15131A" stroke-width="1.2"/></g>
+<rect x="20" y="17" width="260" height="117" rx="8" fill="#FFF4E0" stroke="#15131A" stroke-width="2"/>
+<rect x="21" y="84" width="258" height="10" fill="#F26A21"/><rect x="21" y="94" width="258" height="10" fill="#F2B33D"/><rect x="21" y="104" width="258" height="10" fill="#1E9E98"/>
+<path d="M68 47H268M68 69H268" stroke="#d6c4a2" stroke-width="1.2"/>
+<circle cx="43" cy="41" r="15" fill="#F26A21" stroke="#15131A" stroke-width="2"/>
+<text x="43" y="48.5" text-anchor="middle" font-family="Bungee" font-size="19" fill="#fff">A</text>
+<text x="70" y="43" font-family="Permanent Marker" font-size="22" fill="#2A2118">BRUCE</text>
+<text x="70" y="65" font-family="Permanent Marker" font-size="13" fill="#2A2118">SIDE A · THE PIANO BAR</text>
+<rect x="84" y="74" width="132" height="50" rx="10" fill="#1A1620" stroke="#15131A" stroke-width="2"/>
+<circle cx="116" cy="99" r="23" fill="#5B3A24"/><circle cx="184" cy="99" r="13" fill="#5B3A24"/>
+<g class="reel"><circle cx="116" cy="99" r="10.5" fill="#FFF4E0" stroke="#15131A" stroke-width="1.6"/><circle cx="116" cy="99" r="6.2" fill="#1A1620"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(0 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(60 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(120 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(180 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(240 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(300 116 99)"/></g><g class="reel"><circle cx="184" cy="99" r="10.5" fill="#FFF4E0" stroke="#15131A" stroke-width="1.6"/><circle cx="184" cy="99" r="6.2" fill="#1A1620"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(0 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(60 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(120 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(180 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(240 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(300 184 99)"/></g>
+<path d="M92 78H118L100 120H92Z" fill="#fff" opacity=".07"/>
+<path d="M74 186L86 146H214L226 186" fill="#3A3540" stroke="#15131A" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="108" cy="167" r="6" fill="#15131A"/><circle cx="192" cy="167" r="6" fill="#15131A"/>
+<rect x="137" y="160" width="9" height="9" rx="1.5" fill="#15131A"/><rect x="154" y="160" width="9" height="9" rx="1.5" fill="#15131A"/>
+</svg></div>
+                <div class="face b"><svg viewBox="0 0 300 188" aria-hidden="true">
+<rect x="2" y="2" width="296" height="184" rx="15" fill="#2B2730" stroke="#15131A" stroke-width="3"/>
+<rect x="10" y="7" width="280" height="5" rx="2.5" fill="#fff" opacity=".09"/>
+<g><circle cx="15" cy="15" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M12.4 15H17.6M15 12.4V17.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="285" cy="15" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M282.4 15H287.6M285 12.4V17.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="15" cy="173" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M12.4 173H17.6M15 170.4V175.6" stroke="#15131A" stroke-width="1.2"/></g><g><circle cx="285" cy="173" r="5" fill="#8d8794" stroke="#15131A" stroke-width="1.4"/><path d="M282.4 173H287.6M285 170.4V175.6" stroke="#15131A" stroke-width="1.2"/></g>
+<rect x="20" y="17" width="260" height="117" rx="8" fill="#FFF4E0" stroke="#15131A" stroke-width="2"/>
+<rect x="21" y="84" width="258" height="10" fill="#1E9E98"/><rect x="21" y="94" width="258" height="10" fill="#F2B33D"/><rect x="21" y="104" width="258" height="10" fill="#F26A21"/>
+<path d="M68 47H268M68 69H268" stroke="#d6c4a2" stroke-width="1.2"/>
+<circle cx="43" cy="41" r="15" fill="#1E9E98" stroke="#15131A" stroke-width="2"/>
+<text x="43" y="48.5" text-anchor="middle" font-family="Bungee" font-size="19" fill="#fff">B</text>
+<text x="70" y="43" font-family="Permanent Marker" font-size="22" fill="#2A2118">BRUCE</text>
+<text x="70" y="65" font-family="Permanent Marker" font-size="13" fill="#2A2118">SIDE B · THE FULL BAND</text>
+<rect x="84" y="74" width="132" height="50" rx="10" fill="#1A1620" stroke="#15131A" stroke-width="2"/>
+<circle cx="116" cy="99" r="13" fill="#5B3A24"/><circle cx="184" cy="99" r="23" fill="#5B3A24"/>
+<g class="reel"><circle cx="116" cy="99" r="10.5" fill="#FFF4E0" stroke="#15131A" stroke-width="1.6"/><circle cx="116" cy="99" r="6.2" fill="#1A1620"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(0 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(60 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(120 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(180 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(240 116 99)"/><rect x="114.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(300 116 99)"/></g><g class="reel"><circle cx="184" cy="99" r="10.5" fill="#FFF4E0" stroke="#15131A" stroke-width="1.6"/><circle cx="184" cy="99" r="6.2" fill="#1A1620"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(0 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(60 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(120 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(180 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(240 184 99)"/><rect x="182.7" y="92.8" width="2.6" height="3.6" fill="#FFF4E0" transform="rotate(300 184 99)"/></g>
+<path d="M92 78H118L100 120H92Z" fill="#fff" opacity=".07"/>
+<path d="M74 186L86 146H214L226 186" fill="#3A3540" stroke="#15131A" stroke-width="2.5" stroke-linejoin="round"/>
+<circle cx="108" cy="167" r="6" fill="#15131A"/><circle cx="192" cy="167" r="6" fill="#15131A"/>
+<rect x="137" y="160" width="9" height="9" rx="1.5" fill="#15131A"/><rect x="154" y="160" width="9" height="9" rx="1.5" fill="#15131A"/>
+</svg></div>
+              </div>
+            </div>
+          </div>
+          <div class="fliprow">
+            <span class="tryit" aria-hidden="true">try it!<svg width="30" height="16" viewBox="0 0 30 16"><path d="M2 3Q14 16 26 9" fill="none" stroke="#F26A21" stroke-width="2.4" stroke-linecap="round"/><path d="M20 5L27 9L21 14" fill="none" stroke="#F26A21" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <button class="flipbtn nudge" aria-pressed="false"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#15131A" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.3-4.5"/><path d="M5 3v4h4"/><path d="M4 13a8 8 0 0 0 14.3 4.5"/><path d="M19 21v-4h-4"/></svg></span>Flip the tape</button>
+          </div>
+          <div class="counter"><div class="cbox" aria-label="Tape counter: 7 hours, then 1 hour, then 15 minutes">
+            <span class="cl">TAPE<br>COUNTER</span>
+            <span class="drum">7</span><span class="unit">hrs</span><span class="arr">&rarr;</span>
+            <span class="drum">1</span><span class="unit">hr</span><span class="arr">&rarr;</span>
+            <span class="drum">15</span><span class="unit">min</span>
+          </div></div>
+          <p class="ccap">His first 3 songs, starting Feb 1988.</p>
+          <div class="ctas"><button class="c-a" data-preview>Get a Bruce Alert</button><button class="c-b" data-preview>Book Bruce</button></div>
+          <span class="island"></span><span class="homebar"></span>
+        </div>
+      </div>
+    </div>
+    <button class="note" data-n="2" aria-pressed="false" aria-label="Pick look 2"><span class="nl">Text Jimmy:</span><span class="nn">2</span><span class="nk">&#10003; picked!</span></button>
+  </article>
+
+  <!-- ========== LOOK 3 ========== -->
+  <article class="look" data-n="3" style="--accent:var(--gold)">
+    <div class="look-head">
+      <span class="badge" aria-hidden="true">3</span>
+      <div>
+        <h2>Real Crowd</h2>
+        <p class="vibe">Photo-first. The real room does the talking, with a few stickers slapped on.</p>
+      </div>
+    </div>
+    <div class="phone" role="group" aria-label="Preview of look 3, Real Crowd">
+      <div class="screen">
+        <div class="mini m3">
+          <img class="bgph" src="img/bruce-wig-scene.jpg" alt="">
+          <img class="ph" src="img/bruce-wig-scene.jpg" alt="Bruce in a curly blonde wig doing rock horns at the piano while the crowd behind him laughs">
+          <div class="shade"></div>
+          <div class="sb"><span>9:41</span><svg width="66" height="13" viewBox="0 0 66 13" fill="currentColor" aria-hidden="true"><rect x="0" y="8" width="3" height="4.5" rx="1"/><rect x="5" y="5.5" width="3" height="7" rx="1"/><rect x="10" y="3" width="3" height="9.5" rx="1"/><rect x="15" y=".5" width="3" height="12" rx="1"/><path d="M31 12.2l2.1-2.4a3.2 3.2 0 0 0-4.2 0z"/><path d="M26.6 7.3l1.4 1.6a4.6 4.6 0 0 1 6 0l1.4-1.6a6.8 6.8 0 0 0-8.8 0z"/><path d="M24.4 4.8l1.4 1.6a8 8 0 0 1 10.4 0l1.4-1.6a10.2 10.2 0 0 0-13.2 0z"/><rect x="42" y="1" width="21" height="11" rx="3.2" fill="none" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/><rect x="44" y="3" width="15.5" height="7" rx="1.6"/><rect x="64" y="4.6" width="1.6" height="4" rx=".8" opacity=".5"/></svg></div>
+          <div class="nav"><span class="wm"><b></b>Bruce the Piano Man</span><span class="menu" aria-hidden="true"><svg width="18" height="14" viewBox="0 0 18 14"><path d="M1 2H17M1 7H17M1 12H12" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></span></div>
+          <svg class="stk s-since" viewBox="0 0 100 100" aria-label="Since 1995">
+            <polygon points="50,6 56.6,12.6 65,8.7 69,17.1 78.3,16.3 79.1,25.6 88.1,28 85.7,37 93.3,42.4 88,50 93.3,57.6 85.7,63 88.1,72 79.1,74.4 78.3,83.7 69,82.9 65,91.3 56.6,87.4 50,94 43.4,87.4 35,91.3 31,82.9 21.7,83.7 20.9,74.4 11.9,72 14.3,63 6.7,57.6 12,50 6.7,42.4 14.3,37 11.9,28 20.9,25.6 21.7,16.3 31,17.1 35,8.7 43.4,12.6" fill="#F2B33D" stroke="#fff" stroke-width="6" stroke-linejoin="round" paint-order="stroke"/>
+            <circle cx="50" cy="50" r="31" fill="none" stroke="#15131A" stroke-width="1.6" stroke-dasharray="3 3" opacity=".55"/>
+            <text x="50" y="44" text-anchor="middle" font-family="Bungee" font-size="11.5" fill="#15131A" letter-spacing="1">SINCE</text>
+            <text x="50" y="66" text-anchor="middle" font-family="Bungee" font-size="21" fill="#15131A">1995</text>
+          </svg>
+          <svg class="stk s-social" viewBox="0 0 158 76" aria-label="Say social!">
+            <path d="M18 6H140A13 13 0 0 1 153 19V43A13 13 0 0 1 140 56H50L28 71L33 56H18A13 13 0 0 1 5 43V19A13 13 0 0 1 18 6Z" fill="#33E1D0" stroke="#fff" stroke-width="6" stroke-linejoin="round" paint-order="stroke"/>
+            <text x="79" y="40" text-anchor="middle" font-family="Permanent Marker" font-size="23" fill="#15131A">Say social!</text>
+          </svg>
+          <div class="copy">
+            <p class="h1">Nobody<br><span class="stkh">compares.</span></p>
+            <p class="attr">&ldquo;never found anyone who comes close to comparing&rdquo; &mdash; Daisy Jordan, 2014</p>
+            <div class="ctas"><button class="c-a" data-preview>Get a Bruce Alert</button><button class="c-b" data-preview>Book Bruce</button></div>
+          </div>
+          <span class="island"></span><span class="homebar"></span>
+        </div>
+      </div>
+    </div>
+    <button class="note" data-n="3" aria-pressed="false" aria-label="Pick look 3"><span class="nl">Text Jimmy:</span><span class="nn">3</span><span class="nk">&#10003; picked!</span></button>
+  </article>
+
+</main>
+
+<section class="closer">
+  <div class="big-note">
+    <p>Pick one, mix two, or tell me none of these feel like you. That's what a first draft is for.</p>
+    <span class="sig">&mdash; Jimmy</span>
+  </div>
+  <div class="cta-row">
+    <a class="btn btn-a" href="home.html">See look 1 fully built &rarr;</a>
+    <a class="btn btn-b" href="love.html">What fans say about you &rarr;</a>
+  </div>
+</section>
+
+<section class="tour-next" aria-label="Next gift"><div class="tn-card"><div class="tn-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div><p class="tn-kick">That was gift 4 of 7</p><p class="tn-title">Up next: The cartoon piano bar</p><a class="tn-btn" href="playground/index.html">Open gift 5 <span aria-hidden="true">→</span></a><br><a class="tn-all" href="index.html">See all 7 gifts</a></div></section><footer>
+  <p>Made for Bruce by Jimmy Davis</p>
+  <a class="chip" href="index.html">&larr; All gifts</a>
+</footer>
+
+<div class="pickbar" role="status" aria-live="polite"><span class="pb-text"></span><button type="button" class="pb-x" aria-label="Clear picks">&times;</button></div>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  /* fit each 360x740 mini screen into its phone */
+  var screens = [].slice.call(document.querySelectorAll('.screen'));
+  function fit(){ screens.forEach(function(s){ var w = s.clientWidth; if (w) s.firstElementChild.style.setProperty('--k', (w/360).toFixed(4)); }); }
+  fit();
+  if ('ResizeObserver' in window) { var ro = new ResizeObserver(fit); screens.forEach(function(s){ ro.observe(s); }); }
+  window.addEventListener('resize', fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+
+  /* look 2: flip the tape */
+  var m2 = document.querySelector('.m2');
+  var fb = m2.querySelector('.flipbtn');
+  var head = m2.querySelector('.head');
+  var tag = head.querySelector('.tag'), l1 = head.querySelector('.ln1 .lbl'), l2 = head.querySelector('.ln2 .lbl');
+  var SIDES = { A:['Side A','Just Bruce','and a piano.'], B:['Side B','Same Bruce.','Bigger party.'] };
+  var spinT, rollT;
+  fb.addEventListener('click', function(){
+    var toB = !m2.classList.contains('sideB');
+    m2.classList.toggle('sideB', toB);
+    fb.setAttribute('aria-pressed', toB ? 'true' : 'false');
+    fb.classList.remove('nudge');
+    var s = SIDES[toB ? 'B' : 'A'];
+    tag.textContent = s[0]; l1.textContent = s[1]; l2.textContent = s[2];
+    head.classList.remove('print'); void head.offsetWidth; head.classList.add('print');
+    m2.classList.add('spin'); clearTimeout(spinT); spinT = setTimeout(function(){ m2.classList.remove('spin'); }, 700);
+    m2.classList.remove('roll'); void m2.offsetWidth; m2.classList.add('roll'); clearTimeout(rollT); rollT = setTimeout(function(){ m2.classList.remove('roll'); }, 500);
+  });
+
+  /* toast */
+  var toastEl = document.querySelector('.toast'), toastT;
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600); }
+  [].forEach.call(document.querySelectorAll('[data-preview]'), function(b){
+    b.addEventListener('click', function(){ toast('Just a preview. Like this one? Text Jimmy ' + b.closest('.look').getAttribute('data-n') + '.'); });
+  });
+
+  /* picks */
+  var picked = {};
+  var bar = document.querySelector('.pickbar'), barText = bar.querySelector('.pb-text');
+  function update(){
+    var list = Object.keys(picked).filter(function(k){ return picked[k]; }).sort();
+    [].forEach.call(document.querySelectorAll('.look'), function(el){
+      var on = !!picked[el.getAttribute('data-n')];
+      el.classList.toggle('picked', on);
+      el.querySelector('.note').setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (!list.length) { bar.classList.remove('show'); return; }
+    var s = list.join(' + ');
+    barText.innerHTML = (list.length === 1 ? 'You picked <b>' + s + '</b>.' : 'A mix of <b>' + s + '</b>.') + ' Now text Jimmy: <b>' + s + '</b>';
+    bar.classList.add('show');
+  }
+  [].forEach.call(document.querySelectorAll('.note'), function(n){
+    n.addEventListener('click', function(){ var k = n.getAttribute('data-n'); picked[k] = !picked[k]; update(); });
+  });
+  bar.querySelector('.pb-x').addEventListener('click', function(){ picked = {}; update(); });
+
+  /* tuck the welcome chip while scrolling down */
+  var chip = document.querySelector('.home-chip'), lastY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    chip.classList.toggle('tuck', y > 140 && y > lastY);
+    lastY = y;
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>

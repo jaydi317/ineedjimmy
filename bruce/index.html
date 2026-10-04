@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Hey Bruce</title>
+<meta property="og:title" content="Hey Bruce. A few things I made you.">
+<meta property="og:description" content="Seven gifts: you as a cartoon, what your fans say, your website's first draft, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Permanent+Marker&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --piano:#15131A; --night:#0E1A2B; --night-2:#16263D;
+  --shirt:#2B8CE0; --shirt-deep:#1A5FA8; --cream:#FFF4E0; --sand:#F5E6C8; --palm:#2FA36B;
+  --note-pink:#FF8DC1; --note-yellow:#FFE36E; --note-blue:#8ED8F8;
+  --neon-pink:#FF4FA3; --neon-teal:#33E1D0; --gold:#F2B33D;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Nunito",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.5;color:var(--cream);
+  background:var(--night);background-image:radial-gradient(ellipse 120% 60% at 50% 0%, #1f3a5c 0%, var(--night) 60%);overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.lights{display:block;width:100%;height:48px}
+.bulb{animation:twinkle 2.4s ease-in-out infinite}
+.bulb:nth-child(3n){animation-delay:.6s}.bulb:nth-child(3n+1){animation-delay:1.3s}
+@keyframes twinkle{0%,100%{opacity:1}50%{opacity:.55}}
+
+.hero{padding:4px 0 26px;text-align:center}
+.eyebrow{display:inline-block;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--piano);background:var(--note-yellow);padding:6px 12px;border-radius:3px;transform:rotate(-2deg);box-shadow:0 3px 0 rgba(0,0,0,.25)}
+h1.neon{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(58px,17vw,108px);line-height:.95;margin:16px 0 6px;color:#fff;
+  text-shadow:0 0 6px #fff,0 0 14px var(--neon-pink),0 0 28px var(--neon-pink),0 0 48px var(--neon-pink);animation:flick 3.6s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.75}94%{opacity:1}96%{opacity:.85}}
+
+/* the reveal: real vs cartoon */
+.reveal-pair{display:flex;justify-content:center;align-items:flex-start;gap:10px;margin:22px auto 22px;max-width:560px;position:relative}
+.pol{position:relative;background:#fff;padding:8px 8px 40px;border-radius:4px;box-shadow:0 14px 30px rgba(0,0,0,.45);width:48%;max-width:260px}
+.pol img{display:block;width:100%;height:auto;aspect-ratio:1/1.1;object-fit:cover;border-radius:2px;background:#f3ead8}
+.pol.cartoon img{object-fit:contain;background:var(--note-blue)}
+.pol .cap{position:absolute;left:0;right:0;bottom:9px;text-align:center;font-family:"Permanent Marker",cursive;color:var(--piano);font-size:clamp(14px,3.9vw,18px);line-height:1.1}
+.pol.real{transform:rotate(-4deg)}
+.pol.cartoon{transform:rotate(3.5deg);margin-top:14px}
+.tape{position:absolute;width:76px;height:22px;background:rgba(255,244,224,.75);top:-10px;left:50%;transform:translateX(-50%) rotate(3deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.lede{font-size:clamp(18px,4.8vw,21px);max-width:580px;margin:0 auto}
+.lede strong{color:#fff}
+.start{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-family:"Bungee",sans-serif;font-size:20px;color:var(--piano);background:var(--note-yellow);text-decoration:none;padding:16px 24px;border:3px solid var(--piano);border-radius:999px;box-shadow:0 6px 0 var(--piano);transition:transform .15s,box-shadow .15s}
+.start:active{transform:translateY(4px);box-shadow:0 2px 0 var(--piano)}
+@media(hover:hover){.start:hover{transform:translateY(-2px);box-shadow:0 8px 0 var(--piano)}}
+.small{font-size:15px;color:#b9c6d8;margin-top:12px}
+
+.sec{padding:30px 0}
+.sec h2{font-family:"Bungee",sans-serif;font-weight:400;font-size:clamp(28px,8vw,40px);line-height:1.05;color:var(--note-yellow);text-shadow:0 3px 0 var(--piano);margin-bottom:6px}
+.sec .sub{color:var(--sand);margin-bottom:20px}
+
+/* gifts */
+.gifts{display:grid;gap:14px;counter-reset:g}
+@media(min-width:680px){.gifts{grid-template-columns:1fr 1fr}}
+.gift{position:relative;display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--piano);border:3px solid var(--piano);border-radius:18px;padding:12px 14px 12px 12px;box-shadow:0 6px 0 var(--piano);min-height:112px;transition:transform .15s,box-shadow .15s}
+.gift:active{transform:translateY(4px);box-shadow:0 2px 0 var(--piano)}
+@media(hover:hover){.gift:hover{transform:translateY(-3px);box-shadow:0 9px 0 var(--piano)}}
+.gift .thumb{flex:0 0 84px;height:84px;border-radius:12px;background:rgba(255,255,255,.55);border:2px solid var(--piano);display:grid;place-items:center;overflow:hidden}
+.gift .thumb img{width:100%;height:100%;object-fit:contain}
+.gift .thumb.cover img{object-fit:cover}
+.gift .num{position:absolute;top:-12px;left:-8px;width:34px;height:34px;border-radius:50%;background:var(--piano);color:var(--note-yellow);font-family:"Bungee",sans-serif;font-size:16px;display:grid;place-items:center;border:2px solid var(--cream)}
+.gift h3{font-family:"Bungee",sans-serif;font-weight:400;font-size:19px;line-height:1.1;margin-bottom:3px}
+.gift p{font-size:15.5px;line-height:1.35}
+.g1{background:var(--note-blue)}.g2{background:var(--note-pink)}.g3{background:var(--note-yellow)}.g4{background:var(--note-blue)}
+.g5{background:var(--note-pink)}.g6{background:var(--note-yellow)}.g7{background:var(--cream)}
+
+/* finds */
+.notes{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:640px){.notes{grid-template-columns:1fr 1fr}}
+.note{position:relative;color:var(--piano);padding:22px 18px 18px;border-radius:2px;box-shadow:0 10px 18px rgba(0,0,0,.35);font-size:17px;line-height:1.45}
+.note .num{font-family:"Permanent Marker",cursive;font-size:30px;line-height:1;float:left;margin:0 10px 0 0}
+.note q{font-family:"Permanent Marker",cursive;font-size:18px;quotes:"\201C" "\201D"}
+.note .tape{width:70px;height:22px;top:-10px}
+.note:nth-child(1){background:var(--note-yellow);transform:rotate(-1.6deg)}
+.note:nth-child(2){background:var(--note-pink);transform:rotate(1.4deg)}
+.note:nth-child(3){background:var(--note-blue);transform:rotate(-1deg)}
+.note:nth-child(4){background:var(--note-yellow);transform:rotate(1.8deg)}
+.note:nth-child(5){background:var(--note-pink);transform:rotate(-1.4deg)}
+@media(min-width:640px){.note:nth-child(5){grid-column:1/-1}}
+.rv{opacity:0;translate:0 18px}
+.rv.in{opacity:1;translate:0 0;transition:opacity .45s ease,translate .45s cubic-bezier(.2,.9,.3,1.3)}
+
+.signoff{position:relative;background:var(--cream);color:var(--piano);border-radius:4px;padding:26px 22px 22px;transform:rotate(-1deg);box-shadow:0 12px 24px rgba(0,0,0,.4);font-size:18px}
+.signoff .sig{font-family:"Permanent Marker",cursive;font-size:34px;margin-top:10px;color:var(--shirt-deep)}
+.signoff .tape{top:-12px}
+footer{text-align:center;color:#9fb0c6;font-size:14px;padding:34px 0 40px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;translate:none}}
+</style>
+</head>
+<body>
+
+<svg class="lights" viewBox="0 0 400 48" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 6 Q50 30 100 10 T200 10 T300 10 T400 6" fill="none" stroke="#0a0f18" stroke-width="2"/>
+  <g>
+    <circle class="bulb" cx="20" cy="15" r="5" fill="#FFE36E"/><circle class="bulb" cx="52" cy="24" r="5" fill="#FF8DC1"/>
+    <circle class="bulb" cx="84" cy="16" r="5" fill="#8ED8F8"/><circle class="bulb" cx="118" cy="13" r="5" fill="#FFE36E"/>
+    <circle class="bulb" cx="152" cy="22" r="5" fill="#33E1D0"/><circle class="bulb" cx="186" cy="13" r="5" fill="#FF8DC1"/>
+    <circle class="bulb" cx="218" cy="14" r="5" fill="#FFE36E"/><circle class="bulb" cx="252" cy="22" r="5" fill="#8ED8F8"/>
+    <circle class="bulb" cx="286" cy="13" r="5" fill="#FF8DC1"/><circle class="bulb" cx="318" cy="14" r="5" fill="#33E1D0"/>
+    <circle class="bulb" cx="352" cy="22" r="5" fill="#FFE36E"/><circle class="bulb" cx="384" cy="10" r="5" fill="#FF8DC1"/>
+  </g>
+</svg>
+
+<main class="wrap">
+  <section class="hero">
+    <span class="eyebrow">A few things I made you</span>
+    <h1 class="neon">Hey Bruce.</h1>
+    <div class="reveal-pair">
+      <figure class="pol real"><span class="tape"></span><img src="img/bruce-wig-close.jpg" width="800" height="908" alt="Bruce in the curly blonde wig at MashCraft Fishers"><figcaption class="cap">Saturday night</figcaption></figure>
+      <figure class="pol cartoon"><span class="tape"></span><img src="art/sticker-bruce-wig.webp" width="600" height="654" alt="Cartoon Bruce in the wig, doing rock horns"><figcaption class="cap">Also Saturday night</figcaption></figure>
+    </div>
+    <p class="lede">Saturday night at MashCraft, I asked if you had a website. You said no. <strong>So I went a little overboard.</strong> There are seven gifts in here. Start at number one, or jump around.</p>
+    <a class="start" href="cartoon.html">Open gift 1 <span aria-hidden="true">→</span></a>
+    <p class="small">Best on your phone. Tap everything. Nothing breaks.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="gifts-h">
+    <h2 id="gifts-h">Your seven gifts.</h2>
+    <p class="sub">About ten minutes. Short on time? Gifts 1, 2 and 7 are the heart of it.</p>
+    <div class="gifts">
+      <a class="gift g1 rv" href="cartoon.html"><span class="num">1</span><span class="thumb"><img src="art/sticker-bruce-grin.webp" width="600" height="629" alt=""></span><span><h3>You, as a cartoon</h3><p>Nine of you, plus a sidekick who was there in 1988.</p></span></a>
+      <a class="gift g2 rv" href="love.html"><span class="num">2</span><span class="thumb"><svg viewBox="0 0 76 76" width="70" height="70" aria-hidden="true"><rect x="10" y="12" width="52" height="52" rx="3" fill="#FFE36E" stroke="#15131A" stroke-width="3" transform="rotate(-6 36 38)"/><rect x="16" y="8" width="52" height="52" rx="3" fill="#fff" stroke="#15131A" stroke-width="3" transform="rotate(5 42 34)"/><path d="M42 50c-12-8-17-13-17-19a7 7 0 0 1 13-3 7 7 0 0 1 13 3c0 6-5 11-9 19z" fill="#FF4FA3" stroke="#15131A" stroke-width="3" stroke-linejoin="round"/></svg></span><span><h3>What they say about you</h3><p>20+ years of fans, in their own words.</p></span></a>
+      <a class="gift g3 rv" href="home.html"><span class="num">3</span><span class="thumb cover"><img src="art/bruce-pose-at-piano.webp" width="960" height="640" alt="" loading="lazy"></span><span><h3>Your website, first draft</h3><p>Request a song. Hit "Say social!" Tap the wig.</p></span></a>
+      <a class="gift g4 rv" href="looks.html"><span class="num">4</span><span class="thumb"><svg viewBox="0 0 76 76" width="70" height="70" aria-hidden="true"><rect x="4" y="18" width="22" height="40" rx="5" fill="#0E1A2B" stroke="#15131A" stroke-width="3" transform="rotate(-8 15 38)"/><rect x="27" y="12" width="22" height="44" rx="5" fill="#FFF4E0" stroke="#15131A" stroke-width="3"/><rect x="50" y="18" width="22" height="40" rx="5" fill="#FF8DC1" stroke="#15131A" stroke-width="3" transform="rotate(8 61 38)"/></svg></span><span><h3>Pick your look</h3><p>Three directions. Text me 1, 2 or 3.</p></span></a>
+      <a class="gift g5 rv" href="playground/index.html"><span class="num">5</span><span class="thumb cover" style="background:#151D32"><img src="art/world-neon-bruce.svg" width="900" height="420" alt="" loading="lazy" style="object-fit:contain"></span><span><h3>The cartoon piano bar</h3><p>A little bar you can play. Eight keys, one wig.</p></span></a>
+      <a class="gift g6 rv" href="kit.html"><span class="num">6</span><span class="thumb"><img src="art/sticker-since-1995.png" width="800" height="800" alt="" loading="lazy"></span><span><h3>Your brand kit</h3><p>Logos, 14 stickers, a Facebook cover. Save anything.</p></span></a>
+      <a class="gift g7 rv" href="thanks.html"><span class="num">7</span><span class="thumb"><img src="art/bruce-pose-last-call-bow.webp" width="640" height="960" alt="" loading="lazy"></span><span><h3>Behind the scenes</h3><p>What went into this, and what's next.</p></span></a>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="found">
+    <h2 id="found">I went looking for you.</h2>
+    <div class="notes"><div class="note rv"><span class="tape"></span>What I found is in gift 2. Spoiler: a 2003 review calls you <q>a genious.</q> (Spelled just like that.)</div></div>
+  </section>
+
+  <section class="sec">
+    <div class="signoff rv">
+      <span class="tape"></span>
+      Everything in here is a first draft, built from your stories and your fans' words. Nothing goes live with your name on it without your OK. Tell me what's wrong, what's missing, and what made you laugh.
+      <div class="sig">Jimmy</div>
+    </div>
+  </section>
+</main>
+
+<footer>Made for Bruce by Jimmy Davis · iNeedJimmy.com</footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}})},{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
