@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Bruce the Piano Man | The Request Jukebox</title>
+<meta name="description" content="Plug in the jukebox and play one Bruce night. Then drop your own request. Get a Bruce Alert or book Bruce for 2027.">
+<meta property="og:title" content="Drop a request. Bruce plays the room.">
+<meta property="og:image" content="assets/bruce-pose-pointing.webp">
+<meta name="theme-color" content="#1B0B2E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Permanent+Marker&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#151D32; --blue:#0589C8; --pink:#FF5798; --yellow:#FFD15C; --green:#287663; --paper:#FFF6E5; --cherry:#B8402A; --plum:#1B0B2E;
+  --disp:"Shrikhand", "Cooper Black", Georgia, serif; --hand:"Permanent Marker", "Marker Felt", cursive;
+  --sans:"DM Sans", system-ui, -apple-system, sans-serif; --mono:"DM Mono", ui-monospace, Menlo, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+section,form{scroll-margin-top:80px}
+html{-webkit-text-size-adjust:100%;background:var(--plum)}
+body{font-family:var(--sans);color:var(--navy);background:var(--paper);overflow-x:hidden;line-height:1.45}
+a{color:inherit} img{display:block;max-width:100%;height:auto} button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:#fff;padding:10px 14px;border-radius:8px}.skip:focus{left:8px}
+.cf{display:inline-block;vertical-align:middle;font:500 9px/1 var(--mono);letter-spacing:.1em;color:var(--navy);background:var(--yellow);border:1.5px solid var(--navy);padding:3px 5px 2px;border-radius:4px;margin-left:6px;transform:translateY(-2px) rotate(-2deg)}
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.12;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* buttons: chunky cartoon */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:11px 20px;border-radius:14px;text-decoration:none;font-weight:800;font-size:15.5px;border:3px solid var(--navy);box-shadow:4px 4px 0 var(--navy);transition:transform .15s, box-shadow .15s;white-space:nowrap}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--navy)}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--navy)}
+.btn.alert{background:var(--yellow)}
+.btn.book{background:var(--pink);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.2)}
+.btn.ghost{background:#fff}
+
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px clamp(14px,3vw,36px)}
+.mark{text-decoration:none;display:flex;flex-direction:column;line-height:.9;transform:rotate(-4deg)}
+.mark b{font:400 30px/1 var(--disp);color:var(--yellow);-webkit-text-stroke:2px var(--navy);paint-order:stroke fill;text-shadow:3px 3px 0 var(--navy)}
+.mark span{font:400 13px/1 var(--hand);color:#fff;margin-left:20px;text-shadow:2px 2px 0 var(--navy)}
+.bar{transition:background .3s}
+.bar.solid{background:var(--paper);border-bottom:3px solid var(--navy);padding-top:8px;padding-bottom:8px}
+.bar.solid .mark span{color:var(--navy);text-shadow:none}
+.acts{display:flex;gap:10px;align-items:center}
+.snd{min-height:42px;padding:8px 12px;border-radius:12px;border:3px solid var(--navy);background:#fff;font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;box-shadow:3px 3px 0 var(--navy)}
+.snd[aria-pressed=true]{background:var(--yellow)}
+.mbar{display:none}
+@media (max-width:760px){
+  .bar .acts .btn{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 12px calc(12px + env(safe-area-inset-bottom));background:var(--paper);border-top:3px solid var(--navy)}
+  .mbar .btn{padding:10px 8px;font-size:15px}
+}
+
+/* ===== stage ===== */
+.track{position:relative;height:1500vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#24103a;--glow:#FFD15C}
+.wall{position:absolute;inset:0;background:
+  radial-gradient(60% 55% at 50% 58%, color-mix(in srgb,var(--glow) 38%,transparent), transparent 70%),
+  repeating-linear-gradient(90deg, #2a1442 0 46px, #26113c 46px 92px);transition:background .8s}
+.stage.off .wall{background:radial-gradient(60% 55% at 50% 58%, rgba(255,255,255,.04), transparent 70%),repeating-linear-gradient(90deg,#1a0c2a 0 46px,#170a26 46px 92px)}
+.floor{position:absolute;left:-30%;right:-30%;bottom:-6%;height:34%;transform:perspective(500px) rotateX(58deg);transform-origin:50% 100%;background:repeating-conic-gradient(#f3e2c4 0 25%, #2b1840 0 50%) 0 0/80px 80px;filter:brightness(.55);box-shadow:inset 0 60px 80px #24103a}
+.stage.off .floor{filter:brightness(.25)}
+.fronds{position:absolute;top:-30px;width:min(420px,40vw);opacity:.5;pointer-events:none}
+.fronds.l{left:-80px;transform:rotate(18deg)} .fronds.r{right:-80px;transform:scaleX(-1) rotate(18deg)}
+.outlet{position:absolute;left:calc(50% - min(26vh,190px) - 70px);bottom:24%;width:34px;height:48px;border:3px solid var(--navy);border-radius:7px;background:#efe3cc}
+.outlet::before,.outlet::after{content:"";position:absolute;left:9px;width:5px;height:9px;background:var(--navy);border-radius:2px;top:10px}
+.outlet::after{left:auto;right:9px}
+.cord{position:absolute;inset:0;pointer-events:none;overflow:visible}
+
+.jbwrap{position:absolute;left:50%;bottom:4vh;height:min(82vh,760px);aspect-ratio:420/640;transform:translateX(-50%)}
+#jb{width:100%;height:100%;overflow:visible}
+#jb .seg{transition:stroke .5s, filter .5s}
+.stage.off #jb .lamp{opacity:.25}
+#jb .lamp{transition:opacity .6s}
+#jb .bub{animation:bub 2.2s linear infinite;transform-box:fill-box}
+@keyframes bub{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-230px);opacity:0}}
+#jb .stripe{transition:fill .4s}
+#jb .note{transform-box:fill-box;transform-origin:center;opacity:0;transition:opacity .2s}
+#jb .note.on{opacity:1;animation:slap .45s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes slap{0%{transform:scale(1.8) rotate(-10deg)}100%{transform:scale(1)}}
+#rec.drop{animation:drop .7s cubic-bezier(.25,1.3,.4,1) both}
+@keyframes drop{0%{transform:translate(-70px,-40px) scale(.35)}100%{transform:none}}
+#arm{transition:transform .8s cubic-bezier(.3,1.2,.4,1);transform-box:view-box;transform-origin:322px 158px}
+
+.bruce{position:absolute;right:max(2vw,calc(50% - min(41vh,380px) - min(30vw,380px)));bottom:5vh;height:min(66vh,620px);aspect-ratio:2/3;pointer-events:none}
+.bruce img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:bottom;filter:drop-shadow(6px 8px 0 rgba(21,29,50,.55));opacity:0;transform:translateY(30px) scale(.94);transition:opacity .25s, transform .45s cubic-bezier(.3,1.6,.5,1)}
+.bruce img.on{opacity:1;transform:none}
+.bruce img.wide{height:62%;top:auto;bottom:0;width:150%;left:-25%}
+.bubble{position:absolute;right:calc(100% - 40px);top:6%;width:max-content;max-width:250px;background:#fff;border:3px solid var(--navy);border-radius:18px;padding:10px 14px;font:400 17px/1.15 var(--hand);box-shadow:4px 4px 0 var(--navy);transform-origin:100% 100%;transition:transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s;opacity:0;transform:scale(.6)}
+.bubble.on{opacity:1;transform:none}
+.bubble::after{content:"";position:absolute;right:16px;bottom:-14px;width:20px;height:20px;background:#fff;border-right:3px solid var(--navy);border-bottom:3px solid var(--navy);transform:rotate(45deg)}
+
+.pin{position:absolute;z-index:2;background:#fffdf6;padding:8px 8px 30px;border:2.5px solid var(--navy);box-shadow:5px 5px 0 rgba(21,29,50,.6);transform:rotate(var(--r)) scale(.3);opacity:0;transition:transform .5s cubic-bezier(.3,1.5,.5,1), opacity .25s;width:min(150px,12vw)}
+.pin.on{opacity:1;transform:rotate(var(--r))}
+.stage.toymode .pin{opacity:0}
+.stage.party #arch{animation:party 1.2s linear infinite}
+@keyframes party{to{filter:hue-rotate(360deg)}}
+.pin img{aspect-ratio:1;object-fit:cover;width:100%}
+.pin figcaption{position:absolute;left:6px;right:6px;bottom:6px;font:400 14px/1 var(--hand);text-align:center}
+.pin::before{content:"";position:absolute;top:-9px;left:50%;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--pink);border:2.5px solid var(--navy);z-index:1}
+
+/* text */
+.ov{position:absolute;inset:0;pointer-events:none;z-index:5}
+.jbwrap{z-index:3}
+.beat{position:absolute;left:clamp(16px,4vw,64px);top:clamp(100px,15vh,150px);width:min(390px,27vw);opacity:0;visibility:hidden}
+.beat.vis{visibility:visible}
+.slot{display:inline-flex;align-items:center;gap:8px;font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);border:2.5px solid #fff;border-radius:8px;padding:6px 9px;box-shadow:3px 3px 0 var(--c,var(--pink))}
+.slot b{color:var(--c,var(--yellow))}
+.beat h2,.hero h1{font:400 clamp(40px,4.6vw,72px)/1.02 var(--disp);color:#fff;margin:.3em 0 .25em;-webkit-text-stroke:2px var(--navy);paint-order:stroke fill;text-shadow:4px 4px 0 var(--navy), 0 0 30px color-mix(in srgb,var(--c,var(--pink)) 60%,transparent)}
+.beat p,.hero p{font-size:clamp(16px,1.3vw,19px);color:#fbefff;max-width:26em;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.beat p em{font-style:normal;font-weight:800;color:var(--c,var(--yellow))}
+.tc{font:500 clamp(30px,3.4vw,46px)/1 var(--mono);color:var(--yellow);margin-top:12px;text-shadow:3px 3px 0 var(--navy)}
+.hero{position:absolute;left:clamp(16px,5vw,80px);top:50%;transform:translateY(-52%);width:min(520px,36vw);transition:none}
+.hero .ey{font:400 18px/1 var(--hand);color:var(--yellow);transform:rotate(-2deg)}
+.hero h1{font-size:clamp(50px,6vw,96px);--c:var(--pink)}
+.hero h1 span{color:var(--yellow)}
+.doors{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;pointer-events:auto}
+.plug{margin-top:22px;font:400 18px/1.2 var(--hand);color:#fff;display:flex;align-items:center;gap:10px}
+.plug svg{width:44px;height:30px}
+
+/* toy panel */
+.toy{position:absolute;left:clamp(16px,5vw,80px);top:clamp(96px,14vh,140px);width:min(440px,33vw);opacity:0;visibility:hidden;pointer-events:auto}
+.toy.vis{visibility:visible}
+.toy h2{font:400 clamp(38px,4.2vw,64px)/1 var(--disp);color:#fff;-webkit-text-stroke:2px var(--navy);paint-order:stroke fill;text-shadow:4px 4px 0 var(--navy);margin:.25em 0 .2em}
+.toy p{color:#fbefff;font-size:16px}
+.keys{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.keys button{display:flex;align-items:center;gap:8px;text-align:left;min-height:46px;padding:8px 10px;background:#fff6e0;border:2.5px solid var(--navy);border-radius:10px;box-shadow:3px 3px 0 var(--navy);font-weight:700;font-size:14px;line-height:1.1;transition:transform .12s, box-shadow .12s, background .2s}
+.keys button i{font:500 11px/1 var(--mono);font-style:normal;background:var(--navy);color:var(--yellow);border-radius:5px;padding:4px 5px;flex:none}
+.keys button:active,.keys button[aria-pressed=true]{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--navy);background:var(--yellow)}
+.own{display:flex;gap:8px;margin-top:12px}
+.own input{flex:1;min-width:0;font:400 18px/1.2 var(--hand);background:var(--yellow);border:2.5px solid var(--navy);border-radius:6px;padding:10px 12px;box-shadow:3px 3px 0 var(--navy);transform:rotate(-1deg);color:var(--navy)}
+.own button{border:2.5px solid var(--navy);border-radius:10px;background:var(--pink);color:#fff;font-weight:800;padding:0 14px;box-shadow:3px 3px 0 var(--navy)}
+
+.prog{position:absolute;right:clamp(14px,2.5vw,30px);top:50%;transform:translateY(-50%);display:grid;gap:8px;z-index:6}
+.prog i{width:12px;height:12px;border-radius:50%;border:2.5px solid #fff;background:transparent;transition:background .3s, transform .3s}
+.prog i.on{background:var(--c);transform:scale(1.2)}
+
+@media (max-width:760px){
+  .jbwrap{height:50vh;bottom:calc(84px + env(safe-area-inset-bottom));left:44%}
+  .bruce{right:-6px;bottom:calc(80px + env(safe-area-inset-bottom));height:30vh}
+  .bubble{font-size:14px;max-width:150px;right:30%;top:-24%}
+  .beat,.hero,.toy{left:18px;right:18px;width:auto;top:84px}
+  .hero{transform:none}
+  .hero h1{font-size:clamp(46px,13.5vw,58px)}
+  .beat h2{font-size:clamp(34px,10vw,44px)}
+  .beat p,.hero p{font-size:15.5px}
+  .hero .doors,.plug{display:none}
+  .pin{width:21vw}
+  .outlet{left:6%;bottom:30%}
+  .prog{display:none}
+  .toy h2{font-size:34px}
+  .toy p{display:none}
+  .keys{gap:6px}
+  .keys button{min-height:42px;font-size:12.5px;padding:6px 8px}
+  .tc{font-size:30px}
+  .fronds{width:52vw}
+}
+
+/* ===== flow sections (paper) ===== */
+.sec{position:relative;padding:clamp(80px,12vh,130px) clamp(18px,6vw,96px);background:var(--paper)}
+.sec .wrap{max-width:1180px;margin:0 auto}
+.dots{background-image:radial-gradient(rgba(21,29,50,.12) 1.2px,transparent 1.4px);background-size:16px 16px}
+.h2{font:400 clamp(42px,5.6vw,80px)/1 var(--disp);color:var(--c,var(--pink));-webkit-text-stroke:2.5px var(--navy);paint-order:stroke fill;text-shadow:5px 5px 0 var(--navy)}
+.kick{font:400 20px/1 var(--hand);color:var(--navy);transform:rotate(-2deg);display:inline-block;background:var(--yellow);padding:6px 10px;border:2.5px solid var(--navy);box-shadow:3px 3px 0 var(--navy);margin-bottom:18px}
+.lede{font-size:clamp(17px,1.45vw,20px);max-width:36em;margin-top:18px}
+.cork{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px;margin-top:40px}
+.sn{position:relative;aspect-ratio:1;padding:18px 16px 14px;background:var(--bg,var(--yellow));border:2.5px solid var(--navy);box-shadow:5px 6px 0 rgba(21,29,50,.85);transform:rotate(var(--r,0deg));display:flex;flex-direction:column;transition:transform .2s}
+.sn:hover{transform:rotate(0) scale(1.03)}
+.sn time{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.sn b{font:400 26px/1.05 var(--hand);margin:8px 0 6px}
+.sn span{font-size:14px}
+.sn .stamp{position:absolute;right:10px;bottom:12px;font:400 17px/1 var(--disp);color:var(--pink);border:3px solid var(--pink);border-radius:8px;padding:4px 7px;transform:rotate(-12deg);background:rgba(255,255,255,.6)}
+.sn .stamp.g{color:var(--green);border-color:var(--green)}
+.sn a{font-weight:800;font-size:13px;margin-top:auto;text-decoration:underline}
+.sn.big{grid-column:span 2;aspect-ratio:auto;background:#fff;--r:-1deg;padding:26px}
+.sn.big b{font:400 clamp(30px,3.2vw,42px)/1.05 var(--disp);color:var(--blue);-webkit-text-stroke:1.5px var(--navy);paint-order:stroke fill}
+.sn.big .doors{margin-top:18px}
+.formcard{position:relative;border:3px solid var(--navy);border-radius:20px;background:#fff;box-shadow:8px 8px 0 var(--navy);padding:clamp(22px,3.5vw,40px)}
+.alertcard{background:var(--yellow);border-radius:4px;transform:rotate(-1deg)}
+.alertcard::before{content:"";position:absolute;top:-16px;left:50%;width:120px;height:30px;margin-left:-60px;background:rgba(255,255,255,.55);border:1px solid rgba(21,29,50,.15);transform:rotate(3deg)}
+.alertgrid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(24px,5vw,70px);align-items:center}
+label.f{display:block;font-weight:700;font-size:14.5px;margin-top:16px}
+label.f small{font-weight:500;opacity:.7}
+input,select,textarea{width:100%;margin-top:7px;font:500 16px/1.3 var(--sans);color:var(--navy);background:#fff;border:2.5px solid var(--navy);border-radius:10px;padding:12px 13px;min-height:50px}
+textarea{min-height:90px;resize:vertical;font:400 18px/1.3 var(--hand)}
+input:focus,select:focus,textarea:focus{outline:none;box-shadow:3px 3px 0 var(--pink)}
+.chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px;border:0}
+.chipset legend{font-weight:700;font-size:14.5px;margin-bottom:4px}
+.chipset button{min-height:44px;padding:9px 15px;border-radius:10px;background:#fff;border:2.5px solid var(--navy);font-weight:700;font-size:15px;box-shadow:3px 3px 0 var(--navy)}
+.chipset button[aria-pressed=true]{background:var(--navy);color:var(--yellow);transform:translate(2px,2px);box-shadow:1px 1px 0 var(--navy)}
+.chipset button i{font:500 11px/1 var(--mono);font-style:normal;background:var(--yellow);color:var(--navy);border-radius:4px;padding:3px 5px;margin-right:6px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.go{margin-top:22px;width:100%;min-height:56px;font-size:18px}
+.done{padding:18px;border:2.5px dashed var(--navy);border-radius:12px;font-size:17px;background:rgba(255,255,255,.5)}
+.done b{display:block;font:400 30px/1.05 var(--disp);color:var(--pink);-webkit-text-stroke:1.5px var(--navy);paint-order:stroke fill;margin-bottom:6px}
+.done small{display:block;margin-top:10px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.fine{font-size:13px;opacity:.75;margin-top:12px}
+.sleeves{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:40px 0 40px}
+.sleeve{position:relative;border:3px solid var(--navy);border-radius:16px;padding:24px 24px 26px;background:var(--bg);box-shadow:7px 7px 0 var(--navy);overflow:hidden;min-height:330px}
+.sleeve .side{font:400 54px/1 var(--disp);color:#fff;-webkit-text-stroke:2px var(--navy);paint-order:stroke fill;text-shadow:3px 3px 0 var(--navy)}
+.sleeve h3{font:400 clamp(28px,2.8vw,38px)/1 var(--disp);margin:8px 0 10px;color:var(--navy)}
+.sleeve ul{list-style:none;display:grid;gap:6px;max-width:62%;font-weight:600}
+.sleeve li::before{content:"\266B  ";color:var(--navy)}
+.sleeve .for{font-size:14px;margin:12px 0 16px;max-width:62%}
+.sleeve img{position:absolute;right:-10px;bottom:-14px;width:44%;filter:drop-shadow(5px 6px 0 rgba(21,29,50,.5))}
+.sleeve .rec{position:absolute;right:-90px;top:-90px;width:220px;height:220px;border-radius:50%;background:repeating-radial-gradient(#151D32 0 3px,#24304f 3px 5px);border:3px solid var(--navy)}
+.sleeve .rec::after{content:"";position:absolute;inset:36%;border-radius:50%;background:var(--yellow);border:3px solid var(--navy)}
+.slip{background:#ffe3ee;border-radius:6px;background-image:repeating-linear-gradient(transparent 0 31px, rgba(21,29,50,.1) 31px 32px)}
+.slip .hd{display:flex;align-items:center;justify-content:space-between;border-bottom:3px dashed var(--navy);padding-bottom:12px;margin-bottom:6px}
+.slip .hd b{font:400 clamp(26px,3vw,36px)/1 var(--disp);color:var(--pink);-webkit-text-stroke:1.5px var(--navy);paint-order:stroke fill}
+.slip .hd span{font:500 12px/1 var(--mono)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.fgrid .full{grid-column:1/-1}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:12px;font-weight:600}
+.toggle input{width:22px;height:22px;min-height:0;margin:0;accent-color:var(--pink)}
+.foot{background:var(--navy);color:#fff;text-align:center;padding:70px 20px calc(120px + env(safe-area-inset-bottom))}
+.foot h2{font:400 clamp(44px,6vw,80px)/1 var(--disp);color:var(--yellow);text-shadow:4px 4px 0 #000}
+.foot p{opacity:.75;font-size:14px;max-width:50em;margin:10px auto 0}
+.foot nav{display:flex;gap:18px;justify-content:center;margin:20px 0;flex-wrap:wrap}
+.foot nav a{font-weight:700;text-decoration:none;opacity:.9}
+.foot .doors{justify-content:center}
+@media (max-width:860px){
+  .alertgrid,.sleeves,.fgrid{grid-template-columns:1fr}
+  .cork{grid-template-columns:1fr 1fr;gap:14px}
+  .sn{padding:12px 11px 10px}
+  .sn b{font-size:20px}
+  .sn span{font-size:12.5px}
+  .sn .stamp{font-size:13px;right:6px;bottom:8px}
+  .sn.big{grid-column:1/-1}
+  .sleeve ul,.sleeve .for{max-width:70%}
+}
+@media (prefers-reduced-motion:reduce){
+  #jb .bub{animation:none;opacity:0}
+  #jb .note.on,#rec.drop{animation:none}
+  .bruce img,.pin,.bubble{transition:opacity .2s!important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#shows">Skip to shows and booking</a>
+<header class="bar">
+  <a class="mark" href="#top" aria-label="Bruce the Piano Man, home"><b>Bruce</b><span>the Piano Man</span></a>
+  <div class="acts">
+    <button class="snd" id="snd" aria-pressed="false">&#9835; Sound off</button>
+    <a class="btn alert" href="#alert">Get a Bruce Alert</a>
+    <a class="btn book" href="#book">Book Bruce</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="track" id="night" aria-label="One Bruce night, played on a jukebox">
+  <div class="stage off" id="stage">
+    <div class="wall"></div>
+    <svg class="fronds l" viewBox="0 0 200 200" aria-hidden="true"><g fill="#0d3a33" stroke="#0a2622" stroke-width="2"><path d="M10 10 Q90 40 190 160 Q110 70 10 10Z"/><path d="M10 10 Q60 90 120 190 Q70 80 10 10Z"/><path d="M10 10 Q120 20 200 80 Q100 30 10 10Z"/><path d="M10 10 Q40 100 50 200 Q50 90 10 10Z"/></g></svg>
+    <svg class="fronds r" viewBox="0 0 200 200" aria-hidden="true"><g fill="#0d3a33" stroke="#0a2622" stroke-width="2"><path d="M10 10 Q90 40 190 160 Q110 70 10 10Z"/><path d="M10 10 Q60 90 120 190 Q70 80 10 10Z"/><path d="M10 10 Q120 20 200 80 Q100 30 10 10Z"/></g></svg>
+    <div class="floor"></div>
+    <div class="outlet" aria-hidden="true"></div>
+
+
+    <div class="jbwrap">
+      <figure class="pin" data-at="1" style="left:-5%;top:22%;--r:-7deg"><img src="assets/bruce-smile.jpg" alt="The real Bruce, smiling"><figcaption>the real Bruce</figcaption></figure>
+      <figure class="pin" data-at="6" style="left:-8%;top:54%;--r:5deg"><img src="assets/comic-panel-1-seven-hours.webp" alt="Illustration: young Bruce learning at a dorm keyboard with a cassette player"><figcaption>freshman year</figcaption></figure>
+      <figure class="pin" data-at="7" style="right:-12%;top:10%;--r:6deg"><img src="assets/bruce-wig-close.jpg" alt="The real Bruce in the curly wig"><figcaption>yes, really</figcaption></figure>
+      <figure class="pin" data-at="8" style="right:-16%;top:40%;--r:-4deg"><img src="assets/bruce-wig-scene.jpg" alt="Bruce at the piano in a full room at MashCraft Fishers"><figcaption>MashCraft, Oct 3</figcaption></figure>
+      <svg id="jb" viewBox="0 0 420 640" aria-hidden="true">
+        <defs>
+          <linearGradient id="wood" x1="0" x2="1"><stop offset="0" stop-color="#6e1d12"/><stop offset=".18" stop-color="#b8402a"/><stop offset=".5" stop-color="#d0563a"/><stop offset=".82" stop-color="#b8402a"/><stop offset="1" stop-color="#6e1d12"/></linearGradient>
+          <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#b9c2d6"/><stop offset=".55" stop-color="#7d88a3"/><stop offset="1" stop-color="#e9eef7"/></linearGradient>
+          <linearGradient id="chromeH" x1="0" x2="1"><stop offset="0" stop-color="#8d97b0"/><stop offset=".3" stop-color="#fff"/><stop offset=".6" stop-color="#aab3c9"/><stop offset="1" stop-color="#6f7a95"/></linearGradient>
+          <radialGradient id="glass" cx=".5" cy=".35" r=".8"><stop offset="0" stop-color="#2d3f7a"/><stop offset="1" stop-color="#0c1230"/></radialGradient>
+          <linearGradient id="grill" x1="0" x2="1"><stop offset="0" stop-color="#3a1a10"/><stop offset=".5" stop-color="#5a2a18"/><stop offset="1" stop-color="#3a1a10"/></linearGradient>
+          <filter id="neon" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <clipPath id="win"><path d="M112 300 L112 214 C112 160 156 124 210 124 C264 124 308 160 308 214 L308 300 Z"/></clipPath>
+          <clipPath id="tubeL"><rect x="40" y="318" width="28" height="262" rx="14"/></clipPath>
+          <clipPath id="tubeR"><rect x="352" y="318" width="28" height="262" rx="14"/></clipPath>
+        </defs>
+        <ellipse cx="210" cy="630" rx="200" ry="11" fill="rgba(0,0,0,.35)"/>
+        <!-- body -->
+        <path d="M24 618 L24 258 C24 128 112 34 210 34 C308 34 396 128 396 258 L396 618 Z" fill="url(#wood)" stroke="#151D32" stroke-width="7" stroke-linejoin="round"/>
+        <!-- neon arch: 8 segments, one per beat -->
+        <path d="M54 600 L54 258 C54 152 128 66 210 66 C292 66 366 152 366 258 L366 600" fill="none" stroke="#151D32" stroke-width="34" stroke-linecap="round"/>
+        <path d="M54 600 L54 258 C54 152 128 66 210 66 C292 66 366 152 366 258 L366 600" fill="none" stroke="#3b1d33" stroke-width="22" stroke-linecap="round"/>
+        <g id="arch"></g>
+        <!-- face panel -->
+        <path d="M86 604 L86 262 C86 170 142 98 210 98 C278 98 334 170 334 262 L334 604 Z" fill="#f4e4c6" stroke="#151D32" stroke-width="6"/>
+        <path d="M100 604 L100 266 C100 180 150 112 210 112 C270 112 320 180 320 266 L320 604" fill="none" stroke="url(#chromeH)" stroke-width="5"/>
+        <!-- window -->
+        <path d="M112 300 L112 214 C112 160 156 124 210 124 C264 124 308 160 308 214 L308 300 Z" fill="url(#glass)" stroke="#151D32" stroke-width="6"/>
+        <g clip-path="url(#win)">
+          <g class="lamp"><ellipse cx="210" cy="300" rx="120" ry="60" fill="var(--glow)" opacity=".35" filter="url(#neon)"/></g>
+          <!-- record magazine -->
+          <g fill="#0b0d18" stroke="#3a4266" stroke-width="1.5"><ellipse cx="138" cy="250" rx="8" ry="40"/><ellipse cx="150" cy="250" rx="8" ry="40"/><ellipse cx="162" cy="250" rx="8" ry="40"/></g>
+          <ellipse cx="236" cy="282" rx="76" ry="16" fill="#2a2f4d" stroke="#151D32" stroke-width="3"/>
+          <g id="rec">
+            <g id="disc">
+              <circle cx="236" cy="236" r="60" fill="#0d0f1c" stroke="#151D32" stroke-width="3"/>
+              <circle cx="236" cy="236" r="50" fill="none" stroke="#222842" stroke-width="1.5"/><circle cx="236" cy="236" r="42" fill="none" stroke="#222842" stroke-width="1.5"/><circle cx="236" cy="236" r="34" fill="none" stroke="#222842" stroke-width="1.5"/>
+              <path d="M200 206 A50 50 0 0 1 250 190" fill="none" stroke="#5a6596" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+              <circle id="lbl" cx="236" cy="236" r="22" fill="#FFD15C" stroke="#151D32" stroke-width="2.5"/>
+              <circle cx="236" cy="236" r="3" fill="#151D32"/>
+            </g>
+            <text id="lblT" x="236" y="232" text-anchor="middle" font-family="DM Mono, monospace" font-size="10" font-weight="500" fill="#151D32">A1</text>
+          </g>
+          <!-- cassette (flashback beat) -->
+          <g id="cas" opacity="0">
+            <rect x="150" y="190" width="150" height="96" rx="10" fill="#151D32" stroke="#151D32" stroke-width="3"/>
+            <rect x="160" y="198" width="130" height="28" rx="4" fill="#0589C8"/>
+            <rect x="170" y="232" width="110" height="38" rx="8" fill="#FFD15C" stroke="#151D32" stroke-width="2.5"/>
+            <circle id="rl" cx="196" cy="251" r="12" fill="#fff" stroke="#151D32" stroke-width="2.5"/><circle id="rr" cx="254" cy="251" r="12" fill="#fff" stroke="#151D32" stroke-width="2.5"/>
+            <rect x="214" y="244" width="22" height="14" fill="#FF5798" stroke="#151D32" stroke-width="2"/>
+            <text id="casT" x="225" y="218" text-anchor="middle" font-family="DM Mono, monospace" font-size="14" fill="#fff">7:00:00</text>
+          </g>
+          <g id="arm"><circle cx="322" cy="158" r="8" fill="url(#chrome)" stroke="#151D32" stroke-width="3"/><path d="M322 158 L300 212 L276 236" fill="none" stroke="url(#chrome)" stroke-width="6" stroke-linecap="round"/><path d="M322 158 L300 212 L276 236" fill="none" stroke="#151D32" stroke-width="1.5" stroke-linecap="round" opacity=".5"/><rect x="266" y="230" width="16" height="10" rx="2" fill="#151D32" transform="rotate(-40 274 235)"/></g>
+          <path d="M126 170 C150 140 180 132 200 132" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".25"/>
+        </g>
+        <!-- now playing marquee -->
+        <rect x="112" y="312" width="196" height="40" rx="8" fill="#151D32" stroke="url(#chromeH)" stroke-width="4"/>
+        <text id="np" x="210" y="338" text-anchor="middle" font-family="Shrikhand, serif" font-size="17" fill="#FFD15C">Unplugged</text>
+        <!-- title strips -->
+        <rect x="112" y="362" width="196" height="112" rx="6" fill="#efe1c4" stroke="#151D32" stroke-width="4"/>
+        <g id="strips"></g>
+        <!-- coin plate -->
+        <rect x="170" y="482" width="80" height="20" rx="4" fill="url(#chrome)" stroke="#151D32" stroke-width="3"/>
+        <rect x="204" y="487" width="12" height="10" rx="2" fill="#151D32"/>
+        <!-- grille -->
+        <rect x="112" y="510" width="196" height="88" rx="10" fill="url(#grill)" stroke="#151D32" stroke-width="4"/>
+        <g stroke="url(#chrome)" stroke-width="4" stroke-linecap="round"><path d="M134 518V590M156 518V590M178 518V590M200 518V590M222 518V590M244 518V590M266 518V590M288 518V590"/></g>
+        <g id="notes"></g>
+        <!-- bubble tubes -->
+        <rect x="40" y="318" width="28" height="262" rx="14" fill="#1a1030" stroke="#151D32" stroke-width="4"/>
+        <rect x="352" y="318" width="28" height="262" rx="14" fill="#1a1030" stroke="#151D32" stroke-width="4"/>
+        <g clip-path="url(#tubeL)"><rect class="liq" x="40" y="580" width="28" height="262" fill="var(--glow)"/><g class="lamp" id="bubL"></g></g>
+        <g clip-path="url(#tubeR)"><rect class="liq" x="352" y="580" width="28" height="262" fill="var(--glow)"/><g class="lamp" id="bubR"></g></g>
+        <rect x="44" y="326" width="6" height="240" rx="3" fill="#fff" opacity=".25"/><rect x="356" y="326" width="6" height="240" rx="3" fill="#fff" opacity=".25"/>
+        <!-- base -->
+        <rect x="16" y="604" width="388" height="22" rx="6" fill="url(#chromeH)" stroke="#151D32" stroke-width="5"/>
+      </svg>
+    </div>
+
+    <svg class="cord" id="cord" aria-hidden="true"><path id="cordP" d="" fill="none" stroke="#151D32" stroke-width="6" stroke-linecap="round"/><g id="plugG"><rect x="-12" y="-9" width="24" height="18" rx="4" fill="#efe3cc" stroke="#151D32" stroke-width="3"/><path d="M-6 -9 V-17 M6 -9 V-17" stroke="#151D32" stroke-width="3"/></g></svg>
+
+    <div class="bruce" id="bruce" aria-hidden="true">
+      <div class="bubble" id="bub"></div>
+    </div>
+
+    <div class="prog" id="prog" aria-hidden="true"></div>
+
+    <div class="ov">
+      <div class="hero" id="hero" style="--c:var(--pink)">
+        <div class="ey">Bruce Barker &middot; since 1995</div>
+        <h1>Bruce plays <span>the room.</span></h1>
+        <p>Pull up a stool. Scroll to plug in the jukebox and play one whole Bruce night. Then it's your turn to request.</p>
+        <div class="doors"><a class="btn alert" href="#alert">Get a Bruce Alert</a><a class="btn book" href="#book">Book Bruce for 2027</a></div>
+        <div class="plug"><svg viewBox="0 0 44 30" fill="none" stroke="#FFD15C" stroke-width="3" stroke-linecap="round"><path d="M2 15h22"/><rect x="24" y="6" width="12" height="18" rx="3"/><path d="M36 10h6M36 20h6"/></svg>scroll to plug it in</div>
+      </div>
+      <div id="beats"></div>
+      <div class="toy" id="toy">
+        <span class="slot" style="--c:var(--yellow)"><b>Your turn</b> &middot; the Request Jukebox</span>
+        <h2>Drop a request.</h2>
+        <p>Tap a title and watch Bruce react. Song titles only, no lyrics here; you'll have to come sing them.</p>
+        <div class="keys" id="keys"></div>
+        <form class="own" id="own"><label class="sr" for="ownI" hidden>Write your own request</label><input id="ownI" placeholder="Write your own..." maxlength="40" autocomplete="off"><button type="submit">Stick it</button></form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dots" id="shows">
+  <div class="wrap">
+    <span class="kick">Where's Bruce next?</span>
+    <h2 class="h2" style="--c:var(--yellow)">Check the board.</h2>
+    <p class="lede">2026 is a wrap. No public 2027 dates yet. Bruce Alert folks hear first, before the boat sells out.</p>
+    <div class="cork">
+      <div class="sn big"><time>Next up</time><b>New dates post here first.</b><span>Get the heads-up, or book Bruce for your 2027 night.</span><div class="doors"><a class="btn alert" href="#alert">Get the heads-up</a><a class="btn book" href="#book">Book for 2027</a></div></div>
+      <div class="sn" style="--r:2deg;--bg:#FFD15C"><time>Sat Oct 3</time><b>MashCraft</b><span>Fishers</span></div>
+      <div class="sn" style="--r:-3deg;--bg:#9fdcff"><time>Sat Sep 26</time><b>Madam Carroll</b><span>On the boat</span></div>
+      <div class="sn" style="--r:3deg;--bg:#ff9cc4"><time>Sat Aug 15</time><b>MashCraft</b><span>Fishers &middot; full band</span></div>
+      <div class="sn" style="--r:-2deg;--bg:#FFD15C"><time>Sat Jul 25</time><b>Madam Carroll</b><span>On the boat</span><a href="#alert">Tell me when the next boat opens</a><span class="stamp">Sold out</span></div>
+      <div class="sn" style="--r:2deg;--bg:#b9f5a0"><time>Fri Jul 17</time><b>Fountain Park</b><span>Remington</span></div>
+      <div class="sn" style="--r:-4deg;--bg:#ff9cc4"><time>Sat Jul 4</time><b>Columbian Park</b><span>Lafayette &middot; 8-piece band</span><span class="stamp g">Free!</span></div>
+      <div class="sn" style="--r:3deg;--bg:#9fdcff"><time>Sat Jun 6</time><b>Madam Carroll</b><span>On the boat</span><a href="#alert">Tell me when the next boat opens</a><span class="stamp">Sold out</span></div>
+      <div class="sn" style="--r:-1deg;--bg:#FFD15C"><time>Sat May 30</time><b>MashCraft</b><span>Fishers</span></div>
+      <div class="sn" style="--r:2deg;--bg:#b9f5a0"><time>Sat Apr 18</time><b>Madam Carroll</b><span>Full band</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="alert" style="background:#e9f6ff">
+  <div class="wrap alertgrid">
+    <div>
+      <span class="kick">Bruce Alert</span>
+      <h2 class="h2" style="--c:var(--blue)">Be first to know.</h2>
+      <p class="lede">Where he's playing, before it sells out. A few emails a year. Just dates.</p>
+      <img src="assets/bruce-pose-pointing.webp" alt="" loading="lazy" style="width:min(260px,50vw);margin-top:20px;filter:drop-shadow(6px 8px 0 rgba(21,29,50,.4))">
+    </div>
+    <form class="formcard alertcard" data-alert novalidate>
+      <div class="fields">
+        <label class="f">Your email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+        <fieldset class="chipset" data-chips="many"><legend>Where do you want to see him?</legend><input type="hidden" name="regions">
+          <button type="button" aria-pressed="true">Lafayette</button><button type="button" aria-pressed="false">Indy &amp; Fishers</button><button type="button" aria-pressed="false">Anywhere</button></fieldset>
+        <label class="f">Class year <small>(optional, or "just a fan")</small><input name="year" inputmode="numeric" placeholder="e.g. 1996"></label>
+        <input class="hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn book go" type="submit">Count me in</button>
+        <p class="fine">Free. Unsubscribe any time. Mockup: nothing is sent.</p>
+      </div>
+      <div class="done" hidden></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec dots" id="book">
+  <div class="wrap">
+    <span class="kick">Book Bruce</span>
+    <h2 class="h2" style="--c:var(--pink)">Pick a side.</h2>
+    <p class="lede">Reunions, alumni clubs, fundraisers, company nights. Same Bruce, two sizes of party.</p>
+    <div class="sleeves">
+      <div class="sleeve" style="--bg:#9fdcff"><div class="rec"></div><div class="side">A</div><h3>The Piano Bar</h3>
+        <ul><li>Bruce, solo, at the piano</li><li>Sticky-note requests</li><li>Sound for the room<span class="cf">CONFIRM</span></li></ul>
+        <p class="for">For alumni dinners, receptions, smaller company nights.</p>
+        <a class="btn ghost" href="#bookform" data-night="piano">Press A</a>
+        <img src="assets/bruce-pose-tip-bucket.webp" alt="" loading="lazy"></div>
+      <div class="sleeve" style="--bg:#ff9cc4"><div class="rec"></div><div class="side">B</div><h3>The Full Band</h3>
+        <ul><li>The 8-piece Bruce Barker Band</li><li>Stage, sound, lights<span class="cf">CONFIRM</span></li><li>Your class-year songs</li></ul>
+        <p class="for">For reunions, festivals, ticketed nights.</p>
+        <a class="btn ghost" href="#bookform" data-night="band">Press B</a>
+        <img src="assets/bruce-pose-wig-rock-horns.webp" alt="" loading="lazy"></div>
+    </div>
+
+    <form class="formcard slip" id="bookform" data-book novalidate>
+      <div class="hd"><b>Request slip</b><span>For Bruce &middot; 2027</span></div>
+      <div class="fields">
+        <fieldset class="chipset" data-chips="one"><legend>What kind of night?</legend><input type="hidden" name="night" value="unsure">
+          <button type="button" data-v="piano" aria-pressed="false"><i>A</i>Piano Bar</button><button type="button" data-v="band" aria-pressed="false"><i>B</i>Full Band</button><button type="button" data-v="unsure" aria-pressed="true"><i>?</i>Not sure yet</button></fieldset>
+        <div class="fgrid">
+          <label class="f">What's the event?<select name="event" required><option value="">Pick one</option><option value="reunion">Class reunion or alumni group</option><option value="corporate">Company event</option><option value="fundraiser">Fundraiser or charity</option><option value="party">Private party</option><option value="festival">Festival or city event</option><option value="wedding">Wedding</option><option value="other">Something else</option></select></label>
+          <label class="f">Date<input type="date" name="date" required></label>
+          <label class="f">City or venue<input name="where" required placeholder="e.g. Fishers"></label>
+          <label class="f">How many guests?<select name="guests" required><option value="">Pick a range</option><option>Under 50</option><option>50 to 150</option><option>150 to 300</option><option>300 to 1,000</option><option>1,000+</option></select></label>
+          <div class="full"><label class="toggle"><input type="checkbox" name="flexible"> Our date is flexible</label></div>
+          <fieldset class="chipset draw full" hidden><legend>Is Bruce the draw, or entertaining people already coming?</legend>
+            <label class="toggle"><input type="radio" name="draw" value="draw"> He's the draw</label><label class="toggle"><input type="radio" name="draw" value="entertain"> Our crowd's already coming</label></fieldset>
+          <label class="f">Your name<input name="name" required autocomplete="name"></label>
+          <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
+          <label class="f full">Phone <small>(optional)</small><input type="tel" name="phone" autocomplete="tel"></label>
+          <label class="f full">Anything else? <small>Class year, must-hear songs</small><textarea name="notes" placeholder="Class of '96. Sweet Caroline, obviously."></textarea></label>
+        </div>
+        <input class="hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn book go" type="submit">Drop it in the bucket</button>
+        <p class="fine">No budget field, no auto-quote. A real person writes back. Mockup: nothing is sent.</p>
+      </div>
+      <div class="done" hidden></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <h2>Last call.</h2>
+  <p style="opacity:1;font-size:17px">See you at the next one.</p>
+  <div class="doors" style="margin-top:22px"><a class="btn alert" href="#alert">Get a Bruce Alert</a><a class="btn book" href="#book">Book Bruce</a></div>
+  <nav><a href="https://www.facebook.com/PianoManBruce/" rel="noopener">Facebook</a><a href="https://www.instagram.com/brucethepianoman/" rel="noopener">Instagram</a><a href="https://x.com/PianoManBruce" rel="noopener">X</a></nav>
+  <p>Draft for Bruce's review. Tags marked CONFIRM are waiting on Bruce. Song titles only. Cartoon Bruce is an illustration; the photos are real. Reactions in the jukebox are stage directions, not quotes.</p>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions"><a class="btn alert" href="#alert">Get a Bruce Alert</a><a class="btn book" href="#book">Book Bruce</a></nav>
+
+<script src="assets/forms.js"></script>
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  const P = 'assets/bruce-pose-';
+  // the night, in 8 beats + last call. Titles only.
+  const BEATS = [
+    { slot: 'A1', song: 'Hail Purdue', c: '#FFD15C', pose: 'pointing', kick: 'The opener', h: 'Everybody up.', p: 'Every night opens with <em>Hail Purdue.</em> You already know the words.', notes: 0 },
+    { slot: 'A2', song: 'Free song', c: '#7CF29A', pose: 'tip-bucket', kick: 'The first hour', h: 'First hour\'s on Bruce.', p: 'No tips in the first hour. His rule: <em>"Give them a free song!"</em>', notes: 1 },
+    { slot: 'A3', song: 'Sweet Caroline', c: '#FF5798', pose: 'winking', kick: 'Requests', h: 'Write it on a sticky note.', p: 'Most requested: <em>Sweet Caroline, Piano Man, Livin\' on a Prayer.</em> Watch them stack up.', notes: 4 },
+    { slot: 'A4', song: 'Million Dollars', c: '#FF9F43', pose: 'million-dollars-lettered', kick: 'The groan', h: 'Oh no. Not that one.', p: '<em>"If I Had a Million Dollars."</em> Requested three times a night, for fifteen years. Listen for the groan.', notes: 6 },
+    { slot: 'B1', song: 'Say social!', c: '#3FE0FF', pose: 'say-social', kick: 'The toast', h: 'Say social!', p: 'And the whole room raises a glass. Together.<span class="cf">CONFIRM</span>', notes: 7 },
+    { slot: 'B2', song: 'Rewind', c: '#E8B887', pose: null, cas: true, kick: 'Flashback', h: 'Rewind.', p: 'Freshman year at Purdue, he\'d never touched a piano. He learned off a cassette player: <em>7 hours</em> for the first song, <em>1 hour</em> for the next, <em>15 minutes</em> for the third.<span class="cf">CONFIRM YEAR + SONG</span>', notes: 7 },
+    { slot: 'B3', song: 'The wig', c: '#B07CFF', pose: 'wig-rock-horns', kick: 'Late night', h: 'Then the wig comes out.', p: 'You\'ll know it when you see it. (Proof, top right.)', notes: 8 },
+    { slot: 'B4', song: 'Bigger party', c: '#FF5798', pose: 'pointing', kick: 'Side B', h: 'Same Bruce. Bigger party.', p: 'The full <em>8-piece Bruce Barker Band.</em> Free July 4th show at Columbian Park this year. The boat keeps selling out.', notes: 9 },
+    { slot: 'C1', song: 'Pirate @ 40', c: '#FFD15C', pose: 'last-call-bow', kick: 'Last call', h: 'Last call.', p: 'Every night ends on <em>"A Pirate Looks at Forty."</em><span class="cf">CONFIRM</span> Someone once offered $100 for two more songs after it. He said no.', notes: 9 },
+  ];
+  const N = BEATS.length; // 9 beats; segments: hero + 9 + toy = 11
+  const SEG = N + 2;
+
+  // ---- build text beats ----
+  $('#beats').innerHTML = BEATS.map((b, i) => `<div class="beat" data-i="${i}" style="--c:${b.c}"><span class="slot"><b>${b.slot}</b> &middot; ${b.kick}</span><h2>${b.h}</h2><p>${b.p}</p>${b.cas ? '<div class="tc" id="tc">7:00:00</div>' : ''}</div>`).join('');
+  const beatEls = [...document.querySelectorAll('.beat')];
+  $('#prog').innerHTML = BEATS.map(b => `<i style="--c:${b.c}"></i>`).join('');
+  const progEls = [...document.querySelectorAll('#prog i')];
+
+  // ---- jukebox parts ----
+  const ARCH = 'M54 600 L54 258 C54 152 128 66 210 66 C292 66 366 152 366 258 L366 600';
+  $('#arch').innerHTML = BEATS.slice(0, 8).map((b, i) => `<path class="seg" d="${ARCH}" pathLength="80" fill="none" stroke="#4a2440" stroke-width="18" stroke-linecap="butt" stroke-dasharray="9.2 70.8" stroke-dashoffset="${-(i * 10 + .4)}" data-c="${b.c}"/>`).join('');
+  const segs = [...document.querySelectorAll('#arch .seg')];
+  const STR = ['Hail Purdue', 'Million Dollars', 'Piano Man', 'Creep', 'Sweet Caroline', 'Country Roads', "Livin' on a Prayer", 'Pirate at Forty'];
+  $('#strips').innerHTML = STR.map((t, i) => { const x = 118 + (i % 2) * 96, y = 368 + Math.floor(i / 2) * 26; return `<g><rect class="stripe" x="${x}" y="${y}" width="88" height="21" rx="3" fill="#fffaf0" stroke="#151D32" stroke-width="1.5"/><rect x="${x}" y="${y}" width="16" height="21" rx="3" fill="#151D32"/><text x="${x + 8}" y="${y + 14}" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="#FFD15C">${['A', 'B'][i % 2]}${Math.floor(i / 2) + 1}</text><text x="${x + 52}" y="${y + 14}" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="8.4" fill="#151D32">${t}</text></g>`; }).join('');
+  const NOTES = [[124, 520, -8, '#FFD15C', 'Piano Man'], [250, 516, 7, '#FF7AB6', 'Sweet Caroline'], [186, 548, -4, '#9fdcff', 'Prayer!'], [140, 560, 9, '#b9f5a0', 'Hail Purdue'], [262, 556, -10, '#FFD15C', 'Million $$'], [204, 512, 4, '#FF7AB6', 'Creep'], [116, 470, -6, '#9fdcff', 'Pirate'], [268, 470, 8, '#b9f5a0', 'Country Roads'], [210, 572, -2, '#FFD15C', 'one more!']];
+  $('#notes').innerHTML = NOTES.map(n => `<g class="note"><rect x="${n[0]}" y="${n[1]}" width="40" height="34" fill="${n[3]}" stroke="#151D32" stroke-width="2" transform="rotate(${n[2]} ${n[0] + 20} ${n[1] + 17})"/><text x="${n[0] + 20}" y="${n[1] + 21}" text-anchor="middle" font-family="Permanent Marker, cursive" font-size="${n[4].length > 10 ? 6 : 7.5}" fill="#151D32" transform="rotate(${n[2]} ${n[0] + 20} ${n[1] + 17})">${n[4]}</text></g>`).join('');
+  const noteEls = [...document.querySelectorAll('#notes .note')];
+  ['bubL', 'bubR'].forEach((id, s) => { let h = ''; for (let i = 0; i < 6; i++) h += `<circle class="bub" cx="${(s ? 360 : 48) + (i % 3) * 6}" cy="575" r="${2 + (i % 3)}" fill="#fff" opacity=".8" style="animation-delay:${i * .37}s"/>`; $('#' + id).innerHTML = h; });
+  const liq = [...document.querySelectorAll('.liq')];
+
+  // ---- Bruce poses ----
+  const POSES = ['pointing', 'tip-bucket', 'winking', 'million-dollars-lettered', 'say-social', 'wig-rock-horns', 'last-call-bow', 'at-piano'];
+  const bruce = $('#bruce'), bub = $('#bub');
+  const poseImg = {};
+  POSES.forEach(p => { const im = new Image(); im.src = P + p + '.webp'; im.alt = ''; if (p === 'at-piano') im.className = 'wide'; bruce.insertBefore(im, bub); poseImg[p] = im; });
+  let curPose = null;
+  function setPose(p) { if (p === curPose) return; curPose = p; Object.entries(poseImg).forEach(([k, im]) => im.classList.toggle('on', k === p)); }
+
+  // ---- sound ----
+  let ac = null, soundOn = false;
+  const sndBtn = $('#snd');
+  sndBtn.addEventListener('click', () => { soundOn = !soundOn; sndBtn.setAttribute('aria-pressed', soundOn); sndBtn.innerHTML = soundOn ? '&#9835; Sound on' : '&#9835; Sound off'; if (soundOn) { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); ac.resume(); ding(0); } });
+  function ding(k) {
+    if (!soundOn || !ac) return;
+    const t = ac.currentTime, base = [261.6, 293.7, 329.6, 349.2, 392, 440, 493.9, 523.3, 587.3][k % 9];
+    // a clunk, then a little three-note arpeggio
+    const nb = ac.createBufferSource(), buf = ac.createBuffer(1, 2200, ac.sampleRate), d = buf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length) ** 3; nb.buffer = buf; const ng = ac.createGain(); ng.gain.value = .25; nb.connect(ng).connect(ac.destination); nb.start(t);
+    [1, 1.25, 1.5].forEach((m, j) => { const o = ac.createOscillator(), g = ac.createGain(); o.type = 'triangle'; o.frequency.value = base * m; g.gain.setValueAtTime(0, t + .08 + j * .09); g.gain.linearRampToValueAtTime(.14, t + .09 + j * .09); g.gain.exponentialRampToValueAtTime(.001, t + .7 + j * .09); o.connect(g).connect(ac.destination); o.start(t + .08 + j * .09); o.stop(t + .9 + j * .09); });
+  }
+
+  // ---- cord + plug ----
+  const cordP = $('#cordP'), plugG = $('#plugG'), outlet = $('.outlet'), stage = $('#stage');
+  function drawCord(t) {
+    const sr = stage.getBoundingClientRect(), jr = $('.jbwrap').getBoundingClientRect(), or = outlet.getBoundingClientRect();
+    const x0 = jr.left + jr.width * .1 - sr.left, y0 = jr.bottom - jr.height * .04 - sr.top;
+    const ox = or.left + or.width / 2 - sr.left, oy = or.top + or.height / 2 - sr.top;
+    const lx = ox - 10, ly = sr.height * .93; // plug lying on floor
+    const px = lx + (ox - lx) * t, py = ly + (oy + 22 - ly) * t;
+    cordP.setAttribute('d', `M${x0} ${y0} C${x0 - 60} ${y0 + 30}, ${px + 40} ${Math.max(py, y0) + 40}, ${px} ${py + 9}`);
+    plugG.setAttribute('transform', `translate(${px} ${py}) rotate(${(1 - t) * 80})`);
+  }
+
+  // ---- engine ----
+  const hero = $('#hero'), toy = $('#toy'), np = $('#np'), lbl = $('#lbl'), lblT = $('#lblT'), rec = $('#rec'), disc = $('#disc'), arm = $('#arm'), cas = $('#cas'), casT = $('#casT');
+  const pins = [...document.querySelectorAll('.pin')];
+  const track = $('#night');
+  let target = 0, cur = 0, lastBeat = -9, toyActive = false, toyPick = null;
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const barEl = $('.bar');
+  function measure() { const r = track.getBoundingClientRect(); target = clamp(-r.top / (track.offsetHeight - innerHeight)); barEl.classList.toggle('solid', r.bottom < 70); }
+  function setRecord(slot, color, title) {
+    lbl.setAttribute('fill', color); lblT.textContent = slot; np.textContent = title;
+    if (!RM) { rec.classList.remove('drop'); void rec.getBoundingClientRect(); rec.classList.add('drop'); }
+  }
+  function render(p) {
+    const s = p * SEG;                 // 0..11
+    const seg = Math.floor(s), loc = s - seg;
+    const beat = seg - 1;              // -1 hero, 0..8 beats, 9 toy
+    const on = s > .55;
+    stage.classList.toggle('off', !on);
+    drawCord(clamp((s - .2) / .4));
+    // hero
+    const hv = clamp(1 - s / .6); hero.style.opacity = hv; hero.style.visibility = hv > .01 ? 'visible' : 'hidden';
+    // beats
+    beatEls.forEach((el, i) => { const v = beat === i ? clamp(Math.min(loc / .18, (1 - loc) / .18)) : 0; el.style.opacity = v; el.classList.toggle('vis', v > .01); el.style.transform = `translateY(${(1 - v) * 18}px)`; });
+    const tv = beat >= N ? clamp(loc / .15) : 0; toy.style.opacity = tv; toy.classList.toggle('vis', tv > .01);
+    toyActive = beat >= N; stage.classList.toggle('toymode', toyActive); stage.classList.toggle('party', beat === 7 && !RM);
+    const b = BEATS[clamp(beat, 0, N - 1)];
+    const lit = beat < 0 ? 0 : Math.min(8, beat + 1);
+    segs.forEach((g, i) => { const l = i < lit && on; g.setAttribute('stroke', l ? g.dataset.c : '#4a2440'); g.style.filter = l ? 'url(#neon)' : 'none'; });
+    progEls.forEach((g, i) => g.classList.toggle('on', i === beat));
+    const glow = beat < 0 ? '#FFD15C' : (toyActive && toyPick ? toyPick.c : b.c);
+    stage.style.setProperty('--glow', glow);
+    const fill = beat < 0 ? 0 : clamp((beat + loc) / N);
+    liq.forEach(r => r.setAttribute('y', 580 - 262 * (on ? Math.max(.08, fill) : 0)));
+    const nn = beat < 0 ? 0 : beat >= N ? 9 : b.notes + (loc > .5 && beat >= 2 && beat < 4 ? 1 : 0);
+    noteEls.forEach((n, i) => n.classList.toggle('on', i < nn));
+    pins.forEach(pn => pn.classList.toggle('on', beat >= +pn.dataset.at));
+    // record / cassette
+    if (beat !== lastBeat) {
+      lastBeat = beat;
+      if (beat >= 0 && beat < N) { setRecord(b.slot, b.c, b.song); ding(beat); }
+      if (beat < 0) np.textContent = on ? 'Warming up' : 'Unplugged';
+      if (beat >= N && !toyPick) { np.textContent = 'Your pick?'; lblT.textContent = '??'; }
+      cas.setAttribute('opacity', b.cas && beat >= 0 && beat < N ? 1 : 0);
+      rec.setAttribute('opacity', b.cas && beat >= 0 && beat < N ? 0 : 1);
+    }
+    if (b.cas && beat === 5) { const t = ['7:00:00', '1:00:00', '0:15:00'][loc < .38 ? 0 : loc < .66 ? 1 : 2]; casT.textContent = t; const tc = $('#tc'); if (tc) tc.textContent = t; }
+    const ang = p * 4200;
+    disc.setAttribute('transform', `rotate(${ang} 236 236)`);
+    $('#rl').setAttribute('transform', `rotate(${ang} 196 251)`); $('#rr').setAttribute('transform', `rotate(${ang} 254 251)`);
+    arm.style.transform = beat >= 0 && on ? 'rotate(0deg)' : 'rotate(-28deg)';
+    // Bruce
+    if (!toyActive || !toyPick) setPose(beat < 0 ? null : beat >= N ? 'at-piano' : b.pose);
+    if (!toyActive) bub.classList.remove('on');
+    bruce.style.opacity = beat < 0 ? 0 : 1;
+  }
+  function tick() { const d = target - cur; cur = RM ? target : (Math.abs(d) < .0001 ? target : cur + d * .16); render(cur); requestAnimationFrame(tick); }
+
+  // ---- the toy ----
+  const TOY = [
+    ['A1', 'Hail Purdue', 'pointing', 'Opener. Everybody up.', '#FFD15C'],
+    ['A2', 'Piano Man', 'at-piano', 'One of the most requested. Ever.', '#9fdcff'],
+    ['A3', 'Sweet Caroline', 'say-social', 'The whole room takes the chorus.', '#FF5798'],
+    ['A4', "Livin' on a Prayer", 'wig-rock-horns', 'Hands up, back row.', '#B07CFF'],
+    ['B1', 'If I Had a Million Dollars', 'million-dollars-lettered', '*groan* ...fine. Again.', '#FF9F43'],
+    ['B2', 'Creep', 'winking', 'His favorite to sing.', '#7CF29A'],
+    ['B3', 'Country Roads', 'tip-bucket', 'Learn the moves at a show.', '#E8B887'],
+    ['B4', 'A Pirate Looks at Forty', 'last-call-bow', 'That\'s last call. No encores. Not even for $100.', '#FFD15C'],
+  ];
+  $('#keys').innerHTML = TOY.map((t, i) => `<button type="button" data-i="${i}" aria-pressed="false"><i>${t[0]}</i>${t[1]}</button>`).join('');
+  function react(slot, title, pose, line, c) {
+    toyPick = { c };
+    setRecord(slot, c, title.length > 18 ? title.slice(0, 17) + '…' : title);
+    setPose(pose);
+    bub.textContent = line; bub.classList.remove('on'); void bub.offsetWidth; bub.classList.add('on');
+    ding(slot.charCodeAt(1));
+    const n = noteEls[Math.floor(Math.random() * noteEls.length)]; n.classList.remove('on'); void n.getBoundingClientRect(); n.classList.add('on');
+  }
+  $('#keys').addEventListener('click', e => {
+    const btn = e.target.closest('button'); if (!btn) return;
+    document.querySelectorAll('#keys button').forEach(x => x.setAttribute('aria-pressed', String(x === btn)));
+    const t = TOY[+btn.dataset.i]; react(t[0], t[1], t[2], t[3], t[4]);
+  });
+  let mine = 0;
+  $('#own').addEventListener('submit', e => {
+    e.preventDefault();
+    const v = $('#ownI').value.trim(); if (!v) return;
+    if (/hoosier|\biu\b|indiana university|indiana,? our indiana|bloomington/i.test(v)) react('XX', 'DENIED', 'million-dollars-lettered', 'Request denied. Except Hoosiers.', '#cc2b2b');
+    else { mine++; react('ME', v, 'winking', `On the pile. That's your sticky note #${mine}.`, '#9fdcff'); }
+    $('#ownI').value = '';
+  });
+
+  addEventListener('scroll', measure, { passive: true });
+  addEventListener('resize', measure);
+  measure(); cur = target; tick();
+})();
+</script>
+</body>
+</html>

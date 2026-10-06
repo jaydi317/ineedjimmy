@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Bruce the Piano Man | One night, 88 keys</title>
+<meta name="description" content="Bruce Barker, Bruce the Piano Man. Solo at the piano or with the 8-piece band. Get a Bruce Alert, or book Bruce for 2027.">
+<meta property="og:title" content="Bruce plays the room.">
+<meta property="og:description" content="One night with Bruce the Piano Man, 88 keys long. Get a Bruce Alert or book Bruce for 2027.">
+<meta property="og:image" content="assets/bruce-wig-close.jpg">
+<meta name="theme-color" content="#080C22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Yellowtail&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#080C22; --night2:#111845; --ink:#F4EEDF; --dim:#A9AEC9;
+  --pink:#FF4FA0; --green:#39FF9C; --gold:#FFC861; --cyan:#3FE0FF;
+  --neon:"Tilt Neon", "Avenir Next", system-ui, sans-serif;
+  --script:"Yellowtail", "Brush Script MT", cursive;
+  --sans:"Inter Tight", system-ui, -apple-system, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+  --kw:min(86vw, 760px); --kh:118px; --gap:6px;
+}
+@media (max-width:760px){ :root{ --kw:94vw; --kh:74px; --gap:5px; } }
+*{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%;background:var(--night)}
+body{font-family:var(--sans);color:var(--ink);background:var(--night);overflow-x:hidden;line-height:1.45}
+a{color:inherit}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-999px;top:8px;z-index:99;background:#fff;color:#000;padding:10px 14px;border-radius:8px}.skip:focus{left:8px}
+.cf{display:inline-block;vertical-align:middle;font:600 9px/1 var(--mono);letter-spacing:.12em;color:#1a1300;background:var(--gold);padding:3px 5px 2px;border-radius:3px;margin-left:6px;transform:translateY(-1px)}
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.09;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* header */
+.bar{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px clamp(14px,3vw,36px);background:linear-gradient(rgba(8,12,34,.85),rgba(8,12,34,0))}
+.bar.solid{background:rgba(8,12,34,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+section,form{scroll-margin-top:80px}
+.mark{text-decoration:none;display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.mark b{font:400 34px/1 var(--script);color:#ffd9ec;text-shadow:0 0 6px var(--pink),0 0 18px var(--pink),0 0 40px rgba(255,79,160,.6)}
+.mark span{font:600 10px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);text-shadow:0 0 8px rgba(63,224,255,.7)}
+.acts{display:flex;gap:8px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px;border:0;white-space:nowrap;transition:transform .2s, box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.alert{background:transparent;color:var(--green);box-shadow:inset 0 0 0 2px var(--green),0 0 18px rgba(57,255,156,.35);text-shadow:0 0 10px rgba(57,255,156,.6)}
+.btn.book{background:var(--gold);color:#1d1400;box-shadow:0 0 24px rgba(255,200,97,.45)}
+.btn svg{width:17px;height:17px}
+.snd{min-height:40px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(8,12,34,.5);font:600 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.snd[aria-pressed=true]{color:var(--green);border-color:var(--green)}
+.mbar{display:none}
+@media (max-width:760px){
+  .bar .acts .btn{display:none}
+  .mark b{font-size:28px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(8,12,34,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,.08)}
+  .mbar .btn{font-size:15px;padding:11px 10px}
+}
+
+/* ===== the night (sticky stage) ===== */
+.track{position:relative;height:1350vh}
+.stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:radial-gradient(120% 70% at 50% 34%, #1a2263 0%, #0d1236 38%, var(--night) 70%)}
+.stars{position:absolute;inset:0 0 55% 0;background-image:radial-gradient(1px 1px at 12% 22%,#fff8,transparent 2px),radial-gradient(1px 1px at 32% 8%,#fff6,transparent 2px),radial-gradient(1.5px 1.5px at 58% 18%,#fff9,transparent 2px),radial-gradient(1px 1px at 77% 30%,#fff5,transparent 2px),radial-gradient(1px 1px at 88% 12%,#fff7,transparent 2px),radial-gradient(1px 1px at 22% 40%,#fff4,transparent 2px),radial-gradient(1.2px 1.2px at 46% 34%,#fff5,transparent 2px),radial-gradient(1px 1px at 66% 44%,#fff4,transparent 2px)}
+.lights{position:absolute;left:0;right:0;top:56px;height:120px;width:100%;pointer-events:none}
+.lights .b{transition:fill .5s, filter .5s}
+.lights .b.on{fill:var(--c);filter:drop-shadow(0 0 6px var(--c)) drop-shadow(0 0 14px var(--c))}
+.glowH{position:absolute;left:50%;top:var(--hz,30%);width:120vw;height:46vh;transform:translate(-50%,-50%);background:radial-gradient(50% 50% at 50% 50%, var(--hc,rgba(255,79,160,.35)), transparent 70%);transition:background 1s;pointer-events:none;filter:blur(8px)}
+.view{position:absolute;inset:0;perspective:760px;perspective-origin:50% var(--hz,30%);transition:filter 1s}
+.stage.sepia .view{filter:sepia(.85) saturate(.8) brightness(.95)}
+.deck{position:absolute;left:50%;bottom:-2px;width:var(--kw);transform-origin:50% 100%;transform-style:preserve-3d;will-change:transform}
+.key{position:absolute;left:0;width:100%;border-radius:3px 3px 6px 6px;transform-style:preserve-3d;backface-visibility:hidden}
+.key.w{height:var(--kh);background:linear-gradient(90deg,#4a4a58 0%,#67666f 60%,#74727a 100%);box-shadow:inset 0 -4px 0 rgba(0,0,0,.35)}
+.key.k{width:58%;background:linear-gradient(90deg,#020309,#0d0f1c 80%,#1b1e33);box-shadow:inset 0 -3px 0 #2c3052;transform:translateZ(12px)}
+.key.w.lit{background:linear-gradient(90deg,color-mix(in srgb,var(--c) 75%,#fff) 0%,#fffaf0 55%,#fff 100%);box-shadow:0 0 34px var(--c),0 0 90px color-mix(in srgb,var(--c) 50%,transparent),inset 0 -4px 0 rgba(0,0,0,.15)}
+.key.k.lit{background:linear-gradient(90deg,#05060e,#141729 70%,var(--c) 100%);box-shadow:0 0 22px var(--c),inset 0 -3px 0 var(--c)}
+.key.gone{visibility:hidden}
+.note{position:absolute;width:calc(var(--kh)*1.25);aspect-ratio:1;padding:8px;font:700 clamp(11px,1.3vw,16px)/1.05 "Yellowtail",cursive;color:#2a1f00;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 6px 14px rgba(0,0,0,.4);opacity:0;transform:translateZ(420px) rotate(var(--r));transition:transform .9s cubic-bezier(.2,.9,.25,1.15), opacity .4s;transition-delay:var(--d)}
+.note.landed{opacity:1;transform:translateZ(16px) rotate(var(--r))}
+.lane{position:absolute;width:calc(var(--kw)*.5);border-radius:6px;opacity:0;transform:translate3d(0,0,-2px);background:repeating-linear-gradient(0deg, color-mix(in srgb,var(--c) 60%,#fff) 0 calc(var(--kh)*.85), transparent 0 calc(var(--kh) + var(--gap)));box-shadow:0 0 40px var(--c);transition:transform 1.3s cubic-bezier(.3,.8,.2,1), opacity .6s;transition-delay:var(--d)}
+.lane.out{opacity:.8;transform:translate3d(var(--x),0,-2px)}
+.fall{position:absolute;left:-2%;width:104%;top:0;height:100%;transform-origin:50% 0;transform:translateZ(22px) scaleY(0);background:linear-gradient(90deg,#030409,#141833 40%,#262c55 52%,#0c0f22 64%,#030409);border-radius:6px;box-shadow:0 0 0 1px #2c3157}
+.fall b{position:absolute;left:0;right:0;bottom:3%;text-align:center;font:400 calc(var(--kw)*.16)/1 var(--script);color:#e9c46a;text-shadow:0 0 10px rgba(255,200,97,.5)}
+.fall::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background:linear-gradient(#a3142b,#5e0815);box-shadow:0 0 22px rgba(255,79,160,.6)}
+
+/* HUD */
+.hud{position:absolute;left:clamp(14px,3vw,36px);bottom:clamp(18px,4vh,40px);z-index:6;font:600 11px/1.5 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);transition:opacity .4s}
+.hud b{display:block;font:400 clamp(26px,3.2vw,44px)/1 var(--neon);letter-spacing:0;color:var(--ink);text-shadow:0 0 12px var(--hcol,var(--pink))}
+.hud .meter{margin-top:8px;width:min(260px,40vw);height:4px;background:rgba(255,255,255,.12);border-radius:3px;overflow:hidden}
+.hud .meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--green),var(--pink),var(--cyan),#B07CFF,var(--pink));background-size:260px 100%}
+@media (max-width:760px){ .hud{bottom:calc(80px + env(safe-area-inset-bottom));left:14px;font-size:9px} .hud span{display:none} .hud .meter{width:96px;margin-top:5px} .hud b{font-size:20px} }
+
+/* overlays */
+.ov{position:absolute;inset:0;z-index:5;pointer-events:none}
+.beat,.hero,.final{position:absolute;inset:0;opacity:0;visibility:hidden;transition:none}
+.beat.vis,.hero.vis,.final.vis{visibility:visible}
+.beat::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,9,28,.82) 0%,rgba(6,9,28,.55) 34%,transparent 58%)}
+.beat .txt{position:absolute;left:clamp(16px,6vw,96px);top:clamp(110px,17vh,170px);width:min(500px,42vw)}
+.kick{font:600 11px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--c,var(--gold));text-shadow:0 0 10px var(--c,var(--gold))}
+.ttl{font:400 clamp(40px,5.6vw,84px)/.98 var(--neon);margin:.25em 0 .3em;color:#fff;text-shadow:0 0 4px #fff,0 0 14px var(--c,var(--pink)),0 0 34px var(--c,var(--pink)),0 0 70px color-mix(in srgb,var(--c,var(--pink)) 60%,transparent)}
+.body{font-size:clamp(16px,1.35vw,19px);color:#dfe2f2;max-width:30em;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.body em{font-style:normal;color:#fff;font-weight:600}
+.pose{position:absolute;right:clamp(10px,7vw,120px);bottom:clamp(20px,6vh,70px);height:min(64vh,620px);aspect-ratio:2/3;filter:drop-shadow(0 18px 30px rgba(0,0,0,.6)) drop-shadow(0 0 30px color-mix(in srgb,var(--c) 45%,transparent))}
+.pose img{width:100%;height:100%;object-fit:contain}
+.polar{position:absolute;background:#fbf7ee;padding:10px 10px 38px;box-shadow:0 24px 50px rgba(0,0,0,.55);transform:rotate(var(--r,3deg))}
+.polar img{width:100%;height:100%;object-fit:cover}
+.polar figcaption{position:absolute;left:10px;right:10px;bottom:9px;font:400 19px/1 var(--script);color:#2a2340;text-align:center}
+.counter{font:400 clamp(52px,7vw,104px)/1 var(--neon);color:#fff;text-shadow:0 0 14px var(--c),0 0 40px var(--c);font-variant-numeric:tabular-nums}
+.strip{position:absolute;right:clamp(16px,6vw,110px);top:50%;width:min(470px,36vw);aspect-ratio:3/2;transform:translateY(-46%)}
+.strip figure{position:absolute;inset:0;border:5px solid #f3e6cf;border-radius:4px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.5);transition:opacity .6s, transform .8s cubic-bezier(.2,.8,.2,1);opacity:0;transform:translate(60px,40px) rotate(8deg)}
+.strip figure.on{opacity:1;transform:translate(calc(var(--n)*-26px),calc(var(--n)*-30px)) rotate(calc(-3deg + var(--n)*3deg))}
+.strip figure.on.top{transform:translate(calc(var(--n)*-26px),calc(var(--n)*-30px)) rotate(calc(-3deg + var(--n)*3deg)) scale(1.02)}
+.strip figure img{aspect-ratio:3/2;object-fit:cover;width:100%}
+.strip figure span{position:absolute;left:8px;top:8px;font:600 12px/1 var(--mono);background:#1b1309;color:#f3e6cf;padding:5px 7px;border-radius:3px}
+.chips8{display:flex;gap:6px;margin-top:16px;flex-wrap:wrap}
+.chips8 i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:600 12px var(--mono);font-style:normal;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.2);transition:all .4s}
+.chips8 i.on{background:var(--cc);border-color:var(--cc);color:#0b0b18;box-shadow:0 0 16px var(--cc)}
+
+/* hero */
+.hero .txt{position:absolute;left:clamp(16px,6vw,96px);top:50%;transform:translateY(-54%);width:min(640px,52vw)}
+.hero .ey{font:600 12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font:400 clamp(54px,8.4vw,128px)/.92 var(--neon);margin:.18em 0 .28em;color:#fff;text-shadow:0 0 4px #fff,0 0 16px var(--pink),0 0 40px var(--pink),0 0 90px rgba(255,79,160,.55)}
+.hero h1 span{display:block;color:#eafff4;text-shadow:0 0 4px #fff,0 0 16px var(--green),0 0 40px var(--green),0 0 90px rgba(57,255,156,.45)}
+.hero p{font-size:clamp(17px,1.5vw,21px);color:#e3e6f5;max-width:28em}
+.doors{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;pointer-events:auto}
+.hint{margin-top:26px;font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);display:flex;align-items:center;gap:10px}
+.hint i{width:1px;height:34px;background:linear-gradient(var(--dim),transparent);animation:drip 1.8s infinite}
+@keyframes drip{0%{transform:scaleY(.2);transform-origin:top}60%{transform:scaleY(1)}100%{opacity:0}}
+.tv{position:absolute;right:clamp(16px,7vw,120px);top:50%;width:min(360px,27vw);transform:translateY(-50%) rotate(2.5deg);padding:12px;border-radius:22px;background:#0b0f2a;box-shadow:0 0 0 2px var(--pink),0 0 24px var(--pink),0 0 60px rgba(255,79,160,.4),0 30px 60px rgba(0,0,0,.6)}
+.tv img{border-radius:12px;aspect-ratio:800/908;object-fit:cover;width:100%;height:auto}
+.tv figcaption{font:600 10px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--dim);padding:10px 4px 2px}
+.tv::before{content:"REAL BRUCE";position:absolute;top:-14px;left:18px;font:600 10px/1 var(--mono);letter-spacing:.2em;background:var(--pink);color:#fff;padding:6px 9px;border-radius:4px;box-shadow:0 0 14px var(--pink)}
+
+/* final */
+.final{display:grid;place-items:center;text-align:center;padding:0 20px}
+.final .in{max-width:760px;margin-top:-4vh}
+.pilot{width:16px;height:16px;border-radius:50%;margin:0 auto 22px;background:var(--gold);box-shadow:0 0 12px var(--gold),0 0 40px var(--gold),0 0 90px rgba(255,200,97,.6)}
+.final h2{font:400 clamp(64px,10vw,150px)/.9 var(--neon);color:#fff;text-shadow:0 0 4px #fff,0 0 16px var(--gold),0 0 50px var(--gold),0 0 100px rgba(255,200,97,.5)}
+.final p{font-size:clamp(17px,1.5vw,21px);color:#e3e6f5;margin:18px auto 0;max-width:34em}
+.final .song{font:400 clamp(28px,3vw,40px)/1.1 var(--script);color:var(--gold);margin-top:16px;text-shadow:0 0 18px rgba(255,200,97,.5)}
+.final .doors{justify-content:center}
+
+@media (max-width:760px){
+  .beat::before{background:linear-gradient(180deg,rgba(6,9,28,.85) 0%,rgba(6,9,28,.6) 40%,transparent 62%)}
+  .hero .txt{left:18px;right:18px;width:auto;top:96px;transform:none}
+  .hero h1{font-size:clamp(50px,15vw,64px)}
+  .hero p{font-size:16px}
+  .tv{width:44vw;right:14px;top:auto;bottom:calc(98px + env(safe-area-inset-bottom));transform:rotate(3deg)}
+  .tv figcaption{display:none}
+  .hero .doors{display:none}
+  .hint{display:none}
+  .beat .polar{width:40vw!important;height:47vw!important;bottom:calc(140px + env(safe-area-inset-bottom))!important;right:5vw!important}
+  .beat .polar + .polar{right:46vw!important}
+  .row{grid-template-columns:78px 1fr} .row time b{font-size:21px}
+  .pkg{padding-bottom:120px} .pkg img{width:120px!important;right:-6px!important;bottom:-14px!important}
+  .beat .txt{left:18px;right:18px;width:auto;top:84px}
+  .ttl{font-size:clamp(38px,11.5vw,50px)}
+  .body{font-size:15.5px}
+  .pose{height:34vh;right:6px;bottom:calc(90px + env(safe-area-inset-bottom))}
+  .strip{left:auto;right:30px;width:62vw;top:auto;bottom:calc(120px + env(safe-area-inset-bottom));transform:none}
+  .strip figure span{font-size:10px;padding:3px 4px}
+  .final .doors{display:none}
+}
+
+/* ===== flow sections ===== */
+.sec{position:relative;padding:clamp(80px,12vh,140px) clamp(18px,6vw,96px);background:var(--night)}
+.sec .wrap{max-width:1180px;margin:0 auto}
+.h2{font:400 clamp(44px,6vw,86px)/.95 var(--neon);color:#fff;text-shadow:0 0 4px #fff,0 0 16px var(--c,var(--pink)),0 0 44px var(--c,var(--pink))}
+.lede{font-size:clamp(17px,1.45vw,20px);color:#d8dcef;max-width:36em;margin-top:16px}
+.shows{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(24px,4vw,64px);margin-top:44px;align-items:start}
+.next{position:sticky;top:96px;border-radius:22px;padding:28px;background:linear-gradient(160deg,#151c52,#0b0f2b);box-shadow:inset 0 0 0 1.5px rgba(57,255,156,.5),0 0 40px rgba(57,255,156,.12)}
+.next .kick{--c:var(--green)}
+.next h3{font:400 clamp(30px,3vw,42px)/1.05 var(--neon);margin:12px 0 10px}
+.next p{color:#cfd4ea}
+.next .doors{margin-top:20px}
+.sl h3{font:600 11px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--dim);padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.12)}
+.row{display:grid;grid-template-columns:96px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.row time{font:600 12px/1.25 var(--mono);letter-spacing:.06em;color:var(--gold);text-transform:uppercase}
+.row time b{display:block;font:400 26px/1 var(--neon);color:#fff;letter-spacing:0}
+.row .v b{font-weight:700;font-size:17px}
+.row .v span{display:block;color:var(--dim);font-size:14px}
+.tag{font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:6px 8px;border-radius:4px;border:1.5px solid currentColor;white-space:nowrap}
+.tag.so{color:var(--pink);transform:rotate(-4deg);display:inline-block}
+.tag.band{color:#c6a8ff}.tag.free{color:var(--green)}
+.row a.mini{display:inline-block;margin-top:6px;font-size:13px;font-weight:700;color:var(--green);text-decoration:none;border-bottom:1px dashed}
+
+.keystrip{position:relative;height:56px;display:flex;background:#05071a;border-top:1px solid #222a5a;padding:0 2px}
+.keystrip i{flex:1;margin:0 1px;border-radius:0 0 4px 4px;background:linear-gradient(#fffaf0,color-mix(in srgb,var(--c) 70%,#fff));box-shadow:0 0 14px color-mix(in srgb,var(--c) 60%,transparent)}
+.keystrip u{position:absolute;top:0;height:34px;width:calc(100%/52*.6);background:#05060e;border-radius:0 0 3px 3px;box-shadow:inset 0 -3px 0 var(--c)}
+.formcard{border-radius:24px;padding:clamp(22px,3.5vw,44px);background:linear-gradient(170deg,#141a4b,#0a0d26);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.1),0 40px 80px rgba(0,0,0,.4)}
+.alertgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center}
+label.f{display:block;font-weight:600;font-size:14px;color:#cfd4ea;margin-top:16px}
+label.f small{font-weight:400;color:var(--dim)}
+input,select,textarea{width:100%;margin-top:7px;font:500 16px/1.3 var(--sans);color:#fff;background:#070a1f;border:1.5px solid rgba(255,255,255,.18);border-radius:12px;padding:13px 14px;min-height:50px}
+textarea{min-height:90px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(255,200,97,.25)}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#fff 50%),linear-gradient(135deg,#fff 50%,transparent 50%);background-position:calc(100% - 20px) 22px,calc(100% - 15px) 22px;background-size:5px 5px;background-repeat:no-repeat}
+.chipset{display:flex;flex-wrap:wrap;gap:8px;margin-top:9px;border:0}
+.chipset legend{font-weight:600;font-size:14px;color:#cfd4ea;margin-bottom:2px}
+.chipset button{min-height:44px;padding:10px 16px;border-radius:999px;background:transparent;border:1.5px solid rgba(255,255,255,.25);font-weight:600;font-size:15px}
+.chipset button[aria-pressed=true]{background:var(--green);border-color:var(--green);color:#04210f;box-shadow:0 0 16px rgba(57,255,156,.4)}
+.book .chipset button[aria-pressed=true]{background:var(--gold);border-color:var(--gold);color:#1d1400;box-shadow:0 0 16px rgba(255,200,97,.4)}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.go{margin-top:22px;width:100%;min-height:54px;font-size:17px}
+.done{margin-top:10px;padding:22px;border-radius:16px;background:rgba(57,255,156,.08);box-shadow:inset 0 0 0 1.5px rgba(57,255,156,.5);font-size:17px}
+.done b{display:block;font:400 30px/1.1 var(--neon);color:#fff;margin-bottom:6px}
+.done small{display:block;margin-top:12px;font:600 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.done a{color:var(--green)}
+.fine{font-size:13px;color:var(--dim);margin-top:12px}
+.pkgs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:40px 0 34px}
+.pkg{position:relative;border-radius:22px;padding:26px;background:#0d1236;box-shadow:inset 0 0 0 1.5px var(--c),0 0 40px color-mix(in srgb,var(--c) 18%,transparent);overflow:hidden}
+.pkg .kick{--c:var(--c)}
+.pkg h3{font:400 clamp(32px,3.4vw,46px)/1 var(--neon);margin:10px 0 8px;color:#fff;text-shadow:0 0 14px var(--c)}
+.pkg ul{list-style:none;margin:14px 0 18px;display:grid;gap:7px;color:#d8dcef}
+.pkg li::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--c);box-shadow:0 0 8px var(--c);margin-right:10px;transform:translateY(-2px)}
+.pkg .for{font-size:14px;color:var(--dim)}
+.pkg img{position:absolute;right:-20px;bottom:-30px;width:150px;opacity:.95;filter:drop-shadow(0 0 20px color-mix(in srgb,var(--c) 40%,transparent))}
+.pkg .btn{position:relative;z-index:1}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+.fgrid .full{grid-column:1/-1}
+.toggle{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:15px;color:#cfd4ea}
+.toggle input{width:22px;height:22px;min-height:0;margin:0;accent-color:var(--gold)}
+.foot{padding:70px clamp(18px,6vw,96px) calc(120px + env(safe-area-inset-bottom));text-align:center;background:#05071a;border-top:1px solid rgba(255,255,255,.06)}
+.foot .mark{justify-content:center}
+.foot nav{display:flex;gap:18px;justify-content:center;margin:22px 0;flex-wrap:wrap}
+.foot nav a{color:var(--dim);text-decoration:none;font-weight:600}
+.foot p{color:#7c829f;font-size:13px;max-width:52em;margin:8px auto 0}
+@media (max-width:860px){
+  .shows,.alertgrid,.pkgs,.fgrid{grid-template-columns:1fr}
+  .row{grid-template-columns:62px 1fr;}
+  .row .t{grid-column:2}
+  .pkg img{width:110px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .note,.lane,.strip figure,.lights .b,.view{transition:none!important}
+  .hint i{animation:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#shows">Skip to shows and booking</a>
+
+<header class="bar">
+  <a class="mark" href="#top" aria-label="Bruce the Piano Man, home"><b>Bruce</b><span>the Piano Man</span></a>
+  <div class="acts">
+    <button class="snd" id="snd" aria-pressed="false" title="Each key plays its real note as it lights">&#9835; Sound off</button>
+    <a class="btn alert" href="#alert"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg>Get a Bruce Alert</a>
+    <a class="btn book" href="#book">Book Bruce</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="track" id="night" aria-label="One night with Bruce, from the opener to last call">
+  <div class="stage" id="stage">
+    <div class="stars" aria-hidden="true"></div>
+    <svg class="lights" id="lights" viewBox="0 0 1600 120" preserveAspectRatio="xMidYMin slice" aria-hidden="true"></svg>
+    <div class="glowH" aria-hidden="true"></div>
+    <div class="view" aria-hidden="true"><div class="deck" id="deck"></div></div>
+
+    <div class="hud" id="hud" aria-hidden="true">
+      <span id="hudBeat">Doors open</span>
+      <b id="hudKey">Key 00 / 88</b>
+      <div class="meter"><i id="meter"></i></div>
+    </div>
+
+    <div class="ov">
+      <div class="hero" data-r="0,0.055">
+        <div class="txt">
+          <div class="ey">Bruce Barker &middot; Indiana's piano man since 1995</div>
+          <h1>Bruce plays <span>the room.</span></h1>
+          <p>Solo at the piano, or with the full 8-piece band. A Bruce night is 88 keys long. Scroll and play one.</p>
+          <div class="doors">
+            <a class="btn alert" href="#alert">Get a Bruce Alert</a>
+            <a class="btn book" href="#book">Book Bruce for 2027</a>
+          </div>
+          <div class="hint"><i></i>Scroll to start the night</div>
+        </div>
+        <figure class="tv"><img src="assets/bruce-wig-close.jpg" alt="Bruce in a curly blonde wig and Hawaiian shirt, throwing rock horns at the piano" width="800" height="908"><figcaption>Real Bruce, real wig &middot; MashCraft Fishers, Oct 3, 2026</figcaption></figure>
+      </div>
+
+      <div class="beat" data-b="0" style="--c:var(--gold)">
+        <div class="txt"><div class="kick">Keys 01&ndash;11 &middot; The opener</div><h2 class="ttl">Hail Purdue.</h2><p class="body">Every night starts the same way. You already know the words.</p></div>
+        <div class="pose"><img src="assets/bruce-pose-pointing.webp" alt="Cartoon Bruce pointing at you" loading="lazy"></div>
+      </div>
+      <div class="beat" data-b="1" style="--c:var(--green)">
+        <div class="txt"><div class="kick">Keys 12&ndash;22 &middot; The first hour</div><h2 class="ttl">Put your wallet away.</h2><p class="body">No tips in the first hour. Bruce's rule: <em>"Give them a free song!"</em></p></div>
+        <div class="pose"><img src="assets/bruce-pose-tip-bucket.webp" alt="Cartoon Bruce holding his beach-painted tip bucket" loading="lazy"></div>
+      </div>
+      <div class="beat" data-b="2" style="--c:var(--pink)">
+        <div class="txt"><div class="kick">Keys 23&ndash;33 &middot; Requests</div><h2 class="ttl">Write it on a sticky note.</h2><p class="body">Pink, yellow, blue. By midnight they cover the piano. Most requested: <em>Sweet Caroline, Piano Man, Livin' on a Prayer.</em></p></div>
+      </div>
+      <div class="beat" data-b="3" style="--c:#FF9F43">
+        <div class="txt"><div class="kick">Keys 34&ndash;44 &middot; The groan</div><h2 class="ttl">Not that one. <br>Fine. That one.</h2><p class="body"><em>"If I Had a Million Dollars."</em> Three times a night, for fifteen years. Listen for the groan.</p></div>
+        <div class="pose"><img src="assets/bruce-pose-million-dollars-lettered.webp" alt="Cartoon Bruce facepalming at a sticky note that says If I Had a Million Dollars" loading="lazy"></div>
+      </div>
+      <div class="beat" data-b="4" style="--c:var(--cyan)">
+        <div class="txt"><div class="kick">Keys 45&ndash;55 &middot; The toast</div><h2 class="ttl">Say social!</h2><p class="body">And the whole room raises a glass together. Strangers at 9, old friends by 10.<span class="cf">CONFIRM</span></p></div>
+        <div class="pose"><img src="assets/bruce-pose-say-social.webp" alt="Cartoon Bruce raising a glass" loading="lazy"></div>
+      </div>
+      <div class="beat" data-b="5" style="--c:#E8B887">
+        <div class="txt"><div class="kick">Keys 56&ndash;66 &middot; Flashback</div><h2 class="ttl">How it started.</h2><p class="body">He never touched a piano until his freshman year at Purdue. He taught himself off a cassette player. First song: <em>7 hours.</em> Second: <em>1 hour.</em> Third: <em>15 minutes.</em><span class="cf">CONFIRM YEAR + SONG</span></p>
+          <div class="counter" id="tape">7:00:00</div></div>
+        <div class="strip">
+          <figure data-k="0" style="--n:2"><img src="assets/comic-panel-1-seven-hours.webp" alt="Illustration: young Bruce at a dorm keyboard, struggling, with a cassette player" loading="lazy"><span>7 HRS</span></figure>
+          <figure data-k="1" style="--n:1"><img src="assets/comic-panel-2-one-hour.webp" alt="Illustration: young Bruce playing with more confidence" loading="lazy"><span>1 HR</span></figure>
+          <figure data-k="2" style="--n:0"><img src="assets/comic-panel-3-fifteen-minutes.webp" alt="Illustration: young Bruce grinning, playing easily" loading="lazy"><span>15 MIN</span></figure>
+        </div>
+      </div>
+      <div class="beat" data-b="6" style="--c:#B07CFF">
+        <div class="txt"><div class="kick">Keys 67&ndash;77 &middot; Side B</div><h2 class="ttl">Same Bruce. Bigger party.</h2><p class="body">The full <em>8-piece Bruce Barker Band.</em> Reunions, festivals, the boat, and a free July 4th show at Columbian Park this year.</p>
+          <div class="chips8" id="chips8" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><i>5</i><i>6</i><i>7</i><i>8</i></div></div>
+        <figure class="polar" style="right:clamp(16px,8vw,140px);bottom:clamp(40px,10vh,110px);width:min(330px,26vw);height:min(380px,30vw);--r:4deg"><img src="assets/bruce-wig-scene.jpg" alt="Bruce in the wig at the piano in a full room at MashCraft" loading="lazy"><figcaption>MashCraft, Oct 3</figcaption></figure>
+      </div>
+      <div class="beat" data-b="7" style="--c:var(--pink)">
+        <div class="txt"><div class="kick">Keys 78&ndash;88 &middot; The room</div><h2 class="ttl">Nobody compares.</h2><p class="body">Playing rooms since 1995. By his own count, about</p>
+          <div class="counter" id="crowd">0</div><p class="body">people have sung along.<span class="cf">CONFIRM 1.5M</span> The boat keeps selling out.</p></div>
+        <figure class="polar" style="right:clamp(150px,20vw,330px);bottom:clamp(60px,14vh,150px);width:min(240px,19vw);height:min(290px,23vw);--r:-5deg"><img src="assets/bruce-smile.jpg" alt="Bruce smiling, close up" loading="lazy"><figcaption>Bruce</figcaption></figure>
+        <figure class="polar" style="right:clamp(16px,5vw,80px);bottom:clamp(30px,8vh,90px);width:min(260px,20vw);height:min(300px,24vw);--r:5deg"><img src="assets/bruce-wig-close.jpg" alt="Bruce in the wig" loading="lazy"><figcaption>The wig bit</figcaption></figure>
+      </div>
+
+      <div class="final" data-r="0.9,1">
+        <div class="in">
+          <div class="pilot"></div>
+          <h2>Last call.</h2>
+          <div class="song">"A Pirate Looks at Forty"</div>
+          <p>Every night ends on that one.<span class="cf">CONFIRM</span> Someone once offered him $100 to play two more songs after it. He said no. That's the night.</p>
+          <div class="doors"><a class="btn alert" href="#alert">Get a Bruce Alert</a><a class="btn book" href="#book">Book Bruce for 2027</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="keystrip" id="keystrip" aria-hidden="true"></div>
+<section class="sec" id="shows" style="--c:var(--green)">
+  <div class="wrap">
+    <div class="kick" style="--c:var(--green)">Where's Bruce?</div>
+    <h2 class="h2" style="--c:var(--green)">The next night<br>posts here first.</h2>
+    <div class="shows">
+      <div class="next">
+        <div class="kick">Coming up</div>
+        <h3>2026 is a wrap. 2027 is booking now.</h3>
+        <p>The last public show was MashCraft Fishers on Oct 3. New dates go to Bruce Alert folks first, before the boat sells out.</p>
+        <div class="doors"><a class="btn alert" href="#alert">Get the heads-up</a><a class="btn book" href="#book">Book Bruce for 2027</a></div>
+      </div>
+      <div class="sl">
+        <h3>The 2026 setlist, so far</h3>
+        <div class="row"><time>Sat<b>Oct 3</b></time><div class="v"><b>MashCraft</b><span>Fishers</span></div><span class="t"></span></div>
+        <div class="row"><time>Sat<b>Sep 26</b></time><div class="v"><b>Madam Carroll</b><span>On the boat</span></div><span class="t"></span></div>
+        <div class="row"><time>Sat<b>Aug 15</b></time><div class="v"><b>MashCraft</b><span>Fishers</span></div><span class="t"><span class="tag band">Full band</span></span></div>
+        <div class="row"><time>Sat<b>Jul 25</b></time><div class="v"><b>Madam Carroll</b><span>On the boat</span><a class="mini" href="#alert">Tell me when the next boat opens</a></div><span class="t"><span class="tag so">Sold out</span></span></div>
+        <div class="row"><time>Fri<b>Jul 17</b></time><div class="v"><b>Fountain Park Chautauqua</b><span>Remington</span></div><span class="t"></span></div>
+        <div class="row"><time>Sat<b>Jul 4</b></time><div class="v"><b>Columbian Park</b><span>Lafayette</span></div><span class="t"><span class="tag free">Free &middot; 8-piece</span></span></div>
+        <div class="row"><time>Sat<b>Jun 6</b></time><div class="v"><b>Madam Carroll</b><span>On the boat</span><a class="mini" href="#alert">Tell me when the next boat opens</a></div><span class="t"><span class="tag so">Sold out</span></span></div>
+        <div class="row"><time>Sat<b>May 30</b></time><div class="v"><b>MashCraft</b><span>Fishers</span></div><span class="t"></span></div>
+        <div class="row"><time>Sat<b>Apr 18</b></time><div class="v"><b>Madam Carroll</b><span>On the boat</span></div><span class="t"><span class="tag band">Full band</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="alert">
+  <div class="wrap alertgrid">
+    <div>
+      <div class="kick" style="--c:var(--green)">Bruce Alert</div>
+      <h2 class="h2" style="--c:var(--green)">Be first to know.</h2>
+      <p class="lede">Where he's playing, before it sells out. A few emails a year. Just dates, straight from Bruce.</p>
+    </div>
+    <form class="formcard" data-alert novalidate>
+      <div class="fields">
+        <label class="f">Your email<input type="email" name="email" required autocomplete="email" placeholder="you@email.com"></label>
+        <fieldset class="chipset" data-chips="many"><legend>Where do you want to see him?</legend>
+          <input type="hidden" name="regions">
+          <button type="button" aria-pressed="true">Lafayette</button><button type="button" aria-pressed="false">Indy &amp; Fishers</button><button type="button" aria-pressed="false">Anywhere</button>
+        </fieldset>
+        <label class="f">Your class year <small>(optional, or "just a fan")</small><input name="year" inputmode="numeric" placeholder="e.g. 1996"></label>
+        <input class="hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn alert go" type="submit">Count me in</button>
+        <p class="fine">Free. Unsubscribe any time. Mockup: nothing is sent.</p>
+      </div>
+      <div class="done" hidden></div>
+    </form>
+  </div>
+</section>
+
+<section class="sec book" id="book">
+  <div class="wrap">
+    <div class="kick" style="--c:var(--gold)">Book Bruce</div>
+    <h2 class="h2" style="--c:var(--gold)">Bring the room<br>to your people.</h2>
+    <p class="lede">Class reunions, alumni clubs, fundraisers, company nights. One door, two sizes of party. Tell us about your night and you'll get a real answer, not an auto-quote.</p>
+    <div class="pkgs">
+      <div class="pkg" style="--c:var(--pink)">
+        <div class="kick">Side A</div><h3>The Piano Bar</h3>
+        <ul><li>Bruce, solo, at the piano</li><li>Sticky-note requests all night</li><li>Sound for the room<span class="cf">CONFIRM</span></li></ul>
+        <p class="for">Best for alumni dinners, receptions, smaller company nights.</p>
+        <a class="btn book" href="#bookform" data-night="piano" style="margin-top:16px">Ask about the Piano Bar</a>
+        <img src="assets/bruce-pose-at-piano.webp" alt="" loading="lazy" style="width:210px;right:-30px;bottom:-20px">
+      </div>
+      <div class="pkg" style="--c:#B07CFF">
+        <div class="kick">Side B</div><h3>The Full Band</h3>
+        <ul><li>The 8-piece Bruce Barker Band</li><li>Stage, sound and lights<span class="cf">CONFIRM</span></li><li>Your class-year songs on the list</li></ul>
+        <p class="for">Best for reunions, festivals, ticketed nights.</p>
+        <a class="btn book" href="#bookform" data-night="band" style="margin-top:16px">Ask about the Full Band</a>
+        <img src="assets/bruce-pose-wig-rock-horns.webp" alt="" loading="lazy">
+      </div>
+    </div>
+
+    <form class="formcard" id="bookform" data-book novalidate>
+      <div class="fields">
+        <fieldset class="chipset" data-chips="one"><legend>What kind of night?</legend>
+          <input type="hidden" name="night" value="unsure">
+          <button type="button" data-v="piano" aria-pressed="false">Piano Bar</button><button type="button" data-v="band" aria-pressed="false">Full Band</button><button type="button" data-v="unsure" aria-pressed="true">Not sure yet</button>
+        </fieldset>
+        <div class="fgrid">
+          <label class="f">What's the event?<select name="event" required><option value="">Pick one</option><option value="reunion">Class reunion or alumni group</option><option value="corporate">Company event</option><option value="fundraiser">Fundraiser or charity</option><option value="party">Private party</option><option value="festival">Festival or city event</option><option value="wedding">Wedding</option><option value="other">Something else</option></select></label>
+          <label class="f">Date<input type="date" name="date" required></label>
+          <label class="f">City or venue<input name="where" required placeholder="e.g. West Lafayette"></label>
+          <label class="f">How many guests?<select name="guests" required><option value="">Pick a range</option><option>Under 50</option><option>50 to 150</option><option>150 to 300</option><option>300 to 1,000</option><option>1,000+</option></select></label>
+          <div class="full"><label class="toggle"><input type="checkbox" name="flexible"> Our date is flexible</label></div>
+          <fieldset class="chipset draw full" hidden><legend>Is Bruce the draw, or entertaining people already coming?</legend>
+            <label class="toggle"><input type="radio" name="draw" value="draw"> He's the draw</label>
+            <label class="toggle"><input type="radio" name="draw" value="entertain"> Our crowd is already coming</label>
+          </fieldset>
+          <label class="f">Your name<input name="name" required autocomplete="name"></label>
+          <label class="f">Email<input type="email" name="email" required autocomplete="email"></label>
+          <label class="f full">Phone <small>(optional)</small><input type="tel" name="phone" autocomplete="tel"></label>
+          <label class="f full">Anything else? <small>Class year, must-hear songs, the vibe</small><textarea name="notes" placeholder="Class of '96. We need Sweet Caroline."></textarea></label>
+        </div>
+        <input class="hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn book go" type="submit">Check my date</button>
+        <p class="fine">No budget field, no auto-quote. A real person writes back. Mockup: nothing is sent.</p>
+      </div>
+      <div class="done" hidden></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <a class="mark" href="#top"><b>Bruce</b><span>the Piano Man</span></a>
+  <nav><a href="https://www.facebook.com/PianoManBruce/" rel="noopener">Facebook</a><a href="https://www.instagram.com/brucethepianoman/" rel="noopener">Instagram</a><a href="https://x.com/PianoManBruce" rel="noopener">X</a><a href="#book">Book Bruce</a></nav>
+  <p>Draft for Bruce's review. Items tagged CONFIRM are waiting on Bruce. Song titles only; no lyrics. Cartoon Bruce is an illustration; the photos are the real thing.</p>
+</footer>
+
+<nav class="mbar" aria-label="Quick actions">
+  <a class="btn alert" href="#alert">Get a Bruce Alert</a>
+  <a class="btn book" href="#book">Book Bruce</a>
+</nav>
+
+<script src="assets/forms.js"></script>
+<script>
+(() => {
+  const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const COLORS = ['#FFC861','#39FF9C','#FF4FA0','#FF9F43','#3FE0FF','#E8B887','#B07CFF','#FF4FA0'];
+  const BEATS = ['The opener','The first hour','Requests','The groan','Say social!','Flashback','The band','The room'];
+  const stage = document.getElementById('stage'), deck = document.getElementById('deck');
+  const track = document.getElementById('night');
+  const $ = s => document.querySelector(s);
+
+  /* ---- build the 88 keys ---- */
+  let kh, gap, pitch, L, kw;
+  const keys = []; // {el, y, h, black}
+  function build() {
+    deck.innerHTML = '';
+    keys.length = 0;
+    const cs = getComputedStyle(document.documentElement);
+    kh = parseFloat(cs.getPropertyValue('--kh')); gap = parseFloat(cs.getPropertyValue('--gap'));
+    pitch = kh + gap; L = 52 * pitch; kw = deck.getBoundingClientRect().width || innerWidth * .86;
+    deck.style.height = L + 'px';
+    let w = 0;
+    for (let i = 0; i < 88; i++) {
+      const s = (i + 9) % 12; // 0 = C
+      const black = [1, 3, 6, 8, 10].includes(s);
+      const el = document.createElement('i');
+      el.className = 'key ' + (black ? 'k' : 'w');
+      let y, h;
+      if (black) { h = kh * .56; y = w * pitch - gap / 2 - h / 2; el.style.height = h + 'px'; }
+      else { h = kh; y = w * pitch; w++; }
+      el.style.bottom = y + 'px';
+      el.style.setProperty('--c', COLORS[Math.floor(i / 11)]);
+      deck.appendChild(el);
+      keys.push({ el, y, h, black, lit: false });
+    }
+    // sticky notes land on keys 23-33
+    const notes = [['Sweet Caroline', '#FFD15C', -8], ['Piano Man', '#FF7AB6', 6], ["Livin' on a Prayer", '#7FD6FF', -4], ['If I Had a Million Dollars', '#FFD15C', 9], ['Creep', '#FF7AB6', -10], ['Hail Purdue (again)', '#B9F5A0', 5]];
+    notes.forEach((n, j) => {
+      const el = document.createElement('div');
+      el.className = 'note'; el.textContent = n[0];
+      el.style.background = n[1];
+      const k = keys[23 + j * 2];
+      el.style.bottom = (k.y - kh * .1) + 'px';
+      el.style.left = (j % 2 ? 62 : 38) + '%';
+      el.style.setProperty('--r', n[2] + 'deg');
+      el.style.setProperty('--d', (j * 0.09) + 's');
+      deck.appendChild(el);
+    });
+    // 7 extra lanes for the band: 1 keyboard becomes 8 lanes
+    const laneCols = ['#FF4FA0', '#39FF9C', '#FFC861', '#3FE0FF', '#B07CFF', '#FF9F43', '#7FD6FF'];
+    [-1, 1, -2, 2, -3, 3, 4].forEach((k, j) => {
+      const el = document.createElement('div');
+      el.className = 'lane';
+      el.style.left = '25%';
+      el.style.bottom = keys[54].y + 'px';
+      el.style.height = (L - keys[54].y) + 'px';
+      el.style.setProperty('--c', laneCols[j]);
+      el.style.setProperty('--x', (k * kw * .62 + (k > 0 ? kw * .28 : -kw * .28)) + 'px');
+      el.style.setProperty('--d', (j * 0.12) + 's');
+      deck.appendChild(el);
+    });
+    const fall = document.createElement('div'); fall.className = 'fall'; fall.id = 'fall'; fall.innerHTML = '<b>Bruce</b>'; deck.appendChild(fall);
+  }
+
+  /* ---- string lights ---- */
+  const lightsSvg = document.getElementById('lights');
+  (function lights() {
+    let h = '<path d="M0 10 Q400 90 800 30 T1600 20" fill="none" stroke="#2a3060" stroke-width="3"/>';
+    const n = 32;
+    for (let i = 0; i < n; i++) {
+      const t = i / (n - 1), x = t * 1600;
+      // approximate the curve
+      const y = t < .5 ? (1 - 2 * t) ** 2 * 10 + 2 * (2 * t) * (1 - 2 * t) * 90 + (2 * t) ** 2 * 30 : (() => { const u = 2 * t - 1; return (1 - u) ** 2 * 30 + 2 * u * (1 - u) * (-30) + u * u * 20; })();
+      h += `<ellipse class="b" data-i="${i}" cx="${x.toFixed(0)}" cy="${(y + 14).toFixed(0)}" rx="6" ry="9" fill="#2b2f50" style="--c:${COLORS[Math.floor(i / 4) % 8]}"/>`;
+    }
+    lightsSvg.innerHTML = h;
+  })();
+  const bulbs = [...lightsSvg.querySelectorAll('.b')];
+
+  /* ---- sound (off until tapped) ---- */
+  let ac = null, soundOn = false, lastNote = 0;
+  const sndBtn = document.getElementById('snd');
+  sndBtn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    sndBtn.setAttribute('aria-pressed', soundOn);
+    sndBtn.innerHTML = soundOn ? '&#9835; Sound on' : '&#9835; Sound off';
+    if (soundOn && !ac) ac = new (window.AudioContext || window.webkitAudioContext)();
+    if (soundOn) ac.resume(), play(40);
+  });
+  function play(i) {
+    if (!soundOn || !ac) return;
+    const now = ac.currentTime; if (now - lastNote < .045) return; lastNote = now;
+    const f = 27.5 * Math.pow(2, i / 12);
+    const g = ac.createGain(); g.gain.setValueAtTime(0, now); g.gain.linearRampToValueAtTime(.16, now + .008); g.gain.exponentialRampToValueAtTime(.0008, now + 1.4);
+    [1, 2, 3].forEach((m, j) => { const o = ac.createOscillator(); o.type = j ? 'sine' : 'triangle'; o.frequency.value = f * m; const og = ac.createGain(); og.gain.value = [1, .35, .12][j]; o.connect(og).connect(g); o.start(now); o.stop(now + 1.5); });
+    g.connect(ac.destination);
+  }
+
+  /* ---- scroll engine ---- */
+  const hero = $('.hero'), fin = $('.final'), beats = [...document.querySelectorAll('.beat')];
+  const hudKey = $('#hudKey'), hudBeat = $('#hudBeat'), meter = $('#meter'), hud = $('#hud');
+  const tape = $('#tape'), crowd = $('#crowd'), strips = [...document.querySelectorAll('.strip figure')], chips8 = [...document.querySelectorAll('#chips8 i')];
+  const notesEls = () => deck.querySelectorAll('.note'), lanesEls = () => deck.querySelectorAll('.lane');
+  const T0 = .06, T1 = .80, C1 = .88; // travel 0.06-0.80, crane 0.80-0.88, fallboard 0.88-1
+  let target = 0, cur = 0;
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const barEl = document.querySelector('.bar');
+  function measure() {
+    const r = track.getBoundingClientRect();
+    barEl.classList.toggle('solid', r.bottom < 70);
+    const total = track.offsetHeight - innerHeight;
+    target = clamp(-r.top / total);
+  }
+  function keyY(kf) { // y (center) for a fractional key index 0..88
+    const i = clamp(Math.floor(kf), 0, 87), f = kf - Math.floor(kf);
+    const a = keys[i], b = keys[Math.min(87, i + 1)];
+    const ya = a.y + a.h / 2, yb = b.y + b.h / 2;
+    return lerp(ya, yb, i >= 87 ? 0 : f);
+  }
+  function fade(x, a, b, edge) { // 0..1 visibility of x inside [a,b] with soft edges
+    return clamp(Math.min((x - a) / edge, (b - x) / edge));
+  }
+  let lastBeat = -2, notesLanded = false, lanesOut = false;
+  function render(p) {
+    const mob = innerWidth <= 760, vh = innerHeight;
+    const travel = clamp((p - T0) / (T1 - T0));
+    const kf = travel * 88;
+    const crane = ease(clamp((p - T1) / (C1 - T1)));
+    const fall = ease(clamp((p - C1) / .065));
+    // camera
+    const lead = mob ? vh * .55 : vh * .62;
+    const camTravel = keyY(Math.max(0, kf)) - lead - (kf < .5 ? 0 : 0);
+    const camCrane = -L * (mob ? .05 : .02);
+    const cam = lerp(camTravel, camCrane, crane);
+    const rx = lerp(mob ? 66 : 70, mob ? 52 : 56, crane);
+    const z = lerp(0, -L * (mob ? .32 : .26), crane);
+    deck.style.transform = `translateX(-50%) rotateX(${rx}deg) translate3d(0,${cam}px,${z}px)`;
+    // light keys
+    const litN = p >= T1 ? 88 : Math.floor(kf + .3);
+    for (let i = 0; i < 88; i++) {
+      const k = keys[i], on = i < litN;
+      if (on !== k.lit) { k.lit = on; k.el.classList.toggle('lit', on); if (on && Math.abs(p - cur) < .02) play(i); }
+      const gone = crane < .05 && (k.y + k.h) < cam - 40;
+      if (gone !== k.gone) { k.gone = gone; k.el.classList.toggle('gone', gone); }
+    }
+    // beats
+    const beat = p < T0 ? -1 : p >= T1 ? 8 : Math.min(7, Math.floor(kf / 11));
+    const col = beat >= 0 && beat < 8 ? COLORS[beat] : '#FFC861';
+    stage.style.setProperty('--hc', col + '55');
+    hud.style.setProperty('--hcol', col);
+    hudKey.textContent = `Key ${String(Math.min(88, litN)).padStart(2, '0')} / 88`;
+    hudBeat.textContent = beat < 0 ? 'Doors open' : beat >= 8 ? 'Last call' : `Beat ${beat + 1} of 8 · ${BEATS[beat]}`;
+    meter.style.width = (Math.min(88, litN) / 88 * 100) + '%';
+    hud.style.opacity = (p > C1 + .02 || (mob && p < T0)) ? 0 : 1;
+    stage.classList.toggle('sepia', beat === 5);
+    const litBulbs = beat < 0 ? 0 : beat >= 8 ? 32 : Math.round((kf / 88) * 32);
+    bulbs.forEach((b, j) => b.classList.toggle('on', j < litBulbs));
+    // hero
+    const hv = p < T0 + .005 ? clamp(1 - p / (T0 * .9)) : 0;
+    hero.style.opacity = hv; hero.classList.toggle('vis', hv > .01);
+    hero.style.transform = `translateY(${-p / T0 * 40}px)`;
+    // beat overlays
+    beats.forEach((el, j) => {
+      const v = p < T0 || p >= T1 ? 0 : fade(kf, j * 11 + .3, j * 11 + 11, 1.6);
+      el.style.opacity = v; el.classList.toggle('vis', v > .01);
+      const loc = clamp((kf - j * 11) / 11);
+      const pose = el.querySelector('.pose');
+      if (pose) pose.style.transform = `translateY(${(1 - v) * 40}px) scale(${.96 + v * .04})`;
+      el.querySelectorAll('.polar').forEach((f, n) => f.style.transform = `rotate(var(--r)) translateY(${(1 - v) * (60 + n * 30)}px)`);
+      const txt = el.querySelector('.txt');
+      txt.style.transform = `translateY(${(loc - .5) * -24}px)`;
+    });
+    // notes and lanes: physical changes to the keyboard
+    const nl = kf >= 22.5 || p >= T1;
+    if (nl !== notesLanded) { notesLanded = nl; notesEls().forEach(n => n.classList.toggle('landed', nl)); }
+    const lo = (kf >= 66.5 && kf < 88) && crane < .5;
+    if (lo !== lanesOut) { lanesOut = lo; lanesEls().forEach(n => n.classList.toggle('out', lo)); }
+    // flashback counter
+    if (beat === 5) {
+      const loc = clamp((kf - 55) / 11);
+      const stage3 = loc < .36 ? 0 : loc < .68 ? 1 : 2;
+      tape.textContent = ['7:00:00', '1:00:00', '0:15:00'][stage3];
+      strips.forEach((s, n) => { s.classList.toggle('on', n <= stage3); s.classList.toggle('top', n === stage3); });
+    }
+    if (beat === 6) { const loc = clamp((kf - 66) / 9); chips8.forEach((c, n) => { c.classList.toggle('on', n < Math.ceil(loc * 8)); c.style.setProperty('--cc', ['#FF4FA0', '#39FF9C', '#FFC861', '#3FE0FF', '#B07CFF', '#FF9F43', '#7FD6FF', '#fff'][n]); }); }
+    if (beat === 7) { const loc = clamp((kf - 77) / 8); crowd.textContent = Math.round(ease(loc) * 1500000).toLocaleString('en-US'); }
+    // fallboard + final
+    const fb = document.getElementById('fall');
+    if (fb) fb.style.transform = `translateZ(22px) scaleY(${fall})`;
+    const fv = clamp((p - (C1 + .062)) / .022);
+    fin.style.opacity = fv; fin.classList.toggle('vis', fv > .01);
+    stage.style.setProperty('--hz', mob ? '36%' : '30%');
+  }
+  function tick() {
+    const d = target - cur;
+    cur = RM ? target : (Math.abs(d) < .0001 ? target : cur + d * .14);
+    render(cur);
+    requestAnimationFrame(tick);
+  }
+  build();
+  (function strip() { // the night's receipt: all 88 keys in the colors they lit
+    const ks = document.getElementById('keystrip'); let w = 0, h = '';
+    for (let i = 0; i < 88; i++) { const sm = (i + 9) % 12, c = COLORS[Math.floor(i / 11)];
+      if ([1, 3, 6, 8, 10].includes(sm)) h += `<u style="left:calc(100%/52*${w} - 100%/52*.3);--c:${c}"></u>`; else { h += `<i style="--c:${c}"></i>`; w++; } }
+    ks.innerHTML = h;
+  })();
+  addEventListener('scroll', measure, { passive: true });
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { build(); notesLanded = lanesOut = null; measure(); }, 150); });
+  measure(); cur = target; tick();
+})();
+</script>
+</body>
+</html>
