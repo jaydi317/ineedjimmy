@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Your new front door · For Mason</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Karla:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--wall:#1F6FB2;--deep:#0E3A63;--navy:#13294B;--card:#FFFFFF;--ink:#1A1E24;--muted:#56606C;--accent:#E9681F;--on-accent:#fff;--yellow:#F2C230;--placard:#ECE6D3;--radius:18px;
+--font-display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--font-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto}
+body{margin:0;background:var(--wall);color:#fff;font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-x:clip;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:min(640px,100% - 32px);margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:.98;margin:0 0 .35em;letter-spacing:.01em}
+h1{font-size:clamp(3rem,15vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(2.1rem,9vw,3.2rem);text-transform:uppercase}
+h3{font-size:1.6rem;font-weight:800}
+p{margin:0 0 1em}
+.eyebrow{font-weight:700;opacity:.9;margin:0 0 6px}
+.lede{font-size:1.15rem}
+.chip{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:10px;z-index:40;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(14,58,99,.92);color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.top{padding:78px 0 10px}
+.placard{display:inline-block;background:var(--placard);color:var(--ink);border:8px solid #2B2622;box-shadow:0 14px 30px rgba(0,0,0,.3);padding:10px 18px 6px;transform:rotate(-1.2deg);margin:0 0 18px}
+.placard h1,.placard h2{margin:0}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:18px;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 0 #A9440E}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #A9440E}
+.btn.ghost{background:transparent;border:2px solid #fff;box-shadow:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.small{font-size:.92rem;opacity:.9}
+.card{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;box-shadow:0 18px 36px -18px rgba(0,0,0,.45)}
+.src{font-size:.85rem;color:var(--muted)}
+.src a{color:var(--muted)}
+.sec{padding:28px 0}
+footer{padding:20px 0 40px;text-align:center;font-size:.92rem;opacity:.85}
+.tour-next{padding:40px 0 10px}
+.tn-card{background:var(--card);color:var(--ink);border-radius:var(--radius);border-top:12px solid var(--accent);padding:26px 20px 14px;text-align:center;box-shadow:0 22px 40px -22px rgba(0,0,0,.5)}
+.tn-dots{list-style:none;display:flex;justify-content:center;gap:9px;margin:0 0 12px;padding:0}
+.tn-dots li{width:12px;height:12px;border-radius:50%;border:2px solid #9AA4AF}
+.tn-dots li.on{background:var(--accent);border-color:var(--accent)}
+.tn-dots li.now{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--accent)}
+.tn-kick{margin:0;font-weight:800;font-size:15px;color:var(--accent)}
+.tn-hook{margin:6px 0 0;font-size:1.05rem}
+.tn-card .btn{margin-top:16px}
+.tn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:700;color:var(--ink)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.look{display:grid;grid-template-columns:132px 1fr;gap:16px;background:var(--card);color:var(--ink);border-radius:var(--radius);padding:14px;margin:0 0 16px;box-shadow:0 18px 36px -18px rgba(0,0,0,.5)}
+.look .thumb img{border-radius:12px;border:4px solid #0B1220;width:100%;height:auto}
+.look h3{color:var(--deep);margin:0 0 .3em}
+.look p{margin:0 0 .6em;font-size:.98rem}
+.look .num{font-weight:800;color:var(--accent);margin:0}
+.look .says{font-weight:700}
+.look .btn{min-height:48px;font-size:16px;margin-top:8px}
+.btn.ghost.dark{border-color:var(--deep);color:var(--deep)}
+.look.picked{outline:4px solid var(--yellow)}
+.look.picked .pick{background:var(--yellow);color:var(--ink);box-shadow:0 4px 0 #B48C10}
+@media (max-width:380px){.look{grid-template-columns:1fr}.look .thumb img{max-width:200px}}
+</style>
+</head><body>
+<a class="chip" href="index.html">&larr; All pages</a>
+
+<header class="wrap top">
+  <p class="eyebrow">Page 3 of 5</p>
+  <div class="placard"><h1 style="font-size:clamp(2.4rem,11vw,3.6rem)">Your new front door</h1></div>
+  <p class="lede">Same facts, same buttons, three completely different personalities. Open each one, then pick. Each opens with a 21+ check, like your counter.</p>
+  <p class="small">The yellow tags inside are things only you can tell me.</p>
+</header>
+<main class="wrap"><article class="look" data-n="1">
+  <a class="thumb" href="looks/n1.html"><img src="img/look1.jpg" alt="Look 1, After Hours, on a phone" width="480" height="800" loading="lazy"></a>
+  <div class="lb"><p class="num">Look 1</p><h3>After Hours</h3><p>Built like the big vape brands&#x27; websites, with your bar under the lights and a two-tap flavor finder up top.</p><p class="says">This one says: you play in the same league as the big brands.</p>
+  <a class="btn ghost dark" href="looks/n1.html">Open look 1</a>
+  <button type="button" class="btn pick" data-n="1">Pick this one</button></div>
+</article><article class="look" data-n="2">
+  <a class="thumb" href="looks/n2.html"><img src="img/look2.jpg" alt="Look 2, The Bar, on a phone" width="480" height="800" loading="lazy"></a>
+  <div class="lb"><p class="num">Look 2</p><h3>The Bar</h3><p>Your bar, your chairs, your real No Smoking Here sign. Pick a stool to get around. Reviews on coasters.</p><p class="says">This one says: pull up a chair, you&#x27;re one of us.</p>
+  <a class="btn ghost dark" href="looks/n2.html">Open look 2</a>
+  <button type="button" class="btn pick" data-n="2">Pick this one</button></div>
+</article><article class="look" data-n="3">
+  <a class="thumb" href="looks/n3.html"><img src="img/look3.jpg" alt="Look 3, Black Tie, on a phone" width="480" height="800" loading="lazy"></a>
+  <div class="lb"><p class="num">Look 3</p><h3>Black Tie</h3><p>Built from your bow-tie V. Your mural framed like gallery art. Rewards as a members&#x27; card.</p><p class="says">This one says: there&#x27;s nothing cheap about this place.</p>
+  <a class="btn ghost dark" href="looks/n3.html">Open look 3</a>
+  <button type="button" class="btn pick" data-n="3">Pick this one</button></div>
+</article></main>
+<section class="tour-next wrap" aria-label="Next page"><div class="tn-card"><ol class="tn-dots" aria-hidden="true"><li class="on"></li><li class="on"></li><li class="on now"></li><li></li><li></li></ol><p class="tn-kick">That was 3 of 5</p><p class="tn-hook">Try it the way a customer would.</p><a class="btn" href="4-machine.html">Open page 4: Selling online, the way that works &rarr;</a><a class="tn-all" href="index.html">See all 5 pages</a></div></section><script>function show(){var p=null;try{p=localStorage.getItem('tour.pick.look');}catch(e){}
+document.querySelectorAll('.look').forEach(function(l){var on=l.getAttribute('data-n')===p;l.classList.toggle('picked',on);l.querySelector('.pick').textContent=on?'Picked \u2713':'Pick this one';});}
+document.querySelectorAll('.pick').forEach(function(b){b.addEventListener('click',function(){try{localStorage.setItem('tour.pick.look',b.getAttribute('data-n'));}catch(e){}show();});});show();</script><footer>Made for Mason by Jimmy Davis · iNeedJimmy.com</footer>
+</body></html>

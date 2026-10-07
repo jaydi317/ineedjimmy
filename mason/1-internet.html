@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>How the internet sees you · For Mason</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Karla:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--wall:#1F6FB2;--deep:#0E3A63;--navy:#13294B;--card:#FFFFFF;--ink:#1A1E24;--muted:#56606C;--accent:#E9681F;--on-accent:#fff;--yellow:#F2C230;--placard:#ECE6D3;--radius:18px;
+--font-display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--font-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto}
+body{margin:0;background:var(--wall);color:#fff;font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-x:clip;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:min(640px,100% - 32px);margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:.98;margin:0 0 .35em;letter-spacing:.01em}
+h1{font-size:clamp(3rem,15vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(2.1rem,9vw,3.2rem);text-transform:uppercase}
+h3{font-size:1.6rem;font-weight:800}
+p{margin:0 0 1em}
+.eyebrow{font-weight:700;opacity:.9;margin:0 0 6px}
+.lede{font-size:1.15rem}
+.chip{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:10px;z-index:40;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(14,58,99,.92);color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.top{padding:78px 0 10px}
+.placard{display:inline-block;background:var(--placard);color:var(--ink);border:8px solid #2B2622;box-shadow:0 14px 30px rgba(0,0,0,.3);padding:10px 18px 6px;transform:rotate(-1.2deg);margin:0 0 18px}
+.placard h1,.placard h2{margin:0}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:18px;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 0 #A9440E}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #A9440E}
+.btn.ghost{background:transparent;border:2px solid #fff;box-shadow:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.small{font-size:.92rem;opacity:.9}
+.card{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;box-shadow:0 18px 36px -18px rgba(0,0,0,.45)}
+.src{font-size:.85rem;color:var(--muted)}
+.src a{color:var(--muted)}
+.sec{padding:28px 0}
+footer{padding:20px 0 40px;text-align:center;font-size:.92rem;opacity:.85}
+.tour-next{padding:40px 0 10px}
+.tn-card{background:var(--card);color:var(--ink);border-radius:var(--radius);border-top:12px solid var(--accent);padding:26px 20px 14px;text-align:center;box-shadow:0 22px 40px -22px rgba(0,0,0,.5)}
+.tn-dots{list-style:none;display:flex;justify-content:center;gap:9px;margin:0 0 12px;padding:0}
+.tn-dots li{width:12px;height:12px;border-radius:50%;border:2px solid #9AA4AF}
+.tn-dots li.on{background:var(--accent);border-color:var(--accent)}
+.tn-dots li.now{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--accent)}
+.tn-kick{margin:0;font-weight:800;font-size:15px;color:var(--accent)}
+.tn-hook{margin:6px 0 0;font-size:1.05rem}
+.tn-card .btn{margin-top:16px}
+.tn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:700;color:var(--ink)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.flip{margin:0 0 14px}
+.flip .front{width:100%;border:0;text-align:left;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;min-height:78px;font-weight:800;font-size:1.15rem;box-shadow:0 14px 30px -18px rgba(0,0,0,.5)}
+.flip .front .tap{flex:none;background:var(--yellow);color:var(--ink);border-radius:999px;padding:6px 12px;font-size:.85rem}
+.flip .back{display:none;background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;box-shadow:0 14px 30px -18px rgba(0,0,0,.5);animation:pop .35s cubic-bezier(.2,1.4,.4,1)}
+.flip.open .front{display:none}
+.flip.open .back{display:block}
+.back h3{color:var(--deep);margin-bottom:.4em}
+.back img{border-radius:12px;border:1px solid #D6DCE3;margin:6px 0 12px}
+.labels{display:grid;gap:8px;margin:8px 0 12px}
+.labels a{display:flex;justify-content:space-between;align-items:center;gap:10px;min-height:48px;padding:10px 14px;border-radius:10px;background:#F3F5F8;color:var(--ink);text-decoration:none}
+.labels b{font-family:var(--font-display);font-size:1.5rem;font-weight:900;text-transform:uppercase}
+.labels span{font-size:.85rem;color:var(--muted)}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 12px}
+.hours div{background:#F3F5F8;border-radius:10px;padding:12px}
+.hours b{display:block;font-family:var(--font-display);font-size:1.7rem;font-weight:900}
+</style>
+</head><body>
+<a class="chip" href="index.html">&larr; All pages</a>
+
+<header class="wrap top">
+  <p class="eyebrow">Page 1 of 5</p>
+  <div class="placard"><h1 style="font-size:clamp(2.4rem,11vw,3.6rem)">How the internet sees you</h1></div>
+  <p class="lede">Here's what a stranger finds when they look up Just Vapor. Tap each card.</p>
+</header>
+<main class="wrap">
+  <div class="flip"><button type="button" class="front" aria-expanded="false">Your website's phone number <span class="tap">Tap</span></button>
+    <div class="back">
+      <h3>(317) 000-0000</h3>
+      <img src="img/card-000.jpg" alt="The Fishers card on justvapor365.com showing (317) 000-0000 and (add address)" width="560" height="470" loading="lazy">
+      <span style="display:block">That's the number on justvapor365.com right now, for both shops. The addresses say "(add address)." Your real Fishers number, (317) 900-7933, isn't on the site. On a phone, the page also slides sideways.</span>
+      <span class="src" style="display:block;margin-top:8px">Seen on justvapor365.com, Oct 6, 2026.</span>
+    </div>
+  </div>
+  <div class="flip"><button type="button" class="front" aria-expanded="false">What directory sites call you <span class="tap">Tap</span></button>
+    <div class="back">
+      <h3>Three sites, three labels</h3>
+      <span class="labels">
+        <a href="https://cannabispromotions.com/directory/listing/just-vapor-fishers-fishers-in" target="_blank" rel="noopener"><b>Headshop</b><span>cannabispromotions.com</span></a>
+        <a href="https://cannabisshop.com/stores/just-vapor-fishers/" target="_blank" rel="noopener"><b>Cannabis Shop</b><span>cannabisshop.com</span></a>
+        <a href="https://www.shisha.com/listing/indiana/fishers/just-vapor-fishers/" target="_blank" rel="noopener"><b>Shisha venue</b><span>shisha.com</span></a>
+      </span>
+      <span style="display:block">Same shop: 9239 E 141st St. None of these three labels says vape shop.</span>
+    </div>
+  </div>
+  <div class="flip"><button type="button" class="front" aria-expanded="false">Your Sunday hours <span class="tap">Tap</span></button>
+    <div class="back">
+      <h3>Two different Sundays</h3>
+      <span class="hours"><span style="display:block;background:#F3F5F8;border-radius:10px;padding:12px"><b style="display:block;font-family:var(--font-display);font-size:1.7rem">10am–5pm</b><span class="src">vapeshops.puffingbird.com</span></span><span style="display:block;background:#F3F5F8;border-radius:10px;padding:12px"><b style="display:block;font-family:var(--font-display);font-size:1.7rem">12pm–6pm</b><span class="src">your own site</span></span></span>
+      <span style="display:block">Both can't be right.</span>
+      <span class="src" style="display:block;margin-top:8px"><a href="https://vapeshops.puffingbird.com/indiana/fishers/just-vapor-fishers" target="_blank" rel="noopener">See the listing</a></span>
+    </div>
+  </div>
+  <div class="flip"><button type="button" class="front" aria-expanded="false">The guys down the road <span class="tap">Tap</span></button>
+    <div class="back">
+      <h3>Higher Grade: 9 locations</h3>
+      <span style="display:block">Including Fishers and Carmel. Their homepage headline: "A Higher Grade Smoke Shop Experience." The first thing in their product list: pipes.</span>
+      <span class="src" style="display:block;margin-top:8px"><a href="https://highergrade.com/" target="_blank" rel="noopener">highergrade.com</a>, seen Oct 6, 2026. (VapeAndWellness.com now forwards there too.)</span>
+    </div>
+  </div>
+</main>
+<section class="tour-next wrap" aria-label="Next page"><div class="tn-card"><ol class="tn-dots" aria-hidden="true"><li class="on now"></li><li></li><li></li><li></li><li></li></ol><p class="tn-kick">That was 1 of 5</p><p class="tn-hook">Sixteen quotes from your customers, in their own words.</p><a class="btn" href="2-regulars.html">Open page 2: How your regulars see you &rarr;</a><a class="tn-all" href="index.html">See all 5 pages</a></div></section><script>document.querySelectorAll('.flip .front').forEach(function(b){b.addEventListener('click',function(){b.setAttribute('aria-expanded','true');var f=b.parentNode;f.classList.add('open');var bk=f.querySelector('.back');bk.setAttribute('tabindex','-1');bk.focus({preventScroll:true});});});</script><footer>Made for Mason by Jimmy Davis · iNeedJimmy.com</footer>
+</body></html>

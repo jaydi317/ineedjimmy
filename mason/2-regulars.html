@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>How your regulars see you · For Mason</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Karla:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--wall:#1F6FB2;--deep:#0E3A63;--navy:#13294B;--card:#FFFFFF;--ink:#1A1E24;--muted:#56606C;--accent:#E9681F;--on-accent:#fff;--yellow:#F2C230;--placard:#ECE6D3;--radius:18px;
+--font-display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--font-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto}
+body{margin:0;background:var(--wall);color:#fff;font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-x:clip;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:min(640px,100% - 32px);margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:.98;margin:0 0 .35em;letter-spacing:.01em}
+h1{font-size:clamp(3rem,15vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(2.1rem,9vw,3.2rem);text-transform:uppercase}
+h3{font-size:1.6rem;font-weight:800}
+p{margin:0 0 1em}
+.eyebrow{font-weight:700;opacity:.9;margin:0 0 6px}
+.lede{font-size:1.15rem}
+.chip{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:10px;z-index:40;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(14,58,99,.92);color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.top{padding:78px 0 10px}
+.placard{display:inline-block;background:var(--placard);color:var(--ink);border:8px solid #2B2622;box-shadow:0 14px 30px rgba(0,0,0,.3);padding:10px 18px 6px;transform:rotate(-1.2deg);margin:0 0 18px}
+.placard h1,.placard h2{margin:0}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:18px;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 0 #A9440E}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #A9440E}
+.btn.ghost{background:transparent;border:2px solid #fff;box-shadow:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.small{font-size:.92rem;opacity:.9}
+.card{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;box-shadow:0 18px 36px -18px rgba(0,0,0,.45)}
+.src{font-size:.85rem;color:var(--muted)}
+.src a{color:var(--muted)}
+.sec{padding:28px 0}
+footer{padding:20px 0 40px;text-align:center;font-size:.92rem;opacity:.85}
+.tour-next{padding:40px 0 10px}
+.tn-card{background:var(--card);color:var(--ink);border-radius:var(--radius);border-top:12px solid var(--accent);padding:26px 20px 14px;text-align:center;box-shadow:0 22px 40px -22px rgba(0,0,0,.5)}
+.tn-dots{list-style:none;display:flex;justify-content:center;gap:9px;margin:0 0 12px;padding:0}
+.tn-dots li{width:12px;height:12px;border-radius:50%;border:2px solid #9AA4AF}
+.tn-dots li.on{background:var(--accent);border-color:var(--accent)}
+.tn-dots li.now{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--accent)}
+.tn-kick{margin:0;font-weight:800;font-size:15px;color:var(--accent)}
+.tn-hook{margin:6px 0 0;font-size:1.05rem}
+.tn-card .btn{margin-top:16px}
+.tn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:700;color:var(--ink)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.photo{border-radius:var(--radius);overflow:hidden;margin:6px 0 22px;box-shadow:0 18px 36px -18px rgba(0,0,0,.5)}
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.sn{position:relative;background:var(--c);color:#1A1E24;padding:16px 14px 14px;border-radius:3px;transform:rotate(var(--r));box-shadow:0 8px 16px -8px rgba(0,0,0,.45)}
+.sn::before{content:"";position:absolute;top:-9px;left:50%;width:56px;height:18px;margin-left:-28px;background:rgba(255,255,255,.55);transform:rotate(-3deg)}
+.sn .q{display:block;width:100%;min-height:44px;border:0;background:none;padding:0;text-align:left;cursor:pointer;color:inherit;font:700 1rem/1.35 var(--font-body)}
+.sn .who{display:none;margin-top:8px;font-size:.85rem;color:#3A424C}
+.sn .who a{color:#3A424C}
+.sn.open .who{display:block;animation:pop .3s ease-out}
+.sn:nth-child(3n){grid-column:span 2}
+.finale{margin:34px 0 0;text-align:center}
+.finale .placard{transform:rotate(-1deg);max-width:100%}
+.finale .placard p{font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,9vw,3rem);line-height:1;margin:0;text-transform:uppercase}
+@media (max-width:360px){.wall{grid-template-columns:1fr}.sn:nth-child(3n){grid-column:auto}}
+</style>
+</head><body>
+<a class="chip" href="index.html">&larr; All pages</a>
+
+<header class="wrap top">
+  <p class="eyebrow">Page 2 of 5</p>
+  <div class="placard"><h1 style="font-size:clamp(2.4rem,11vw,3.6rem)">How your regulars see you</h1></div>
+  <p class="lede">From 2015 to 2026, in their own words. Tap a note to see who said it.</p>
+</header>
+<main class="wrap">
+  <div class="photo"><img src="img/bar.jpg" alt="The bar at Just Vapor Fishers with orange and yellow chairs" width="900" height="600" loading="lazy"></div>
+  <div class="wall"><div class="sn" style="--c:#FFE680;--r:-3deg"><button type="button" class="q" aria-expanded="false">"I&#x27;ve tried nearly every vape shop in the Indianapolis area. Just Vapor blows them all out of the water."</button><span class="who">Daniel B. · Yelp, May 2015 · <a href="https://local.yahoo.com/info-185123000-just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC59E;--r:2deg"><button type="button" class="q" aria-expanded="false">"My favorite people!!! So inviting and helpful!!"</button><span class="who">Micha H. · Yelp, Dec 2016 · <a href="https://local.yahoo.com/info-185123000-just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC2D6;--r:-1.5deg"><button type="button" class="q" aria-expanded="false">"This has a feeling of home."</button><span class="who">Brian B. · June 2019 · <a href="https://cannabisshop.com/stores/just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CDE6FF;--r:3deg"><button type="button" class="q" aria-expanded="false">"Big fan of their rewards program, as well as promotional texts so I can save some money!"</button><span class="who">Erin C. · Yelp, Feb 2020 · <a href="https://cannapages.com/vape-shops/just-vapor/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CFF2C9;--r:-2.5deg"><button type="button" class="q" aria-expanded="false">"I don&#x27;t ever feel like there&#x27;s pressure to buy."</button><span class="who">Heidi V. · <a href="https://findvapeshop.com/indiana/fishers/just-vapor" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFE680;--r:1.5deg"><button type="button" class="q" aria-expanded="false">"i love the bar aspect and the chill vibes in here."</button><span class="who">Clark F. · <a href="https://findvapeshop.com/indiana/fishers/just-vapor" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC59E;--r:-3deg"><button type="button" class="q" aria-expanded="false">"Jana and Brandon were amazing"</button><span class="who">Jared M. · <a href="https://findvapeshop.com/indiana/fishers/just-vapor" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC2D6;--r:2deg"><button type="button" class="q" aria-expanded="false">"They cater well to the newcomer and the vapaholic equally well."</button><span class="who">A customer · <a href="https://findvapeshop.com/indiana/fishers/just-vapor" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CDE6FF;--r:-1.5deg"><button type="button" class="q" aria-expanded="false">"Got to sit in creaky chair and chit chat"</button><span class="who">Daniel S. · Jan 2024 · <a href="https://cannabisshop.com/stores/just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CFF2C9;--r:3deg"><button type="button" class="q" aria-expanded="false">"Thank you Mason! Awesome shop you&#x27;ve got"</button><span class="who">Nate J. · Yelp, Jan 2024 · <a href="https://local.yahoo.com/info-185123000-just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFE680;--r:-2.5deg"><button type="button" class="q" aria-expanded="false">"I came for the product, but keep coming back for the people who work here!!"</button><span class="who">Sam S. · Apr 2024 · <a href="https://cannabisshop.com/stores/just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC59E;--r:1.5deg"><button type="button" class="q" aria-expanded="false">"The most knowledgeable and friendly staff! I love this place!!"</button><span class="who">Alison L. · June 2024 · <a href="https://cannabisshop.com/stores/just-vapor-fishers/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#FFC2D6;--r:-3deg"><button type="button" class="q" aria-expanded="false">"This is the very best Vape store between Indianapolis IN and Yellowstone WY."</button><span class="who">A customer · Yelp · <a href="https://www.yelp.com/search?cflt=vapeshops&find_loc=Fishers%2C+IN" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CDE6FF;--r:2deg"><button type="button" class="q" aria-expanded="false">"Mason has been extraordinarily kind and very helpful."</button><span class="who">A customer · Google, Feb 2026 · <a href="https://www.loc8nearme.com/indiana/fishers/just-vapor-fishers/5069475/" target="_blank" rel="noopener">source</a></span></div><div class="sn" style="--c:#CFF2C9;--r:-1.5deg"><button type="button" class="q" aria-expanded="false">"Best vape shop ive ever been too and ive been all over the country."</button><span class="who">A customer · Google, Feb 2026 · <a href="https://www.loc8nearme.com/indiana/fishers/just-vapor-fishers/5069475/" target="_blank" rel="noopener">source</a></span></div></div>
+  <div class="finale">
+    <div class="placard"><p>"It&#x27;s like Cheers, you walk in and they know your name."</p></div>
+    <p class="small">Micha H., Yelp, Dec 2016 · <a href="https://local.yahoo.com/info-185123000-just-vapor-fishers/" target="_blank" rel="noopener">source</a></p>
+  </div>
+</main>
+<section class="tour-next wrap" aria-label="Next page"><div class="tn-card"><ol class="tn-dots" aria-hidden="true"><li class="on"></li><li class="on now"></li><li></li><li></li><li></li></ol><p class="tn-kick">That was 2 of 5</p><p class="tn-hook">Three looks. Pick the one that feels like you.</p><a class="btn" href="3-looks.html">Open page 3: Your new front door &rarr;</a><a class="tn-all" href="index.html">See all 5 pages</a></div></section><script>document.querySelectorAll('.sn .q').forEach(function(b){b.addEventListener('click',function(){var o=b.parentNode.classList.toggle('open');b.setAttribute('aria-expanded',o?'true':'false');});});</script><footer>Made for Mason by Jimmy Davis · iNeedJimmy.com</footer>
+</body></html>

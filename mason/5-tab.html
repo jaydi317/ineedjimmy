@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Mason&#x27;s tab · For Mason</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Karla:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--wall:#1F6FB2;--deep:#0E3A63;--navy:#13294B;--card:#FFFFFF;--ink:#1A1E24;--muted:#56606C;--accent:#E9681F;--on-accent:#fff;--yellow:#F2C230;--placard:#ECE6D3;--radius:18px;
+--font-display:"Big Shoulders Display",Impact,"Arial Narrow",sans-serif;--font-body:"Karla",system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+html{overflow-x:clip;scroll-behavior:auto}
+body{margin:0;background:var(--wall);color:#fff;font-family:var(--font-body);font-size:18px;line-height:1.55;overflow-x:clip;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+.wrap{width:min(640px,100% - 32px);margin:0 auto}
+h1,h2,h3{font-family:var(--font-display);font-weight:900;line-height:.98;margin:0 0 .35em;letter-spacing:.01em}
+h1{font-size:clamp(3rem,15vw,5.2rem);text-transform:uppercase}
+h2{font-size:clamp(2.1rem,9vw,3.2rem);text-transform:uppercase}
+h3{font-size:1.6rem;font-weight:800}
+p{margin:0 0 1em}
+.eyebrow{font-weight:700;opacity:.9;margin:0 0 6px}
+.lede{font-size:1.15rem}
+.chip{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:10px;z-index:40;display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;background:rgba(14,58,99,.92);color:#fff;font-weight:700;font-size:15px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+.top{padding:78px 0 10px}
+.placard{display:inline-block;background:var(--placard);color:var(--ink);border:8px solid #2B2622;box-shadow:0 14px 30px rgba(0,0,0,.3);padding:10px 18px 6px;transform:rotate(-1.2deg);margin:0 0 18px}
+.placard h1,.placard h2{margin:0}
+.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:58px;padding:12px 22px;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:18px;text-decoration:none;border:0;cursor:pointer;font-family:var(--font-body);box-shadow:0 4px 0 #A9440E}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #A9440E}
+.btn.ghost{background:transparent;border:2px solid #fff;box-shadow:none}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.small{font-size:.92rem;opacity:.9}
+.card{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:20px;box-shadow:0 18px 36px -18px rgba(0,0,0,.45)}
+.src{font-size:.85rem;color:var(--muted)}
+.src a{color:var(--muted)}
+.sec{padding:28px 0}
+footer{padding:20px 0 40px;text-align:center;font-size:.92rem;opacity:.85}
+.tour-next{padding:40px 0 10px}
+.tn-card{background:var(--card);color:var(--ink);border-radius:var(--radius);border-top:12px solid var(--accent);padding:26px 20px 14px;text-align:center;box-shadow:0 22px 40px -22px rgba(0,0,0,.5)}
+.tn-dots{list-style:none;display:flex;justify-content:center;gap:9px;margin:0 0 12px;padding:0}
+.tn-dots li{width:12px;height:12px;border-radius:50%;border:2px solid #9AA4AF}
+.tn-dots li.on{background:var(--accent);border-color:var(--accent)}
+.tn-dots li.now{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--accent)}
+.tn-kick{margin:0;font-weight:800;font-size:15px;color:var(--accent)}
+.tn-hook{margin:6px 0 0;font-size:1.05rem}
+.tn-card .btn{margin-top:16px}
+.tn-all{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:700;color:var(--ink)}
+@keyframes pop{0%{transform:scale(.92);opacity:0}100%{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.receipt{background:#FFFDF6;color:var(--ink);border-radius:6px;padding:22px 18px;box-shadow:0 18px 36px -18px rgba(0,0,0,.5);font-family:var(--font-body)}
+.receipt h2{color:var(--ink);font-size:2.2rem;text-align:center;margin:0}
+.receipt .sub{text-align:center;color:var(--muted);margin:0 0 12px;font-size:.92rem}
+.receipt ul{list-style:none;margin:0;padding:0;border-top:2px dashed #C9C2B0}
+.receipt li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px dashed #DDD6C4}
+.receipt .ct{flex:none;width:52px;text-align:right;font-family:var(--font-display);font-weight:900;font-size:1.9rem}
+.receipt .due{display:flex;justify-content:space-between;font-family:var(--font-display);font-weight:900;font-size:2rem;padding-top:12px}
+.cards3{display:grid;gap:10px}
+.cards3 div{background:var(--card);color:var(--ink);border-radius:14px;padding:14px 16px}
+.cards3 b{display:block;color:var(--deep)}
+.ask{background:var(--card);color:var(--ink);border-radius:var(--radius);padding:22px 18px;text-align:center}
+.ask .picked{display:none;font-weight:800;color:var(--accent);margin:0 0 8px}
+.qs{counter-reset:q;list-style:none;padding:0}
+.qs li{background:var(--placard);color:var(--ink);border-radius:6px;padding:12px 14px;margin:0 0 10px}
+.ps{background:rgba(255,255,255,.12);border-radius:14px;padding:16px}
+.ps a{color:#fff}
+</style>
+</head><body>
+<a class="chip" href="index.html">&larr; All pages</a>
+
+<header class="wrap top">
+  <p class="eyebrow">Page 5 of 5</p>
+  <p class="lede" style="font-size:1.3rem">You told me: "We're not a smoke shop, we're a vape shop."</p>
+  <div class="placard"><h1 style="font-size:clamp(2.2rem,10vw,3.4rem)">I may have gotten a little carried away.</h1></div>
+</header>
+<main class="wrap">
+  <section class="receipt" aria-label="Mason's tab">
+    <h2>Mason's Tab</h2><p class="sub">Just Vapor · 9239 E 141st St · Oct 6, 2026</p>
+    <ul><li><span class="ct" data-to="13">0</span><span>other shops&#x27; and brands&#x27; websites studied</span></li><li><span class="ct" data-to="9">0</span><span>directory listings of your shop checked</span></li><li><span class="ct" data-to="16">0</span><span>customer quotes found (page 2)</span></li><li><span class="ct" data-to="6">0</span><span>homepage designs drawn up (the best 3 are on page 3)</span></li><li><span class="ct" data-to="4">0</span><span>photos of your shop</span></li><li><span class="ct" data-to="2">0</span><span>AI research assistants, comparing notes</span></li></ul>
+    <div class="due"><span>Amount due</span><span>$0</span></div>
+  </section>
+  <p style="margin-top:22px">You built a shop people call home with a bar, a hand-painted mural and a skeleton in a ball cap. I had AI research assistants and four photos. Yours was the harder gig.</p>
+
+  <section class="sec">
+    <h2 style="font-size:2rem">What I'd build next</h2>
+    <div class="cards3">
+      <div><b>The real site, live on justvapor365.com</b>Your pick from page 3, with your real number, both addresses and your hours.</div>
+      <div><b>Fix your listings</b>Google, Yelp and the directories, all saying "vape shop," with the right hours.</div>
+      <div><b>Pickup orders that reach your phone</b>The page 4 demo, working, wired to your shop.</div>
+    </div>
+  </section>
+
+  <section class="ask">
+    <p class="picked" id="picked"></p>
+    <p style="font-size:1.1rem">Everything in here is a draft, and it's yours at no charge. If you want it live, give me 15 minutes at your counter and I'll show you exactly what it takes.</p>
+    <a class="btn" id="sms" href="sms:+16263543229?&amp;body=Hey%20Jimmy%2C%20it%27s%20Mason.%20I%20went%20through%20the%20tour.">Text Jimmy</a>
+    <p class="small" style="margin-top:10px;color:var(--muted)">Opens a text to me with the message started for you.</p>
+  </section>
+
+  <section class="sec">
+    <h2 style="font-size:2rem">Three things only you can tell me</h2>
+    <ol class="qs"><li>When did Just Vapor open, and why did you start it?</li><li>Who painted the mural?</li><li>Which register do you use? (It decides how pickup orders reach you.)</li></ol>
+  </section>
+
+  <section class="ps">
+    <p style="margin:0 0 8px"><b>P.S.</b> One heads-up that has nothing to do with websites. The federal hemp rule change: Congress pushed most of it to December 11, 2026, but some lab-made cannabinoids still lose hemp status on November 12, and lawyers don't all agree on where delta-8 lands. Might be worth a call to your suppliers. Not legal advice. I just didn't want you caught off guard.</p>
+    <p class="small" style="margin:0">Sources: <a href="https://foleyhoag.com/news-and-insights/blogs/cannabis-and-the-law/2026/september/a-temporary-reprieve-for-hemp-thc-products%E2%80%A6-but-what-now/" target="_blank" rel="noopener">Foley Hoag, Sept 2026</a> · <a href="https://www.wilsonelser.com/publications/the-great-hemp-reset-how-the-federal-ban-on-intoxicating-hemp-products-will-reshape-risk-and-coverage" target="_blank" rel="noopener">Wilson Elser</a></p>
+  </section>
+  <p style="margin-top:24px;font-size:1.15rem">See you at the bar.<br><b>— Jimmy</b></p>
+</main>
+<section class="tour-next wrap" aria-label="Next page"><div class="tn-card"><ol class="tn-dots" aria-hidden="true"><li class="on"></li><li class="on"></li><li class="on"></li><li class="on"></li><li class="on now"></li></ol><p class="tn-kick">That was the last one</p><p class="tn-hook">Thanks for opening all 5, Mason.</p><a class="btn" href="index.html">Back to the start &#8634;</a></div></section><script>
+try{var p=localStorage.getItem('tour.pick.look');var names={'1':'After Hours','2':'The Bar','3':'Black Tie'};
+if(p&&names[p]){var e=document.getElementById('picked');e.textContent='You picked: look '+p+', '+names[p]+'.';e.style.display='block';
+var m=encodeURIComponent("Hey Jimmy, it's Mason. I like look "+p+" ("+names[p]+"). Let's talk.");
+var s=document.getElementById('sms');s.href=s.href.split('body=')[0]+'body='+m;s.textContent='Text Jimmy: "I like look '+p+'"';}}catch(e){}
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var cts=document.querySelectorAll('.ct');
+function run(){cts.forEach(function(c){var to=+c.getAttribute('data-to');if(reduce){c.textContent=to;return;}var t0=null;function f(ts){if(!t0)t0=ts;var k=Math.min(1,(ts-t0)/900);c.textContent=Math.round(to*k);if(k<1)requestAnimationFrame(f);}requestAnimationFrame(f);});}
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){run();io.disconnect();}});io.observe(document.querySelector('.receipt'));}else run();
+</script><footer>Made for Mason by Jimmy Davis · iNeedJimmy.com</footer>
+</body></html>
