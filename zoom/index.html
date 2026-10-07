@@ -1,258 +1,197 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Join Jimmy's Zoom Room — INeedJimmy.com</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07080c">
+<title>Join Jimmy's Zoom Room · iNeedJimmy</title>
+<meta name="description" content="Join Jimmy's Zoom call. Test your setup, unmute your mic, and get help getting in.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap">
+<link rel="stylesheet" href="/assets/redo-oct-2026/genie.css">
+<link rel="icon" type="image/svg+xml" href="/assets/redo-oct-2026/ineedjimmy-app-mark.svg">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--deep:#0B1A2B;--deep-mid:#0F2236;--deep-card:#132B42;--deep-light:#1A3654;--gold:#C6A855;--gold-hover:#D4B85A;--gold-light:#E8D5A0;--gold-glow:rgba(198,168,85,0.12);--cream:#FAF6EE;--cream-dim:#E8E1D4;--blue:#2D8CFF;--green:#4CAF50;--orange:#F5A623}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;padding:24px;-webkit-font-smoothing:antialiased}
-body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
-.container{max-width:620px;margin:0 auto}
-
-/* JOIN CARD */
-.join-card{background:var(--deep-mid);border:1px solid rgba(198,168,85,0.12);border-radius:20px;padding:48px 40px;text-align:center;position:relative;overflow:hidden;animation:fadeUp .6s ease;margin-bottom:24px}
-.join-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--blue),var(--gold))}
-.logo{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--gold);margin-bottom:32px;letter-spacing:.5px}
-.zoom-icon{width:64px;height:64px;border-radius:16px;background:var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px}
-.join-card h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:8px}
-.subtitle{font-size:15px;color:var(--cream-dim);margin-bottom:28px;line-height:1.6}
-.countdown{font-family:'Caveat',cursive;font-size:18px;color:var(--gold);margin-bottom:24px;min-height:28px}
-.join-btn{display:inline-block;background:var(--blue);color:#fff;padding:18px 56px;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:17px;font-weight:700;text-decoration:none;transition:all .3s;letter-spacing:.3px}
-.join-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(45,140,255,0.3)}
-.divider{width:60px;height:1px;background:rgba(198,168,85,0.2);margin:28px auto}
-
-/* NOTICE */
-.notice{background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);border-radius:12px;padding:16px 20px;margin-bottom:28px;text-align:left;display:flex;gap:12px;align-items:flex-start}
-.notice-icon{font-size:20px;flex-shrink:0;margin-top:2px}
-.notice-text{font-size:13px;line-height:1.6;color:var(--cream-dim)}
-.notice-text strong{color:var(--cream)}
-
-/* MEETING INFO */
-.meeting-info{margin-bottom:24px}
-.info-row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:rgba(255,255,255,0.03);border-radius:8px;margin-bottom:8px;font-size:14px}
-.info-label{color:var(--cream-dim);font-weight:500}
-.info-value{color:var(--cream);font-weight:600;font-family:monospace;letter-spacing:1px}
-.copy-btn{background:none;border:1px solid rgba(198,168,85,0.2);color:var(--gold);padding:4px 12px;border-radius:6px;font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;margin-left:12px}
-.copy-btn:hover{background:var(--gold-glow);border-color:var(--gold)}
-.copy-btn.copied{border-color:var(--gold);background:var(--gold-glow)}
-
-/* HELP SECTIONS */
-.help-card{background:var(--deep-mid);border:1px solid rgba(198,168,85,0.08);border-radius:16px;padding:32px;margin-bottom:20px;animation:fadeUp .6s ease}
-.help-card h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.help-card h2 .icon{font-size:22px}
-
-/* ACCORDION */
-.accordion{border:1px solid rgba(198,168,85,0.08);border-radius:10px;overflow:hidden;margin-bottom:8px}
-.accordion-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;cursor:pointer;background:rgba(255,255,255,0.02);transition:background .2s;font-size:14px;font-weight:600}
-.accordion-header:hover{background:rgba(255,255,255,0.04)}
-.accordion-arrow{transition:transform .3s;font-size:12px;color:var(--gold)}
-.accordion.open .accordion-arrow{transform:rotate(180deg)}
-.accordion-body{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.accordion.open .accordion-body{max-height:600px}
-.accordion-content{padding:0 20px 20px;font-size:13px;color:var(--cream-dim);line-height:1.7}
-.accordion-content ol{margin:8px 0;padding-left:20px}
-.accordion-content li{margin-bottom:6px}
-.accordion-content .shortcut{display:inline-block;background:rgba(198,168,85,0.1);color:var(--gold);padding:2px 8px;border-radius:4px;font-family:monospace;font-size:12px;font-weight:600}
-.accordion-content .device-tag{display:inline-block;background:rgba(45,140,255,0.1);color:var(--blue);padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-bottom:4px}
-
-/* TIPS */
-.tip{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px;font-size:13px;color:var(--cream-dim);line-height:1.6}
-.tip-num{width:24px;height:24px;border-radius:50%;background:var(--gold-glow);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;margin-top:1px}
-.tip a{color:var(--gold);text-decoration:none}
-.tip a:hover{text-decoration:underline}
-.tip strong{color:var(--cream)}
-
-/* TEST LINK */
-.test-link{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(76,175,80,0.06);border:1px solid rgba(76,175,80,0.15);border-radius:10px;margin-bottom:16px;text-decoration:none;transition:all .2s}
-.test-link:hover{background:rgba(76,175,80,0.1);border-color:rgba(76,175,80,0.3)}
-.test-link .tl-icon{font-size:20px}
-.test-link .tl-text{font-size:14px;font-weight:600;color:var(--cream)}
-.test-link .tl-sub{font-size:12px;color:var(--cream-dim);font-weight:400}
-
-/* PHONE DIAL */
-.phone-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-@media(max-width:500px){.phone-grid{grid-template-columns:1fr}}
-.phone-item{padding:10px 14px;background:rgba(255,255,255,0.02);border-radius:8px;font-size:13px}
-.phone-item .city{color:var(--cream-dim);font-size:11px;margin-top:2px}
-.phone-item a{color:var(--cream);text-decoration:none;font-weight:600;font-family:monospace}
-
-/* FOOTER */
-.footer{text-align:center;margin-top:16px;padding:24px;font-size:12px;color:rgba(250,246,238,0.2)}
-.footer a{color:var(--gold);text-decoration:none}
+/* /zoom only. Everything else comes from genie.css, shared with the whole site. */
+.zoom .hero .hero-copy{gap:22px}
+.zm-id{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.zm-id b{font-weight:500;font-size:17px;letter-spacing:.06em;color:var(--gold2)}
+.zm-id .btn.ghostbtn{align-self:center;font-family:var(--mono);font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-size:12px;padding:8px 14px}
+.zm-term .tx{display:flex;flex-direction:column;gap:6px}
+.zm-term .ln .tt{color:var(--white)}
+.zm-term .ln.res .pf{color:var(--gold)}
+.zm-term .ln.res .tt{color:var(--gold2)}
+.zm-note{padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;gap:16px}
+.zm-note h2{font-size:clamp(26px,3.6vw,40px)}
+.zm-test{display:flex;align-items:center;gap:18px;padding:22px 24px;border-color:rgba(16,196,138,.5);transition:border-color .2s,transform .2s}
+.zm-test:hover{border-color:var(--em1);transform:translateY(-2px)}
+.zm-test strong{display:block;font-family:var(--head);font-weight:800;font-size:clamp(18px,2.2vw,21px);color:var(--white);line-height:1.25}
+.zm-test span{display:block;margin-top:4px;font-size:16px;color:var(--body);line-height:1.5}
+.zm-ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:rgba(16,196,138,.12);border:1px solid rgba(16,196,138,.45)}
+.zm-ico svg{width:26px;height:26px;fill:none;stroke:var(--em1);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.zm-tips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.zm-tip{padding:22px 24px;display:flex;flex-direction:column;gap:8px;border-radius:20px}
+.zm-tip .n{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--em)}
+.secondary .zm-tip p{font-size:16.5px;line-height:1.6}
+.zm-tip strong,.zm .ans strong{color:var(--white);font-weight:600}
+.zm a.text-link{color:var(--gold2)}
+.zm-acc{display:flex;flex-direction:column;gap:12px;width:100%;max-width:none;margin:0;align-self:stretch;align-items:stretch}
+.zm-acc details{width:100%}
+.zm-acc .ans{display:flex;flex-direction:column;gap:14px}
+.zm-acc .ans h3{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:6px}
+.secondary .zm-acc ol{gap:10px}
+.secondary .zm-acc li{font-size:16.5px;line-height:1.6}
+kbd{font-family:var(--mono);font-size:.84em;padding:2px 8px;border-radius:7px;border:1px solid rgba(240,204,133,.45);background:rgba(240,204,133,.06);color:var(--gold2);white-space:nowrap}
+.zm-phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.zm-phone{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--glass);transition:border-color .2s}
+.zm-phone:hover{border-color:rgba(240,204,133,.55)}
+.zm-phone b{font-family:var(--mono);font-weight:500;font-size:15px;color:var(--white);white-space:nowrap}
+.zm-phone span{font-size:13px;color:var(--mute)}
+.zm-end{align-items:center;text-align:center}
+.secondary .zm-end .btn{align-self:center}
+@media (max-width:640px){.zm-tips{grid-template-columns:1fr}.zm-phones{grid-template-columns:repeat(2,minmax(0,1fr))}.zm-test{align-items:flex-start}}
 </style>
-</head>
-<body>
+</head><body class="secondary zoom"><a class="skip" href="#main">Skip to content</a><div class="topline"></div><div class="page"><div class="bgfx"></div><header class="nav" id="top"><div class="in">
+<a class="brand" href="/" aria-label="iNeedJimmy, home"><img class="wmk" src="/assets/redo-oct-2026/ineedjimmy-wordmark-on-dark.svg" alt="iNeedJimmy"></a>
+</div></header><main id="main" class="zm">
 
-<div class="container">
-
-<!-- ═══ JOIN CARD ═══ -->
-<div class="join-card">
-  <div class="logo">INeedJimmy</div>
-  <div class="zoom-icon">📹</div>
-  <h1>Jimmy's Zoom Room</h1>
-  <p class="subtitle">You're in the right place. Click below to join the meeting. If you see a waiting room, hang tight. Jimmy will let you in.</p>
-  <a href="https://us06web.zoom.us/j/2330139699?pwd=sa5fDiah0TgbfXBsaBgpBRUmkLiPDS.1" class="join-btn" id="joinBtn">Join Zoom Meeting →</a>
-
-  <div class="divider"></div>
-
-  <!-- AI NOTETAKER NOTICE -->
-  <div class="notice">
-    <div class="notice-icon">🤖</div>
-    <div class="notice-text"><strong>Heads up:</strong> You may see a notification that says the meeting is being "livestreamed" or "recorded." Don't worry — <strong>the meeting is NOT being recorded.</strong> I use an AI notetaker that joins the call to take notes for me. It's just there to help me remember what we talked about so I can follow up better. Nothing is shared or published.</div>
-  </div>
-
-  <!-- MEETING INFO -->
-  <div class="meeting-info">
-    <div class="info-row">
-      <span class="info-label">Meeting ID</span>
-      <span><span class="info-value">233 013 9699</span><button class="copy-btn" onclick="copyText('2330139699', this)">Copy</button></span>
-    </div>
-  </div>
+<section class="hero"><div class="wrap">
+<div class="hero-copy">
+<span class="eye">Jimmy's Zoom Room · Open</span>
+<h1>You're in the <span class="gold">right place.</span></h1>
+<p class="lead">Tap the button to join. If you land in a waiting room, hang tight. Jimmy will let you in.</p>
+<div class="button-row"><a class="btn lg" href="https://us06web.zoom.us/j/2330139699?pwd=sa5fDiah0TgbfXBsaBgpBRUmkLiPDS.1">Join the Zoom call →</a></div>
+<div class="zm-id">Meeting ID <b>233 013 9699</b><button class="btn ghostbtn" type="button" data-zcopy="2330139699">Copy</button></div>
 </div>
-
-<!-- ═══ BEFORE YOU JOIN ═══ -->
-<div class="help-card">
-  <h2><span class="icon">✅</span> Before You Join</h2>
-
-  <a href="https://zoom.us/test" target="_blank" class="test-link">
-    <div class="tl-icon">🧪</div>
-    <div>
-      <div class="tl-text">Test Your Zoom Setup First →</div>
-      <div class="tl-sub">Check your camera, microphone, and speakers in 60 seconds. Zoom's official test page.</div>
-    </div>
-  </a>
-
-  <div class="tip"><div class="tip-num">1</div><div>Make sure the <strong>Zoom app</strong> is installed. It works much better than the browser. <a href="https://zoom.us/download" target="_blank">Download Zoom →</a></div></div>
-  <div class="tip"><div class="tip-num">2</div><div><strong>Use headphones</strong> if you can — they eliminate echo and make the audio much clearer for both of us.</div></div>
-  <div class="tip"><div class="tip-num">3</div><div>Find a <strong>quiet spot</strong> with decent lighting. Near a window is perfect.</div></div>
-  <div class="tip"><div class="tip-num">4</div><div><strong>Close other apps</strong> that might use your camera or microphone (FaceTime, Teams, etc.)</div></div>
+<div class="term hud zm-term" aria-label="Room status">
+<div class="tb"><i></i><i></i><i></i><span>jimmys-room</span></div>
+<div class="tx">
+<div class="ln"><span class="pf"><svg class="ckm" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="tt">Room is open</span></div>
+<div class="ln"><span class="pf"><svg class="ckm" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="tt">Waiting room on. Jimmy lets you in.</span></div>
+<div class="ln"><span class="pf"><svg class="ckm" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span class="tt">AI notetaker on. Notes only.</span></div>
+<div class="ln res"><span class="pf">●</span><span class="tt">Recording: off<span class="caret"></span></span></div>
 </div>
-
-<!-- ═══ UNMUTE & AUDIO HELP ═══ -->
-<div class="help-card">
-  <h2><span class="icon">🎙️</span> How to Unmute Your Microphone</h2>
-
-  <div class="accordion" onclick="toggleAccordion(this)">
-    <div class="accordion-header">💻 Windows / PC <span class="accordion-arrow">▼</span></div>
-    <div class="accordion-body"><div class="accordion-content">
-      <ol>
-        <li>Look for the <strong>microphone icon</strong> in the bottom-left corner of the Zoom window</li>
-        <li>If there's a <strong>red line</strong> through it, you're muted — click it to unmute</li>
-        <li>Keyboard shortcut: press <span class="shortcut">Alt + A</span> to toggle mute/unmute</li>
-      </ol>
-      <strong>If your mic isn't working:</strong>
-      <ol>
-        <li>Click the <strong>small arrow (^)</strong> next to the microphone icon</li>
-        <li>Make sure the correct microphone is selected</li>
-        <li>Go to Windows <strong>Settings → Privacy → Microphone</strong> and make sure Zoom has permission</li>
-        <li>Try unplugging and replugging your headset</li>
-      </ol>
-    </div></div>
-  </div>
-
-  <div class="accordion" onclick="toggleAccordion(this)">
-    <div class="accordion-header">🍎 Mac <span class="accordion-arrow">▼</span></div>
-    <div class="accordion-body"><div class="accordion-content">
-      <ol>
-        <li>Look for the <strong>microphone icon</strong> in the bottom-left corner of the Zoom window</li>
-        <li>If there's a <strong>red line</strong> through it, you're muted — click it to unmute</li>
-        <li>Keyboard shortcut: press <span class="shortcut">⌘ + Shift + A</span> to toggle mute/unmute</li>
-      </ol>
-      <strong>If your mic isn't working:</strong>
-      <ol>
-        <li>Click the <strong>small arrow (^)</strong> next to the microphone icon and select the correct mic</li>
-        <li>Go to <strong>System Settings → Privacy & Security → Microphone</strong> and make sure Zoom is allowed</li>
-        <li>If you recently updated macOS, you may need to re-grant permission</li>
-        <li>Try restarting Zoom</li>
-      </ol>
-    </div></div>
-  </div>
-
-  <div class="accordion" onclick="toggleAccordion(this)">
-    <div class="accordion-header">📱 iPhone / iPad <span class="accordion-arrow">▼</span></div>
-    <div class="accordion-body"><div class="accordion-content">
-      <ol>
-        <li>Tap your screen to show the toolbar at the bottom</li>
-        <li>Tap the <strong>microphone icon</strong> (bottom-left) to unmute</li>
-        <li>If you see <strong>"Join Audio"</strong> instead of a mic icon, tap it and select <strong>"Call Over Internet"</strong></li>
-      </ol>
-      <strong>If your mic isn't working:</strong>
-      <ol>
-        <li>Go to iPhone <strong>Settings → Privacy → Microphone</strong> and make sure Zoom is toggled ON</li>
-        <li>Make sure no other app is using the mic (close FaceTime, Voice Memos, etc.)</li>
-        <li>Try plugging in headphones with a built-in mic</li>
-        <li>Force-close the Zoom app and reopen it</li>
-      </ol>
-    </div></div>
-  </div>
-
-  <div class="accordion" onclick="toggleAccordion(this)">
-    <div class="accordion-header">🤖 Android <span class="accordion-arrow">▼</span></div>
-    <div class="accordion-body"><div class="accordion-content">
-      <ol>
-        <li>Tap your screen to show the toolbar</li>
-        <li>Tap the <strong>microphone icon</strong> at the bottom to unmute</li>
-        <li>If you see <strong>"Join Audio"</strong>, tap it and select <strong>"Call Over Internet"</strong></li>
-      </ol>
-      <strong>If your mic isn't working:</strong>
-      <ol>
-        <li>Go to Android <strong>Settings → Apps → Zoom → Permissions</strong> and enable Microphone</li>
-        <li>Close any other apps that might be using the mic</li>
-        <li>Try using headphones with a built-in mic</li>
-        <li>Restart the Zoom app</li>
-      </ol>
-    </div></div>
-  </div>
 </div>
+</div></section>
 
-<!-- ═══ CAN'T JOIN? ═══ -->
-<div class="help-card">
-  <h2><span class="icon">🛠️</span> Still Can't Get In?</h2>
-
-  <div class="tip"><div class="tip-num">1</div><div>Open the <strong>Zoom app</strong> manually, tap <strong>"Join a Meeting"</strong>, and enter Meeting ID: <strong>233 013 9699</strong></div></div>
-  <div class="tip"><div class="tip-num">2</div><div>If the app won't open, try joining from your browser at <a href="https://zoom.us/join" target="_blank">zoom.us/join</a> and entering the Meeting ID</div></div>
-  <div class="tip"><div class="tip-num">3</div><div><strong>Dial in by phone</strong> if your internet is bad — call one of the numbers below and enter the Meeting ID when prompted</div></div>
-  <div class="tip"><div class="tip-num">4</div><div>Text Jimmy at <strong>(415) 873-4854</strong> and he'll help you get in</div></div>
-
-  <div style="margin-top:20px">
-    <div style="font-size:13px;font-weight:600;color:var(--gold-light);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px">📞 Dial-In Numbers</div>
-    <div class="phone-grid">
-      <div class="phone-item"><a href="tel:+13126266799,,2330139699#">+1 (312) 626-6799</a><div class="city">Chicago</div></div>
-      <div class="phone-item"><a href="tel:+16465588656,,2330139699#">+1 (646) 558-8656</a><div class="city">New York</div></div>
-      <div class="phone-item"><a href="tel:+13017158592,,2330139699#">+1 (301) 715-8592</a><div class="city">Washington DC</div></div>
-      <div class="phone-item"><a href="tel:+13462487799,,2330139699#">+1 (346) 248-7799</a><div class="city">Houston</div></div>
-      <div class="phone-item"><a href="tel:+16699006833,,2330139699#">+1 (669) 900-6833</a><div class="city">San Jose</div></div>
-      <div class="phone-item"><a href="tel:+12532158782,,2330139699#">+1 (253) 215-8782</a><div class="city">Tacoma</div></div>
-    </div>
-    <div style="font-size:11px;color:var(--cream-dim);margin-top:8px;opacity:.6">When prompted, enter Meeting ID: 233 013 9699 followed by #</div>
-  </div>
+<section class="section"><div class="wrap">
+<div class="card hl zm-note">
+<span class="eyebrow">Heads up</span>
+<h2>Zoom might say "recording." <span class="gold">It's not.</span></h2>
+<p>You may see a notice that says the meeting is being "livestreamed" or "recorded." Don't worry. <strong>The meeting is NOT being recorded.</strong></p>
+<p>I use an AI notetaker that joins the call to take notes for me. It's just there to help me remember what we talked about so I can follow up better. Nothing is shared or published.</p>
 </div>
+</div></section>
 
-</div><!-- /container -->
+<section class="section"><div class="wrap">
+<span class="eyebrow">Before you join</span>
+<h2>Sixty seconds now saves <span class="gold">ten minutes later.</span></h2>
+<a class="card zm-test" href="https://zoom.us/test" target="_blank" rel="noopener">
+<span class="zm-ico"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7"/></svg></span>
+<span><strong>Test your Zoom setup first →</strong><span>Check your camera, mic and speakers in 60 seconds. It's Zoom's official test page.</span></span>
+</a>
+<div class="zm-tips">
+<div class="card zm-tip"><span class="n">01</span><p><strong>Use the Zoom app.</strong> It works much better than the browser. <a class="text-link" href="https://zoom.us/download" target="_blank" rel="noopener">Download Zoom →</a></p></div>
+<div class="card zm-tip"><span class="n">02</span><p><strong>Use headphones if you can.</strong> They stop the echo and make the sound much clearer for both of us.</p></div>
+<div class="card zm-tip"><span class="n">03</span><p><strong>Find a quiet spot</strong> with decent light. Near a window is perfect.</p></div>
+<div class="card zm-tip"><span class="n">04</span><p><strong>Close other apps</strong> that might use your camera or mic, like FaceTime or Teams.</p></div>
+</div>
+</div></section>
 
-<div class="footer"><a href="https://ineedjimmy.com">INeedJimmy.com</a></div>
+<section class="section"><div class="wrap">
+<span class="eyebrow">Can't hear you?</span>
+<h2>How to unmute your mic</h2>
+<div class="faq zm-acc">
+<details><summary>Windows / PC</summary><div class="ans">
+<ol>
+<li>Find the <strong>microphone icon</strong> in the bottom-left corner of the Zoom window.</li>
+<li>If it has a <strong>red line</strong> through it, you're muted. Click it to unmute.</li>
+<li>Shortcut: press <kbd>Alt + A</kbd> to mute or unmute.</li>
+</ol>
+<h3>If your mic still isn't working</h3>
+<ol>
+<li>Click the <strong>small arrow (^)</strong> next to the microphone icon.</li>
+<li>Make sure the right microphone is picked.</li>
+<li>Go to Windows <strong>Settings → Privacy → Microphone</strong> and make sure Zoom is allowed.</li>
+<li>Unplug your headset and plug it back in.</li>
+</ol>
+</div></details>
+<details><summary>Mac</summary><div class="ans">
+<ol>
+<li>Find the <strong>microphone icon</strong> in the bottom-left corner of the Zoom window.</li>
+<li>If it has a <strong>red line</strong> through it, you're muted. Click it to unmute.</li>
+<li>Shortcut: press <kbd>⌘ + Shift + A</kbd> to mute or unmute.</li>
+</ol>
+<h3>If your mic still isn't working</h3>
+<ol>
+<li>Click the <strong>small arrow (^)</strong> next to the microphone icon and pick the right mic.</li>
+<li>Go to <strong>System Settings → Privacy &amp; Security → Microphone</strong> and make sure Zoom is allowed.</li>
+<li>If you just updated macOS, you may need to allow Zoom again.</li>
+<li>Quit Zoom and open it again.</li>
+</ol>
+</div></details>
+<details><summary>iPhone / iPad</summary><div class="ans">
+<ol>
+<li>Tap your screen to show the toolbar at the bottom.</li>
+<li>Tap the <strong>microphone icon</strong> (bottom left) to unmute.</li>
+<li>If you see <strong>"Join Audio"</strong> instead of a mic, tap it and pick <strong>"Call Over Internet."</strong></li>
+</ol>
+<h3>If your mic still isn't working</h3>
+<ol>
+<li>Go to <strong>Settings → Privacy → Microphone</strong> and make sure Zoom is turned on.</li>
+<li>Close any other app using the mic, like FaceTime or Voice Memos.</li>
+<li>Try headphones that have a built-in mic.</li>
+<li>Swipe Zoom closed and open it again.</li>
+</ol>
+</div></details>
+<details><summary>Android</summary><div class="ans">
+<ol>
+<li>Tap your screen to show the toolbar.</li>
+<li>Tap the <strong>microphone icon</strong> at the bottom to unmute.</li>
+<li>If you see <strong>"Join Audio,"</strong> tap it and pick <strong>"Call Over Internet."</strong></li>
+</ol>
+<h3>If your mic still isn't working</h3>
+<ol>
+<li>Go to <strong>Settings → Apps → Zoom → Permissions</strong> and turn on Microphone.</li>
+<li>Close any other app that might be using the mic.</li>
+<li>Try headphones that have a built-in mic.</li>
+<li>Close Zoom and open it again.</li>
+</ol>
+</div></details>
+</div>
+</div></section>
 
+<section class="section"><div class="wrap">
+<span class="eyebrow">Still can't get in?</span>
+<h2>Four ways in. <span class="gold">One of them will work.</span></h2>
+<ol>
+<li>Open the <strong>Zoom app</strong>, tap <strong>"Join a Meeting,"</strong> and enter Meeting ID <strong>233 013 9699</strong>.</li>
+<li>If the app won't open, join from your browser at <a class="text-link" href="https://zoom.us/join" target="_blank" rel="noopener">zoom.us/join</a> and enter the same Meeting ID.</li>
+<li><strong>Call in by phone</strong> if your internet is bad. Tap a number below. On most phones it enters the Meeting ID for you.</li>
+<li>Text Jimmy at <a class="text-link" href="sms:+16263543229">(626) 354-3229</a> and he'll help you get in.</li>
+</ol>
+<div class="zm-phones">
+<a class="zm-phone" href="tel:+13126266799,,2330139699%23"><b>+1 (312) 626-6799</b><span>Chicago</span></a>
+<a class="zm-phone" href="tel:+16465588656,,2330139699%23"><b>+1 (646) 558-8656</b><span>New York</span></a>
+<a class="zm-phone" href="tel:+13017158592,,2330139699%23"><b>+1 (301) 715-8592</b><span>Washington DC</span></a>
+<a class="zm-phone" href="tel:+13462487799,,2330139699%23"><b>+1 (346) 248-7799</b><span>Houston</span></a>
+<a class="zm-phone" href="tel:+16699006833,,2330139699%23"><b>+1 (669) 900-6833</b><span>San Jose</span></a>
+<a class="zm-phone" href="tel:+12532158782,,2330139699%23"><b>+1 (253) 215-8782</b><span>Tacoma</span></a>
+</div>
+<p class="muted">If it asks, enter Meeting ID 233 013 9699, then press #.</p>
+</div></section>
+
+<section class="section"><div class="wrap zm-end">
+<h2>Ready? <span class="gold">Come on in.</span></h2>
+<a class="btn lg" href="https://us06web.zoom.us/j/2330139699?pwd=sa5fDiah0TgbfXBsaBgpBRUmkLiPDS.1">Join the Zoom call →</a>
+</div></section>
+
+</main><footer class="foot"><div class="wrap in">
+<div><a class="brand" href="/" aria-label="iNeedJimmy, home"><img class="wmk" src="/assets/redo-oct-2026/ineedjimmy-wordmark-on-dark.svg" alt="iNeedJimmy"></a><div class="meta"><span>Direct response marketing · now running on AI</span><span>© 2026 Jimmy Davis</span></div></div>
+<div class="rt"><div class="links"><a href="https://ineedjimmy.com/contact/">Contact</a><a href="https://ineedjimmy.com/privacy/">Privacy</a><a href="https://ineedjimmy.com/terms/">Terms</a></div></div>
+</div></footer><div class="bgfx2"></div></div><div class="sticky"><span class="t">Jimmy's Zoom Room<br>is open</span><a class="btn" href="https://us06web.zoom.us/j/2330139699?pwd=sa5fDiah0TgbfXBsaBgpBRUmkLiPDS.1">Join now</a></div><div class="copy-status" role="status" aria-live="polite"></div>
 <script>
-// Copy to clipboard
-function copyText(text, btn) {
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-
-// Accordion toggle
-function toggleAccordion(el) {
-  el.classList.toggle('open');
-}
+document.querySelectorAll('[data-zcopy]').forEach(function(b){b.addEventListener('click',function(){
+  var s=document.querySelector('.copy-status'),done=function(t){s.textContent=t;setTimeout(function(){s.textContent=''},2500)};
+  if(navigator.clipboard){navigator.clipboard.writeText(b.dataset.zcopy).then(function(){done('Meeting ID copied.')},function(){done('Meeting ID: 233 013 9699')})}else{done('Meeting ID: 233 013 9699')}
+})});
 </script>
-
-</body>
-</html>
+</body></html>
