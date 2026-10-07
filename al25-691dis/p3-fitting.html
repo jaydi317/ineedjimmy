@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c">
+<title>The Fitting · For Al Christy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tour.css">
+<script src="assets/tour.js" defer></script>
+<style>
+/* ---------- Page 3 · The Fitting ---------- */
+.intro{padding-top:calc(max(12px,env(safe-area-inset-top)) + 92px);padding-bottom:8px}
+.intro .kicker{margin:0 0 22px}
+.intro .h1 .ln{display:block;text-wrap:balance}
+.intro .lede{margin-top:22px;max-width:34em}
+
+/* the rack */
+.rack-sec{padding:46px 0 0}
+.rack{max-width:1000px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;gap:30px}
+.row{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:36px}
+.row::before,.rack-rail{content:"";position:absolute;left:-8px;right:-8px;top:10px;height:4px;border-radius:3px;
+  background:linear-gradient(180deg,#8f8a82 0%,#ebe6dc 34%,#77726a 68%,#2e2c29 100%);
+  box-shadow:0 7px 12px -4px rgba(0,0,0,.65)}
+.row::after{content:"";position:absolute;left:-12px;right:-12px;top:8px;height:8px;pointer-events:none;
+  background:radial-gradient(circle at 4px 4px,#d9d3c8 0 3px,#5a5650 3.6px,transparent 4.2px) left/8px 8px no-repeat,
+             radial-gradient(circle at 4px 4px,#d9d3c8 0 3px,#5a5650 3.6px,transparent 4.2px) right/8px 8px no-repeat}
+.rack-rail{display:none}
+
+.tag{position:relative;margin:0;aspect-ratio:10/15.4;transform-origin:50% -26px;filter:drop-shadow(0 22px 22px rgba(0,0,0,.55)) drop-shadow(0 2px 3px rgba(0,0,0,.35));
+  opacity:0;transform:translateY(-10px) rotate(var(--sw,3deg))}
+.rack.in .tag{animation:hang 2.6s cubic-bezier(.3,.7,.3,1) forwards;animation-delay:calc(var(--d)*130ms)}
+.rack.swing .tag{animation:swing 2.2s cubic-bezier(.3,.7,.3,1) forwards;animation-delay:calc(var(--d)*140ms + 160ms)}
+@keyframes hang{
+  0%{opacity:0;transform:translateY(-12px) rotate(var(--sw))}
+  14%{opacity:1}
+  32%{transform:translateY(0) rotate(calc(var(--sw) * -.62))}
+  54%{transform:rotate(calc(var(--sw) * .34))}
+  74%{transform:rotate(calc(var(--sw) * -.15))}
+  100%{opacity:1;transform:rotate(0)}}
+@keyframes swing{
+  0%{opacity:1;transform:rotate(0)}
+  22%{transform:rotate(calc(var(--sw) * .7))}
+  48%{transform:rotate(calc(var(--sw) * -.38))}
+  72%{transform:rotate(calc(var(--sw) * .16))}
+  100%{opacity:1;transform:rotate(0)}}
+.loop{position:absolute;left:50%;top:-31px;width:6px;height:68px;margin-left:-3px;border:1.1px solid rgba(239,233,222,.55);border-radius:4px;transition:border-color .6s}
+.tag-body{position:absolute;inset:0;border-radius:4px;color:#1d1915;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .3 0 0 0 0 .22 0 0 0 .16 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E"),
+    linear-gradient(165deg,#f4eee3 0%,#ebe3d5 55%,#e2d9c8 100%);
+  clip-path:polygon(16% 0,84% 0,100% 6.5%,100% 100%,0 100%,0 6.5%);
+  -webkit-mask:radial-gradient(circle 6px at 50% 24px,transparent 97%,#000 100%);
+          mask:radial-gradient(circle 6px at 50% 24px,transparent 97%,#000 100%)}
+.eye{position:absolute;left:50%;top:24px;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;
+  box-shadow:0 0 0 2.6px #b9ae97,0 0 0 3.2px rgba(60,50,35,.35),inset 0 1px 1px rgba(0,0,0,.35)}
+.tag-k{position:absolute;left:13px;top:30px;font:500 10.5px/1 var(--mono);letter-spacing:.16em;color:#8a8170}
+.tag-rule{position:absolute;left:12px;right:12px;top:47px;height:1px;background:rgba(29,25,21,.14)}
+.tag-mid{position:absolute;left:13px;right:11px;top:48px;bottom:60px;display:flex;align-items:center}
+.tag-h{margin:0;font:600 25px/1.06 var(--serif);letter-spacing:-.005em;hyphens:none;text-wrap:balance;font-variant-numeric:lining-nums}
+.tag-h.a{font-size:30px}
+.tag-h.b{font-size:21.5px;line-height:1.1;letter-spacing:.03em;font-weight:600}
+.tag-h.c{font-size:24.5px}
+.tag-h.d{font-size:21px;line-height:1.1}
+.stub{position:absolute;left:0;right:0;bottom:0;height:60px;perspective:500px;border-top:1px dashed rgba(29,25,21,.32)}
+.flip{position:absolute;inset:9px 10px 10px;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.34,1.45,.5,1);transition-delay:calc(var(--d)*170ms)}
+.rack.named .flip{transform:rotateX(180deg)}
+.face{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:3px}
+.face.front i{display:block;width:76%;height:13px;border-radius:2px;background:#24201b;box-shadow:inset 0 0 0 1px rgba(0,0,0,.2)}
+.face.back{transform:rotateX(180deg);font:700 12.5px/1.15 var(--sans);letter-spacing:.01em;color:#1d1915;padding:0 4px}
+.tag.ours .face.back{background:var(--accent);color:#140b06;box-shadow:0 6px 14px -6px rgba(232,84,31,.8)}
+.rack.named .tag.ours .loop{border-color:var(--accent)}
+
+.ask{margin:52px auto 0;padding:0 20px;max-width:560px;text-align:center;text-wrap:balance;font:italic 400 clamp(25px,6.6vw,34px)/1.25 var(--serif);color:var(--bone)}
+.reveal-box{position:relative;height:96px;margin:22px auto 0;max-width:560px;padding:0 20px;display:flex;align-items:flex-start;justify-content:center}
+#reveal{min-width:220px;transition:opacity .5s ease,transform .5s var(--ease-out),background .25s}
+.rack-sec.named #reveal{opacity:0;transform:translateY(-8px);pointer-events:none}
+.src{position:absolute;left:20px;right:20px;top:14px;margin:0;pointer-events:none;text-align:center;text-wrap:balance;font:500 11px/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  opacity:0;transform:translateY(8px);transition:opacity .8s ease 1.1s,transform .8s var(--ease-out) 1.1s}
+.rack-sec.named .src{opacity:1;transform:none}
+
+/* how you sound */
+.sound{padding-top:clamp(120px,22vh,200px);padding-bottom:24px;scroll-margin-top:60px}
+.sound>.kicker{margin:0 0 56px}
+.stitched{margin:0 0 clamp(96px,16vh,150px)}
+.stitched:last-child{margin-bottom:40px}
+.stitched blockquote{margin:0}
+.stitched .quote{font-size:clamp(33px,9vw,60px);line-height:1.13;text-wrap:balance;
+  opacity:0;transform:translateY(22px);filter:blur(6px);transition:opacity 1.2s var(--ease-out),transform 1.3s var(--ease-out),filter 1.2s var(--ease-out)}
+.stitched.caps .quote{font-style:normal;font-weight:500;font-size:clamp(27px,7.6vw,52px);line-height:1.16;letter-spacing:.04em}
+.stitched.in .quote{opacity:1;transform:none;filter:none}
+.seam{position:relative;height:10px;margin:28px 0 0;max-width:540px}
+.stitch{position:absolute;left:0;right:0;top:4px;height:2px;border-radius:1px;background:repeating-linear-gradient(90deg,var(--accent) 0 7px,rgba(0,0,0,0) 7px 12px);
+  clip-path:inset(0 100% 0 0);transition:clip-path 1.7s cubic-bezier(.55,0,.25,1) .7s}
+.needle{position:absolute;top:1px;left:0;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:#ffb08a;box-shadow:0 0 0 3px rgba(232,84,31,.25),0 0 14px rgba(255,140,90,.9);
+  opacity:0;transition:left 1.7s cubic-bezier(.55,0,.25,1) .7s,opacity .4s ease .7s}
+.stitched.in .stitch{clip-path:inset(0 0 0 0)}
+.stitched.in .needle{left:100%;opacity:1}
+.stitched.done .needle{opacity:0;transition:opacity .6s ease}
+.stitched .cite{opacity:0;transition:opacity 1s ease 2.2s}
+.stitched.in .cite{opacity:1}
+.stitched .cite a{display:inline-flex;min-height:44px;align-items:center;text-decoration:none}
+.stitched .cite a:hover{color:var(--bone)}
+
+@media (min-width:760px){
+  .rack{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative;padding-top:36px}
+  .row{display:contents}
+  .row::before,.row::after{content:none}
+  .rack-rail{display:block;left:12px;right:12px}
+  .tag{aspect-ratio:10/13.4}
+  .tag-h.a{font-size:42px}.tag-h.b{font-size:28px}.tag-h.c{font-size:33px}.tag-h.d{font-size:27px}
+  .tag-mid{left:18px;right:16px}.tag-k{left:18px}
+  .face.back{font-size:13.5px}
+  .intro .lede{font-size:20px}
+}
+@media (max-width:349px){
+  .row{gap:10px}
+  .tag-mid{left:10px;right:9px}
+  .tag-h.a{font-size:25px}.tag-h.b{font-size:18px}.tag-h.c{font-size:20.5px}.tag-h.d{font-size:17.5px}
+  .face.back{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .tag{opacity:1;transform:none}
+  .stitched .quote{opacity:1;transform:none;filter:none}
+  .stitch{clip-path:none}.needle{display:none}.stitched .cite{opacity:1}
+}
+</style>
+<link rel="icon" type="image/svg+xml" href="assets/ef-mark.svg"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+</head>
+<body data-page="3">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ef-lockup" viewBox="0 0 2576 852"><path fill="#DC4405" d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/><path fill="currentColor" d="M2515.1,624.4C2499.6,620.2 2484.9,606.3 2481.6,592.5C2478.2,578.9 2479.1,569.5 2484.6,558.2C2492.7,541.5 2508.5,532.0 2528.0,532.0C2541.7,532.0 2552.7,536.5 2562.2,546.0C2587.8,571.6 2575.4,615.1 2539.9,624.5C2533.1,626.4 2522.1,626.3 2515.1,624.4ZM2544.3,617.2C2555.9,612.1 2563.6,603.7 2567.7,591.8C2574.4,572.6 2565.8,551.4 2547.7,542.5C2510.9,524.3 2472.6,559.9 2489.4,596.6C2493.9,606.3 2502.9,614.1 2514.5,618.3C2521.5,620.8 2537.5,620.2 2544.3,617.2ZM2540.8,598.2L2536.1,597.9L2534.9,592.4C2533.4,586.0 2530.4,583.0 2525.4,583.0L2522.0,583.0L2522.0,590.5L2522.0,598.0L2517.5,598.0L2513.0,598.0L2513.0,579.1L2513.0,560.2L2521.2,559.6C2535.4,558.4 2543.0,561.2 2544.4,568.1C2545.2,572.1 2543.6,575.8 2540.2,577.7L2537.3,579.4L2539.7,581.4C2541.3,582.8 2542.8,586.0 2544.1,590.9C2545.2,594.9 2545.9,598.3 2545.8,598.4C2545.6,598.4 2543.4,598.4 2540.8,598.2ZM2200.6,587.9C2192.5,586.7 2183.6,584.4 2178.3,582.0C2174.9,580.5 2174.0,579.6 2174.4,578.3C2174.6,577.3 2176.3,569.3 2178.0,560.5C2179.7,551.7 2181.3,543.9 2181.5,543.2C2181.8,542.5 2183.6,543.8 2186.1,546.5C2190.8,551.6 2196.5,554.1 2209.0,556.4C2219.4,558.4 2226.8,558.4 2233.4,556.5C2240.2,554.5 2246.6,549.1 2247.9,544.2C2250.0,536.8 2245.0,532.8 2224.3,525.5C2206.7,519.2 2194.6,510.2 2191.5,501.1C2188.4,492.1 2190.4,478.8 2196.3,468.7C2200.1,462.3 2210.6,452.9 2218.1,449.3C2233.6,441.9 2255.7,440.4 2273.3,445.4L2283.0,448.2L2288.6,444.0C2291.6,441.7 2294.4,440.0 2294.6,440.3C2294.9,440.6 2294.4,443.4 2293.6,446.6C2292.8,449.9 2290.7,460.0 2288.9,469.2L2285.7,485.9L2282.1,483.1C2273.9,476.7 2260.7,472.0 2250.8,472.0C2237.6,472.0 2227.0,477.9 2227.0,485.3C2227.0,491.0 2231.2,493.7 2249.8,500.1C2281.7,511.1 2291.2,523.1 2285.4,545.3C2280.2,565.5 2262.5,581.3 2238.7,587.0C2229.9,589.1 2212.0,589.6 2200.6,587.9ZM749.5,586.3C741.4,584.5 728.7,578.0 721.5,572.2C709.7,562.8 700.2,547.7 696.6,532.9C694.4,523.9 694.5,507.4 696.9,498.5C705.4,465.9 734.0,443.6 767.0,443.7C783.7,443.7 798.4,448.8 811.1,459.0C838.1,480.7 846.8,515.2 832.9,545.8C831.4,549.2 829.2,553.3 828.1,554.9C826.9,556.5 826.0,558.3 826.0,558.8C826.0,559.5 830.1,559.9 836.8,559.8L847.5,559.8L847.8,572.9C848.0,582.9 847.8,586.1 846.8,586.4C846.1,586.7 825.2,587.0 800.5,587.3C764.3,587.7 754.3,587.5 749.5,586.3ZM944.5,586.5C933.4,583.4 922.9,577.1 916.0,569.3C910.8,563.5 905.6,552.6 904.1,544.6C903.4,540.8 903.0,521.4 903.0,491.8L903.0,445.0L917.0,445.0L931.0,445.0L931.0,490.3C931.0,542.0 931.1,542.5 938.4,550.7C945.1,558.1 950.6,560.5 961.0,560.5C968.3,560.5 970.2,560.1 974.6,557.8C977.4,556.3 981.6,553.0 983.9,550.4C990.9,542.4 991.0,541.6 991.0,490.3L991.0,445.0L1004.5,445.0L1018.0,445.0L1018.0,492.9C1018.0,520.7 1017.6,543.0 1017.0,546.1C1013.6,564.5 996.8,581.2 976.4,586.4C968.8,588.4 951.5,588.4 944.5,586.5ZM1610.2,586.5C1606.7,585.7 1601.3,584.2 1598.2,583.0C1592.0,580.7 1580.0,574.3 1580.0,573.3C1580.0,572.7 1590.8,552.9 1591.7,552.0C1591.9,551.8 1593.1,552.2 1594.3,553.0C1610.0,562.9 1628.0,566.2 1638.4,561.0C1641.2,559.6 1644.3,557.3 1645.4,555.8C1648.1,552.1 1648.1,544.4 1645.4,540.7C1642.7,536.9 1634.8,531.9 1625.5,528.0C1604.9,519.6 1595.8,512.9 1590.5,502.3C1587.8,497.0 1587.6,495.6 1587.5,485.5C1587.5,475.0 1587.7,474.1 1590.8,467.8C1599.4,450.4 1618.9,441.8 1643.3,444.9C1654.0,446.2 1663.0,449.2 1672.0,454.2C1675.0,455.9 1677.6,457.4 1677.8,457.5C1678.1,457.8 1668.0,479.0 1667.5,479.0C1667.3,479.0 1663.9,477.4 1659.9,475.5C1641.7,466.8 1623.6,467.1 1618.0,476.3C1612.1,486.0 1619.0,495.3 1637.7,502.9C1654.1,509.6 1661.7,513.8 1666.3,519.0C1672.2,525.6 1674.9,531.3 1676.2,540.1C1679.5,562.4 1667.1,580.5 1644.3,586.4C1636.8,588.4 1619.0,588.4 1610.2,586.5ZM544.0,516.0L544.0,445.0L592.5,445.0L641.0,445.0L641.0,458.5L641.0,472.0L606.5,472.0L572.0,472.0L572.0,487.0L572.0,502.0L602.5,502.0L633.0,502.0L633.0,515.5L633.0,529.0L602.5,529.0L572.0,529.0L572.0,544.5L572.0,560.0L607.5,560.0L643.0,560.0L643.0,573.5L643.0,587.0L593.5,587.0L544.0,587.0L544.0,516.0ZM1083.0,516.0L1083.0,445.0L1097.0,445.0L1111.0,445.0L1111.0,516.0L1111.0,587.0L1097.0,587.0L1083.0,587.0L1083.0,516.0ZM1209.0,529.5L1209.0,472.0L1192.5,472.0L1176.0,472.0L1176.0,458.5L1176.0,445.0L1224.0,445.0L1272.0,445.0L1272.0,458.5L1272.0,472.0L1254.5,472.0L1237.0,472.0L1237.0,529.5L1237.0,587.0L1223.0,587.0L1209.0,587.0L1209.0,529.5ZM1337.0,516.0L1337.0,445.0L1351.0,445.0L1365.0,445.0L1365.0,516.0L1365.0,587.0L1351.0,587.0L1337.0,587.0L1337.0,516.0ZM1425.0,516.0L1425.0,445.0L1473.5,445.0L1522.0,445.0L1522.0,458.5L1522.0,472.0L1487.5,472.0L1453.0,472.0L1453.0,487.0L1453.0,502.0L1483.5,502.0L1514.0,502.0L1514.0,515.5L1514.0,529.0L1483.5,529.0L1453.0,529.0L1453.0,544.5L1453.0,560.0L1488.5,560.0L1524.0,560.0L1524.0,573.5L1524.0,587.0L1474.5,587.0L1425.0,587.0L1425.0,516.0ZM1752.5,584.8C1752.7,583.5 1754.1,574.9 1755.5,565.5C1757.0,556.1 1759.2,541.8 1760.5,533.5C1766.2,498.0 1771.0,466.5 1771.0,464.5C1771.0,463.3 1767.5,458.8 1762.6,453.5L1754.2,444.5L1815.3,444.2C1848.9,444.1 1876.4,444.1 1876.6,444.3C1877.0,444.7 1872.2,474.1 1871.7,474.7C1871.4,474.9 1856.0,475.2 1837.4,475.3L1803.5,475.5L1802.4,481.2C1801.7,484.4 1800.9,489.5 1800.5,492.5L1799.9,498.0L1824.9,498.0C1841.2,498.0 1850.0,498.4 1850.0,499.0C1850.0,500.4 1846.1,524.9 1845.5,527.8L1845.0,530.0L1819.7,530.0L1794.5,530.0L1790.0,558.2L1785.5,586.5L1768.7,586.8L1751.9,587.0L1752.5,584.8ZM1916.0,586.5C1916.0,586.0 1920.6,556.8 1930.0,497.3C1932.8,480.1 1935.0,465.3 1935.0,464.3C1934.9,463.3 1931.1,458.4 1926.5,453.5L1918.1,444.5L1944.2,444.2C1958.6,444.1 1970.7,444.3 1971.0,444.7C1971.4,445.2 1967.5,471.4 1962.4,503.0C1957.3,534.6 1952.4,565.7 1951.5,572.0C1950.6,578.3 1949.6,584.3 1949.4,585.2C1948.9,586.8 1947.2,587.0 1932.4,587.0C1923.4,587.0 1916.0,586.8 1916.0,586.5ZM2020.6,584.2C2020.8,582.7 2025.1,556.1 2030.0,525.0C2034.9,493.9 2039.2,467.2 2039.5,465.7C2039.9,463.3 2038.9,461.8 2031.7,454.4C2027.2,449.7 2023.3,445.4 2023.2,444.9C2023.0,444.4 2040.5,444.0 2066.2,444.0C2113.1,444.0 2119.2,444.6 2127.4,449.4C2152.6,464.2 2149.8,504.2 2122.3,522.6C2119.1,524.7 2116.1,526.7 2115.7,527.1C2115.2,527.5 2120.3,540.5 2127.0,556.1C2133.7,571.7 2139.4,585.1 2139.7,585.8C2140.1,586.7 2135.9,587.0 2120.8,587.0L2101.4,587.0L2099.2,581.8C2098.1,578.9 2093.9,568.4 2090.0,558.5C2086.2,548.6 2082.2,538.8 2081.3,536.8L2079.7,533.0L2070.8,533.0C2066.0,533.0 2062.0,533.4 2062.0,533.8C2062.0,534.2 2060.9,541.3 2059.6,549.5C2058.3,557.8 2056.4,569.6 2055.5,575.8L2053.7,587.0L2036.9,587.0L2020.0,587.0L2020.6,584.2ZM2373.0,585.2C2373.0,583.5 2378.0,551.3 2386.5,497.7C2388.4,485.8 2390.0,475.8 2390.0,475.5C2390.0,475.2 2385.1,475.0 2379.1,475.0L2368.2,475.0L2356.9,483.9C2350.6,488.8 2345.3,492.7 2345.1,492.5C2344.9,492.3 2345.3,489.3 2345.9,485.8C2347.4,477.3 2352.0,446.6 2352.0,445.2C2352.0,444.3 2366.4,444.0 2411.5,444.0C2458.4,444.0 2471.0,444.3 2471.0,445.2C2471.0,445.9 2469.9,452.8 2468.7,460.5L2466.4,474.5L2445.0,475.0L2423.6,475.5L2420.8,493.0C2413.3,540.9 2410.6,557.5 2408.9,569.0C2407.9,575.9 2406.7,582.7 2406.4,584.2L2405.8,587.0L2389.4,587.0C2374.1,587.0 2373.0,586.9 2373.0,585.2ZM2533.5,575.0C2534.3,574.3 2535.0,572.7 2535.0,571.4C2535.0,567.7 2532.4,566.0 2526.9,566.0L2522.0,566.0L2522.0,571.6L2522.0,577.3L2527.0,576.8C2529.7,576.5 2532.6,575.7 2533.5,575.0ZM785.6,557.0C793.5,553.1 798.7,548.6 802.9,542.1C809.6,531.7 812.1,519.0 809.6,507.2C803.5,478.0 773.7,463.0 747.4,476.0C739.7,479.8 732.3,487.7 727.8,496.8C724.6,503.3 724.5,503.9 724.5,516.0C724.5,528.1 724.6,528.7 727.8,535.2C732.0,543.9 739.4,551.9 746.8,555.8C754.9,560.1 759.0,561.0 769.7,560.6C777.8,560.3 779.8,559.9 785.6,557.0ZM2101.5,502.7C2106.1,500.1 2109.5,495.4 2111.1,489.6C2112.0,486.2 2111.9,484.8 2110.3,481.1C2107.1,473.3 2105.2,472.6 2087.5,472.2L2072.2,471.8L2071.6,474.7C2070.7,479.1 2067.0,502.4 2067.0,503.8C2067.0,504.7 2070.7,505.0 2082.2,505.0C2096.2,505.0 2097.8,504.8 2101.5,502.7Z"/></symbol><symbol id="ef-real-mark" viewBox="0 0 605 852"><path d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/></symbol></svg>
+<main>
+  <header class="intro wrap">
+    <p class="kicker reveal">03 · The Fitting</p>
+    <h1 class="h1 reveal" data-delay="1"><span class="ln">A great suit isn’t bigger.</span> <span class="ln">It’s cut for the man.</span></h1>
+    <p class="lede reveal" data-delay="2">Here’s how your category introduces itself. These are the opening lines on the homepages of four homepages, as they read this month. Names hidden.</p>
+  </header>
+
+  <section class="rack-sec" id="rack-sec" aria-label="Four homepage headlines, names hidden">
+    <div class="rack" id="rack">
+      <span class="rack-rail" aria-hidden="true"></span>
+      <div class="row">
+        <figure class="tag" style="--d:0;--sw:3.4deg">
+          <span class="loop" aria-hidden="true"></span>
+          <div class="tag-body"><span class="tag-k">A</span><span class="tag-rule"></span>
+            <div class="tag-mid"><p class="tag-h a">#1 Stock Loan Lender</p></div>
+            <div class="stub"><div class="flip"><span class="face front" aria-hidden="true"><i></i></span><span class="face back">Stone Creek Global</span></div></div>
+          </div><span class="eye" aria-hidden="true"></span>
+        </figure>
+        <figure class="tag" style="--d:1;--sw:-2.8deg">
+          <span class="loop" aria-hidden="true"></span>
+          <div class="tag-body"><span class="tag-k">B</span><span class="tag-rule"></span>
+            <div class="tag-mid"><p class="tag-h b">MORE MONEY<br>MORE LIQUIDITY</p></div>
+            <div class="stub"><div class="flip"><span class="face front" aria-hidden="true"><i></i></span><span class="face back">Stock Loan Exchange</span></div></div>
+          </div><span class="eye" aria-hidden="true"></span>
+        </figure>
+      </div>
+      <div class="row">
+        <figure class="tag" style="--d:2;--sw:3deg">
+          <span class="loop" aria-hidden="true"></span>
+          <div class="tag-body"><span class="tag-k">C</span><span class="tag-rule"></span>
+            <div class="tag-mid"><p class="tag-h c">Liquidity Solutions for Shareholders</p></div>
+            <div class="stub"><div class="flip"><span class="face front" aria-hidden="true"><i></i></span><span class="face back">SLS Group</span></div></div>
+          </div><span class="eye" aria-hidden="true"></span>
+        </figure>
+        <figure class="tag ours" style="--d:3;--sw:-3.6deg">
+          <span class="loop" aria-hidden="true"></span>
+          <div class="tag-body"><span class="tag-k">D</span><span class="tag-rule"></span>
+            <div class="tag-mid"><p class="tag-h d">We provide non-recourse, equity-backed financing solutions</p></div>
+            <div class="stub"><div class="flip"><span class="face front" aria-hidden="true"><i></i></span><span class="face back">EquitiesFirst</span></div></div>
+          </div><span class="eye" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </div>
+
+    <p class="ask reveal">Could you tell which one is yours?</p>
+    <div class="reveal-box">
+      <button class="btn btn-ghost" id="reveal" type="button" aria-controls="rack">Show the names</button>
+      <p class="src" aria-live="polite">Homepage headlines as published, October 2026.</p>
+    </div>
+  </section>
+
+  <section class="sound wrap" id="sound" aria-label="Now, how you sound">
+    <p class="kicker reveal">Now, how you sound</p>
+    <figure class="stitched" style="margin-left:0;margin-right:0">
+      <blockquote><p class="quote">They got three million bucks … and I got a hug from his wife and 1 percent of the transaction.</p></blockquote>
+      <div class="seam" aria-hidden="true"><span class="stitch"></span><span class="needle"></span></div>
+      <figcaption class="cite"><a href="https://www.ibj.com/articles/14162-downtown-firm-specializes-in-unusual-loans-equities-first-holdings-sees-growing-demand-for-stock-loans-as-tight-credit-markets-make-borrowing-tougher" target="_blank" rel="noopener">Al Christy · Indianapolis Business Journal · 2008&nbsp;↗</a></figcaption>
+    </figure>
+    <figure class="stitched caps" style="margin-left:0;margin-right:0">
+      <blockquote><p class="quote">IT’S ABOUT CREATING A NEW PARADIGM FOR CAPITAL.</p></blockquote>
+      <div class="seam" aria-hidden="true"><span class="stitch"></span><span class="needle"></span></div>
+      <figcaption class="cite">Al Christy · 2022</figcaption>
+    </figure>
+  </section>
+</main>
+
+<script>
+(function(){
+  var rack=document.getElementById('rack'), sec=document.getElementById('rack-sec'), btn=document.getElementById('reveal');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function watch(els,cls,thr,cb){
+    if(!('IntersectionObserver' in window)||reduce){ els.forEach(function(e){ e.classList.add(cls); cb&&cb(e); }); return; }
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add(cls); cb&&cb(e.target); io.unobserve(e.target); } }); },{threshold:thr,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+  watch([rack],'in',.25);
+  watch([].slice.call(document.querySelectorAll('.stitched')),'in',.45,function(el){ setTimeout(function(){ el.classList.add('done'); },2600); });
+  btn.addEventListener('click',function(){
+    rack.classList.add('in'); rack.classList.remove('in');
+    void rack.offsetWidth;
+    rack.classList.add('named','swing'); sec.classList.add('named');
+    var src=sec.querySelector('.src'); src.setAttribute('tabindex','-1');
+    setTimeout(function(){ try{ src.focus({preventScroll:true}); }catch(e){} },600);
+  });
+})();
+</script>
+<div id="tour-next"></div>
+</body>
+</html>

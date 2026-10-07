@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c">
+<title>The Legend · For Al Christy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tour.css">
+<script src="assets/tour.js" defer></script>
+<style>
+/* ---------- Page 2 · The Legend ---------- */
+:root{--st:max(10px,env(safe-area-inset-top));--sb:max(18px,env(safe-area-inset-bottom))}
+body[data-page="2"] .tour-chrome{padding-top:calc(var(--st) + 12px)}
+
+.story{position:relative;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#070708;
+  touch-action:pan-y;cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+
+/* progress ticks */
+.ticks{position:absolute;z-index:60;left:12px;right:12px;top:var(--st);display:flex;gap:4px;pointer-events:none}
+.ticks i{flex:1;height:2px;border-radius:2px;background:rgba(239,233,222,.2);overflow:hidden}
+.ticks b{display:block;height:100%;background:var(--bone-2);transform:scaleX(0);transform-origin:left center;transition:transform .45s var(--ease-out),background .3s}
+.ticks i.done b{transform:scaleX(1)}
+.ticks i.cur b{transform:scaleX(1);background:var(--accent);transition:transform 1.1s var(--ease-out)}
+
+/* cards */
+.sc{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .65s ease,visibility 0s linear .65s}
+.sc.on{opacity:1;visibility:visible;transition:opacity .65s ease}
+.bg{position:absolute;inset:-2%;transform:scale(1.02);will-change:transform}
+.sc.on .bg{animation:kb 16s cubic-bezier(.25,.1,.25,1) forwards}
+.sc:nth-child(even).on .bg{animation-name:kb2}
+@keyframes kb{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.13) translate(-1.6%,-1.2%)}}
+@keyframes kb2{from{transform:scale(1.12) translate(-1.2%,.8%)}to{transform:scale(1.03) translate(.6%,0)}}
+.fb{position:absolute;inset:0}
+.photo{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+.photo.ok{opacity:1}
+.shade{position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(7,7,8,.72) 0%,rgba(7,7,8,.12) 26%,rgba(7,7,8,0) 40%,rgba(7,7,8,.55) 62%,rgba(7,7,8,.92) 82%,#070708 100%)}
+.num{position:absolute;right:-.06em;top:14%;font:italic 400 min(78vh,118vw)/.8 var(--serif);font:italic 400 min(78svh,118vw)/.8 var(--serif);
+  color:transparent;-webkit-text-stroke:1.2px rgba(239,233,222,.13);letter-spacing:-.06em;pointer-events:none;font-variant-numeric:lining-nums}
+.sc.has-photo .num,.t-tower .num{display:none}
+.grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+
+/* fallback art, per card */
+.t-dusk .fb{background:
+  radial-gradient(60% 22% at 30% 58%,rgba(255,138,72,.42),rgba(255,138,72,0) 70%),
+  radial-gradient(110% 40% at 50% 60%,rgba(176,64,22,.55),rgba(176,64,22,0) 70%),
+  linear-gradient(180deg,#0d1424 0%,#1d1c2c 30%,#4a2418 55%,#120c0a 63%,#070708 100%)}
+.t-dusk .fb::after{content:"";position:absolute;left:-20%;right:-20%;top:63%;bottom:0;
+  background:repeating-linear-gradient(90deg,rgba(239,233,222,.05) 0 1px,transparent 1px 11%);transform:perspective(300px) rotateX(58deg);transform-origin:top}
+.t-glove .fb{background:
+  radial-gradient(48% 30% at 66% 46%,rgba(196,128,72,.45),rgba(196,128,72,0) 70%),
+  radial-gradient(90% 60% at 40% 60%,#3a2416 0%,rgba(58,36,22,0) 70%),
+  linear-gradient(170deg,#1a120d,#0a0807 70%)}
+.t-glove .fb::after{content:"";position:absolute;left:44%;top:30%;width:min(56vw,340px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle at 38% 34%,rgba(255,244,228,.16),rgba(255,244,228,.03) 55%,rgba(255,244,228,0) 70%);filter:blur(2px)}
+.t-graphite .fb{background:radial-gradient(80% 50% at 80% 30%,#2a3038 0%,rgba(42,48,56,0) 70%),linear-gradient(180deg,#14171b,#08090a)}
+.t-navy .fb{background:radial-gradient(70% 45% at 25% 30%,#1c2c48 0%,rgba(28,44,72,0) 70%),radial-gradient(60% 30% at 85% 75%,rgba(232,84,31,.12),rgba(232,84,31,0) 70%),linear-gradient(180deg,#0d1422,#07080b)}
+.t-apple .fb{background:
+  radial-gradient(26% 16% at 64% 40%,rgba(214,52,32,.55),rgba(214,52,32,0) 70%),
+  radial-gradient(12% 8% at 26% 26%,rgba(160,190,110,.18),rgba(160,190,110,0) 70%),
+  radial-gradient(16% 10% at 84% 64%,rgba(160,190,110,.12),rgba(160,190,110,0) 70%),
+  radial-gradient(90% 60% at 50% 40%,#16261c 0%,rgba(22,38,28,0) 75%),
+  linear-gradient(180deg,#0b140f,#070807)}
+.t-quote .fb{background:radial-gradient(80% 40% at 50% 100%,rgba(232,84,31,.18),rgba(232,84,31,0) 70%),linear-gradient(180deg,#0e0d0d,#070708)}
+.t-olive .fb{background:radial-gradient(70% 45% at 70% 28%,#1f2a20 0%,rgba(31,42,32,0) 70%),linear-gradient(180deg,#0e110e,#070807)}
+.t-tower .fb{background:
+  radial-gradient(70% 34% at 70% 56%,rgba(232,120,52,.32),rgba(232,120,52,0) 70%),
+  linear-gradient(180deg,#141a33 0%,#251f35 40%,#3a2427 60%,#0c0b10 100%)}
+.t-tower .fb::after{content:"";position:absolute;inset:6% 4% 22% 30%;
+  background:
+    repeating-linear-gradient(90deg,rgba(7,7,8,.82) 0 3px,transparent 3px 25%),
+    repeating-linear-gradient(180deg,rgba(7,7,8,.82) 0 3px,transparent 3px 20%);
+  border:3px solid rgba(7,7,8,.85);box-shadow:inset 0 0 120px rgba(255,170,110,.12)}
+.t-world .fb{background:
+  repeating-radial-gradient(circle at 115% 120%,rgba(157,200,215,.06) 0 1px,transparent 1px 7.5vmax),
+  radial-gradient(70% 50% at 80% 80%,#123040 0%,rgba(18,48,64,0) 70%),
+  linear-gradient(180deg,#0a141b,#06090b)}
+.t-ice .fb{background:radial-gradient(60% 30% at 58% 40%,rgba(255,176,122,.16),rgba(255,176,122,0) 70%),linear-gradient(180deg,#070c14 0%,#0f1c2c 34%,#22364b 52%,#0a1018 80%)}
+.t-ice svg{position:absolute;left:0;right:0;bottom:0;width:100%;height:78%;max-width:none}
+.t-dawn .fb{background:
+  radial-gradient(64% 26% at 50% 78%,rgba(255,120,60,.42),rgba(255,120,60,0) 72%),
+  radial-gradient(120% 50% at 50% 82%,rgba(232,84,31,.2),rgba(232,84,31,0) 70%),
+  linear-gradient(180deg,#070708 0%,#0e0a0a 55%,#1f0f08 100%)}
+
+/* text */
+.txt{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  padding:calc(var(--st) + 82px) 24px calc(var(--sb) + 78px);pointer-events:none}
+.txt a{pointer-events:auto}
+.lab{margin:0;font:500 clamp(82px,26vw,170px)/.82 var(--serif);letter-spacing:-.035em;color:var(--bone);font-variant-numeric:lining-nums}
+.lab.w{font-size:clamp(64px,19vw,132px);letter-spacing:.02em;text-transform:uppercase}
+.lab.md{font-size:clamp(52px,15.4vw,112px);letter-spacing:-.03em}
+.lab .pre{display:block;margin:0 0 14px 4px;font:500 12px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+.lab.acc{color:var(--accent)}
+.st{margin:0;max-width:15em;font:500 clamp(31px,8.5vw,56px)/1.07 var(--serif);letter-spacing:-.012em;text-wrap:balance}
+.st.big{font-size:clamp(60px,18vw,128px);line-height:.95;letter-spacing:-.025em}
+.sm{margin:16px 0 0;max-width:34ch;font:400 16.5px/1.55 var(--sans);color:var(--bone-2);text-wrap:pretty}
+.sm .inq{font:italic 400 1.2em/1.3 var(--serif);color:var(--bone)}
+.txt.fin{justify-content:center;gap:clamp(28px,6svh,56px);padding-top:calc(var(--st) + 60px)}
+.t-dawn .num{right:auto;left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%)}
+.story.last .skip{opacity:0;pointer-events:none}
+.skip{transition:opacity .4s}
+.rule{display:block;width:28px;height:1px;background:var(--accent);margin:0 0 20px}
+
+.txt.q{justify-content:center;padding-top:calc(var(--st) + 70px)}
+.qt{font-size:clamp(33px,9.2vw,58px);line-height:1.14;max-width:15em}
+.txt.q .cite{margin-top:22px}
+.cite a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none}
+.cite a:hover{color:var(--bone)}
+
+/* enter animation per card */
+.lab,.st,.sm,.qt,.cite,.rule{opacity:0;transform:translateY(18px);transition:opacity .45s ease,transform .5s ease}
+.sc.on .lab,.sc.on .st,.sc.on .sm,.sc.on .qt,.sc.on .cite,.sc.on .rule{opacity:1;transform:none;transition:opacity .75s var(--ease-out),transform .9s var(--ease-out)}
+.sc.on .lab{transition-delay:.12s}.sc.on .rule{transition-delay:.22s}.sc.on .st,.sc.on .qt{transition-delay:.3s}.sc.on .sm,.sc.on .cite{transition-delay:.5s}
+
+/* bottom HUD */
+.hud{position:absolute;z-index:60;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 14px var(--sb) 24px;height:calc(var(--sb) + 56px);pointer-events:none}
+.hud>*{pointer-events:auto}
+.count{font:500 11.5px/1 var(--mono);letter-spacing:.14em;color:var(--muted)}
+.count b{font-weight:500;color:var(--bone)}
+.hint{position:absolute;left:24px;bottom:calc(var(--sb) + 22px);display:flex;align-items:center;gap:10px;
+  font:500 10.5px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--bone-2);white-space:nowrap;transition:opacity .5s;pointer-events:none}
+.hint i{position:relative;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.hint i::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid var(--accent);animation:ping 2.2s var(--ease-out) infinite}
+@keyframes ping{0%{transform:scale(.4);opacity:.9}80%,100%{transform:scale(1.4);opacity:0}}
+.story.touched .hint{opacity:0}
+.count{transition:opacity .5s}
+.story:not(.touched) .count{opacity:0}
+.skip{min-height:44px;padding:10px 16px;cursor:pointer}
+.skip .mono{color:var(--bone-2)}
+
+/* end */
+.end{padding:64px 20px 0;text-align:center;scroll-margin-top:70px}
+.end-k{margin:0 0 10px}
+.replay{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:10px 18px;border:0;background:none;color:var(--muted);font:500 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;border-radius:999px}
+.replay:hover{color:var(--bone)}
+.replay svg{width:14px;height:14px}
+
+@media (min-width:900px){
+  .txt{padding-left:8vw;padding-right:8vw}
+  .st{max-width:13em}
+  .sm{font-size:18px}
+  .hud{padding-left:8vw;padding-right:24px}
+  .hint{left:8vw}
+  .num{right:4vw}
+}
+@media (max-height:640px){
+  .lab{font-size:clamp(64px,20vw,120px)}
+  .st{font-size:clamp(27px,7.6vw,40px)}
+  .qt{font-size:clamp(26px,7.2vw,40px)}
+  .sm{font-size:15.5px;margin-top:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .sc.on .bg{animation:none}
+  .hint i::after{animation:none}
+}
+</style>
+<link rel="icon" type="image/svg+xml" href="assets/ef-mark.svg"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+</head>
+<body data-page="2">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ef-lockup" viewBox="0 0 2576 852"><path fill="#DC4405" d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/><path fill="currentColor" d="M2515.1,624.4C2499.6,620.2 2484.9,606.3 2481.6,592.5C2478.2,578.9 2479.1,569.5 2484.6,558.2C2492.7,541.5 2508.5,532.0 2528.0,532.0C2541.7,532.0 2552.7,536.5 2562.2,546.0C2587.8,571.6 2575.4,615.1 2539.9,624.5C2533.1,626.4 2522.1,626.3 2515.1,624.4ZM2544.3,617.2C2555.9,612.1 2563.6,603.7 2567.7,591.8C2574.4,572.6 2565.8,551.4 2547.7,542.5C2510.9,524.3 2472.6,559.9 2489.4,596.6C2493.9,606.3 2502.9,614.1 2514.5,618.3C2521.5,620.8 2537.5,620.2 2544.3,617.2ZM2540.8,598.2L2536.1,597.9L2534.9,592.4C2533.4,586.0 2530.4,583.0 2525.4,583.0L2522.0,583.0L2522.0,590.5L2522.0,598.0L2517.5,598.0L2513.0,598.0L2513.0,579.1L2513.0,560.2L2521.2,559.6C2535.4,558.4 2543.0,561.2 2544.4,568.1C2545.2,572.1 2543.6,575.8 2540.2,577.7L2537.3,579.4L2539.7,581.4C2541.3,582.8 2542.8,586.0 2544.1,590.9C2545.2,594.9 2545.9,598.3 2545.8,598.4C2545.6,598.4 2543.4,598.4 2540.8,598.2ZM2200.6,587.9C2192.5,586.7 2183.6,584.4 2178.3,582.0C2174.9,580.5 2174.0,579.6 2174.4,578.3C2174.6,577.3 2176.3,569.3 2178.0,560.5C2179.7,551.7 2181.3,543.9 2181.5,543.2C2181.8,542.5 2183.6,543.8 2186.1,546.5C2190.8,551.6 2196.5,554.1 2209.0,556.4C2219.4,558.4 2226.8,558.4 2233.4,556.5C2240.2,554.5 2246.6,549.1 2247.9,544.2C2250.0,536.8 2245.0,532.8 2224.3,525.5C2206.7,519.2 2194.6,510.2 2191.5,501.1C2188.4,492.1 2190.4,478.8 2196.3,468.7C2200.1,462.3 2210.6,452.9 2218.1,449.3C2233.6,441.9 2255.7,440.4 2273.3,445.4L2283.0,448.2L2288.6,444.0C2291.6,441.7 2294.4,440.0 2294.6,440.3C2294.9,440.6 2294.4,443.4 2293.6,446.6C2292.8,449.9 2290.7,460.0 2288.9,469.2L2285.7,485.9L2282.1,483.1C2273.9,476.7 2260.7,472.0 2250.8,472.0C2237.6,472.0 2227.0,477.9 2227.0,485.3C2227.0,491.0 2231.2,493.7 2249.8,500.1C2281.7,511.1 2291.2,523.1 2285.4,545.3C2280.2,565.5 2262.5,581.3 2238.7,587.0C2229.9,589.1 2212.0,589.6 2200.6,587.9ZM749.5,586.3C741.4,584.5 728.7,578.0 721.5,572.2C709.7,562.8 700.2,547.7 696.6,532.9C694.4,523.9 694.5,507.4 696.9,498.5C705.4,465.9 734.0,443.6 767.0,443.7C783.7,443.7 798.4,448.8 811.1,459.0C838.1,480.7 846.8,515.2 832.9,545.8C831.4,549.2 829.2,553.3 828.1,554.9C826.9,556.5 826.0,558.3 826.0,558.8C826.0,559.5 830.1,559.9 836.8,559.8L847.5,559.8L847.8,572.9C848.0,582.9 847.8,586.1 846.8,586.4C846.1,586.7 825.2,587.0 800.5,587.3C764.3,587.7 754.3,587.5 749.5,586.3ZM944.5,586.5C933.4,583.4 922.9,577.1 916.0,569.3C910.8,563.5 905.6,552.6 904.1,544.6C903.4,540.8 903.0,521.4 903.0,491.8L903.0,445.0L917.0,445.0L931.0,445.0L931.0,490.3C931.0,542.0 931.1,542.5 938.4,550.7C945.1,558.1 950.6,560.5 961.0,560.5C968.3,560.5 970.2,560.1 974.6,557.8C977.4,556.3 981.6,553.0 983.9,550.4C990.9,542.4 991.0,541.6 991.0,490.3L991.0,445.0L1004.5,445.0L1018.0,445.0L1018.0,492.9C1018.0,520.7 1017.6,543.0 1017.0,546.1C1013.6,564.5 996.8,581.2 976.4,586.4C968.8,588.4 951.5,588.4 944.5,586.5ZM1610.2,586.5C1606.7,585.7 1601.3,584.2 1598.2,583.0C1592.0,580.7 1580.0,574.3 1580.0,573.3C1580.0,572.7 1590.8,552.9 1591.7,552.0C1591.9,551.8 1593.1,552.2 1594.3,553.0C1610.0,562.9 1628.0,566.2 1638.4,561.0C1641.2,559.6 1644.3,557.3 1645.4,555.8C1648.1,552.1 1648.1,544.4 1645.4,540.7C1642.7,536.9 1634.8,531.9 1625.5,528.0C1604.9,519.6 1595.8,512.9 1590.5,502.3C1587.8,497.0 1587.6,495.6 1587.5,485.5C1587.5,475.0 1587.7,474.1 1590.8,467.8C1599.4,450.4 1618.9,441.8 1643.3,444.9C1654.0,446.2 1663.0,449.2 1672.0,454.2C1675.0,455.9 1677.6,457.4 1677.8,457.5C1678.1,457.8 1668.0,479.0 1667.5,479.0C1667.3,479.0 1663.9,477.4 1659.9,475.5C1641.7,466.8 1623.6,467.1 1618.0,476.3C1612.1,486.0 1619.0,495.3 1637.7,502.9C1654.1,509.6 1661.7,513.8 1666.3,519.0C1672.2,525.6 1674.9,531.3 1676.2,540.1C1679.5,562.4 1667.1,580.5 1644.3,586.4C1636.8,588.4 1619.0,588.4 1610.2,586.5ZM544.0,516.0L544.0,445.0L592.5,445.0L641.0,445.0L641.0,458.5L641.0,472.0L606.5,472.0L572.0,472.0L572.0,487.0L572.0,502.0L602.5,502.0L633.0,502.0L633.0,515.5L633.0,529.0L602.5,529.0L572.0,529.0L572.0,544.5L572.0,560.0L607.5,560.0L643.0,560.0L643.0,573.5L643.0,587.0L593.5,587.0L544.0,587.0L544.0,516.0ZM1083.0,516.0L1083.0,445.0L1097.0,445.0L1111.0,445.0L1111.0,516.0L1111.0,587.0L1097.0,587.0L1083.0,587.0L1083.0,516.0ZM1209.0,529.5L1209.0,472.0L1192.5,472.0L1176.0,472.0L1176.0,458.5L1176.0,445.0L1224.0,445.0L1272.0,445.0L1272.0,458.5L1272.0,472.0L1254.5,472.0L1237.0,472.0L1237.0,529.5L1237.0,587.0L1223.0,587.0L1209.0,587.0L1209.0,529.5ZM1337.0,516.0L1337.0,445.0L1351.0,445.0L1365.0,445.0L1365.0,516.0L1365.0,587.0L1351.0,587.0L1337.0,587.0L1337.0,516.0ZM1425.0,516.0L1425.0,445.0L1473.5,445.0L1522.0,445.0L1522.0,458.5L1522.0,472.0L1487.5,472.0L1453.0,472.0L1453.0,487.0L1453.0,502.0L1483.5,502.0L1514.0,502.0L1514.0,515.5L1514.0,529.0L1483.5,529.0L1453.0,529.0L1453.0,544.5L1453.0,560.0L1488.5,560.0L1524.0,560.0L1524.0,573.5L1524.0,587.0L1474.5,587.0L1425.0,587.0L1425.0,516.0ZM1752.5,584.8C1752.7,583.5 1754.1,574.9 1755.5,565.5C1757.0,556.1 1759.2,541.8 1760.5,533.5C1766.2,498.0 1771.0,466.5 1771.0,464.5C1771.0,463.3 1767.5,458.8 1762.6,453.5L1754.2,444.5L1815.3,444.2C1848.9,444.1 1876.4,444.1 1876.6,444.3C1877.0,444.7 1872.2,474.1 1871.7,474.7C1871.4,474.9 1856.0,475.2 1837.4,475.3L1803.5,475.5L1802.4,481.2C1801.7,484.4 1800.9,489.5 1800.5,492.5L1799.9,498.0L1824.9,498.0C1841.2,498.0 1850.0,498.4 1850.0,499.0C1850.0,500.4 1846.1,524.9 1845.5,527.8L1845.0,530.0L1819.7,530.0L1794.5,530.0L1790.0,558.2L1785.5,586.5L1768.7,586.8L1751.9,587.0L1752.5,584.8ZM1916.0,586.5C1916.0,586.0 1920.6,556.8 1930.0,497.3C1932.8,480.1 1935.0,465.3 1935.0,464.3C1934.9,463.3 1931.1,458.4 1926.5,453.5L1918.1,444.5L1944.2,444.2C1958.6,444.1 1970.7,444.3 1971.0,444.7C1971.4,445.2 1967.5,471.4 1962.4,503.0C1957.3,534.6 1952.4,565.7 1951.5,572.0C1950.6,578.3 1949.6,584.3 1949.4,585.2C1948.9,586.8 1947.2,587.0 1932.4,587.0C1923.4,587.0 1916.0,586.8 1916.0,586.5ZM2020.6,584.2C2020.8,582.7 2025.1,556.1 2030.0,525.0C2034.9,493.9 2039.2,467.2 2039.5,465.7C2039.9,463.3 2038.9,461.8 2031.7,454.4C2027.2,449.7 2023.3,445.4 2023.2,444.9C2023.0,444.4 2040.5,444.0 2066.2,444.0C2113.1,444.0 2119.2,444.6 2127.4,449.4C2152.6,464.2 2149.8,504.2 2122.3,522.6C2119.1,524.7 2116.1,526.7 2115.7,527.1C2115.2,527.5 2120.3,540.5 2127.0,556.1C2133.7,571.7 2139.4,585.1 2139.7,585.8C2140.1,586.7 2135.9,587.0 2120.8,587.0L2101.4,587.0L2099.2,581.8C2098.1,578.9 2093.9,568.4 2090.0,558.5C2086.2,548.6 2082.2,538.8 2081.3,536.8L2079.7,533.0L2070.8,533.0C2066.0,533.0 2062.0,533.4 2062.0,533.8C2062.0,534.2 2060.9,541.3 2059.6,549.5C2058.3,557.8 2056.4,569.6 2055.5,575.8L2053.7,587.0L2036.9,587.0L2020.0,587.0L2020.6,584.2ZM2373.0,585.2C2373.0,583.5 2378.0,551.3 2386.5,497.7C2388.4,485.8 2390.0,475.8 2390.0,475.5C2390.0,475.2 2385.1,475.0 2379.1,475.0L2368.2,475.0L2356.9,483.9C2350.6,488.8 2345.3,492.7 2345.1,492.5C2344.9,492.3 2345.3,489.3 2345.9,485.8C2347.4,477.3 2352.0,446.6 2352.0,445.2C2352.0,444.3 2366.4,444.0 2411.5,444.0C2458.4,444.0 2471.0,444.3 2471.0,445.2C2471.0,445.9 2469.9,452.8 2468.7,460.5L2466.4,474.5L2445.0,475.0L2423.6,475.5L2420.8,493.0C2413.3,540.9 2410.6,557.5 2408.9,569.0C2407.9,575.9 2406.7,582.7 2406.4,584.2L2405.8,587.0L2389.4,587.0C2374.1,587.0 2373.0,586.9 2373.0,585.2ZM2533.5,575.0C2534.3,574.3 2535.0,572.7 2535.0,571.4C2535.0,567.7 2532.4,566.0 2526.9,566.0L2522.0,566.0L2522.0,571.6L2522.0,577.3L2527.0,576.8C2529.7,576.5 2532.6,575.7 2533.5,575.0ZM785.6,557.0C793.5,553.1 798.7,548.6 802.9,542.1C809.6,531.7 812.1,519.0 809.6,507.2C803.5,478.0 773.7,463.0 747.4,476.0C739.7,479.8 732.3,487.7 727.8,496.8C724.6,503.3 724.5,503.9 724.5,516.0C724.5,528.1 724.6,528.7 727.8,535.2C732.0,543.9 739.4,551.9 746.8,555.8C754.9,560.1 759.0,561.0 769.7,560.6C777.8,560.3 779.8,559.9 785.6,557.0ZM2101.5,502.7C2106.1,500.1 2109.5,495.4 2111.1,489.6C2112.0,486.2 2111.9,484.8 2110.3,481.1C2107.1,473.3 2105.2,472.6 2087.5,472.2L2072.2,471.8L2071.6,474.7C2070.7,479.1 2067.0,502.4 2067.0,503.8C2067.0,504.7 2070.7,505.0 2082.2,505.0C2096.2,505.0 2097.8,504.8 2101.5,502.7Z"/></symbol><symbol id="ef-real-mark" viewBox="0 0 605 852"><path d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/></symbol></svg>
+<main>
+  <section class="story" id="story" aria-roledescription="carousel" aria-label="The Legend. Tap to advance.">
+    <div class="ticks" aria-hidden="true"></div>
+
+    <!-- 1 -->
+    <article class="sc t-dusk has-photo" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">01</span>
+        <img class="photo" src="img/t-legend-1.jpg" alt="" loading="eager" decoding="async" onload="this.classList.add('ok')" onerror="var c=this.closest('.sc');this.remove();if(c)c.classList.remove('has-photo')"></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab">1979</p>
+        <div><h2 class="st">A West Virginia kid arrives in Indiana on a football scholarship.</h2>
+          <p class="sm">Recruited by Lee Corso. Running back. He excelled at baseball and track, too.</p></div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="sc t-glove has-photo" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">02</span>
+        <img class="photo" src="img/t-legend-2.jpg" alt="" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="var c=this.closest('.sc');this.remove();if(c)c.classList.remove('has-photo')"></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab w">Then</p>
+        <div><h2 class="st">He leaves college early to play professional baseball.</h2>
+          <p class="sm">Drafted by the team now known as the Los Angeles Angels.</p></div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="sc t-graphite" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">03</span></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab w">After</p>
+        <div><h2 class="st">He goes into business for himself.</h2>
+          <p class="sm">A production firm. An advertising agency. An electronics company.</p></div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="sc t-navy" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">04</span></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab">1994</p>
+        <div><h2 class="st">Fidelity hires him to originate loans.</h2>
+          <p class="sm">He becomes the office’s top producer. Then he goes out on his own.</p></div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="sc t-apple has-photo" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">05</span>
+        <img class="photo" src="img/t-legend-3.jpg" alt="" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="var c=this.closest('.sc');this.remove();if(c)c.classList.remove('has-photo')"></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab">1997</p>
+        <div><h2 class="st">A Michigan apple farmer has lean yields and few places to borrow.</h2>
+          <p class="sm">All he has is a block of bank stock.</p></div>
+      </div>
+    </article>
+
+    <!-- 6 · quote -->
+    <article class="sc t-quote" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div></div>
+      <div class="grain"></div>
+      <div class="txt q">
+        <blockquote style="margin:0">
+          <span class="rule" aria-hidden="true"></span>
+          <p class="quote qt">They got three million bucks … and I got a hug from his wife and 1 percent of the transaction.</p>
+          <p class="cite"><a href="https://www.ibj.com/articles/14162-downtown-firm-specializes-in-unusual-loans-equities-first-holdings-sees-growing-demand-for-stock-loans-as-tight-credit-markets-make-borrowing-tougher" target="_blank" rel="noopener">Al Christy · Indianapolis Business Journal · 2008&nbsp;↗</a></p>
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="sc t-olive" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">07</span></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab"><span class="pre">Before</span>2002</p>
+        <div><h2 class="st">Thousands of trials. His own money on the line.</h2>
+          <p class="sm">Before he lent anyone else’s capital, he tested his model with his own.</p></div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="sc t-tower has-photo" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">08</span>
+        <img class="photo" src="img/t-legend-4.jpg" alt="" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="var c=this.closest('.sc');this.remove();if(c)c.classList.remove('has-photo')"></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab">2002</p>
+        <div><h2 class="st">Equities First Holdings. Indianapolis.</h2>
+          <p class="sm">Years later he told a reporter why he took a corner office on the 30th floor: <span class="inq">“I wanted to be in the center of the financial district.”</span> (IBJ, 2008)</p></div>
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="sc t-world" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">09</span></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab md">2013–2024</p>
+        <div><h2 class="st">Then the world.</h2>
+          <p class="sm">Singapore. Hong Kong. Bangkok. Jakarta. London. Australia. Dubai.</p></div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="sc t-ice" aria-roledescription="slide">
+      <div class="bg"><div class="fb">
+        <svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="ir1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a5068"/><stop offset="1" stop-color="#121c28"/></linearGradient>
+            <linearGradient id="ir2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c9d6e0"/><stop offset=".22" stop-color="#7d93a7"/><stop offset=".6" stop-color="#2a3a4c"/><stop offset="1" stop-color="#0c131c"/></linearGradient>
+            <linearGradient id="ir3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#151f2b"/><stop offset="1" stop-color="#070a0f"/></linearGradient>
+            <radialGradient id="ig" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffc08f" stop-opacity=".55"/><stop offset="1" stop-color="#ffc08f" stop-opacity="0"/></radialGradient>
+          </defs>
+          <path d="M0 300 L40 270 L78 286 L120 240 L150 258 L178 232 L214 262 L250 226 L300 268 L340 246 L400 280 L400 520 L0 520Z" fill="url(#ir1)" opacity=".75"/>
+          <circle cx="232" cy="196" r="60" fill="url(#ig)"/>
+          <path d="M-10 380 L50 330 L92 346 L150 270 L184 290 L232 196 L262 246 L286 232 L330 300 L366 284 L410 320 L410 520 L-10 520Z" fill="url(#ir2)"/>
+          <path d="M232 196 L216 228 L222 246 L206 270 L226 262 L238 232Z M150 270 L140 290 L160 284Z M286 232 L280 252 L296 248Z" fill="#eef3f6" opacity=".55"/>
+          <path d="M232 196 L240 212 L236 222 L246 238 L262 246Z" fill="#ffb27a" opacity=".38"/>
+          <path d="M-10 440 L60 404 L120 424 L190 380 L260 418 L330 392 L410 420 L410 520 L-10 520Z" fill="url(#ir3)"/>
+          <line x1="232" y1="196" x2="232" y2="176" stroke="#efe9de" stroke-width="1"/>
+          <path d="M232.5 176.5 L246 179 L232.5 182Z" fill="#e8541f"/>
+        </svg></div></div>
+      <div class="shade"></div><div class="grain"></div>
+      <div class="txt">
+        <p class="lab">2022</p>
+        <div><h2 class="st">The EquitiesFirst flag reaches the summit of Everest.</h2>
+          <p class="sm">Part of Nimsdai Purja’s expedition: two world records in under nine days.</p></div>
+      </div>
+    </article>
+
+    <!-- 11 · quote -->
+    <article class="sc t-quote" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div></div>
+      <div class="grain"></div>
+      <div class="txt q">
+        <blockquote style="margin:0">
+          <span class="rule" aria-hidden="true"></span>
+          <p class="quote qt">…over $7 billion in financing, thousands of transactions, clients who come back again and again.</p>
+          <p class="cite">Al Christy · 2026</p>
+        </blockquote>
+      </div>
+    </article>
+
+    <!-- 12 -->
+    <article class="sc t-dawn" aria-roledescription="slide">
+      <div class="bg"><div class="fb"></div><span class="num" aria-hidden="true">25</span></div>
+      <div class="grain"></div>
+      <div class="txt fin">
+        <p class="lab acc">2027</p>
+        <div><h2 class="st big">Twenty-five.</h2>
+          <p class="sm">In his words: <span class="inq">“the next 20 years and beyond.” (2023)</span></p></div>
+      </div>
+    </article>
+
+    <div class="hud">
+      <span class="count" aria-live="polite"><b>01</b> / 12</span>
+      <span class="hint" aria-hidden="true"><i></i>Tap to continue</span>
+      <button class="chip skip" type="button" id="skip">Skip <span aria-hidden="true">›</span></button>
+    </div>
+  </section>
+
+  <section class="end" id="end" aria-label="End of The Legend">
+    <button class="replay" type="button" id="replay"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4"/><path d="M2.3 1.8v3h3"/></svg>Watch again</button>
+  </section>
+</main>
+
+<script>
+(function(){
+  var story=document.getElementById('story'), cards=[].slice.call(story.querySelectorAll('.sc')),
+      ticksEl=story.querySelector('.ticks'), countB=story.querySelector('.count b'), N=cards.length, cur=-1, ignoreClick=0;
+  ticksEl.innerHTML=cards.map(function(){return '<i><b></b></i>';}).join('');
+  var ticks=[].slice.call(ticksEl.children);
+  function pad(n){return (n<10?'0':'')+n;}
+  function show(i){
+    if(i<0) i=0;
+    if(i>=N){ finish(); return; }
+    cards.forEach(function(c,k){ var on=k===i; c.classList.toggle('on',on); c.setAttribute('aria-hidden',on?'false':'true'); });
+    ticks.forEach(function(t,k){ t.className=k<i?'done':(k===i?'cur':''); });
+    cur=i; countB.textContent=pad(i+1); story.classList.toggle('last',i===N-1);
+    var nx=cards[i+1]; if(nx){ var im=nx.querySelector('img'); if(im&&im.loading==='lazy') im.loading='eager'; }
+  }
+  function finish(){
+    ticks.forEach(function(t){ t.className='done'; });
+    var end=document.getElementById('end');
+    end.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  }
+  function next(){ story.classList.add('touched'); show(cur+1); }
+  function prev(){ story.classList.add('touched'); if(cur>0) show(cur-1); }
+  story.addEventListener('click',function(e){
+    if(Date.now()<ignoreClick) return;
+    if(e.target.closest('a,button')) return;
+    var r=story.getBoundingClientRect();
+    if(e.clientX-r.left<r.width*.25) prev(); else next();
+  });
+  var x0=null,y0=null;
+  story.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  story.addEventListener('touchend',function(e){
+    if(x0===null) return; var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0; x0=null;
+    if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)*1.3){ ignoreClick=Date.now()+450; if(dx<0) next(); else prev(); }
+    else if(Math.abs(dy)>12){ ignoreClick=Date.now()+450; }
+  },{passive:true});
+  document.addEventListener('keydown',function(e){
+    var r=story.getBoundingClientRect(); if(r.bottom<window.innerHeight*.5) return;
+    if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); next(); }
+    else if(e.key==='ArrowLeft'){ e.preventDefault(); prev(); }
+  });
+  document.getElementById('skip').addEventListener('click',function(){ story.classList.add('touched'); finish(); });
+  document.getElementById('replay').addEventListener('click',function(){
+    story.scrollIntoView({behavior:'smooth',block:'start'}); setTimeout(function(){ show(0); },350);
+  });
+  show(0);
+})();
+</script>
+<div id="tour-next"></div>
+</body>
+</html>

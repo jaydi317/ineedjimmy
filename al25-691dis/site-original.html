@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFFFFF">
+<title>EquitiesFirst — The Original</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF; --warm:#F6F4EF; --carbon:#121212; --graphite:#5B5B5B; --hair:#E4E1DA; --accent:#E2471B;
+  --bodoni:'Bodoni Moda','Bodoni 72','Didot',Georgia,serif;
+  --inter:'Inter',-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --g:20px; --navh:64px;
+  color-scheme:light;
+}
+@media (min-width:900px){:root{--g:clamp(40px,3.4vw,64px);--navh:84px}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;background:var(--white)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--white);color:var(--carbon);font:400 16px/1.55 var(--inter);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip;text-rendering:optimizeLegibility;font-feature-settings:"kern","liga","calt"}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+p,h1,h2,h3,ol,ul,figure,blockquote{margin:0;padding:0}
+ol,ul{list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+::selection{background:var(--accent);color:#fff}
+:focus-visible{outline:1.5px solid var(--accent);outline-offset:4px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- type ---------- */
+.label{font:500 11px/1.35 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
+.serif{font-family:var(--bodoni);font-optical-sizing:auto}
+.dot{color:var(--accent)}
+.kw1{margin-right:-.085em}.kw2{margin-right:-.05em}
+.fq .kw1,.fq-small .kw1,.cat-t .kw1{margin-right:-.03em}.fq .kw2{margin-right:-.02em}
+.wrap{padding-left:max(var(--g),env(safe-area-inset-left));padding-right:max(var(--g),env(safe-area-inset-right))}
+.m{display:inline}.d{display:none}
+@media (min-width:900px){.m{display:none}.d{display:inline}}
+
+/* ---------- reveal ---------- */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.12s}.js .rv.d2{transition-delay:.24s}.js .rv.d3{transition-delay:.36s}
+
+/* ---------- photo slots ---------- */
+.slot{position:relative;overflow:hidden}
+.slot>.photo,.slot>picture>.photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s var(--ease)}
+.slot>.photo.ok,.slot>picture>.photo.ok{opacity:1}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;z-index:40;top:0;left:0;right:0;height:calc(var(--navh) + env(safe-area-inset-top));padding-top:env(safe-area-inset-top);display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0);transition:transform .6s var(--ease),background .4s,box-shadow .4s}
+.nav.solid{background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 1px 0 var(--hair)}
+.nav.up{transform:translateY(-100%)}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:44px}
+.logo svg{width:22px;height:22px;flex:none}
+.logo span{font:600 16px/1 var(--inter);letter-spacing:-.012em}
+.links{display:none}
+.links a{position:relative;font:400 14px/1 var(--inter);letter-spacing:.005em;text-decoration:none;color:var(--carbon);padding:14px 0}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.links a:hover::after{transform:scaleX(1)}
+.menu-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;min-width:44px;justify-content:flex-end;font:500 11px/1 var(--inter);letter-spacing:.16em;text-transform:uppercase}
+.menu-btn i{display:block;width:18px;height:7px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+@media (min-width:900px){.links{display:flex;gap:40px}.menu-btn{display:none}}
+
+/* overlay menu */
+.menu{position:fixed;inset:0;z-index:60;background:var(--white);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top);padding-bottom:calc(28px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility 0s .5s}
+.menu.open{opacity:1;visibility:visible;transition:opacity .5s var(--ease)}
+.menu-top{height:var(--navh);display:flex;align-items:center;justify-content:space-between}
+.menu ol{margin-top:auto;padding-bottom:28px}
+.menu li{border-top:1px solid var(--hair)}
+.menu li:last-child{border-bottom:1px solid var(--hair)}
+.menu ol a{display:flex;align-items:baseline;justify-content:space-between;text-decoration:none;padding:18px 0 16px;font:400 40px/1 var(--bodoni);letter-spacing:-.02em}
+.menu ol a small{font:500 11px/1 var(--inter);letter-spacing:.16em;color:var(--graphite)}
+.menu .menu-foot{display:flex;justify-content:space-between;align-items:center}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:space-between;gap:28px;min-height:54px;padding:0 22px 0 24px;background:var(--carbon);color:#fff;text-decoration:none;font:500 15px/1 var(--inter);letter-spacing:.005em;transition:background .5s var(--ease)}
+.btn .ar{display:inline-block;transition:transform .6s var(--ease)}
+.btn:hover{background:var(--accent)}
+.btn:hover .ar{transform:translateX(4px)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;padding-top:calc(var(--navh) + env(safe-area-inset-top) + 9svh);padding-bottom:28px}
+.hero-inner{position:relative;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.hero-h{font-family:var(--bodoni);font-optical-sizing:auto;font-weight:400;font-size:calc((100vw - 2*var(--g)) / 6.4);line-height:1.03;letter-spacing:-.02em;margin:auto 0 auto -.035em}
+.hero-h .bl{display:inline-block;width:0;height:0}
+.hero-h .l:nth-child(2){word-spacing:.05em}
+.hero-h .l{display:block;width:max-content;max-width:none}
+.hero-h .dot{display:inline-block;transform-origin:50% 85%}
+.js .hero-h .l{opacity:0;transform:translateY(.12em);transition:opacity 1.5s var(--ease),transform 1.5s var(--ease)}
+.js .hero.on .hero-h .l{opacity:1;transform:none}
+.js .hero.on .hero-h .l:nth-child(2){transition-delay:.14s}
+.js .hero.on .hero-h .l:nth-child(3){transition-delay:.28s}
+.js .hero.on .hero-h .dot{animation:pulse 1.6s var(--ease) 1.25s 1 both}
+@keyframes pulse{0%{transform:scale(1)}28%{transform:scale(1.55)}100%{transform:scale(1)}}
+.wl{margin-top:40px;padding-top:18px;border-top:1px solid var(--hair)}
+.wl-t{font:600 15px/1.4 var(--inter);letter-spacing:-.005em}
+.wl-m{font:400 15px/1.4 var(--inter);color:var(--graphite)}
+.wl-d{font:400 16px/1.5 var(--inter);margin-top:12px;max-width:30ch}
+.wl .btn{margin-top:26px;width:100%}
+.js .wl{opacity:0;transition:opacity 1.6s var(--ease) .7s}
+.js .hero.on .wl{opacity:1}
+.hero-meta{position:absolute;left:max(var(--g),env(safe-area-inset-left));right:max(var(--g),env(safe-area-inset-right));top:calc(var(--navh) + env(safe-area-inset-top) + 6px);display:flex;justify-content:space-between}
+.js .hero-meta{opacity:0;transition:opacity 1.6s var(--ease) .9s}.js .hero.on .hero-meta{opacity:1}
+@media (min-width:900px){
+  .hero{padding-top:calc(var(--navh) + env(safe-area-inset-top));padding-bottom:clamp(40px,6.5vh,72px)}
+  .hero-inner{justify-content:flex-end}
+  .hero-h{font-size:calc((100vw - 2*var(--g)) / 6.4);line-height:1.02;letter-spacing:-.022em;margin:0 0 0 -.035em}
+  .wl{position:absolute;right:0;bottom:var(--wlb,0px);margin:0;padding:0;border:0;width:min(330px,24vw)}
+  .wl .btn{width:auto}
+  .hero-meta{top:calc(var(--navh) + env(safe-area-inset-top) + 18px)}
+}
+
+/* ---------- sections ---------- */
+.sec{padding-top:112px;padding-bottom:112px}
+@media (min-width:900px){.sec{padding-top:184px;padding-bottom:184px}}
+.sec-h{font:400 44px/1 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.02em;text-wrap:balance}
+@media (min-width:900px){.sec-h{font-size:clamp(64px,6.6vw,104px);line-height:.94}}
+[id]{scroll-margin-top:calc(var(--navh) - 1px)}
+
+/* ---------- THE ANNOTATED OBJECT ---------- */
+.obj{padding-top:96px}
+.obj-head{padding-bottom:36px}
+.obj-head .label{margin-bottom:18px}
+.obj-title{font:400 36px/1.02 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.018em;text-wrap:balance;max-width:11em}
+.stage{position:relative}
+.room{position:relative;width:100%;aspect-ratio:390/600;overflow:hidden;background:#F3F1EC;touch-action:pan-y}
+.room svg.render{position:absolute;inset:0;width:100%;height:100%}
+.room .grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.1 -.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.room.has-photo svg.render,.room.has-photo .grain{visibility:hidden}
+/* hotspot positions used only when the Codex sculpture photo is present — tune to the photo */
+.room.has-photo .hot{transform:none}
+.room.has-photo .hot[data-i="0"]{left:59%;top:40%}.room.has-photo .hot[data-i="1"]{left:48%;top:52%}.room.has-photo .hot[data-i="2"]{left:42%;top:62%}
+@media (min-width:900px){
+  .room.has-photo picture>.photo{transform:scaleX(-1)}
+  .room.has-photo .hot[data-i="0"]{left:31%;top:39%}.room.has-photo .hot[data-i="1"]{left:38%;top:54%}.room.has-photo .hot[data-i="2"]{left:41%;top:66%}
+  .room.has-photo::after{content:"";position:absolute;inset:0 0 0 54%;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(243,241,236,0),rgba(243,241,236,.86) 34%,rgba(243,241,236,.9))}
+}
+.hot{position:absolute;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;display:grid;place-items:center;z-index:3;transform:translate(var(--x,50%),var(--y,50%))}
+.hot b{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#fff;color:var(--carbon);font:600 11px/1 var(--inter);box-shadow:0 1px 2px rgba(0,0,0,.18),0 6px 18px -6px rgba(0,0,0,.35);transition:background .45s var(--ease),color .45s var(--ease),transform .45s var(--ease)}
+.hot::before{content:"";position:absolute;width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,.9);transform:scale(1);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
+.hot.on b{background:var(--carbon);color:#fff}
+.hot.on::before{transform:scale(1.55);opacity:1}
+.hot:hover b{transform:scale(1.08)}
+.room.ping .hot:not(.on)::before{animation:ping 2.2s var(--ease) .4s 1}
+@keyframes ping{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.2);opacity:0}}
+.leader{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2;display:none}
+.leader path{fill:none;stroke:var(--carbon);stroke-width:1;opacity:.6;transition:stroke-dashoffset .9s var(--ease)}
+.leader circle{fill:var(--carbon)}
+.cursor{position:fixed;left:0;top:0;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:1.5px solid var(--accent);pointer-events:none;z-index:80;opacity:0;transition:opacity .3s,width .4s var(--ease),height .4s var(--ease),margin .4s var(--ease)}
+.cursor::after{content:"";position:absolute;left:50%;top:50%;width:4px;height:4px;margin:-2px 0 0 -2px;border-radius:50%;background:var(--accent)}
+.cursor.show{opacity:1}
+.cursor.big{width:52px;height:52px;margin:-26px 0 0 -26px}
+@media (hover:hover) and (pointer:fine){.room.cur,.room.cur .hot{cursor:none}}
+
+/* labels — phone: tabs + one label */
+.labels{padding-top:4px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--hair)}
+.tab{position:relative;display:flex;align-items:center;gap:10px;min-height:56px;padding:0 4px;font:500 11px/1 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);transition:color .4s}
+.tab .n{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;border:1px solid var(--hair);font:600 11px/1 var(--inter);letter-spacing:0;color:var(--carbon);transition:background .4s,color .4s,border-color .4s}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--carbon);transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease)}
+.tab[aria-selected="true"]{color:var(--carbon)}
+.tab[aria-selected="true"] .n{background:var(--carbon);border-color:var(--carbon);color:#fff}
+.tab[aria-selected="true"]::after{transform:scaleX(1)}
+.panes{padding-top:26px}
+.pane{display:none}
+.pane.on{display:block;animation:paneIn .9s var(--ease) both}
+@keyframes paneIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pane .pn{display:none}
+.pane h3{font:500 11px/1.3 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);margin-bottom:12px}
+.pane p{font:400 25px/1.24 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.008em;text-wrap:pretty}
+.obj-foot{padding-top:28px;padding-bottom:4px;font:400 14px/1.55 var(--inter);color:var(--graphite);max-width:46ch}
+.obj-foot b{font-weight:500;color:var(--carbon)}
+
+@media (min-width:900px){
+  .obj{padding-top:0}
+  .stage{height:clamp(680px,100vh,1000px)}
+  .room{position:absolute;inset:0;aspect-ratio:auto;height:100%}
+  .obj-head{position:absolute;z-index:4;left:0;right:0;top:calc(var(--navh) + 30px);padding-bottom:0;pointer-events:none}
+  #how{scroll-margin-top:0}
+  .obj-title{font-size:clamp(34px,2.9vw,46px);max-width:9.5em}
+  .leader{display:block}
+  .labels{position:absolute;z-index:4;left:64%;top:50%;transform:translateY(-46%);width:min(25%,360px);padding:0}
+  .tabs{display:none}
+  .panes{display:block;padding:0}
+  .pane,.pane.on{display:block;animation:none;transform:none}
+  .pane{opacity:.4;visibility:visible;transition:opacity .8s var(--ease);padding:26px 0 26px 46px;position:relative;border-top:1px solid rgba(18,18,18,.12);cursor:pointer}
+  .pane:last-child{border-bottom:1px solid rgba(18,18,18,.12)}
+  .pane.on{opacity:1}
+  .pane:hover{opacity:.8}.pane.on:hover{opacity:1}
+  .pane .pn{display:grid;place-items:center;position:absolute;left:0;top:23px;width:26px;height:26px;border-radius:50%;border:1px solid var(--carbon);font:600 11px/1 var(--inter)}
+  .pane.on .pn{background:var(--carbon);color:#fff}
+  .pane p{font-size:clamp(20px,1.6vw,24px);line-height:1.28}
+  .obj-foot{position:absolute;z-index:4;left:var(--g);bottom:30px;padding:0;max-width:52ch;font-size:13px}
+}
+
+/* ---------- NO. 1 ---------- */
+.no1-grid{display:grid;grid-template-columns:minmax(0,1fr)}
+.no1-grid>*{min-width:0}
+.no1 .label{margin-bottom:28px}
+.catno{font:400 132px/.8 var(--bodoni);font-variation-settings:'opsz' 7;letter-spacing:-.03em;margin-left:-.03em}
+.catno small{font-size:.3em;font-variation-settings:'opsz' 40;letter-spacing:0;margin-right:.1em}
+.cat-t{font:italic 400 30px/1.08 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.012em;margin-top:30px;text-wrap:balance}
+.cat-m{font:400 15px/1.5 var(--inter);color:var(--graphite);margin-top:14px;text-wrap:balance}
+.cat-m i{font-style:normal;color:var(--carbon)}
+.detail{margin:44px 0 0 calc(-1*var(--g));width:calc(100% + 2*var(--g));aspect-ratio:4/5;background:#EDEAE4}
+.detail svg{position:absolute;inset:0;width:100%;height:100%}
+.detail-cap{display:flex;justify-content:space-between;gap:16px;margin-top:12px}
+.stmt{margin-top:52px;padding-top:24px;border-top:1px solid var(--hair)}
+.stmt blockquote{margin-top:18px;font:italic 400 28px/1.2 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.008em;text-wrap:balance}
+.num{font-variation-settings:'opsz' 9}
+.stmt blockquote span.q{margin-left:-.42em}
+.cite{display:inline-block;margin-top:22px;text-decoration:none;border-bottom:1px solid var(--hair);padding-bottom:3px;transition:border-color .4s,color .4s}
+.cite:hover{color:var(--carbon);border-color:var(--carbon)}
+@media (min-width:900px){
+  .no1-grid{grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:start}
+  .no1-fig{grid-column:1/7;grid-row:1/4}
+  .detail{margin:0;width:100%;aspect-ratio:4/5}
+  .no1-entry{grid-column:8/13;padding-top:4px}
+  .catno{font-size:clamp(150px,13vw,220px)}
+  .cat-t{font-size:clamp(34px,2.9vw,46px);margin-top:44px}
+  .stmt{margin-top:72px}
+  .stmt blockquote{font-size:clamp(28px,2.3vw,36px)}
+}
+
+/* ---------- THE CREED ---------- */
+.creed{position:relative;background:var(--warm);overflow:hidden}
+.creed .bg{position:absolute;inset:0;background:radial-gradient(120% 70% at 50% -8%,#FFFFFF 0%,rgba(255,255,255,.55) 38%,rgba(255,255,255,0) 70%),linear-gradient(180deg,#F8F6F2 0%,#F4F1EB 100%)}
+.creed .bg .photo{opacity:0}.creed .bg .photo.ok{opacity:.16}
+.creed .bg::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 40% at 18% 0%,rgba(255,255,255,.7),transparent 70%),radial-gradient(60% 40% at 82% 0%,rgba(255,255,255,.7),transparent 70%)}
+.creed-in{position:relative;text-align:center}
+.creed-t{font:500 13px/1 var(--inter);font-variant:all-small-caps;letter-spacing:.2em;color:var(--carbon)}
+.creed-rule{width:28px;height:1px;background:var(--carbon);margin:26px auto 48px;opacity:.5}
+.creed-text{font:400 20px/1.3 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.003em;max-width:31em;margin:0 auto}
+.creed-text .st{margin-top:1.7em}
+.creed-text .st:first-child{margin-top:0}
+.creed-text .st>span{display:block;text-wrap:balance;margin-top:.5em}
+.creed-text .st>span:first-child{margin-top:0}
+.creed-text .nw{font-style:normal;white-space:nowrap}
+@media (min-width:900px){
+  .creed-text{font-size:clamp(26px,2.15vw,33px);line-height:1.46}
+  .creed-text .st>span{margin-top:0}
+  .creed-text .st{margin-top:1.46em}
+  .creed-rule{margin:32px auto 72px}
+}
+
+/* ---------- THE COLLECTION ---------- */
+.coll-head{display:flex;flex-direction:column;gap:18px;margin-bottom:56px}
+.coll{border-top:1px solid var(--carbon)}
+.coll li{position:relative;display:grid;grid-template-columns:1fr auto;grid-template-areas:"no yr" "ti ti";row-gap:10px;padding:20px 0 22px;border-bottom:1px solid var(--hair);cursor:default;transition:color .5s var(--ease)}
+.coll li::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .8s var(--ease)}
+.coll .no{grid-area:no;font:500 11px/1 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);transition:color .5s}
+.coll .yr{grid-area:yr;font:500 12px/1 var(--inter);font-variant-numeric:tabular-nums;letter-spacing:.06em;color:var(--graphite);transition:color .5s}
+.coll .ti{grid-area:ti;font:400 28px/1.08 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.012em;text-wrap:balance}
+.coll li:hover,.coll li.on{color:var(--accent)}
+.coll li:hover .no,.coll li.on .no,.coll li:hover .yr,.coll li.on .yr{color:var(--accent)}
+.coll li:hover::after,.coll li.on::after{transform:scaleX(1)}
+@media (min-width:900px){
+  .coll-head{flex-direction:row;justify-content:space-between;align-items:flex-end;margin-bottom:72px}
+  .coll-head .label{padding-bottom:12px}
+  .coll li{grid-template-columns:160px 1fr auto;grid-template-areas:"no ti yr";align-items:baseline;padding:30px 0 28px}
+  .coll .ti{font-size:clamp(34px,3.1vw,48px)}
+  .coll .yr{font:400 clamp(34px,3.1vw,48px)/1 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.01em;font-variant-numeric:lining-nums}
+}
+
+/* ---------- FROM THE FOUNDER ---------- */
+.founder{border-top:1px solid var(--hair)}
+.founder .label{margin-bottom:34px}
+.fq{position:relative;font:italic 400 calc((100vw - 2*var(--g)) / 7.5) / .98 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.018em}
+.fq .hq{position:absolute;left:-.38em;top:0;display:none}
+.fq-small{display:grid;gap:36px;margin-top:56px}
+.fq-small blockquote{font:400 22px/1.32 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.006em;text-wrap:pretty}
+.fq-small .yr{display:block;margin-top:12px}
+.sig{margin-top:52px;padding-top:22px;border-top:1px solid var(--hair);display:flex;justify-content:space-between;gap:20px;align-items:baseline}
+.sig .name{font:italic 400 22px/1.1 var(--bodoni)}
+@media (min-width:900px){
+  .fq{font-size:clamp(80px,9.6vw,150px);line-height:.94;letter-spacing:-.022em}
+  .fq .hq{display:inline}
+  .fq-small{grid-template-columns:repeat(12,1fr);column-gap:24px;margin-top:96px}
+  .fq-small figure:first-child{grid-column:1/6}
+  .fq-small figure:last-child{grid-column:7/12}
+  .fq-small blockquote{font-size:clamp(22px,1.8vw,27px)}
+  .sig{margin-top:80px}
+}
+
+/* ---------- ON VIEW ---------- */
+.view{background:var(--white);border-top:1px solid var(--hair)}
+.view .sec-h{margin-bottom:48px}
+.view .label.k{margin-bottom:16px}
+.venues{border-top:1px solid var(--carbon)}
+.venues li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0 17px;border-bottom:1px solid var(--hair)}
+.venues .c{font:400 30px/1.05 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.014em}
+.venues .c small{display:block;margin-top:8px;font:500 10.5px/1 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
+.venues time{font:400 14px/1 var(--inter);font-variant-numeric:tabular-nums;color:var(--graphite);white-space:nowrap;letter-spacing:.01em}
+@media (min-width:900px){
+  .view-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto 1fr;column-gap:24px}
+  .view .sec-h{grid-column:1/6;margin:0;align-self:start}
+  .view .label.k{grid-column:1/6;margin-bottom:26px}
+  .venues{grid-column:7/13;grid-row:1/3;display:grid;grid-template-columns:1fr 1fr;column-gap:24px;border-top:0}
+  .venues li{border-top:1px solid var(--carbon);border-bottom:0;flex-direction:column;align-items:flex-start;gap:14px;padding:22px 0 46px}
+  .venues .c{font-size:clamp(30px,2.6vw,40px)}
+}
+
+/* ---------- CONTACT ---------- */
+.contact{border-top:1px solid var(--hair);padding-bottom:140px}
+.contact .label{margin-bottom:40px}
+.cta{display:inline-block;text-decoration:none;font:400 calc((100vw - 2*var(--g)) / 5.9) / .96 var(--bodoni);font-optical-sizing:auto;letter-spacing:-.022em;background:linear-gradient(var(--carbon),var(--carbon)) 0 100%/100% 1px no-repeat;padding-bottom:.24em;transition:background-size .9s var(--ease)}
+.cta:hover{background-image:linear-gradient(var(--accent),var(--accent))}
+.contact .who{margin-top:32px;font:400 16px/1.5 var(--inter);color:var(--graphite);max-width:34ch}
+.sent{margin-top:18px;font:500 11px/1.4 var(--inter);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);opacity:0;transition:opacity .6s var(--ease)}
+.sent.on{opacity:1}
+@media (min-width:900px){
+  .contact{padding-bottom:200px}
+  .cta{font-size:min(calc((100vw - 2*var(--g)) / 9.35),190px)}
+}
+
+/* ---------- FOOTER ---------- */
+.foot{border-top:1px solid var(--carbon);padding-top:40px;padding-bottom:calc(120px + env(safe-area-inset-bottom))}
+.foot-grid{display:grid;gap:32px}
+.foot .tag{font:italic 400 22px/1.2 var(--bodoni);margin-top:16px}
+.foot .cities{font:400 14px/1.7 var(--inter);color:var(--carbon)}
+.foot .fine{font:400 12px/1.55 var(--inter);color:var(--graphite);padding-top:22px;border-top:1px solid var(--hair)}
+@media (min-width:900px){
+  .foot{padding-top:56px}
+  .foot-grid{grid-template-columns:repeat(12,1fr);column-gap:24px;row-gap:64px}
+  .foot-grid>div:nth-child(1){grid-column:1/5}
+  .foot-grid>div:nth-child(2){grid-column:7/11}
+  .foot .fine{grid-column:1/13}
+}
+
+/* ---------- CONCEPT BAR ---------- */
+.concept{position:fixed;z-index:50;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:2px;padding:4px 4px 4px 16px;border-radius:999px;background:rgba(255,255,255,.78);-webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%);box-shadow:0 0 0 1px rgba(18,18,18,.08),0 12px 40px -14px rgba(18,18,18,.35);transform:translate(-50%,160%);opacity:0;transition:transform .9s var(--ease),opacity .6s var(--ease);max-width:calc(100vw - 20px);white-space:nowrap}
+.concept.show{transform:translate(-50%,0);opacity:1}
+.concept .ct{font:500 10.5px/1 var(--inter);letter-spacing:.12em;text-transform:uppercase;color:var(--graphite);padding-right:8px}
+.concept a,.concept button{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:999px;font:500 13px/1 var(--inter);text-decoration:none;transition:background .4s}
+.concept a:hover{background:rgba(18,18,18,.06)}
+.concept button{background:var(--carbon);color:#fff}
+.concept button:hover{background:#000}
+.concept button.picked{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1px rgba(226,71,27,.45)}
+.concept .ct i{font-style:normal}
+@media (max-width:480px){
+  .concept{padding-left:14px}
+  .concept .ct{display:flex;flex-direction:column;gap:3px;font-size:9.5px;letter-spacing:.14em;padding-right:6px}
+  .concept .ct i{display:none}
+  .concept a,.concept button{padding:0 13px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
+  .js .rv,.js .hero-h .l,.js .wl{opacity:1!important;transform:none!important}
+}
+svg.ef-lockup{display:block;width:150px!important;height:auto!important;aspect-ratio:2576/852;flex:none;color:#00263A}
+@media (min-width:900px){svg.ef-lockup{width:188px!important}}
+</style>
+<link rel="icon" type="image/svg+xml" href="assets/ef-mark.svg"><link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ef-lockup" viewBox="0 0 2576 852"><path fill="#DC4405" d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/><path fill="currentColor" d="M2515.1,624.4C2499.6,620.2 2484.9,606.3 2481.6,592.5C2478.2,578.9 2479.1,569.5 2484.6,558.2C2492.7,541.5 2508.5,532.0 2528.0,532.0C2541.7,532.0 2552.7,536.5 2562.2,546.0C2587.8,571.6 2575.4,615.1 2539.9,624.5C2533.1,626.4 2522.1,626.3 2515.1,624.4ZM2544.3,617.2C2555.9,612.1 2563.6,603.7 2567.7,591.8C2574.4,572.6 2565.8,551.4 2547.7,542.5C2510.9,524.3 2472.6,559.9 2489.4,596.6C2493.9,606.3 2502.9,614.1 2514.5,618.3C2521.5,620.8 2537.5,620.2 2544.3,617.2ZM2540.8,598.2L2536.1,597.9L2534.9,592.4C2533.4,586.0 2530.4,583.0 2525.4,583.0L2522.0,583.0L2522.0,590.5L2522.0,598.0L2517.5,598.0L2513.0,598.0L2513.0,579.1L2513.0,560.2L2521.2,559.6C2535.4,558.4 2543.0,561.2 2544.4,568.1C2545.2,572.1 2543.6,575.8 2540.2,577.7L2537.3,579.4L2539.7,581.4C2541.3,582.8 2542.8,586.0 2544.1,590.9C2545.2,594.9 2545.9,598.3 2545.8,598.4C2545.6,598.4 2543.4,598.4 2540.8,598.2ZM2200.6,587.9C2192.5,586.7 2183.6,584.4 2178.3,582.0C2174.9,580.5 2174.0,579.6 2174.4,578.3C2174.6,577.3 2176.3,569.3 2178.0,560.5C2179.7,551.7 2181.3,543.9 2181.5,543.2C2181.8,542.5 2183.6,543.8 2186.1,546.5C2190.8,551.6 2196.5,554.1 2209.0,556.4C2219.4,558.4 2226.8,558.4 2233.4,556.5C2240.2,554.5 2246.6,549.1 2247.9,544.2C2250.0,536.8 2245.0,532.8 2224.3,525.5C2206.7,519.2 2194.6,510.2 2191.5,501.1C2188.4,492.1 2190.4,478.8 2196.3,468.7C2200.1,462.3 2210.6,452.9 2218.1,449.3C2233.6,441.9 2255.7,440.4 2273.3,445.4L2283.0,448.2L2288.6,444.0C2291.6,441.7 2294.4,440.0 2294.6,440.3C2294.9,440.6 2294.4,443.4 2293.6,446.6C2292.8,449.9 2290.7,460.0 2288.9,469.2L2285.7,485.9L2282.1,483.1C2273.9,476.7 2260.7,472.0 2250.8,472.0C2237.6,472.0 2227.0,477.9 2227.0,485.3C2227.0,491.0 2231.2,493.7 2249.8,500.1C2281.7,511.1 2291.2,523.1 2285.4,545.3C2280.2,565.5 2262.5,581.3 2238.7,587.0C2229.9,589.1 2212.0,589.6 2200.6,587.9ZM749.5,586.3C741.4,584.5 728.7,578.0 721.5,572.2C709.7,562.8 700.2,547.7 696.6,532.9C694.4,523.9 694.5,507.4 696.9,498.5C705.4,465.9 734.0,443.6 767.0,443.7C783.7,443.7 798.4,448.8 811.1,459.0C838.1,480.7 846.8,515.2 832.9,545.8C831.4,549.2 829.2,553.3 828.1,554.9C826.9,556.5 826.0,558.3 826.0,558.8C826.0,559.5 830.1,559.9 836.8,559.8L847.5,559.8L847.8,572.9C848.0,582.9 847.8,586.1 846.8,586.4C846.1,586.7 825.2,587.0 800.5,587.3C764.3,587.7 754.3,587.5 749.5,586.3ZM944.5,586.5C933.4,583.4 922.9,577.1 916.0,569.3C910.8,563.5 905.6,552.6 904.1,544.6C903.4,540.8 903.0,521.4 903.0,491.8L903.0,445.0L917.0,445.0L931.0,445.0L931.0,490.3C931.0,542.0 931.1,542.5 938.4,550.7C945.1,558.1 950.6,560.5 961.0,560.5C968.3,560.5 970.2,560.1 974.6,557.8C977.4,556.3 981.6,553.0 983.9,550.4C990.9,542.4 991.0,541.6 991.0,490.3L991.0,445.0L1004.5,445.0L1018.0,445.0L1018.0,492.9C1018.0,520.7 1017.6,543.0 1017.0,546.1C1013.6,564.5 996.8,581.2 976.4,586.4C968.8,588.4 951.5,588.4 944.5,586.5ZM1610.2,586.5C1606.7,585.7 1601.3,584.2 1598.2,583.0C1592.0,580.7 1580.0,574.3 1580.0,573.3C1580.0,572.7 1590.8,552.9 1591.7,552.0C1591.9,551.8 1593.1,552.2 1594.3,553.0C1610.0,562.9 1628.0,566.2 1638.4,561.0C1641.2,559.6 1644.3,557.3 1645.4,555.8C1648.1,552.1 1648.1,544.4 1645.4,540.7C1642.7,536.9 1634.8,531.9 1625.5,528.0C1604.9,519.6 1595.8,512.9 1590.5,502.3C1587.8,497.0 1587.6,495.6 1587.5,485.5C1587.5,475.0 1587.7,474.1 1590.8,467.8C1599.4,450.4 1618.9,441.8 1643.3,444.9C1654.0,446.2 1663.0,449.2 1672.0,454.2C1675.0,455.9 1677.6,457.4 1677.8,457.5C1678.1,457.8 1668.0,479.0 1667.5,479.0C1667.3,479.0 1663.9,477.4 1659.9,475.5C1641.7,466.8 1623.6,467.1 1618.0,476.3C1612.1,486.0 1619.0,495.3 1637.7,502.9C1654.1,509.6 1661.7,513.8 1666.3,519.0C1672.2,525.6 1674.9,531.3 1676.2,540.1C1679.5,562.4 1667.1,580.5 1644.3,586.4C1636.8,588.4 1619.0,588.4 1610.2,586.5ZM544.0,516.0L544.0,445.0L592.5,445.0L641.0,445.0L641.0,458.5L641.0,472.0L606.5,472.0L572.0,472.0L572.0,487.0L572.0,502.0L602.5,502.0L633.0,502.0L633.0,515.5L633.0,529.0L602.5,529.0L572.0,529.0L572.0,544.5L572.0,560.0L607.5,560.0L643.0,560.0L643.0,573.5L643.0,587.0L593.5,587.0L544.0,587.0L544.0,516.0ZM1083.0,516.0L1083.0,445.0L1097.0,445.0L1111.0,445.0L1111.0,516.0L1111.0,587.0L1097.0,587.0L1083.0,587.0L1083.0,516.0ZM1209.0,529.5L1209.0,472.0L1192.5,472.0L1176.0,472.0L1176.0,458.5L1176.0,445.0L1224.0,445.0L1272.0,445.0L1272.0,458.5L1272.0,472.0L1254.5,472.0L1237.0,472.0L1237.0,529.5L1237.0,587.0L1223.0,587.0L1209.0,587.0L1209.0,529.5ZM1337.0,516.0L1337.0,445.0L1351.0,445.0L1365.0,445.0L1365.0,516.0L1365.0,587.0L1351.0,587.0L1337.0,587.0L1337.0,516.0ZM1425.0,516.0L1425.0,445.0L1473.5,445.0L1522.0,445.0L1522.0,458.5L1522.0,472.0L1487.5,472.0L1453.0,472.0L1453.0,487.0L1453.0,502.0L1483.5,502.0L1514.0,502.0L1514.0,515.5L1514.0,529.0L1483.5,529.0L1453.0,529.0L1453.0,544.5L1453.0,560.0L1488.5,560.0L1524.0,560.0L1524.0,573.5L1524.0,587.0L1474.5,587.0L1425.0,587.0L1425.0,516.0ZM1752.5,584.8C1752.7,583.5 1754.1,574.9 1755.5,565.5C1757.0,556.1 1759.2,541.8 1760.5,533.5C1766.2,498.0 1771.0,466.5 1771.0,464.5C1771.0,463.3 1767.5,458.8 1762.6,453.5L1754.2,444.5L1815.3,444.2C1848.9,444.1 1876.4,444.1 1876.6,444.3C1877.0,444.7 1872.2,474.1 1871.7,474.7C1871.4,474.9 1856.0,475.2 1837.4,475.3L1803.5,475.5L1802.4,481.2C1801.7,484.4 1800.9,489.5 1800.5,492.5L1799.9,498.0L1824.9,498.0C1841.2,498.0 1850.0,498.4 1850.0,499.0C1850.0,500.4 1846.1,524.9 1845.5,527.8L1845.0,530.0L1819.7,530.0L1794.5,530.0L1790.0,558.2L1785.5,586.5L1768.7,586.8L1751.9,587.0L1752.5,584.8ZM1916.0,586.5C1916.0,586.0 1920.6,556.8 1930.0,497.3C1932.8,480.1 1935.0,465.3 1935.0,464.3C1934.9,463.3 1931.1,458.4 1926.5,453.5L1918.1,444.5L1944.2,444.2C1958.6,444.1 1970.7,444.3 1971.0,444.7C1971.4,445.2 1967.5,471.4 1962.4,503.0C1957.3,534.6 1952.4,565.7 1951.5,572.0C1950.6,578.3 1949.6,584.3 1949.4,585.2C1948.9,586.8 1947.2,587.0 1932.4,587.0C1923.4,587.0 1916.0,586.8 1916.0,586.5ZM2020.6,584.2C2020.8,582.7 2025.1,556.1 2030.0,525.0C2034.9,493.9 2039.2,467.2 2039.5,465.7C2039.9,463.3 2038.9,461.8 2031.7,454.4C2027.2,449.7 2023.3,445.4 2023.2,444.9C2023.0,444.4 2040.5,444.0 2066.2,444.0C2113.1,444.0 2119.2,444.6 2127.4,449.4C2152.6,464.2 2149.8,504.2 2122.3,522.6C2119.1,524.7 2116.1,526.7 2115.7,527.1C2115.2,527.5 2120.3,540.5 2127.0,556.1C2133.7,571.7 2139.4,585.1 2139.7,585.8C2140.1,586.7 2135.9,587.0 2120.8,587.0L2101.4,587.0L2099.2,581.8C2098.1,578.9 2093.9,568.4 2090.0,558.5C2086.2,548.6 2082.2,538.8 2081.3,536.8L2079.7,533.0L2070.8,533.0C2066.0,533.0 2062.0,533.4 2062.0,533.8C2062.0,534.2 2060.9,541.3 2059.6,549.5C2058.3,557.8 2056.4,569.6 2055.5,575.8L2053.7,587.0L2036.9,587.0L2020.0,587.0L2020.6,584.2ZM2373.0,585.2C2373.0,583.5 2378.0,551.3 2386.5,497.7C2388.4,485.8 2390.0,475.8 2390.0,475.5C2390.0,475.2 2385.1,475.0 2379.1,475.0L2368.2,475.0L2356.9,483.9C2350.6,488.8 2345.3,492.7 2345.1,492.5C2344.9,492.3 2345.3,489.3 2345.9,485.8C2347.4,477.3 2352.0,446.6 2352.0,445.2C2352.0,444.3 2366.4,444.0 2411.5,444.0C2458.4,444.0 2471.0,444.3 2471.0,445.2C2471.0,445.9 2469.9,452.8 2468.7,460.5L2466.4,474.5L2445.0,475.0L2423.6,475.5L2420.8,493.0C2413.3,540.9 2410.6,557.5 2408.9,569.0C2407.9,575.9 2406.7,582.7 2406.4,584.2L2405.8,587.0L2389.4,587.0C2374.1,587.0 2373.0,586.9 2373.0,585.2ZM2533.5,575.0C2534.3,574.3 2535.0,572.7 2535.0,571.4C2535.0,567.7 2532.4,566.0 2526.9,566.0L2522.0,566.0L2522.0,571.6L2522.0,577.3L2527.0,576.8C2529.7,576.5 2532.6,575.7 2533.5,575.0ZM785.6,557.0C793.5,553.1 798.7,548.6 802.9,542.1C809.6,531.7 812.1,519.0 809.6,507.2C803.5,478.0 773.7,463.0 747.4,476.0C739.7,479.8 732.3,487.7 727.8,496.8C724.6,503.3 724.5,503.9 724.5,516.0C724.5,528.1 724.6,528.7 727.8,535.2C732.0,543.9 739.4,551.9 746.8,555.8C754.9,560.1 759.0,561.0 769.7,560.6C777.8,560.3 779.8,559.9 785.6,557.0ZM2101.5,502.7C2106.1,500.1 2109.5,495.4 2111.1,489.6C2112.0,486.2 2111.9,484.8 2110.3,481.1C2107.1,473.3 2105.2,472.6 2087.5,472.2L2072.2,471.8L2071.6,474.7C2070.7,479.1 2067.0,502.4 2067.0,503.8C2067.0,504.7 2070.7,505.0 2082.2,505.0C2096.2,505.0 2097.8,504.8 2101.5,502.7Z"/></symbol><symbol id="ef-real-mark" viewBox="0 0 605 852"><path d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/></symbol></svg>
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- official EquitiesFirst mark -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ef" viewBox="0 0 605 852"><path d="M0.0,808.7C0.0,775.5 0.4,764.0 1.4,758.9C4.8,743.2 15.4,729.2 29.5,722.2C37.0,718.4 167.4,660.7 211.0,641.9L254.5,623.1L254.6,578.3C254.7,551.3 254.5,535.2 253.9,537.8C251.1,552.0 238.0,568.5 224.4,575.0C220.6,576.8 168.6,599.8 108.8,626.0L0.0,673.7L0.0,630.6C0.0,585.0 0.5,579.8 4.9,569.9C8.1,562.8 15.3,553.6 21.2,549.2C27.4,544.5 144.8,492.0 246.7,448.2L255.0,444.7L254.9,401.6C254.9,362.0 254.8,358.9 253.4,364.0C250.1,376.7 242.1,388.2 231.8,395.3C228.9,397.3 214.3,404.3 199.5,410.8C184.7,417.4 134.0,439.6 86.8,460.3C39.7,481.1 0.9,498.0 0.6,498.0C0.3,498.0 0.0,478.5 0.0,454.7C0.0,414.8 0.2,410.7 2.0,403.6C4.4,394.1 8.0,387.2 14.2,380.5C21.1,372.9 24.5,370.9 50.1,359.4C115.5,329.9 252.5,270.0 254.4,270.0C254.7,270.0 255.0,289.2 255.1,312.8C255.1,352.0 255.2,355.1 256.6,350.0C260.0,337.2 268.1,325.4 278.2,318.7C283.0,315.6 301.4,307.3 357.5,283.0C367.9,278.5 385.7,270.7 397.0,265.8C408.3,260.8 432.4,250.3 450.5,242.5C468.6,234.6 491.4,224.7 501.0,220.5C530.7,207.4 603.8,176.0 604.6,176.0C604.8,176.0 605.0,196.1 605.0,220.8C605.0,269.2 604.9,270.5 599.4,281.6C595.8,289.0 586.1,299.4 579.1,303.3C576.2,305.0 563.1,310.9 550.1,316.5C537.1,322.2 505.6,335.9 480.0,347.0C454.4,358.1 416.6,374.6 396.0,383.5C343.5,406.3 275.2,436.0 264.5,440.8L255.5,444.7L255.3,489.1C255.1,529.9 255.2,533.1 256.6,528.0C259.7,516.5 267.3,504.9 275.9,498.6C282.6,493.6 299.8,485.8 373.0,454.5L394.5,445.2L394.8,489.4C394.9,518.3 394.7,535.3 393.9,538.8C391.2,552.2 379.8,567.2 367.5,573.6C364.2,575.4 350.2,581.6 336.5,587.6C322.8,593.5 298.9,603.9 283.5,610.6L255.5,622.9L255.0,669.7C254.4,720.3 254.7,717.8 248.6,729.7C245.4,736.2 236.5,745.8 229.7,750.3C226.8,752.2 221.1,755.1 217.0,756.7C212.9,758.4 164.3,779.6 109.0,804.0C53.7,828.3 6.6,849.1 4.2,850.1L-0.0,851.9L0.0,808.7ZM255.0,224.8C255.0,190.0 255.3,179.4 256.4,175.2C260.8,158.9 271.3,146.1 286.1,139.1C290.7,136.9 317.7,125.0 346.0,112.7C374.3,100.4 411.7,84.1 429.0,76.5C476.2,55.9 542.4,27.1 569.5,15.5C582.7,9.8 596.1,4.0 599.2,2.6L605.0,0.0L605.0,44.8C605.0,94.1 604.8,95.9 598.8,107.3C595.0,114.3 588.4,121.9 582.5,126.0C578.4,128.8 562.2,136.1 511.5,158.0C497.8,163.9 480.6,171.4 473.5,174.5C466.4,177.7 447.2,186.0 431.0,193.0C414.8,200.0 380.6,214.9 355.0,226.0C290.5,254.1 256.0,269.0 255.5,269.0C255.2,269.0 255.0,249.1 255.0,224.8Z"/></symbol>
+</svg>
+
+<nav class="nav wrap" id="nav" aria-label="Main">
+  <!-- swap for official logo -->
+  <a class="logo" href="#top" aria-label="EquitiesFirst, home"><svg class="ef-lockup" viewBox="0 0 2576 852" role="img" aria-label="EquitiesFirst"><use href="#ef-lockup"/></svg></a>
+  <div class="links">
+    <a href="#story">Story</a><a href="#how">How it works</a><a href="#offices">Offices</a><a href="#contact">Contact</a>
+  </div>
+  <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu <i></i></button>
+</nav>
+
+<div class="menu wrap" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="menu-top">
+    <a class="logo" href="#top" data-close><svg class="ef-lockup" viewBox="0 0 2576 852" role="img" aria-label="EquitiesFirst"><use href="#ef-lockup"/></svg></a>
+    <button class="menu-btn" id="menuClose" style="display:inline-flex">Close</button>
+  </div>
+  <ol>
+    <li><a href="#story" data-close>Story <small>01</small></a></li>
+    <li><a href="#how" data-close>How it works <small>02</small></a></li>
+    <li><a href="#offices" data-close>Offices <small>03</small></a></li>
+    <li><a href="#contact" data-close>Contact <small>04</small></a></li>
+  </ol>
+  <div class="menu-foot"><span class="label">Progressive Capital since 2002</span></div>
+</div>
+
+<main id="top">
+
+<!-- 1 · HERO -->
+<header class="hero wrap" id="hero">
+  <div class="hero-meta label" aria-hidden="true"><span>Progressive Capital</span><span>Since 2002</span></div>
+  <div class="hero-inner">
+    <h1 class="hero-h" id="heroH"><span class="l">What you built</span> <span class="l">is still the</span> <span class="l">beginning<span class="dot">.</span><i class="bl"></i></span></h1>
+    <aside class="wl" aria-label="About EquitiesFirst">
+      <p class="wl-t">EquitiesFirst</p>
+      <p class="wl-m">Est. 2002, Indianapolis</p>
+      <p class="wl-d">Progressive Capital for people who believe in what they built.</p>
+      <a class="btn" href="#contact">Begin a conversation <span class="ar" aria-hidden="true">→</span></a>
+    </aside>
+  </div>
+</header>
+
+<!-- 2 · THE ANNOTATED OBJECT -->
+<section class="obj" id="how" aria-labelledby="objT">
+  <div class="stage" id="stage">
+    <div class="obj-head wrap">
+      <p class="label rv">How it works</p>
+      <h2 class="obj-title rv d1" id="objT">The share’s journey, in three annotations.</h2>
+    </div>
+    <div class="room slot" id="room">
+      <svg class="render" id="render" aria-hidden="true"></svg>
+      <!-- Codex photo slots. If photos are added, tune hotspot positions in the .has-photo CSS vars below. -->
+      <picture>
+        <source media="(max-width:700px)" srcset="img/g-sculpture.jpg">
+        <img class="photo" src="img/g-sculpture-wide.jpg" alt="Three forward-slanting orange-red bars on a white plinth" loading="lazy" decoding="async" onload="this.classList.add('ok');this.closest('.room').classList.add('has-photo');window.dispatchEvent(new Event('resize'))" onerror="this.closest('picture').remove()">
+      </picture>
+      <div class="grain"></div>
+      <svg class="leader" id="leader" aria-hidden="true"><path id="leaderPath" d=""/><circle id="leaderEnd" r="2.5" cx="-10" cy="-10"/></svg>
+      <button class="hot on" data-i="0" aria-label="Annotation 1, Before" aria-controls="pane0"><b>1</b></button>
+      <button class="hot" data-i="1" aria-label="Annotation 2, During" aria-controls="pane1"><b>2</b></button>
+      <button class="hot" data-i="2" aria-label="Annotation 3, After" aria-controls="pane2"><b>3</b></button>
+    </div>
+    <div class="labels wrap" id="labels">
+      <div class="tabs" role="tablist" aria-label="Annotations">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="pane0" data-i="0"><span class="n">1</span>Before</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="pane1" data-i="1"><span class="n">2</span>During</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="pane2" data-i="2"><span class="n">3</span>After</button>
+      </div>
+      <div class="panes">
+        <article class="pane on" id="pane0" role="tabpanel" data-i="0"><span class="pn" aria-hidden="true">1</span><h3>Before</h3><p>You transfer listed shares you believe&nbsp;in.</p></article>
+        <article class="pane" id="pane1" role="tabpanel" data-i="1"><span class="pn" aria-hidden="true">2</span><h3>During</h3><p>You receive capital at a fixed rate, for a fixed term, and keep the upside — and the exposure. If the price falls past an agreed level, you have time to top&nbsp;up.</p></article>
+        <article class="pane" id="pane2" role="tabpanel" data-i="2"><span class="pn" aria-hidden="true">3</span><h3>After</h3><p>Repay, and identical shares come&nbsp;home.</p></article>
+      </div>
+    </div>
+    <p class="obj-foot wrap"><b>Non-recourse:</b> if the stock falls short, you can hand back the shares and walk away from the loan, subject to your agreement.</p>
+  </div>
+</section>
+
+<!-- 3 · NO. 1 -->
+<section class="sec no1 wrap" id="story" aria-labelledby="no1T">
+  <div class="no1-grid">
+    <div class="no1-entry">
+      <p class="label rv">The first work</p>
+      <h2 class="catno rv d1" id="no1T"><small>No.</small>1</h2>
+      <p class="cat-t rv d2">The Apple Farm, Michigan,&nbsp;<span class="num">1997</span></p>
+      <p class="cat-m rv d2">Medium: <i>a block of bank&nbsp;stock,<br class="m"> one loan, one yes</i></p>
+    </div>
+    <figure class="no1-fig rv">
+      <div class="detail slot">
+        <svg viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="dBg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6F4F0"/><stop offset=".55" stop-color="#EEEBE5"/><stop offset="1" stop-color="#E4E0D8"/></linearGradient>
+            <radialGradient id="dLight" cx=".72" cy=".3" r=".7"><stop offset="0" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <linearGradient id="dUp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F0592A"/><stop offset=".7" stop-color="#D2421A"/><stop offset="1" stop-color="#9E2C0D"/></linearGradient>
+            <linearGradient id="dTop" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9441C"/><stop offset=".45" stop-color="#EE6A3C"/><stop offset=".85" stop-color="#FF9A72"/><stop offset="1" stop-color="#FFC4A8"/></linearGradient>
+            <linearGradient id="dFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F35C2B"/><stop offset=".12" stop-color="#E64B1E"/><stop offset=".55" stop-color="#D23F17"/><stop offset="1" stop-color="#A12A0B"/></linearGradient>
+            <linearGradient id="dEnd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B8370F"/><stop offset=".35" stop-color="#93280A"/><stop offset="1" stop-color="#5E1605"/></linearGradient>
+            <linearGradient id="dStreak" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".42"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="dFade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".55" stop-color="#fff" stop-opacity=".6"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+            <linearGradient id="dDof" x1="0" y1="0" x2="0" y2="1"><stop offset=".2" stop-color="#fff" stop-opacity="0"/><stop offset=".85" stop-color="#fff" stop-opacity="1"/></linearGradient>
+            <linearGradient id="dRod" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6d6a65"/><stop offset=".4" stop-color="#d6d3ce"/><stop offset="1" stop-color="#5b5853"/></linearGradient>
+            <mask id="dStreakM"><rect width="800" height="1000" fill="url(#dFade)"/></mask>
+            <mask id="dDofM"><rect width="800" height="1000" fill="url(#dDof)"/></mask>
+            <filter id="dB0" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="26"/></filter>
+            <filter id="dB1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="9"/></filter>
+            <filter id="dB2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter>
+            <filter id="dB3"><feGaussianBlur stdDeviation=".9"/></filter>
+            <filter id="dGrain"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+            <radialGradient id="dVig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#2a2016" stop-opacity=".16"/></radialGradient>
+            <clipPath id="dClip"><rect width="800" height="1000"/></clipPath>
+            <clipPath id="dFrontC"><polygon points="-60,430 534,404 268,1100 -60,1100"/></clipPath>
+          </defs>
+          <g clip-path="url(#dClip)">
+            <rect width="800" height="1000" fill="url(#dBg)"/>
+            <rect width="800" height="1000" fill="url(#dLight)"/>
+            <!-- the bar above, far out of focus -->
+            <g filter="url(#dB0)"><polygon points="-160,-120 1060,-120 1010,148 -200,160" fill="url(#dUp)"/></g>
+            <!-- the steel rod in the gap, slightly soft -->
+            <rect x="138" y="120" width="13" height="210" fill="url(#dRod)" filter="url(#dB2)"/>
+            <!-- soft shadow of the upper bar falling on the top face -->
+            <!-- top face -->
+            <polygon points="-60,318 616,288 534,404 -60,430" fill="url(#dTop)"/>
+            <polygon points="-60,318 616,288 600,312 -60,348" fill="#4a1405" opacity=".22" filter="url(#dB1)"/>
+            <polygon points="-60,404 540,392 534,404 -60,430" fill="#fff" opacity=".38" filter="url(#dB2)"/>
+            <!-- slanted end face -->
+            <polygon points="534,404 616,288 354,986 268,1100" fill="url(#dEnd)"/>
+            <polygon points="534,404 616,288 606,300 528,412" fill="#FFB89A" opacity=".55" filter="url(#dB3)"/>
+            <!-- front face, sharp at the top edge, softening below (depth of field) -->
+            <polygon points="-60,430 534,404 268,1100 -60,1100" fill="url(#dFront)"/>
+            <g clip-path="url(#dFrontC)" mask="url(#dStreakM)">
+              <rect x="38" y="380" width="170" height="760" fill="url(#dStreak)" filter="url(#dB1)"/>
+              <rect x="296" y="380" width="46" height="760" fill="url(#dStreak)" filter="url(#dB2)" opacity=".7"/>
+            </g>
+            <g clip-path="url(#dFrontC)" mask="url(#dDofM)" filter="url(#dB1)"><rect x="-60" y="700" width="900" height="400" fill="#A82C0C" opacity=".35"/></g>
+            <!-- lacquer edge highlights -->
+            <polyline points="-60,430 534,404" fill="none" stroke="#FFEADF" stroke-width="2.6" filter="url(#dB3)"/>
+            <polyline points="-60,429 534,403" fill="none" stroke="#fff" stroke-width=".8" opacity=".9"/>
+            <polyline points="534,404 268,1100" fill="none" stroke="#FF9E78" stroke-width="1.6" opacity=".6" filter="url(#dB3)"/>
+            <polyline points="534,404 616,288" fill="none" stroke="#FFE1D2" stroke-width="1.8" opacity=".8" filter="url(#dB3)"/>
+            <!-- orange bounce onto the wall/plinth at right -->
+            <ellipse cx="600" cy="980" rx="260" ry="120" fill="#E2471B" opacity=".08" filter="url(#dB0)"/>
+            <rect width="800" height="1000" fill="url(#dVig)"/>
+            <rect width="800" height="1000" fill="#000" filter="url(#dGrain)" opacity=".07"/>
+          </g>
+        </svg>
+        <img class="photo" src="img/g-detail.jpg" alt="Detail of orange-red lacquer" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()">
+      </div>
+    </figure>
+    <div class="no1-entry stmt-col">
+      <div class="stmt rv">
+        <p class="label">Artist’s statement</p>
+        <blockquote><span class="q">“</span>They got three million bucks … and I got a hug from his wife and <span class="num">1</span>&nbsp;percent of the transaction.”</blockquote>
+        <a class="cite label" href="https://www.ibj.com/articles/14162-downtown-firm-specializes-in-unusual-loans-equities-first-holdings-sees-growing-demand-for-stock-loans-as-tight-credit-markets-make-borrowing-tougher" target="_blank" rel="noopener">Al Christy<span class="d"> ·</span><br class="m"> Indianapolis Business Journal&nbsp;·&nbsp;2008</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · THE CREED -->
+<section class="sec creed" aria-labelledby="creedT">
+  <div class="bg slot" aria-hidden="true"><img class="photo" src="img/g-room.jpg" alt="" loading="lazy" decoding="async" onload="this.classList.add('ok')" onerror="this.remove()"></div>
+  <div class="creed-in wrap">
+    <h2 class="creed-t rv" id="creedT">The Creed</h2>
+    <div class="creed-rule rv"></div>
+    <div class="creed-text">
+      <p class="st rv"><span>We believe in people<br class="m"> who believe in what they built.</span></p>
+      <p class="st rv"><span>We started with one apple farm<br class="m"> that needed a yes.</span><span>We were paid with a hug<br class="m"> and one percent.</span><span>We’d make that deal again.</span></p>
+      <p class="st rv"><span>We have stood with our clients<br class="m"> through every cycle:</span><span>the dotcom bust, 2008, the pandemic.</span><span>We are still here.</span></p>
+      <p class="st rv"><span>We lend against conviction,<br class="m"> not around it.</span><span>We start with respect.</span><span>We are here to help.</span><span>We are genuinely invested,<br class="m"> because we grow when you do.</span></p>
+      <p class="st rv"><span>From Indianapolis<br class="m"> to Dubai to Hong Kong,</span><span>for the next <i class="nw">twenty-five</i> years<br class="m"> and beyond:</span><span>everything in life is possible.</span><span>What you built is still the beginning<span class="dot">.</span></span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · THE COLLECTION -->
+<section class="sec wrap" aria-labelledby="collT">
+  <div class="coll-head">
+    <h2 class="sec-h rv" id="collT">The Collection</h2>
+    <p class="label rv d1">Nos. 2–8</p>
+  </div>
+  <ol class="coll" id="coll">
+    <li class="rv"><span class="no">No. 2</span><span class="ti">Equities First Holdings, Indianapolis</span><span class="yr">2002</span></li>
+    <li class="rv"><span class="no">No. 3</span><span class="ti">Singapore, Hong Kong, Bangkok, Jakarta</span><span class="yr">2013</span></li>
+    <li class="rv"><span class="no">No. 4</span><span class="ti">London and Australia</span><span class="yr">2014</span></li>
+    <li class="rv"><span class="no">No. 5</span><span class="ti">Progressive Capital</span><span class="yr">2020</span></li>
+    <li class="rv"><span class="no">No. 6</span><span class="ti">The flag on Everest</span><span class="yr">2022</span></li>
+    <li class="rv"><span class="no">No. 7</span><span class="ti">Dubai</span><span class="yr">2024</span></li>
+    <li class="rv"><span class="no">No. 8</span><span class="ti">Twenty-five</span><span class="yr">2027</span></li>
+  </ol>
+</section>
+
+<!-- 6 · FROM THE FOUNDER -->
+<section class="sec founder wrap" aria-labelledby="fT">
+  <p class="label rv" id="fT">From the Founder</p>
+  <blockquote class="fq rv d1"><span class="hq" aria-hidden="true">“</span><span class="m">“</span>We are creating<br class="m"> a new<br class="d"> paradigm<br class="m"> for capital.”</blockquote>
+  <div class="fq-small">
+    <figure class="rv"><blockquote>“Having lived the entrepreneurial journey, EquitiesFirst holds a unique position of trust and support for other business leaders and investors.”</blockquote><figcaption class="label yr">2022</figcaption></figure>
+    <figure class="rv d1"><blockquote>“The model has evolved, the footprint has grown. We now have a presence across the world. But that core belief has never changed.”</blockquote><figcaption class="label yr">2026</figcaption></figure>
+  </div>
+  <div class="sig rv"><span class="name">Al Christy Jr.</span><span class="label">Founder &amp; CEO</span></div>
+</section>
+
+<!-- 7 · ON VIEW -->
+<section class="sec view wrap" id="offices" aria-labelledby="vT">
+  <div class="view-grid">
+    <p class="label k rv">Offices</p>
+    <h2 class="sec-h rv d1" id="vT">On view&nbsp;in</h2>
+    <!-- CONFIRM office list with EquitiesFirst -->
+    <ol class="venues" id="venues">
+      <li class="rv"><span class="c">Indianapolis<small>Headquarters</small></span><time data-tz="America/Indiana/Indianapolis">—</time></li>
+      <li class="rv"><span class="c">London</span><time data-tz="Europe/London">—</time></li>
+      <li class="rv"><span class="c">Dubai</span><time data-tz="Asia/Dubai">—</time></li>
+      <li class="rv"><span class="c">Hong Kong</span><time data-tz="Asia/Hong_Kong">—</time></li>
+      <li class="rv"><span class="c">Beijing</span><time data-tz="Asia/Shanghai">—</time></li>
+      <li class="rv"><span class="c">Singapore</span><time data-tz="Asia/Singapore">—</time></li>
+      <li class="rv"><span class="c">Sydney</span><time data-tz="Australia/Sydney">—</time></li>
+      <li class="rv"><span class="c">Brisbane</span><time data-tz="Australia/Brisbane">—</time></li>
+    </ol>
+  </div>
+</section>
+
+<!-- 8 · CONTACT -->
+<section class="sec contact wrap" id="contact" aria-label="Contact">
+  <p class="label rv">Contact</p>
+  <a class="cta rv d1" href="#contact" id="cta">Begin a<br class="m"> conversation<span class="dot">.</span></a>
+  <p class="who rv d2">For founders, executives and long-term holders of listed shares.</p>
+  <p class="sent" id="sent" role="status" aria-live="polite">Concept: nothing was sent.</p>
+</section>
+
+</main>
+
+<footer class="foot wrap">
+  <div class="foot-grid">
+    <div>
+      <!-- swap for official logo -->
+      <a class="logo" href="#top"><svg class="ef-lockup" viewBox="0 0 2576 852" role="img" aria-label="EquitiesFirst"><use href="#ef-lockup"/></svg></a>
+      <p class="tag">Progressive Capital since 2002</p>
+    </div>
+    <div>
+      <p class="label" style="margin-bottom:14px">Offices</p>
+      <!-- CONFIRM office list with EquitiesFirst -->
+      <p class="cities">Indianapolis&nbsp;· London&nbsp;· Dubai&nbsp;· Hong&nbsp;Kong&nbsp;· Beijing&nbsp;· Singapore&nbsp;· Sydney&nbsp;· Brisbane</p>
+    </div>
+    <p class="fine">Concept by Jimmy Davis for EquitiesFirst&nbsp;· Not&nbsp;a&nbsp;live&nbsp;website&nbsp;· Figures as published by EquitiesFirst</p>
+  </div>
+</footer>
+
+<div class="concept" id="concept" role="region" aria-label="Concept controls">
+  <span class="ct"><span>Concept<i> ·</i></span> <span>Direction 3 of 3</span></span>
+  <a href="p7-original.html">← Tour</a>
+  <button id="pick" type="button">Pick this</button>
+</div>
+
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<script>
+(function(){
+  'use strict';
+  var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function(s,c){return (c||document).querySelector(s)};
+  var $$ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+
+  /* ---------- optical kerning for Bodoni's W (its Didone serifs leave a gap before lowercase) ---------- */
+  $$('.hero-h,.obj-title,.pane p,.cat-t,.stmt blockquote,.creed-text,.sec-h,.coll .ti,.fq,.fq-small blockquote,.cta,.venues .c,.foot .tag').forEach(function(root){
+    var tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null), nodes=[], n;
+    while((n=tw.nextNode())) if(/W[a-z]/.test(n.nodeValue)) nodes.push(n);
+    nodes.forEach(function(t){
+      var parts=t.nodeValue.split(/(W(?=[a-z]))/), f=document.createDocumentFragment();
+      parts.forEach(function(x,i){ if(x==='W' && parts[i+1]!==undefined){ var sp=document.createElement('span'); var nx=(parts[i+1]||'').charAt(0); sp.className=/[hilk]/.test(nx)?'kw2':'kw1'; sp.textContent='W'; f.appendChild(sp);} else if(x) f.appendChild(document.createTextNode(x)); });
+      t.parentNode.replaceChild(f,t);
+    });
+  });
+
+  /* ---------- hero fit: first line fills the measure exactly ---------- */
+  var hero = $('#hero'), heroH = $('#heroH');
+  function fitHero(){
+    var first = heroH.querySelector('.l');
+    var avail = heroH.parentNode.clientWidth;
+    heroH.style.fontSize = '';
+    var fs = parseFloat(getComputedStyle(heroH).fontSize);
+    for (var i=0;i<3;i++){
+      var w = first.getBoundingClientRect().width;
+      if (!w) break;
+      fs = fs * (avail / w);
+      heroH.style.fontSize = fs.toFixed(2) + 'px';
+    }
+    var desk = window.innerWidth >= 900;
+    var cap = desk ? (window.innerHeight - 260) / 3.1 : 9999;
+    if (fs > cap){ heroH.style.fontSize = cap.toFixed(2) + 'px'; }
+    // wall label sits on the baseline of "beginning."
+    var inner = heroH.parentNode, bl = heroH.querySelector('.bl');
+    if (desk && bl){ var top = 0, n = bl; while (n && n !== inner){ top += n.offsetTop; n = n.offsetParent; } inner.style.setProperty('--wlb', (inner.clientHeight - top).toFixed(1) + 'px'); }
+  }
+  var shown = false;
+  function showHero(){ if (shown) return; shown = true; fitHero(); requestAnimationFrame(function(){ hero.classList.add('on'); }); }
+  if (document.fonts && document.fonts.ready){ document.fonts.ready.then(showHero); setTimeout(showHero, 1600); } else { showHero(); }
+  window.addEventListener('resize', function(){ if (shown) fitHero(); });
+
+  /* ---------- reveals ---------- */
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08}) : null;
+  $$('.rv').forEach(function(el){ if (io && !RM) io.observe(el); else el.classList.add('in'); });
+
+  /* ---------- nav ---------- */
+  var nav = $('#nav'), lastY = window.scrollY, menu = $('#menu'), menuBtn = $('#menuBtn');
+  var concept = $('#concept');
+  function onScrollNav(){
+    var y = window.scrollY;
+    nav.classList.toggle('solid', y > 24);
+    if (!menu.classList.contains('open')){
+      if (y > lastY + 6 && y > 200) nav.classList.add('up');
+      else if (y < lastY - 6 || y < 200) nav.classList.remove('up');
+    }
+    lastY = y;
+    concept.classList.toggle('show', y > hero.offsetHeight * 0.62);
+  }
+  window.addEventListener('scroll', onScrollNav, {passive:true}); onScrollNav();
+  function openMenu(){ menu.classList.add('open'); menuBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; setTimeout(function(){ $('#menuClose').focus(); }, 50); }
+  function closeMenu(){ menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+  menuBtn.addEventListener('click', openMenu);
+  $('#menuClose').addEventListener('click', function(){ closeMenu(); menuBtn.focus(); });
+  $$('[data-close]', menu).forEach(function(a){ a.addEventListener('click', closeMenu); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu(); });
+
+  /* ---------- concept bar ---------- */
+  var pick = $('#pick');
+  function setPicked(){ pick.textContent = 'Picked ✓'; pick.classList.add('picked'); }
+  try { if (localStorage.getItem('al25.pick') === 'original') setPicked(); } catch(e){}
+  pick.addEventListener('click', function(){ try { localStorage.setItem('al25.pick','original'); } catch(e){} setPicked(); });
+
+  /* ---------- contact ---------- */
+  $('#cta').addEventListener('click', function(e){ e.preventDefault(); $('#sent').classList.add('on'); });
+
+  /* ---------- collection tap ---------- */
+  $$('#coll li').forEach(function(li){ li.addEventListener('click', function(){ var on = li.classList.contains('on'); $$('#coll li').forEach(function(x){x.classList.remove('on')}); if(!on) li.classList.add('on'); }); });
+
+  /* ---------- live local times ---------- */
+  var times = $$('time[data-tz]');
+  function tick(){
+    var now = new Date();
+    times.forEach(function(t){
+      try {
+        var s = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:t.getAttribute('data-tz')}).format(now);
+        if (t.textContent !== s) t.textContent = s;
+      } catch(e){ t.textContent = ''; }
+    });
+  }
+  tick(); setInterval(tick, 15000);
+
+  /* =====================================================================
+     THE ANNOTATED OBJECT — a small 3D renderer (no libraries).
+     Three lacquered bars (the EF mark, extruded) on a white plinth,
+     photographed in a white room. Lit, shaded and shadowed per frame;
+     turns a few degrees as the section scrolls.
+     ===================================================================== */
+  var room = $('#room'), svg = $('#render'), stage = $('#stage');
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(n, a, p){ var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); if (p) p.appendChild(e); return e; }
+  var sub=function(a,b){return [a[0]-b[0],a[1]-b[1],a[2]-b[2]]};
+  var dot=function(a,b){return a[0]*b[0]+a[1]*b[1]+a[2]*b[2]};
+  var cross=function(a,b){return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]};
+  var nrm=function(a){var l=Math.hypot(a[0],a[1],a[2])||1;return [a[0]/l,a[1]/l,a[2]/l]};
+  var avg=function(ps){var s=[0,0,0];ps.forEach(function(p){s[0]+=p[0];s[1]+=p[1];s[2]+=p[2]});return [s[0]/ps.length,s[1]/ps.length,s[2]/ps.length]};
+  var clamp=function(v,a,b){return Math.max(a,Math.min(b,v))};
+  function rgb(c,m){ m = m||1; return 'rgb('+Math.round(clamp(c[0]*m,0,255))+','+Math.round(clamp(c[1]*m,0,255))+','+Math.round(clamp(c[2]*m,0,255))+')'; }
+  function hull(pts){ // monotone chain, pts [[x,y]]
+    pts = pts.slice().sort(function(a,b){return a[0]-b[0]||a[1]-b[1]});
+    var cr=function(o,a,b){return (a[0]-o[0])*(b[1]-o[1])-(a[1]-o[1])*(b[0]-o[0])};
+    var lo=[],up=[],i;
+    for(i=0;i<pts.length;i++){while(lo.length>=2&&cr(lo[lo.length-2],lo[lo.length-1],pts[i])<=0)lo.pop();lo.push(pts[i]);}
+    for(i=pts.length-1;i>=0;i--){while(up.length>=2&&cr(up[up.length-2],up[up.length-1],pts[i])<=0)up.pop();up.push(pts[i]);}
+    up.pop();lo.pop();return lo.concat(up);
+  }
+
+  // ---- scene (centimetres; origin at plinth base centre; Y up; +Z toward camera) ----
+  var PW=60, PD=56, PH=68;           // plinth
+  var S=0.86, TH=14, MX=40;           // sculpture scale, bar thickness, x that sits over the plinth centre
+  var MARK=[[[32,10],[94,10],[86,32],[24,32]],[[24,40],[68,40],[60,62],[16,62]],[[16,70],[40,70],[32,92],[8,92]]];
+  var EYE_Y=152, DIST=340, WALL_Z=-190;
+  var KEY=nrm([-0.55,0.85,0.75]);     // key light (towards light)
+  var SUN=nrm([-0.46,1,0.26]);        // shadow-casting direction (mostly overhead)
+  var LAC=[226,71,27];
+
+  function prism(poly2d, z0, z1){
+    var f = poly2d.map(function(p){return [p[0],p[1],z1]}), b = poly2d.map(function(p){return [p[0],p[1],z0]});
+    var faces=[{v:f,k:'front'},{v:b.slice().reverse(),k:'back'}];
+    for (var i=0;i<f.length;i++){ var j=(i+1)%f.length; faces.push({v:[f[i],f[j],b[j],b[i]],k:'side'+i}); }
+    return {faces:faces, all:f.concat(b), c:avg(f.concat(b))};
+  }
+  var bars = MARK.map(function(poly){
+    return prism(poly.map(function(p){ return [(p[0]-MX)*S, PH+(92-p[1])*S]; }), -TH/2, TH/2);
+  });
+  var plinth = (function(){
+    var x0=-PW/2,x1=PW/2,z0=-PD/2,z1=PD/2,y0=0,y1=PH;
+    var all=[[x0,y0,z0],[x1,y0,z0],[x1,y0,z1],[x0,y0,z1],[x0,y1,z0],[x1,y1,z0],[x1,y1,z1],[x0,y1,z1]];
+    var A=all;
+    return {all:all,c:[0,PH/2,0],faces:[
+      {v:[A[4],A[5],A[6],A[7]],k:'top'},
+      {v:[A[3],A[2],A[6],A[7]],k:'front'},
+      {v:[A[1],A[0],A[4],A[5]],k:'back'},
+      {v:[A[0],A[3],A[7],A[4]],k:'left'},
+      {v:[A[2],A[1],A[5],A[6]],k:'right'}
+    ]};
+  })();
+  var ROD_X=(30-MX)*S, ROD_TOP=PH+(92-21)*S;
+
+  // ---- SVG structure ----
+  var defs=el('defs',{},svg);
+  function lg(id){ var g=el('linearGradient',{id:id,gradientUnits:'userSpaceOnUse'},defs); return g; }
+  function setStops(g, stops){ while(g.firstChild) g.removeChild(g.firstChild); stops.forEach(function(s){ el('stop',{offset:s[0],'stop-color':s[1],'stop-opacity':s[2]==null?1:s[2]},g); }); }
+  function blur(id,sd){ var f=el('filter',{id:id,x:'-50%',y:'-50%',width:'200%',height:'200%'},defs); var b=el('feGaussianBlur',{stdDeviation:sd},f); return b; }
+  var bWall=lg('wallG'), bFloor=lg('floorG');
+  var rWall=el('radialGradient',{id:'wallR',gradientUnits:'userSpaceOnUse'},defs);
+  setStops(rWall,[[0,'#FFFFFF'],[.5,'#FBFAF8'],[1,'#F0EEE9']]);
+  var fFloorSh=blur('fFloorSh',10), fContact=blur('fContact',2), fTopSh=[blur('fTop0',1.2),blur('fTop1',4),blur('fTop2',7)], fBleed=blur('fBleed',14), fEdge=blur('fEdge',.4), fAO=blur('fAO',6);
+  var clipTop=el('clipPath',{id:'clipTop'},defs), clipTopP=el('polygon',{},clipTop);
+
+  var gScene=el('g',{},svg);
+  var wall=el('rect',{x:0,y:0,fill:'url(#wallR)'},gScene);
+  var floor=el('rect',{x:0,fill:'url(#floorG)'},gScene);
+  var floorAO=el('rect',{x:0,fill:'url(#aoG)'},gScene);
+  var aoG=lg('aoG');
+  var gap=el('rect',{x:0,height:2,fill:'#CFCAC1'},gScene);
+  var floorSh=el('polygon',{fill:'#1a1a18',opacity:.2,filter:'url(#fFloorSh)'},gScene);
+  var floorAOp=el('polygon',{fill:'#1a1a18',opacity:.18,filter:'url(#fAO)'},gScene);
+  var contact=el('polygon',{fill:'#121212',opacity:.5,filter:'url(#fContact)'},gScene);
+  var gPl=el('g',{},gScene);
+  var plEls=plinth.faces.map(function(f,i){ var g=lg('pl'+i); return {f:f,g:g,p:el('polygon',{fill:'url(#pl'+i+')'},gPl)}; });
+  var plEdge=el('polyline',{fill:'none',stroke:'#fff',opacity:.9,'stroke-width':1},gPl);
+  var gTopSh=el('g',{'clip-path':'url(#clipTop)'},gScene);
+  var bleed=el('polygon',{fill:'#E2471B',opacity:.16,filter:'url(#fBleed)'},gTopSh);
+  var topSh=bars.map(function(b,i){ return el('polygon',{fill:'#2a0f05',opacity:[.32,.17,.12][i],filter:'url(#fTop'+i+')'},gTopSh); });
+  var footDark=el('polygon',{fill:'#120804',opacity:.55,filter:'url(#fEdge)'},gTopSh);
+  var rodA=el('line',{stroke:'#77736d','stroke-linecap':'round'},gScene), rodB=el('line',{stroke:'#c9c6c0','stroke-linecap':'round'},gScene);
+  var barEls=bars.map(function(b,bi){
+    var g=el('g',{},gScene);
+    return {b:b, faces:b.faces.map(function(f,fi){ var id='b'+bi+'f'+fi; var gr=lg(id); var p=el('polygon',{fill:'url(#'+id+')'},g); var sid=id+'s'; var sg=lg(sid); var sp=el('polygon',{fill:'url(#'+sid+')'},g); return {f:f,g:gr,p:p,sg:sg,sp:sp}; }),
+      e1:el('polyline',{fill:'none',stroke:'#FFE9DE','stroke-linecap':'round',filter:'url(#fEdge)'},g),
+      e2:el('polyline',{fill:'none',stroke:'#FFD2BD','stroke-linecap':'round',filter:'url(#fEdge)'},g),
+      e3:el('polyline',{fill:'none',stroke:'#3b0f03','stroke-linecap':'round'},g)};
+  });
+  var vign=el('rect',{x:0,y:0,fill:'url(#vigR)'},svg);
+  var vigR=el('radialGradient',{id:'vigR',gradientUnits:'userSpaceOnUse'},defs);
+  setStops(vigR,[[0,'#000',0],[.62,'#000',0],[1,'#3a3328',.07]]);
+
+  // ---- camera ----
+  var W=0,H=0,F=1,OX=0,OY=0,desk=false;
+  function rot(p,a){ var c=Math.cos(a),s=Math.sin(a); return [p[0]*c+p[2]*s, p[1], -p[0]*s+p[2]*c]; }
+  function proj(p){ var d=DIST-p[2]; return [OX+F*p[0]/d, OY+F*(EYE_Y-p[1])/d]; }
+  var EYE=[0,EYE_Y,DIST];
+  var YAW0 = -24*Math.PI/180, YAWR = 11*Math.PI/180;
+  function layout(){
+    var r=room.getBoundingClientRect(); W=r.width; H=r.height; desk=window.innerWidth>=900;
+    svg.setAttribute('viewBox','0 0 '+W.toFixed(1)+' '+H.toFixed(1));
+    // fit the whole object (at its mid pose) into a target box
+    var pts=[]; [plinth].concat(bars).forEach(function(s){ s.all.forEach(function(p){ var q=rot(p,YAW0); var d=DIST-q[2]; pts.push([q[0]/d,(EYE_Y-q[1])/d]); }); });
+    var minx=Infinity,maxx=-Infinity,miny=Infinity,maxy=-Infinity;
+    pts.forEach(function(p){minx=Math.min(minx,p[0]);maxx=Math.max(maxx,p[0]);miny=Math.min(miny,p[1]);maxy=Math.max(maxy,p[1]);});
+    var th = desk ? H*0.64 : H*0.78, cx = desk ? W*0.42 : W*0.5, bottom = desk ? H*0.83 : H*0.9;
+    F = th/(maxy-miny); OX = cx - F*(minx+maxx)/2; OY = bottom - F*maxy;
+    var hz = OY + F*(EYE_Y-0)/(DIST-WALL_Z); // wall/floor junction
+    wall.setAttribute('width',W); wall.setAttribute('height',hz+1);
+    floor.setAttribute('y',hz); floor.setAttribute('width',W); floor.setAttribute('height',Math.max(0,H-hz));
+    floorAO.setAttribute('y',hz); floorAO.setAttribute('width',W); floorAO.setAttribute('height',28);
+    gap.setAttribute('y',hz-1); gap.setAttribute('width',W);
+    bFloor.setAttribute('x1',0);bFloor.setAttribute('y1',hz);bFloor.setAttribute('x2',0);bFloor.setAttribute('y2',H);
+    setStops(bFloor,[[0,'#E7E4DE'],[.4,'#EDEBE6'],[1,'#F3F2EE']]);
+    aoG.setAttribute('x1',0);aoG.setAttribute('y1',hz);aoG.setAttribute('x2',0);aoG.setAttribute('y2',hz+28);
+    setStops(aoG,[[0,'#BDB7AC',.55],[1,'#BDB7AC',0]]);
+    rWall.setAttribute('cx',cx); rWall.setAttribute('cy',hz*0.28); rWall.setAttribute('r',Math.max(W,H)*0.78);
+    vign.setAttribute('width',W); vign.setAttribute('height',H);
+    vigR.setAttribute('cx',W/2); vigR.setAttribute('cy',H*0.48); vigR.setAttribute('r',Math.hypot(W,H)*0.56);
+    var k=F/DIST; // px per cm at the plinth
+    fFloorSh.setAttribute('stdDeviation',(k*9).toFixed(2));
+    fAO.setAttribute('stdDeviation',(k*3.5).toFixed(2));
+    fContact.setAttribute('stdDeviation',(k*0.9).toFixed(2));
+    fTopSh[0].setAttribute('stdDeviation',(k*0.7).toFixed(2)); fTopSh[1].setAttribute('stdDeviation',(k*2.6).toFixed(2)); fTopSh[2].setAttribute('stdDeviation',(k*4.2).toFixed(2));
+    fBleed.setAttribute('stdDeviation',(k*6).toFixed(2));
+    fEdge.setAttribute('stdDeviation',Math.max(.25,k*.12).toFixed(2));
+    draw(curYaw, true);
+  }
+
+  function ptsStr(a){ return a.map(function(p){return p[0].toFixed(2)+','+p[1].toFixed(2)}).join(' '); }
+  function lacquer(n, kind){
+    var d=Math.max(0,dot(n,KEY)), up=Math.max(0,n[1]);
+    var k=0.34+0.8*d;
+    var c=[LAC[0]*k,LAC[1]*k*0.96,LAC[2]*k*0.92];
+    var sh=up*0.5; c=[c[0]+(255-c[0])*sh*.55, c[1]+(150-c[1])*sh*.6, c[2]+(112-c[2])*sh*.55];
+    return c;
+  }
+  function paper(n){
+    var d=Math.max(0,dot(n,KEY)), up=Math.max(0,n[1]);
+    var k=0.83+0.15*d+0.04*up;
+    return [255*k,254*k,251*k];
+  }
+  function setGrad(g, a, b){ g.setAttribute('x1',a[0].toFixed(1)); g.setAttribute('y1',a[1].toFixed(1)); g.setAttribute('x2',b[0].toFixed(1)); g.setAttribute('y2',b[1].toFixed(1)); }
+  function mid(a,b){ return [(a[0]+b[0])/2,(a[1]+b[1])/2]; }
+
+  var hots=$$('.hot'), anchors=[];
+  var curYaw=YAW0, tgtYaw=YAW0, raf=0;
+  function draw(yaw, force){
+    // --- plinth ---
+    var pc=rot(plinth.c,yaw);
+    plEls.forEach(function(o){
+      var v=o.f.v.map(function(p){return rot(p,yaw)}), c=avg(v);
+      var n=nrm(cross(sub(v[1],v[0]),sub(v[2],v[0]))); if (dot(n,sub(c,pc))<0) n=[-n[0],-n[1],-n[2]];
+      var vis=dot(n,sub(EYE,c))>0.01;
+      o.p.style.display=vis?'':'none'; if(!vis) return;
+      var s=v.map(proj); o.p.setAttribute('points',ptsStr(s));
+      var col=paper(n);
+      if (o.f.k==='top'){ setGrad(o.g, mid(s[0],s[1]), mid(s[2],s[3])); setStops(o.g,[[0,rgb(col,.985)],[1,rgb(col,1.01)]]); o.top=s; }
+      else { // vertical faces: top bright -> base darker (floor AO)
+        setGrad(o.g, mid(s[2],s[3]), mid(s[0],s[1]));
+        setStops(o.g,[[0,rgb(col,1.0)],[.7,rgb(col,.965)],[.94,rgb(col,.92)],[1,rgb(col,.86)]]);
+      }
+    });
+    // plinth top front edge highlight
+    var tp=plinth.faces[0].v.map(function(p){return proj(rot(p,yaw))});
+    clipTopP.setAttribute('points',ptsStr(tp));
+    // front edge(s) of the top: pick the two edges nearest the camera (largest screen y)
+    var edges=[[0,1],[1,2],[2,3],[3,0]].map(function(e){return {e:e,y:(tp[e[0]][1]+tp[e[1]][1])/2}}).sort(function(a,b){return b.y-a.y});
+    var e0=edges[0].e, e1=edges[1].e;
+    var shared = e0.filter(function(i){return e1.indexOf(i)>=0})[0];
+    var a=e0[0]===shared?e0[1]:e0[0], b=e1[0]===shared?e1[1]:e1[0];
+    plEdge.setAttribute('points',ptsStr([tp[a],tp[shared],tp[b]]));
+    var k=F/DIST; plEdge.setAttribute('stroke-width',Math.max(.6,k*.35).toFixed(2));
+
+    // --- floor shadow of the plinth ---
+    var shp=[]; plinth.all.forEach(function(p){ var q=rot(p,yaw); var t=q[1]/SUN[1]; shp.push([q[0]-SUN[0]*t, q[2]-SUN[2]*t]); });
+    var h2=hull(shp).map(function(p){return proj([p[0],0,p[1]])});
+    floorSh.setAttribute('points',ptsStr(h2));
+    var base=[0,1,2,3].map(function(i){var q=rot(plinth.all[i],yaw);return proj(q)});
+    contact.setAttribute('points',ptsStr(base));
+    var baseWide=[0,1,2,3].map(function(i){var p=plinth.all[i];var q=rot([p[0]*1.08+6,0,p[2]*1.08-3],yaw);return proj(q)});
+    floorAOp.setAttribute('points',ptsStr(baseWide));
+
+    // --- sculpture shadows on the plinth top ---
+    bars.forEach(function(br,i){
+      var pts=br.all.map(function(p){ var q=rot(p,yaw); var t=(q[1]-PH)/SUN[1]; return [q[0]-SUN[0]*t, q[2]-SUN[2]*t]; });
+      topSh[i].setAttribute('points',ptsStr(hull(pts).map(function(p){return proj([p[0],PH+0.01,p[1]])})));
+    });
+    // footprint of bottom bar (contact line) + orange bleed
+    var bb=bars[2], foot=bb.all.filter(function(p){return Math.abs(p[1]-PH)<0.01}).map(function(p){return rot(p,yaw)});
+    footDark.setAttribute('points',ptsStr(hull(foot.map(function(q){return [q[0],q[2]]})).map(function(p){return proj([p[0],PH,p[1]])})));
+    var fc=avg(foot), bl=[];
+    for (var ai=0;ai<16;ai++){ var an=ai/16*Math.PI*2; bl.push(proj([fc[0]+Math.cos(an)*24, PH, fc[2]+Math.sin(an)*15])); }
+    bleed.setAttribute('points',ptsStr(bl));
+
+    // --- rod (visible only in the gaps) ---
+    var r0=proj(rot([ROD_X,PH,0],yaw)), r1=proj(rot([ROD_X,ROD_TOP,0],yaw));
+    [rodA,rodB].forEach(function(r,i){ r.setAttribute('x1',(r0[0]+(i?-k*.25:0)).toFixed(2)); r.setAttribute('y1',r0[1].toFixed(2)); r.setAttribute('x2',(r1[0]+(i?-k*.25:0)).toFixed(2)); r.setAttribute('y2',r1[1].toFixed(2)); r.setAttribute('stroke-width',(k*(i?0.5:1.5)).toFixed(2)); });
+
+    // --- bars: bottom first ---
+    var t=(yaw-YAW0)/YAWR; // -0.5..0.5
+    anchors=[];
+    for (var bi=2; bi>=0; bi--){
+      var B=barEls[bi], bc=rot(B.b.c,yaw), frontS=null, topS=null, endS=null;
+      B.faces.forEach(function(o){
+        var v=o.f.v.map(function(p){return rot(p,yaw)}), c=avg(v);
+        var n=nrm(cross(sub(v[1],v[0]),sub(v[2],v[0]))); if (dot(n,sub(c,bc))<0) n=[-n[0],-n[1],-n[2]];
+        var vis=dot(n,sub(EYE,c))>0.01;
+        o.p.style.display=vis?'':'none'; o.sp.style.display=vis?'':'none'; if(!vis) return;
+        var s=v.map(proj); o.p.setAttribute('points',ptsStr(s)); o.sp.setAttribute('points',ptsStr(s));
+        var col=lacquer(n,o.f.k);
+        if (o.f.k==='front'){ // poly order TL,TR,BR,BL
+          frontS=s;
+          setGrad(o.g, mid(s[0],s[1]), mid(s[3],s[2]));
+          setStops(o.g,[[0,rgb(col,1.16)],[.16,rgb(col,1.05)],[.6,rgb(col,.97)],[1,rgb(col,.8)]]);
+          var pos=clamp(0.24 - t*0.36, .05, .9);
+          setGrad(o.sg, s[0], [s[0][0]+(s[1][0]-s[0][0]), s[0][1]+(s[1][1]-s[0][1])]);
+          setStops(o.sg,[[0,'#fff',0],[Math.max(0,pos-.1),'#fff',0],[pos,'#fff',.24],[pos+.03,'#fff',.1],[Math.min(1,pos+.14),'#fff',.02],[Math.min(1,pos+.3),'#fff',0],[1,'#fff',0]]);
+          // anchor for the annotation dot
+          var ap = bi===0 ? [s[0][0]*.62+s[1][0]*.38, 0] : [s[0][0]*.5+s[1][0]*.5, 0];
+          ap[1] = (s[0][1]+s[3][1])/2*.5 + (s[1][1]+s[2][1])/2*.5;
+          var ac = bi===0 ? .38 : .5; // fraction along top edge
+          var top=[s[0][0]+(s[1][0]-s[0][0])*ac, s[0][1]+(s[1][1]-s[0][1])*ac], botm=[s[3][0]+(s[2][0]-s[3][0])*ac, s[3][1]+(s[2][1]-s[3][1])*ac];
+          anchors[bi]=[(top[0]+botm[0])/2,(top[1]+botm[1])/2];
+        } else if (o.f.k==='side0'){ // top face: from back (s[3]) to front (s[0])
+          topS=s;
+          setGrad(o.sg, mid(s[2],s[3]), mid(s[0],s[1]));
+          setGrad(o.g, mid(s[2],s[3]), mid(s[0],s[1]));
+          setStops(o.g,[[0,rgb(col,.84)],[.6,rgb(col,.98)],[1,rgb(col,1.04)]]);
+          setStops(o.sg,[[0,'#fff',0],[.5,'#fff',.05],[.86,'#fff',.22],[1,'#fff',.5]]);
+        } else { // ends, underside
+          setGrad(o.g, mid(s[0],s[1]), mid(s[2],s[3]));
+          setStops(o.g,[[0,rgb(col,1.1)],[.25,rgb(col,1.0)],[1,rgb(col,.78)]]);
+          setStops(o.sg,[[0,'#fff',0],[1,'#fff',0]]);
+          if (o.f.k==='side1') endS=s;
+        }
+      });
+      var kk=F/DIST;
+      if (frontS){ B.e1.setAttribute('points',ptsStr([frontS[0],frontS[1]])); B.e1.setAttribute('stroke-width',Math.max(.6,kk*.32).toFixed(2)); B.e1.setAttribute('opacity','.85');
+        B.e2.setAttribute('points',ptsStr([frontS[3],frontS[0]])); B.e2.setAttribute('stroke-width',Math.max(.5,kk*.22).toFixed(2)); B.e2.setAttribute('opacity','.4');
+        B.e3.setAttribute('points',ptsStr([frontS[3],frontS[2]])); B.e3.setAttribute('stroke-width',Math.max(.5,kk*.25).toFixed(2)); B.e3.setAttribute('opacity','.35');
+      }
+      if (endS && frontS){ /* soft edge on the slanted end */ }
+    }
+    placeHots();
+  }
+
+  // ---- hotspots, labels, leader ----
+  var active=0, panes=$$('.pane'), tabs=$$('.tab'), leaderPath=$('#leaderPath'), leaderEnd=$('#leaderEnd');
+  function placeHots(){
+    if (room.classList.contains('has-photo')){
+      var rr=room.getBoundingClientRect();
+      anchors=hots.map(function(h){ var r=h.getBoundingClientRect(); return [r.left-rr.left+r.width/2, r.top-rr.top+r.height/2]; });
+      drawLeader(); return;
+    }
+    hots.forEach(function(h,i){ var a=anchors[i]; if(!a) return; h.style.setProperty('--x',a[0].toFixed(1)+'px'); h.style.setProperty('--y',a[1].toFixed(1)+'px'); });
+    drawLeader();
+  }
+  function drawLeader(){
+    if (!desk){ leaderPath.setAttribute('d',''); return; }
+    var a=anchors[active]; if(!a) return;
+    var rr=room.getBoundingClientRect(), pn=panes[active].querySelector('.pn').getBoundingClientRect();
+    var ex=pn.left-rr.left-10, ey=pn.top-rr.top+pn.height/2;
+    var sx=a[0]+18, sy=a[1];
+    var mx=ex-28;
+    var d='M'+sx.toFixed(1)+' '+sy.toFixed(1)+' H'+mx.toFixed(1)+' V'+ey.toFixed(1)+' H'+ex.toFixed(1);
+    leaderPath.setAttribute('d',d);
+    leaderEnd.setAttribute('cx',(ex).toFixed(1)); leaderEnd.setAttribute('cy',ey.toFixed(1));
+  }
+  function setActive(i, fromUser){
+    active=i;
+    hots.forEach(function(h,j){ h.classList.toggle('on',j===i); h.setAttribute('aria-pressed', j===i?'true':'false'); });
+    tabs.forEach(function(t,j){ t.setAttribute('aria-selected', j===i?'true':'false'); t.tabIndex = j===i?0:-1; });
+    panes.forEach(function(p,j){ p.classList.toggle('on',j===i); });
+    if (desk){
+      var len=leaderPath.getTotalLength ? 0 : 0;
+      drawLeader();
+      try { var L=leaderPath.getTotalLength(); leaderPath.style.transition='none'; leaderPath.style.strokeDasharray=L; leaderPath.style.strokeDashoffset=RM?0:L; leaderPath.getBoundingClientRect(); leaderPath.style.transition=''; leaderPath.style.strokeDashoffset=0; } catch(e){}
+    }
+  }
+  hots.forEach(function(h){ h.addEventListener('click', function(){ setActive(+h.dataset.i, true); }); });
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ setActive(+t.dataset.i, true); });
+    t.addEventListener('keydown', function(e){ var i=+t.dataset.i; if(e.key==='ArrowRight'){i=(i+1)%3;} else if(e.key==='ArrowLeft'){i=(i+2)%3;} else return; e.preventDefault(); setActive(i,true); tabs[i].focus(); }); });
+  panes.forEach(function(p){ p.addEventListener('click', function(){ if (desk) setActive(+p.dataset.i, true); }); });
+
+  // ---- scroll-linked turn ----
+  function progress(){
+    var r=stage.getBoundingClientRect(), vh=window.innerHeight;
+    return clamp((vh - r.top)/(vh + r.height), 0, 1);
+  }
+  function loop(){
+    raf=0;
+    var dy=tgtYaw-curYaw;
+    if (Math.abs(dy) > 0.00015){ curYaw += dy*0.08; draw(curYaw); raf=requestAnimationFrame(loop); }
+    else { curYaw=tgtYaw; draw(curYaw); }
+  }
+  function onScroll(){
+    if (RM) return;
+    tgtYaw = YAW0 + (progress()-0.5)*YAWR;
+    if (!raf) raf=requestAnimationFrame(loop);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  if (!RM){ curYaw = tgtYaw = YAW0 + (progress()-0.5)*YAWR; }
+  var rto; window.addEventListener('resize', function(){ clearTimeout(rto); rto=setTimeout(function(){ layout(); setActive(active); }, 60); });
+  layout(); setActive(0);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ drawLeader(); });
+
+  // one-time invitation ping when the object first comes into view
+  if (io && !RM){ var po=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ room.classList.add('ping'); po.disconnect(); } }); },{threshold:.5}); po.observe(room); }
+
+  // ---- desktop cursor ring over the object ----
+  var cur=$('#cursor');
+  if (window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    room.classList.add('cur');
+    var cx=0,cy=0,tx=0,ty=0,cr=0;
+    function cl(){ cx+=(tx-cx)*.25; cy+=(ty-cy)*.25; cur.style.transform='translate('+cx.toFixed(1)+'px,'+cy.toFixed(1)+'px)'; cr = (Math.abs(tx-cx)+Math.abs(ty-cy) > .2) ? requestAnimationFrame(cl) : 0; }
+    room.addEventListener('pointermove', function(e){ tx=e.clientX; ty=e.clientY; if(!cur.classList.contains('show')){ cx=tx; cy=ty; } cur.classList.add('show'); if(!cr) cr=requestAnimationFrame(cl); cur.classList.toggle('big', !!e.target.closest('.hot')); });
+    room.addEventListener('pointerleave', function(){ cur.classList.remove('show'); });
+  }
+})();
+</script>
+</body>
+</html>
