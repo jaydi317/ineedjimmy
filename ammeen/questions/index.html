@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Questions for Jim Ammeen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@800&family=Jost:wght@500&display=swap">
+<style>
+/* ===== CLIENT BRAND: change only these 5 colors (pull them from the client's website/logo) ===== */
+:root{--navy:#06163A;   /* brand: header + headings (dark color) */
+      --deep:#030C22;   /* brand-deep: sticky progress bar (darker) */
+      --orange:#C0B596; /* accent: Talk button, progress, highlights */
+      --onAccent:#06163A;/* text on the accent button (dark or white, whichever reads) */
+      --accentText:#6E5F33;/* accent used as small text on white (darker version of accent) */
+/* ===== leave these ===== */
+--paper:#F3F5F9;--card:#FFFFFF;--ink:#0E1A33;--muted:#4D5A75;--line:#D9DFEA;--green:#16704A;--red:#B42A24}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.5 'Barlow',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+header.hero{background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 28px) 0 30px}
+.wm{font:500 26px/1 'Jost',system-ui,sans-serif;letter-spacing:.06em}.wm b{font-weight:500;color:var(--orange)}
+.wm small{display:block;font-size:9px;letter-spacing:.24em;margin-top:5px;color:#C9D3EA}
+h1{font:800 clamp(34px,8vw,52px)/.95 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;margin:22px 0 12px;text-wrap:balance}
+h1 span{color:var(--orange)}
+.hero p{color:#DCE3F2;margin:0 0 10px;max-width:60ch}
+.how{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.how li{display:flex;gap:10px;align-items:flex-start;color:#fff}
+.how b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--onAccent);font-weight:800}
+.bar{position:sticky;top:0;z-index:20;background:var(--deep);color:#fff;padding:10px 0 12px;padding-top:calc(env(safe-area-inset-top,0px) + 10px)}
+.bar .wrap{display:flex;align-items:center;gap:12px}
+.track{flex:1;height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--orange);transition:width .3s}
+.count{font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.notice{margin:16px 0 0;padding:14px 16px;border-radius:10px;background:#FFF3D6;color:#6B3B00;border:1px solid #F5C77A;font-size:16px}
+section.sec{padding-top:28px}
+.sec h2{font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--navy);margin:0}
+.sec .sub{color:var(--muted);margin:6px 0 14px;font-size:16px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;margin-bottom:14px;scroll-margin-top:70px}
+.q.done{border-color:#9BD3B5;box-shadow:inset 4px 0 0 var(--green)}
+.qn{font:700 13px/1 'Barlow',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accentText)}
+.q h3{font-size:20px;line-height:1.3;margin:6px 0 4px;font-weight:700;text-wrap:balance}
+.q .hint{color:var(--muted);font-size:16px;margin:0 0 12px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 10px}
+.talk{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;border:0;border-radius:999px;background:var(--orange);color:var(--onAccent);font-weight:800;font-size:18px;cursor:pointer}
+.talk svg{width:22px;height:22px}
+.talk.rec{background:var(--red);color:#fff}
+.talk.rec .dot{width:12px;height:12px;border-radius:50%;background:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.talk.rec .dot{animation:none}}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--red)}
+.meter{display:inline-block;width:120px;height:10px;border-radius:99px;background:#E4E8F0;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .1s}
+.mic-hint{color:var(--muted);font-size:15px;font-weight:600;margin:0}
+.mic-hint:empty{display:none}
+.ghost{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:15px;color:var(--muted)}
+.clips{display:grid;gap:10px;margin:4px 0 10px}
+.clip{background:var(--paper);border-radius:10px;padding:10px 12px}
+.clip audio{width:100%;height:40px}
+.clip .st{font-size:14px;font-weight:600;margin-top:6px}
+.st.ok{color:var(--green)}.st.wait{color:var(--muted)}.st.err{color:var(--red)}
+.clip .heard{font-size:15px;color:var(--ink);margin-top:6px;white-space:pre-wrap}
+.clip .heard b{color:var(--muted);font-weight:600}
+.retry{margin-top:6px}
+textarea,input.short{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;font-size:17px;line-height:1.4}
+textarea{min-height:84px;resize:vertical}
+textarea:focus,input.short:focus{outline:none;border-color:var(--orange)}
+.typed-st{font-size:14px;margin-top:6px;min-height:20px}
+.or{font-size:14px;color:var(--muted);margin:2px 0 6px}
+.done-box{margin:32px 0 16px;background:var(--navy);color:#fff;border-radius:14px;padding:24px 20px}
+.done-box h2{font:800 32px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:0 0 8px}
+.done-box p{color:#DCE3F2;margin:0 0 14px}
+.send{min-height:56px;width:100%;border:0;border-radius:12px;background:var(--orange);color:var(--onAccent);font-weight:800;font-size:19px;cursor:pointer}
+.send:disabled{opacity:.6}
+.memo{margin-top:16px;font-size:15px;color:#C9D3EA}
+.memo b{color:#fff}
+footer{color:var(--muted);font-size:14px;padding:10px 0 40px;text-align:center}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.jump a{font-size:14px;font-weight:600;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 12px}
+.testbar{background:#7A1FA2;color:#fff;text-align:center;font-weight:700;font-size:14px;padding:8px 12px}
+
+section.sec{scroll-margin-top:64px}
+.rv-rec{background:var(--card);border:2px solid var(--navy);border-radius:14px;padding:20px 18px;display:grid;gap:10px}
+.rv-tag{justify-self:start;background:var(--navy);color:#fff;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
+.rv-rec h3{margin:0;font:800 26px/1.05 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--navy)}
+.rv-rec p{margin:0}
+.rv-rec ul,.rv-body ul,.rv-body ol{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.rv-next{color:var(--muted);font-size:16px}
+.rv-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:16px 0}
+.rv-tile{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.rv-k{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accentText)}
+.rv-v{font:800 34px/1.1 'Barlow Condensed',sans-serif;color:var(--navy);font-variant-numeric:tabular-nums}
+.rv-v small{font:600 15px 'Barlow',sans-serif;color:var(--muted)}
+.rv-tile p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.rv-d{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px}
+.rv-d summary{cursor:pointer;padding:16px;font-weight:700;font-size:19px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:10px;align-items:center}
+.rv-d summary::-webkit-details-marker{display:none}
+.rv-d summary::after{content:"+";font-size:24px;color:var(--accentText);line-height:1}
+.rv-d[open] summary::after{content:"\2013"}
+.rv-body{padding:0 16px 18px;display:grid;gap:10px;font-size:17px}
+.rv-body h4{margin:8px 0 0;font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--accentText)}
+.rv-body blockquote{margin:0;padding:4px 0 4px 14px;border-left:3px solid var(--orange);font-style:italic}
+.rv-note,.rv-anchor{color:var(--muted);font-size:15px;margin:0}
+.rv-anchor{border-top:1px dashed var(--line);padding-top:8px}
+.rv-turn{margin:26px 0 0;padding:18px;border-radius:12px;background:var(--navy);color:#fff}
+.rv-turn h3{margin:0 0 4px;font:800 28px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--orange)}
+.rv-turn p{margin:0;color:#DCE3F2}
+.rv-safe{background:#FFF8E6;border:1px solid #E9D49A;color:#5A4410;border-radius:10px;padding:12px 14px;font-size:16px;margin-bottom:14px}
+.bring-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.bring-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.bring-card h4{margin:0;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:var(--navy)}
+.bring-card .soft{text-transform:none;letter-spacing:0;color:var(--muted);font-weight:500}
+.bring-card label{display:flex;gap:10px;align-items:flex-start;font-size:16px;cursor:pointer}
+.bring-card input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--navy)}
+</style>
+</head>
+<body>
+<div class="testbar" id="testbar" hidden>TEST MODE · answers go to a separate TEST sheet, not the real one</div>
+<header class="hero"><div class="wrap">
+ <div class="wm" id="wm"></div>
+ <h1 id="heroTitle"></h1>
+ <p id="intro"></p>
+ <ul class="how">
+  <li><b>1</b><span>Tap the <strong>Talk</strong> button and allow the microphone.</span></li>
+  <li><b>2</b><span>Talk. Tap <strong>Stop</strong> when you're done. It saves itself.</span></li>
+  <li><b>3</b><span>Skip anything. Come back anytime on the same phone. The first few matter most.</span></li>
+ </ul>
+ <nav class="jump" aria-label="Sections" id="jump"><a href="#plan">The plan</a><a href="#bring">Bring list</a></nav>
+ <div id="notice"></div>
+</div></header>
+<div class="bar" aria-live="polite"><div class="wrap"><div class="track"><div class="fill" id="fill"></div></div><div class="count" id="count">0 answered</div></div></div>
+<div class="wrap"><section class="sec rv" id="plan">
+ <h2>Your plan, in one minute</h2>
+ <p class="sub">From our call on October 8, 2026, and the research we ran right after it.</p>
+
+ <div class="rv-rec">
+  <div class="rv-tag">Where we'd start</div>
+  <h3>Win back and grow the credit unions</h3>
+  <p>You said the one thing to fix in the next 90 days is bringing in new work. Credit union work is the fastest path:</p>
+  <ul>
+   <li><b>It pays in full.</b> Every credit union bill gets paid. Individual clients drop to about 60%.</li>
+   <li><b>It fills the firm's week</b> with exactly the work Gene's new compliance certification covers.</li>
+   <li><b>The market is right there.</b> You have 15, you had about 25, and Indiana has 121.</li>
+   <li><b>It frees your hours</b> for mediation, receiver and trustee work, and estate planning. Higher rates, calmer work.</li>
+  </ul>
+  <p class="rv-next"><b>The sharper offer:</b> small credit unions say exams are their biggest pain. So the lead offer is help getting through the exam, not another policy update. <b>Next in line:</b> get listed as a court neutral, price mediation per side, and build a "Receiver Readiness Kit" for banks.</p>
+ </div>
+
+ <div class="rv-tiles">
+  <div class="rv-tile"><div class="rv-k">Credit unions</div><div class="rv-v">15 <small>today</small></div><p>About 25 before Sarah retired. 121 in Indiana.</p></div>
+  <div class="rv-tile"><div class="rv-k">Collected from individuals</div><div class="rv-v">~60%</div><p>The industry average is 93%. Money in trust first closes most of that gap.</p></div>
+  <div class="rv-tile"><div class="rv-k">Mediation, Indianapolis</div><div class="rv-v">$350–575</div><p>What court-listed neutrals here charge per hour. You're not on that list yet.</p></div>
+ </div>
+
+ <details class="rv-d">
+  <summary>What you told us</summary>
+  <div class="rv-body">
+   <blockquote>"I need to grow top line revenue."</blockquote>
+   <blockquote>"There's basically two ways to make more money in the practice of law. Bill more hours, and bill at a higher rate. And collect on the work you do do."</blockquote>
+   <blockquote>"I do take on too many things that are too small."</blockquote>
+   <blockquote>"Being a receiver is something I've been interested in for a long time."</blockquote>
+   <blockquote>"Estate planning is a nice, non-confrontational business."</blockquote>
+   <ul>
+    <li><b>Your #1 for the next 90 days:</b> bringing in new work.</li>
+    <li><b>Mediation:</b> below market today by choice. Goal: $450 to $500 an hour within a year, earned with successful mediations.</li>
+    <li><b>Collections:</b> credit unions pay in full. Individuals often drop to about 60%.</li>
+    <li><b>Running the firm:</b> visibility into the team's work without micromanaging, billing and overhead, adding health insurance, and new trust account systems for 2027.</li>
+    <li><b>Marketing:</b> reach credit union CEOs and risk officers through the League, with talks, video or a podcast.</li>
+    <li><b>Website:</b> update it, add video, and show Gene as an attorney, not a partner.</li>
+   </ul>
+  </div>
+ </details>
+
+ <details class="rv-d">
+  <summary>What the research found</summary>
+  <div class="rv-body">
+   <h4>Your record</h4>
+   <ul>
+    <li>BA, Middlebury College. JD, IU McKinney, with the Faculty Award for Outstanding Law Student. Editor-in-Chief of the Indiana International &amp; Comparative Law Review.</li>
+    <li>Law clerk to Chief Justice Randall T. Shepard, Indiana Supreme Court. Then Baker &amp; Daniels and Lewis &amp; Kappes. You founded the firm in 2007.</li>
+    <li>Registered civil and family mediator. Court-appointed receiver in <i>State ex rel. Castetter v. Blaine</i>, Hamilton Superior Court 5, since 2023.</li>
+   </ul>
+   <h4>Credit unions</h4>
+   <ul>
+    <li>Indiana has 121 credit unions with about 2.8 million members and about $50 billion in assets.</li>
+    <li>A January 2026 survey of small credit union CEOs: exams are exhausting, and their first ask is "help with complex regulations."</li>
+    <li>The most visible Indianapolis firm marketing to credit unions is Krieg DeVault. Smaller credit unions look thinly served.</li>
+   </ul>
+   <h4>Mediation</h4>
+   <ul>
+    <li>The Indiana Commercial Court keeps a directory of 47 neutrals, with rates. Indianapolis-area neutrals charge $350 to $575 an hour. Getting listed starts with an email to the court's staff.</li>
+    <li>Lawyers pay more for a mediator who can give a case value the client will believe. A former Supreme Court clerk is close to that credential.</li>
+   </ul>
+   <h4>Receivers</h4>
+   <ul>
+    <li>Under Indiana law the court appoints the receiver, but the bank usually proposes the name. Its biggest fear is cost.</li>
+    <li>Downtown office buildings are in distress, and lenders have been proposing out-of-state receivers. A trusted local receiver has an opening.</li>
+   </ul>
+   <h4>Collections and AI</h4>
+   <ul>
+    <li>Industry benchmark (Clio Legal Trends): 93% of billed work gets collected. Clio Payments includes payment plans, automatic top-ups of trust deposits, and a "Pay Later" option.</li>
+    <li>The ABA's guidance on AI (Formal Opinion 512) centers on confidentiality and client consent. A short firm AI policy lets us use these tools safely.</li>
+   </ul>
+  </div>
+ </details>
+
+ <details class="rv-d">
+  <summary>Everything we could do for you</summary>
+  <div class="rv-body">
+   <h4>Bring in new work</h4>
+   <ul>
+    <li><b>Credit Union Win-Back.</b> Personal outreach to the credit unions that left and the ones you've never served. We write the emails, the call script and the one-page offer.</li>
+    <li><b>Exam Desk.</b> Stand with a credit union from 30 days before its exam through the exit meeting. Gene is on the file and you're in the room.</li>
+    <li><b>Monthly exam and compliance update.</b> A short video and email for credit union CEOs. AI drafts it, Gene records it in minutes.</li>
+    <li><b>The League.</b> Webinar slots, a business partner listing, and a 2027 convention talk, through your warm contact there.</li>
+    <li><b>Get listed as a court neutral.</b> The Commercial Court directory covers both mediation and receiver work.</li>
+    <li><b>Receiver Readiness Kit.</b> For bank workout officers and their lawyers: a 30-day budget, a bond quote, a property manager lined up, and a sample order.</li>
+    <li><b>Receiver networking.</b> The Turnaround Management Association's Indiana chapter, and the National Association of Federal Equity Receivers (NAFER).</li>
+    <li><b>Estate planning for credit union members.</b> Workshops through the credit unions you already serve. We'd check the referral rules first.</li>
+    <li><b>Trustee services</b> for families who don't want a bank, or are too small for one.</li>
+   </ul>
+   <h4>Earn more per hour</h4>
+   <ul>
+    <li><b>Per-side mediation pricing.</b> Each side pays $250 to $275 an hour, so you earn $500 to $550 an hour without quoting $500 to anyone.</li>
+    <li><b>Small-matter filter.</b> An intake screen with a minimum engagement, plus a list of good lawyers to refer smaller matters to.</li>
+    <li><b>Flat-fee probate in phases:</b> open, inventory, creditor period, close.</li>
+    <li><b>Trustee fees</b> with an onboarding fee and a monthly minimum, so small trusts are worth taking.</li>
+   </ul>
+   <h4>Collect what you earn</h4>
+   <ul>
+    <li><b>Money in trust first.</b> A deposit before work starts, automatic top-ups, cards and ACH through Clio Payments, and payment plans.</li>
+    <li><b>Monthly money dashboard.</b> Three numbers from Clio, checked against the industry benchmarks.</li>
+   </ul>
+   <h4>Run the firm</h4>
+   <ul>
+    <li><b>A weekly team snapshot</b> from Clio, one page on Friday.</li>
+    <li><b>An overhead and health insurance model</b> built from your P&amp;L and ADP payroll.</li>
+    <li><b>A trust account system</b>, set up with your accountants for 2027.</li>
+    <li><b>A firm AI policy</b>, so everything above happens safely.</li>
+   </ul>
+   <h4>Website and video</h4>
+   <ul>
+    <li><b>A new site we can update for you.</b> It leads with credit unions and your neutral work, with a page for each service. No waiting on an overseas developer.</li>
+    <li><b>A homepage video that feels like you</b>, plus short explainers: what a receiver does, and what mediation with you is like.</li>
+    <li><b>Reviews and listings cleanup.</b> One firm name and one suite number everywhere, plus a simple way to ask for reviews.</li>
+   </ul>
+  </div>
+ </details>
+
+ <details class="rv-d">
+  <summary>Ways to package your services</summary>
+  <div class="rv-body">
+   <p class="rv-note">These are built from offers other firms publish. The prices are anchors to test, not final numbers. We'll set real prices together.</p>
+   <h4>Credit union counsel</h4>
+   <ol class="rv-ladder">
+    <li><b>Counsel on Call.</b> Fast written answers and a regulatory calendar, for a monthly fee.</li>
+    <li><b>Exam Desk.</b> On-call help plus support through the exam, with policy updates from a set bank of hours.</li>
+    <li><b>Outside General Counsel.</b> Board meetings, contracts, policies and BSA oversight, priced against the cost of a full-time hire.</li>
+   </ol>
+   <p class="rv-anchor">Anchor: firms that publish monthly outside-counsel tiers charge about $1,500 to $6,500 a month.</p>
+   <h4>Mediation</h4>
+   <ol class="rv-ladder">
+    <li><b>Half-day session.</b> 4 hours, prep included.</li>
+    <li><b>Full day, priced per side.</b> Briefs due ahead of time, and a written deal memo the same day.</li>
+    <li><b>Private judging day.</b> A flat day rate with a cancellation fee.</li>
+   </ol>
+   <p class="rv-anchor">Anchors: $350 to $575 an hour locally. Some neutrals elsewhere publish $3,750 for a half day and $7,500 for a full day.</p>
+   <h4>Receiver work</h4>
+   <ol class="rv-ladder">
+    <li><b>Receiver Readiness Kit.</b> Free to lenders.</li>
+    <li><b>Receiver's counsel.</b></li>
+    <li><b>Serve as receiver.</b> A court-approved hourly rate, often with part held back to the end, plus management fees on property.</li>
+   </ol>
+   <h4>Trustee and estate planning</h4>
+   <ol class="rv-ladder">
+    <li><b>Estate plans at flat fees.</b> Essentials, Custom, and Tax-planned.</li>
+    <li><b>Plan maintenance membership.</b> Annual review, updates, and a family meeting soon after a death. About $1,250 a year is common.</li>
+    <li><b>Named trustee.</b> An onboarding fee, a monthly minimum, then hourly or a percentage of assets.</li>
+   </ol>
+  </div>
+ </details>
+
+ <details class="rv-d">
+  <summary>Quick fixes for avalawin.com</summary>
+  <div class="rv-body">
+   <ul>
+    <li>The Contact page still shows template filler text and practice areas you don't offer.</li>
+    <li>Service pages show a code warning at the top and one-sentence descriptions.</li>
+    <li>Credit unions are one of nine equal tiles, and receivership has no page of its own.</li>
+    <li>Directory listings show three different suite numbers (550, 750, 860) and several firm names.</li>
+    <li>No reviews, video or case results yet. All of it is fixable fast.</li>
+   </ul>
+  </div>
+ </details>
+
+ <div class="rv-turn">
+  <h3>Now, the questions</h3>
+  <p>Start with the big five. Skip anything. It all saves as you go.</p>
+ </div>
+</section>
+</div>
+<main class="wrap" id="main"></main>
+<div class="wrap"><section class="sec" id="bring">
+ <h2>Bring to meeting #1</h2>
+ <p class="sub">Gather what you can. Ballpark beats perfect. Check items off as you go; the list remembers on this device.</p>
+ <div class="rv-safe"><b>Please don't send passwords, account numbers or client files by email or on this page.</b> We'll connect accounts together in the meeting, and you stay in control of every login.</div>
+
+ <div class="bring-grid">
+  <div class="bring-card"><h4>From Clio</h4>
+   <label for="br1"><input type="checkbox" id="br1"> Revenue by practice area or matter type, 2024 and 2025</label>
+   <label for="br2"><input type="checkbox" id="br2"> Unpaid invoices by age (A/R aging)</label>
+   <label for="br3"><input type="checkbox" id="br3"> Realization and collection report</label>
+   <label for="br4"><input type="checkbox" id="br4"> Time entries for each lawyer, last 3 months</label>
+   <label for="br5"><input type="checkbox" id="br5"> Open matters by type</label>
+  </div>
+  <div class="bring-card"><h4>Money and payroll</h4>
+   <label for="br6"><input type="checkbox" id="br6"> P&amp;L for the last 12 months</label>
+   <label for="br7"><input type="checkbox" id="br7"> List of monthly overhead: rent or building costs, software, subscriptions</label>
+   <label for="br8"><input type="checkbox" id="br8"> ADP payroll summary</label>
+   <label for="br9"><input type="checkbox" id="br9"> Any health insurance quotes</label>
+   <label for="br10"><input type="checkbox" id="br10"> Last 3 trust account reconciliations, and who does them now</label>
+  </div>
+  <div class="bring-card"><h4>Credit unions</h4>
+   <label for="br11"><input type="checkbox" id="br11"> Current credit union clients, with retainer amount and what's included</label>
+   <label for="br12"><input type="checkbox" id="br12"> Credit unions that left in the last few years</label>
+   <label for="br13"><input type="checkbox" id="br13"> A sample retainer or engagement letter</label>
+   <label for="br14"><input type="checkbox" id="br14"> Contacts at the League, starting with Kerry or Cari Palmer</label>
+  </div>
+  <div class="bring-card"><h4>Mediation, receiver and estate work</h4>
+   <label for="br15"><input type="checkbox" id="br15"> List of mediations: date, type, fee, outcome</label>
+   <label for="br16"><input type="checkbox" id="br16"> Receiver reports and fee filings already public with the court</label>
+   <label for="br17"><input type="checkbox" id="br17"> Your mediator registration details</label>
+   <label for="br18"><input type="checkbox" id="br18"> Estate planning fee sheet or a recent sample engagement</label>
+   <label for="br19"><input type="checkbox" id="br19"> Names of CPAs, advisors and bankers who refer to you</label>
+  </div>
+  <div class="bring-card"><h4>Accounts and software <span class="soft">(just the names, no passwords)</span></h4>
+   <label for="br20"><input type="checkbox" id="br20"> Clio: which plan, and who is the admin</label>
+   <label for="br21"><input type="checkbox" id="br21"> ADP: who has access</label>
+   <label for="br22"><input type="checkbox" id="br22"> Accounting software, and your accountant's name</label>
+   <label for="br23"><input type="checkbox" id="br23"> Website: domain registrar, hosting company, WordPress admin</label>
+   <label for="br24"><input type="checkbox" id="br24"> The web developer's name and contact</label>
+   <label for="br25"><input type="checkbox" id="br25"> Google Business Profile: who manages it</label>
+   <label for="br26"><input type="checkbox" id="br26"> Email provider: Microsoft 365, Google or other</label>
+   <label for="br27"><input type="checkbox" id="br27"> Phone system and any LinkedIn or social accounts</label>
+  </div>
+  <div class="bring-card"><h4>Nice to have</h4>
+   <label for="br28"><input type="checkbox" id="br28"> Any headshots, office photos or video of you speaking</label>
+   <label for="br29"><input type="checkbox" id="br29"> Logo files</label>
+   <label for="br30"><input type="checkbox" id="br30"> Any kind notes from clients we could use as reviews, with their OK</label>
+  </div>
+ </div>
+</section>
+</div>
+<div class="wrap">
+ <div class="done-box" id="finish">
+  <h2>All done for now?</h2>
+  <p>Everything you've answered is already saved. Tap below and I'll get a copy of all of it. You can still come back and add more later.</p>
+  <button class="send" id="sendAll" type="button">Send everything to Jimmy</button>
+  <p class="st" id="sendSt" style="margin-top:10px"></p>
+  <p class="memo"><b>Rather use Voice Memos?</b> Open the Voice Memos app, read the questions out loud and answer them, then text the recording to Jimmy. That works too.</p>
+ </div>
+</div>
+<footer id="foot"></footer>
+
+<script>
+/* =====================================================================
+   1) CONFIG: fill in for each client. Everything the client reads comes from here.
+   ===================================================================== */
+const CONFIG = {
+ "endpoint": "https://script.google.com/macros/s/AKfycbwYj5kldzlphutJq6INLFr_y96R-tJcb7WHJXLpFk5ddCxasH0RDviJoW7CZliy5CtXfw/exec",
+ "token": "ineedjimmy-voice-v2",
+ "client": "ammeen",
+ "name": "Jim Ammeen",
+ "firstName": "Jim",
+ "brand": "AMMEEN & ASSOCIATES",
+ "brandSub": "ATTORNEYS AT LAW · INDIANAPOLIS",
+ "intro": "Everything from our October 8 call is below: the plan, the research, and the options. Then the questions. Answer them like we're sitting across the table. Talk as long as you want and tell stories. That's the good stuff. Your answers become the plan for our two audit meetings.",
+ "footer": "Private page for Jim Ammeen · prepared by Jimmy Davis, iNeedJimmy.com"
+};
+
+/* =====================================================================
+   2) QUESTIONS: sections in order. type "talk" = voice + typing, "short" = one-line typed box.
+      ids must be unique and stable (a1, a2, n1...). NEVER put strategy notes ("why we ask")
+      here: the client can view the page source. Those live in the private brief file.
+   ===================================================================== */
+const QUESTIONS = [{"section": "start", "title": "Start here: the big five", "short": "The big five", "sub": "If you only have 10 minutes, answer these five. They matter most.", "items": [{"id": "b1", "type": "talk", "q": "Picture the end of 2027. The firm is exactly how you want it. Walk me through a normal week.", "hint": "What work are you doing? How many hours? What did the year bring in? Who's on the team?"}, {"id": "b2", "type": "talk", "q": "You said you had about 25 credit unions before Sarah retired and 15 now. Which ones left, and what would it take to win them back?", "hint": "Who decided at each one? What did they value most about working with the firm? Any you'd rather not have back?"}, {"id": "b3", "type": "talk", "q": "What kinds of disputes do you most want to mediate, and who sends you mediations today?", "hint": "Business, real estate, estate and trust, family, credit union matters? Which lawyers or judges know your work?"}, {"id": "b4", "type": "talk", "q": "If you wanted the next receivership, who would you call first? Walk me through the banks, lenders' lawyers and judges who know your work.", "hint": "Workout or special-assets officers, bank counsel, judges, the Securities Division. Names are fine; we keep this private."}, {"id": "b5", "type": "talk", "q": "If I could take one thing off your plate this month, what would it be?", "hint": "Anything: billing, collections, the website, a recurring task, something with the building."}]}, {"section": "cu", "title": "Credit unions", "short": "Credit unions", "sub": "Your core business, and the fastest place to grow.", "items": [{"id": "c1", "type": "talk", "q": "What do your credit unions call you about most?", "hint": "Collections, foreclosures, probate claims, powers of attorney, compliance, employment, contracts?"}, {"id": "c2", "type": "talk", "q": "How do your credit unions feel about their exams, from the state or NCUA? Have you or Gene ever helped one get through an exam?", "hint": "A January survey of small credit union CEOs says exams are their biggest pain. Does that match what you hear?"}, {"id": "c3", "type": "talk", "q": "What does a credit union retainer include today, and what does it cost? How did you set the price?", "hint": "Monthly or annual? Hours included? What's billed on top?"}, {"id": "c4", "type": "talk", "q": "You mentioned Kerry Palmer as your best contact at the League. Is that Kerry Palmer at Origins, or Cari Palmer at Energy Plus, who's the League's vice chair? Who else there do you know?"}, {"id": "c5", "type": "talk", "q": "What does Gene's new compliance certification let the firm offer that it couldn't before?", "hint": "In your words. Anything he'd especially enjoy owning?"}]}, {"section": "neutral", "title": "Mediation, receiver and trustee work", "short": "Neutral work", "sub": "The higher-rate work you said you want more of.", "items": [{"id": "m1", "type": "talk", "q": "Tell me about your mediations so far. Roughly how many, what kinds, how did they go, and what did you charge?", "hint": "Are you registered for both civil and family? Any arbitration or private judging?"}, {"id": "m2", "type": "talk", "q": "Where does the Blaine receivership stand today, and what can we say about it publicly?", "hint": "What's been recovered, what's next, and what you're proudest of in how you've handled it."}, {"id": "m3", "type": "talk", "q": "Banks want a receiver who arrives with a 30-day budget, a bond and a property manager lined up. Do you have a property manager you'd trust, and can you get bonded?"}, {"id": "m4", "type": "talk", "q": "When you picture serving as a trustee, who are you serving? What kinds of families or situations?", "hint": "Families who don't want a bank, business owners, special needs trusts, estates in conflict?"}]}, {"section": "estate", "title": "Estate planning", "short": "Estate planning", "sub": "The calm, lucrative work you mentioned.", "items": [{"id": "e1", "type": "talk", "q": "How many estate plans did you do last year, what did you charge, and how complex do you want the work to be?"}, {"id": "e2", "type": "talk", "q": "Which CPAs, financial advisors or bankers could send you estate and trust clients?", "hint": "Including people at your credit unions."}]}, {"section": "firm", "title": "Running the firm", "short": "The firm", "sub": "Billing, collections and the team.", "items": [{"id": "f1", "type": "talk", "q": "You said you take on too many small matters. What kinds come in, and what makes them hard to say no to?", "hint": "Would it help to have a list of good lawyers you could refer them to?"}, {"id": "f2", "type": "talk", "q": "Walk me through how a new individual client gets billed today, from the first call to getting paid.", "hint": "Do you take a deposit into trust first? Is Clio Payments turned on? Payment plans?"}, {"id": "f3", "type": "talk", "q": "What does each person on the team handle now, and what would a full, productive week look like for each of them?", "hint": "Including you. What eats your day that someone else could take?"}, {"id": "f4", "type": "talk", "q": "What would you need to know to feel safe adding health insurance?", "hint": "A payroll number, a cash cushion, a revenue level?"}]}, {"section": "numbers", "title": "Your numbers", "short": "Numbers", "sub": "Ballpark is fine. Skip anything you'd rather not share.", "items": [{"id": "n1", "type": "short", "q": "Hours you personally bill in a typical week"}, {"id": "n2", "type": "short", "q": "Your standard hourly rate today"}, {"id": "n3", "type": "short", "q": "Your mediation rate today"}, {"id": "n4", "type": "short", "q": "Typical monthly credit union retainer (or the range)"}, {"id": "n5", "type": "short", "q": "Optional: rough revenue last year"}, {"id": "n6", "type": "short", "q": "Which Clio plan are you on?"}]}, {"section": "web", "title": "Website and brand", "short": "Website", "sub": "Short and practical.", "items": [{"id": "w1", "type": "talk", "q": "When someone lands on your homepage, how should they feel about you, and what should they do next?", "hint": "And how do you feel about being on video?"}, {"id": "w2", "type": "talk", "q": "Who has the keys to the website: the developer in Japan, the domain, the hosting, and your Google Business Profile? Please don't say passwords here."}, {"id": "w3", "type": "talk", "q": "What client information are you comfortable letting AI tools see, and what's off-limits?"}]}];
+
+(function(){
+ var qs = new URLSearchParams(location.search);
+ var TEST = qs.get('test') === '1';
+ var ENDPOINT = qs.get('endpoint') || CONFIG.endpoint;
+ if (!ENDPOINT || ENDPOINT.indexOf('__') === 0) ENDPOINT = '';
+ var LS = 'vq-' + CONFIG.client + (TEST ? '-test' : '') + '-v1';
+ var state = {}; try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e) {}
+ if (!state.session) state.session = (TEST ? 'T' : 'S') + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+ state.answers = state.answers || {};
+ function persist(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e) {} }
+ persist();
+
+ document.getElementById('testbar').hidden = !TEST;
+ document.getElementById('wm').innerHTML = esc(CONFIG.brand) + (CONFIG.brandSub ? '<small>' + esc(CONFIG.brandSub) + '</small>' : '');
+ document.getElementById('heroTitle').innerHTML = esc(CONFIG.firstName) + ', just <span>talk.</span>';
+ document.getElementById('intro').textContent = CONFIG.intro;
+ document.getElementById('foot').textContent = CONFIG.footer;
+
+ var main = document.getElementById('main'), jump = document.getElementById('jump');
+ var all = [];
+ QUESTIONS.forEach(function(sec){
+  var s = document.createElement('section'); s.className='sec'; s.id='sec-'+sec.section;
+  s.innerHTML = '<h2>'+esc(sec.title)+'</h2>' + (sec.sub ? '<p class="sub">'+esc(sec.sub)+'</p>' : '');
+  var a = document.createElement('a'); a.href='#sec-'+sec.section; a.textContent = sec.short || sec.title; jump.appendChild(a);
+  sec.items.forEach(function(it){ all.push(it); s.appendChild(card(it)); });
+  main.appendChild(s);
+ });
+ function offNotice(){ document.getElementById('notice').innerHTML = '<div class="notice"><b>Heads up:</b> saving isn\'t switched on for this link yet, so answers stay on this phone for now. Ask Jimmy for the final link, or use the Voice Memos option at the bottom.</div>'; }
+ if (!ENDPOINT) offNotice();
+ else fetch(ENDPOINT).then(function(r){ return r.json(); }).then(function(j){ if (!j || !(j.version >= 2)) { ENDPOINT=''; offNotice(); } }).catch(function(){ /* can't read reply (network/CORS); keep trying on save */ });
+ updateProgress();
+ function micSvg(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>'; }
+
+ function card(it){
+  var el = document.createElement('div'); el.className='q'; el.id='q-'+it.id;
+  var num = it.id.toUpperCase();
+  var html = '<div class="qn">'+num+'</div><h3>'+esc(it.q)+'</h3>' + (it.hint ? '<p class="hint">'+esc(it.hint)+'</p>' : '<p class="hint"></p>');
+  if (it.type === 'talk') {
+   html += '<div class="controls"><button class="talk" type="button">'+micSvg()+'<span>Talk</span></button><span class="timer" hidden></span></div><p class="mic-hint" aria-live="polite"></p><div class="clips"></div><p class="or">Or type it:</p><textarea rows="3" aria-label="Type your answer to '+esc(it.q)+'"></textarea>';
+  } else {
+   html += '<input class="short" type="text" inputmode="text" aria-label="'+esc(it.q)+'" placeholder="Your answer">';
+  }
+  html += '<div class="typed-st st"></div>';
+  el.innerHTML = html;
+  var field = el.querySelector('textarea, input.short');
+  var saved = state.answers[it.id] || {};
+  if (saved.text) field.value = saved.text;
+  if (saved.done) el.classList.add('done');
+  var tst = el.querySelector('.typed-st');
+  var lastSent = saved.text || '';
+  var saveTimer;
+  function saveTyped(){
+   var v = field.value.trim();
+   state.answers[it.id] = Object.assign(state.answers[it.id]||{}, {text: field.value});
+   if (v) { state.answers[it.id].done = true; el.classList.add('done'); }
+   persist(); updateProgress();
+   if (v === lastSent.trim()) return;
+   if (!ENDPOINT) { tst.className='typed-st st ok'; tst.textContent='Saved on this phone'; return; }
+   tst.className='typed-st st wait'; tst.textContent='Saving…';
+   send({kind:'text', qid:it.id, question:it.q, text:v}).then(function(){ lastSent=v; tst.className='typed-st st ok'; tst.textContent='Saved ✓'; })
+    .catch(function(){ tst.className='typed-st st err'; tst.textContent='Not sent yet. It will retry when you tap "Send everything".'; });
+  }
+  field.addEventListener('input', function(){ state.answers[it.id]=Object.assign(state.answers[it.id]||{}, {text: field.value}); persist(); clearTimeout(saveTimer); saveTimer=setTimeout(saveTyped, 2500); });
+  field.addEventListener('blur', function(){ clearTimeout(saveTimer); saveTyped(); });
+  if (it.type === 'talk') wireRecorder(el, it);
+  return el;
+ }
+
+ var active = null;
+ function wireRecorder(el, it){
+  var btn = el.querySelector('.talk'), timer = el.querySelector('.timer'), clips = el.querySelector('.clips'), hint = el.querySelector('.mic-hint');
+  var savedInit = state.answers[it.id] || {};
+  (savedInit.clips||[]).forEach(function(c){ var d=document.createElement('div'); d.className='clip'; d.innerHTML=(c.ok?'<div class="st ok">Recording '+c.n+' saved ✓ ('+fmt(c.secs)+')</div>':'<div class="st wait">Recording '+c.n+' ('+fmt(c.secs)+') is on this phone only. Record it again to send it.</div>')+(c.heard?'<div class="heard"><b>What I heard:</b> '+esc(c.heard)+'</div>':''); clips.appendChild(d); });
+  btn.addEventListener('click', function(){
+   if (active && active.el === el) { active.stop(); return; }
+   if (active) active.stop();
+   start();
+  });
+  function start(){
+   if (!navigator.mediaDevices || !window.MediaRecorder) { showErr('This browser can\'t record. Please type, or use Voice Memos (see bottom).'); return; }
+   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true, autoGainControl:true}}).then(function(stream){
+    var isApple = /Apple/.test(navigator.vendor || '');
+    var prefs = isApple ? ['audio/mp4','audio/aac','audio/webm;codecs=opus','audio/webm'] : ['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];
+    var mime = prefs.find(function(m){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m); }) || '';
+    var rec = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+    var chunks = [], t0 = Date.now(), iv;
+    rec.ondataavailable = function(e){ if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = function(){
+     stream.getTracks().forEach(function(t){ t.stop(); });
+     clearInterval(iv); timer.hidden = true;
+     btn.classList.remove('rec'); btn.innerHTML = micSvg()+'<span>Talk again</span>';
+     var secs = Math.round((Date.now()-t0)/1000);
+     var blob = new Blob(chunks, {type: rec.mimeType || mime || 'audio/webm'});
+     if (secs < 1 || !blob.size) { showErr('That recording came out empty. Tap Talk and try again.'); return; }
+     loudness(blob).then(function(peak){ addClip(blob, secs, peak !== null && secs >= 2 && peak < 0.01); });
+    };
+    rec.start();
+    btn.classList.add('rec'); btn.innerHTML = '<span class="dot"></span><span>Stop</span>';
+    timer.hidden = false; timer.textContent = '0:00'; hint.textContent = 'Listening… talk as long as you like.';
+    iv = setInterval(function(){ var s = Math.round((Date.now()-t0)/1000); timer.textContent = fmt(s); if (s >= 900) active && active.stop(); }, 250);
+    active = { el: el, stop: function(){ hint.textContent = ''; if (rec.state !== 'inactive') rec.stop(); active = null; } };
+   }).catch(function(){ showErr('I couldn\'t use the microphone. Allow microphone access for this site (in Safari: the aA menu → Website Settings → Microphone → Allow), or type your answer.'); });
+  }
+  // Peak level of a finished recording (0–1), or null if the browser can't decode it.
+  function loudness(blob){
+   return new Promise(function(resolve){
+    try {
+     var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return resolve(null);
+     var ctx = new AC();
+     blob.arrayBuffer().then(function(ab){
+      ctx.decodeAudioData(ab, function(ad){
+       var d = ad.getChannelData(0), peak = 0;
+       for (var i = 0; i < d.length; i += 4) { var v = Math.abs(d[i]); if (v > peak) peak = v; }
+       try { ctx.close(); } catch(e) {} resolve(peak);
+      }, function(){ try { ctx.close(); } catch(e) {} resolve(null); });
+     }).catch(function(){ resolve(null); });
+    } catch(e) { resolve(null); }
+   });
+  }
+  function addClip(blob, secs, quiet){
+   var saved = state.answers[it.id] = state.answers[it.id] || {};
+   saved.clips = saved.clips || [];
+   var n = saved.clips.length + 1;
+   var d = document.createElement('div'); d.className='clip';
+   var url = URL.createObjectURL(blob);
+   d.innerHTML = '<audio controls preload="metadata" src="'+url+'"></audio>'+(quiet?'<div class="st err">This one sounds very quiet or silent. Play it back; if you can\'t hear yourself, check your microphone and tap Talk again.</div>':'')+'<div class="st wait">Saving recording '+n+'…</div><div class="heard" hidden></div>';
+   clips.appendChild(d);
+   el.classList.add('done'); saved.done = true; persist(); updateProgress();
+   var st = d.querySelector('.st.wait'), heard = d.querySelector('.heard');
+   var entry = {n:n, secs:secs}; saved.clips.push(entry); persist();
+   function upload(){
+    if (!ENDPOINT) { st.className='st ok'; st.textContent='Recorded ('+fmt(secs)+'). Saved on this phone only; saving isn\'t switched on yet.'; return; }
+    st.className='st wait'; st.textContent='Saving recording '+n+'…';
+    toBase64(blob).then(function(b64){
+     return send({kind:'audio', qid:it.id, question:it.q, clip:n, seconds:secs, mime:blob.type, audio:b64});
+    }).then(function(res){
+     st.className='st ok'; st.textContent='Recording '+n+' saved ✓ ('+fmt(secs)+')'; entry.ok = true; persist();
+     if (res && res.transcript) { heard.hidden=false; heard.innerHTML='<b>What I heard:</b> '+esc(res.transcript); entry.heard = res.transcript; persist(); }
+    }).catch(function(){
+     st.className='st err'; st.innerHTML='Didn\'t save. Check your connection. <button class="ghost retry" type="button">Try again</button>';
+     st.querySelector('button').onclick = upload;
+    });
+   }
+   upload();
+  }
+  function showErr(msg){ var d=document.createElement('div'); d.className='clip'; d.innerHTML='<div class="st err">'+esc(msg)+'</div>'; clips.appendChild(d); }
+ }
+
+ function send(payload){
+  payload.token = CONFIG.token; payload.client = CONFIG.client; payload.test = TEST; payload.session = state.session; payload.name = CONFIG.name; payload.sentAt = new Date().toISOString();
+  var body = JSON.stringify(payload);
+  return fetch(ENDPOINT, {method:'POST', body: body, redirect:'follow'}).then(function(r){
+   if (!r.ok) { var e = new Error('HTTP '+r.status); e.server = true; throw e; }
+   return r.json().catch(function(){ return {}; });
+  }, function(netErr){
+   // Browser couldn't read the reply (strict CORS). Send once more without reading it.
+   return fetch(ENDPOINT, {method:'POST', body: body, mode:'no-cors'}).then(function(){ return {}; });
+  }).then(function(j){ if (j && j.ok === false) { var e = new Error(j.error||'error'); e.server = true; throw e; } return j; });
+ }
+
+ document.getElementById('sendAll').addEventListener('click', function(){
+  var b = this, st = document.getElementById('sendSt');
+  document.querySelectorAll('textarea, input.short').forEach(function(f){ f.blur(); });
+  if (!ENDPOINT) { st.style.color='#FFD08A'; st.textContent='Saving isn\'t switched on for this link yet. Your typed answers are saved on this phone.'; return; }
+  b.disabled = true; st.style.color='#DCE3F2'; st.textContent='Sending…';
+  var answers = all.map(function(it){ var a=state.answers[it.id]||{}; return {qid:it.id, question:it.q, text:(a.text||'').trim(), clips:(a.clips||[]).length}; });
+  send({kind:'final', answers: answers}).then(function(){
+   st.style.color='#9BE3BE'; st.textContent='Sent ✓ Thank you, '+CONFIG.firstName+'. Jimmy has everything.'; b.textContent='Sent ✓';
+  }).catch(function(){ b.disabled=false; st.style.color='#FFD08A'; st.textContent='Couldn\'t send. Check your connection and try again.'; });
+ });
+
+ function updateProgress(){
+  var n = all.filter(function(it){ var a=state.answers[it.id]; return a && a.done; }).length;
+  document.getElementById('count').textContent = n + ' of ' + all.length + ' answered';
+  document.getElementById('fill').style.width = (all.length ? (n/all.length*100) : 0) + '%';
+ }
+ function toBase64(blob){ return new Promise(function(res, rej){ var r=new FileReader(); r.onload=function(){ res(String(r.result).split(',')[1]); }; r.onerror=rej; r.readAsDataURL(blob); }); }
+ function fmt(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+ function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+})();
+</script>
+<script>
+(function(){var K='vq-ammeen-bring-v1',s={};try{s=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+document.querySelectorAll('#bring input[type=checkbox]').forEach(function(b){if(s[b.id])b.checked=true;b.addEventListener('change',function(){s[b.id]=b.checked;try{localStorage.setItem(K,JSON.stringify(s))}catch(e){}})});})();
+</script>
+</body>
+</html>
