@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>Board Packet for Steve</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EAD6; --sheet:#FFFDF7; --manila:#E7D3A1; --manila-dk:#C9AE6E;
+  --ink:#1C2840; --ink2:#55607A; --rule:#DED3B8; --line:#C9D7EA;
+  --red:#AE2A20; --yellow:#F4CC3D; --green:#2C6A3A; --green-bg:#E3F0E2; --blue:#2D5B88;
+  --shadow:0 1px 0 rgba(28,40,64,.06), 0 8px 24px -12px rgba(28,40,64,.35);
+  --r:14px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;overflow-x:clip}
+html{scroll-behavior:auto}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.5 "Source Sans 3",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(rgba(28,40,64,.035) 1px,transparent 1px);background-size:5px 5px}
+a{color:var(--blue)}
+button{font:inherit;color:inherit;cursor:pointer}
+.app{max-width:460px;margin:0 auto;padding:0 16px 40px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.12;margin:0}
+h2{font-size:30px;font-weight:800;letter-spacing:-.01em}
+h3{font-size:20px;font-weight:600}
+.tw{font-family:"Special Elite","Courier New",monospace;letter-spacing:.04em;text-transform:uppercase;font-size:13px;color:var(--ink2)}
+.hand{font-family:Caveat,cursive;font-size:24px;line-height:1.15;color:var(--blue)}
+.muted{color:var(--ink2)}
+.small{font-size:14px}
+.tiny{font-size:12.5px;color:var(--ink2)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 0;background:linear-gradient(var(--paper) 75%,rgba(242,234,214,0))}
+.chip{border:1.5px solid var(--ink);background:var(--sheet);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
+.dots{display:flex;gap:6px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--rule);display:block;transition:background .2s,transform .2s}
+.dots i.on{background:var(--ink);transform:scale(1.25)}
+.dots i.done{background:var(--manila-dk)}
+.bar[hidden]{display:none}
+.bar .count{font-size:13px;color:var(--ink2);min-width:62px;text-align:right}
+
+/* pages */
+.page{display:none;animation:pageIn .45s cubic-bezier(.2,.9,.3,1.2)}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.head{margin:8px 0 18px}
+.head .tw{display:block;margin-bottom:6px}
+.lead{font-size:18px;margin:10px 0 0}
+
+.sheet{background:var(--sheet);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin:16px 0;position:relative}
+.ruled{background-image:linear-gradient(transparent 31px,var(--line) 32px);background-size:100% 32px}
+.note{background:#FFF6B8;border-radius:4px;padding:14px 16px;box-shadow:var(--shadow);transform:rotate(-1.2deg);margin:18px 4px}
+
+.btn{display:block;width:100%;border:0;border-radius:12px;background:var(--ink);color:#fff;font-weight:700;font-size:18px;padding:16px;text-align:center;text-decoration:none;
+  box-shadow:0 4px 0 #0c1426;transition:transform .12s, box-shadow .12s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #0c1426}
+.btn.alt{background:var(--sheet);color:var(--ink);border:2px solid var(--ink);box-shadow:0 4px 0 var(--ink)}
+.btn.go{background:var(--green);box-shadow:0 4px 0 #173d20}
+.btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+
+.stamp{display:inline-block;font-family:"Special Elite","Courier New",monospace;color:var(--red);border:3px solid var(--red);border-radius:6px;
+  padding:4px 10px;text-transform:uppercase;letter-spacing:.06em;transform:rotate(-7deg);opacity:.9}
+.stamp.pop{animation:stamp .5s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes stamp{0%{opacity:0;transform:rotate(-7deg) scale(2.2)}100%{opacity:.9;transform:rotate(-7deg) scale(1)}}
+
+/* next card */
+.next{margin:28px 0 8px;text-align:center}
+.next p{margin:0 0 10px;color:var(--ink2);font-size:14px}
+
+/* DOOR */
+.folder{position:relative;margin:40px 0 0;perspective:1400px}
+.folder .tab{position:absolute;top:-22px;left:22px;background:var(--manila);border-radius:10px 10px 0 0;padding:4px 16px 8px;font-size:12px}
+.cover{background:var(--manila);border-radius:6px 14px 14px 14px;padding:28px 22px 26px;box-shadow:var(--shadow);transform-origin:top center;transition:transform .7s cubic-bezier(.3,.9,.3,1), opacity .5s;position:relative;z-index:2}
+.cover h1{font-size:44px;font-weight:800;margin:10px 0 6px}
+.cover .who{font-size:19px;font-weight:600}
+.cover .stamp{position:absolute;right:16px;top:20px}
+.folder.open .cover{transform:rotateX(-100deg);opacity:0;pointer-events:none;position:absolute;inset:0}
+.agenda{display:none}
+.folder.open .agenda{display:block;animation:pageIn .5s .25s both}
+.agenda ol{list-style:none;margin:0;padding:0}
+.agenda li button{display:flex;width:100%;gap:12px;align-items:flex-start;text-align:left;background:none;border:0;border-bottom:1px dashed var(--rule);padding:12px 2px}
+.agenda .n{font-family:Fraunces,serif;font-weight:800;font-size:22px;width:28px;color:var(--manila-dk)}
+.agenda b{display:block;font-size:17px}
+.agenda span{font-size:14.5px;color:var(--ink2)}
+.agenda li button:active{background:#f6efdc}
+
+/* counters */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--sheet);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
+.stat .num{font-family:Fraunces,serif;font-weight:800;font-size:38px;line-height:1}
+.stat .lbl{font-size:13.5px;color:var(--ink2);margin-top:6px}
+
+/* roll call */
+.roll{margin:12px 0 18px}
+.roll .what{font-size:15px;margin:0 0 8px}
+.seats{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.seat{width:34px;height:34px;border-radius:50%;border:2px dashed var(--ink2);display:grid;place-items:center;font-size:10px;font-weight:700;color:transparent;transition:all .25s}
+.seat.aye{border:2px solid var(--green);background:var(--green-bg);color:var(--green);transform:scale(1.08)}
+.tally{font-family:Fraunces,serif;font-weight:800;font-size:26px;margin-left:6px;opacity:0;transition:opacity .3s}
+.tally.show{opacity:1}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;border-left:3px solid var(--manila-dk);margin-left:8px}
+.tl li{position:relative;padding:0 0 4px 16px}
+.tl li::before{content:"";position:absolute;left:-8px;top:16px;width:13px;height:13px;border-radius:50%;background:var(--sheet);border:3px solid var(--manila-dk)}
+.tl details{padding:8px 0}
+.tl summary{list-style:none;cursor:pointer;display:flex;gap:10px}
+.tl summary::-webkit-details-marker{display:none}
+.tl .yr{font-family:"Special Elite","Courier New",monospace;font-size:13px;min-width:62px;padding-top:3px;color:var(--ink2)}
+.tl .src{margin:6px 0 0 72px;font-size:14px}
+.tl details[open] .yr{color:var(--red)}
+
+/* chorus */
+.wall{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.sticky{background:#FFF6B8;padding:12px;border-radius:3px;font-size:14.5px;line-height:1.35;box-shadow:var(--shadow)}
+.sticky:nth-child(3n+2){background:#FDE2E0;transform:rotate(1.2deg)}
+.sticky:nth-child(3n){background:#E2EEF9;transform:rotate(-1deg)}
+.sticky:nth-child(3n+1){transform:rotate(-.8deg)}
+.sticky .by{display:block;margin-top:8px;font-size:12.5px;color:var(--ink2)}
+.sticky.wide{grid-column:1/-1}
+
+.close{margin:26px 0 0;padding:18px 18px 18px 22px;border-left:5px solid var(--yellow);background:var(--sheet);border-radius:0 12px 12px 0;box-shadow:var(--shadow)}
+.close q{font-family:Fraunces,serif;font-size:21px;font-weight:600;line-height:1.3;quotes:"\201C" "\201D"}
+.close .by{display:block;font-size:13.5px;color:var(--ink2);margin-top:10px}
+
+/* phone search */
+.phone{background:#11182b;border-radius:30px;padding:14px 10px 18px;box-shadow:var(--shadow)}
+.screen{background:#fff;border-radius:20px;padding:14px 12px;min-height:360px}
+.sbar{display:flex;align-items:center;gap:8px;border:1px solid #dadce0;border-radius:999px;padding:9px 14px;font-size:15px;min-height:42px}
+.sbar .caret{width:1.5px;height:18px;background:#1a73e8;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.qchips button{border:1px solid #dadce0;background:#fff;border-radius:999px;padding:5px 10px;font-size:13px}
+.qchips button.on{background:#e8f0fe;border-color:#1a73e8;color:#174ea6}
+.results{list-style:none;margin:8px 0 0;padding:0}
+.results li{padding:8px 2px;border-bottom:1px solid #f1f3f4;opacity:0;transform:translateY(6px);transition:all .3s}
+.results li.in{opacity:1;transform:none}
+.results .d{font-size:12px;color:#4d5156}
+.results .t{font-size:15.5px;color:#1a0dab;line-height:1.25}
+.missing{text-align:center;margin:14px 0 4px;min-height:44px}
+
+/* checklist */
+.check{list-style:none;margin:0;padding:0}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px dashed var(--rule);cursor:pointer}
+.check input{appearance:none;flex:0 0 26px;height:26px;border:2px solid var(--ink);border-radius:6px;margin:1px 0 0;display:grid;place-items:center;background:var(--sheet)}
+.check input:checked{background:var(--green);border-color:var(--green)}
+.check input:checked::after{content:"";width:7px;height:13px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check input:checked + span{color:var(--ink2);text-decoration:line-through;text-decoration-color:var(--green)}
+.done-msg{margin:12px 0 0;font-weight:700;color:var(--green);min-height:24px}
+
+/* price bars */
+.prices .row{margin:14px 0}
+.prices .lbl{display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.prices .lbl b{font-weight:700}
+.track{height:16px;background:#EFE7D2;border-radius:999px;margin-top:6px;position:relative;overflow:hidden}
+.fill{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:999px;background:var(--ink);transition:width 1s cubic-bezier(.2,.9,.3,1), left 1s cubic-bezier(.2,.9,.3,1)}
+.fill.free{background:var(--green)}
+.fill.isba{background:var(--blue)}
+.fill.nat{background:var(--red)}
+
+/* flip cards */
+.flips{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.flip{perspective:900px;border:0;background:none;padding:0;min-height:176px;text-align:left}
+.flip .in{position:relative;width:100%;height:100%;min-height:176px;transition:transform .6s cubic-bezier(.3,1.3,.5,1);transform-style:preserve-3d}
+.flip.on .in{transform:rotateY(180deg)}
+.flip .f,.flip .b{position:absolute;inset:0;border-radius:12px;padding:14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between}
+.flip .f{background:var(--sheet)}
+.flip .f b{font-family:Fraunces,serif;font-size:17px;line-height:1.2}
+.flip .f .tap{font-size:13px;color:var(--ink2)}
+.flip .b{background:#EFE7D2;transform:rotateY(180deg);font-size:14.5px;line-height:1.35}
+.flip .b .ans{font-family:Fraunces,serif;font-weight:800;font-size:22px}
+.flip.aa .f{background:var(--ink);color:#fff}
+.flip.aa .f .tap{color:#c9d2e6}
+.flip.aa .b{background:var(--green-bg)}
+.flip.aa .b .ans{color:var(--green)}
+
+/* leads */
+.countdown{background:var(--ink);color:#fff;border-radius:var(--r);padding:20px;text-align:center;box-shadow:var(--shadow)}
+.countdown .big{font-family:Fraunces,serif;font-weight:800;font-size:64px;line-height:1;color:var(--yellow)}
+.countdown p{margin:6px 0 0}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 6px}
+.filters button{border:1.5px solid var(--ink);background:var(--sheet);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:600}
+.filters button.on{background:var(--ink);color:#fff}
+.lead-card{background:var(--sheet);border-radius:12px;box-shadow:var(--shadow);margin:10px 0;overflow:hidden;transition:opacity .25s, transform .25s}
+.lead-card.hide{display:none}
+.lead-card summary{list-style:none;cursor:pointer;padding:14px 14px 12px;display:block}
+.lead-card summary::-webkit-details-marker{display:none}
+.lead-card h3{font-size:18px}
+.lead-card .why{font-size:15px;margin-top:4px;color:var(--ink2)}
+.tags{display:flex;gap:5px;flex-wrap:wrap;align-items:center;margin-top:8px}
+.tag{font-size:11.5px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;border-radius:5px;padding:2px 7px;background:#EFE7D2;color:var(--ink)}
+.tag.past{background:var(--yellow)}
+.tag.lead{background:#DCE7F4;color:#173b63}
+.tag.money{background:#F6DCD9;color:#7d1d16}
+.lead-card .more{padding:0 14px 14px;font-size:15px;border-top:1px dashed var(--rule)}
+.lead-card .more p{margin:10px 0 6px}
+
+/* email */
+.memo{background:var(--sheet);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;font-size:16px}
+.memo .hdr{border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:12px;font-size:14.5px}
+.memo .hdr div{margin:2px 0}
+.memo pre{white-space:pre-wrap;font:inherit;margin:0;line-height:1.55}
+.steps{list-style:none;margin:16px 0 0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--rule)}
+.steps li::before{content:counter(s);font-family:Fraunces,serif;font-weight:800;font-size:22px;color:var(--manila-dk);width:22px}
+
+/* motion */
+.opts{display:grid;gap:10px;margin:14px 0}
+.opt{display:flex;gap:14px;align-items:center;text-align:left;background:var(--sheet);border:2px solid transparent;border-radius:12px;padding:14px;box-shadow:var(--shadow);transition:border-color .15s, transform .15s}
+.opt .k{flex:0 0 42px;height:42px;border-radius:50%;background:#EFE7D2;display:grid;place-items:center;font-family:Fraunces,serif;font-weight:800;font-size:22px}
+.opt b{display:block;font-size:17px}
+.opt span{font-size:14.5px;color:var(--ink2)}
+.opt.on{border-color:var(--green);transform:scale(1.015)}
+.opt.on .k{background:var(--green);color:#fff}
+.tab-list{list-style:none;margin:0;padding:0;font-size:15.5px}
+.tab-list li{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dotted var(--rule)}
+.tab-list li b{font-family:"Special Elite","Courier New",monospace;font-weight:400}
+.tab-list li.total{border-bottom:0;border-top:2px solid var(--ink);margin-top:6px;padding-top:10px;font-weight:700}
+.qs{margin:8px 0 0;padding-left:20px}
+.qs li{margin:6px 0}
+
+@media (max-width:350px){.flips{grid-template-columns:1fr}.flip,.flip .in{min-height:132px}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="bar" id="bar" hidden>
+    <button class="chip" data-go="0" aria-label="Back to the agenda">&larr; Agenda</button>
+    <div class="dots" id="dots" aria-hidden="true"></div>
+    <div class="count" id="count"></div>
+  </div>
+
+  <!-- DOOR -->
+  <section class="page active" id="p0" aria-label="Cover">
+    <div class="folder" id="folder">
+      <span class="tab tw">Special session</span>
+      <div class="cover" id="cover">
+        <span class="stamp">For Steve</span>
+        <div class="tw">October 2026</div>
+        <h1>Board Packet</h1>
+        <div class="who">Prepared for Steve Wittenauer</div>
+        <div class="muted">Administrator Assistance &middot; Brookston, Indiana</div>
+        <div style="height:26px"></div>
+        <button class="btn" id="callToOrder">Call to order</button>
+        <p class="tiny" style="text-align:center;margin:10px 0 0">About 7 minutes &middot; Best on your phone</p>
+      </div>
+      <div class="agenda sheet" id="agenda">
+        <div class="tw">Agenda</div>
+        <ol>
+          <li><button data-go="1"><span class="n">1</span><span><b>Your record</b><span>18 years, in the public record</span></span></button></li>
+          <li><button data-go="2"><span class="n">2</span><span><b>Public comment</b><span>What a board member finds at 9:45 PM</span></span></button></li>
+          <li><button data-go="3"><span class="n">3</span><span><b>Old business</b><span>What changed, and what didn't</span></span></button></li>
+          <li><button data-go="4"><span class="n">4</span><span><b>New business</b><span>Who needs you this month</span></span></button></li>
+          <li><button data-go="5"><span class="n">5</span><span><b>Close to home</b><span>Frontier's plan, read by AI</span></span></button></li>
+          <li><button data-go="6"><span class="n">6</span><span><b>The motion</b><span>One tap</span></span></button></li>
+        </ol>
+      </div>
+    </div>
+    <div class="note" id="jnote" hidden>
+      <div class="hand">Steve, I turned AI research assistants loose on your company. They went through more than 160 public sources: board minutes, state records, news. Here's what they brought back.<br>&mdash; Jimmy</div>
+    </div>
+    <div class="next" id="doorNext" hidden>
+      <button class="btn" data-go="1">Start with item 1 &rarr;</button>
+    </div>
+  </section>
+
+  <!-- 1 RECORD -->
+  <section class="page" id="p1" aria-label="Item 1">
+    <div class="head">
+      <span class="tw">Item 1 &middot; Your record</span>
+      <h2>18 years, in the public record</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num"><span data-count="190">0</span>+</div><div class="lbl">Indiana districts served (your website)</div></div>
+      <div class="stat"><div class="num" data-count="43">0</div><div class="lbl">people with bios on your team page</div></div>
+      <div class="stat"><div class="num"><span data-count="30">0</span>+</div><div class="lbl">jobs traced in board minutes, news and testimonials</div></div>
+      <div class="stat"><div class="num" data-count="18">0</div><div class="lbl">years since January 2008</div></div>
+    </div>
+
+    <div class="sheet">
+      <div class="tw">Roll call</div>
+      <div class="roll">
+        <p class="what"><b>June 26, 2017.</b> Indiana's Distressed Unit Appeals Board picks an emergency manager for Muncie Community Schools. The other finalists included the Robert Bobb Group and Crowe Horwath.</p>
+        <div class="seats" data-seats="4"></div>
+        <p class="tiny" style="margin:8px 0 0"><a href="https://www.in.gov/duab/files/DUAB-Minutes-06-26-17.pdf" target="_blank" rel="noopener">Board minutes</a></p>
+      </div>
+      <div class="roll">
+        <p class="what"><b>February 2024.</b> Hamilton Southeastern's board votes on the superintendent from your search, as its board president tells it.</p>
+        <div class="seats" data-seats="7"></div>
+        <p class="tiny" style="margin:8px 0 0"><a href="https://administratorassistance.com/testimonials/" target="_blank" rel="noopener">Board president's testimonial</a></p>
+      </div>
+      <button class="btn" id="callRoll">Call the roll</button>
+    </div>
+
+    <div class="sheet">
+      <div class="tw" style="margin-bottom:6px">On the record &middot; tap a year</div>
+      <ol class="tl">
+        <li><details><summary><span class="yr">2007&ndash;09</span><span>Four consolidation and shared-services studies. You co-wrote the Randolph County one.</span></summary><p class="src">Cited in a 2010 Indiana University policy brief. <a href="https://files.eric.ed.gov/fulltext/ED512638.pdf" target="_blank" rel="noopener">Read it</a></p></details></li>
+        <li><details><summary><span class="yr">2014&ndash;15</span><span>Sunman-Dearborn: an interim superintendent.</span></summary><p class="src"><a href="https://www.sunmandearborn.k12.in.us/document-library/minutes/2015/1128-may-21-2015-reg-bd-mtg/file" target="_blank" rel="noopener">Sunman-Dearborn minutes</a></p></details></li>
+        <li><details><summary><span class="yr">2017&ndash;19</span><span>Muncie: state-appointed emergency manager in 2017&ndash;18, then transition support into 2019.</span></summary><p class="src"><a href="https://www.wfyi.org/education/2019-06-12/muncie-schools-emergency-management-team-leaves-after-two-years-in-charge" target="_blank" rel="noopener">WFYI, June 2019</a></p></details></li>
+        <li><details><summary><span class="yr">2019</span><span>North White: a superintendent search and an interim.</span></summary><p class="src"><a href="https://core-docs.s3.us-east-1.amazonaws.com/documents/asset/uploaded_file/4632/NWSC/4540057/SB_Meeting_packet_June_10_2019.pdf" target="_blank" rel="noopener">Board packet</a></p></details></li>
+        <li><details><summary><span class="yr">2021</span><span>West Lafayette: superintendent search.</span></summary><p class="src"><a href="https://www.basedinlafayette.com/p/west-lafayette-knows-replacing-school" target="_blank" rel="noopener">Based in Lafayette</a></p></details></li>
+        <li><details><summary><span class="yr">2023&ndash;24</span><span>Hamilton Southeastern: the search, plus mentoring for the interim.</span></summary><p class="src"><a href="https://larryinfishers.com/2023/09/19/hse-board-hires-consultant-for-permanent-superintendent-search" target="_blank" rel="noopener">Larry in Fishers</a></p></details></li>
+        <li><details><summary><span class="yr">2024</span><span>Richmond: a reorganization study, approved 6&ndash;1. Clinton Prairie: an interim treasurer.</span></summary><p class="src"><a href="https://westernwaynenews.com/wp-content/uploads/2024/08/240814-RCS-grade-alignment-study-Administrator-Assistance.pdf" target="_blank" rel="noopener">Read the Richmond report</a> &middot; <a href="https://westernwaynenews.com/rcs-studying-possible-re-org/" target="_blank" rel="noopener">Western Wayne News</a> &middot; <a href="https://clintoncountydailynews.com/superintendent-miller-resigns-from-clinton-prairie-boddicker-appointed-as-interim-superintendent/" target="_blank" rel="noopener">Clinton County Daily News</a></p></details></li>
+        <li><details><summary><span class="yr">2025</span><span>Vigo County: support for its high school principals.</span></summary><p class="src"><a href="https://vigoschools.diligent.community/document/cb9ac126-7c4a-449a-be24-acc1a3b7e855/" target="_blank" rel="noopener">The agreement</a></p></details></li>
+        <li><details><summary><span class="yr">2026</span><span>West Central: your superintendent evaluation instrument, approved 6&ndash;0.</span></summary><p class="src"><a href="https://www.francesville.net/uploads/8/9/0/8/89084818/april_2_2026_wcsc_school_board_minutes__unapproved_.pdf" target="_blank" rel="noopener">April 2 minutes (draft)</a></p></details></li>
+      </ol>
+    </div>
+
+    <div class="tw" style="margin-top:22px">What they wrote</div>
+    <div class="wall">
+      <div class="sticky">&ldquo;an outstanding financial advisor and resource for North Lawrence Community Schools&rdquo;<span class="by">Kevin Y., superintendent</span></div>
+      <div class="sticky">&ldquo;I couldn't be happier with the services they have provided us.&rdquo;<span class="by">Dr. Matt W., Attica</span></div>
+      <div class="sticky">&ldquo;Their professionalism, knowledge, and commitment to our organization made a meaningful difference.&rdquo;<span class="by">Jana V., Rochester</span></div>
+      <div class="sticky">&ldquo;Their communication style was encouraging and positive&rdquo;<span class="by">Dr. Greg H., Yorktown, 2026</span></div>
+      <div class="sticky">&ldquo;Administrator Assistance has been an invaluable partner in supporting our district's strategic direction&rdquo;<span class="by">Dr. Stephanie H., Southmont, 2026</span></div>
+      <div class="sticky">&ldquo;I would not hesitate to use their services again.&rdquo;<span class="by">Dr. Jim H., Rossville, 2024</span></div>
+    </div>
+    <div class="close">
+      <q>We are thrilled with the outcome, culminating in a 7-0 board vote in support of our new superintendent.</q>
+      <span class="by">Dawn L., president, Hamilton Southeastern Board of School Trustees</span>
+    </div>
+    <div class="next"><p>That was item 1 of 5.</p><button class="btn" data-go="2">Item 2: Public comment &rarr;</button></div>
+  </section>
+
+  <!-- 2 PUBLIC COMMENT -->
+  <section class="page" id="p2" aria-label="Item 2">
+    <div class="head">
+      <span class="tw">Item 2 &middot; Public comment</span>
+      <h2>What a board member finds at 9:45 PM</h2>
+      <p class="lead">A board president just got a resignation letter. She picks up her phone.</p>
+    </div>
+    <div class="phone">
+      <div class="screen">
+        <div class="sbar"><span id="qtext"></span><span class="caret"></span></div>
+        <div class="qchips" id="qchips"></div>
+        <button class="btn" id="doSearch" style="font-size:16px;padding:12px">Search</button>
+        <ol class="results" id="results"></ol>
+        <div class="missing" id="missing"></div>
+      </div>
+    </div>
+    <p class="tiny" style="margin:10px 4px 0">What Google showed an AI research assistant on Oct. 9, 2026: the first page, in a signed-in browser. Page titles shortened. Results vary by person and place.</p>
+
+    <div class="sheet">
+      <div class="tw">While she's on your site</div>
+      <h3 style="margin:6px 0 4px">4 small things on the new website</h3>
+      <ul class="check" id="check">
+        <li><label><input type="checkbox"><span>The logo links to a temporary test address (mytemp.website) instead of your home page.</span></label></li>
+        <li><label><input type="checkbox"><span>Four flyers on the Curriculum &amp; Evaluation page open to &ldquo;page not found.&rdquo;</span></label></li>
+        <li><label><input type="checkbox"><span>The &ldquo;School Boards&rdquo; card on the home page talks about teachers reflecting and growing. That line belongs with evaluation.</span></label></li>
+        <li><label><input type="checkbox"><span>The home page says both &ldquo;Since 2008&rdquo; and &ldquo;Since 2007.&rdquo;</span></label></li>
+      </ul>
+      <p class="done-msg" id="doneMsg"></p>
+    </div>
+    <div class="close">
+      <q>This is not easy work.</q>
+      <span class="by">Elkhart school board meeting summary, Sept. 12, 2023 &middot; <a href="https://docs.elkhart.k12.in.us/board/meeting_summaries/2023/September%2012%2C%202023%20Summary.pdf" target="_blank" rel="noopener">source</a></span>
+    </div>
+    <div class="next"><p>That was item 2 of 5.</p><button class="btn" data-go="3">Item 3: Old business &rarr;</button></div>
+  </section>
+
+  <!-- 3 OLD BUSINESS -->
+  <section class="page" id="p3" aria-label="Item 3">
+    <div class="head">
+      <span class="tw">Item 3 &middot; Old business</span>
+      <h2>What changed, and what didn't</h2>
+    </div>
+    <div class="sheet prices">
+      <h3>What recent Indiana boards paid for a superintendent search</h3>
+      <div class="row"><div class="lbl"><b>University Search Team</b><span>Mileage, usually under $500</span></div>
+        <div class="track"><div class="fill free" data-left="0" data-w="3"></div></div>
+        <div class="tiny">Four Indiana university professors. No professional fee. <a href="https://www.universitysearchteam.com/" target="_blank" rel="noopener">source</a></div></div>
+      <div class="row"><div class="lbl"><b>Indiana School Boards Assn.</b><span>About $3,500</span></div>
+        <div class="track"><div class="fill isba" data-left="0" data-w="9.5"></div></div>
+        <div class="tiny">Vigo County, 2023. <a href="https://www.wthitv.com/news/vcsc-board-of-trustees-selects-indiana-school-board-assoc-to-lead-superintendent-search/article_9d5cbf56-a11e-11ed-aed0-67eecda7f027.html" target="_blank" rel="noopener">source</a></div></div>
+      <div class="row"><div class="lbl"><b>National search firms</b><span>$16,500 to about $37,000</span></div>
+        <div class="track"><div class="fill nat" data-left="44.6" data-w="55.4"></div></div>
+        <div class="tiny">Gary, 2024 &middot; Fort Wayne, 2019. <a href="https://www.pressreader.com/usa/post-tribune-sunday/20240107/281487871185201" target="_blank" rel="noopener">source</a> &middot; <a href="https://www.wowo.com/fwcs-chooses-illinois-firm-to-find-new-superintendent/" target="_blank" rel="noopener">source</a></div></div>
+      <button class="btn alt" id="showPrices">Show the prices</button>
+    </div>
+
+    <h3 style="margin:24px 0 2px">Now the other question</h3>
+    <p style="margin:0">Who can put an experienced leader in your building on Monday?</p>
+    <div class="flips">
+      <button class="flip"><div class="in"><div class="f"><b>University Search Team</b><span class="tap">Tap to flip</span></div><div class="b"><span class="ans">Search help.</span>Interim placement isn't a listed service.</div></div></button>
+      <button class="flip"><div class="in"><div class="f"><b>Indiana School Boards Assn.</b><span class="tap">Tap to flip</span></div><div class="b"><span class="ans">Search, planning &amp; board training.</span>Interim placement isn't a listed service.</div></div></button>
+      <button class="flip"><div class="in"><div class="f"><b>National search firms</b><span class="tap">Tap to flip</span></div><div class="b"><span class="ans">Search &amp; consulting.</span>Run from out of state.</div></div></button>
+      <button class="flip aa"><div class="in"><div class="f"><b>Administrator Assistance</b><span class="tap">Tap to flip</span></div><div class="b"><span class="ans">Yes, often within days.</span>Retired Indiana superintendents, principals, CFOs and business managers. Since 2008.</div></div></button>
+    </div>
+    <div class="close">
+      <q>&lsquo;Witt&rsquo; and his team understand the challenge of finding qualified people who can hit the ground running.</q>
+      <span class="by">Dr. LeeAnn K., Muncie Community Schools, March 2024</span>
+    </div>
+    <div class="next"><p>That was item 3 of 5.</p><button class="btn" data-go="4">Item 4: New business &rarr;</button></div>
+  </section>
+
+  <!-- 4 NEW BUSINESS -->
+  <section class="page" id="p4" aria-label="Item 4">
+    <div class="head">
+      <span class="tw">Item 4 &middot; New business</span>
+      <h2>Who needs you this month</h2>
+    </div>
+    <div class="countdown">
+      <div class="tw" style="color:#c9d2e6">Election day, Nov. 3</div>
+      <div class="big" id="days">&ndash;</div>
+      <p id="daysLbl">days away</p>
+      <p style="font-size:15px;color:#dfe5f2;margin-top:10px">38 Indiana school districts ask voters for money. Referendums can now only go on even-year November ballots, so a district that loses waits until November 2028. <a href="https://indianacapitalchronicle.com/2026/08/04/36-indiana-school-districts-to-seek-referendums-this-fall/" target="_blank" rel="noopener" style="color:var(--yellow)">source</a> &middot; <a href="https://indianapublicradio.org/news/2026/06/why-indiana-school-districts-are-rushing-to-put-tax-referendums-on-the-november-ballot/" target="_blank" rel="noopener" style="color:var(--yellow)">rule</a></p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="past">Past clients</button>
+      <button data-f="lead">Leadership change</button>
+      <button data-f="money">Money pressure</button>
+    </div>
+    <div id="leads"></div>
+    <div class="close">
+      <q>figure out what we have to cut, that's not something I'm comfortable with</q>
+      <span class="by">Jon S., Carmel Clay school board president, June 2026 &middot; <a href="https://indianapublicradio.org/news/2026/06/why-indiana-school-districts-are-rushing-to-put-tax-referendums-on-the-november-ballot/" target="_blank" rel="noopener">source</a></span>
+    </div>
+    <div class="next"><p>That was item 4 of 5.</p><button class="btn" data-go="5">Item 5: Close to home &rarr;</button></div>
+  </section>
+
+  <!-- 5 CLOSE TO HOME -->
+  <section class="page" id="p5" aria-label="Item 5">
+    <div class="head">
+      <span class="tw">Item 5 &middot; Close to home</span>
+      <h2>Frontier's plan, read by AI</h2>
+      <p class="lead">On Nov. 3, Frontier asks voters for money. The district filed a one-page plan with the state. Here's what an AI research assistant did with it.</p>
+    </div>
+    <div class="sheet">
+      <div class="tw">The page &middot; <a href="https://www.in.gov/dlgf/files/referendum-documentation2/2026-november-referendum-documents/26-017-Frontier-School-Corporation-Operating-Spending-Plan.pdf" target="_blank" rel="noopener">open the original</a></div>
+      <div class="stats" style="margin-top:12px">
+        <div class="stat"><div class="num">8</div><div class="lbl">years of levy</div></div>
+        <div class="stat"><div class="num" style="font-size:28px">$1.75M</div><div class="lbl">maximum per year</div></div>
+        <div class="stat"><div class="num" style="font-size:28px">$0.25</div><div class="lbl">top tax rate</div></div>
+        <div class="stat"><div class="num" style="font-size:28px">+$284</div><div class="lbl">a year on a $250,000 home</div></div>
+      </div>
+    </div>
+    <div class="sheet prices">
+      <h3>Where the money would go</h3>
+      <p class="tiny" style="margin:4px 0 0">The district's estimate for 2027</p>
+      <div class="row"><div class="lbl"><b>Retaining teachers and staff</b><span>$903,811</span></div><div class="track"><div class="fill" data-left="0" data-w="58.6"></div></div></div>
+      <div class="row"><div class="lbl"><b>Maintaining class sizes</b><span>$385,200</span></div><div class="track"><div class="fill isba" data-left="0" data-w="25"></div></div></div>
+      <div class="row"><div class="lbl"><b>Academic and support programs</b><span>$134,530</span></div><div class="track"><div class="fill free" data-left="0" data-w="8.7"></div></div></div>
+      <div class="row"><div class="lbl"><b>Student health and safety</b><span>$119,200</span></div><div class="track"><div class="fill nat" data-left="0" data-w="7.7"></div></div></div>
+      <button class="btn alt" id="checkMath">Check the math</button>
+      <div id="mathOut" class="small" style="margin-top:12px"></div>
+    </div>
+    <div class="sheet">
+      <div class="tw">What the page can't tell you</div>
+      <ol class="qs">
+        <li>Does the business office's own forecast match this plan?</li>
+        <li>Which costs repeat every year, and which are one-time?</li>
+        <li>What has to be decided, and by when, if it passes? If it fails?</li>
+        <li>What's already handled by staff or another adviser?</li>
+        <li>Where would one more experienced hand help most?</li>
+      </ol>
+    </div>
+    <div class="note"><div class="hand">You know Frontier better than any AI. How'd it do?<br>&mdash; J</div></div>
+    <p class="tiny" style="margin:0 4px">A demo of reading a public document. No opinion on the vote, and nothing was sent to Frontier.</p>
+    <div class="next"><p>That was item 5 of 5.</p><button class="btn" data-go="6">The motion &rarr;</button></div>
+  </section>
+
+  <!-- 6 MOTION -->
+  <section class="page" id="p6" aria-label="The motion">
+    <div class="head">
+      <span class="tw">Item 6 &middot; The motion</span>
+      <h2>Moved: Jimmy builds one of these first.</h2>
+      <p class="lead">Pick one.</p>
+    </div>
+    <div class="opts" id="opts">
+      <button class="opt" data-k="1"><span class="k">1</span><span><b>Fix the 4 website items</b><span>About an hour.</span></span></button>
+      <button class="opt" data-k="2"><span class="k">2</span><span><b>A note to past clients before Nov. 3</b><span>Written for either result. Only districts that already know you.</span></span></button>
+      <button class="opt" data-k="3"><span class="k">3</span><span><b>A board-brief tool for your team</b><span>Any district's public plan, read and checked like Frontier's.</span></span></button>
+    </div>
+    <a class="btn go" id="second" aria-disabled="true" href="#">Pick 1, 2 or 3 first</a>
+    <p class="tiny" style="text-align:center;margin:8px 0 0">Opens a text to Jimmy.</p>
+    <details class="sheet" style="padding:14px 18px">
+      <summary class="small" style="cursor:pointer;font-weight:700">Peek at the note for #2</summary>
+      <div class="memo" style="box-shadow:none;padding:12px 0 0">
+        <div class="hdr"><div><b>Subject:</b> Whichever way Nov. 3 goes</div></div>
+<pre id="emailBody">Hi [First name],
+
+Whichever way your vote goes on Nov. 3, your board will have decisions to make.
+
+If it passes, your community will want to see how the money gets spent. If it doesn't, the next ballot you can use is November 2028, and the budget can't wait that long.
+
+Either way, if an extra experienced hand would help, our team of retired Indiana superintendents, CFOs and business managers is a phone call away.
+
+Steve Wittenauer
+Administrator Assistance
+765-418-5727</pre>
+      </div>
+      <button class="btn go" id="copyEmail" style="margin-top:12px;font-size:16px;padding:12px">Copy the note</button>
+      <p class="tiny" style="text-align:center;margin:8px 0 0">Draft. Nothing was sent.</p>
+    </details>
+
+    <div class="sheet" style="margin-top:26px">
+      <div class="tw">Steve's tab</div>
+      <ul class="tab-list">
+        <li><span>Public sources cited</span><b>160+</b></li>
+        <li><span>Searches and page reads by AI research assistants</span><b>500+</b></li>
+        <li><span>Team bios read</span><b>43</b></li>
+        <li><span>Jobs traced</span><b>30+</b></li>
+        <li><span>Testimonials read</span><b>12</b></li>
+        <li><span>Districts on the lead list</span><b>14</b></li>
+        <li class="total"><span>Amount due</span><b>$0. It's a gift.</b></li>
+      </ul>
+      <p class="hand" style="margin:14px 0 0">You built this one handshake and one phone call at a time, after 37 years in schools. I had AI. Yours was the harder job.</p>
+    </div>
+
+    <div class="sheet">
+      <div class="tw">Three questions only you can answer</div>
+      <ol class="qs">
+        <li>What do you want the next five years of Administrator Assistance to look like?</li>
+        <li>Which job do you love doing most?</li>
+        <li>Who sends you the most work?</li>
+      </ol>
+    </div>
+    <p class="small" style="margin:18px 4px"><b>P.S.</b> The 2003&ndash;04 roster of the state superintendents' association lists you as its treasurer, from Benton Community. <a href="https://files.eric.ed.gov/fulltext/ED489436.pdf" target="_blank" rel="noopener">Check it</a></p>
+    <p class="tiny" style="margin:0 4px 20px">Research by AI research assistants (Claude and Codex) from public records, news and your website, Oct. 9&ndash;10, 2026. Some figures come from news reports. Your own records are the final word.</p>
+    <div class="next"><button class="btn alt" data-go="0">Back to the agenda</button></div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var JIMMY = "+16263543229";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var pages = [].slice.call(document.querySelectorAll(".page"));
+  var bar = document.getElementById("bar"), dots = document.getElementById("dots"), count = document.getElementById("count");
+  var visited = {};
+  for (var i=1;i<pages.length;i++){ dots.appendChild(document.createElement("i")); }
+
+  function store(k,v){ try{ localStorage.setItem("stevetour_"+k,v);}catch(e){} }
+  function load(k){ try{ return localStorage.getItem("stevetour_"+k);}catch(e){ return null; } }
+
+  var hooks = {};
+  function go(n, push){
+    n = Math.max(0, Math.min(pages.length-1, n|0));
+    pages.forEach(function(p,i){ p.classList.toggle("active", i===n); });
+    visited[n] = true;
+    bar.hidden = (n===0);
+    [].forEach.call(dots.children, function(d,i){ d.className = (i+1===n) ? "on" : (visited[i+1] ? "done" : ""); });
+    count.textContent = n===6 ? "The motion" : (n>0 ? "Item "+n+" of 5" : "");
+    window.scrollTo(0,0);
+    if (push !== false) { try{ history.replaceState(null,"","#"+(n?("item-"+n):"agenda")); }catch(e){} }
+    if (n===0 && push !== false && document.getElementById("folder").classList.contains("open")) {}
+    if (hooks[n]) hooks[n]();
+  }
+  document.addEventListener("click", function(e){
+    var t = e.target.closest("[data-go]");
+    if (t){ e.preventDefault(); var n = +t.getAttribute("data-go"); if(n===0) openFolder(); go(n); }
+  });
+
+  // DOOR
+  function openFolder(){
+    document.getElementById("folder").classList.add("open");
+    document.getElementById("jnote").hidden = false;
+    document.getElementById("doorNext").hidden = false;
+  }
+  document.getElementById("callToOrder").addEventListener("click", openFolder);
+
+  // ITEM 1: counters + roll call
+  function countUp(el){
+    var target = +el.getAttribute("data-count");
+    if (reduce){ el.textContent = target; return; }
+    var t0 = null, dur = 1100;
+    function step(ts){ if(!t0) t0 = ts; var p = Math.min(1,(ts-t0)/dur); var e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e); if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var counted = false;
+  hooks[1] = function(){ if(counted) return; counted = true; [].forEach.call(document.querySelectorAll("[data-count]"), countUp); };
+  [].forEach.call(document.querySelectorAll("[data-seats]"), function(s){
+    var n = +s.getAttribute("data-seats");
+    for (var i=0;i<n;i++){ var d=document.createElement("span"); d.className="seat"; d.textContent="AYE"; s.appendChild(d); }
+    var t=document.createElement("span"); t.className="tally"; t.textContent=n+"–0"; s.appendChild(t);
+  });
+  document.getElementById("callRoll").addEventListener("click", function(){
+    var seats = document.querySelectorAll(".seat"), k = 0;
+    [].forEach.call(document.querySelectorAll(".seats"), function(row){
+      var ss = row.querySelectorAll(".seat"), tally = row.querySelector(".tally");
+      [].forEach.call(ss, function(s){ var delay = reduce?0:(k++*150); setTimeout(function(){ s.classList.add("aye"); }, delay); });
+      setTimeout(function(){ tally.classList.add("show"); }, reduce?0:(k*150+100));
+    });
+    this.textContent = "Carried";
+    this.classList.add("alt");
+  });
+
+  // ITEM 2: search mock
+  var Q = [
+    { q:"Indiana superintendent search firm", r:[
+      ["Indiana School Boards Association","Superintendent search services"],
+      ["University Search Team","Home page"],
+      ["Indiana State University","University Search Team"],
+      ["Purdue University","University Search Team story"],
+      ["University Search Team","Services"],
+      ["Goodwin Recruiting","Indianapolis recruiting firm"],
+      ["Hazard, Young, Attea & Associates","National search firm"],
+      ["RevenueBase","Business directory listing"],
+      ["Ball State University","University Search Team"] ]},
+    { q:"interim superintendent Indiana", r:[
+      ["WNDU","South Bend superintendent story"],
+      ["Facebook","WNDU post"],
+      ["Current","Hamilton Southeastern superintendent story"],
+      ["Read the Reporter","Hamilton Southeastern story"],
+      ["WTHR","Hamilton Southeastern story"],
+      ["MSD of Decatur Township","Interim superintendent"],
+      ["MCCSC","Superintendent page"],
+      ["Facebook","IU alumni post"] ]},
+    { q:"school board consultant Indiana", r:[
+      ["Ed Schoenfelt","Consulting services"],
+      ["Indiana School Boards Association","Board services"],
+      ["Ed Schoenfelt","Home page"],
+      ["Indiana Charters","Services"],
+      ["Facebook","Harmon Consulting"],
+      ["School Board Partners","Home page"],
+      ["Facebook","EVSC podcast"],
+      ["IU O'Neill School","Consulting"],
+      ["New Leaders","Home page"] ]}
+  ];
+  var qi = 0, qtext = document.getElementById("qtext"), results = document.getElementById("results"), missing = document.getElementById("missing"), qchips = document.getElementById("qchips");
+  Q.forEach(function(item, i){
+    var b = document.createElement("button"); b.textContent = item.q; b.addEventListener("click", function(){ qi=i; setChips(); resetSearch(); typeIt(); });
+    qchips.appendChild(b);
+  });
+  function setChips(){ [].forEach.call(qchips.children, function(b,i){ b.classList.toggle("on", i===qi); }); }
+  function resetSearch(){ results.innerHTML=""; missing.innerHTML=""; }
+  var typing = null;
+  function typeIt(cb){
+    clearInterval(typing); var s = Q[qi].q, i = 0; qtext.textContent = "";
+    if (reduce){ qtext.textContent = s; if(cb) cb(); return; }
+    typing = setInterval(function(){ qtext.textContent = s.slice(0, ++i); if(i>=s.length){ clearInterval(typing); if(cb) cb(); } }, 38);
+  }
+  function runSearch(){
+    resetSearch();
+    Q[qi].r.forEach(function(r, i){
+      var li = document.createElement("li"); li.innerHTML = '<div class="d"></div><div class="t"></div>';
+      li.querySelector(".d").textContent = r[0]; li.querySelector(".t").textContent = r[1];
+      results.appendChild(li);
+      setTimeout(function(){ li.classList.add("in"); }, reduce?0:120*i);
+    });
+    setTimeout(function(){ missing.innerHTML = '<span class="stamp pop">Administrator Assistance: not in these results</span>'; }, reduce?0:120*Q[qi].r.length+350);
+  }
+  document.getElementById("doSearch").addEventListener("click", function(){
+    if (qtext.textContent !== Q[qi].q) typeIt(runSearch); else runSearch();
+  });
+  hooks[2] = function(){ setChips(); if(!results.children.length) typeIt(); };
+  var boxes = document.querySelectorAll("#check input");
+  [].forEach.call(boxes, function(b){ b.addEventListener("change", function(){
+    var all = [].every.call(boxes, function(x){ return x.checked; });
+    document.getElementById("doneMsg").textContent = all ? "That's about an hour of work." : "";
+  });});
+
+  // ITEM 3: prices + flips
+  document.getElementById("showPrices").addEventListener("click", function(){
+    [].forEach.call(document.querySelectorAll("#p3 .fill"), function(f){ f.style.left = f.getAttribute("data-left")+"%"; f.style.width = f.getAttribute("data-w")+"%"; });
+    this.textContent = "Scale: $0 to $37,000";
+    this.classList.remove("alt"); this.setAttribute("aria-disabled","true");
+  });
+  [].forEach.call(document.querySelectorAll(".flip"), function(f){ f.addEventListener("click", function(){ f.classList.toggle("on"); }); });
+
+  // ITEM 4: countdown + leads
+  hooks[4] = function(){
+    var now = new Date(), e = new Date(2026,10,3);
+    var d = Math.round((e - new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
+    var big = document.getElementById("days"), lbl = document.getElementById("daysLbl");
+    if (d > 1){ big.textContent = d; lbl.textContent = "days away"; }
+    else if (d === 1){ big.textContent = "1"; lbl.textContent = "day away"; }
+    else if (d === 0){ big.textContent = "Today"; lbl.textContent = ""; }
+    else { big.textContent = "Nov. 4"; lbl.textContent = "is the morning after. This is the week."; }
+  };
+  var L = [
+    {n:"Hamilton Southeastern", tags:["past","money"], why:"Your 2023 search. Referendum on Nov. 3.", more:"About 60 positions affected, and enrollment down 400+ last year. No outside firm was named when the board picked a new superintendent in April.", src:"https://www.larryinfishers.com/2026/06/16/podcast-hse-cfo-tim-brown-on-the-districts-finances-sea-1-and-the-november-referendum/", fit:"Budget plan for either vote outcome. First-year support for the new superintendent."},
+    {n:"Michigan City Area Schools", tags:["past","money"], why:"Worked with you since fall 2021. A $10M-a-year referendum on Nov. 3.", more:"Already cut about $3M, with 25 positions cut or left vacant. Consolidation could come sooner if it fails. Hiring principals plus CTE and transportation directors.", src:"https://www.educatemc.net/community/2026-operating-referendum", fit:"Interim principals. The 90-day budget plan."},
+    {n:"West Lafayette", tags:["past","money"], why:"Your 2021 search. Referendum on Nov. 3.", more:"Its finance, survey and PR advisers are already in place for the vote.", src:"https://www.wlvote26.com/the-process-2026.html", fit:"Ask what's still unassigned. Don't duplicate their advisers."},
+    {n:"Muncie Community Schools", tags:["past","money"], why:"Its $12M state loan is under review.", more:"In May, the state's Distressed Unit Appeals Board recommended stretching repayment to 2030. Muncie's forecast shows an operating deficit in 2029. The State Board of Finance has the final say.", src:"https://www.in.gov/duab/files/DUAB_Public-Session-Minutes_May-12,-2026.pdf", fit:"A multi-year cash forecast. You know that district's history."},
+    {n:"South Bend", tags:["lead"], why:"Superintendent retirement announced Oct. 9.", more:"Mansour Eid retires June 30, 2027. The district says more details are coming. No search firm named yet.", src:"https://www.abc57.com/news/south-bend-superintendent-mansour-eid-to-retire-1", fit:"A transition plan, plus a search if the board hasn't picked a route."},
+    {n:"Lafayette School Corporation", tags:["lead"], why:"An insider named superintendent on Sept. 15.", more:"Katie Reckard starts July 1, 2027. A first-year superintendent is a mentoring and evaluation client.", src:"https://www.wlfi.com/2026/09/15/lafayette-school-corporation-names-katie-reckard-next-superintendent/", fit:"First-year mentoring. Your evaluation instrument."},
+    {n:"Anderson Community Schools", tags:["lead","money"], why:"Superintendent retiring June 2027, plus a referendum on Nov. 3.", more:"The university team is running the search. The transition and the budget are still open.", src:"https://www.heraldbulletin.com/news/local_news/acs-board-wants-input-on-superintendent-search/article_713bcdb1-3b52-4ed9-910c-d37b431a68c6.html", fit:"Transition support and budget help."},
+    {n:"Noblesville Schools", tags:["money"], why:"Staff cuts, and a referendum on Nov. 3.", more:"Staff reductions in February to close a multi-million-dollar deficit, with a referendum on the Nov. 3 ballot.", src:"https://fox59.com/indiana-news/noblesville-schools-to-reduce-staff-due-to-multi-million-dollar-deficit/amp/", fit:"Budget plan if the vote fails."},
+    {n:"Frontier School Corporation", tags:["money"], why:"Referendum on Nov. 3. Your home base.", more:"Frontier Elementary is in Brookston, where your office is. Daniel Sichting, a retired Frontier superintendent, is on your team page. See item 5.", src:"https://www.in.gov/dlgf/files/referendum-documentation2/2026-november-referendum-documents/26-017-Frontier-School-Corporation-Operating-Spending-Plan.pdf", fit:"A budget review and a plain-English board explanation."},
+    {n:"Five districts with state warnings", tags:["money"], why:"Lake Ridge, Cloverdale, Mishawaka, MSD Warren County and Northeastern Wayne.", more:"In April, the state board flagged each for moving too much money from the Education fund to Operations. A warning, not a takeover.", src:"https://www.in.gov/duab/files/DUAB-Board-Meeting_Apr-14,-2026_Public-Session-Minutes.pdf", fit:"A short fund-transfer and forecast review."}
+  ];
+  var TAGN = {past:"Past client", lead:"Leadership change", money:"Money pressure"};
+  var leadsEl = document.getElementById("leads");
+  L.forEach(function(x){
+    var d = document.createElement("details"); d.className = "lead-card"; d.setAttribute("data-tags", x.tags.join(" "));
+    var s = document.createElement("summary");
+    var h = document.createElement("h3"); h.textContent = x.n;
+    var w = document.createElement("div"); w.className = "why"; w.textContent = x.why;
+    var tg = document.createElement("div"); tg.className = "tags";
+    x.tags.forEach(function(t){ var sp=document.createElement("span"); sp.className="tag "+t; sp.textContent=TAGN[t]; tg.appendChild(sp); });
+    s.appendChild(h); s.appendChild(w); s.appendChild(tg);
+    var m = document.createElement("div"); m.className = "more";
+    var p1 = document.createElement("p"); p1.textContent = x.more;
+    var p2 = document.createElement("p"); p2.innerHTML = "<b>What you'd offer:</b> "; p2.appendChild(document.createTextNode(x.fit));
+    var a = document.createElement("a"); a.href = x.src; a.target="_blank"; a.rel="noopener"; a.textContent = "Source";
+    m.appendChild(p1); m.appendChild(p2); m.appendChild(a);
+    d.appendChild(s); d.appendChild(m); leadsEl.appendChild(d);
+  });
+  [].forEach.call(document.querySelectorAll("#filters button"), function(b){
+    b.addEventListener("click", function(){
+      var f = b.getAttribute("data-f");
+      [].forEach.call(document.querySelectorAll("#filters button"), function(x){ x.classList.toggle("on", x===b); });
+      [].forEach.call(leadsEl.children, function(c){ c.classList.toggle("hide", f!=="all" && c.getAttribute("data-tags").split(" ").indexOf(f)<0); });
+    });
+  });
+
+  // ITEM 5: copy
+  document.getElementById("copyEmail").addEventListener("click", function(){
+    var btn = this, text = "Subject: Whichever way Nov. 3 goes\n\n" + document.getElementById("emailBody").textContent;
+    function ok(){ btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy the note"; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(ok, fallback); } else fallback();
+    function fallback(){ var ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); ok(); }catch(e){} document.body.removeChild(ta); }
+  });
+
+  // ITEM 5: Frontier math check
+  document.getElementById("checkMath").addEventListener("click", function(){
+    var btn = this;
+    [].forEach.call(document.querySelectorAll("#p5 .fill"), function(f){ f.style.left = f.getAttribute("data-left")+"%"; f.style.width = f.getAttribute("data-w")+"%"; });
+    var parts = [903811,119200,385200,134530], sum = parts.reduce(function(a,b){return a+b;},0);
+    var out = document.getElementById("mathOut");
+    function fmt(n){ return "$" + n.toLocaleString("en-US"); }
+    out.innerHTML = '<div style="font-family:Special Elite,Courier New,monospace">903,811 + 119,200 + 385,200 + 134,530</div>'
+      + '<div style="font-family:Fraunces,serif;font-weight:800;font-size:28px;margin:6px 0" id="sumNum">$0</div>'
+      + '<span class="stamp pop" style="font-size:13px">Matches the page &#10003;</span>'
+      + '<p style="margin:14px 0 0">It also caught this: <b>$1,750,000</b> is the ceiling. <b>$1,542,741</b> is the estimate. The <b>$207,259</b> between them is not a surplus or a deficit.</p>';
+    var el = document.getElementById("sumNum");
+    if (reduce){ el.textContent = fmt(sum); } else {
+      var t0=null; requestAnimationFrame(function step(ts){ if(!t0)t0=ts; var p=Math.min(1,(ts-t0)/900); el.textContent = fmt(Math.round(sum*(1-Math.pow(1-p,3)))); if(p<1) requestAnimationFrame(step); });
+    }
+    btn.textContent = "Checked"; btn.setAttribute("aria-disabled","true");
+  });
+
+  // MOTION
+  var second = document.getElementById("second");
+  function pick(k){
+    [].forEach.call(document.querySelectorAll(".opt"), function(o){ o.classList.toggle("on", o.getAttribute("data-k")===k); });
+    second.removeAttribute("aria-disabled");
+    second.textContent = "Second the motion: #" + k;
+    second.href = "sms:" + JIMMY + "?&body=" + encodeURIComponent("Aye on " + k + ". — Steve");
+    store("pick", k);
+  }
+  [].forEach.call(document.querySelectorAll(".opt"), function(o){ o.addEventListener("click", function(){ pick(o.getAttribute("data-k")); }); });
+  var saved = load("pick"); if (saved) pick(saved);
+
+  // start
+  var h = (location.hash||"").match(/item-(\d)/);
+  if (h){ openFolder(); go(+h[1], false); }
+})();
+</script>
+</body>
+</html>
