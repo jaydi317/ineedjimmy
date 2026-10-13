@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Questions for Dr. Marcus McCray (Round 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@800&family=Jost:wght@500&display=swap">
+<style>
+/* ===== CLIENT BRAND: change only these 5 colors (pull them from the client's website/logo) ===== */
+:root{--navy:#06205C;   /* brand: header + headings (dark color) */
+      --deep:#031640;   /* brand-deep: sticky progress bar (darker) */
+      --orange:#EF8903; /* accent: Talk button, progress, highlights */
+      --onAccent:#06205C;/* text on the accent button (dark or white, whichever reads) */
+      --accentText:#A85400;/* accent used as small text on white (darker version of accent) */
+/* ===== leave these ===== */
+--paper:#F3F5F9;--card:#FFFFFF;--ink:#0E1A33;--muted:#4D5A75;--line:#D9DFEA;--green:#16704A;--red:#B42A24}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.5 'Barlow',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px)}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding-inline:16px}
+header.hero{background:var(--navy);color:#fff;padding:calc(env(safe-area-inset-top,0px) + 28px) 0 30px}
+.wm{font:500 26px/1 'Jost',system-ui,sans-serif;letter-spacing:.06em}.wm b{font-weight:500;color:var(--orange)}
+.wm small{display:block;font-size:9px;letter-spacing:.24em;margin-top:5px;color:#C9D3EA}
+h1{font:800 clamp(34px,8vw,52px)/.95 'Barlow Condensed','Arial Narrow',sans-serif;text-transform:uppercase;margin:22px 0 12px;text-wrap:balance}
+h1 span{color:var(--orange)}
+.hero p{color:#DCE3F2;margin:0 0 10px;max-width:60ch}
+.how{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px}
+.how li{display:flex;gap:10px;align-items:flex-start;color:#fff}
+.how b{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--onAccent);font-weight:800}
+.bar{position:sticky;top:0;z-index:20;background:var(--deep);color:#fff;padding:10px 0 12px;padding-top:calc(env(safe-area-inset-top,0px) + 10px)}
+.bar .wrap{display:flex;align-items:center;gap:12px}
+.track{flex:1;height:8px;background:rgba(255,255,255,.18);border-radius:99px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--orange);transition:width .3s}
+.count{font-weight:700;font-size:15px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.notice{margin:16px 0 0;padding:14px 16px;border-radius:10px;background:#FFF3D6;color:#6B3B00;border:1px solid #F5C77A;font-size:16px}
+section.sec{padding-top:28px}
+.sec h2{font:800 30px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;color:var(--navy);margin:0}
+.sec .sub{color:var(--muted);margin:6px 0 14px;font-size:16px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 16px;margin-bottom:14px;scroll-margin-top:70px}
+.q.done{border-color:#9BD3B5;box-shadow:inset 4px 0 0 var(--green)}
+.qn{font:700 13px/1 'Barlow',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--accentText)}
+.q h3{font-size:20px;line-height:1.3;margin:6px 0 4px;font-weight:700;text-wrap:balance}
+.q .hint{color:var(--muted);font-size:16px;margin:0 0 12px}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 10px}
+.talk{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;border:0;border-radius:999px;background:var(--orange);color:var(--onAccent);font-weight:800;font-size:18px;cursor:pointer}
+.talk svg{width:22px;height:22px}
+.talk.rec{background:var(--red);color:#fff}
+.talk.rec .dot{width:12px;height:12px;border-radius:50%;background:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.talk.rec .dot{animation:none}}
+.timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--red)}
+.meter{display:inline-block;width:120px;height:10px;border-radius:99px;background:#E4E8F0;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .1s}
+.mic-hint{color:var(--muted);font-size:15px;font-weight:600;margin:0}
+.mic-hint:empty{display:none}
+.ghost{min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:15px;color:var(--muted)}
+.clips{display:grid;gap:10px;margin:4px 0 10px}
+.clip{background:var(--paper);border-radius:10px;padding:10px 12px}
+.clip audio{width:100%;height:40px}
+.clip .st{font-size:14px;font-weight:600;margin-top:6px}
+.st.ok{color:var(--green)}.st.wait{color:var(--muted)}.st.err{color:var(--red)}
+.clip .heard{font-size:15px;color:var(--ink);margin-top:6px;white-space:pre-wrap}
+.clip .heard b{color:var(--muted);font-weight:600}
+.retry{margin-top:6px}
+textarea,input.short{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;background:#fff;font-size:17px;line-height:1.4}
+textarea{min-height:84px;resize:vertical}
+textarea:focus,input.short:focus{outline:none;border-color:var(--orange)}
+.typed-st{font-size:14px;margin-top:6px;min-height:20px}
+.or{font-size:14px;color:var(--muted);margin:2px 0 6px}
+.done-box{margin:32px 0 16px;background:var(--navy);color:#fff;border-radius:14px;padding:24px 20px}
+.done-box h2{font:800 32px/1 'Barlow Condensed',sans-serif;text-transform:uppercase;margin:0 0 8px}
+.done-box p{color:#DCE3F2;margin:0 0 14px}
+.send{min-height:56px;width:100%;border:0;border-radius:12px;background:var(--orange);color:var(--onAccent);font-weight:800;font-size:19px;cursor:pointer}
+.send:disabled{opacity:.6}
+.memo{margin-top:16px;font-size:15px;color:#C9D3EA}
+.memo b{color:#fff}
+footer{color:var(--muted);font-size:14px;padding:10px 0 40px;text-align:center}
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.jump a{font-size:14px;font-weight:600;text-decoration:none;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:6px 12px}
+.testbar{background:#7A1FA2;color:#fff;text-align:center;font-weight:700;font-size:14px;padding:8px 12px}
+</style>
+</head>
+<body>
+<div class="testbar" id="testbar" hidden>TEST MODE · answers go to a separate TEST sheet, not the real one</div>
+<header class="hero"><div class="wrap">
+ <div class="wm" id="wm"></div>
+ <h1 id="heroTitle"></h1>
+ <p id="intro"></p>
+ <ul class="how">
+  <li><b>1</b><span>Tap the <strong>Talk</strong> button and allow the microphone.</span></li>
+  <li><b>2</b><span>Talk. Tap <strong>Stop</strong> when you're done. It saves itself.</span></li>
+  <li><b>3</b><span>Skip anything. Come back anytime on the same phone. The first few matter most.</span></li>
+ </ul>
+ <nav class="jump" aria-label="Sections" id="jump"></nav>
+ <div id="notice"></div>
+</div></header>
+<div class="bar" aria-live="polite"><div class="wrap"><div class="track"><div class="fill" id="fill"></div></div><div class="count" id="count">0 answered</div></div></div>
+<main class="wrap" id="main"></main>
+<div class="wrap">
+ <div class="done-box" id="finish">
+  <h2>All done for now?</h2>
+  <p>Everything you've answered is already saved. Tap below and I'll get a copy of all of it. You can still come back and add more later.</p>
+  <button class="send" id="sendAll" type="button">Send everything to Jimmy</button>
+  <p class="st" id="sendSt" style="margin-top:10px"></p>
+  <p class="memo"><b>Rather use Voice Memos?</b> Open the Voice Memos app, read the questions out loud and answer them, then text the recording to Jimmy. That works too.</p>
+ </div>
+</div>
+<footer id="foot"></footer>
+
+<script>
+/* =====================================================================
+   1) CONFIG: fill in for each client. Everything the client reads comes from here.
+   ===================================================================== */
+const CONFIG = {
+ "endpoint": "https://script.google.com/macros/s/AKfycbwYj5kldzlphutJq6INLFr_y96R-tJcb7WHJXLpFk5ddCxasH0RDviJoW7CZliy5CtXfw/exec",
+ "token": "ineedjimmy-voice-v2",
+ "client": "excell-2",
+ "name": "Dr. Marcus McCray (Round 2)",
+ "firstName": "Marcus",
+ "brand": "EXCELL",
+ "brandSub": "SPORTS CHIROPRACTIC",
+ "intro": "Round two. These help me find the things AI can take off your plate, and how we'll know it worked. Talk like we're sitting in your office. Ramble, tell stories. The first five matter most.",
+ "footer": "Private page for Dr. Marcus McCray · prepared by Jimmy Davis, iNeedJimmy.com"
+};
+
+/* =====================================================================
+   2) QUESTIONS: sections in order. type "talk" = voice + typing, "short" = one-line typed box.
+      ids must be unique and stable (a1, a2, n1...). NEVER put strategy notes ("why we ask")
+      here: the client can view the page source. Those live in the private brief file.
+   ===================================================================== */
+const QUESTIONS = [{"section": "start", "title": "Start here: the big five", "short": "The big five", "sub": "If you only have 10 minutes, answer these. They tell me where AI can help most.", "items": [{"id": "a1", "type": "talk", "q": "Walk me through a normal day, from when you get to the office until you leave. Where does time go that isn't spent with patients?", "hint": "Phone calls, texts, email, paperwork, billing, scheduling, marketing, staff questions. Anything."}, {"id": "a2", "type": "talk", "q": "What do you hate doing every day or every week? The stuff that drains you or that you keep putting off.", "hint": "Be honest. Nothing is too small."}, {"id": "a3", "type": "talk", "q": "What falls through the cracks right now? Things that should happen but often don't.", "hint": "Callbacks, follow-ups, reminders, thank-yous, rebooking, reviews, paperwork."}, {"id": "a4", "type": "talk", "q": "What do callers and patients ask you or your front desk over and over?", "hint": "Cost, insurance, hours, parking, what to wear, how long it takes, do you take my plan..."}, {"id": "a5", "type": "talk", "q": "What's one thing you know you should be doing for the business, but never get to?", "hint": "Marketing, videos, reaching out to past patients, hiring, systems, anything."}]}, {"section": "numbers", "title": "A few numbers", "short": "Numbers", "sub": "Ballpark is fine. These are the 'before' numbers, so we can show what changed later.", "items": [{"id": "n1", "type": "short", "q": "Hours a week YOU spend on non-patient work (admin, email, marketing, billing)"}, {"id": "n2", "type": "short", "q": "Hours a week your front desk spends on the phone"}, {"id": "n3", "type": "short", "q": "New Google reviews you get in a typical month right now"}, {"id": "n4", "type": "short", "q": "Hyperbaric and decompression sessions in a typical week (asking again, the first answer didn't save right)"}, {"id": "n5", "type": "talk", "q": "Where do you think you're losing money right now without seeing it?"}]}, {"section": "open", "title": "Loose ends from our meeting", "short": "Loose ends", "sub": "Quick ones so I can keep building.", "items": [{"id": "o1", "type": "talk", "q": "What exactly worries you about mentioning the Colts on the website? What would you be comfortable saying?", "hint": "Did the team ever give you anything in writing about it?"}, {"id": "o2", "type": "talk", "q": "What would make a membership feel right to you? And what would make it feel wrong?", "hint": "We skipped this one last time."}, {"id": "o3", "type": "talk", "q": "Your old scheduling system sent a thank-you email with a review link after every visit. What was it called, and what did the email say?"}, {"id": "o4", "type": "talk", "q": "When a new patient calls, what should always go to a real person at your front desk?", "hint": "And what would you be fine letting AI handle?"}]}, {"section": "win", "title": "What a win looks like", "short": "The win", "sub": "These tell me what to aim for, and how we'll know it worked.", "items": [{"id": "w1", "type": "talk", "q": "Ninety days from now, what would have to be true for you to say this was a big win?", "hint": "Hours back, money, fewer headaches, Fridays, anything."}, {"id": "w2", "type": "talk", "q": "What have you tried before, with websites, marketing or tech, that didn't work out? What went wrong?"}, {"id": "w3", "type": "talk", "q": "If this works the way we hope, would you be open to a short video or a few sentences about it? OK if I share your story with other business owners? (Never anything about patients.)", "hint": "Just say yes, no, or maybe later."}]}];
+
+(function(){
+ var qs = new URLSearchParams(location.search);
+ var TEST = qs.get('test') === '1';
+ var ENDPOINT = qs.get('endpoint') || CONFIG.endpoint;
+ if (!ENDPOINT || ENDPOINT.indexOf('__') === 0) ENDPOINT = '';
+ var LS = 'vq-' + CONFIG.client + (TEST ? '-test' : '') + '-v1';
+ var state = {}; try { state = JSON.parse(localStorage.getItem(LS) || '{}'); } catch(e) {}
+ if (!state.session) state.session = (TEST ? 'T' : 'S') + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+ state.answers = state.answers || {};
+ function persist(){ try { localStorage.setItem(LS, JSON.stringify(state)); } catch(e) {} }
+ persist();
+
+ document.getElementById('testbar').hidden = !TEST;
+ document.getElementById('wm').innerHTML = esc(CONFIG.brand) + (CONFIG.brandSub ? '<small>' + esc(CONFIG.brandSub) + '</small>' : '');
+ document.getElementById('heroTitle').innerHTML = esc(CONFIG.firstName) + ', just <span>talk.</span>';
+ document.getElementById('intro').textContent = CONFIG.intro;
+ document.getElementById('foot').textContent = CONFIG.footer;
+
+ var main = document.getElementById('main'), jump = document.getElementById('jump');
+ var all = [];
+ QUESTIONS.forEach(function(sec){
+  var s = document.createElement('section'); s.className='sec'; s.id='sec-'+sec.section;
+  s.innerHTML = '<h2>'+esc(sec.title)+'</h2>' + (sec.sub ? '<p class="sub">'+esc(sec.sub)+'</p>' : '');
+  var a = document.createElement('a'); a.href='#sec-'+sec.section; a.textContent = sec.short || sec.title; jump.appendChild(a);
+  sec.items.forEach(function(it){ all.push(it); s.appendChild(card(it)); });
+  main.appendChild(s);
+ });
+ function offNotice(){ document.getElementById('notice').innerHTML = '<div class="notice"><b>Heads up:</b> saving isn\'t switched on for this link yet, so answers stay on this phone for now. Ask Jimmy for the final link, or use the Voice Memos option at the bottom.</div>'; }
+ if (!ENDPOINT) offNotice();
+ else fetch(ENDPOINT).then(function(r){ return r.json(); }).then(function(j){ if (!j || !(j.version >= 2)) { ENDPOINT=''; offNotice(); } }).catch(function(){ /* can't read reply (network/CORS); keep trying on save */ });
+ updateProgress();
+ function micSvg(){ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>'; }
+
+ function card(it){
+  var el = document.createElement('div'); el.className='q'; el.id='q-'+it.id;
+  var num = it.id.toUpperCase();
+  var html = '<div class="qn">'+num+'</div><h3>'+esc(it.q)+'</h3>' + (it.hint ? '<p class="hint">'+esc(it.hint)+'</p>' : '<p class="hint"></p>');
+  if (it.type === 'talk') {
+   html += '<div class="controls"><button class="talk" type="button">'+micSvg()+'<span>Talk</span></button><span class="timer" hidden></span></div><p class="mic-hint" aria-live="polite"></p><div class="clips"></div><p class="or">Or type it:</p><textarea rows="3" aria-label="Type your answer to '+esc(it.q)+'"></textarea>';
+  } else {
+   html += '<input class="short" type="text" inputmode="text" aria-label="'+esc(it.q)+'" placeholder="Your answer">';
+  }
+  html += '<div class="typed-st st"></div>';
+  el.innerHTML = html;
+  var field = el.querySelector('textarea, input.short');
+  var saved = state.answers[it.id] || {};
+  if (saved.text) field.value = saved.text;
+  if (saved.done) el.classList.add('done');
+  var tst = el.querySelector('.typed-st');
+  var lastSent = saved.text || '';
+  var saveTimer;
+  function saveTyped(){
+   var v = field.value.trim();
+   state.answers[it.id] = Object.assign(state.answers[it.id]||{}, {text: field.value});
+   if (v) { state.answers[it.id].done = true; el.classList.add('done'); }
+   persist(); updateProgress();
+   if (v === lastSent.trim()) return;
+   if (!ENDPOINT) { tst.className='typed-st st ok'; tst.textContent='Saved on this phone'; return; }
+   tst.className='typed-st st wait'; tst.textContent='Saving…';
+   send({kind:'text', qid:it.id, question:it.q, text:v}).then(function(){ lastSent=v; tst.className='typed-st st ok'; tst.textContent='Saved ✓'; })
+    .catch(function(){ tst.className='typed-st st err'; tst.textContent='Not sent yet. It will retry when you tap "Send everything".'; });
+  }
+  field.addEventListener('input', function(){ state.answers[it.id]=Object.assign(state.answers[it.id]||{}, {text: field.value}); persist(); clearTimeout(saveTimer); saveTimer=setTimeout(saveTyped, 2500); });
+  field.addEventListener('blur', function(){ clearTimeout(saveTimer); saveTyped(); });
+  if (it.type === 'talk') wireRecorder(el, it);
+  return el;
+ }
+
+ var active = null;
+ function wireRecorder(el, it){
+  var btn = el.querySelector('.talk'), timer = el.querySelector('.timer'), clips = el.querySelector('.clips'), hint = el.querySelector('.mic-hint');
+  var savedInit = state.answers[it.id] || {};
+  (savedInit.clips||[]).forEach(function(c){ var d=document.createElement('div'); d.className='clip'; d.innerHTML=(c.ok?'<div class="st ok">Recording '+c.n+' saved ✓ ('+fmt(c.secs)+')</div>':'<div class="st wait">Recording '+c.n+' ('+fmt(c.secs)+') is on this phone only. Record it again to send it.</div>')+(c.heard?'<div class="heard"><b>What I heard:</b> '+esc(c.heard)+'</div>':''); clips.appendChild(d); });
+  btn.addEventListener('click', function(){
+   if (active && active.el === el) { active.stop(); return; }
+   if (active) active.stop();
+   start();
+  });
+  function start(){
+   if (!navigator.mediaDevices || !window.MediaRecorder) { showErr('This browser can\'t record. Please type, or use Voice Memos (see bottom).'); return; }
+   navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true, autoGainControl:true}}).then(function(stream){
+    var isApple = /Apple/.test(navigator.vendor || '');
+    var prefs = isApple ? ['audio/mp4','audio/aac','audio/webm;codecs=opus','audio/webm'] : ['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg;codecs=opus'];
+    var mime = prefs.find(function(m){ return MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(m); }) || '';
+    var rec = mime ? new MediaRecorder(stream, {mimeType:mime}) : new MediaRecorder(stream);
+    var chunks = [], t0 = Date.now(), iv;
+    rec.ondataavailable = function(e){ if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = function(){
+     stream.getTracks().forEach(function(t){ t.stop(); });
+     clearInterval(iv); timer.hidden = true;
+     btn.classList.remove('rec'); btn.innerHTML = micSvg()+'<span>Talk again</span>';
+     var secs = Math.round((Date.now()-t0)/1000);
+     var blob = new Blob(chunks, {type: rec.mimeType || mime || 'audio/webm'});
+     if (secs < 1 || !blob.size) { showErr('That recording came out empty. Tap Talk and try again.'); return; }
+     loudness(blob).then(function(peak){ addClip(blob, secs, peak !== null && secs >= 2 && peak < 0.01); });
+    };
+    rec.start();
+    btn.classList.add('rec'); btn.innerHTML = '<span class="dot"></span><span>Stop</span>';
+    timer.hidden = false; timer.textContent = '0:00'; hint.textContent = 'Listening… talk as long as you like.';
+    iv = setInterval(function(){ var s = Math.round((Date.now()-t0)/1000); timer.textContent = fmt(s); if (s >= 900) active && active.stop(); }, 250);
+    active = { el: el, stop: function(){ hint.textContent = ''; if (rec.state !== 'inactive') rec.stop(); active = null; } };
+   }).catch(function(){ showErr('I couldn\'t use the microphone. Allow microphone access for this site (in Safari: the aA menu → Website Settings → Microphone → Allow), or type your answer.'); });
+  }
+  // Peak level of a finished recording (0–1), or null if the browser can't decode it.
+  function loudness(blob){
+   return new Promise(function(resolve){
+    try {
+     var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return resolve(null);
+     var ctx = new AC();
+     blob.arrayBuffer().then(function(ab){
+      ctx.decodeAudioData(ab, function(ad){
+       var d = ad.getChannelData(0), peak = 0;
+       for (var i = 0; i < d.length; i += 4) { var v = Math.abs(d[i]); if (v > peak) peak = v; }
+       try { ctx.close(); } catch(e) {} resolve(peak);
+      }, function(){ try { ctx.close(); } catch(e) {} resolve(null); });
+     }).catch(function(){ resolve(null); });
+    } catch(e) { resolve(null); }
+   });
+  }
+  function addClip(blob, secs, quiet){
+   var saved = state.answers[it.id] = state.answers[it.id] || {};
+   saved.clips = saved.clips || [];
+   var n = saved.clips.length + 1;
+   var d = document.createElement('div'); d.className='clip';
+   var url = URL.createObjectURL(blob);
+   d.innerHTML = '<audio controls preload="metadata" src="'+url+'"></audio>'+(quiet?'<div class="st err">This one sounds very quiet or silent. Play it back; if you can\'t hear yourself, check your microphone and tap Talk again.</div>':'')+'<div class="st wait">Saving recording '+n+'…</div><div class="heard" hidden></div>';
+   clips.appendChild(d);
+   el.classList.add('done'); saved.done = true; persist(); updateProgress();
+   var st = d.querySelector('.st.wait'), heard = d.querySelector('.heard');
+   var entry = {n:n, secs:secs}; saved.clips.push(entry); persist();
+   function upload(){
+    if (!ENDPOINT) { st.className='st ok'; st.textContent='Recorded ('+fmt(secs)+'). Saved on this phone only; saving isn\'t switched on yet.'; return; }
+    st.className='st wait'; st.textContent='Saving recording '+n+'…';
+    toBase64(blob).then(function(b64){
+     return send({kind:'audio', qid:it.id, question:it.q, clip:n, seconds:secs, mime:blob.type, audio:b64});
+    }).then(function(res){
+     st.className='st ok'; st.textContent='Recording '+n+' saved ✓ ('+fmt(secs)+')'; entry.ok = true; persist();
+     if (res && res.transcript) { heard.hidden=false; heard.innerHTML='<b>What I heard:</b> '+esc(res.transcript); entry.heard = res.transcript; persist(); }
+    }).catch(function(){
+     st.className='st err'; st.innerHTML='Didn\'t save. Check your connection. <button class="ghost retry" type="button">Try again</button>';
+     st.querySelector('button').onclick = upload;
+    });
+   }
+   upload();
+  }
+  function showErr(msg){ var d=document.createElement('div'); d.className='clip'; d.innerHTML='<div class="st err">'+esc(msg)+'</div>'; clips.appendChild(d); }
+ }
+
+ function send(payload){
+  payload.token = CONFIG.token; payload.client = CONFIG.client; payload.test = TEST; payload.session = state.session; payload.name = CONFIG.name; payload.sentAt = new Date().toISOString();
+  var body = JSON.stringify(payload);
+  return fetch(ENDPOINT, {method:'POST', body: body, redirect:'follow'}).then(function(r){
+   if (!r.ok) { var e = new Error('HTTP '+r.status); e.server = true; throw e; }
+   return r.json().catch(function(){ return {}; });
+  }, function(netErr){
+   // Browser couldn't read the reply (strict CORS). Send once more without reading it.
+   return fetch(ENDPOINT, {method:'POST', body: body, mode:'no-cors'}).then(function(){ return {}; });
+  }).then(function(j){ if (j && j.ok === false) { var e = new Error(j.error||'error'); e.server = true; throw e; } return j; });
+ }
+
+ document.getElementById('sendAll').addEventListener('click', function(){
+  var b = this, st = document.getElementById('sendSt');
+  document.querySelectorAll('textarea, input.short').forEach(function(f){ f.blur(); });
+  if (!ENDPOINT) { st.style.color='#FFD08A'; st.textContent='Saving isn\'t switched on for this link yet. Your typed answers are saved on this phone.'; return; }
+  b.disabled = true; st.style.color='#DCE3F2'; st.textContent='Sending…';
+  var answers = all.map(function(it){ var a=state.answers[it.id]||{}; return {qid:it.id, question:it.q, text:(a.text||'').trim(), clips:(a.clips||[]).length}; });
+  send({kind:'final', answers: answers}).then(function(){
+   st.style.color='#9BE3BE'; st.textContent='Sent ✓ Thank you, '+CONFIG.firstName+'. Jimmy has everything.'; b.textContent='Sent ✓';
+  }).catch(function(){ b.disabled=false; st.style.color='#FFD08A'; st.textContent='Couldn\'t send. Check your connection and try again.'; });
+ });
+
+ function updateProgress(){
+  var n = all.filter(function(it){ var a=state.answers[it.id]; return a && a.done; }).length;
+  document.getElementById('count').textContent = n + ' of ' + all.length + ' answered';
+  document.getElementById('fill').style.width = (all.length ? (n/all.length*100) : 0) + '%';
+ }
+ function toBase64(blob){ return new Promise(function(res, rej){ var r=new FileReader(); r.onload=function(){ res(String(r.result).split(',')[1]); }; r.onerror=rej; r.readAsDataURL(blob); }); }
+ function fmt(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+ function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+})();
+</script>
+</body>
+</html>

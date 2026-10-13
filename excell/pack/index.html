@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Excell Resource Pack</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: a readable report. Navy cover, then numbered chapters in one column; tables scroll inside their own box on phones. */
+:root{
+  --bg:#F3F5F9; --card:#FFFFFF; --ink:#0B1733; --muted:#55607A; --line:#DCE2EE;
+  --navy:#06205C; --accent:#C96F00; --soft:#FFF1DE; --good:#1C7C4A; --goodsoft:#E3F4EA; --warn:#9A5A00;
+  --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --accent:#EF8903; --soft:#2A2410; --good:#6FD39B; --goodsoft:#0E3324; --warn:#F2B35B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --accent:#EF8903; --soft:#2A2410; --good:#6FD39B; --goodsoft:#0E3324; --warn:#F2B35B; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-inline:16px;padding-block:0 56px}
+.wrap{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.cover{background:#031640;color:#F3F5F9;margin-inline:-16px;padding:40px 16px 34px}
+.cover .in{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#EF8903}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,9vw,66px);line-height:.95;margin:0}
+.cover p{margin:0;color:#C9D3E8;max-width:62ch}
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.toc a{font-size:14px;font-weight:600;text-decoration:none;color:#F3F5F9;border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:5px 12px}
+section{display:flex;flex-direction:column;gap:14px}
+.ch{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:34px;line-height:1;margin:0;color:var(--navy);text-wrap:balance}
+h3{font-size:19px;margin:6px 0 0;color:var(--navy)}
+p{margin:0;max-width:68ch}
+.lead{font-size:19px}
+.muted{color:var(--muted);font-size:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px}
+.rec{background:var(--soft);border-radius:10px;padding:16px 20px;display:flex;flex-direction:column;gap:6px}
+.rec b.k{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;color:var(--accent);font-size:15px}
+ul,ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th,td{text-align:left;padding:10px 14px;border-top:1px solid var(--line);vertical-align:top}
+th{border-top:0;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.hl td{background:var(--soft);font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid .card{min-width:0}
+.tier{border-top:4px solid var(--line)}
+.tier.pick{border-top-color:var(--accent)}
+.price{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--navy)}
+.price small{font-size:16px;font-weight:600;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.ok h3{color:var(--good)} .no h3{color:var(--warn)}
+blockquote{margin:0;border-left:3px solid var(--accent);padding:4px 0 4px 14px;font-style:italic;color:var(--muted)}
+a{color:var(--accent)}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.stage{display:flex;gap:14px;align-items:flex-start}
+.stage .s{flex:none;width:38px;height:38px;border-radius:50%;background:var(--soft);color:var(--accent);font-family:var(--display);font-weight:800;font-size:20px;display:grid;place-items:center}
+.stage > div{min-width:0}
+footer{color:var(--muted);font-size:14px;border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:6px}
+</style>
+<style>html,body{margin:0}</style>
+</head>
+<body>
+
+
+<header class="cover"><div class="in">
+  <div class="eyebrow">Prepared for Dr. Marcus McCray · Oct 13, 2026</div>
+  <h1>Excell Resource Pack</h1>
+  <p>Everything we researched for you, in one place: your numbers, the plan, the website, phones, reviews, referrals and memberships, with what other practices do and what we recommend. About 15 minutes to read. Nothing here happens until you say yes.</p>
+  <nav class="toc" aria-label="Chapters">
+    <a href="#short">Short version</a><a href="#numbers">Your numbers</a><a href="#plan">The plan</a><a href="#website">Website</a><a href="#phones">Phones</a><a href="#reviews">Reviews &amp; no-shows</a><a href="#referrals">Referrals</a><a href="#membership">Memberships</a><a href="#more">More ideas</a><a href="#next">Next steps</a>
+  </nav>
+</div></header>
+
+<div class="wrap">
+
+<section id="short">
+  <div class="ch">01 · The short version</div>
+  <h2>Five things the research says</h2>
+  <ol class="lead">
+    <li><b>Your hands are the limit, not leads.</b> By your own numbers you're about 9 new patients a month from a full schedule.</li>
+    <li><b>The fastest money needs zero ad spend:</b> past patients, referral thank-yous, fewer no-shows, and a website that turns more of your 1,200 monthly Google searches into bookings.</li>
+    <li><b>Phones:</b> AI can answer every call, 24/7, and text your ChiroTouch booking link, while your front desk stays.</li>
+    <li><b>Memberships should sell your idle equipment</b>, not more of your time. Hyperbaric and decompression get used only once or twice a week.</li>
+    <li><b>Fridays come from income that doesn't need you:</b> recovery services, memberships, and later an associate.</li>
+  </ol>
+</section>
+
+<section id="numbers">
+  <div class="ch">02 · Your numbers</div>
+  <h2>What your answers add up to</h2>
+  <p>Built only from the ballparks you gave us, so treat these as estimates. Your own numbers are in bold.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Measure</th><th>How we got it</th><th>Estimate</th></tr></thead>
+    <tbody>
+      <tr><td>Visits a month</td><td><b>140–160 a week</b> × 52 ÷ 12</td><td class="n">≈ 650</td></tr>
+      <tr><td>Revenue per visit</td><td><b>$54,000 a month</b> ÷ 650</td><td class="n">≈ $83</td></tr>
+      <tr><td>Value of one new patient</td><td><b>24 visits</b> × $83</td><td class="n">≈ $2,000</td></tr>
+      <tr class="hl"><td>Open capacity</td><td><b>200 max</b> − 150 = 50 visits a week</td><td class="n">≈ $18,000 / mo unused</td></tr>
+      <tr class="hl"><td>New patients to fill up</td><td>each new patient ≈ 5.5 visits a week</td><td class="n">≈ 9 more a month</td></tr>
+      <tr><td>No-shows</td><td><b>7 a week</b> × $83</td><td class="n">≈ $2,100–2,500 / mo</td></tr>
+      <tr><td>Past patients</td><td><b>406</b> haven't been in for 6+ months</td><td class="n">5–10% back ≈ $8–17k</td></tr>
+      <tr><td>Members today</td><td><b>80</b> at $106 or $212</td><td class="n">≈ $8.5–17k / mo</td></tr>
+      <tr><td>Website demand</td><td><b>1,200 searches a month</b></td><td class="n">plenty of traffic</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">You told us you'd gladly see 20 more new patients a month. The math says you can take about 9 more a month before you need help. That's why the plan below starts with filling open slots, then adds income that doesn't need your hands.</p>
+</section>
+
+<section id="plan">
+  <div class="ch">03 · The plan</div>
+  <h2>Get your Fridays back</h2>
+  <p>You told us the goal: Monday through Thursday, no Fridays, one or two associates, and time to watch your kids play in college. Here's the order that gets there without losing income.</p>
+  <div class="stage"><span class="s">1</span><div><h3>Fill the open slots, no ads (first 90 days)</h3><p>A simple note to past patients in your voice, thank-yous to the people who refer, reminders and a "we missed you" text for no-shows, the automatic review email, the AI phone, and the new website.</p></div></div>
+  <div class="stage"><span class="s">2</span><div><h3>Add income that doesn't need your hands (6–18 months)</h3><p>Memberships built around recovery services (stretch, decompression, inductive therapy, AllCore, hyperbaric), run by staff. Hire the rehab and massage role. Start recruiting the associate.</p></div></div>
+  <div class="stage"><span class="s">3</span><div><h3>Step back (by year 3)</h3><p>The associate covers Fridays and new patients. Only then do ads make sense: to fill the associate's schedule with the kind of patient you want.</p></div></div>
+</section>
+
+<section id="website">
+  <div class="ch">04 · Website</div>
+  <h2>A referral closer, not a billboard</h2>
+  <p>98% of your new patients come from referrals. A friend already said "go see Marcus." So the site has one job: in five seconds, show that you're the real deal, what happens on a first visit and what it costs, and put the Schedule button front and center. Then give people who stay something to learn from. You asked for more educational content.</p>
+  <div class="rec"><b class="k">Our recommendation</b><p><b>The scrolling look you liked, with your own words in it.</b> Three finalists: <a href="https://excell-site-uat.vercel.app/" target="_blank" rel="noopener">A · the scrolling look</a>, <a href="https://ineedjimmy.com/excell/sites/10-in-your-words.html" target="_blank" rel="noopener">B · in your words</a>, <a href="https://ineedjimmy.com/excell/sites/04-referred-by-a-friend.html" target="_blank" rel="noopener">C · referred by a friend</a>. All 13 options: <a href="https://ineedjimmy.com/excell/" target="_blank" rel="noopener">ineedjimmy.com/excell</a>.</p></div>
+  <h3>What nobody else in Indy does</h3>
+  <p>We studied the top local sports chiropractors (Premier Sports Chiropractic, Integrated Health Solutions, Indy Muscle &amp; Joint, Midwest Sport &amp; Spine, Indianapolis Sport and Spine, Westfield Spine and Sport) and national leaders like Airrosti and Dynamic Sports Medicine. Almost nobody explains the first visit, shows the first-visit price, or lets you meet the doctor as a real person. That's your opening.</p>
+  <h3>Your first 5 videos, from your own YouTube channel</h3>
+  <p>We went through all 64 of your videos. These match what you said you explain over and over, plus the services you wish more people used: <b>your first visit</b>, <b>disc herniation and decompression</b>, <b>High Energy Inductive Therapy</b>, <b>AllCore 360</b>, and <b>not all headaches are the same</b>. Hyperbaric has no video yet, so it would be a new one.</p>
+  <h3>Two guardrails</h3>
+  <ul>
+    <li><b>The Colts:</b> name only, wording you approve, nothing that implies the team endorses the practice.</li>
+    <li><b>Out-of-office banner:</b> one you can change from your phone in seconds, especially July to January.</li>
+  </ul>
+</section>
+
+<section id="phones">
+  <div class="ch">05 · Phones and front desk</div>
+  <h2>AI that answers, your desk that stays</h2>
+  <p>You said the dream is a phone system that turns a caller into a booked appointment, any time of night, while patients still get a real person when it matters. Here's what we found.</p>
+  <div class="two">
+    <div class="card"><h3>What's true today</h3><ul>
+      <li><b>ChiroTouch has no open connection</b> for outside apps to book straight into your calendar. Anyone promising that outside ChiroTouch's own partner list is guessing.</li>
+      <li><b>Grasshopper won't sign a HIPAA agreement</b> (a BAA), so it shouldn't handle patient details by text.</li>
+      <li><b>Deadline:</b> ChiroTouch's built-in card processing (OpenEdge / Global Payments) ends <b>Dec 30, 2026</b>. CT Pay replaces it. Worth checking if this affects you.</li>
+    </ul></div>
+    <div class="card"><h3>What we recommend</h3><ol>
+      <li><b>One call with your ChiroTouch rep</b> to turn on what you may already pay for: reminders, two-way texting, recall, and post-visit review requests.</li>
+      <li><b>An AI receptionist</b> that answers 24/7, answers the common questions, texts your ChiroTouch booking link, and hands off to your front desk. Leading option: Quo with Sona AI (about $80–130 a month). Backup: RingCentral Advanced.</li>
+      <li><b>One-week test</b> before anything changes for patients.</li>
+    </ol></div>
+  </div>
+  <p class="muted">Also worth a demo only: Aloha with Charlie AI, a ChiroTouch partner that claims booking inside ChiroTouch. We'd only sign up if a test call puts a real appointment on your calendar. Prices are as published in October 2026 and should be confirmed.</p>
+</section>
+
+<section id="reviews">
+  <div class="ch">06 · Reviews, no-shows and past patients</div>
+  <h2>Quick wins that cost nothing</h2>
+  <div class="grid">
+    <div class="card"><span class="tag">Reviews</span><p>Bring back the automatic thank-you email with a review link, like your old system. Fresh reviews matter more than the star rating. The goal is 4–8 new ones a month.</p></div>
+    <div class="card"><span class="tag">No-shows</span><p>Your 7 a week are random and most reschedule. A same-day "we missed you, here's your link" text catches them before they drift.</p></div>
+    <div class="card"><span class="tag">Past patients</span><p>A short note in your voice, no discount, one booking link. Start with 40 people. 6–12 months: a text. 12–24 months: a text plus a call for former members. Over 24 months: one text, then stop.</p></div>
+  </div>
+</section>
+
+<section id="referrals">
+  <div class="ch">07 · Referrals</div>
+  <h2>Thank the people who already send you patients</h2>
+  <p>Existing patients send you the most people, and you haven't done thank-yous in over 10 years. The simplest restart: a handwritten thank-you to everyone who referred someone, plus an easy "send this to a friend" link and video. The retired NFL players already know each other through the alumni chapter, so a page just for them could travel fast.</p>
+  <div class="rec"><b class="k">Indiana rule</b><p>Indiana doesn't allow paying for referrals (846 IAC 1-3-3). No gift cards, credits or free months for referring. A sincere thank-you note is fine, and so is a new-patient offer for the person who was referred. Have your attorney confirm anything new before it goes out.</p></div>
+</section>
+
+<section id="membership">
+  <div class="ch">08 · Memberships</div>
+  <h2>Same table. Same hands.</h2>
+  <p>Your answer to "what do the pros get that regular people don't" was the best line in the whole project: <i>everything, except daily unlimited access during football season.</i> That's the membership.</p>
+
+  <h3>What other practices charge (October 2026)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Practice</th><th>What's included</th><th>Per month</th></tr></thead>
+    <tbody>
+      <tr><td>LifeSport (Boulder)</td><td>1 maintenance visit</td><td class="n">$65</td></tr>
+      <tr><td>FYZICAL Club</td><td>4 adjustments, 6-month minimum, $150 to exit</td><td class="n">$70</td></tr>
+      <tr><td>The Joint (Carmel)</td><td>4 adjustments, 3-month minimum</td><td class="n">$89</td></tr>
+      <tr><td>Utah Spine &amp; Sport</td><td>1 or 2 treatments from a menu</td><td class="n">$90 / $160</td></tr>
+      <tr class="hl"><td>Excell today</td><td>2 or 4 adjustments, 10% off extras</td><td class="n">$106 / $212</td></tr>
+      <tr><td>Family Chiropractic (Columbia SC)</td><td>As many as needed, 12 months</td><td class="n">$129</td></tr>
+      <tr><td>StretchLab</td><td>4 × 25-minute stretches</td><td class="n">$169–199</td></tr>
+      <tr><td>Restore Hyper Wellness</td><td>8 recovery credits</td><td class="n">$199–250</td></tr>
+      <tr><td>Recovery Space</td><td>4 hyperbaric sessions</td><td class="n">$260–520</td></tr>
+      <tr><td>Dynamic Sports Medicine</td><td>4 visits / unlimited + recovery</td><td class="n">$299 / $599</td></tr>
+    </tbody>
+  </table></div>
+  <p class="muted">Inside your plans an adjustment works out to about $53. Chains sell volume at about $20 a visit; sports clinics sit at $75–90. You're not underpriced compared with a chain, and there's room to add value rather than cut price.</p>
+
+  <div class="two">
+    <div class="card ok"><h3>What works</h3><ul>
+      <li>Offer it at the end of active care, not on visit one</li>
+      <li>2–3 plans, simple enough for the front desk</li>
+      <li>Visits that reset monthly (no guilt "bank")</li>
+      <li>One written freeze a year (football season, travel)</li>
+      <li>A menu of treatments, not only adjustments</li>
+    </ul></div>
+    <div class="card no"><h3>What flops</h3><ul>
+      <li>Cheap "unlimited": fills your book, drops your income per hour</li>
+      <li>$30-a-year discount clubs</li>
+      <li>Big prepaid plans (you've already seen those fail)</li>
+      <li>Cancel mazes and long lock-ins</li>
+      <li>Paying for referrals (not allowed in Indiana)</li>
+    </ul></div>
+  </div>
+
+  <h3>Three options</h3>
+  <div class="grid">
+    <div class="card tier pick"><span class="tag">Recommended · the ladder</span>
+      <div class="price">$109–249<small> /mo, 3 plans</small></div>
+      <p><b>Same Table $109:</b> 2 adjustments. <b>Same Hands $219:</b> 2 adjustments + 2 recovery sessions (stretch, decompression, inductive therapy or AllCore). <b>Recovery Bench $249:</b> 4 staff-run recovery sessions incl. 1 hyperbaric, plus a quarterly check with you.</p>
+      <p class="muted">Your current 80 members keep $106 / $212 for as long as they stay.</p></div>
+    <div class="card tier"><span class="tag">Smallest change</span>
+      <div class="price">+$99<small> /mo add-on</small></div>
+      <p>Keep today's plans exactly as they are. Add 2 recovery sessions a month on top of any plan, plus hyperbaric at a member rate. A 30-day way to test demand.</p></div>
+    <div class="card tier"><span class="tag">Premium · later</span>
+      <div class="price">$349<small> /mo, 20 seats</small></div>
+      <p>4 adjustments, 4 recovery sessions incl. hyperbaric, same-week priority, a game-week tune-up. For serious athletes and executives. Best after the associate starts.</p></div>
+  </div>
+
+  <div class="rec"><b class="k">The launch idea</b><p><b>25 charter spots</b> on Same Hands, offered by invitation when a patient finishes their first round of care. The price stays locked as long as they stay. Month to month, text to cancel, no contract. What you'd say, in about 30 seconds:</p>
+  <blockquote>"You're moving well again. Most people stop here and come back in a year when it hurts. My best patients stay on a simple monthly plan: same table, same hands, twice a month, plus the recovery tools. No contract. I'm opening 25 charter spots at a price that stays locked as long as you're with us. Want one?"</blockquote></div>
+
+  <h3>Before selling it</h3>
+  <ul>
+    <li>A short written agreement (what's included, how to cancel, "this is not insurance") reviewed by an Indiana healthcare attorney.</li>
+    <li>Keep memberships cash-only and off insurance claims. Check your Cigna contract before enrolling Cigna patients.</li>
+    <li>Recovery plans need the rehab and massage hire to run the sessions.</li>
+    <li>Prices here are research-based starting points. Nothing is final until you tell us what would make a membership feel right, and what would make it feel wrong.</li>
+  </ul>
+</section>
+
+<section id="more">
+  <div class="ch">09 · More ideas from our call</div>
+  <h2>On the list for later</h2>
+  <p>Things we talked about on Oct 7. None of these need you yet. They come after the website and phones are running.</p>
+  <div class="grid">
+    <div class="card"><span class="tag">New patients</span><h3>A welcome kit</h3><p>A simple package for every new patient: what to expect, your story, home exercises from your videos, and an easy way to send a friend. It makes a great first impression and gets people talking.</p></div>
+    <div class="card"><span class="tag">Website</span><h3>An FAQ page</h3><p>Built from the questions callers and patients ask over and over (round 2, question 4). The same answers train the AI receptionist.</p></div>
+    <div class="card"><span class="tag">Referrals</span><h3>A Former Players page</h3><p>A page just for retired NFL players. They already know each other through the alumni chapter, so one link can travel fast. Wording approved by you.</p></div>
+    <div class="card"><span class="tag">Thank-yous</span><h3>Handwritten notes, done for you</h3><p>Services like Simply Noted write real notes with a real pen, in a handwriting style, from a list. Perfect for referral thank-yous and past patients. Never with gifts or rewards attached.</p></div>
+    <div class="card"><span class="tag">Past patients</span><h3>A personal video</h3><p>One short video from you, with each person's first name added, sent with the "we haven't seen you" note. Feels personal without you recording 40 videos.</p></div>
+    <div class="card"><span class="tag">Growth</span><h3>Meet Dagan</h3><p>Jimmy's partner Dagan Smith, a direct-response marketer who's great at building offers. Most useful once there's an associate's schedule to fill.</p></div>
+  </div>
+</section>
+
+<section id="next">
+  <div class="ch">10 · Next steps</div>
+  <h2>What happens now</h2>
+  <ol>
+    <li><b>Wednesday 2:00 Zoom:</b> pick the website direction and your first 5 videos.</li>
+    <li><b>Your voice questions, round 2:</b> 17 quick questions you can answer by talking. They help us find what AI can take off your plate. The link is on your <a href="/excell/hq/" target="_blank" rel="noopener">Excell HQ page</a>.</li>
+    <li><b>Week of Oct 19:</b> Jimmy comes to the office. Logins, the review email, the "we missed you" text, a look at your phones.</li>
+    <li><b>After that:</b> website build for your yes or no, then the phone test, then memberships.</li>
+  </ol>
+</section>
+
+<footer>
+  <p>Prepared by Jimmy Davis, iNeedJimmy.com, using AI research tools. Estimates use your own ballpark numbers. Prices and rules were checked in September and October 2026 and can change. This is not legal or financial advice; please run anything legal past your attorney.</p>
+  <p>Sources: The Joint (Carmel) and its Trustpilot page · FYZICAL Club · Utah Spine &amp; Sport · LifeSport · Family Chiropractic of Columbia · Dynamic Sports Medicine · StretchLab · Restore Hyper Wellness · Recovery Space · ChiroTouch (CT Pay transition page) · Quo / Sona AI · RingCentral · Aloha / Charlie AI press release · Indiana 846 IAC 1-3-3 and 1-3-2.</p>
+</footer>
+</div>
+
+</body>
+</html>
