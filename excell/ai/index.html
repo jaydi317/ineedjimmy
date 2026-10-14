@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your AI Assistant</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Same look as Excell HQ. One phone-width column: the answer first, the safety line second, then step-by-step. */
+:root{
+  --bg:#F4F6FA; --card:#FFFFFF; --ink:#0B1733; --muted:#55607A; --line:#DCE2EE;
+  --navy:#031640; --orange:#C96F00; --orange-soft:#FFF1DE;
+  --go:#1C7C4A; --go-soft:#E3F4EA; --stop:#B42318; --stop-soft:#FDECEA; --build:#2852B8; --build-soft:#E6EDFC;
+  --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --orange:#EF8903; --orange-soft:#2A2410;
+  --go:#6FD39B; --go-soft:#0E3324; --stop:#FF8A80; --stop-soft:#3A1414; --build:#8FB0FF; --build-soft:#14306E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --orange:#EF8903; --orange-soft:#2A2410;
+  --go:#6FD39B; --go-soft:#0E3324; --stop:#FF8A80; --stop-soft:#3A1414; --build:#8FB0FF; --build-soft:#14306E; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:0 48px;margin:0}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+header.top{background:#031640;color:#F3F5F9;margin-inline:-16px;padding:36px 16px 30px}
+header.top .in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#EF8903}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,9vw,64px);line-height:.95;margin:0}
+header.top p{margin:0;color:#C9D3E8;max-width:60ch}
+.stamp{font-size:14px;color:#9FB0D3}
+h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1;margin:0;color:var(--navy);text-wrap:balance}
+h3{font-size:18px;margin:0;font-weight:600}
+section{display:flex;flex-direction:column;gap:14px}
+.sub{margin:-6px 0 0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card p{margin:0}
+.pick{border:2px solid var(--orange)}
+.tag{align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px}
+.t-go{background:var(--go-soft);color:var(--go)} .t-later{background:var(--build-soft);color:var(--build)} .t-stop{background:var(--stop-soft);color:var(--stop)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+ul.clean{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.yes li::marker{content:"✓  ";color:var(--go)} .no li::marker{content:"✕  ";color:var(--stop)}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.steps li{counter-increment:s;display:flex;gap:14px;padding:14px 20px;border-top:1px solid var(--line)}
+.steps li:first-child{border-top:0}
+.steps li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--orange-soft);color:var(--orange);font-family:var(--display);font-weight:800;font-size:19px;display:grid;place-items:center}
+.steps li div{min-width:0}
+.steps b{display:block;font-weight:600}
+.steps p b{display:inline}
+.steps p{margin:2px 0 0;color:var(--muted);font-size:16px}
+.prompt{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px;display:flex;flex-direction:column;gap:8px}
+.prompt .lbl{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--orange)}
+.prompt .txt{margin:0;padding:12px 14px;background:var(--bg);border-radius:8px;font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.prompt button{align-self:flex-start}
+button{font-family:var(--body);font-size:15px;font-weight:600;border:1px solid var(--orange);color:var(--orange);background:transparent;border-radius:8px;padding:7px 14px;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.stopbox{background:var(--stop-soft);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.stopbox p{margin:0}
+.note{background:var(--orange-soft);border-radius:10px;padding:16px 20px}
+.note p{margin:0}
+.quote{border-left:3px solid var(--orange);padding:2px 0 2px 14px;color:var(--muted);font-style:italic;margin:0}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:16px}
+th,td{text-align:left;padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;border-top:0}
+.tw{overflow-x:auto}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+dt{font-weight:600} dd{margin:0;color:var(--muted)}
+nav.jump{display:flex;flex-wrap:wrap;gap:8px}
+nav.jump a{font-size:15px;font-weight:600;color:var(--orange);text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px}
+a{color:var(--orange)}
+footer{color:var(--muted);font-size:15px;text-align:center}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <div class="eyebrow">For Dr. Marcus McCray · from Jimmy</div>
+  <h1>Your First AI Assistant</h1>
+  <p>You said you like the idea and you're "slightly scared of it at the same time." That's the right instinct. Here is the safe, simple way in. Play with it this week; on Monday we'll set up the rest together.</p>
+  <div class="stamp">Updated Oct 14, 2026</div>
+</div></header>
+
+<div class="wrap">
+
+<nav class="jump" aria-label="Jump to">
+  <a href="#answer">The short answer</a><a href="#line">The one rule</a><a href="#muse">Muse: set up</a><a href="#try">Try these</a><a href="#dot">Why no Dot</a><a href="#words">Word decoder</a>
+</nav>
+
+<section id="answer" aria-labelledby="h-answer">
+  <h2 id="h-answer">The short answer</h2>
+  <div class="two">
+    <div class="card pick">
+      <span class="tag t-go">Start here</span>
+      <h3>Meta Muse (free)</h3>
+      <p>Free to start, made for people who aren't techy, and it's the one you've already seen advertised. It works on your iPhone and on the office Mac. It can run errands for you, but it always asks before it sends, posts or spends anything.</p>
+    </div>
+    <div class="card">
+      <span class="tag t-later">Not yet</span>
+      <h3>ChatGPT "Dot"</h3>
+      <p>The reason you don't see it: Dot isn't part of the $20 ChatGPT plan. It comes with the Pro plan, which costs several times more. Updating the app won't make it appear. Keep your $20 ChatGPT for writing and questions, and try Muse first.</p>
+    </div>
+  </div>
+</section>
+
+<section id="line" aria-labelledby="h-line">
+  <h2 id="h-line">The one rule: the patient line</h2>
+  <div class="stopbox">
+    <p><b>Nothing about patients goes into any AI app.</b> Neither Muse nor your ChatGPT plan has a HIPAA agreement. That's the paperwork that would make patient information legal to share. So treat these assistants like a smart friend who doesn't work at the office.</p>
+  </div>
+  <div class="two">
+    <div class="card">
+      <span class="tag t-stop">Never connect or type</span>
+      <ul class="clean no">
+        <li>ChiroTouch, or anything with patient records</li>
+        <li>The office email or texts where patients write in</li>
+        <li>Patient names, health details, insurance or birthdays</li>
+        <li>Your personal email that gets bank or security codes</li>
+        <li>Passwords or card numbers, typed into the chat</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tag t-go">Fair game</span>
+      <ul class="clean yes">
+        <li>Marketing ideas, video scripts, website wording</li>
+        <li>Your Instagram and Facebook business page</li>
+        <li>Research: competitors, equipment, CE courses</li>
+        <li>The shared Notion page you and I use</li>
+        <li>Personal life: trips, gifts, dinner plans, your week</li>
+      </ul>
+    </div>
+  </div>
+  <p class="sub">When in doubt, ask yourself: "Would I be OK if this showed up on a billboard?" If not, keep it out. Or text me first.</p>
+</section>
+
+<section id="muse" aria-labelledby="h-muse">
+  <h2 id="h-muse">Set up Muse in 10 minutes</h2>
+  <p class="sub">Do this on your iPhone. Skip connecting apps for now; just talk to it.</p>
+  <ol class="steps">
+    <li><div><b>Get the app</b><p>Open the App Store and search <b>Meta Muse</b> (the maker should say Meta). Or open <b>muse.ai</b> in Safari or on the office Mac.</p></div></li>
+    <li><div><b>Sign in</b><p>Use your Facebook or Instagram login, or make a free account. It will ask you to confirm who you are and your age. That's normal.</p></div></li>
+    <li><div><b>Name it</b><p>Give it a name you like saying. Mine is Jarvis. It will offer to connect apps. Tap <b>skip</b> for now.</p></div></li>
+    <li><div><b>Talk, don't type</b><p>Tap the microphone and talk like you'd talk to me. Long and rambly is fine; it sorts it out.</p></div></li>
+    <li><div><b>Paste the first message below</b><p>"Get to know me" lets it interview you about the business, one question at a time, so it starts out knowing you.</p></div></li>
+    <li><div><b>Leave apps for Monday</b><p>We'll connect only the safe ones together, and we'll set each one to <b>read-only</b> unless it truly needs more.</p></div></li>
+  </ol>
+  <div class="note"><p><b>The free plan is plenty to start.</b> If you ever hit the limit, paid plans start around $16 a month. Don't upgrade until you're using it every day.</p></div>
+</section>
+
+<section id="try" aria-labelledby="h-try">
+  <h2 id="h-try">Your first week: try these</h2>
+  <p class="sub">Tap Copy, then paste into Muse. These work in your $20 ChatGPT too. Do one a day; no homework pressure.</p>
+
+  <div class="prompt"><span class="lbl">Day 1 · Get to know me</span>
+    <p class="txt">I'm a sports chiropractor who owns a practice in Indianapolis. Interview me one question at a time so you understand my business, my week, and what drains my time. Business only — never ask about patients. After about 10 questions, tell me the 3 things you could take off my plate first.</p>
+    <button type="button">Copy</button></div>
+
+  <div class="prompt"><span class="lbl">Day 2 · What can you do?</span>
+    <p class="txt">What can you do for me, and which apps can you connect to? I run a healthcare office, so I can't share patient information with you. Tell me which connections are safe for me and which to avoid.</p>
+    <button type="button">Copy</button></div>
+
+  <div class="prompt"><span class="lbl">Day 3 · Video ideas</span>
+    <p class="txt">Give me 10 short video ideas (under 60 seconds) a sports chiropractor could film on a phone. Each one should answer a question patients really ask, like "Is decompression safe?" or "Why does my back hurt after sitting all day?" Keep the language simple and friendly.</p>
+    <button type="button">Copy</button></div>
+
+  <div class="prompt"><span class="lbl">Day 4 · Website "likes"</span>
+    <p class="txt">I'm redoing my practice website. Ask me about 5 quick yes-or-no questions at a time to figure out what I want: the look, what goes on the home page, videos, booking, and patient resources. When we're done, give me a short list I can text to my web guy, Jimmy.</p>
+    <button type="button">Copy</button></div>
+
+  <div class="prompt"><span class="lbl">Day 5 · Just for fun</span>
+    <p class="txt">Plan a relaxed Saturday for me and my family in Indianapolis this weekend: one thing outside, one good place to eat, and one backup if it rains. Keep it under $150.</p>
+    <button type="button">Copy</button></div>
+
+  <div class="prompt"><span class="lbl">Any time · Ideas inbox</span>
+    <p class="txt">Remember this idea for my practice so we can come back to it: [say your idea]. Keep a running list of my ideas and read it back to me when I ask "what are my ideas?"</p>
+    <button type="button">Copy</button></div>
+</section>
+
+<section aria-labelledby="h-safe">
+  <h2 id="h-safe">How it keeps you safe</h2>
+  <div class="card">
+    <ul class="clean">
+      <li><b>It asks first.</b> Muse won't send, post or buy anything without your OK. If it asks and you're not sure, say no.</li>
+      <li><b>You can see everything it did.</b> It keeps a running log of what it's done and what it plans to do.</li>
+      <li><b>It never sees your passwords.</b> When you connect an app, you log in on that app's own screen.</li>
+      <li><b>You can take it back.</b> Disconnect any app in Settings → Connectors, or tell it "forget that."</li>
+      <li><b>It can be wrong.</b> Treat it like a sharp new hire: great first drafts, but you check before anything goes out.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="dot" aria-labelledby="h-dot">
+  <h2 id="h-dot">Why you don't see "Dot"</h2>
+  <div class="card">
+    <p><b>Dot is ChatGPT's new always-on assistant.</b> It launched at the end of September. It works in the background, follows up on things, and you can even call it.</p>
+    <p><b>It's included with ChatGPT Pro</b> (and the Business Premium plan for teams), not the $20 Plus plan you have. It's also still rolling out, so some Pro users don't have it yet. That's why I see it and you don't.</p>
+    <p><b>My advice:</b> don't upgrade for it right now. Muse does most of the same everyday things for free, and your $20 ChatGPT is still great for writing, questions and talking things through. If Muse becomes part of your day and you want more, we'll look at Dot together.</p>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th></th><th>Meta Muse</th><th>ChatGPT Dot</th></tr></thead>
+    <tbody>
+      <tr><td><b>Cost</b></td><td>Free to start</td><td>Needs ChatGPT Pro</td></tr>
+      <tr><td><b>Where</b></td><td>iPhone, Mac, muse.ai</td><td>Inside the ChatGPT app</td></tr>
+      <tr><td><b>Best at</b></td><td>Everyday errands, your Instagram/Facebook page, simple business tasks</td><td>Deeper work and follow-through, for heavy ChatGPT users</td></tr>
+      <tr><td><b>For you, now</b></td><td><b>Yes, start here</b></td><td>Later, maybe</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="words" aria-labelledby="h-words">
+  <h2 id="h-words">Word decoder</h2>
+  <dl>
+    <dt>AI assistant / agent</dt><dd>An AI that doesn't just answer. It can also do things for you, like look something up, fill out a form or draft an email.</dd>
+    <dt>Prompt</dt><dd>Whatever you say or type to it. Talking out loud works great.</dd>
+    <dt>Connector</dt><dd>A permission slip that lets the assistant use one of your apps.</dd>
+    <dt>Read-only</dt><dd>It can look but can't change or send anything. The safest setting.</dd>
+    <dt>Tokens / usage</dt><dd>How much you've used it. The free plan has a weekly limit.</dd>
+  </dl>
+</section>
+
+<section aria-labelledby="h-next">
+  <h2 id="h-next">What happens next</h2>
+  <ol class="steps">
+    <li><div><b>This week (you)</b><p>Download Muse and try one message a day. Note what you liked and what felt weird.</p></div></li>
+    <li><div><b>Monday at 2 (together)</b><p>We connect the safe apps, set the rules, and I show you how my assistant and yours can pass things back and forth.</p></div></li>
+    <li><div><b>Stuck at any point?</b><p>Ask Muse "how do I…?" first. If that doesn't fix it, text me a screenshot. No question is too small.</p></div></li>
+  </ol>
+  <p class="quote">"It's a lot out there… not knowing exactly where to jump." You don't have to figure it out alone. Jump here, and I've got the rest.</p>
+</section>
+
+<p style="margin:0"><a href="https://ineedjimmy.com/excell/hq/">← Back to Excell HQ</a></p>
+<footer>Made for you by Jimmy. Text me anything.</footer>
+</div>
+
+<script>
+document.querySelectorAll('.prompt button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var t=b.parentNode.querySelector('.txt');
+    function sel(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected. Copy it';}
+    try{navigator.clipboard.writeText(t.textContent).then(function(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy';},2000);},sel);}catch(e){sel();}
+  });
+});
+</script>
+
+</body>
+</html>
