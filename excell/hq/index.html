@@ -41,6 +41,7 @@ section{display:flex;flex-direction:column;gap:14px}
 .row:first-child{border-top:0}
 .row > div{min-width:0;flex:1}
 .row b{display:block;font-weight:600}
+.row p b{display:inline}
 .row p{margin:2px 0 0;color:var(--muted);font-size:16px}
 .chip{flex:none;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap;margin-top:2px}
 .c-build{background:var(--build-soft);color:var(--build)}
@@ -70,89 +71,75 @@ button:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--
 .two .card h3{font-family:var(--display);text-transform:uppercase;font-size:22px;margin:0 0 6px;color:var(--orange)}
 .two ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 a{color:var(--orange)}
+.row .btn{display:inline-block;margin-top:10px}
+.promise .row b{font-size:18px}
 footer{color:var(--muted);font-size:14px;text-align:left}
 </style>
 <style>html,body{margin:0}</style>
 </head>
 <body>
-
-
 <header class="top"><div class="in">
   <div class="eyebrow">Excell Sports Chiropractic × Jimmy</div>
   <h1>Excell HQ</h1>
-  <p>Everything from our October 7 call in one place. Bookmark it. This link never changes. I update it as things move, so you never have to dig through texts or attachments.</p>
-  <div class="stamp">Last updated Tuesday, Oct 13, 2026</div>
+  <p>Your one link for everything we're doing together. Bookmark it. I keep it updated, so you never have to dig through texts.</p>
+  <div class="stamp">Last updated Thursday, Oct 15, 2026</div>
 </div></header>
 
 <div class="wrap">
 
-<section aria-labelledby="s-pack">
-  <div class="voice">
-    <p><b>New: your Resource Pack.</b> Everything we researched for you in one place: your numbers, the plan for your Fridays, website, phones, reviews, referrals and what other practices charge for memberships. About 15 minutes to read.</p>
-    <p><a class="btn" href="/excell/pack/" target="_blank" rel="noopener">Read the Resource Pack</a></p>
-    <p><a class="btn" href="/excell/ai/" target="_blank" rel="noopener">Your first AI assistant (Muse + ChatGPT Dot)</a></p>
-    <p>Cheat sheet + the one safety rule. Try one message a day.</p>
+<section aria-labelledby="s-promised">
+  <h2 id="s-promised">Everything I promised you Wednesday</h2>
+  <p class="sub">All here. Open whatever you're curious about. Nothing is homework.</p>
+  <div class="list promise">
+    <div class="row"><span class="chip c-done">Ready</span><div><b>Your first AI assistant: the cheat sheet</b><p>How to start with Meta Muse (free) and why you don't see ChatGPT's "Dot." Plus the one safety rule and a message to try each day.</p><a class="btn" href="/excell/ai/" target="_blank" rel="noopener">Open the cheat sheet</a></div></div>
+    <div class="row"><span class="chip c-done">Ready</span><div><b>Your Website Menu</b><p>What's working on the best chiropractic sites in 2026, one picture at a time. Tap Yes, Maybe or No. Your picks save themselves. We'll go through it together Monday, so just peek if you're curious.</p><a class="btn" href="/excell/menu/" target="_blank" rel="noopener">Open the Website Menu</a></div></div>
+    <div class="row"><span class="chip c-done">Ready</span><div><b>The website rules I'm handling for you</b><p>Indiana advertising rules, how we word the Colts, patient privacy. All taken care of, so you don't have to think about it.</p><a class="btn" href="/excell/menu/#rules" target="_blank" rel="noopener">See the rules</a></div></div>
+    <div class="row"><span class="chip c-done">Ready</span><div><b>Your Resource Pack: all the research</b><p>Your numbers, the Fridays plan, phones, reviews, referrals, and what other practices charge for memberships.</p><a class="btn" href="/excell/pack/" target="_blank" rel="noopener">Open the Resource Pack</a></div></div>
+    <div class="row"><span class="chip c-build">Planned</span><div><b>Your videos, in your voice</b><p>You said: start by putting your voice over the videos you already have, then add new ones. Here are the first 5 I'd do. Swap any of them Monday.</p>
+      <p>1. <b>Your first visit</b> · 2. <b>Disc herniation and decompression</b> · 3. <b>High Energy Inductive Therapy</b> · 4. <b>AllCore 360</b> · 5. <b>Not all headaches are the same</b></p></div></div>
+    <div class="row"><span class="chip c-build">Planned</span><div><b>A patient resource corner on your new site</b><p>One place for the exercises and handouts you give people, your YouTube how-tos, and the app you recommend. It's in the Website Menu too. Just start a pile of the handouts you use most.</p></div></div>
+    <div class="row"><span class="chip c-done">Invite</span><div><b>Local business meetup · Tuesday, Oct 27</b><p>Business owners I've worked with, and a fun night. Come if you're free. I'll text you the sign-up link as soon as it's ready.</p></div></div>
   </div>
 </section>
 
-<section aria-labelledby="s-tomorrow">
-  <h2 id="s-tomorrow">Wednesday 2:00 · our Zoom</h2>
+<section aria-labelledby="s-monday">
+  <h2 id="s-monday">Monday, Oct 19 · 2:00 · together</h2>
   <div class="list">
-    <div class="row"><span class="num">1</span><div><b>Pick the website direction: 3 finalists</b><p>You said pieces of every mockup could work, so here's the short list. Tomorrow we pick a <b>look</b> and I pour <b>your words</b> into it.</p>
-      <p><b>A · The scrolling look you liked</b> (Jason's): <a href="https://excell-site-uat.vercel.app/" target="_blank" rel="noopener">open</a>. Modern and memorable. Its Colts headlines would get rewritten so nothing implies a direct tie to the team.</p>
-      <p><b>B · The one in your words</b>: <a href="https://ineedjimmy.com/excell/sites/10-in-your-words.html" target="_blank" rel="noopener">open</a>. Your own headline, the paratrooper story and the first-visit price.</p>
-      <p><b>C · Referred by a Friend</b>: <a href="https://ineedjimmy.com/excell/sites/04-referred-by-a-friend.html" target="_blank" rel="noopener">open</a>. Built for the 98% who come from a referral: reviews and first-visit details up top.</p>
-      <p><b>My pick:</b> A's look with B's words. All 13 options are still at <a href="https://ineedjimmy.com/excell/" target="_blank" rel="noopener">ineedjimmy.com/excell</a>.</p></div></div>
-    <div class="row"><span class="num">2</span><div><b>Your first 5 videos, from your YouTube channel</b><p>I went through all 64 of your videos. These match what you said you explain over and over, plus the services you wish more people used:</p>
-      <p>1. <b>Your first visit</b>, from "Initial Evaluation" and "Pain Assessment and Examination"<br>
-      2. <b>Disc herniation and decompression</b>, from "Disc Herniation"<br>
-      3. <b>High Energy Inductive Therapy</b>, from your two HIET videos<br>
-      4. <b>AllCore 360</b>, from your two AllCore videos<br>
-      5. <b>Not all headaches are the same</b>, from your sinus, neck and TMJ headache videos</p>
-      <p>Swap any of them. Hyperbaric has no video yet, so that one would be new.</p></div></div>
-    <div class="row"><span class="num">3</span><div><b>Plan the in-office day next week</b><p>Logins, the automatic thank-you and review email, and a look at your phones. Everything below in "What I need from you" gets done in one sitting.</p></div></div>
+    <div class="row"><span class="num">1</span><div><b>Website Menu (about 15 minutes)</b><p>We tap through it together. Then I build new mockups from only the things you picked.</p></div></div>
+    <div class="row"><span class="num">2</span><div><b>Your AI assistant, set up safely</b><p>We connect only the safe apps and set it to always ask before it does anything.</p></div></div>
+    <div class="row"><span class="num">3</span><div><b>Logins, all in one sitting</b><p>The list is below. You stay in control of every one.</p></div></div>
+    <div class="row"><span class="num">4</span><div><b>Lock your first videos</b><p>A yes or a swap on the five above.</p></div></div>
   </div>
+  <p class="sub" style="margin:0">Before Monday, only if you have time: peek at the menu and try Muse once. That's it.</p>
 </section>
 
 <section aria-labelledby="s-heard">
   <h2 id="s-heard">What you said matters most</h2>
   <div class="prio">
-    <div class="card"><div class="k">1. Website</div><span>Full redo. You liked the scrolling style best.</span></div>
-    <div class="card"><div class="k">2. Videos</div><span>Turn your YouTube videos into calm, animated explainers.</span></div>
-    <div class="card"><div class="k">3. Reviews</div><span>An automatic thank-you with a review link after every visit, like your old system.</span></div>
-    <div class="card"><div class="k">4. Phones</div><span>AI that can book appointments, while your front desk stays.</span></div>
+    <div class="card"><div class="k">1. Website</div><span>A full redo. You liked the scrolling style, and "pieces of all the mockups."</span></div>
+    <div class="card"><div class="k">2. Videos</div><span>Your existing videos with your voice, made calm and animated. Then new ones.</span></div>
+    <div class="card"><div class="k">3. Phones</div><span>AI that can book appointments, while your front desk stays.</span></div>
+    <div class="card"><div class="k">+ Reviews</div><span>An automatic thank-you with a review link after every visit, like your old system.</span></div>
   </div>
-  <p class="quote">"It was automatic, they didn't have to do anything to touch it, so those reviews came."</p>
-  <p class="sub" style="margin:0">The long game stays on the list: Fridays at the games in about 3 years, and a second doctor in about 2.</p>
-</section>
-
-<section aria-labelledby="s-now">
-  <h2 id="s-now">Happening now</h2>
-  <p class="sub">Never more than three things at once.</p>
-  <div class="list">
-    <div class="row"><span class="chip c-build">Building</span><div><b>Website plan</b><p>A page-by-page plan built on the scrolling mockups, with careful wording around the Colts. You get it for a yes or no.</p></div></div>
-    <div class="row"><span class="chip c-wait">Waiting on you</span><div><b>First 5 explainer videos</b><p>Once I have your YouTube channel link, I'll pick the first five to turn into animated explainers and show you one before making the rest.</p></div></div>
-    <div class="row"><span class="chip c-wait">Waiting on you</span><div><b>Automatic thank-you + review request</b><p>I'll set this up as soon as I can log in to ChiroTouch. Then it runs on its own after every visit.</p></div></div>
-  </div>
+  <p class="quote">"It's a lot out there… not knowing exactly where to jump." You don't have to. That's my job.</p>
 </section>
 
 <section aria-labelledby="s-access">
-  <h2 id="s-access">What I need from you: logins</h2>
-  <p class="sub">One time, about 15 minutes total. Please don't text me passwords. Each of these lets you add me as a user, so you stay in control and can remove me any time.</p>
+  <h2 id="s-access">What I need from you: logins (we can do these Monday)</h2>
+  <p class="sub">Please don't text me passwords. Each one lets you add me as a user, so you stay in control and can remove me any time.</p>
   <div class="list">
-    <div class="row"><span class="box" aria-hidden="true"></span><div><b>ChiroTouch: a staff login for me</b><p>You offered this on the call. It lets me set up the review request and the "we missed you" text. Also send me your ChiroTouch rep's name.</p></div></div>
+    <div class="row"><span class="box" aria-hidden="true"></span><div><b>ChiroTouch: a staff login for me</b><p>For the automatic review request and the "we missed you" text. Also your ChiroTouch rep's name.</p></div></div>
     <div class="row"><span class="box" aria-hidden="true"></span><div><b>Grasshopper: add me as a user</b><p>So I can see what your phones already do before we test anything new.</p></div></div>
-    <div class="row"><span class="box" aria-hidden="true"></span><div><b>Dropbox: send me a link to your brand folder</b><p>Nothing to upload. In Dropbox, tap the <b>…</b> next to the folder → <b>Share</b> → <b>Copy link</b>, and text me the link. Or share it to <b>jimmydavisprivate@gmail.com</b>. Logos, photos, templates, pamphlets, anything brand-related.</p></div></div>
-    <div class="row"><span class="box" aria-hidden="true"></span><div><b>YouTube: your channel link</b><p>Just the link. That's all I need to start the videos.</p></div></div>
-    <div class="row"><span class="box" aria-hidden="true"></span><div><b>GoDaddy: add me with Delegate Access</b><p>For the website switch. GoDaddy has a "Delegate Access" option for exactly this, so you never share your password.</p></div></div>
-    <div class="row"><span class="box" aria-hidden="true"></span><div><b>Google Business Profile: add me as a Manager</b><p>That's where the reviews land, and it's the link the thank-you email will point to.</p></div></div>
+    <div class="row"><span class="box" aria-hidden="true"></span><div><b>Dropbox: a link to your brand folder</b><p>In Dropbox, tap the <b>…</b> next to the folder → <b>Share</b> → <b>Copy link</b>, and text it to me. Or share it to <b>jimmydavisprivate@gmail.com</b>.</p></div></div>
+    <div class="row"><span class="box" aria-hidden="true"></span><div><b>GoDaddy: add me with Delegate Access</b><p>For the website switch, without ever sharing your password.</p></div></div>
+    <div class="row"><span class="box" aria-hidden="true"></span><div><b>Google Business Profile: add me as a Manager</b><p>That's where your reviews live, and where the thank-you email will point.</p></div></div>
   </div>
 </section>
 
 <section aria-labelledby="s-voice">
   <h2 id="s-voice">Your questions, round 2: just talk</h2>
   <div class="voice">
-    <p><b>17 quick questions you answer by talking</b>, same as last time. They help me find what AI can take off your plate, and what a big win looks like for you. Tap Talk, answer, tap Stop. It saves itself. Do a few at a time. The first five matter most.</p>
+    <p><b>Quick questions you answer by talking</b>, same as last time. They help me find what AI can take off your plate. Tap Talk, answer, tap Stop. It saves itself. The first five matter most.</p>
     <p><a class="btn" href="https://ineedjimmy.com/excell-2/questions/" target="_blank" rel="noopener">Open my questions</a></p>
     <p class="sub" style="margin:0">Rather text? Send me a voice memo anytime.</p>
     <div class="phone"><code id="ph">626-354-3229</code><button type="button" id="cp">Copy number</button><a class="btn" href="sms:+16263543229">Text Jimmy</a></div>
@@ -162,19 +149,19 @@ footer{color:var(--muted);font-size:14px;text-align:left}
 <section aria-labelledby="s-work">
   <h2 id="s-work">How we work together</h2>
   <div class="two">
-    <div class="card"><h3>Your part</h3><ul><li>Say yes or no to what I bring you</li><li>Text me voice memos whenever ideas hit</li><li>The logins above, once</li><li>One call with your ChiroTouch rep, later</li></ul></div>
-    <div class="card"><h3>My part</h3><ul><li>Build, set up and test everything</li><li>A two-line text every Friday: what got done, and the one thing I need</li><li>Nothing goes live without your OK</li><li>No patient info until a HIPAA agreement is in place</li></ul></div>
+    <div class="card"><h3>Your part</h3><ul><li>Say yes or no to what I bring you</li><li>Text me ideas whenever they hit</li><li>The logins above, once</li></ul></div>
+    <div class="card"><h3>My part</h3><ul><li>Build, set up and test everything</li><li>A short text every Friday: what got done, and the one thing I need</li><li>Nothing goes live without your OK</li><li>No patient info in any AI tool, ever</li></ul></div>
   </div>
 </section>
 
 <section aria-labelledby="s-next">
   <h2 id="s-next">Coming up</h2>
   <div class="timeline">
-    <div class="step"><div class="when">Wed, Oct 14 · 2:00</div><b>Zoom: pick the website direction</b><p>Plus your first 5 videos and the plan for the office day.</p></div>
-    <div class="step"><div class="when">Week of Oct 19</div><b>I come to the office and we set things up</b><p>Logins, the automatic thank-you and review email, the "we missed you" text, and a look at your phones. Then I build the website for your yes or no.</p></div>
-    <div class="step"><div class="when">Late October</div><b>Meet Dagan, then a one-week phone test</b><p>The AI answers and texts your booking link. Your front desk stays exactly as it is.</p></div>
-    <div class="step"><div class="when">November</div><b>Membership ideas</b><p>I'll send the draft once the website is moving, built around your answer to question 6.</p></div>
-    <div class="step"><div class="when">After that</div><b>Bring back past patients, thank your referrers</b><p>Starting small with 40 people who already know you, plus handwritten thank-yous.</p></div>
+    <div class="step"><div class="when">Mon, Oct 19 · 2:00</div><b>Website Menu, AI setup, logins</b><p>The four things above, together.</p></div>
+    <div class="step"><div class="when">That week</div><b>New mockups built from your picks</b><p>Plus the automatic thank-you and review email once I can log in.</p></div>
+    <div class="step"><div class="when">Tue, Oct 27</div><b>Local business meetup</b><p>Optional, and fun.</p></div>
+    <div class="step"><div class="when">Late October</div><b>Your first explainer video, then a one-week phone test</b><p>I'll show you one video before making the rest. The AI phone test leaves your front desk exactly as it is.</p></div>
+    <div class="step"><div class="when">November</div><b>Membership ideas</b><p>The draft, once the website is moving.</p></div>
   </div>
 </section>
 
@@ -182,7 +169,9 @@ footer{color:var(--muted);font-size:14px;text-align:left}
   <h2 id="s-done">Done</h2>
   <div class="list">
     <div class="row"><span class="chip c-done">Done</span><div><b>Your questionnaire</b><p>All four hours of it. Thank you. It shaped everything here.</p></div></div>
-    <div class="row"><span class="chip c-done">Done</span><div><b>Game plan call, Oct 7</b><p>Website mockups are still here any time: <a href="https://ineedjimmy.com/excell/" target="_blank" rel="noopener">ineedjimmy.com/excell</a></p></div></div>
+    <div class="row"><span class="chip c-done">Done</span><div><b>Game plan call, Oct 7</b><p>All 13 website mockups are still here: <a href="https://ineedjimmy.com/excell/" target="_blank" rel="noopener">ineedjimmy.com/excell</a></p></div></div>
+    <div class="row"><span class="chip c-done">Done</span><div><b>Check-in call, Oct 14</b><p>Your top 3 confirmed: website, videos, AI phone booking.</p></div></div>
+    <div class="row"><span class="chip c-done">Done</span><div><b>Resource Pack, AI cheat sheet, Website Menu</b><p>Everything promised, delivered.</p></div></div>
   </div>
 </section>
 
@@ -198,6 +187,5 @@ footer{color:var(--muted);font-size:14px;text-align:left}
   });
 })();
 </script>
-
 </body>
 </html>

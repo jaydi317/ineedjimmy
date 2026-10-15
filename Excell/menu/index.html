@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Your Website Menu</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;500;600&display=swap">
+<style>
+/* Layout: one narrow column you can read on a phone between patients. Summary first, asks in the middle, timeline last. */
+:root{
+  --bg:#F4F6FA; --card:#FFFFFF; --ink:#0B1733; --muted:#55607A; --line:#DCE2EE;
+  --navy:#031640; --orange:#C96F00; --orange-soft:#FFF1DE;
+  --go:#1C7C4A; --go-soft:#E3F4EA; --wait:#9A5A00; --wait-soft:#FFF1DE; --build:#2852B8; --build-soft:#E6EDFC;
+  --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;
+  --body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --orange:#EF8903; --orange-soft:#2A2410;
+  --go:#6FD39B; --go-soft:#0E3324; --wait:#F2B35B; --wait-soft:#3A2A0C; --build:#8FB0FF; --build-soft:#14306E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#020E2B; --card:#06205C; --ink:#EEF2FA; --muted:#A9B4CC; --line:#1C3570;
+  --navy:#F3F5F9; --orange:#EF8903; --orange-soft:#2A2410;
+  --go:#6FD39B; --go-soft:#0E3324; --wait:#F2B35B; --wait-soft:#3A2A0C; --build:#8FB0FF; --build-soft:#14306E; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header.top{background:#031640;color:#F3F5F9;margin-inline:-16px;padding:36px 16px 30px}
+header.top .in{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:8px}
+.eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#EF8903}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,9vw,64px);line-height:.95;margin:0;letter-spacing:.01em}
+header.top p{margin:0;color:#C9D3E8;max-width:60ch}
+.stamp{font-size:14px;color:#9FB0D3}
+h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1;margin:0;color:var(--navy);text-wrap:balance}
+section{display:flex;flex-direction:column;gap:14px}
+.sub{margin:-6px 0 0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.list{display:flex;flex-direction:column;gap:0;background:var(--card);border:1px solid var(--line);border-radius:10px}
+.row{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row > div{min-width:0;flex:1}
+.row b{display:block;font-weight:600}
+.row p b{display:inline}
+.row p{margin:2px 0 0;color:var(--muted);font-size:16px}
+.chip{flex:none;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap;margin-top:2px}
+.c-build{background:var(--build-soft);color:var(--build)}
+.c-wait{background:var(--wait-soft);color:var(--wait)}
+.c-done{background:var(--go-soft);color:var(--go)}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--orange-soft);color:var(--orange);font-family:var(--display);font-weight:800;font-size:20px;display:grid;place-items:center}
+.box{flex:none;width:22px;height:22px;border:2px solid var(--line);border-radius:5px;margin-top:2px}
+.prio{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.prio .card{display:flex;flex-direction:column;gap:4px;padding:16px}
+.prio .k{font-family:var(--display);font-weight:800;font-size:22px;text-transform:uppercase;color:var(--orange);line-height:1}
+.prio .card span{font-size:15px;color:var(--muted)}
+.quote{border-left:3px solid var(--orange);padding:2px 0 2px 14px;color:var(--muted);font-style:italic;margin:0}
+.voice{background:var(--orange-soft);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.voice p{margin:0}
+.phone{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.phone code{font-family:var(--body);font-weight:600;font-size:20px;letter-spacing:.02em;user-select:all;color:var(--ink)}
+button,.btn{font-family:var(--body);font-size:15px;font-weight:600;border:1px solid var(--orange);color:var(--orange);background:transparent;border-radius:8px;padding:7px 14px;cursor:pointer;text-decoration:none}
+button:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.timeline{display:flex;flex-direction:column;gap:0;border-left:2px solid var(--line);margin-left:8px}
+.step{position:relative;padding:0 0 18px 22px}
+.step:last-child{padding-bottom:0}
+.step::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--orange)}
+.step .when{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--orange)}
+.step b{display:block}
+.step p{margin:2px 0 0;color:var(--muted);font-size:16px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.two .card h3{font-family:var(--display);text-transform:uppercase;font-size:22px;margin:0 0 6px;color:var(--orange)}
+.two ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+a{color:var(--orange)}
+.row .btn{display:inline-block;margin-top:10px}
+.promise .row b{font-size:18px}
+footer{color:var(--muted);font-size:14px;text-align:left}
+</style>
+<style>html,body{margin:0}</style>
+</head>
+<body>
+<style>
+.cat{display:flex;flex-direction:column;gap:12px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.item img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;background:var(--line)}
+.item .in{padding:14px 18px 16px;display:flex;flex-direction:column;gap:8px}
+.item h3{margin:0;font-size:18px;font-weight:600}
+.item p{margin:0;color:var(--muted);font-size:16px}
+.item .ex{font-size:15px}
+.tagline{display:flex;flex-wrap:wrap;gap:6px}
+.tg{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--build-soft);color:var(--build)}
+.tg.rec{background:var(--go-soft);color:var(--go)}
+.pick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
+.pick button{padding:10px 0;font-size:16px;border-color:var(--line);color:var(--ink)}
+.pick button[aria-pressed="true"].y{background:var(--go);border-color:var(--go);color:#fff}
+.pick button[aria-pressed="true"].m{background:var(--orange);border-color:var(--orange);color:#fff}
+.pick button[aria-pressed="true"].n{background:var(--muted);border-color:var(--muted);color:#fff}
+.st{font-size:14px;color:var(--muted);min-height:1.2em}
+.st.ok{color:var(--go)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.bar{position:sticky;top:0;z-index:5;background:var(--bg);margin-inline:-16px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.bar .in{max-width:760px;margin:0 auto;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.bar b{font-size:15px}
+.jump{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+.jump a{flex:none;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px}
+textarea{width:100%;min-height:90px;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+.always{display:flex;flex-wrap:wrap;gap:8px}
+.always span{background:var(--go-soft);color:var(--go);font-weight:600;font-size:15px;padding:6px 12px;border-radius:999px}
+.testbar{background:#B42318;color:#fff;text-align:center;font-weight:600;padding:6px;margin-inline:-16px}
+.notice{background:var(--wait-soft);color:var(--wait);border-radius:10px;padding:12px 16px}
+</style>
+
+<div class="testbar" id="testbar" hidden>TEST MODE: answers go to a test sheet</div>
+<header class="top"><div class="in">
+  <div class="eyebrow">Excell Sports Chiropractic × Jimmy</div>
+  <h1>Your Website Menu</h1>
+  <p>I looked at what the best chiropractic and sports-medicine websites are doing in 2026. Here are the best ideas, one at a time, including pieces of the mockups you liked. Tap <b>Yes</b>, <b>Maybe</b> or <b>No</b>. Then I build your new mockups from only what you picked.</p>
+  <div class="stamp">No wrong answers. Your picks save as you tap. We'll finish it together Monday at 2.</div>
+</div></header>
+
+<div class="bar"><div class="in">
+  <b id="count">0 of 0 picked</b>
+  <nav class="jump" id="jump" aria-label="Sections"></nav>
+</div></div>
+
+<div class="wrap">
+  <div id="notice"></div>
+
+  <section aria-labelledby="h-always">
+    <h2 id="h-always">Already included, no need to pick</h2>
+    <div class="always"><span>Built for phones first</span><span>Fast to load</span><span>Easy to read</span><span>Real photos, no stock</span><span>Book button on every page</span><span>Your phone number one tap away</span></div>
+  </section>
+
+  <div id="menu"></div>
+
+  <section aria-labelledby="h-more">
+    <h2 id="h-more">Anything else?</h2>
+    <div class="card" style="display:flex;flex-direction:column;gap:10px">
+      <label for="liked"><b>Seen something on another website you liked?</b> Paste the link or describe it. On iPhone, tap the microphone on the keyboard to talk instead of typing.</label>
+      <textarea id="liked"></textarea>
+      <label for="nope"><b>Anything you definitely don't want?</b></label>
+      <textarea id="nope"></textarea>
+      <button type="button" id="saveText">Save these</button>
+      <div class="st" id="textSt"></div>
+    </div>
+  </section>
+
+  <section id="rules" aria-labelledby="h-rules">
+    <h2 id="h-rules">The rules I'm handling for you</h2>
+    <p class="sub">You don't need to do anything here. This is how I'm keeping you protected.</p>
+    <div class="list">
+      <div class="row"><span class="chip c-done">Handled</span><div><b>Your name, the Indiana way</b><p>"Dr. Marcus McCray, D.C." everywhere, and "chiropractor specializing in sports injuries." Never "physician."</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>The Colts, worded carefully</b><p>Plain text only: "Team Chiropractor, Indianapolis Colts." No logos, no team colors, no uniform photos, and never "official." No player names without written OK.</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>Patient privacy</b><p>No patient name, photo, story or review quote goes up without a signed permission form. I'll make the form for you.</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>Required notices</b><p>The "Good Faith Estimate" notice for cash patients that federal and Indiana rules require on your site.</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>No referral rewards</b><p>Indiana doesn't allow gifts for referrals, so the site thanks people warmly instead.</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>Nothing sneaky on your booking pages</b><p>No ad-tracking code where patients book. Any chat or phone tool we add must sign a HIPAA agreement first.</p></div></div>
+      <div class="row"><span class="chip c-done">Handled</span><div><b>Honest claims only</b><p>No "best," no "cure," no fake countdown timers. Your real reviews and real credentials do the work.</p></div></div>
+    </div>
+    <p class="sub" style="margin:0">A quick look from your attorney is still a good idea before launch. I'll bring a one-page summary for that.</p>
+  </section>
+
+  <section aria-labelledby="h-you">
+    <h2 id="h-you">Only you know these (we'll cover them Monday)</h2>
+    <div class="list">
+      <div class="row"><span class="num">1</span><div><b>What should we show as your first-visit price?</b></div></div>
+      <div class="row"><span class="num">2</span><div><b>Does your Colts agreement say anything about publicity?</b><p>And what year did you start with the team?</p></div></div>
+      <div class="row"><span class="num">3</span><div><b>Does your Cigna contract include Medicare Advantage plans?</b></div></div>
+    </div>
+  </section>
+
+  <p style="margin:0"><a href="/excell/hq/">← Back to Excell HQ</a></p>
+  <footer>Made for you by Jimmy. Text me anything: 626-354-3229.</footer>
+</div>
+
+<script>
+const CONFIG = {
+ endpoint: "https://script.google.com/macros/s/AKfycbwYj5kldzlphutJq6INLFr_y96R-tJcb7WHJXLpFk5ddCxasH0RDviJoW7CZliy5CtXfw/exec",
+ token: "ineedjimmy-voice-v2",
+ client: "excell-menu",
+ name: "Dr. Marcus McCray (Website Menu)",
+ firstName: "Doc"
+};
+const IMG = "/excell/menu/img/";
+const MENU = [
+ {id:"look", title:"Look and feel", items:[
+  {id:"look-bold", t:"Bold and athletic", d:"Dark colors, big headlines, energy. This is the scrolling version you liked best. Its Colts headline would be reworded.", img:"jason.jpg", ex:"https://excell-site-uat.vercel.app/", rec:1},
+  {id:"look-clean", t:"Clean and bright", d:"White space, calm, very easy to read. Feels like a modern clinic.", img:"clear.jpg", ex:"https://ineedjimmy.com/excell/sites/03-a-clear-first-step.html"},
+  {id:"look-warm", t:"Warm, with real people", d:"Big photos of your team and office, so it feels friendly before they ever walk in.", img:"purehealth.jpg", ex:"https://www.purehealthchiropractic.net", other:1},
+  {id:"look-scroll", t:"Moves as you scroll", d:"Sections slide and fade in as you scroll, like a story. Jason's version does this.", ex:"https://excell-site-uat.vercel.app/"}
+ ]},
+ {id:"top", title:"Top of your homepage", items:[
+  {id:"top-words", t:"Your own words up top", d:"\"It's so simple people can't believe it works.\" Your line, front and center.", img:"words.jpg", ex:"https://ineedjimmy.com/excell/sites/10-in-your-words.html", rec:1},
+  {id:"top-referred", t:"\"Referred by a friend? You're in the right place.\"", d:"A welcome for the 98% who come from referrals, with reviews and first-visit details right away.", img:"referred.jpg", ex:"https://ineedjimmy.com/excell/sites/04-referred-by-a-friend.html", rec:1},
+  {id:"top-video", t:"A short hello video from you", d:"20–30 seconds: who you are and what a first visit feels like. People book faster when they've seen your face."},
+  {id:"top-strip", t:"A credentials strip", d:"\"Team Chiropractor, Indianapolis Colts · 5.0 stars from 234 Google reviews · 20+ years with athletes.\""}
+ ]},
+ {id:"proof", title:"Trust and proof", items:[
+  {id:"proof-reviews", t:"Real Google reviews beside the Book button", d:"Your 5-star reviews showing right where people decide. One of the biggest trust builders in 2026.", img:"fox.jpg", ex:"https://www.foxcrossingchiro.com/", other:1, rec:1},
+  {id:"proof-video", t:"Short video stories from patients", d:"Two or three patients in their own words, only with signed permission."},
+  {id:"proof-numbers", t:"Big, simple numbers", d:"Reviews, years with athletes, Olympic and NFL work, in one line people can scan.", img:"airrosti.jpg", ex:"https://www.airrosti.com/", other:1}
+ ]},
+ {id:"care", title:"Explaining your care", items:[
+  {id:"care-videos", t:"Explainer videos in your voice", d:"Your existing videos with your voice, made into calm animations. Decompression first.", img:"/excell/img/spinal-decompression-explainer-poster.jpg", ex:"https://ineedjimmy.com/excell/", rec:1},
+  {id:"care-first", t:"Your first visit, step by step", d:"What happens, how long it takes, what to wear, what it costs. Takes the nerves out of booking.", img:"/excell/img/first-visit-receipt-poster.jpg", rec:1},
+  {id:"care-injury", t:"A page for each injury", d:"Low back, neck, sciatica, headaches, sports injuries. People search for their problem, and this is how Google and ChatGPT find you.", img:"chicago.jpg", ex:"https://www.chicago-chiropractic.com", other:1},
+  {id:"care-bodymap", t:"\"Tap where it hurts\"", d:"A body picture people tap to see how you help that spot.", ex:"https://www.stxchiro.com/", other:1}
+ ]},
+ {id:"book", title:"Booking and contact", items:[
+  {id:"book-sticky", t:"One Book button that stays on screen", d:"Books straight into ChiroTouch, with your phone number right beside it.", img:"movement.jpg", ex:"https://www.movementindy.com/", other:1, rec:1},
+  {id:"book-text", t:"A \"Text us\" button", d:"Lots of people would rather text than call."},
+  {id:"book-ai", t:"A helper that answers simple questions 24/7", d:"Hours, Cigna, what the first visit costs, then a link to book. Never patient details, and only a tool that signs a HIPAA agreement.", img:"lakes.jpg", ex:"https://lakesholisticcare.com", other:1}
+ ]},
+ {id:"price", title:"Prices and memberships", items:[
+  {id:"price-first", t:"Show your first-visit price", d:"Clear and honest, so nobody has to call to ask.", img:"clear.jpg"},
+  {id:"price-insurance", t:"Cigna, HSA and FSA, explained simply", d:"One calm box instead of the big all-caps insurance block on the current site."},
+  {id:"price-member", t:"A membership page", d:"Only if you decide to offer one. The options are in your Resource Pack.", ex:"https://ineedjimmy.com/excell/pack/"}
+ ]},
+ {id:"res", title:"Patient resources", items:[
+  {id:"res-videos", t:"Your exercise videos, organized", d:"Your YouTube how-tos sorted by body part, so patients can find the right one.", rec:1},
+  {id:"res-sheets", t:"Printable home-care sheets", d:"The exercises and handouts you already give patients, ready to print or save on their phone."},
+  {id:"res-app", t:"A link to the app you recommend", d:"So patients can always find it."},
+  {id:"res-faq", t:"Answers to the big worries", d:"No 12-month plans. X-rays only if needed. Can I be treated on day one? Your real answers, up front."}
+ ]},
+ {id:"you", title:"Personal touch", items:[
+  {id:"you-story", t:"Your story", d:"Why you do this, your path from athletic trainer to team chiropractor, your kids' sports. Short and real."},
+  {id:"you-tour", t:"Office tour video and photos", d:"The room, the decompression table, the hyperbaric chamber. People like knowing where they're walking into.", img:"purehealth.jpg", other:1},
+  {id:"you-team", t:"Meet the team", d:"A face and one line for each person at the front desk and on the floor."},
+  {id:"you-athletes", t:"Athletes you've cared for", d:"Olympic and pro work, worded carefully, with names only when someone gives written OK.", img:"dynamic.jpg", ex:"https://dynamicsportsmedicine.com/", other:1}
+ ]}
+];
+
+(function(){
+ var qs=new URLSearchParams(location.search), TEST=qs.get('test')==='1';
+ var ENDPOINT=CONFIG.endpoint;
+ var LS='menu-'+CONFIG.client+(TEST?'-test':'')+'-v1', state={};
+ try{state=JSON.parse(localStorage.getItem(LS)||'{}');}catch(e){}
+ if(!state.session) state.session=(TEST?'T':'S')+Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+ state.picks=state.picks||{};
+ function persist(){try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){}}
+ persist();
+ document.getElementById('testbar').hidden=!TEST;
+ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+ var menu=document.getElementById('menu'), jump=document.getElementById('jump'), total=0;
+ MENU.forEach(function(sec){
+  var s=document.createElement('section'); s.className='cat'; s.id='sec-'+sec.id;
+  s.innerHTML='<h2>'+esc(sec.title)+'</h2>';
+  var g=document.createElement('div'); g.className='grid'; s.appendChild(g);
+  var a=document.createElement('a'); a.href='#sec-'+sec.id; a.textContent=sec.title; jump.appendChild(a);
+  sec.items.forEach(function(it){
+   total++;
+   var src=it.img?(it.img.charAt(0)==='/'?it.img:IMG+it.img):'';
+   var tags=(it.rec?'<span class="tg rec">Jimmy recommends</span>':'')+(it.other?'<span class="tg">Example from another practice</span>':'');
+   var c=document.createElement('article'); c.className='item';
+   c.innerHTML=(src?'<img src="'+src+'" alt="" loading="lazy">':'')+
+    '<div class="in">'+(tags?'<div class="tagline">'+tags+'</div>':'')+'<h3>'+esc(it.t)+'</h3><p>'+esc(it.d)+'</p>'+
+    (it.ex?'<a class="ex" href="'+it.ex+'" target="_blank" rel="noopener">See it live ↗</a>':'')+
+    '<div class="pick" role="group" aria-label="'+esc(it.t)+'"><button type="button" class="y" data-v="Yes">Yes</button><button type="button" class="m" data-v="Maybe">Maybe</button><button type="button" class="n" data-v="No">No</button></div><div class="st"></div></div>';
+   var st=c.querySelector('.st');
+   c.querySelectorAll('.pick button').forEach(function(b){
+    b.setAttribute('aria-pressed', state.picks[it.id]===b.dataset.v?'true':'false');
+    b.addEventListener('click',function(){
+     state.picks[it.id]=b.dataset.v; persist();
+     c.querySelectorAll('.pick button').forEach(function(x){x.setAttribute('aria-pressed', x===b?'true':'false');});
+     count(); save({kind:'text',qid:it.id,question:sec.title+' · '+it.t,text:b.dataset.v},st);
+    });
+   });
+   if(state.picks[it.id]){st.className='st ok';st.textContent='Picked: '+state.picks[it.id];}
+   g.appendChild(c);
+  });
+  menu.appendChild(s);
+ });
+ function count(){var n=Object.keys(state.picks).length;document.getElementById('count').textContent=n+' of '+total+' picked';}
+ count();
+ ['liked','nope'].forEach(function(k){var el=document.getElementById(k);el.value=(state[k]||'');el.addEventListener('input',function(){state[k]=el.value;persist();});});
+ document.getElementById('saveText').addEventListener('click',function(){
+  var st=document.getElementById('textSt'), p=[];
+  if(state.liked) p.push(save({kind:'text',qid:'more-liked',question:'Seen something you liked elsewhere?',text:state.liked},st));
+  if(state.nope) p.push(save({kind:'text',qid:'more-nope',question:"Anything you definitely don't want?",text:state.nope},st));
+  if(!p.length){st.textContent='Type something first.';return;}
+  Promise.all(p).then(function(){ send({kind:'final'}).catch(function(){}); });
+ });
+ function send(payload){
+  payload.token=CONFIG.token; payload.client=CONFIG.client; payload.test=TEST; payload.session=state.session; payload.name=CONFIG.name; payload.sentAt=new Date().toISOString();
+  var body=JSON.stringify(payload);
+  return fetch(ENDPOINT,{method:'POST',body:body,redirect:'follow'}).then(function(r){
+   if(!r.ok){var e=new Error('HTTP '+r.status);e.server=true;throw e;}
+   return r.json().catch(function(){return{};});
+  },function(){ return fetch(ENDPOINT,{method:'POST',body:body,mode:'no-cors'}).then(function(){return{};}); })
+  .then(function(j){ if(j&&j.ok===false){var e=new Error(j.error||'error');e.server=true;throw e;} return j; });
+ }
+ function save(payload,st){
+  st.className='st'; st.textContent='Saving…';
+  return send(payload).then(function(){st.className='st ok';st.textContent='Saved ✓';},
+   function(){st.className='st';st.textContent='Saved on this phone. It will send when you tap again with a connection.';});
+ }
+})();
+</script>
+
+</body>
+</html>
