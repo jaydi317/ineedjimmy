@@ -1,0 +1,1385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Brett and Lori</title>
+<meta name="theme-color" content="#1B2433">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B2433;
+  --navy-2:#243046;
+  --gold:#E0B35A;
+  --rose:#E9C7C0;
+  --marsh:#4F6B4A;
+  --paper:#F3F5F4;
+  --ink:#1E2420;
+  --ink-soft:#4A534E;
+  --ink-faint:#646D67;
+  --line:rgba(30,36,32,.14);
+  --line-strong:rgba(30,36,32,.26);
+  --card:#FFFFFF;
+  --aqua:#DDEBE9;
+  --marsh-tint:#E3EAE0;
+  --on-navy:#F3F5F4;
+  --on-navy-soft:#BAC3D0;
+  --navy-line:rgba(243,245,244,.18);
+  --bar-light:rgba(243,245,244,.92);
+  --bar-dark:rgba(27,36,51,.92);
+  --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans:"Nunito Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    /* Two-ground tour keeps its palette; the paper is softened slightly for night viewing. */
+    --paper:#E8ECEA;
+    --card:#F6F8F7;
+    --aqua:#D3E3E1;
+    --marsh-tint:#D9E2D6;
+    --bar-light:rgba(232,236,234,.93);
+  }
+}
+:root[data-theme="dark"]{ --paper:#E8ECEA; --card:#F6F8F7; }
+
+*,*::before,*::after{ box-sizing:border-box; }
+[hidden]{ display:none !important; }
+html{ overflow-x:clip; scroll-behavior:auto; -webkit-text-size-adjust:100%; background:var(--paper); }
+html.ground-dark{ background:var(--navy); }
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 18px/1.55 var(--sans);
+  overflow-x:clip; overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+body.ground-dark{ background:var(--navy); }
+img{ display:block; max-width:100%; height:auto; }
+button{ font:inherit; color:inherit; }
+p,h1,h2,h3,li,blockquote,figure{ min-width:0; }
+::selection{ background:rgba(224,179,90,.42); }
+
+:focus-visible{ outline:3px solid var(--marsh); outline-offset:3px; border-radius:6px; }
+.dark :focus-visible{ outline-color:var(--gold); }
+[tabindex="-1"]:focus{ outline:none; }
+
+.sr-only{ position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* ---------- Screens ---------- */
+.screen{
+  min-height:100vh; min-height:100svh;
+  padding:0 max(16px, env(safe-area-inset-right, 0px)) calc(40px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+.screen.light{ background:var(--paper); color:var(--ink); color-scheme:light; }
+.screen.dark{ background:var(--navy); color:var(--on-navy); color-scheme:dark; }
+.wrap{ max-width:560px; margin:0 auto; }
+.screen.entering .wrap{ animation:settle .34s cubic-bezier(.2,.8,.2,1); }
+@keyframes settle{ from{ transform:translateY(12px); } to{ transform:none; } }
+
+/* ---------- Top bar ---------- */
+.bar{
+  position:sticky; top:0; z-index:5;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  margin:0 -16px 6px; padding:calc(8px + env(safe-area-inset-top, 0px)) 16px 8px;
+  background:var(--bar-light);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+}
+.dark .bar{ background:var(--bar-dark); }
+.chip{
+  min-height:44px; display:inline-flex; align-items:center; gap:8px;
+  padding:0 16px; border-radius:999px; border:1px solid var(--line-strong);
+  background:var(--card); color:var(--ink);
+  font:700 15px/1 var(--sans); cursor:pointer; text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.chip svg{ flex:none; }
+.dark .chip{ background:transparent; border-color:var(--navy-line); color:var(--on-navy); }
+.chip:active{ transform:scale(.97); }
+.bar-count{ font:700 14px/1 var(--sans); color:var(--ink-faint); letter-spacing:.04em; white-space:nowrap; }
+.dark .bar-count{ color:var(--on-navy-soft); }
+
+/* ---------- Type ---------- */
+.kicker{ margin:18px 0 6px; font:700 14px/1.3 var(--sans); letter-spacing:.08em; color:var(--marsh); }
+.dark .kicker{ color:var(--gold); }
+.page-title{
+  margin:0 0 18px; font:600 clamp(36px, 10.6vw, 52px)/1.02 var(--serif);
+  letter-spacing:-.012em; text-wrap:balance;
+}
+.lede{ margin:0 0 18px; font-size:18px; color:var(--ink-soft); }
+.hint{ margin:0 0 16px; font:700 14px/1.4 var(--sans); color:var(--ink-faint); }
+.dark .hint{ color:var(--on-navy-soft); }
+
+/* ---------- Next card ---------- */
+.next{ margin-top:52px; padding-top:28px; border-top:1px solid var(--line); text-align:center; }
+.dark .next{ border-top-color:var(--navy-line); }
+.next-count{ margin:0 0 12px; font:700 14px/1.2 var(--sans); letter-spacing:.06em; color:var(--ink-faint); }
+.dark .next-count{ color:var(--on-navy-soft); }
+.dots{ display:flex; justify-content:center; gap:8px; margin:0 0 18px; }
+.dots i{ display:block; width:8px; height:8px; border-radius:4px; background:var(--line-strong); transition:width .3s ease; }
+.dots i.done{ background:var(--marsh); }
+.dots i.now{ width:24px; background:var(--marsh); }
+.dark .dots i{ background:rgba(243,245,244,.22); }
+.dark .dots i.done{ background:var(--on-navy-soft); }
+.dark .dots i.now{ background:var(--gold); }
+
+.btn-next{
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  width:100%; min-height:62px; padding:10px 22px; border:0; border-radius:16px;
+  background:var(--navy); color:var(--on-navy);
+  font:700 20px/1.1 var(--sans); text-align:left; cursor:pointer; text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+  transition:transform .18s ease;
+}
+.btn-next small{ display:block; margin-top:4px; font:400 15px/1.2 var(--sans); opacity:.85; }
+.btn-next svg{ flex:none; }
+.btn-next:active{ transform:scale(.98); }
+.dark .btn-next{ background:var(--gold); color:var(--navy); }
+.dark .btn-next small{ opacity:.9; }
+
+/* ---------- DOOR ---------- */
+#door{
+  background:
+    radial-gradient(90% 46% at 50% 47%, rgba(224,179,90,.10), transparent 70%),
+    var(--navy);
+}
+#door .wrap{ display:flex; flex-direction:column; align-items:center; text-align:center; padding-top:calc(30px + env(safe-area-inset-top, 0px)); }
+.eyebrow{ margin:0 0 14px; font:700 14px/1.4 var(--sans); letter-spacing:.08em; color:var(--on-navy-soft); }
+.door-title{ margin:0; font:600 clamp(44px, 13vw, 66px)/.98 var(--serif); letter-spacing:-.015em; text-wrap:balance; }
+.door-sub{ margin:16px auto 0; max-width:30ch; font-size:18px; color:var(--on-navy-soft); }
+
+.flower{
+  position:relative; width:240px; height:250px; margin:10px auto 0; padding:0;
+  border:0; background:none; cursor:pointer; border-radius:28px;
+  -webkit-tap-highlight-color:transparent;
+}
+.flower .stem{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+.bloom{ position:absolute; left:50%; top:112px; width:0; height:0; }
+.flower:not(.open) .bloom{ animation:breathe 3.4s ease-in-out infinite; }
+@keyframes breathe{ 50%{ transform:scale(1.045); } }
+.glow{
+  position:absolute; left:-125px; top:-125px; width:250px; height:250px; border-radius:50%;
+  background:radial-gradient(closest-side, rgba(240,200,120,.62), rgba(224,179,90,.16) 58%, rgba(224,179,90,0));
+  opacity:.32; transform:scale(.55);
+  transition:opacity .9s ease, transform 1.2s ease;
+}
+.flower.open .glow{ opacity:1; transform:scale(1); }
+.petal{
+  position:absolute; left:-23px; bottom:0; width:46px; height:92px;
+  transform-origin:50% 100%;
+  border-radius:50% 50% 50% 50% / 62% 62% 38% 38%;
+  background:linear-gradient(to top, #B78A84 0%, #D7ABA4 26%, var(--rose) 58%, #F8E9E5 100%);
+  box-shadow:inset 0 -12px 18px -10px rgba(110,60,60,.38), inset 0 0 0 1px rgba(150,96,90,.22);
+  transform:rotate(calc(var(--a) * .12)) scale(.8,.92);
+  transition:transform .55s cubic-bezier(.5,0,.4,1);
+}
+.petal.in{
+  left:-18px; width:36px; height:70px;
+  background:linear-gradient(to top, #C4968F 0%, #E2BCB5 35%, #F1D9D3 70%, #FCF2EF 100%);
+  transform:rotate(calc(var(--a) * .07)) scale(.82,.9);
+}
+.flower.open .petal{ transform:rotate(var(--a)) scale(1); transition:transform 1.05s var(--spring) var(--d, 0ms); }
+.heart{
+  position:absolute; left:-17px; top:-17px; width:34px; height:34px; border-radius:50%;
+  background:radial-gradient(circle at 40% 36%, #F7DE9E, var(--gold) 52%, #A97A2A 100%);
+  box-shadow:0 0 18px rgba(224,179,90,.55);
+  transform:scale(0);
+  transition:transform .3s ease;
+}
+.flower.open .heart{ transform:scale(1); transition:transform .8s var(--spring) .32s; }
+
+.flower-hint{ margin:6px 0 0; font:700 15px/1.4 var(--sans); letter-spacing:.04em; color:var(--on-navy-soft); }
+.door-quote{ display:none; margin:8px auto 0; max-width:24em; }
+#door.bloomed .door-quote{ display:block; animation:settle .5s ease-out; }
+#door.bloomed .flower-hint{ display:none; }
+.door-quote blockquote{ margin:0; font:600 italic clamp(23px, 6.6vw, 28px)/1.22 var(--serif); color:var(--on-navy); }
+.door-quote figcaption{ margin-top:8px; font:700 14px/1.4 var(--sans); color:var(--gold); letter-spacing:.04em; }
+
+.map{ width:100%; margin:28px 0 22px; }
+.map ol{ list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:8px; }
+.map button{
+  min-height:44px; display:inline-flex; align-items:center; gap:8px; padding:0 14px;
+  border-radius:999px; border:1px solid var(--navy-line); background:rgba(243,245,244,.04);
+  color:var(--on-navy); font:400 15px/1 var(--sans); cursor:pointer;
+}
+.map button b{ font:700 13px/1 var(--sans); color:var(--on-navy-soft); }
+.door-begin{ width:100%; max-width:380px; }
+
+/* ---------- PAGE 1: notes ---------- */
+.p-head{ display:flex; align-items:center; gap:16px; margin-top:14px; }
+.p-head .kicker{ margin-top:0; }
+.p-head .page-title{ margin-bottom:0; }
+.portrait{
+  flex:none; width:clamp(76px, 22vw, 104px); height:clamp(76px, 22vw, 104px);
+  border-radius:50%; object-fit:cover; object-position:50% 30%;
+  box-shadow:0 0 0 4px var(--card), 0 0 0 5px var(--line);
+}
+.p1-hint{ margin:20px 0 16px; }
+.wall{ display:grid; grid-template-columns:1fr 1fr; gap:16px 12px; }
+.note{
+  grid-column:span 2; position:relative; display:grid; width:100%; padding:0; border:0;
+  background:none; text-align:left; cursor:pointer; perspective:1100px;
+  transform:rotate(var(--r, 0deg)); -webkit-tap-highlight-color:transparent;
+}
+.note.half{ grid-column:span 1; }
+.note-inner{ display:grid; transform-style:preserve-3d; transition:transform .7s var(--spring); }
+.note.flipped .note-inner{ transform:rotateY(180deg); }
+.face{
+  grid-area:1/1; display:flex; flex-direction:column; justify-content:space-between; gap:14px;
+  padding:20px 18px 16px; border-radius:3px 3px 16px 3px;
+  background:var(--tint, var(--card)); color:var(--ink);
+  -webkit-backface-visibility:hidden; backface-visibility:hidden;
+  box-shadow:0 1px 0 rgba(30,36,32,.05), 0 10px 22px -16px rgba(30,36,32,.45);
+}
+.note .back{ transform:rotateY(180deg); background:var(--card); }
+.q{ margin:0; font:600 clamp(23px, 6.4vw, 27px)/1.18 var(--serif); }
+.half .q{ font-size:clamp(21px, 5.8vw, 24px); }
+.q-foot{ display:flex; align-items:center; justify-content:space-between; gap:8px; font:700 12px/1.2 var(--sans); letter-spacing:.06em; color:var(--ink-faint); }
+.q-foot svg{ flex:none; opacity:.7; }
+.ctx{ margin:0; font:700 19px/1.35 var(--sans); color:var(--ink); }
+.half .ctx{ font-size:17px; }
+.note.rule .front{ background:var(--navy); color:var(--on-navy); }
+.note.rule .front .q-foot{ color:var(--on-navy-soft); }
+.note.rule .q{ font-size:clamp(26px, 7.4vw, 32px); }
+.note.rule .q span{ background:linear-gradient(transparent 82%, rgba(224,179,90,.75) 82%, rgba(224,179,90,.75) 94%, transparent 94%); }
+.coda{ margin:34px 0 0; padding-top:18px; border-top:1px solid var(--line); font:400 16px/1.5 var(--sans); color:var(--ink-soft); text-align:center; }
+
+/* ---------- PAGE 2: findings ---------- */
+.hero-photo{ margin:0 -16px 6px; }
+.hero-photo img{ width:100%; aspect-ratio:16/11; object-fit:cover; object-position:22% 55%; }
+.finds{ list-style:none; margin:8px 0 0; padding:0; }
+.find{ display:grid; gap:6px; padding:24px 0 22px; border-top:1px solid var(--line); }
+.num{
+  display:block; font:600 clamp(54px, 17vw, 76px)/.95 var(--serif); letter-spacing:-.02em;
+  font-variant-numeric:lining-nums tabular-nums; color:var(--ink);
+}
+.num.mid{ font-size:clamp(46px, 14vw, 64px); }
+.num.long{ font-size:clamp(34px, 10.4vw, 50px); }
+.find.accent .num{ color:var(--marsh); }
+.what{ margin:0; font-size:18px; line-height:1.5; }
+.what .say{ font:600 italic 21px/1.3 var(--serif); }
+.src{ margin:2px 0 0; font:400 13px/1.45 var(--sans); color:var(--ink-faint); }
+.mock{
+  margin:8px 0 2px; border:1px solid var(--line-strong); border-radius:10px; overflow:hidden; background:var(--card);
+}
+.mock-bar{ display:flex; align-items:center; gap:6px; padding:8px 10px; background:var(--marsh-tint); font:700 13px/1.3 var(--sans); color:var(--ink-soft); overflow-wrap:anywhere; }
+.mock-bar i{ flex:none; width:7px; height:7px; border-radius:50%; background:var(--line-strong); }
+.mock-body{ padding:18px 14px 20px; font:400 17px/1.4 var(--sans); color:var(--ink-faint); font-style:italic; }
+.bars{ display:grid; gap:8px; margin:8px 0 2px; }
+.bar-row{ display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; gap:4px 10px; font:700 14px/1.3 var(--sans); color:var(--ink-soft); }
+.bar-row .track{ grid-column:1 / -1; height:10px; border-radius:5px; background:rgba(30,36,32,.07); overflow:hidden; }
+.bar-row .fill{ height:100%; border-radius:5px; background:var(--ink-soft); }
+.bar-row.you .fill{ background:var(--marsh); width:max(4px, .84%); }
+
+.envelope-wrap{ margin-top:30px; }
+.envelope{
+  position:relative; display:block; width:100%; aspect-ratio:16/10; padding:0; border:1px solid var(--line-strong);
+  border-radius:6px; background:var(--card); cursor:pointer; overflow:hidden; perspective:900px;
+  box-shadow:0 14px 30px -22px rgba(30,36,32,.6);
+  -webkit-tap-highlight-color:transparent;
+}
+.envelope::before, .envelope::after{
+  content:""; position:absolute; bottom:0; width:60%; height:62%; background:#F7F9F8; z-index:1;
+}
+.envelope::before{ left:0; clip-path:polygon(0 0, 100% 100%, 0 100%); }
+.envelope::after{ right:0; clip-path:polygon(100% 0, 100% 100%, 0 100%); background:#EEF2F0; }
+.env-flap{
+  position:absolute; inset:0 0 auto 0; height:60%; z-index:3; transform-origin:50% 0;
+  background:var(--marsh-tint); clip-path:polygon(0 0, 100% 0, 50% 100%);
+  transition:transform .7s var(--spring);
+}
+.envelope.open .env-flap{ transform:rotateX(180deg); z-index:0; }
+.env-seal{
+  position:absolute; left:50%; top:60%; z-index:4; width:50px; height:50px; margin:-25px 0 0 -25px;
+  border-radius:50%; background:var(--marsh); display:grid; place-items:center;
+  box-shadow:0 3px 8px rgba(30,36,32,.3); transition:transform .4s ease, opacity .3s ease;
+}
+.envelope.open .env-seal{ transform:translateY(40px) scale(.6); opacity:0; }
+.env-label{
+  position:absolute; left:0; right:0; bottom:12%; z-index:2; text-align:center;
+  font:600 clamp(24px, 7vw, 30px)/1.1 var(--serif); color:var(--ink);
+}
+.env-label small{ display:block; margin-top:6px; font:700 13px/1.2 var(--sans); letter-spacing:.06em; color:var(--ink-faint); }
+.envelope.open .env-label{ opacity:0; }
+.letter{
+  position:relative; margin:-34% 12px 0; padding:26px 22px 22px; z-index:5;
+  background:var(--card); border-radius:2px; transform:rotate(-.6deg);
+  box-shadow:0 12px 26px -18px rgba(30,36,32,.55), 0 0 0 1px var(--line);
+  animation:letter-up .6s var(--spring);
+}
+@keyframes letter-up{ from{ transform:translateY(-24px) rotate(-.6deg); } }
+.letter blockquote{ margin:0; font:600 italic clamp(23px, 6.6vw, 27px)/1.24 var(--serif); }
+.letter .cite{ margin:10px 0 0; font:700 13px/1.3 var(--sans); color:var(--ink-faint); letter-spacing:.04em; }
+.letter .sub{ margin:14px 0 0; padding-top:14px; border-top:1px solid var(--line); font-size:17px; color:var(--ink-soft); }
+
+/* ---------- PAGE 3: day toggle ---------- */
+.seg{
+  position:relative; display:grid; grid-template-columns:1fr 1fr; padding:4px; margin:6px 0 4px;
+  border-radius:16px; background:rgba(30,36,32,.07);
+}
+.seg button{
+  position:relative; z-index:1; min-height:52px; padding:6px 10px; border:0; background:none; border-radius:12px;
+  font:700 16px/1.2 var(--sans); color:var(--ink-soft); cursor:pointer; -webkit-tap-highlight-color:transparent;
+}
+.seg button[aria-pressed="true"]{ color:var(--on-navy); }
+.seg-thumb{
+  position:absolute; z-index:0; top:4px; bottom:4px; left:4px; width:calc(50% - 4px);
+  border-radius:12px; background:var(--navy); transition:transform .45s var(--spring), background .3s ease;
+}
+.seg[data-state="later"] .seg-thumb{ transform:translateX(100%); background:var(--marsh); }
+.day{ margin-top:18px; }
+.day.enter{ animation:settle .4s ease-out; }
+.arch{ margin:0 auto 22px; width:min(100%, 330px); aspect-ratio:1/1; border-radius:999px 999px 14px 14px; overflow:hidden; background:var(--marsh-tint); }
+.arch img{ width:100%; height:100%; object-fit:cover; }
+.day-tag{ display:inline-block; margin:0 0 10px; padding:6px 12px; border-radius:999px; font:700 13px/1.2 var(--sans); letter-spacing:.06em; background:rgba(30,36,32,.07); color:var(--ink-soft); }
+.later .day-tag{ background:var(--marsh); color:var(--on-navy); }
+.timeline{ list-style:none; margin:0; padding:0 0 0 30px; position:relative; }
+.timeline::before{ content:""; position:absolute; left:8px; top:10px; bottom:12px; width:2px; background:var(--line-strong); }
+.later .timeline::before{ background:linear-gradient(var(--gold), var(--marsh) 40%); }
+.timeline li{ position:relative; padding:0 0 18px; font-size:18px; line-height:1.5; }
+.timeline li::before{
+  content:""; position:absolute; left:-28px; top:7px; width:14px; height:14px; border-radius:50%;
+  background:var(--paper); border:2px solid var(--ink-faint);
+}
+.later .timeline li::before{ background:var(--marsh); border-color:var(--marsh); }
+.later .timeline li:first-child::before{ background:var(--gold); border-color:var(--gold); }
+.timeline .say{ font:600 italic 21px/1.3 var(--serif); }
+
+/* ---------- PAGE 4: dark mirror ---------- */
+.big-quote{ margin:0 0 30px; padding-left:16px; border-left:2px solid var(--navy-line); }
+.big-quote p{ margin:0; font:600 italic clamp(24px, 7vw, 29px)/1.24 var(--serif); color:var(--on-navy); }
+.big-quote footer{ margin-top:10px; font:700 14px/1.3 var(--sans); color:var(--on-navy-soft); letter-spacing:.04em; }
+
+.poster{
+  display:grid; width:min(100%, 340px); margin:0 auto; padding:0; border:0; background:none; cursor:pointer;
+  perspective:1300px; text-align:center; -webkit-tap-highlight-color:transparent;
+}
+.poster-inner{ display:grid; transform-style:preserve-3d; transition:transform .8s var(--spring); }
+.poster.flipped .poster-inner{ transform:rotateY(180deg); }
+.pface{
+  grid-area:1/1; position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px;
+  min-height:430px; padding:30px 26px 24px; border-radius:4px;
+  -webkit-backface-visibility:hidden; backface-visibility:hidden;
+}
+.p-front{
+  background:var(--paper); color:var(--ink);
+  box-shadow:0 26px 50px -24px rgba(0,0,0,.7), inset 0 0 0 10px var(--paper), inset 0 0 0 11px rgba(30,36,32,.35);
+}
+.p-front .p-title{ margin:4px 0 0; font:600 clamp(32px, 9.4vw, 40px)/1.02 var(--serif); letter-spacing:-.01em; }
+.p-front .p-sub{ margin:0; font:700 15px/1.4 var(--sans); color:var(--ink-soft); }
+.p-front .p-rule{ width:44px; height:2px; background:var(--gold); }
+.p-front ul{ list-style:none; margin:0; padding:0; display:grid; gap:8px; font:400 16px/1.4 var(--sans); }
+.p-front .p-foot{ margin-top:6px; font:700 13px/1.4 var(--sans); letter-spacing:.06em; color:var(--ink-soft); }
+.blank{ padding:0 2px; border-bottom:1.5px dashed var(--ink-faint); }
+.concept{ position:absolute; top:20px; right:22px; font:700 11px/1 var(--sans); letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); }
+.p-back{
+  transform:rotateY(180deg); background:var(--gold); color:var(--navy);
+  box-shadow:0 26px 50px -24px rgba(0,0,0,.7);
+  border-radius:10px; justify-content:stretch; gap:0; padding:0 26px;
+}
+.ticket-top{ flex:1; display:flex; flex-direction:column; gap:14px; align-items:center; justify-content:center; padding:30px 0 26px; }
+.admit{ font:700 14px/1 var(--sans); letter-spacing:.22em; text-transform:uppercase; }
+.t-title{ margin:0; font:600 clamp(30px, 9vw, 38px)/1.04 var(--serif); }
+.perf{ position:relative; width:calc(100% + 52px); margin:0 -26px; border-top:2px dashed rgba(27,36,51,.45); }
+.perf::before, .perf::after{ content:""; position:absolute; top:-15px; width:28px; height:28px; border-radius:50%; background:var(--navy); }
+.perf::before{ left:-14px; } .perf::after{ right:-14px; }
+.seat{ padding:30px 0 34px; font:600 clamp(34px, 10vw, 44px)/1 var(--serif); }
+.poster-hint{ margin:14px 0 0; text-align:center; }
+
+.calc{ margin-top:36px; padding:22px 18px 22px; border-radius:20px 20px 20px 4px; background:var(--navy-2); border:1px solid var(--navy-line); }
+.calc-label{ margin:0 0 16px; font:700 14px/1.4 var(--sans); letter-spacing:.04em; color:var(--on-navy-soft); }
+.field{ margin-bottom:10px; }
+.field-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; }
+.field label{ font:700 17px/1.3 var(--sans); }
+.val{ font:600 26px/1 var(--serif); color:var(--gold); font-variant-numeric:lining-nums tabular-nums; white-space:nowrap; }
+input[type="range"]{
+  -webkit-appearance:none; appearance:none; display:block; width:100%; height:44px; margin:2px 0 0; background:transparent; cursor:pointer;
+  --fill:60%;
+}
+input[type="range"]::-webkit-slider-runnable-track{
+  height:6px; border-radius:3px;
+  background:linear-gradient(to right, var(--gold) 0 var(--fill), rgba(243,245,244,.22) var(--fill) 100%);
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:30px; height:30px; margin-top:-12px; border-radius:50%;
+  background:var(--paper); border:3px solid var(--gold); box-shadow:0 2px 8px rgba(0,0,0,.35);
+}
+input[type="range"]::-moz-range-track{ height:6px; border-radius:3px; background:rgba(243,245,244,.22); }
+input[type="range"]::-moz-range-progress{ height:6px; border-radius:3px; background:var(--gold); }
+input[type="range"]::-moz-range-thumb{ width:24px; height:24px; border-radius:50%; background:var(--paper); border:3px solid var(--gold); }
+input[type="range"]:focus{ outline:none; }
+input[type="range"]:focus-visible::-webkit-slider-thumb{ box-shadow:0 0 0 4px rgba(224,179,90,.55); }
+input[type="range"]:focus-visible::-moz-range-thumb{ box-shadow:0 0 0 4px rgba(224,179,90,.55); }
+
+.switch-row{
+  display:flex; align-items:center; justify-content:space-between; gap:14px; width:100%; min-height:56px;
+  margin:8px 0 4px; padding:12px 0; border:0; border-top:1px solid var(--navy-line); border-bottom:1px solid var(--navy-line);
+  background:none; text-align:left; cursor:pointer; color:var(--on-navy);
+}
+.sw-text{ display:grid; gap:4px; min-width:0; font:700 17px/1.3 var(--sans); }
+.sw-text small{ font:400 14px/1.35 var(--sans); color:var(--on-navy-soft); }
+.sw{ flex:none; position:relative; width:54px; height:32px; border-radius:16px; background:rgba(243,245,244,.22); transition:background .25s ease; }
+.sw::after{ content:""; position:absolute; top:3px; left:3px; width:26px; height:26px; border-radius:50%; background:var(--paper); transition:transform .35s var(--spring); }
+.switch-row[aria-checked="true"] .sw{ background:var(--gold); }
+.switch-row[aria-checked="true"] .sw::after{ transform:translateX(22px); }
+
+.out{ margin-top:18px; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; }
+.out-label{ font:600 26px/1 var(--serif); color:var(--on-navy-soft); }
+.out-num{ font:600 clamp(50px, 15vw, 66px)/1 var(--serif); letter-spacing:-.02em; font-variant-numeric:lining-nums tabular-nums; color:var(--on-navy); }
+.out-break{ margin:6px 0 0; font:700 15px/1.4 var(--sans); color:var(--gold); font-variant-numeric:tabular-nums; }
+.calc-note{ margin:14px 0 0; font:400 16px/1.5 var(--sans); color:var(--on-navy-soft); }
+.proof{ margin:34px 0 0; }
+.proof p{ margin:0; font-size:18px; color:var(--on-navy); }
+.proof blockquote{ margin:12px 0 0; font:600 italic clamp(24px, 7vw, 28px)/1.22 var(--serif); color:var(--on-navy); }
+.proof .cite{ margin:8px 0 0; font:700 14px/1.3 var(--sans); color:var(--on-navy-soft); letter-spacing:.04em; }
+
+/* ---------- PAGE 5: paths ---------- */
+.paths{ border:0; margin:6px 0 0; padding:0; display:grid; gap:18px; }
+.path{
+  position:relative; display:grid; gap:12px; padding:20px 18px 20px; cursor:pointer;
+  background:var(--card); border:1.5px solid var(--line); border-radius:18px;
+  transition:border-color .25s ease, box-shadow .25s ease, transform .35s var(--spring);
+  -webkit-tap-highlight-color:transparent;
+}
+.path:nth-of-type(2){ border-radius:18px 18px 18px 4px; }
+.path:nth-of-type(3){ border-radius:4px 18px 18px 18px; }
+.path:active{ transform:scale(.99); }
+.path.is-picked{ border-color:var(--marsh); box-shadow:0 0 0 2px var(--marsh), 0 18px 34px -24px rgba(30,36,32,.6); }
+.path:has(input:focus-visible){ outline:3px solid var(--marsh); outline-offset:4px; }
+.path-head{ display:flex; align-items:center; gap:12px; }
+.path-head svg{ flex:none; }
+.path-num{ font:700 14px/1 var(--sans); letter-spacing:.1em; color:var(--marsh); flex:1; }
+.pick-pill{
+  flex:none; display:inline-flex; align-items:center; gap:6px; min-height:34px; padding:0 12px; border-radius:999px;
+  font:700 14px/1 var(--sans); border:1.5px solid var(--line-strong); color:var(--ink-soft);
+}
+.pick-pill .on{ display:none; }
+.is-picked .pick-pill{ background:var(--marsh); border-color:var(--marsh); color:var(--on-navy); }
+.is-picked .pick-pill .off{ display:none; }
+.is-picked .pick-pill .on{ display:inline-flex; align-items:center; gap:6px; }
+.path-title{ margin:0; font:600 clamp(28px, 8.4vw, 34px)/1.05 var(--serif); }
+.path-for{ margin:0; font:600 italic 21px/1.3 var(--serif); color:var(--ink-soft); }
+.lbl{ display:block; margin-bottom:2px; font:700 12px/1.3 var(--sans); font-style:normal; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+.path-sec{ margin:0; font-size:17px; line-height:1.5; }
+.path-sec.first30{ padding:12px 14px; border-radius:12px; background:var(--marsh-tint); }
+.order{ margin:24px 0 0; font:600 italic 23px/1.3 var(--serif); text-align:center; color:var(--ink); }
+
+/* ---------- ASK ---------- */
+.ask-title{ margin:0 0 8px; font:600 clamp(42px, 12.5vw, 60px)/1 var(--serif); letter-spacing:-.015em; }
+.ask-title.fallback{ font-size:clamp(30px, 8.6vw, 40px); line-height:1.08; }
+.ask-pathname{ display:flex; align-items:center; gap:10px; margin:0 0 16px; font:700 17px/1.3 var(--sans); color:var(--marsh); }
+.ask-body{ margin:0 0 22px; font-size:19px; color:var(--ink-soft); }
+.btn-sms{ min-height:72px; justify-content:flex-start; gap:14px; font-size:19px; line-height:1.25; }
+.btn-sms span{ min-width:0; }
+.phone-row{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:10px 14px; margin:18px 0 0; padding:14px 16px; border-radius:14px; border:1px dashed var(--line-strong); }
+.phone-text{ margin:0; font:700 18px/1.35 var(--sans); user-select:text; -webkit-user-select:text; }
+.phone-text .phone{ white-space:nowrap; }
+.confirm{ margin:6px 2px 0; font:400 14px/1.4 var(--sans); color:var(--ink-faint); }
+.copy-status{ margin:4px 2px 0; min-height:1.4em; font:700 14px/1.4 var(--sans); color:var(--marsh); }
+.home-link{ margin-top:26px; padding:18px 18px; border-radius:16px; background:var(--aqua); }
+.home-link p{ margin:0 0 10px; font:700 16px/1.4 var(--sans); color:var(--ink-soft); }
+.home-link a{ color:var(--ink); }
+.receipt{
+  position:relative; margin:40px 6px 0; padding:22px 20px 34px; background:var(--card);
+  font-variant-numeric:tabular-nums; box-shadow:0 14px 30px -24px rgba(30,36,32,.7);
+  transform:rotate(.6deg);
+}
+.receipt::after{
+  content:""; position:absolute; left:0; right:0; bottom:-10px; height:10px;
+  background:linear-gradient(135deg, var(--card) 7px, transparent 0) 0 0 / 14px 10px repeat-x,
+             linear-gradient(225deg, var(--card) 7px, transparent 0) 0 0 / 14px 10px repeat-x;
+}
+.receipt h3{ margin:0 0 12px; padding-bottom:10px; border-bottom:1.5px dashed var(--line-strong); font:700 14px/1.3 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); text-align:center; }
+.receipt ul{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+.receipt li{ display:grid; grid-template-columns:3.3em minmax(0,1fr); gap:12px; align-items:baseline; font-size:16px; line-height:1.4; }
+.r-num{ font:700 18px/1.2 var(--sans); text-align:right; color:var(--ink); white-space:nowrap; }
+.honest{ margin:38px 0 0; font:600 italic clamp(24px, 7vw, 29px)/1.24 var(--serif); }
+.disclose{ margin:16px 0 0; font:400 15px/1.5 var(--sans); color:var(--ink-faint); }
+.next-time{ margin-top:34px; padding-top:20px; border-top:1px solid var(--line); }
+.next-time h3{ margin:0 0 10px; font:700 13px/1.3 var(--sans); letter-spacing:.12em; text-transform:uppercase; color:var(--marsh); }
+.next-time ol{ margin:0; padding-left:1.3em; display:grid; gap:12px; }
+.next-time li{ font:600 20px/1.3 var(--serif); padding-left:4px; }
+.ask-logo{ width:110px; margin:36px auto 0; opacity:.92; }
+.ask-end{ display:flex; justify-content:center; margin-top:14px; }
+
+/* ---------- Page list dialog ---------- */
+.pagelist{
+  width:min(100%, 560px); max-width:100%; max-height:92vh; margin:auto auto 0; padding:0; border:0;
+  border-radius:22px 22px 0 0; background:var(--paper); color:var(--ink); color-scheme:light;
+}
+.pagelist[open]{ animation:sheet .32s cubic-bezier(.2,.8,.2,1); }
+@keyframes sheet{ from{ transform:translateY(40px); } }
+.pagelist::backdrop{ background:rgba(27,36,51,.6); }
+.pl-inner{ padding:18px 16px calc(18px + env(safe-area-inset-bottom, 0px)); }
+.pl-head{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:8px; }
+.pl-head h2{ margin:0; font:600 30px/1.1 var(--serif); }
+.pl-list{ list-style:none; margin:0; padding:0; }
+.pl-list button{
+  display:flex; align-items:center; gap:14px; width:100%; min-height:56px; padding:8px 6px; border:0;
+  border-bottom:1px solid var(--line); background:none; text-align:left; cursor:pointer; font:400 18px/1.3 var(--sans);
+}
+.pl-list b{ display:inline-grid; place-items:center; flex:none; width:32px; height:32px; border-radius:50%; background:rgba(30,36,32,.07); font:700 14px/1 var(--sans); }
+.pl-list button[aria-current="true"]{ font-weight:700; }
+.pl-list button[aria-current="true"] b{ background:var(--marsh); color:var(--on-navy); }
+
+@media (min-width:600px){
+  .hero-photo{ margin:0 0 6px; }
+  .hero-photo img{ border-radius:6px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation:none !important; transition:none !important; }
+  .petal{ transform:rotate(var(--a)) scale(1) !important; }
+  .heart{ transform:scale(1) !important; }
+  .glow{ opacity:1; transform:scale(1); }
+  .door-quote{ display:block; }
+  .flower-hint{ display:none; }
+}
+</style>
+</head>
+<body>
+<main id="tour">
+
+<!-- =================== DOOR =================== -->
+<section class="screen dark" id="door" aria-labelledby="door-title">
+  <div class="wrap">
+    <p class="eyebrow">For Dr. Brett &amp; Lori · Hilton Head</p>
+    <h1 class="door-title" id="door-title" tabindex="-1" data-focus>Crushed flowers that open.</h1>
+    <p class="door-sub">What you told us at dinner, what 20+ AI assistants found, and three ways forward. About 6 minutes.</p>
+
+    <button class="flower" id="flower" type="button" aria-pressed="false" aria-label="Open the flower">
+      <svg class="stem" viewBox="0 0 240 250" aria-hidden="true">
+        <path d="M120 112 C 123 150, 113 192, 119 250" fill="none" stroke="#4F6B4A" stroke-width="5" stroke-linecap="round"/>
+        <path d="M117 192 C 98 175, 78 176, 62 190 C 80 202, 101 203, 117 192 Z" fill="#4F6B4A"/>
+        <path d="M118 218 C 138 200, 160 199, 178 209 C 162 223, 139 226, 118 218 Z" fill="#5F7E59"/>
+        <path d="M120 116 C 106 106, 98 94, 96 80 C 110 86, 119 99, 120 116 Z" fill="#5F7E59"/>
+        <path d="M120 116 C 134 106, 142 94, 144 80 C 130 86, 121 99, 120 116 Z" fill="#4F6B4A"/>
+      </svg>
+      <span class="bloom" aria-hidden="true">
+        <span class="glow"></span>
+        <span class="petal" style="--a:180deg;--d:240ms"></span>
+        <span class="petal" style="--a:-135deg;--d:180ms"></span>
+        <span class="petal" style="--a:135deg;--d:180ms"></span>
+        <span class="petal" style="--a:-90deg;--d:120ms"></span>
+        <span class="petal" style="--a:90deg;--d:120ms"></span>
+        <span class="petal" style="--a:-45deg;--d:60ms"></span>
+        <span class="petal" style="--a:45deg;--d:60ms"></span>
+        <span class="petal" style="--a:0deg;--d:0ms"></span>
+        <span class="petal in" style="--a:-157.5deg;--d:330ms"></span>
+        <span class="petal in" style="--a:157.5deg;--d:330ms"></span>
+        <span class="petal in" style="--a:-112.5deg;--d:270ms"></span>
+        <span class="petal in" style="--a:112.5deg;--d:270ms"></span>
+        <span class="petal in" style="--a:-67.5deg;--d:210ms"></span>
+        <span class="petal in" style="--a:67.5deg;--d:210ms"></span>
+        <span class="petal in" style="--a:-22.5deg;--d:150ms"></span>
+        <span class="petal in" style="--a:22.5deg;--d:150ms"></span>
+        <span class="heart"></span>
+      </span>
+    </button>
+    <p class="flower-hint">Tap the flower</p>
+    <figure class="door-quote" aria-live="polite">
+      <blockquote>“I see people transform from crushed flowers that open beautiful humans.”</blockquote>
+      <figcaption>— Dr. Brett</figcaption>
+    </figure>
+
+    <nav class="map" aria-label="What’s inside">
+      <ol>
+        <li><button type="button" data-go="p1"><b>1</b> In your words</button></li>
+        <li><button type="button" data-go="p2"><b>2</b> What we found</button></li>
+        <li><button type="button" data-go="p3"><b>3</b> A day, two ways</button></li>
+        <li><button type="button" data-go="p4"><b>4</b> Your best life</button></li>
+        <li><button type="button" data-go="p5"><b>5</b> Three paths</button></li>
+        <li><button type="button" data-go="ask">Your pick</button></li>
+      </ol>
+    </nav>
+
+    <button class="btn-next door-begin" type="button" data-go="next">
+      <span>Begin</span>
+      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- =================== PAGE 1 =================== -->
+<section class="screen light" id="p1" aria-labelledby="p1-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">1 of 5</span>
+    </header>
+
+    <div class="p-head">
+      <img class="portrait" src="img/brett.png" width="244" height="244" alt="Dr. Brett Stohrer">
+      <div>
+        <p class="kicker">1 · In your words</p>
+        <h2 class="page-title" id="p1-title" tabindex="-1" data-focus>Here’s what we heard.</h2>
+      </div>
+    </div>
+    <p class="hint p1-hint">Tap any note to flip it.</p>
+
+    <div class="wall">
+      <button class="note" type="button" aria-pressed="false" style="--r:-.8deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--card)"><span class="q">“My mission is to remove the obstacles, the barriers that prevent them from experiencing the divinity within themselves.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On why you do this work</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:.7deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--aqua)"><span class="q">“It was a tool of discernment, which is actually a spiritual gift.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On muscle testing</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:-.4deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--marsh-tint)"><span class="q">“That is as if the world quieted and his voice got louder.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">1995: John Brimhall holds up Power vs. Force</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:1deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--card)"><span class="q">“It’s not the money that drives me, it’s the service to people that drive me.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On what matters</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note half" type="button" aria-pressed="false" style="--r:-1.6deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--aqua)"><span class="q">“I’m like the one man show.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On a normal day</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note half" type="button" aria-pressed="false" style="--r:1.4deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--marsh-tint)"><span class="q">“Anybody can learn this.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On teaching</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:-.6deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--card)"><span class="q">“I’m trading time for money and you can only make so much money for your time.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On what’s next</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:.5deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--aqua)"><span class="q">“I don’t want to price myself out of the people that really need the help.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On affordability</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note" type="button" aria-pressed="false" style="--r:-1.1deg">
+        <span class="note-inner">
+          <span class="face front" style="--tint:var(--marsh-tint)"><span class="q">“That would be my best life.”</span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">On teaching seminars</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+
+      <button class="note rule" type="button" aria-pressed="false" style="--r:.4deg">
+        <span class="note-inner">
+          <span class="face front"><span class="q"><span>“It has to be truthful. It has to be integrous.”</span></span><span class="q-foot">Oct 14<svg width="18" height="18" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></span>
+          <span class="face back"><span class="ctx">Your rule for all marketing. We wrote it on the wall.</span><span class="q-foot">Oct 14 dinner</span></span>
+        </span>
+      </button>
+    </div>
+
+    <p class="coda">Your rule is our rule: truthful, integrous, never manipulative.</p>
+
+    <footer class="next">
+      <p class="next-count">That was 1 of 5</p>
+      <div class="dots" data-step="1" aria-hidden="true"></div>
+      <button class="btn-next" type="button" data-go="next"><span>Next<small>What we found</small></span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>
+  </div>
+</section>
+
+<!-- =================== PAGE 2 =================== -->
+<section class="screen light" id="p2" aria-labelledby="p2-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">2 of 5</span>
+    </header>
+
+    <figure class="hero-photo"><img src="img/exterior.jpg" width="1600" height="1200" alt="The Hilton Head Natural Medicine Center entrance, with flowering planters along the deck"></figure>
+    <p class="kicker">2 · What we found</p>
+    <h2 class="page-title" id="p2-title" tabindex="-1" data-focus>What we found about your practice.</h2>
+
+    <ol class="finds">
+      <li class="find">
+        <span class="num" data-count>30+</span>
+        <p class="what">years in practice. Doctor of Chiropractic, Life Chiropractic College, 1993.</p>
+        <p class="src">Source: his archived bio; SC license #2525</p>
+      </li>
+      <li class="find">
+        <span class="num" data-count>15</span>
+        <p class="what">years of seminars with Dr. Hawkins in Sedona, 1996–2012.</p>
+        <p class="src">Source: Brett, at dinner</p>
+      </li>
+      <li class="find accent">
+        <span class="num mid" data-count>1 of 163</span>
+        <p class="what">study groups in the Veritas Publishing directory worldwide, and yours is the only one that names a practitioner.</p>
+        <p class="src">Source: veritaspub.com</p>
+      </li>
+      <li class="find">
+        <span class="num">#1</span>
+        <p class="what">on Google for “muscle testing Hilton Head.” The page it sends people to says:</p>
+        <div class="mock" aria-hidden="true">
+          <div class="mock-bar"><i></i><i></i><i></i><span>hhnaturalmed.com/kinesiology</span></div>
+          <div class="mock-body">information coming soon.</div>
+        </div>
+        <p class="sr-only">“information coming soon.”</p>
+        <p class="src">Source: hhnaturalmed.com/kinesiology</p>
+      </li>
+      <li class="find">
+        <span class="num mid" data-count>7 vs 835</span>
+        <p class="what">your Google reviews (split across two listings) vs. the busiest chiropractor nearby.</p>
+        <div class="bars" aria-hidden="true">
+          <div class="bar-row you"><span>Your Google reviews</span><span>7</span><span class="track"><span class="fill" style="display:block"></span></span></div>
+          <div class="bar-row"><span>The busiest chiropractor nearby</span><span>835</span><span class="track"><span class="fill" style="display:block;width:100%"></span></span></div>
+        </div>
+        <p class="src">Source: Google Maps, Oct 14</p>
+      </li>
+      <li class="find accent">
+        <span class="num">0</span>
+        <p class="what">other practices within 30 miles that advertise muscle testing.</p>
+        <p class="src">Source: Meta Ad Library + Google, Oct 14</p>
+      </li>
+      <li class="find">
+        <span class="num" data-count>100%</span>
+        <p class="what">of new patients come by referral. <span class="say">“100% referral.”</span> Strangers can’t find you yet.</p>
+        <p class="src">Source: Brett, at dinner</p>
+      </li>
+      <li class="find">
+        <span class="num" data-count>$170</span>
+        <p class="what">your first visit. <span class="say">“Most people in my world charge about 800, $900.”</span></p>
+        <p class="src">Source: Brett, at dinner</p>
+      </li>
+      <li class="find accent">
+        <span class="num" data-count>724</span>
+        <p class="what">times people on one David Hawkins forum asked a stranger to muscle test for them in 65 weeks. Most never got an answer.</p>
+        <p class="src">Source: Reddit r/DavidHawkins, Sept 2024–Jan 2026</p>
+      </li>
+      <li class="find">
+        <span class="num long" data-count>70,000–150,000</span>
+        <p class="what">views on “how to muscle test” videos. People want to learn.</p>
+        <p class="src">Source: YouTube</p>
+      </li>
+    </ol>
+
+    <div class="envelope-wrap">
+      <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-controls="letter">
+        <span class="env-flap" aria-hidden="true"></span>
+        <span class="env-seal" aria-hidden="true">
+          <svg width="30" height="30" viewBox="0 0 44 44"><g fill="#E9C7C0"><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(0 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(45 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(90 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(135 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(180 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(225 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(270 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(315 22 22)"/></g><circle cx="22" cy="22" r="4.5" fill="#E0B35A"/></svg>
+        </span>
+        <span class="env-label">Hidden treasure<small>Tap to open</small></span>
+      </button>
+      <div class="letter" id="letter" hidden>
+        <blockquote>“A stack of handwritten thank-you letters from 5, 10, 20 years ago, sitting in an envelope.”</blockquote>
+        <p class="cite">Brett, at dinner</p>
+        <p class="sub">That’s the most powerful proof a practice can have, with each writer’s permission.</p>
+      </div>
+    </div>
+
+    <footer class="next">
+      <p class="next-count">That was 2 of 5</p>
+      <div class="dots" data-step="2" aria-hidden="true"></div>
+      <button class="btn-next" type="button" data-go="next"><span>Next<small>A day, two ways</small></span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>
+  </div>
+</section>
+
+<!-- =================== PAGE 3 =================== -->
+<section class="screen light" id="p3" aria-labelledby="p3-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">3 of 5</span>
+    </header>
+
+    <p class="kicker">3 · A day, two ways</p>
+    <h2 class="page-title" id="p3-title" tabindex="-1" data-focus>A day at the practice, two ways.</h2>
+
+    <div class="seg" id="seg" role="group" aria-label="Choose a day" data-state="today">
+      <span class="seg-thumb" aria-hidden="true"></span>
+      <button type="button" aria-pressed="true" data-day="today">Today</button>
+      <button type="button" aria-pressed="false" data-day="later">Six months from now</button>
+    </div>
+
+    <div class="day today" id="day-today">
+      <figure class="arch"><img src="img/hands-neck.jpg" width="1000" height="667" alt="Dr. Brett adjusting a patient’s neck" style="object-position:40% 50%"></figure>
+      <span class="day-tag">From your words</span>
+      <ol class="timeline">
+        <li>You muscle test, then adjust, then run the lasers, then help at the front desk. <span class="say">(“I basically do everything in there.”)</span></li>
+        <li>The two new part-time front-desk staff are still learning the handoff: charges, supplements, inventory.</li>
+        <li>Paper files. Paper letters. A three-day, ten-hours-a-day push to get organized.</li>
+        <li>Patients find you only through friends.</li>
+        <li>Every dollar needs you in the room.</li>
+      </ol>
+    </div>
+
+    <div class="day later" id="day-later" hidden>
+      <figure class="arch"><img src="img/lobby2.jpg" width="1600" height="1200" alt="The practice’s sunlit waiting room, set up like a living room" style="object-position:36% 50%"></figure>
+      <span class="day-tag">The plan</span>
+      <ol class="timeline">
+        <li>You speak your findings out loud after a visit. The muscle-testing sheet fills itself, and the front desk gets an alert with the charges and supplements.</li>
+        <li>A trained staff member runs the lasers and invisa-RED. You stay with muscle testing and adjusting.</li>
+        <li>Jane App sends reminders, follow-ups and a thank-you with a review link, automatically. An AI assistant answers common questions and books.</li>
+        <li>Every file is digital. The letters live in a “Wall of Gratitude” (with each writer’s permission).</li>
+        <li>Strangers who search “muscle testing” land on a real page, with a short video that explains it and lets them try it at home.</li>
+        <li>Some days are telehealth days, from anywhere.</li>
+      </ol>
+    </div>
+
+    <footer class="next">
+      <p class="next-count">That was 3 of 5</p>
+      <div class="dots" data-step="3" aria-hidden="true"></div>
+      <button class="btn-next" type="button" data-go="next"><span>Next<small>Your best life</small></span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>
+  </div>
+</section>
+
+<!-- =================== PAGE 4 =================== -->
+<section class="screen dark" id="p4" aria-labelledby="p4-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">4 of 5</span>
+    </header>
+
+    <p class="kicker">4 · Your best life</p>
+    <h2 class="page-title" id="p4-title" tabindex="-1" data-focus>You said this would be your best life.</h2>
+
+    <blockquote class="big-quote">
+      <p>“If you ask me what would be my best life… maybe once a month I do a one day or a two day seminar and charge a fee.”</p>
+      <footer>— Dr. Brett</footer>
+    </blockquote>
+
+    <button class="poster" id="poster" type="button" aria-pressed="false" aria-label="Seminar poster, a concept. Tap to flip it to the ticket.">
+      <span class="poster-inner">
+        <span class="pface p-front">
+          <span class="concept">Concept</span>
+          <svg width="46" height="46" viewBox="0 0 44 44" aria-hidden="true"><g fill="#E9C7C0" stroke="#C9A29B" stroke-width=".6"><ellipse cx="22" cy="12" rx="5" ry="9"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(45 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(90 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(135 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(180 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(225 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(270 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(315 22 22)"/></g><circle cx="22" cy="22" r="4.5" fill="#E0B35A"/></svg>
+          <span class="p-title">Out of Your Head, Into Your Heart</span>
+          <span class="p-sub">A one-day seminar with Dr. Brett Stohrer, D.C.</span>
+          <span class="p-rule" aria-hidden="true"></span>
+          <ul>
+            <li>Discernment, love and the divine within</li>
+            <li>Live muscle-testing demonstrations</li>
+            <li>30 years of practice, 15 years in Sedona with Dr. David Hawkins</li>
+          </ul>
+          <span class="p-foot">Hilton Head Island · <span class="blank">[Your first date]</span></span>
+        </span>
+        <span class="pface p-back">
+          <span class="ticket-top">
+            <svg width="40" height="40" viewBox="0 0 44 44" aria-hidden="true"><g fill="#1B2433" opacity=".85"><ellipse cx="22" cy="12" rx="5" ry="9"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(45 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(90 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(135 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(180 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(225 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(270 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(315 22 22)"/></g><circle cx="22" cy="22" r="4.5" fill="#E0B35A"/></svg>
+            <span class="admit">Admit one</span>
+            <span class="t-title">Out of Your Head, Into Your Heart</span>
+          </span>
+          <span class="perf" aria-hidden="true"></span>
+          <span class="seat">Seat __</span>
+        </span>
+      </span>
+    </button>
+    <p class="hint poster-hint">Tap the poster to flip it</p>
+
+    <section class="calc" aria-labelledby="calc-label">
+      <p class="calc-label" id="calc-label">Estimate, before costs like the room and ads</p>
+      <div class="field">
+        <div class="field-top"><label for="people">People in the room</label><span class="val" id="peopleVal">200</span></div>
+        <input type="range" id="people" min="50" max="300" step="10" value="200">
+      </div>
+      <div class="field">
+        <div class="field-top"><label for="price">Ticket price</label><span class="val" id="priceVal">$150</span></div>
+        <input type="range" id="price" min="97" max="297" step="1" value="150">
+      </div>
+      <button class="switch-row" id="sessions" type="button" role="switch" aria-checked="false">
+        <span class="sw-text"><span>Add private patient sessions the next two days</span><small>10% of attendees × $297, example session price</small></span>
+        <span class="sw" aria-hidden="true"></span>
+      </button>
+      <div class="out"><span class="out-label">One day ≈</span><span class="out-num" id="total">$30,000</span></div>
+      <p class="out-break" id="breakdown">200 × $150</p>
+      <p class="sr-only" id="calcLive" aria-live="polite"></p>
+      <p class="calc-note">Your example at dinner: 200 people at $150. Hawkins taught monthly. Twelve days a year.</p>
+    </section>
+
+    <div class="proof">
+      <p>Years ago you taught for nutrition companies across the country, and half the room would find you afterward.</p>
+      <blockquote>“Maybe people are hungry for this. And they were.”</blockquote>
+      <p class="cite">Brett, at dinner</p>
+    </div>
+
+    <footer class="next">
+      <p class="next-count">That was 4 of 5</p>
+      <div class="dots" data-step="4" aria-hidden="true"></div>
+      <button class="btn-next" type="button" data-go="next"><span>Next<small>Three paths</small></span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>
+  </div>
+</section>
+
+<!-- =================== PAGE 5 =================== -->
+<section class="screen light" id="p5" aria-labelledby="p5-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">5 of 5</span>
+    </header>
+
+    <p class="kicker">5 · Three paths</p>
+    <h2 class="page-title" id="p5-title" tabindex="-1" data-focus>Three paths. Pick where to start.</h2>
+
+    <fieldset class="paths">
+      <legend class="sr-only">Pick a path</legend>
+
+      <label class="path" data-path="1">
+        <input class="sr-only" type="radio" name="path" value="1">
+        <span class="path-head">
+          <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 43V24" stroke="#4F6B4A" stroke-width="2.4" stroke-linecap="round"/><path d="M22 34c-5-1-8-4-9-8 5 0 8 3 9 8z" fill="#4F6B4A"/><g><ellipse cx="22" cy="14" rx="5.5" ry="10" fill="#D9ADA5" transform="rotate(-16 22 24)"/><ellipse cx="22" cy="14" rx="5.5" ry="10" fill="#D9ADA5" transform="rotate(16 22 24)"/><ellipse cx="22" cy="14" rx="5.2" ry="10.5" fill="#E9C7C0"/></g></svg>
+          <span class="path-num">PATH 1</span>
+          <span class="pick-pill"><span class="off">Tap to pick</span><span class="on"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Your pick</span></span>
+        </span>
+        <span class="path-title">A practice that runs itself</span>
+        <span class="path-for"><span class="lbl">For</span>“I’m like the one man show.”</span>
+        <span class="path-sec"><span class="lbl">What happens</span>Jimmy flies out. Every file and letter gets digitized. Jane App gets the reminders, follow-ups and review requests. Your muscle-testing sheet becomes voice-to-form, sent to the front desk. An AI assistant answers and books. Staff roles get clear: a floater, a laser tech.</span>
+        <span class="path-sec first30"><span class="lbl">First 30 days</span>Files digitized, Jane follow-ups live, the voice-to-form sheet working.</span>
+      </label>
+
+      <label class="path" data-path="2">
+        <input class="sr-only" type="radio" name="path" value="2">
+        <span class="path-head">
+          <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><path d="M22 43V26" stroke="#4F6B4A" stroke-width="2.4" stroke-linecap="round"/><path d="M22 36c5-1 8-4 9-8-5 0-8 3-9 8z" fill="#4F6B4A"/><g fill="#E9C7C0" stroke="#C9A29B" stroke-width=".6"><ellipse cx="22" cy="15" rx="5" ry="10" transform="rotate(-70 22 26)"/><ellipse cx="22" cy="15" rx="5" ry="10" transform="rotate(70 22 26)"/><ellipse cx="22" cy="15" rx="5" ry="10" transform="rotate(-35 22 26)"/><ellipse cx="22" cy="15" rx="5" ry="10" transform="rotate(35 22 26)"/><ellipse cx="22" cy="15" rx="5" ry="10"/></g><circle cx="22" cy="25" r="3.2" fill="#E0B35A"/></svg>
+          <span class="path-num">PATH 2</span>
+          <span class="pick-pill"><span class="off">Tap to pick</span><span class="on"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Your pick</span></span>
+        </span>
+        <span class="path-title">The teacher</span>
+        <span class="path-for"><span class="lbl">For</span>“That would be my best life.”</span>
+        <span class="path-sec"><span class="lbl">What happens</span>A free “Learn to Muscle Test” video and page (your demo: hold coconut oil, then a bottle of bleach; think “love,” then “fear”). Then your first one-day seminar in Hilton Head, filled with the right people through partners who share your values (spiritual centers, A Course in Miracles groups, meditation communities, holistic practitioners who don’t muscle test). Patient days after. Then city to city.</span>
+        <span class="path-sec first30"><span class="lbl">First 30 days</span>The video and page live, the seminar date and room set, the first five partners invited.</span>
+      </label>
+
+      <label class="path" data-path="3">
+        <input class="sr-only" type="radio" name="path" value="3">
+        <span class="path-head">
+          <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><g fill="#E9C7C0" stroke="#C9A29B" stroke-width=".6"><ellipse cx="22" cy="12" rx="5" ry="9"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(45 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(90 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(135 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(180 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(225 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(270 22 22)"/><ellipse cx="22" cy="12" rx="5" ry="9" transform="rotate(315 22 22)"/></g><circle cx="22" cy="22" r="4.5" fill="#E0B35A"/></svg>
+          <span class="path-num">PATH 3</span>
+          <span class="pick-pill"><span class="off">Tap to pick</span><span class="on"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>Your pick</span></span>
+        </span>
+        <span class="path-title">Freedom</span>
+        <span class="path-for"><span class="lbl">For</span>“I want to have a nice life. I want to experience the world.”</span>
+        <span class="path-sec"><span class="lbl">What happens</span>Income that doesn’t need you in the room. Telehealth and remote testing (about 15–20% of your work already). Your new therapies program, set up for telehealth from day one. A monthly program for people who live away from the island.</span>
+        <span class="path-sec first30"><span class="lbl">First 30 days</span>Telehealth workflow in Jane, your new therapies program ready for remote patients.</span>
+      </label>
+    </fieldset>
+    <p class="sr-only" id="pickLive" aria-live="polite"></p>
+
+    <p class="order">They work best in this order: 1 makes room for 2, and 2 feeds 3.</p>
+
+    <footer class="next">
+      <p class="next-count">That was 5 of 5</p>
+      <div class="dots" data-step="5" aria-hidden="true"></div>
+      <button class="btn-next" type="button" data-go="next"><span>Next<small>Your pick</small></span><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </footer>
+  </div>
+</section>
+
+<!-- =================== ASK =================== -->
+<section class="screen light" id="ask" aria-labelledby="ask-title">
+  <div class="wrap">
+    <header class="bar">
+      <button class="chip" type="button" data-open-list><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>All pages</button>
+      <span class="bar-count">Your pick</span>
+    </header>
+
+    <h2 class="ask-title fallback" id="ask-title" tabindex="-1" data-focus>Pick a path on the last page, or just text Jimmy.</h2>
+    <p class="ask-pathname" id="askPathName" hidden></p>
+    <p id="askToPaths" hidden><button class="chip" type="button" data-go="p5">See the three paths</button></p>
+    <p class="ask-body">One text gets it started. Jimmy will send the simple plan and terms for the path you picked.</p>
+
+    <a class="btn-next btn-sms" id="smsBtn" href="sms:+16263543229">
+      <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A2.5 2.5 0 0 1 3 13.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span id="smsLabel">Text Jimmy</span>
+    </a>
+
+    <div class="phone-row">
+      <p class="phone-text">Text Jimmy: <span class="phone" id="phone">(626) 354-3229</span></p>
+      <button class="chip" type="button" id="copyBtn">Copy</button>
+    </div>
+    <p class="copy-status" id="copyStatus" aria-live="polite"></p>
+
+    <div class="home-link">
+      <p>Your homepage, already started:</p>
+      <a class="chip" href="https://ineedjimmy.com/drbrett/" target="_blank" rel="noopener">See your three homepage looks<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="receipt">
+      <h3>What went into this</h3>
+      <ul>
+        <li><span class="r-num" data-count>20+</span><span>AI assistants, plus Codex and Grok</span></li>
+        <li><span class="r-num" data-count>669</span><span>sources logged by Codex alone</span></li>
+        <li><span class="r-num" data-count>150+</span><span>real patient and seeker quotes studied</span></li>
+        <li><span class="r-num" data-count>724</span><span>forum requests counted</span></li>
+        <li><span class="r-num">1</span><span>dinner and 1 bourbon</span></li>
+      </ul>
+    </div>
+
+    <p class="honest">We had 20+ AI assistants. You had 30 years, about 500 books and a stack of handwritten letters. Yours was the harder gig.</p>
+    <p class="disclose">Research and design by Jimmy Davis with AI research assistants. Concept only; nothing here is live.</p>
+
+    <div class="next-time">
+      <h3>For next time</h3>
+      <ol>
+        <li>When you first saw muscle testing, what did you think? Did any part of you think it couldn’t work?</li>
+        <li>Who comes to your talks, and what part of the talk lights them up most?</li>
+        <li>May we share some of those letters, if the writers agree?</li>
+      </ol>
+    </div>
+
+    <img class="ask-logo" src="img/logo.png" width="313" height="255" alt="Hilton Head Natural Medicine Center logo">
+
+    <footer class="next">
+      <div class="dots" data-step="6" aria-hidden="true"></div>
+      <div class="ask-end"><button class="chip" type="button" data-go="door">Back to the flower</button></div>
+    </footer>
+  </div>
+</section>
+</main>
+
+<dialog class="pagelist" id="pagelist" aria-labelledby="pl-title">
+  <div class="pl-inner">
+    <div class="pl-head">
+      <h2 id="pl-title">All pages</h2>
+      <button class="chip" type="button" id="plClose">Close</button>
+    </div>
+    <ol class="pl-list">
+      <li><button type="button" data-go="door"><b>·</b>Start</button></li>
+      <li><button type="button" data-go="p1"><b>1</b>In your words</button></li>
+      <li><button type="button" data-go="p2"><b>2</b>What we found</button></li>
+      <li><button type="button" data-go="p3"><b>3</b>A day, two ways</button></li>
+      <li><button type="button" data-go="p4"><b>4</b>Your best life</button></li>
+      <li><button type="button" data-go="p5"><b>5</b>Three paths</button></li>
+      <li><button type="button" data-go="ask"><b>→</b>Your pick</button></li>
+    </ol>
+  </div>
+</dialog>
+
+<script>
+(function(){
+  "use strict";
+  var ORDER = ["door","p1","p2","p3","p4","p5","ask"];
+  var PHONE = "+16263543229";
+  var STORE_KEY = "brett-lori-tour-path";
+  var PATH_NAMES = { "1":"A practice that runs itself", "2":"The teacher", "3":"Freedom" };
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var screens = ORDER.map(function(id){ return document.getElementById(id); });
+  var current = 0;
+  var pick = null;
+  try { var saved = localStorage.getItem(STORE_KEY); if (saved === "1" || saved === "2" || saved === "3") pick = saved; } catch (e) {}
+
+  var meta = document.querySelector('meta[name="theme-color"]');
+
+  /* ---- progress dots ---- */
+  Array.prototype.forEach.call(document.querySelectorAll(".dots"), function(d){
+    var step = +d.getAttribute("data-step");
+    for (var i = 1; i <= 5; i++) {
+      var dot = document.createElement("i");
+      if (i < step || step > 5) dot.className = "done";
+      if (i === step) dot.className = "now";
+      d.appendChild(dot);
+    }
+  });
+
+  /* ---- navigation ---- */
+  function go(target, opts){
+    opts = opts || {};
+    var i = typeof target === "number" ? target : ORDER.indexOf(target);
+    if (i < 0) i = 0;
+    if (i > ORDER.length - 1) i = ORDER.length - 1;
+    screens.forEach(function(s, k){ s.hidden = k !== i; s.classList.remove("entering"); });
+    current = i;
+    var s = screens[i];
+    var dark = s.classList.contains("dark");
+    document.documentElement.classList.toggle("ground-dark", dark);
+    document.body.classList.toggle("ground-dark", dark);
+    if (meta) meta.setAttribute("content", dark ? "#1B2433" : "#F3F5F4");
+    window.scrollTo(0, 0);
+    if (!reduce && !opts.initial) { void s.offsetWidth; s.classList.add("entering"); }
+    try { history.replaceState(null, "", "#" + ORDER[i]); } catch (e) {}
+    onShow(ORDER[i]);
+    if (!opts.initial) {
+      var h = s.querySelector("[data-focus]");
+      if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+    }
+  }
+
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-go]");
+    if (b) {
+      e.preventDefault();
+      var t = b.getAttribute("data-go");
+      closeList();
+      go(t === "next" ? current + 1 : t);
+      return;
+    }
+    if (e.target.closest("[data-open-list]")) openList();
+  });
+
+  document.addEventListener("keydown", function(e){
+    if (list.open) return;
+    if (e.target.closest && e.target.closest("input, textarea, select")) return;
+    if (e.key === "ArrowRight") { if (current < ORDER.length - 1) go(current + 1); }
+    else if (e.key === "ArrowLeft") { if (current > 0) go(current - 1); }
+  });
+
+  window.addEventListener("hashchange", function(){
+    var i = ORDER.indexOf(location.hash.slice(1));
+    if (i >= 0 && i !== current) go(i);
+  });
+
+  /* ---- page list ---- */
+  var list = document.getElementById("pagelist");
+  function openList(){
+    Array.prototype.forEach.call(list.querySelectorAll("[data-go]"), function(b){
+      b.setAttribute("aria-current", b.getAttribute("data-go") === ORDER[current] ? "true" : "false");
+    });
+    if (typeof list.showModal === "function") { try { list.showModal(); } catch (e) { list.setAttribute("open", ""); } }
+    else list.setAttribute("open", "");
+  }
+  function closeList(){
+    if (!list.open) return;
+    if (typeof list.close === "function") list.close(); else list.removeAttribute("open");
+  }
+  document.getElementById("plClose").addEventListener("click", closeList);
+  list.addEventListener("click", function(e){ if (e.target === list) closeList(); });
+
+  /* ---- count-up ---- */
+  function fmt(n, comma){ return comma ? n.toLocaleString("en-US") : String(n); }
+  function countText(el, dur){
+    var final = el.getAttribute("data-final") || el.textContent;
+    el.setAttribute("data-final", final);
+    if (reduce) { el.textContent = final; return; }
+    var parts = final.split(/(\d[\d,]*)/);
+    var nums = parts.map(function(p, i){ return i % 2 ? parseInt(p.replace(/,/g, ""), 10) : null; });
+    if (!nums.some(function(n){ return n !== null && n >= 10; })) return;
+    var commas = parts.map(function(p){ return /,/.test(p); });
+    var start = null;
+    function frame(t){
+      if (start === null) start = t;
+      var k = Math.min(1, (t - start) / dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = parts.map(function(p, i){ return i % 2 ? fmt(Math.round(nums[i] * e), commas[i]) : p; }).join("");
+      if (k < 1) requestAnimationFrame(frame); else el.textContent = final;
+    }
+    requestAnimationFrame(frame);
+  }
+  var io = null;
+  function watchCounts(screen){
+    var els = screen.querySelectorAll("[data-count]");
+    if (!els.length) return;
+    if (!("IntersectionObserver" in window)) { Array.prototype.forEach.call(els, function(el){ countText(el, 1200); }); return; }
+    if (io) io.disconnect();
+    io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) {
+          io.unobserve(en.target);
+          if (en.target.id === "total") animateTotal(0, true); else countText(en.target, 1300);
+        }
+      });
+    }, { threshold: .35 });
+    Array.prototype.forEach.call(els, function(el){ io.observe(el); });
+  }
+
+  function onShow(id){
+    var s = document.getElementById(id);
+    watchCounts(s);
+    if (id === "ask") renderAsk();
+  }
+
+  /* ---- door flower ---- */
+  var door = document.getElementById("door");
+  var flower = document.getElementById("flower");
+  function setFlower(open){
+    flower.classList.toggle("open", open);
+    flower.setAttribute("aria-pressed", open ? "true" : "false");
+    flower.setAttribute("aria-label", open ? "Close the flower" : "Open the flower");
+    if (open) door.classList.add("bloomed");
+  }
+  flower.addEventListener("click", function(){ setFlower(!flower.classList.contains("open")); });
+  if (reduce) setFlower(true);
+
+  /* ---- page 1 flip notes ---- */
+  Array.prototype.forEach.call(document.querySelectorAll(".note"), function(n){
+    n.addEventListener("click", function(){
+      var f = !n.classList.contains("flipped");
+      n.classList.toggle("flipped", f);
+      n.setAttribute("aria-pressed", f ? "true" : "false");
+    });
+  });
+
+  /* ---- page 2 envelope ---- */
+  var env = document.getElementById("envelope");
+  var letter = document.getElementById("letter");
+  env.addEventListener("click", function(){
+    var open = !env.classList.contains("open");
+    env.classList.toggle("open", open);
+    env.setAttribute("aria-expanded", open ? "true" : "false");
+    letter.hidden = !open;
+  });
+
+  /* ---- page 3 day toggle ---- */
+  var seg = document.getElementById("seg");
+  var dayToday = document.getElementById("day-today");
+  var dayLater = document.getElementById("day-later");
+  Array.prototype.forEach.call(seg.querySelectorAll("button"), function(b){
+    b.addEventListener("click", function(){
+      var later = b.getAttribute("data-day") === "later";
+      seg.setAttribute("data-state", later ? "later" : "today");
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function(x){
+        x.setAttribute("aria-pressed", x === b ? "true" : "false");
+      });
+      var show = later ? dayLater : dayToday, hide = later ? dayToday : dayLater;
+      if (!show.hidden) return;
+      hide.hidden = true; show.hidden = false;
+      show.classList.remove("enter");
+      if (!reduce) { void show.offsetWidth; show.classList.add("enter"); }
+    });
+  });
+
+  /* ---- page 4 poster + calculator ---- */
+  var poster = document.getElementById("poster");
+  poster.addEventListener("click", function(){
+    var f = !poster.classList.contains("flipped");
+    poster.classList.toggle("flipped", f);
+    poster.setAttribute("aria-pressed", f ? "true" : "false");
+  });
+
+  var people = document.getElementById("people");
+  var price = document.getElementById("price");
+  var sessions = document.getElementById("sessions");
+  var totalEl = document.getElementById("total");
+  totalEl.setAttribute("data-count", "");
+  var breakdown = document.getElementById("breakdown");
+  var calcLive = document.getElementById("calcLive");
+  var shownTotal = 30000, raf = null;
+
+  function money(n){ return "$" + Math.round(n).toLocaleString("en-US"); }
+  function calc(){
+    var p = +people.value, t = +price.value, on = sessions.getAttribute("aria-checked") === "true";
+    var extra = on ? Math.round(p * 0.1) : 0;
+    return { p: p, t: t, extra: extra, total: p * t + extra * 297 };
+  }
+  function setFill(r){ r.style.setProperty("--fill", ((r.value - r.min) / (r.max - r.min) * 100) + "%"); }
+  function animateTotal(from, slow){
+    var target = calc().total;
+    if (raf) cancelAnimationFrame(raf);
+    if (reduce) { shownTotal = target; totalEl.textContent = money(target); return; }
+    var dur = slow ? 1200 : 320, start = null, f = from;
+    function frame(t){
+      if (start === null) start = t;
+      var k = Math.min(1, (t - start) / dur), e = 1 - Math.pow(1 - k, 3);
+      shownTotal = f + (target - f) * e;
+      totalEl.textContent = money(shownTotal);
+      if (k < 1) raf = requestAnimationFrame(frame); else { shownTotal = target; totalEl.textContent = money(target); raf = null; }
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function updateCalc(){
+    var c = calc();
+    document.getElementById("peopleVal").textContent = c.p;
+    document.getElementById("priceVal").textContent = "$" + c.t;
+    breakdown.textContent = c.p + " × $" + c.t + (c.extra ? "  +  " + c.extra + " × $297" : "");
+    setFill(people); setFill(price);
+    animateTotal(shownTotal, false);
+  }
+  function announce(){ calcLive.textContent = "One day about " + money(calc().total); }
+  people.addEventListener("input", updateCalc);
+  price.addEventListener("input", updateCalc);
+  people.addEventListener("change", announce);
+  price.addEventListener("change", announce);
+  sessions.addEventListener("click", function(){
+    var on = sessions.getAttribute("aria-checked") !== "true";
+    sessions.setAttribute("aria-checked", on ? "true" : "false");
+    updateCalc(); announce();
+  });
+  setFill(people); setFill(price);
+
+  /* ---- page 5 paths ---- */
+  var radios = document.querySelectorAll('input[name="path"]');
+  function paintPaths(){
+    Array.prototype.forEach.call(document.querySelectorAll(".path"), function(l){
+      l.classList.toggle("is-picked", l.getAttribute("data-path") === pick);
+    });
+  }
+  Array.prototype.forEach.call(radios, function(r){
+    if (r.value === pick) r.checked = true;
+    r.addEventListener("change", function(){
+      if (!r.checked) return;
+      pick = r.value;
+      try { localStorage.setItem(STORE_KEY, pick); } catch (e) {}
+      paintPaths();
+      document.getElementById("pickLive").textContent = "Path " + pick + " picked.";
+    });
+  });
+  paintPaths();
+
+  /* ---- ask ---- */
+  function renderAsk(){
+    var title = document.getElementById("ask-title");
+    var name = document.getElementById("askPathName");
+    var toPaths = document.getElementById("askToPaths");
+    var sms = document.getElementById("smsBtn");
+    var label = document.getElementById("smsLabel");
+    if (pick) {
+      title.textContent = "Your pick: Path " + pick + ".";
+      title.classList.remove("fallback");
+      name.textContent = PATH_NAMES[pick];
+      name.hidden = false; toPaths.hidden = true;
+      sms.setAttribute("href", "sms:" + PHONE + "?&body=" + encodeURIComponent("Jimmy, let's start with path " + pick));
+      label.textContent = "Text Jimmy: “Let’s start with path " + pick + "”";
+    } else {
+      title.textContent = "Pick a path on the last page, or just text Jimmy.";
+      title.classList.add("fallback");
+      name.hidden = true; toPaths.hidden = false;
+      sms.setAttribute("href", "sms:" + PHONE);
+      label.textContent = "Text Jimmy";
+    }
+  }
+
+  var copyBtn = document.getElementById("copyBtn");
+  var copyStatus = document.getElementById("copyStatus");
+  copyBtn.addEventListener("click", function(){
+    var num = document.getElementById("phone").textContent;
+    function fallback(){
+      try {
+        var r = document.createRange(); r.selectNodeContents(document.getElementById("phone"));
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      } catch (e) {}
+      copyStatus.textContent = "Press and hold the number to copy it.";
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(num).then(function(){
+          copyBtn.textContent = "Copied"; copyStatus.textContent = "Number copied.";
+          setTimeout(function(){ copyBtn.textContent = "Copy"; }, 2200);
+        }).catch(fallback);
+      } else fallback();
+    } catch (e) { fallback(); }
+  });
+
+  /* ---- start ---- */
+  var startIdx = ORDER.indexOf(location.hash.slice(1));
+  go(startIdx >= 0 ? startIdx : 0, { initial: true });
+})();
+</script>
+</body>
+</html>
