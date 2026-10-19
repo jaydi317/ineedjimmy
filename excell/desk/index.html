@@ -1,0 +1,798 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#06205C">
+<title>Excell Front Desk</title>
+<style>
+  :root{
+    --navy:#06205C;
+    --deep:#031640;
+    --accent:#EF8903;
+    --on-accent:#06205C;
+    --accent-text:#A85400;
+    --bg:#F3F5FA;
+    --card:#FFFFFF;
+    --line:#D6DCEA;
+    --muted:#4B5878;
+    --ok:#0E7A43;
+    --ok-bg:#E6F6EC;
+    --warn-bg:#FFF1D6;
+    --warn:#8A4B00;
+    --bad:#B3261E;
+    --bad-bg:#FDECEA;
+    --banner:#FFE680;
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--deep);
+    font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding-bottom:calc(40px + env(safe-area-inset-bottom));
+  }
+  header.top{
+    background:var(--navy);color:#fff;
+    padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top));
+  }
+  .top-in{max-width:880px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .brand h1{margin:0;font-size:22px;letter-spacing:.2px;line-height:1.15}
+  .brand p{margin:2px 0 0;font-size:13px;color:#C9D4F0}
+  .brand .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
+  .who{display:flex;flex-direction:column;gap:3px;min-width:190px}
+  .who label{font-size:12px;color:#C9D4F0}
+  .who select{
+    font:inherit;font-size:16px;min-height:44px;padding:8px 10px;border-radius:10px;border:2px solid transparent;
+    background:#fff;color:var(--deep);
+  }
+  .who select.need{border-color:var(--accent)}
+
+  #banner{
+    background:var(--banner);color:#3A2B00;border-bottom:2px solid #E0BE2E;
+    padding:10px 16px;font-size:15px;text-align:center;font-weight:600;
+  }
+  #banner span{font-weight:400}
+
+  .wrap{max-width:880px;margin:0 auto;padding:0 16px}
+
+  .rule{
+    margin:12px 0 0;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;
+  }
+  .rule b{color:var(--deep)}
+  .rule::before{content:"";flex:0 0 auto;width:8px;height:8px;border-radius:2px;background:var(--accent)}
+
+  nav.tabs{
+    position:sticky;top:0;z-index:20;background:var(--bg);padding:12px 0 10px;
+  }
+  .tabs-in{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .tab{
+    font:inherit;font-weight:700;font-size:15px;min-height:52px;padding:8px 6px;cursor:pointer;
+    border:2px solid var(--line);background:#fff;color:var(--navy);border-radius:12px;
+  }
+  .tab[aria-selected="true"]{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:inset 0 -4px 0 var(--accent)}
+  .tab small{display:block;font-weight:500;font-size:11px;opacity:.8}
+
+  @media (max-width:520px){ .tab small{display:none} .tab{min-height:48px;font-size:14px} }
+  :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:12px 0}
+  h2{margin:0 0 4px;font-size:20px;color:var(--navy)}
+  h3{margin:0 0 8px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-text)}
+  .sub{margin:0 0 4px;color:var(--muted);font-size:14px}
+  .draft{
+    display:inline-block;margin:6px 0 2px;padding:4px 10px;border-radius:999px;
+    background:var(--warn-bg);color:var(--warn);font-size:13px;font-weight:700;border:1px dashed #D9A441;
+  }
+
+  /* morning list */
+  .chk{display:grid;grid-template-columns:34px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}
+  .chk:first-of-type{border-top:0}
+  .chk input[type=checkbox]{width:30px;height:30px;accent-color:var(--navy);margin:2px 0 0;cursor:pointer}
+  .chk label.t{font-weight:700;font-size:17px;cursor:pointer;display:block}
+  .chk .hint{font-size:13px;color:var(--muted);margin-top:1px}
+  .chk .extra{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .chk .extra .inp{flex:1 1 220px}
+  .mini{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:3px}
+  .progress{font-weight:700;color:var(--navy);margin:8px 0 0}
+  .bar{height:8px;background:#E5E9F3;border-radius:99px;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+
+  input[type=text],textarea{
+    width:100%;font:inherit;font-size:16px;min-height:46px;padding:9px 12px;border:2px solid var(--line);
+    border-radius:10px;background:#fff;color:var(--deep);
+  }
+  textarea{min-height:84px;resize:vertical}
+  input[type=text]:focus,textarea:focus,select:focus{border-color:var(--navy);outline:none;box-shadow:0 0 0 3px rgba(239,137,3,.45)}
+  input[aria-invalid="true"]{border-color:var(--bad);background:var(--bad-bg)}
+  ::placeholder{color:#7A86A3}
+
+  .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+  .f label{display:block;font-size:14px;font-weight:600;margin-bottom:4px}
+  .f label em{font-style:normal;font-weight:400;color:var(--muted);font-size:12px}
+  .money{position:relative}
+  .money span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;pointer-events:none}
+  .money input{padding-left:26px}
+  .f.wide{grid-column:1/-1}
+  @media (max-width:520px){ .fields{grid-template-columns:1fr} }
+  @media (min-width:760px){ .fields.three{grid-template-columns:repeat(3,1fr)} }
+
+  .verdict{border-radius:var(--radius);padding:16px;margin:12px 0;border:2px solid var(--line);background:#fff}
+  .verdict .big{font-size:26px;font-weight:800;line-height:1.15}
+  .verdict .why{margin-top:6px;font-size:15px}
+  .verdict .tips{margin:8px 0 0;padding-left:20px;font-size:14px;color:var(--deep)}
+  .verdict.idle{background:#EEF1F8;border-style:dashed;color:var(--muted)}
+  .verdict.idle .big{font-size:18px;font-weight:700;color:var(--navy)}
+  .verdict.good{background:var(--ok-bg);border-color:#7CCB9C}
+  .verdict.good .big{color:var(--ok)}
+  .verdict.off{background:var(--warn-bg);border-color:#E3A83B}
+  .verdict.off .big{color:var(--warn)}
+  .verdict.bad{background:var(--bad-bg);border-color:#E7A19C}
+  .verdict.bad .big{color:var(--bad)}
+  .eq{font-variant-numeric:tabular-nums;font-size:14px;color:var(--muted);margin-top:4px}
+
+  .attn{margin:0;padding:0;list-style:none}
+  .attn li{padding:6px 0 6px 22px;position:relative;font-size:15px}
+  .attn li::before{content:"";position:absolute;left:2px;top:13px;width:9px;height:9px;border-radius:50%;background:var(--accent)}
+  .attn li.ok::before{background:var(--ok)}
+
+  .preview{font-size:14px;background:#EEF1F8;border-radius:10px;padding:10px 12px;color:var(--deep);word-break:break-word}
+  .preview b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);margin-bottom:3px}
+
+  .btn{
+    font:inherit;font-weight:800;font-size:18px;min-height:56px;width:100%;cursor:pointer;
+    border:0;border-radius:12px;background:var(--accent);color:var(--on-accent);padding:12px 18px;
+    box-shadow:0 2px 0 rgba(3,22,64,.25);
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn[disabled]{opacity:.6;cursor:wait}
+  .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;font-size:16px;min-height:48px;font-weight:700}
+  .msg{margin-top:10px;font-size:15px;min-height:1.4em}
+  .msg.err{color:var(--bad);font-weight:600}
+
+  .done{background:var(--ok-bg);border:1px solid #7CCB9C;border-radius:var(--radius);padding:12px 14px;margin:12px 0;font-size:15px}
+  .done b{color:var(--ok)}
+
+  /* call tally */
+  .tallyhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .total{font-size:44px;font-weight:800;color:var(--navy);line-height:1}
+  .total small{display:block;font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  @media (min-width:700px){ .grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  .call{
+    font:inherit;text-align:left;cursor:pointer;min-height:104px;padding:12px 14px;border-radius:14px;
+    background:#fff;border:2px solid var(--navy);color:var(--navy);
+    display:flex;flex-direction:column;justify-content:space-between;gap:6px;position:relative;
+    transition:background .12s,transform .06s;-webkit-tap-highlight-color:transparent;
+  }
+  .call:active{transform:scale(.97)}
+  .call.flash{background:var(--accent)}
+  .call .lbl{font-weight:800;font-size:17px;line-height:1.15}
+  @media (max-width:420px){ .call .lbl{font-size:16px} }
+  .call .ex{font-size:12px;color:var(--muted);font-weight:500;padding-right:48px;min-height:16px}
+  .call .n{
+    position:absolute;right:10px;bottom:10px;min-width:38px;height:38px;border-radius:19px;padding:0 8px;
+    background:var(--navy);color:#fff;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;
+    font-variant-numeric:tabular-nums;
+  }
+  .call .n.zero{background:#E5E9F3;color:var(--muted)}
+  .call.other{border-style:dashed}
+  #otherPanel{margin-top:10px}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .row > *{flex:1 1 160px}
+  .smallbtn{font:inherit;font-size:15px;font-weight:700;min-height:44px;padding:8px 14px;border-radius:10px;border:2px solid var(--line);background:#fff;color:var(--navy);cursor:pointer}
+  .linkish{background:none;border:0;font:inherit;color:var(--accent-text);font-weight:700;text-decoration:underline;cursor:pointer;padding:8px 4px;min-height:44px}
+
+  /* status */
+  #status{
+    position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));z-index:50;
+    display:none;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;font-weight:700;font-size:15px;
+    box-shadow:0 6px 20px rgba(3,22,64,.25);max-width:calc(100vw - 24px);
+  }
+  #status.show{display:flex}
+  #status.ok{background:var(--ok);color:#fff}
+  #status.wait{background:var(--warn-bg);color:var(--warn);border:2px solid #E3A83B}
+  #status.err{background:var(--bad);color:#fff}
+  #status button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:4px 12px;min-height:32px;cursor:pointer;background:var(--navy);color:#fff}
+
+  footer{margin:22px 0 0;text-align:center;font-size:13px;color:var(--muted)}
+  footer b{color:var(--deep)}
+  [hidden]{display:none !important}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brand">
+      <h1><span class="dot"></span>Excell Front Desk</h1>
+      <p>Excell Sports Chiropractic &middot; daily checks</p>
+    </div>
+    <div class="who">
+      <label for="who">Who&rsquo;s filling this out</label>
+      <select id="who" aria-describedby="whoHint">
+        <option value="">Choose&hellip;</option>
+        <option>Debbie</option>
+        <option>Front desk</option>
+        <option>Dr. McCray</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<div id="banner" hidden>Demo mode &mdash; saving isn&rsquo;t switched on yet <span>&middot; what you type stays on this device only</span></div>
+
+<div class="wrap">
+  <p class="rule" id="whoHint"><b>Totals only &mdash; never type a patient&rsquo;s name here.</b></p>
+
+  <nav class="tabs" aria-label="Sections">
+    <div class="tabs-in" role="tablist">
+      <button class="tab" role="tab" id="t-morning" aria-controls="p-morning" data-tab="morning">Morning start-up<small>before we open</small></button>
+      <button class="tab" role="tab" id="t-closing" aria-controls="p-closing" data-tab="closing">Closing check<small>end of day</small></button>
+      <button class="tab" role="tab" id="t-calls" aria-controls="p-calls" data-tab="calls">Call tally<small>one tap = one call</small></button>
+    </div>
+  </nav>
+
+  <!-- MORNING -->
+  <section id="p-morning" role="tabpanel" aria-labelledby="t-morning" hidden>
+    <div id="doneMorning" class="done" hidden></div>
+    <div class="card">
+      <h2>Morning start-up</h2>
+      <span class="draft">DRAFT &mdash; Dr. McCray will edit these</span>
+      <p class="sub">Tick each one when it&rsquo;s done. A note is optional.</p>
+      <div class="progress" id="mProgress">0 of 5 done</div>
+      <div class="bar"><i id="mBar"></i></div>
+
+      <div style="margin-top:8px">
+        <div class="chk">
+          <input type="checkbox" id="c1" data-m="1" aria-labelledby="l1">
+          <div>
+            <label class="t" id="l1" for="c1">Today&rsquo;s schedule reviewed</label>
+            <div class="hint">Look over who&rsquo;s booked, any gaps or double-bookings.</div>
+            <div class="extra">
+              <div class="inp"><label for="booked" class="mini">Patients booked today (#)</label><input type="text" id="booked" inputmode="numeric" autocomplete="off" placeholder="0"></div>
+              <div class="inp"><input type="text" id="n1" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for schedule"></div>
+            </div>
+          </div>
+        </div>
+        <div class="chk">
+          <input type="checkbox" id="c2" data-m="2" aria-labelledby="l2">
+          <div>
+            <label class="t" id="l2" for="c2">Overnight voicemails, texts &amp; emails checked</label>
+            <div class="extra"><div class="inp"><input type="text" id="n2" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for messages"></div></div>
+          </div>
+        </div>
+        <div class="chk">
+          <input type="checkbox" id="c3" data-m="3" aria-labelledby="l3">
+          <div>
+            <label class="t" id="l3" for="c3">Yesterday&rsquo;s &ldquo;needs billing&rdquo; items handled</label>
+            <div class="extra"><div class="inp"><input type="text" id="n3" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for billing"></div></div>
+          </div>
+        </div>
+        <div class="chk">
+          <input type="checkbox" id="c4" data-m="4" aria-labelledby="l4">
+          <div>
+            <label class="t" id="l4" for="c4">Payment terminal / Square on and working</label>
+            <div class="extra"><div class="inp"><input type="text" id="n4" maxlength="140" autocomplete="off" placeholder="Note (optional)" aria-label="Note for Square"></div></div>
+          </div>
+        </div>
+        <div class="chk">
+          <input type="checkbox" id="c5" data-m="5" aria-labelledby="l5">
+          <div>
+            <label class="t" id="l5" for="c5">Rooms &amp; equipment ready</label>
+            <div class="hint">Hyperbaric, decompression.</div>
+            <div class="extra"><div class="inp"><input type="text" id="n5" maxlength="140" autocomplete="off" placeholder="Note (optional)" aria-label="Note for rooms and equipment"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="btn" id="submitMorning">Submit morning start-up</button>
+    <div class="msg" id="msgMorning" role="status"></div>
+  </section>
+
+  <!-- CLOSING -->
+  <section id="p-closing" role="tabpanel" aria-labelledby="t-closing" hidden>
+    <div id="doneClosing" class="done" hidden></div>
+    <div class="card">
+      <h2>Closing check</h2>
+      <p class="sub">Numbers only. Copy them from the ChiroTouch End-of-Day Summary and Square.</p>
+      <h3 style="margin-top:14px">From ChiroTouch end-of-day</h3>
+      <div class="fields three" id="fldA"></div>
+    </div>
+
+    <div class="card">
+      <h3>What actually came in</h3>
+      <div class="fields" id="fldB"></div>
+    </div>
+
+    <div class="verdict idle" id="verdict" aria-live="polite">
+      <div class="big">Enter the numbers and I&rsquo;ll check them</div>
+      <div class="why">Fill in what ChiroTouch collected and what came in. I&rsquo;ll add it up for you.</div>
+    </div>
+
+    <div class="card">
+      <h3>Still to do</h3>
+      <div class="fields">
+        <div class="f"><label for="billing">Items still needing billing <em>(#)</em></label><input type="text" id="billing" inputmode="numeric" autocomplete="off" placeholder="0" data-num="int" data-req="1"></div>
+      </div>
+      <div style="margin-top:6px">
+        <div class="chk" style="padding:10px 0;border-top:0"><input type="checkbox" id="vm"><div><label class="t" for="vm" style="font-size:16px">All voicemails returned</label></div></div>
+        <div class="chk" style="padding:10px 0"><input type="checkbox" id="em"><div><label class="t" for="em" style="font-size:16px">All emails returned</label></div></div>
+        <div class="chk" style="padding:10px 0"><input type="checkbox" id="tx"><div><label class="t" for="tx" style="font-size:16px">All texts returned</label></div></div>
+      </div>
+      <div class="f wide" style="margin-top:8px">
+        <label for="cnote">Anything not done? <em>(short note &mdash; no patient names)</em></label>
+        <textarea id="cnote" maxlength="140" placeholder="e.g. Square batch didn&rsquo;t close; will fix first thing"></textarea>
+      </div>
+    </div>
+
+    <div class="card" id="pvCard" hidden>
+      <div class="preview"><b>Dr. McCray will get</b><span id="pv"></span></div>
+    </div>
+
+    <button class="btn" id="submitClosing">Submit closing check</button>
+    <div class="msg" id="msgClosing" role="status"></div>
+  </section>
+
+  <!-- CALLS -->
+  <section id="p-calls" role="tabpanel" aria-labelledby="t-calls" hidden>
+    <div class="card">
+      <div class="tallyhead">
+        <div>
+          <h2>Call tally</h2>
+          <p class="sub">One tap = one call. Tap the reason the caller gave. Counts are for this week only, to learn what callers ask.</p>
+        </div>
+        <div class="total"><small>Calls today</small><span id="callTotal">0</span></div>
+      </div>
+    </div>
+    <div class="grid" id="callGrid"></div>
+    <div id="otherPanel" class="card" hidden>
+      <label for="onote" style="font-weight:700;display:block;margin-bottom:6px">What was it about? <span style="font-weight:400;color:var(--muted)">(a few words, no names)</span></label>
+      <input type="text" id="onote" maxlength="80" autocomplete="off" placeholder="e.g. vendor selling supplies">
+      <div class="row" style="margin-top:10px">
+        <button class="btn" id="otherAdd" style="font-size:16px;min-height:50px">Add this call</button>
+        <button class="smallbtn" id="otherCancel">Cancel</button>
+      </div>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+      <button class="smallbtn" id="undo">Undo last tap</button>
+      <span class="sub" id="undoHint" style="margin:0"></span>
+    </div>
+  </section>
+
+  <footer><b>Totals only &mdash; never type a patient&rsquo;s name here.</b></footer>
+</div>
+
+<div id="status" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ CONFIG ============ */
+const ENDPOINT = 'PASTE_WEB_APP_URL_HERE';   // Apps Script web app URL goes here
+const TOKEN    = 'excell-desk-v1';             // must match the TOKEN in Code.gs (or the Script Property)
+/* ================================= */
+
+const DEMO = !/^https:\/\//.test(ENDPOINT);   // placeholder (or anything not an https URL) = demo mode
+const $ = (id) => document.getElementById(id);
+
+/* ---------- safe localStorage ---------- */
+const store = {
+  get(k, fallback){ try{ const v = localStorage.getItem(k); return v === null ? fallback : JSON.parse(v); }catch(e){ return fallback; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); return true; }catch(e){ return false; } }
+};
+const pad = (n) => String(n).padStart(2,'0');
+const todayStr = () => { const d = new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); };
+const nowTime = () => new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'});
+const dayName = () => ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][new Date().getDay()];
+const uid = () => (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : (Date.now().toString(36)+Math.random().toString(36).slice(2,10));
+
+/* ---------- money / number helpers (work in cents to avoid float drift) ---------- */
+function parseNum(str, kind){
+  const s = String(str == null ? '' : str).replace(/[$,\s]/g,'');
+  if (s === '') return {blank:true, valid:true, val:0};
+  if (!/^\d*\.?\d+$|^\d+\.$/.test(s)) return {blank:false, valid:false, val:0};
+  const n = Number(s);
+  if (!isFinite(n) || n < 0 || n > 10000000) return {blank:false, valid:false, val:0};
+  if (kind === 'int' && !Number.isInteger(n)) return {blank:false, valid:false, val:0};
+  return {blank:false, valid:true, val: kind === 'int' ? n : Math.round(n*100)/100};
+}
+const cents = (v) => Math.round(v*100);
+function fmt$(v){
+  const c = Math.round(Math.abs(v)*100);
+  const dollars = Math.floor(c/100), rem = c%100;
+  const d = String(dollars).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  return '$'+d+(rem ? '.'+pad(rem) : '');
+}
+const fmt$2 = (v) => { const c = Math.round(Math.abs(v)*100); return '$'+String(Math.floor(c/100)).replace(/\B(?=(\d{3})+(?!\d))/g,',')+'.'+pad(c%100); };
+
+/* ---------- field definitions ---------- */
+const FIELDS_A = [
+  {id:'charges',  label:'Charges entered today', hint:'$, from ChiroTouch EOD Summary', money:true, req:true},
+  {id:'seen',     label:'Patients seen', hint:'#', req:true},
+  {id:'noshows',  label:'No-shows', hint:'#'},
+  {id:'cancels',  label:'Cancellations', hint:'#'},
+  {id:'collected',label:'Collected per ChiroTouch', hint:'$', money:true, req:true},
+];
+const FIELDS_B = [
+  {id:'square',   label:'Square total today', hint:'$', money:true, req:true},
+  {id:'cash',     label:'Cash', hint:'$', money:true},
+  {id:'checks',   label:'Checks', hint:'$', money:true},
+  {id:'other',    label:'Other payments', hint:'$ (gift cards, HSA, wire…)', money:true},
+];
+function buildFields(list, mountId){
+  $(mountId).innerHTML = list.map(f => `
+    <div class="f">
+      <label for="${f.id}">${f.label} <em>(${f.hint})</em></label>
+      ${f.money ? `<div class="money"><span>$</span><input type="text" id="${f.id}" inputmode="decimal" autocomplete="off" placeholder="0.00" data-num="money" ${f.req?'data-req="1"':''}></div>`
+                : `<input type="text" id="${f.id}" inputmode="numeric" autocomplete="off" placeholder="0" data-num="int" ${f.req?'data-req="1"':''}>`}
+    </div>`).join('');
+}
+buildFields(FIELDS_A,'fldA');
+buildFields(FIELDS_B,'fldB');
+
+/* ---------- sending: queue + retry ---------- */
+const Q_KEY = 'xfd_queue', REJ_KEY = 'xfd_rejected', DEMO_KEY = 'xfd_demo_log';
+const loadQ = () => store.get(Q_KEY, []);
+const saveQ = (q) => store.set(Q_KEY, q.slice(-500));
+let flushP = null, lastOffline = false, lastSavedAt = null;
+
+function currentWho(){ return $('who').value; }
+
+async function postOne(item){
+  const body = JSON.stringify({token:TOKEN, kind:item.kind, id:item.id, who:item.who, data:item.data});
+  const headers = {'Content-Type':'text/plain;charset=utf-8'};
+  let res;
+  try{
+    res = await fetch(ENDPOINT, {method:'POST', headers, body, redirect:'follow'});
+  }catch(e){
+    // Reading the reply can be blocked by the browser; the server dedupes by id, so one blind retry is safe.
+    try{ await fetch(ENDPOINT, {method:'POST', mode:'no-cors', headers, body}); return 'sent'; }
+    catch(e2){ return 'network'; }
+  }
+  if (!res.ok) return 'network';
+  let j; try{ j = await res.json(); }catch(e){ return 'network'; }
+  if (j && j.ok) return 'sent';
+  return {rejected: (j && j.error) || 'refused'};
+}
+
+function flush(){
+  if (DEMO) return Promise.resolve();
+  if (!flushP){
+    flushP = (async () => {
+      lastOffline = false;
+      for(;;){
+        const q = loadQ(); if (!q.length) break;
+        const item = q[0];
+        const r = await postOne(item);
+        if (r === 'network'){ lastOffline = true; break; }
+        saveQ(loadQ().filter(x => x.id !== item.id));
+        if (r === 'sent'){ lastSavedAt = Date.now(); }
+        else { const rej = store.get(REJ_KEY, []); rej.push({item, error:r.rejected}); store.set(REJ_KEY, rej.slice(-50)); showStatus('err','Couldn’t save: '+r.rejected); }
+      }
+    })().finally(() => { flushP = null; renderStatus(); });
+  }
+  return flushP;
+}
+
+const inQueue = (id) => loadQ().some(x => x.id === id);
+
+async function send(kind, data){
+  const item = {id:uid(), kind, who:currentWho(), data, t:Date.now()};
+  if (DEMO){
+    const log = store.get(DEMO_KEY, []); log.push(item); store.set(DEMO_KEY, log.slice(-200));
+    lastSavedAt = Date.now(); renderStatus(); return true;
+  }
+  const q = loadQ(); q.push(item); saveQ(q);
+  renderStatus();
+  await flush();
+  if (inQueue(item.id) && !lastOffline) await flush();
+  return !inQueue(item.id);
+}
+
+let statusTimer = null, errShown = null;
+function showStatus(type, text, withRetry){
+  const el = $('status');
+  el.className = 'show '+type;
+  el.innerHTML = '';
+  const s = document.createElement('span'); s.textContent = text; el.appendChild(s);
+  if (withRetry){ const b = document.createElement('button'); b.textContent = 'Retry now'; b.onclick = () => flush(); el.appendChild(b); }
+  if (type === 'err'){ errShown = Date.now(); clearTimeout(statusTimer); statusTimer = setTimeout(renderStatus, 6000); }
+}
+function renderStatus(){
+  const el = $('status');
+  if (errShown && Date.now()-errShown < 6000) return;
+  const n = DEMO ? 0 : loadQ().length;
+  clearTimeout(statusTimer);
+  if (n > 0){ showStatus('wait', 'Not sent yet — will retry'+(n>1?' ('+n+' waiting)':''), true); return; }
+  if (lastSavedAt && Date.now()-lastSavedAt < 3500){
+    showStatus('ok', DEMO ? 'Saved ✓ (demo — stays on this device)' : 'Saved ✓');
+    statusTimer = setTimeout(renderStatus, 3600);
+    return;
+  }
+  el.className = '';
+  el.innerHTML = '';
+}
+setInterval(() => { if (!DEMO && loadQ().length) flush(); }, 30000);
+window.addEventListener('online', () => flush());
+document.addEventListener('visibilitychange', () => { if (!document.hidden) flush(); });
+
+/* ---------- who ---------- */
+(function initWho(){
+  const sel = $('who');
+  const last = store.get('xfd_who', '');
+  if (last && [...sel.options].some(o => o.value === last)) sel.value = last;
+  sel.classList.toggle('need', !sel.value);
+  sel.addEventListener('change', () => { store.set('xfd_who', sel.value); sel.classList.toggle('need', !sel.value); });
+})();
+function needWho(msgEl){
+  if (currentWho()) return true;
+  $('who').classList.add('need'); $('who').focus();
+  msgEl.className = 'msg err'; msgEl.textContent = 'Pick who’s filling this out (top right) first.';
+  return false;
+}
+
+/* ---------- tabs ---------- */
+const TABS = ['morning','closing','calls'];
+function showTab(name, persist){
+  if (!TABS.includes(name)) name = 'morning';
+  TABS.forEach(t => {
+    const sel = t === name;
+    $('t-'+t).setAttribute('aria-selected', sel ? 'true' : 'false');
+    $('t-'+t).tabIndex = sel ? 0 : -1;
+    $('p-'+t).hidden = !sel;
+  });
+  if (persist !== false) store.set('xfd_tab', name);
+}
+document.querySelectorAll('.tab').forEach(b => {
+  b.addEventListener('click', () => { showTab(b.dataset.tab); window.scrollTo({top:0}); });
+  b.addEventListener('keydown', (e) => {
+    const i = TABS.indexOf(b.dataset.tab);
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft'){
+      const n = TABS[(i + (e.key==='ArrowRight'?1:2)) % 3]; showTab(n); $('t-'+n).focus(); e.preventDefault();
+    }
+  });
+});
+
+/* ---------- drafts (so a refresh doesn't lose typing) ---------- */
+function draftSave(key, ids){
+  const o = {date: todayStr(), v:{}};
+  ids.forEach(id => { const el = $(id); o.v[id] = el.type === 'checkbox' ? el.checked : el.value; });
+  store.set(key, o);
+}
+function draftLoad(key, ids){
+  const o = store.get(key, null);
+  if (!o || o.date !== todayStr()) return;
+  ids.forEach(id => { const el = $(id); if (!el || !(id in o.v)) return; if (el.type === 'checkbox') el.checked = !!o.v[id]; else el.value = o.v[id]; });
+}
+const M_IDS = ['c1','c2','c3','c4','c5','booked','n1','n2','n3','n4','n5'];
+const C_IDS = [...FIELDS_A, ...FIELDS_B].map(f => f.id).concat(['billing','vm','em','tx','cnote']);
+
+/* ============ MORNING ============ */
+const M_LABELS = {1:'schedule', 2:'messages checked', 3:'billing handled', 4:'Square on', 5:'rooms ready'};
+function updMorning(){
+  const n = [1,2,3,4,5].filter(i => $('c'+i).checked).length;
+  $('mProgress').textContent = n === 5 ? 'All 5 done' : n+' of 5 done';
+  $('mBar').style.width = (n/5*100)+'%';
+}
+function showDone(elId, html){ const el = $(elId); el.innerHTML = html; el.hidden = false; }
+function doneMorningHtml(d){ return '<b>Sent ✓</b> Morning start-up '+(d.n===5?'all 5 done':d.n+' of 5 done')+' at '+d.time+' by '+d.who+'.'; }
+
+$('submitMorning').addEventListener('click', async () => {
+  const msg = $('msgMorning'); msg.className = 'msg'; msg.textContent = '';
+  if (!needWho(msg)) return;
+  const booked = parseNum($('booked').value, 'int');
+  if (!booked.valid){ $('booked').setAttribute('aria-invalid','true'); msg.className='msg err'; msg.textContent='Patients booked should be a whole number.'; $('booked').focus(); return; }
+  $('booked').removeAttribute('aria-invalid');
+  const data = {};
+  if (!booked.blank) data.booked = booked.val;
+  for (let i=1;i<=5;i++){ data['c'+i] = $('c'+i).checked; const t = $('n'+i).value.trim(); if (t) data['n'+i] = t; }
+  const n = [1,2,3,4,5].filter(i => data['c'+i]).length;
+  const btn = $('submitMorning'); btn.disabled = true;
+  const ok = await send('morning', data);
+  btn.disabled = false;
+  msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — thank you.' : 'Not sent yet — will retry. You can keep working.';
+  const d = {date:todayStr(), time:nowTime(), who:currentWho(), n};
+  store.set('xfd_last_morning', d);
+  showDone('doneMorning', doneMorningHtml(d));
+  M_IDS.forEach(id => { const el = $(id); if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+  store.set('xfd_draft_m', null); updMorning();
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+['input','change'].forEach(ev => $('p-morning').addEventListener(ev, () => { updMorning(); draftSave('xfd_draft_m', M_IDS); }));
+
+/* ============ CLOSING (live math) ============ */
+function readClosing(){
+  const out = {}, bad = [];
+  let missingReq = [];
+  [...FIELDS_A, ...FIELDS_B, {id:'billing', label:'Items needing billing', req:true}].forEach(f => {
+    const el = $(f.id), kind = el.dataset.num;
+    const p = parseNum(el.value, kind);
+    el.setAttribute('aria-invalid', p.valid ? 'false' : 'true');
+    if (!p.valid) bad.push(f.id);
+    if (p.blank && f.req) missingReq.push(f.id);
+    out[f.id] = p.val; out[f.id+'_blank'] = p.blank;
+  });
+  out.vm = $('vm').checked; out.em = $('em').checked; out.tx = $('tx').checked;
+  out.note = $('cnote').value.trim();
+  out._bad = bad; out._missing = missingReq;
+  return out;
+}
+
+/* Same rule as Code.gs: tolerance $1 */
+function matchMath(d){
+  const counted = cents(d.square) + cents(d.cash) + cents(d.checks) + cents(d.other);
+  const diff = cents(d.collected) - counted;   // + means ChiroTouch is higher
+  return {counted: counted/100, diff: diff/100, ok: Math.abs(diff) <= 100};
+}
+function closingMessage(d, m){
+  const unret = [];
+  if (!d.vm) unret.push('voicemails'); if (!d.em) unret.push('emails'); if (!d.tx) unret.push('texts');
+  const day = dayName();
+  const flag = !m.ok || unret.length;
+  const parts = [];
+  if (!m.ok) parts.push('off by '+fmt$(Math.abs(m.diff)));
+  else parts.push('charges '+fmt$(d.charges), d.seen+' seen');
+  if (!m.ok) parts.push(d.seen+' seen');
+  if (d.noshows) parts.push(d.noshows+' no-show'+(d.noshows===1?'':'s'));
+  if (m.ok) parts.push('collected matches');
+  if (d.billing) parts.push(d.billing+' need billing');
+  if (unret.length) parts.push((unret.length===3?'voicemails, emails & texts':unret.join(' & '))+' not returned');
+  if (d.note) parts.push('Note: '+d.note);
+  return (flag?'⚠️ ':'✅ ')+day+' closing: '+parts.join(' · ');
+}
+
+function renderClosing(){
+  const d = readClosing();
+  const v = $('verdict');
+  if (d._bad.length){
+    v.className = 'verdict bad';
+    v.innerHTML = '<div class="big">Check the red box</div><div class="why">Use numbers only — like 1250.50. Counts should be whole numbers.</div>';
+    $('pvCard').hidden = true; return d;
+  }
+  if (d.collected_blank){
+    v.className = 'verdict idle';
+    v.innerHTML = '<div class="big">Enter the numbers and I’ll check them</div><div class="why">Fill in what ChiroTouch collected and what came in. I’ll add it up for you.</div>';
+    $('pvCard').hidden = true; return d;
+  }
+  const m = matchMath(d);
+  const eq = 'ChiroTouch '+fmt$2(d.collected)+' &nbsp;vs&nbsp; Square '+fmt$2(d.square)+' + cash '+fmt$2(d.cash)+' + checks '+fmt$2(d.checks)+' + other '+fmt$2(d.other)+' = '+fmt$2(m.counted);
+  if (m.ok){
+    v.className = 'verdict good';
+    v.innerHTML = '<div class="big">✅ Matches</div><div class="why">'+(m.diff===0?'Every dollar is accounted for.':'Within $1 ('+fmt$2(Math.abs(m.diff))+' apart) — close enough.')+'</div><div class="eq">'+eq+'</div>';
+  } else {
+    const higher = m.diff > 0;
+    const tips = higher
+      ? ['A card payment not in today’s Square total (batch not closed, or yesterday’s batch?)','Cash or a check taken but not typed in above','A payment posted to the wrong day in ChiroTouch']
+      : ['A payment counted here but not posted in ChiroTouch yet','A refund or void that’s in Square but not ChiroTouch','The same payment typed in twice'];
+    v.className = 'verdict off';
+    v.innerHTML = '<div class="big">⚠️ Off by '+fmt$2(Math.abs(m.diff))+'</div>'
+      + '<div class="why">'+(higher?'ChiroTouch says <b>'+fmt$2(m.diff)+' more</b> was collected than you’ve counted.':'You’ve counted <b>'+fmt$2(-m.diff)+' more</b> than ChiroTouch says was collected.')+'</div>'
+      + '<div class="eq">'+eq+'</div><ul class="tips">'+tips.map(t => '<li>'+t+'</li>').join('')+'</ul>';
+  }
+  // preview only when required fields are all in
+  if (!d._missing.length){
+    $('pv').textContent = closingMessage(d, m);
+    $('pvCard').hidden = false;
+  } else $('pvCard').hidden = true;
+  return d;
+}
+function doneClosingHtml(d){ return '<b>Sent ✓</b> Closing check at '+d.time+' by '+d.who+'.<br><span style="color:var(--muted)">'+escapeHtml(d.msg)+'</span>'; }
+function escapeHtml(s){ return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+
+$('p-closing').addEventListener('input', () => { renderClosing(); draftSave('xfd_draft_c', C_IDS); });
+$('p-closing').addEventListener('change', () => { renderClosing(); draftSave('xfd_draft_c', C_IDS); });
+
+$('submitClosing').addEventListener('click', async () => {
+  const msg = $('msgClosing'); msg.className = 'msg'; msg.textContent = '';
+  if (!needWho(msg)) return;
+  const d = renderClosing();
+  if (d._bad.length){ msg.className='msg err'; msg.textContent='One of the numbers isn’t a number. Fix the red box.'; $(d._bad[0]).focus(); return; }
+  if (d._missing.length){
+    const names = {charges:'Charges',seen:'Patients seen',collected:'Collected per ChiroTouch',square:'Square total',billing:'Items needing billing'};
+    msg.className='msg err'; msg.textContent='Still needed: '+d._missing.map(x => names[x]).join(', ')+'. (Put 0 if it’s zero.)';
+    $(d._missing[0]).focus(); return;
+  }
+  const data = {};
+  ['charges','seen','noshows','cancels','collected','square','cash','checks','other','billing'].forEach(k => data[k] = d[k]);
+  data.vm = d.vm; data.em = d.em; data.tx = d.tx;
+  if (d.note) data.note = d.note;
+  const m = matchMath(d), text = closingMessage(d, m);
+  const btn = $('submitClosing'); btn.disabled = true;
+  const ok = await send('closing', data);
+  btn.disabled = false;
+  msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — Dr. McCray has the summary.' : 'Not sent yet — will retry. You can keep working.';
+  const rec = {date:todayStr(), time:nowTime(), who:currentWho(), msg:text};
+  store.set('xfd_last_closing', rec);
+  showDone('doneClosing', doneClosingHtml(rec));
+  C_IDS.forEach(id => { const el = $(id); if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+  store.set('xfd_draft_c', null); renderClosing();
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+/* ============ CALL TALLY ============ */
+const REASONS = [
+  {k:'new',        label:'New patient / first visit'},
+  {k:'price',      label:'Price / cost'},
+  {k:'insurance',  label:'Insurance question'},
+  {k:'book',       label:'Book appointment'},
+  {k:'resched',    label:'Reschedule / cancel'},
+  {k:'directions', label:'Directions / hours'},
+  {k:'services',   label:'Services question', ex:'decompression, hyperbaric, massage…'},
+  {k:'records',    label:'Records / forms / auto accident'},
+  {k:'billing',    label:'Billing question'},
+  {k:'other',      label:'Other', ex:'add a few words, no names'},
+];
+const T_KEY = 'xfd_tally';
+function loadTally(){
+  const t = store.get(T_KEY, null);
+  if (!t || t.date !== todayStr()) return {date:todayStr(), counts:{}, stack:[]};
+  return t;
+}
+let tally = loadTally();
+function renderTally(){
+  let total = 0;
+  REASONS.forEach(r => {
+    const n = tally.counts[r.k] || 0; total += n;
+    const el = $('n-'+r.k); el.textContent = n; el.classList.toggle('zero', n === 0);
+  });
+  $('callTotal').textContent = total;
+  const last = tally.stack[tally.stack.length-1];
+  $('undo').disabled = !last;
+  $('undo').style.opacity = last ? 1 : .5;
+  $('undoHint').textContent = last ? 'Last tap: '+REASONS.find(r => r.k === last).label : '';
+}
+$('callGrid').innerHTML = REASONS.map(r => `
+  <button class="call ${r.k==='other'?'other':''}" data-k="${r.k}" aria-label="${r.label}">
+    <span class="lbl">${r.label}</span>
+    <span class="ex">${r.ex || '&nbsp;'}</span>
+    <span class="n zero" id="n-${r.k}" aria-hidden="true">0</span>
+  </button>`).join('');
+
+function bump(k, delta, note){
+  tally = loadTally();
+  tally.counts[k] = Math.max(0, (tally.counts[k] || 0) + delta);
+  if (delta > 0) tally.stack.push(k); else { const i = tally.stack.lastIndexOf(k); if (i >= 0) tally.stack.splice(i,1); }
+  store.set(T_KEY, tally); renderTally();
+  const data = {reason:k, delta};
+  if (note) data.note = note;
+  if (!currentWho()){ /* calls are often tapped by whoever is at the desk; don't block, label it */ }
+  send('call', data);
+}
+$('callGrid').addEventListener('click', (e) => {
+  const b = e.target.closest('.call'); if (!b) return;
+  const k = b.dataset.k;
+  if (k === 'other'){ $('otherPanel').hidden = false; $('onote').focus(); $('otherPanel').scrollIntoView({block:'nearest',behavior:'smooth'}); return; }
+  b.classList.add('flash'); setTimeout(() => b.classList.remove('flash'), 220);
+  try{ navigator.vibrate && navigator.vibrate(15); }catch(_){}
+  bump(k, 1);
+});
+function addOther(){
+  const b = document.querySelector('.call.other');
+  b.classList.add('flash'); setTimeout(() => b.classList.remove('flash'), 220);
+  bump('other', 1, $('onote').value.trim());
+  $('onote').value = ''; $('otherPanel').hidden = true;
+}
+$('otherAdd').addEventListener('click', addOther);
+$('onote').addEventListener('keydown', (e) => { if (e.key === 'Enter') addOther(); });
+$('otherCancel').addEventListener('click', () => { $('onote').value=''; $('otherPanel').hidden = true; });
+$('undo').addEventListener('click', () => {
+  const last = tally.stack[tally.stack.length-1]; if (!last) return;
+  bump(last, -1);
+});
+renderTally();
+
+/* ============ INIT ============ */
+if (DEMO) $('banner').hidden = false;
+draftLoad('xfd_draft_m', M_IDS); draftLoad('xfd_draft_c', C_IDS);
+(function restoreDone(){
+  const m = store.get('xfd_last_morning', null); if (m && m.date === todayStr()) showDone('doneMorning', doneMorningHtml(m));
+  const c = store.get('xfd_last_closing', null); if (c && c.date === todayStr()) showDone('doneClosing', doneClosingHtml(c));
+})();
+updMorning(); renderClosing();
+showTab(store.get('xfd_tab', 'morning'), false);
+flush(); renderStatus();
+</script>
+</body>
+</html>
