@@ -639,7 +639,7 @@ function closingMessage(d, m){
   if (m.ok) parts.push('collected matches');
   if (d.billing) parts.push(d.billing+' need billing');
   if (unret.length) parts.push((unret.length===3?'voicemails, emails & texts':unret.join(' & '))+' not returned');
-  if (d.note) parts.push('Note: '+d.note);
+  if (d.note) parts.push('desk left a note (see Sheet)');
   return (flag?'⚠️ ':'✅ ')+day+' closing: '+parts.join(' · ');
 }
 
