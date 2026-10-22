@@ -58,6 +58,10 @@
 
   .wrap{max-width:880px;margin:0 auto;padding:0 16px}
 
+  .how{margin:12px 0 0;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+  .how summary{cursor:pointer;font-weight:700;color:var(--deep)}
+  .how ol{margin:8px 0 4px;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+  .how p{margin:6px 0 0;color:var(--muted)}
   .rule{
     margin:12px 0 0;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;
   }
@@ -226,6 +230,15 @@
 <div id="banner" hidden>Demo mode &mdash; saving isn&rsquo;t switched on yet <span>&middot; what you type stays on this device only</span></div>
 
 <div class="wrap">
+  <details class="how" id="how">
+    <summary>How this works (30-second read)</summary>
+    <ol>
+      <li><b>Morning, before we open:</b> tick the 3 boxes once the overnight emails, texts and voicemails are handled. Dr. McCray gets one text: "Morning start-up done."</li>
+      <li><b>End of day:</b> run ChiroTouch's end-of-day report and look at today's Square total. Type those numbers in, plus cash and checks. The page does the math right away and shows <b>Matches</b> or <b>Off by $X</b>. Tap Submit, and Dr. McCray gets one text with the result.</li>
+      <li><b>Every call (for one week):</b> tap the reason on the Call tally tab. That's it.</li>
+    </ol>
+    <p>If no closing check comes in by about 6:30pm, Dr. McCray gets a reminder. Every Friday he gets a one-line weekly summary. Totals only: never type a patient's name. Questions: text Jimmy at 626-354-3229.</p>
+  </details>
   <p class="rule" id="whoHint"><b>Totals only &mdash; never type a patient&rsquo;s name here.</b></p>
 
   <nav class="tabs" aria-label="Sections">

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Excell Office Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Excell brand: navy + orange. A practical office binder: tabs for Today / Debbie / Dr. McCray / What changed / Manage it. */
+:root{--bg:#F3F5FA;--card:#FFFFFF;--ink:#0B1733;--muted:#4B5878;--line:#D6DCEA;--navy:#06205C;--deep:#031640;--or:#EF8903;--or-ink:#A85400;--or-soft:#FFF1DE;--go:#17784A;--go-soft:#E2F3E9;--warn:#B4231B;--warn-soft:#FCE9E7;
+--display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;--body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.5}
+.top{background:var(--navy);color:#fff;padding-block:30px 26px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:920px;margin:0 auto}
+.brand{font-family:var(--display);font-weight:800;letter-spacing:.06em;font-size:20px}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.2em;opacity:.8}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,8vw,64px);line-height:.95;margin:14px 0 10px}
+h1 span{color:var(--or)}
+.top p{margin:0;max-width:60ch;color:#D5DDF0}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:8px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+nav .in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav a{flex:none;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none;padding:7px 12px;border-radius:8px}
+nav a:hover,nav a:focus-visible{background:var(--card);outline:none}
+.wrap{max-width:920px;margin:0 auto;padding-block:24px 60px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:36px}
+section{display:flex;flex-direction:column;gap:14px;scroll-margin-top:56px}
+h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(28px,5vw,38px);line-height:1;margin:0;color:var(--navy)}
+h3{margin:0;font-size:20px}
+.sub{margin:0;color:var(--muted);max-width:66ch}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.card p{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.chip{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.c-today{background:var(--or-soft);color:var(--or-ink)} .c-done{background:var(--go-soft);color:var(--go)} .c-next{background:#E6EDFC;color:#2852B8}
+ol,ul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:5px}
+.steps li b{color:var(--navy)}
+.time{display:flex;flex-direction:column;gap:0;border-left:3px solid var(--line);margin-left:6px}
+.time div{position:relative;padding:0 0 16px 20px}
+.time div::before{content:"";position:absolute;left:-8px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--card);border:3px solid var(--navy)}
+.time div.now::before{background:var(--or);border-color:var(--or)}
+.time b{display:block}
+.when{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.msg{background:var(--bg);border-left:4px solid var(--or);border-radius:6px;padding:10px 12px;font-size:16px;margin:0}
+.rule{background:var(--warn-soft);border-radius:12px;padding:14px 18px}
+.rule p{margin:0}
+.rule b{color:var(--warn)}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:16px}
+th,td{text-align:left;padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-top:0}
+td:first-child{font-weight:700;color:var(--navy);width:26%}
+.btn{display:inline-block;background:var(--or);color:var(--navy);font-weight:700;text-decoration:none;padding:10px 16px;border-radius:10px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.links a{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 14px;text-decoration:none;color:var(--navy);font-weight:700}
+.links a span{display:block;font-weight:500;color:var(--muted);font-size:14px}
+:focus-visible{outline:3px solid var(--or);outline-offset:2px}
+footer{color:var(--muted);font-size:15px}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="in">
+  <div class="brand">EXCELL<small>SPORTS CHIROPRACTIC</small></div>
+  <h1>Office <span>Guide</span></h1>
+  <p>Everything we're turning on for the office, what changes for patients, and how to run it. For Dr. McCray and Debbie. Bookmark this page.</p>
+</div></header>
+
+<nav aria-label="Sections"><div class="in">
+  <a href="#today">Today &amp; next</a><a href="#patients">What patients will notice</a><a href="#debbie">For Debbie</a><a href="#doc">For Dr. McCray</a><a href="#manage">How to change things</a><a href="#links">Links</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="today">
+  <h2>Today, and what comes next</h2>
+  <p class="sub">The goal: things happen on their own, Dr. McCray stops double-checking, and the schedule fills from people who already love the office.</p>
+  <div class="time">
+    <div class="now"><span class="when">Today · Thu Oct 22</span><b>Turn on what you already pay for</b>With ChiroTouch support, we switch on the automatic thank-you + review request, the "we missed you" text, and patient check-ins (recall) in CT Engage. We set up Debbie's Front Desk page and fix two settings.</div>
+    <div><span class="when">This week</span><b>The money check starts texting Dr. McCray</b>Debbie's closing check sends him one text a night: "matches" or "off by $X." Debbie counts call reasons for one week.</div>
+    <div><span class="when">Next week</span><b>Phone helper test + website first look</b>We test an AI phone helper on its own number first (after-hours only, Debbie stays). First look at the new website.</div>
+    <div><span class="when">After that</span><b>Bigger pieces</b>A decompression &amp; hyperbaric page, handwritten thank-you cards for new patients, membership refresh, and videos.</div>
+  </div>
+</section>
+
+<section id="patients">
+  <h2>What patients will notice</h2>
+  <p class="sub">All of these come from CT Engage, the texting system the office already uses for appointment reminders. Patients can reply STOP to any text to stop getting them.</p>
+  <div class="grid">
+    <div class="card"><span class="chip c-today">Starts today</span><h3>Thank-you + review request</h3><p>A short thank-you after their visit, in Dr. McCray's own words, with a link to leave a Google review. Every patient gets the same message. Nobody gets it more than once every 60 days.</p><p class="msg">"Thank you for visiting our office. We look forward to seeing you again. If you would like to leave us a review, click the link below."</p></div>
+    <div class="card"><span class="chip c-today">Starts today</span><h3>"We missed you" text</h3><p>Same afternoon as a missed appointment. Friendly, no guilt, with the office number to rebook.</p><p class="msg">"Hi [name], we missed you at Excell Sports Chiropractic today. To rebook, call 317-661-3478 or reply here. Reply STOP to opt out."</p></div>
+    <div class="card"><span class="chip c-today">Starts today</span><h3>Check-in when someone drifts away</h3><p>If a patient hasn't been in for a while (about 30–60 days depending on the visit type), they get a friendly "time for your next visit?" text or email.</p></div>
+    <div class="card"><span class="chip c-done">Already working</span><h3>Appointment reminders</h3><p>No change. These already go out and work well (over 800 this month).</p></div>
+  </div>
+  <div class="card"><h3>If a patient asks about the texts</h3><p>"Those are from our office. You can reply STOP anytime to turn them off." If they replied STOP by mistake, the desk can ask ChiroTouch support to turn their texts back on.</p></div>
+</section>
+
+<section id="debbie">
+  <h2>For Debbie: the Front Desk page</h2>
+  <p class="sub">One bookmark on the front desk computer called <b>Front Desk</b>: <b>ineedjimmy.com/excell/desk</b>. Three tabs. A few minutes a day. It saves Dr. McCray from re-checking your work, and it shows him it's done.</p>
+  <div class="grid">
+    <div class="card"><span class="chip c-next">Every morning · 1 min</span><h3>Morning start-up</h3><ol class="steps">
+      <li>Pick your name at the top.</li>
+      <li>Handle overnight <b>emails</b>, <b>texts</b> and <b>voicemails</b>.</li>
+      <li>Tick each box (add a note if something's waiting), then tap <b>Submit</b>.</li>
+    </ol></div>
+    <div class="card"><span class="chip c-next">At closing · 3 min</span><h3>Closing check</h3><ol class="steps">
+      <li>In ChiroTouch, open <b>Analytics → Reports → End of Day (EOD) Summary</b> for today.</li>
+      <li>Type in: <b>charges</b>, <b>patients seen</b>, <b>no-shows</b>, <b>cancellations</b>, <b>collected</b>, and <b>items still needing billing</b>.</li>
+      <li>In Square, open today's <b>Sales summary</b> and type the <b>Square total</b>. Add <b>cash</b>, <b>checks</b> and <b>other payments</b>.</li>
+      <li>The page shows <b>Matches</b> or <b>Off by $X</b> right away. If it's off, double-check before you submit.</li>
+      <li>Tick voicemails / emails / texts returned, then tap <b>Submit</b>.</li>
+    </ol></div>
+    <div class="card"><span class="chip c-next">This week only</span><h3>Call tally</h3><ol class="steps">
+      <li>Each time the phone rings, tap the reason: new patient, price, insurance, book, reschedule, directions, services, records, billing, or other.</li>
+      <li>Tapped the wrong one? <b>Undo last tap</b>.</li>
+    </ol><p>This shows which calls take the most of your day, so we can take the repeat ones off your plate. It's not about replacing you.</p></div>
+  </div>
+  <div class="rule"><p><b>One rule:</b> totals only. Never type a patient's name, phone or anything about their care into the Front Desk page. Notes like "Square deposit missing $20" are perfect.</p></div>
+</section>
+
+<section id="doc">
+  <h2>For Dr. McCray: what lands on your phone</h2>
+  <div class="tablewrap"><table>
+    <tr><th>When</th><th>What you get</th><th>What to do</th></tr>
+    <tr><td>Morning</td><td>"☀️ Morning start-up done by Debbie at 8:52 — all 3 ✓"</td><td>Nothing, unless something is missing.</td></tr>
+    <tr><td>Each evening</td><td>"✅ Tue closing: charges $X · 18 seen · collected matches" or "⚠️ off by $42"</td><td>Only step in when you see ⚠️.</td></tr>
+    <tr><td>~6:30pm, if no closing check</td><td>"Closing check not done yet"</td><td>A quick nudge to the desk.</td></tr>
+    <tr><td>Friday evening</td><td>One-line weekly summary: days completed, collected, mismatches, no-shows, top call reasons</td><td>Read it. That's your week at a glance.</td></tr>
+    <tr><td>Anytime</td><td>New Google reviews show in CT Engage → Review Management</td><td>Nothing. Replies never mention anyone being a patient.</td></tr>
+  </table></div>
+  <p class="sub">Every entry is also saved in a private Google Sheet, totals only, so there's a record.</p>
+</section>
+
+<section id="manage">
+  <h2>How to change or pause anything</h2>
+  <p class="sub">All in CT Engage: in ChiroTouch, click <b>CT Engage</b> in the left menu (or go to chirotouch.patientengagepro.com). Changes save when you click <b>Save</b>.</p>
+  <div class="tablewrap"><table>
+    <tr><th>To change</th><th>Go to</th><th>Notes</th></tr>
+    <tr><td>Review request on/off, reminder</td><td>Review Management → Settings</td><td>"Automate Review Requests": Fully Automated / Daily Review / None.</td></tr>
+    <tr><td>Send one review request by hand</td><td>Review Management → Overview → Quick Send</td><td>Name + phone or email → Send.</td></tr>
+    <tr><td>Wording of any message</td><td>Templates</td><td>Keep "Reply STOP to opt out" on texts.</td></tr>
+    <tr><td>Check-in timing (recall)</td><td>Patient Recall → Settings</td><td>"Time Since Last Visit" per visit type.</td></tr>
+    <tr><td>Missed-visit text</td><td>Appointments → Missed Daily Review</td><td>See today's misses and send by hand if needed.</td></tr>
+    <tr><td>Pause everything (holiday, closure)</td><td>Location Details → Office closures</td><td>Add a closure and messages pause.</td></tr>
+    <tr><td>Who gets intake-form emails</td><td>CT InForms → Settings → Notifications</td><td>"Remove any client information" keeps patient names out of emails.</td></tr>
+  </table></div>
+  <div class="card"><h3>Stuck or something looks wrong?</h3><p>Text Jimmy: <b>626-354-3229</b>. For CT Engage problems, ChiroTouch support (Cloud): <b>619-854-2998</b>.</p></div>
+</section>
+
+<section id="links">
+  <h2>Your links</h2>
+  <div class="links">
+    <a href="https://ineedjimmy.com/excell/hq/">Excell HQ<span>Everything we're doing together</span></a>
+    <a href="https://ineedjimmy.com/excell/desk/">Front Desk<span>Debbie's daily page</span></a>
+    <a href="https://ineedjimmy.com/excell/menu/">Website Menu<span>Your picks for the new site</span></a>
+    <a href="https://ineedjimmy.com/excell/pack/">Resource Pack<span>Your numbers and research</span></a>
+    <a href="https://ineedjimmy.com/excell/ai/">AI cheat sheet<span>Your first AI assistant</span></a>
+  </div>
+</section>
+
+<footer>Prepared for Excell Sports Chiropractic by Jimmy Davis, iNeedJimmy.com · Updated Oct 22, 2026 · No patient information is stored on this page.</footer>
+</div>
+</body>
+</html>
