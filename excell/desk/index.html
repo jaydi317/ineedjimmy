@@ -241,50 +241,34 @@
     <div id="doneMorning" class="done" hidden></div>
     <div class="card">
       <h2>Morning start-up</h2>
-      <span class="draft">DRAFT &mdash; Dr. McCray will edit these</span>
+      <span class="draft">Dr. McCray&rsquo;s list</span>
       <p class="sub">Tick each one when it&rsquo;s done. A note is optional.</p>
-      <div class="progress" id="mProgress">0 of 5 done</div>
+      <div class="progress" id="mProgress">0 of 3 done</div>
       <div class="bar"><i id="mBar"></i></div>
 
       <div style="margin-top:8px">
         <div class="chk">
           <input type="checkbox" id="c1" data-m="1" aria-labelledby="l1">
           <div>
-            <label class="t" id="l1" for="c1">Today&rsquo;s schedule reviewed</label>
-            <div class="hint">Look over who&rsquo;s booked, any gaps or double-bookings.</div>
+            <label class="t" id="l1" for="c1">Overnight emails checked &amp; answered</label>
             <div class="extra">
               <div class="inp"><label for="booked" class="mini">Patients booked today (#)</label><input type="text" id="booked" inputmode="numeric" autocomplete="off" placeholder="0"></div>
-              <div class="inp"><input type="text" id="n1" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for schedule"></div>
+              <div class="inp"><input type="text" id="n1" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for emails"></div>
             </div>
           </div>
         </div>
         <div class="chk">
           <input type="checkbox" id="c2" data-m="2" aria-labelledby="l2">
           <div>
-            <label class="t" id="l2" for="c2">Overnight voicemails, texts &amp; emails checked</label>
-            <div class="extra"><div class="inp"><input type="text" id="n2" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for messages"></div></div>
+            <label class="t" id="l2" for="c2">Overnight texts checked &amp; answered</label>
+            <div class="extra"><div class="inp"><input type="text" id="n2" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for texts"></div></div>
           </div>
         </div>
         <div class="chk">
           <input type="checkbox" id="c3" data-m="3" aria-labelledby="l3">
           <div>
-            <label class="t" id="l3" for="c3">Yesterday&rsquo;s &ldquo;needs billing&rdquo; items handled</label>
-            <div class="extra"><div class="inp"><input type="text" id="n3" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for billing"></div></div>
-          </div>
-        </div>
-        <div class="chk">
-          <input type="checkbox" id="c4" data-m="4" aria-labelledby="l4">
-          <div>
-            <label class="t" id="l4" for="c4">Payment terminal / Square on and working</label>
-            <div class="extra"><div class="inp"><input type="text" id="n4" maxlength="140" autocomplete="off" placeholder="Note (optional)" aria-label="Note for Square"></div></div>
-          </div>
-        </div>
-        <div class="chk">
-          <input type="checkbox" id="c5" data-m="5" aria-labelledby="l5">
-          <div>
-            <label class="t" id="l5" for="c5">Rooms &amp; equipment ready</label>
-            <div class="hint">Hyperbaric, decompression.</div>
-            <div class="extra"><div class="inp"><input type="text" id="n5" maxlength="140" autocomplete="off" placeholder="Note (optional)" aria-label="Note for rooms and equipment"></div></div>
+            <label class="t" id="l3" for="c3">Voicemails checked &amp; returned</label>
+            <div class="extra"><div class="inp"><input type="text" id="n3" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for voicemails"></div></div>
           </div>
         </div>
       </div>
@@ -566,18 +550,18 @@ function draftLoad(key, ids){
   if (!o || o.date !== todayStr()) return;
   ids.forEach(id => { const el = $(id); if (!el || !(id in o.v)) return; if (el.type === 'checkbox') el.checked = !!o.v[id]; else el.value = o.v[id]; });
 }
-const M_IDS = ['c1','c2','c3','c4','c5','booked','n1','n2','n3','n4','n5'];
+const M_IDS = ['c1','c2','c3','booked','n1','n2','n3'];   // old cached drafts with c4/c5/n4/n5 are ignored (draftLoad only reads ids listed here)
+const M_COUNT = 3, M_NUMS = [1,2,3];
 const C_IDS = [...FIELDS_A, ...FIELDS_B].map(f => f.id).concat(['billing','vm','em','tx','cnote']);
 
 /* ============ MORNING ============ */
-const M_LABELS = {1:'schedule', 2:'messages checked', 3:'billing handled', 4:'Square on', 5:'rooms ready'};
 function updMorning(){
-  const n = [1,2,3,4,5].filter(i => $('c'+i).checked).length;
-  $('mProgress').textContent = n === 5 ? 'All 5 done' : n+' of 5 done';
-  $('mBar').style.width = (n/5*100)+'%';
+  const n = M_NUMS.filter(i => $('c'+i).checked).length;
+  $('mProgress').textContent = n === M_COUNT ? 'All '+M_COUNT+' done' : n+' of '+M_COUNT+' done';
+  $('mBar').style.width = (n/M_COUNT*100)+'%';
 }
 function showDone(elId, html){ const el = $(elId); el.innerHTML = html; el.hidden = false; }
-function doneMorningHtml(d){ return '<b>Sent ✓</b> Morning start-up '+(d.n===5?'all 5 done':d.n+' of 5 done')+' at '+d.time+' by '+d.who+'.'; }
+function doneMorningHtml(d){ return '<b>Sent ✓</b> Morning start-up '+(d.n>=M_COUNT?'all '+M_COUNT+' done':d.n+' of '+M_COUNT+' done')+' at '+d.time+' by '+d.who+'.'; }
 
 $('submitMorning').addEventListener('click', async () => {
   const msg = $('msgMorning'); msg.className = 'msg'; msg.textContent = '';
@@ -587,8 +571,8 @@ $('submitMorning').addEventListener('click', async () => {
   $('booked').removeAttribute('aria-invalid');
   const data = {};
   if (!booked.blank) data.booked = booked.val;
-  for (let i=1;i<=5;i++){ data['c'+i] = $('c'+i).checked; const t = $('n'+i).value.trim(); if (t) data['n'+i] = t; }
-  const n = [1,2,3,4,5].filter(i => data['c'+i]).length;
+  for (const i of M_NUMS){ data['c'+i] = $('c'+i).checked; const t = $('n'+i).value.trim(); if (t) data['n'+i] = t; }
+  const n = M_NUMS.filter(i => data['c'+i]).length;
   const btn = $('submitMorning'); btn.disabled = true;
   const ok = await send('morning', data);
   btn.disabled = false;
