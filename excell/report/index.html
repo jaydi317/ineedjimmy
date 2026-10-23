@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Excell Week 1 Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Excell brand: navy + orange. A one-page weekly report: wins first, then proof, then the full list, FAQ, next week. */
+:root{--bg:#F3F5FA;--card:#FFFFFF;--ink:#0B1733;--muted:#4B5878;--line:#D6DCEA;--navy:#06205C;--deep:#031640;--or:#EF8903;--or-ink:#A85400;--or-soft:#FFF1DE;--go:#17784A;--go-soft:#E2F3E9;--wait:#6A4A00;--wait-soft:#FFF6D6;
+--display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;--body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.5}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{background:var(--navy);color:#fff;padding-block:30px 28px}
+.in{max-width:880px;margin:0 auto}
+.brand{font-family:var(--display);font-weight:800;letter-spacing:.06em;font-size:20px}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.2em;opacity:.8}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,8.5vw,66px);line-height:.95;margin:16px 0 12px}
+h1 span{color:var(--or)}
+.top p{margin:0;max-width:60ch;color:#D5DDF0}
+nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:8px}
+nav .in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+nav a{flex:none;font-weight:700;font-size:15px;color:var(--navy);text-decoration:none;padding:7px 12px;border-radius:8px}
+nav a:hover,nav a:focus-visible{background:var(--card);outline:none}
+.wrap{max-width:880px;margin:0 auto;padding-block:26px 64px;display:flex;flex-direction:column;gap:40px}
+section{display:flex;flex-direction:column;gap:14px;scroll-margin-top:60px}
+h2{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(30px,5.5vw,40px);line-height:1;color:var(--navy);margin:0}
+h3{margin:0;font-size:20px;line-height:1.25}
+p{margin:0}
+.lead{color:var(--muted);max-width:62ch}
+.wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.win{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--or);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.win .big{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;color:var(--navy)}
+.win .big small{font-size:22px;color:var(--or-ink)}
+.win p{color:var(--muted);font-size:16px}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;align-items:start}
+.phone{background:#E9ECF2;border-radius:26px;padding:18px 16px;border:1px solid var(--line)}
+.phone .from{font-size:13px;color:var(--muted);text-align:center;margin-bottom:10px}
+.bubble{background:#fff;border-radius:18px;padding:12px 14px;font-size:16px;max-width:92%}
+.bubble a{color:#1a5fd6}
+.land{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 18px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.land .q{font-weight:700;font-size:22px}
+.gbtn{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:12px;padding:12px;text-align:left;font-weight:600}
+.gbtn .g{width:34px;height:34px;border-radius:8px;background:#F3F5FA;display:grid;place-items:center;font-weight:800;color:#4285F4}
+.gbtn .rec{margin-left:auto;background:#2F9E55;color:#fff;font-size:12px;border-radius:999px;padding:3px 9px}
+.improve{background:#0B1733;color:#fff;border-radius:12px;padding:10px;font-weight:700}
+.cap{font-size:15px;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:10px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start}
+.tag{grid-row:span 3;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:4px 8px;margin-top:2px;white-space:nowrap}
+.tag.done{background:var(--go-soft);color:var(--go)}
+.tag.wait{background:var(--wait-soft);color:var(--wait)}
+.tag.next{background:var(--or-soft);color:var(--or-ink)}
+.row .was{font-size:15px;color:var(--muted)}
+.row .now{font-size:16px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 16px}
+details summary{cursor:pointer;font-weight:700;padding:14px 0;list-style:none;display:flex;gap:10px;align-items:baseline}
+details summary::before{content:"+";color:var(--or-ink);font-weight:800;width:14px;flex:none}
+details[open] summary::before{content:"\2013"}
+details summary::-webkit-details-marker{display:none}
+details p{padding:0 0 14px 24px;color:var(--muted);font-size:17px}
+.ask{background:var(--or-soft);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ask ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px}
+.msg{background:#fff;border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:16px;margin-top:6px}
+.links{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;border-radius:10px;padding:12px 16px;font-size:16px}
+.btn.or{background:var(--or);color:#06205C}
+.btn.ln{background:var(--card);color:var(--navy);border:1px solid var(--line)}
+footer{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top pad"><div class="in">
+  <div class="brand">EXCELL SPORTS CHIROPRACTIC<small>WEEK 1 REPORT · FRIDAY, OCTOBER 23, 2026</small></div>
+  <h1>Your review texts are <span>back on.</span></h1>
+  <p>Dr. McCray, here's everything we fixed this week, what your patients see now, answers to the questions you'll probably have, and what's next. It all runs on CT Engage, which you already pay for.</p>
+</div></header>
+
+<nav class="pad" aria-label="Sections"><div class="in">
+  <a href="#wins">The big 3</a><a href="#see">What patients see</a><a href="#all">Everything we did</a><a href="#faq">FAQ</a><a href="#next">Next week</a><a href="#need">What I need</a>
+</div></nav>
+
+<main class="wrap pad">
+
+<section id="wins">
+  <h2>The big 3</h2>
+  <div class="wins">
+    <div class="win"><div class="big">Off <small>→ on</small></div><h3>Review requests are sending again</h3><p>They'd been off since about August. Now patients get a text the day after their visit asking how it went, with your Google review link.</p></div>
+    <div class="win"><div class="big">6 mo <small>→ 3 wks–2 mo</small></div><h3>Recall is set for sooner follow-ups</h3><p>Recall's texts were unticked too, and it waited 6 months. It's now set to check in at 3 weeks to 2 months, depending on the visit type. It goes live once I've reviewed the first list.</p></div>
+    <div class="win"><div class="big">10 <small>replies rewritten</small></div><h3>Google replies are safer</h3><p>Your automatic replies to Google reviews still go out on their own. The new wording doesn't confirm that someone is a patient.</p></div>
+  </div>
+</section>
+
+<section id="see">
+  <h2>What patients see</h2>
+  <p class="lead">I tested it on my own phone today. This is exactly what arrived, from your office's texting number.</p>
+  <div class="proof">
+    <div class="phone">
+      <div class="from">Text message · from Excell</div>
+      <div class="bubble">Hi Jimmy, thanks for visiting Excell Sports Chiropractic &amp; Rehab! Can you give feedback about your visit by clicking this link: <span style="color:#1a5fd6">ct.ptneng.me/…</span> STOPtoOptOut</div>
+    </div>
+    <div class="land">
+      <div class="cap">Where the link goes</div>
+      <div class="q">How was your experience?</div>
+      <div class="gbtn"><span class="g">G</span><span>Review on Google</span><span class="rec">Recommended</span></div>
+      <div class="cap">If you did not have a good experience, let us know.</div>
+      <div class="improve">How can we improve?</div>
+    </div>
+  </div>
+  <p class="cap">Every patient sees both buttons. Nobody is screened by a star rating first, That's the approach Google and the FTC want.</p>
+</section>
+
+<section id="all">
+  <h2>Everything we did</h2>
+  <div class="list">
+    <div class="row"><span class="tag done">Done</span><h3>Review request texts</h3><p class="was">Was: the "send by text" box was unticked, so nothing went out after August.</p><p class="now">Now: on, sent 1 day after each visit. Tested and working.</p></div>
+    <div class="row"><span class="tag done">Done</span><h3>Review reminder</h3><p class="was">Was: turned off.</p><p class="now">Now: one friendly reminder the next day, only if they didn't open the first one.</p></div>
+    <div class="row"><span class="tag done">Done</span><h3>How often someone is asked</h3><p class="was">Was: every 60 days.</p><p class="now">Now: at most every 180 days. Your regulars won't get asked every visit.</p></div>
+    <div class="row"><span class="tag done">Done</span><h3>Automatic Google replies</h3><p class="was">Was: lines like "looking forward to your next visit," which publicly confirm a reviewer is a patient.</p><p class="now">Now: warm, safe thank-yous. Unhappy reviewers get "we'd like to talk with you directly, please call (317) 661-3478."</p></div>
+    <div class="row"><span class="tag done">Done</span><h3>Recall timing</h3><p class="was">Was: 6 months for everything.</p><p class="now">Now: 3 weeks after a new-patient exam, 30 days for rehab and therapies, 45 for adjustments and most massage, 60 for 90-minute massage and re-evals. X-rays and consults don't trigger recall.</p></div>
+    <div class="row"><span class="tag done">Done</span><h3>Recall texts</h3><p class="was">Was: unticked, like the reviews.</p><p class="now">Now: a "you're almost due" text 3 days before, and a "you're past due" text the day after. Set to show us the list first (see Next week).</p></div>
+    <div class="row"><span class="tag wait">Your OK</span><h3>Missed-visit text</h3><p class="was">Was: unticked and switched off.</p><p class="now">Ready to turn on the moment you approve the wording (below).</p></div>
+    <div class="row"><span class="tag done">Found</span><h3>Your nightly report</h3><p class="was">ChiroTouch can export your End of Day Summary to Excel, but it has no button to schedule it or email it.</p><p class="now">So the nightly report needs a small helper to run it. That's the plan below.</p></div>
+  </div>
+</section>
+
+<section id="faq">
+  <h2>Questions you might have</h2>
+  <details><summary>Why did all of this stop in the first place?</summary><p>The review, recall and missed-visit messages each had their "send by text" box unticked, so nothing could go out. I can't tell exactly when or why, but it's been that way since about August. Appointment reminders were never affected; those kept working the whole time.</p></details>
+  <details><summary>Will patients get too many texts?</summary><p>We've kept it light. A patient is asked for a review at most about once every 6 months, plus a reminder. Recall is for people who haven't booked their next visit, and it checks for an upcoming appointment before it texts. Every text has a STOP option.</p></details>
+  <details><summary>Can an unhappy patient still post on Google?</summary><p>Yes, always. Everyone sees the Google button. The "How can we improve?" button is just an extra way to reach you privately. Hiding Google from unhappy patients is called review gating, and Google's rules and the FTC's guidance are against it, so we don't do it.</p></details>
+  <details><summary>Why did you change the Google replies?</summary><p>Replying to a review in a way that confirms the person is a patient can create HIPAA risk, and a reply like "see you at your next visit" does that. The new replies just say thank you. (Not legal advice. Your compliance person is welcome to look over the wording.)</p></details>
+  <details><summary>Does anyone have to reply to Google reviews now?</summary><p>No. Replies post on their own, so nobody has to type them. Unhappy reviewers are invited to call the office, so those come in like any other phone call.</p></details>
+  <details><summary>What happens if a patient texts back?</summary><p>Replies come into CT Engage's message inbox, where the front desk already sees patient texts.</p></details>
+  <details><summary>Does the front desk need to do anything new?</summary><p>No new steps. They may see a few more texts back from patients, and the occasional call from someone who wants to talk.</p></details>
+  <details><summary>Can we change the wording later?</summary><p>Yes. Send me the wording you'd like and I'll update it in CT Engage.</p></details>
+  <details><summary>Did you change anything in ChiroTouch itself?</summary><p>No. Charts, billing and scheduling are untouched. Every change this week was inside CT Engage's messaging settings.</p></details>
+  <details><summary>Is any patient information going into AI?</summary><p>No. This week's changes were only made in CT Engage's settings, and no patient information was given to AI. For the nightly report, the plan is to send you totals only: charges, collections, visit counts. No names. I'll confirm with ChiroTouch before building it.</p></details>
+  <details><summary>Does any of this cost more?</summary><p>No. It's all part of CT Engage, which you already pay for. We just made it actually work.</p></details>
+</section>
+
+<section id="next">
+  <h2>Next week</h2>
+  <div class="list">
+    <div class="row"><span class="tag next">Next</span><h3>Recall goes live, carefully</h3><p class="now">Recall has been off for months, so before it goes live I'll review how many people are on the first list. That way nobody gets a surprise batch of texts.</p></div>
+    <div class="row"><span class="tag next">After your OK</span><h3>Missed-visit text</h3><p class="now">Patients who miss an appointment get a friendly text to rebook.</p></div>
+    <div class="row"><span class="tag next">In progress</span><h3>Your nightly report</h3><p class="now">I've sent ChiroTouch a support question about this. The plan: a small helper on an office computer exports your End of Day Summary each evening and sends you the totals. I'll tell you when it's ready. Totals only, no names.</p></div>
+    <div class="row"><span class="tag next">Later</span><h3>Square totals, phones, website</h3><p class="now">Square's daily total checked against ChiroTouch automatically, a cleaner voicemail setup, and your website. No dates yet. We'll pick these up once the above is done.</p></div>
+  </div>
+</section>
+
+<section id="need">
+  <h2>What I need from you</h2>
+  <div class="ask">
+    <ol>
+      <li><b>A yes (or your edits) on the missed-visit text:</b>
+        <div class="msg">Hi [name], we missed you at your scheduled appointment. Call (317) 661-3478 or text back to reschedule - Excell Sports Chiropractic &amp; Rehab.</div><span style="font-size:14px;color:var(--muted)">CT Engage adds the opt-out line on its own.</span></li>
+      <li><b>5 minutes next time I'm in,</b> to create a "reports only" ChiroTouch login for the nightly-report helper. Only you can create logins.</li>
+    </ol>
+    <p>That's it. Just text me back.</p>
+  </div>
+  <div class="links">
+    <a class="btn or" href="sms:+16263543229">Text Jimmy</a>
+    <a class="btn ln" href="https://app.notion.com/p/3f933948febc8109bd29ed591665c059">Your shared Notion page</a>
+    <a class="btn ln" href="/excell/guide/">Office guide</a>
+  </div>
+</section>
+
+<footer>Prepared by Jimmy Davis · iNeedJimmy · October 23, 2026. No patient information is on this page.</footer>
+</main>
+</body>
+</html>
