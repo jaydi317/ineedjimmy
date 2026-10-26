@@ -1,0 +1,728 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Excell Sports Chiropractic &amp; Rehab | Indianapolis Chiropractor</title>
+<meta name="description" content="Excell Sports Chiropractic &amp; Rehab, 1315 W 86th St, Indianapolis. Dr. Marcus McCray, DC, ATC, CCEP. Book online, text, or call (317) 661-3478.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#06205C; --navy-2:#0B2C78; --navy-ink:#0A1A3F;
+  --orange:#EF8903; --orange-dk:#B35F00; --orange-soft:#FFF3E2;
+  --ink:#16203A; --muted:#4A5675; --line:#E3E7F0; --bg:#FFFFFF; --bg-2:#F4F6FA;
+  --radius:14px; --shadow:0 10px 30px rgba(6,32,92,.12);
+  --head:"Barlow Condensed", "Arial Narrow", Arial, sans-serif;
+  --body:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 var(--body);overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--navy-2)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 18px}
+h1,h2,h3{font-family:var(--head);font-weight:800;line-height:1.02;letter-spacing:.2px;margin:0;color:var(--navy)}
+h2{font-size:clamp(34px,7vw,52px);text-transform:uppercase}
+h3{font-size:24px;text-transform:uppercase}
+.kicker{display:inline-flex;align-items:center;gap:8px;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--orange-dk)}
+.kicker::before{content:"";width:22px;height:4px;background:var(--orange);border-radius:2px;transform:skewX(-20deg)}
+.sec{padding:64px 0}
+.sec-alt{background:var(--bg-2)}
+.lead{font-size:18px;color:var(--muted);max-width:640px;margin:12px 0 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font:700 16px/1 var(--body);text-decoration:none;border:2px solid transparent;cursor:pointer;white-space:nowrap}
+.btn-book{background:var(--orange);color:var(--navy-ink);box-shadow:0 6px 18px rgba(239,137,3,.35)}
+.btn-book:hover{background:#FF9A17}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;color:var(--navy);border-color:var(--navy)}
+.btn-ghost-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* draft tag */
+.draft{position:fixed;left:10px;bottom:84px;z-index:60;background:#111827;color:#fff;font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;border-radius:6px;opacity:.88;pointer-events:none}
+@media(min-width:900px){.draft{bottom:14px}}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:saturate(1.4) blur(6px)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:68px}
+.logo img{height:46px;width:auto}
+.nav{display:none;margin-left:auto;gap:2px;align-items:center}
+.nav > a,.nav .dd > button{font:600 15px/1 var(--body);color:var(--ink);text-decoration:none;padding:12px 11px;border-radius:8px;background:none;border:0;cursor:pointer}
+.nav > a:hover,.nav .dd > button:hover{background:var(--bg-2)}
+.dd{position:relative}
+.dd-menu{position:absolute;top:100%;left:0;min-width:270px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:8px;display:none}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{display:block}
+.dd-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--ink);text-decoration:none;font-size:15px}
+.dd-menu a:hover{background:var(--orange-soft)}
+.top-cta{margin-left:auto;display:flex;gap:8px;align-items:center}
+.top-cta .btn{min-height:44px;padding:0 16px;font-size:15px}
+.burger{width:46px;height:46px;border-radius:10px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer}
+.burger svg{width:22px;height:22px}
+.mnav{display:none;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 68px);overflow:auto}
+.mnav.open{display:block}
+.mnav a{display:block;padding:14px 18px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600}
+.mnav .sub a{padding-left:34px;font-weight:500;font-size:15px}
+.mnav .lbl{padding:14px 18px 6px;font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media(min-width:1000px){.nav{display:flex}.top-cta{margin-left:10px}.burger{display:none}.top-cta .t-call{display:inline-flex}}
+.t-call{display:none}
+
+/* hero */
+.hero{position:relative;background:linear-gradient(180deg,#fff 0%,#F4F6FA 100%);overflow:hidden}
+.hero::after{content:"";display:none;position:absolute;right:-120px;top:-60px;width:520px;height:520px;background:var(--orange);opacity:.07;transform:skewX(-18deg)}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:28px;padding-top:34px;padding-bottom:40px}
+.hero h1{font-size:clamp(46px,12.5vw,84px);text-transform:uppercase;line-height:.93}
+.hero h1 .o{color:var(--orange);font-style:italic;display:block}
+.hero .sub{font-size:19px;color:var(--muted);margin:16px 0 0;max-width:520px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:24px}
+.gbadge{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 10px;background:#fff;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--ink);box-shadow:0 2px 8px rgba(6,32,92,.06)}
+.gbadge .g{width:28px;height:28px;flex:none}
+.gbadge b{font-size:15px}
+.gbadge small{display:block;font-size:13px;color:var(--muted)}
+.stars{color:#E8A100;letter-spacing:1px;font-size:15px}
+.sec-row{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.sec-row .btn{min-height:46px;font-size:15px;padding:0 18px}
+
+/* video placeholder */
+.vid{position:relative;border-radius:18px;overflow:hidden;background:var(--navy);aspect-ratio:4/5;box-shadow:var(--shadow);max-width:460px;width:100%;justify-self:center}
+.vid img{width:100%;height:100%;object-fit:cover;object-position:center 18%;opacity:.92}
+.vid .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,32,92,0) 40%,rgba(6,32,92,.92) 100%)}
+.vid .play{position:absolute;left:18px;bottom:96px;width:72px;height:72px;border-radius:50%;background:var(--orange);display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 0 0 10px rgba(239,137,3,.25)}
+.vid .play svg{width:30px;height:30px;margin-left:4px;fill:var(--navy-ink)}
+.vid .cap{position:absolute;left:18px;right:18px;bottom:16px;color:#fff}
+.vid .cap strong{font:800 28px/1 var(--head);text-transform:uppercase;display:block}
+.vid .cap span{font-size:14px;opacity:.9}
+.ph-tag{position:absolute;top:12px;left:12px;background:#fff;color:var(--navy);font:700 11px/1.2 var(--body);letter-spacing:.06em;text-transform:uppercase;padding:7px 9px;border-radius:6px;border:2px dashed var(--orange)}
+@media(min-width:900px){.hero::after{display:block}.hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center;padding-top:56px;padding-bottom:64px}.vid{aspect-ratio:4/5}}
+
+/* credentials strip */
+.creds{background:var(--navy);color:#fff}
+.creds ul{list-style:none;margin:0;padding:18px 0;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.creds li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.3}
+.creds li b{display:block;font:800 18px/1.05 var(--head);text-transform:uppercase;letter-spacing:.3px}
+.creds .ic{width:30px;height:30px;flex:none;border-radius:8px;background:rgba(239,137,3,.18);display:grid;place-items:center;color:var(--orange)}
+.creds .ic svg{width:18px;height:18px}
+@media(min-width:900px){.creds ul{grid-template-columns:repeat(4,1fr);padding:22px 0}}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.num{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;position:relative;overflow:hidden}
+.num::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--orange)}
+.num .n{font:800 clamp(48px,13vw,72px)/.9 var(--head);color:var(--navy)}
+.num .l{font-weight:600;margin-top:8px;font-size:15px}
+.num .s{font-size:12px;color:var(--muted);margin-top:6px}
+@media(min-width:900px){.nums{grid-template-columns:repeat(4,1fr)}}
+
+/* reviews */
+.revs{display:grid;gap:14px;margin-top:26px}
+.rev{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.rev .ph{border:2px dashed #C9D1E3;border-radius:10px;padding:14px;color:var(--muted);font-style:italic;background:var(--bg-2)}
+.rev .who{display:flex;align-items:center;gap:10px;margin-top:14px;font-weight:600}
+.rev .av{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:800 16px/1 var(--head)}
+.rev-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:22px}
+@media(min-width:900px){.revs{grid-template-columns:repeat(3,1fr)}}
+
+/* body map */
+.map-grid{display:grid;gap:22px;margin-top:26px}
+.body-wrap{position:relative;width:100%;max-width:210px;margin:0 auto;aspect-ratio:200/420}
+.body-wrap svg{width:100%;height:100%}
+.hs{position:absolute;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:0;background:transparent;cursor:pointer;display:grid;place-items:center;padding:0}
+.hs i{width:18px;height:18px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 0 rgba(239,137,3,.6);animation:pulse 2.2s infinite}
+.hs[aria-pressed="true"] i{background:var(--navy);width:22px;height:22px;box-shadow:0 0 0 6px rgba(239,137,3,.45);animation:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,137,3,.55)}70%{box-shadow:0 0 0 12px rgba(239,137,3,0)}100%{box-shadow:0 0 0 0 rgba(239,137,3,0)}}
+@media (prefers-reduced-motion:reduce){.hs i{animation:none}html{scroll-behavior:auto}}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:10px 14px;font:600 14px/1 var(--body);cursor:pointer;text-decoration:none}
+.chip[aria-pressed="true"]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+.panel h3{font-size:34px}
+.panel .tag{font:700 12px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--orange-dk)}
+.panel ul{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+.panel li a{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 14px;border-radius:10px;background:var(--bg-2);color:var(--navy);text-decoration:none;font-weight:600}
+.panel li a:hover{background:var(--orange-soft)}
+.panel li a span{color:var(--orange-dk)}
+.panel .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px}
+@media(min-width:900px){.map-grid{grid-template-columns:300px 1fr;align-items:start;gap:44px}.body-wrap{max-width:300px}}
+
+/* services */
+.svc{display:grid;grid-template-columns:1fr;gap:12px;margin-top:26px}
+.svc a{display:flex;align-items:center;gap:14px;padding:16px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;text-decoration:none;color:var(--navy);font-weight:700;transition:transform .15s,box-shadow .15s}
+.svc a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.svc .si{width:42px;height:42px;border-radius:10px;background:var(--orange-soft);display:grid;place-items:center;color:var(--orange-dk);flex:none}
+.svc .si svg{width:22px;height:22px}
+.svc a small{display:block;color:var(--muted);font-weight:500;font-size:13.5px;margin-top:2px}
+.also{margin-top:22px}
+.also .chip{cursor:default}
+@media(min-width:640px){.svc{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.svc{grid-template-columns:repeat(4,1fr)}}
+
+/* membership */
+.member{background:var(--navy);color:#fff;border-radius:22px;padding:30px 22px;position:relative;overflow:hidden}
+.member::after{content:"";position:absolute;right:-60px;bottom:-80px;width:260px;height:260px;background:var(--orange);opacity:.18;transform:skewX(-18deg)}
+.member h2{color:#fff}
+.member p{color:#D6DDF0;max-width:600px}
+.member .acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px;position:relative;z-index:1}
+.member .ph-line{display:inline-block;margin-top:8px;border:2px dashed rgba(255,255,255,.5);border-radius:8px;padding:8px 10px;font-size:14px;color:#fff}
+@media(min-width:900px){.member{padding:44px}}
+
+/* about */
+.about{display:grid;gap:26px;margin-top:26px}
+.about .photo{border-radius:18px;overflow:hidden;background:var(--navy);max-width:440px}
+.creds-list{list-style:none;padding:0;margin:16px 0 0;display:grid;gap:10px}
+.creds-list li{display:flex;gap:10px;align-items:flex-start}
+.creds-list li::before{content:"";width:10px;height:10px;margin-top:8px;flex:none;background:var(--orange);transform:skewX(-20deg)}
+.phbox{border:2px dashed var(--orange);border-radius:12px;padding:14px 16px;background:var(--orange-soft);color:var(--navy);font-size:15px;margin-top:18px}
+.phbox b{display:block;font:800 18px/1.1 var(--head);text-transform:uppercase}
+@media(min-width:900px){.about{grid-template-columns:420px 1fr;align-items:start;gap:48px}}
+
+/* tour + team */
+.tour{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.tile{aspect-ratio:4/3;border-radius:14px;border:2px dashed #C3CCE0;background:repeating-linear-gradient(135deg,#F4F6FA 0 12px,#EDF0F6 12px 24px);display:grid;place-items:center;text-align:center;padding:12px;color:var(--muted);font-size:13.5px;font-weight:600}
+.tile.big{grid-column:1/-1;aspect-ratio:16/9;font-size:15px}
+.tile.big b{display:block;color:var(--navy);font:800 22px/1.1 var(--head);text-transform:uppercase;margin-bottom:4px}
+.team{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+.mate{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+.mate img,.mate .noimg{width:78px;height:78px;border-radius:12px;object-fit:cover;object-position:top;flex:none;background:var(--bg-2)}
+.mate .noimg{border:2px dashed #C3CCE0;display:grid;place-items:center;font-size:11px;color:var(--muted);text-align:center;padding:4px}
+.mate b{display:block;font:800 21px/1.05 var(--head);text-transform:uppercase;color:var(--navy)}
+.mate span{font-size:14px;color:var(--muted)}
+@media(min-width:900px){.tour{grid-template-columns:repeat(4,1fr)}.tile.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}.team{grid-template-columns:repeat(3,1fr)}}
+
+/* resources */
+.res-grid{display:grid;gap:22px;margin-top:22px}
+.vgrid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+.vcard{display:block;text-decoration:none;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.vcard img{aspect-ratio:16/9;object-fit:cover;width:100%}
+.vcard div{padding:12px 14px;font-weight:700;color:var(--navy)}
+.vcard small{display:block;font-weight:600;color:var(--orange-dk);font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.vcard[hidden]{display:none}
+.appbox{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-radius:18px;padding:24px}
+.appbox h3{color:#fff;font-size:30px}
+.appbox p{color:#D6DDF0;margin:8px 0 16px}
+.store{display:flex;flex-wrap:wrap;gap:10px}
+.store a{display:inline-flex;align-items:center;gap:10px;background:#000;color:#fff;text-decoration:none;border-radius:10px;padding:9px 14px;border:1px solid rgba(255,255,255,.35);min-height:48px}
+.store a svg{width:22px;height:22px;fill:#fff}
+.store a span{font-size:11px;line-height:1.1}
+.store a b{display:block;font-size:16px}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 34px 18px 0;font-weight:700;color:var(--navy);position:relative;font-size:17px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:4px;top:12px;font:800 28px/1 var(--head);color:var(--orange-dk)}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin:0 0 18px;color:var(--muted)}
+@media(min-width:640px){.vgrid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.res-grid{grid-template-columns:1.4fr 1fr}.vgrid{grid-template-columns:repeat(3,1fr)}}
+
+/* visit */
+.visit{display:grid;gap:22px}
+.visit .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px}
+.hours{width:100%;border-collapse:collapse;font-size:15px}
+.hours td{padding:7px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+@media(min-width:900px){.visit{grid-template-columns:1fr 1fr}}
+
+/* final cta + footer */
+.final{background:var(--navy);color:#fff;text-align:center;padding:60px 0 64px;position:relative;overflow:hidden}
+.final h2{color:#fff}
+.final h2 .o{color:var(--orange);font-style:italic}
+.final p{color:#D6DDF0;margin:12px auto 22px;max-width:520px}
+.final .cta-row{justify-content:center}
+footer{background:var(--navy-ink);color:#B9C3DD;font-size:14px;padding:30px 0 120px}
+footer a{color:#fff}
+footer .cols{display:grid;gap:18px}
+@media(min-width:900px){footer{padding-bottom:40px}footer .cols{grid-template-columns:2fr 1fr 1fr}}
+
+/* sticky mobile bar */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:55;background:#fff;border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr auto auto;gap:8px;box-shadow:0 -6px 20px rgba(6,32,92,.12)}
+.sticky .btn{min-height:50px;padding:0 14px;font-size:15px}
+.sticky .sq{width:54px;padding:0}
+@media(min-width:900px){.sticky{display:none}}
+
+/* ai bubble */
+.ai{position:fixed;right:14px;bottom:86px;z-index:58}
+.ai-btn{display:flex;align-items:center;gap:10px;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:8px 14px 8px 8px;cursor:pointer;box-shadow:var(--shadow);font:600 14px/1.1 var(--body);text-align:left}
+.ai-btn .dot{width:38px;height:38px;border-radius:50%;background:var(--orange);display:grid;place-items:center;flex:none}
+.ai-btn .dot svg{width:20px;height:20px;fill:var(--navy-ink)}
+.ai-btn small{display:block;font-size:11px;font-weight:700;color:var(--orange);letter-spacing:.06em;text-transform:uppercase}
+.ai-panel{position:absolute;right:0;bottom:62px;width:min(320px,calc(100vw - 28px));background:#fff;border-radius:16px;box-shadow:0 18px 40px rgba(6,32,92,.25);border:1px solid var(--line);overflow:hidden;display:none}
+.ai-panel.open{display:block}
+.ai-panel header{background:var(--navy);color:#fff;padding:14px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.ai-panel header button{background:none;border:0;color:#fff;font-size:22px;cursor:pointer;line-height:1;width:32px;height:32px}
+.ai-panel .body{padding:16px;font-size:15px}
+.ai-panel .msg{background:var(--bg-2);border-radius:12px 12px 12px 4px;padding:12px;margin-bottom:12px}
+.ai-panel .soon{display:inline-block;background:var(--orange-soft);color:var(--orange-dk);font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;border-radius:6px;margin-bottom:10px}
+@media(max-width:899px){.ai-btn{padding:6px}.ai-btn > span:last-child{display:none}.ai-btn::after{content:"AI · soon";white-space:nowrap;position:absolute;top:-8px;right:-4px;background:var(--orange);color:var(--navy-ink);font:800 10px/1 var(--body);letter-spacing:.04em;padding:4px 6px;border-radius:999px;text-transform:uppercase}.ai-btn{position:relative}}
+@media(min-width:900px){.ai{bottom:22px;right:22px}}
+
+/* toast */
+.toast{position:fixed;left:50%;top:84px;transform:translateX(-50%);background:#111827;color:#fff;padding:12px 16px;border-radius:10px;font-size:14px;z-index:70;max-width:calc(100vw - 32px);box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="draft" aria-hidden="true">Draft · first look</div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Excell Sports Chiropractic home"><img src="images/excell-logo.png" alt="Excell Sports Chiropractic" width="214" height="100"></a>
+    <nav class="nav" aria-label="Main">
+      <div class="dd">
+        <button type="button" aria-haspopup="true">Services ▾</button>
+        <div class="dd-menu">
+          <a href="https://excellsportschiro.com/services/chiropractic-adjustments/">Chiropractic Adjustments</a>
+          <a href="https://excellsportschiro.com/services/spinal-decompression/">Spinal Decompression</a>
+          <a href="https://excellsportschiro.com/services/exercise-rehabilitation/">Exercise Rehabilitation</a>
+          <a href="https://excellsportschiro.com/services/physical-examination/">Physical Examination</a>
+          <a href="https://excellsportschiro.com/services/myofascial-release/">Myofascial Release</a>
+          <a href="https://excellsportschiro.com/services/hyperbaric-oxygen-therapy/">Hyperbaric Oxygen Therapy</a>
+          <a href="https://excellsportschiro.com/services/custom-orthotic-fitting/">Custom Orthotic Fitting</a>
+          <a href="https://excellsportschiro.com/services/allcore-360/">ALLCORE 360</a>
+        </div>
+      </div>
+      <a href="#where">Where it hurts</a>
+      <a href="https://excellsportschiro.com/about-us/">About</a>
+      <div class="dd">
+        <button type="button" aria-haspopup="true">Patients ▾</button>
+        <div class="dd-menu">
+          <a href="#resources">Exercise videos</a>
+          <a href="#app">Patient app</a>
+          <a href="#membership">Membership</a>
+          <a href="https://excellsportschiro.com/patient-resources/faqs/">FAQs</a>
+          <a href="https://excellsportschiro.com/patient-resources/insurance/">Insurance</a>
+        </div>
+      </div>
+      <a href="https://excellsportschiro.com/contact-us/">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a class="btn btn-ghost t-call" href="tel:+13176613478">(317) 661-3478</a>
+      <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book</a>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#06205C" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Mobile">
+    <div class="lbl">Services</div>
+    <div class="sub">
+      <a href="https://excellsportschiro.com/services/chiropractic-adjustments/">Chiropractic Adjustments</a>
+      <a href="https://excellsportschiro.com/services/spinal-decompression/">Spinal Decompression</a>
+      <a href="https://excellsportschiro.com/services/exercise-rehabilitation/">Exercise Rehabilitation</a>
+      <a href="https://excellsportschiro.com/services/physical-examination/">Physical Examination</a>
+      <a href="https://excellsportschiro.com/services/myofascial-release/">Myofascial Release</a>
+      <a href="https://excellsportschiro.com/services/hyperbaric-oxygen-therapy/">Hyperbaric Oxygen Therapy</a>
+      <a href="https://excellsportschiro.com/services/custom-orthotic-fitting/">Custom Orthotic Fitting</a>
+      <a href="https://excellsportschiro.com/services/allcore-360/">ALLCORE 360</a>
+    </div>
+    <a href="#where">Tap where it hurts</a>
+    <a href="https://excellsportschiro.com/about-us/">About Dr. McCray</a>
+    <a href="#resources">Exercise videos &amp; app</a>
+    <a href="#membership">Membership</a>
+    <a href="https://excellsportschiro.com/patient-resources/faqs/">FAQs</a>
+    <a href="https://excellsportschiro.com/patient-resources/insurance/">Insurance</a>
+    <a href="https://excellsportschiro.com/contact-us/">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Excell Sports Chiropractic &amp; Rehab · Indianapolis</span>
+      <h1 style="margin-top:14px">Referred by a friend? <span class="o">You're in the right place.</span></h1>
+      <p class="sub">Almost all of our new patients were sent by someone. Book online in a minute.</p>
+      <div class="cta-row">
+        <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="gbadge" href="https://www.google.com/maps/search/?api=1&amp;query=Excell+Sports+Chiropractic+1315+W+86th+St+Indianapolis" target="_blank" rel="noopener" aria-label="5.0 stars, 240 plus Google reviews">
+          <svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
+          <span><b><span class="stars" aria-hidden="true">★★★★★</span> 5.0</b><small>240+ Google reviews</small></span>
+        </a>
+      </div>
+      <div class="sec-row">
+        <a class="btn btn-ghost" href="sms:+13176613478">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Text us</a>
+        <a class="btn btn-ghost" href="tel:+13176613478">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>Call</a>
+      </div>
+    </div>
+
+    <figure class="vid" style="margin:0">
+      <img src="images/dr-mccray.jpg" alt="Dr. Marcus McCray" width="663" height="666">
+      <div class="shade"></div>
+      <span class="ph-tag">Video placeholder · 30-sec hello</span>
+      <button class="play" type="button" data-toast="Placeholder: Dr. McCray's 30-second hello video goes here (film on a phone in the office)." aria-label="Play hello video (placeholder)"><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></button>
+      <figcaption class="cap"><strong>A quick hello from Dr. McCray</strong><span>30 seconds · what to expect when you come in</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- CREDENTIALS STRIP -->
+<section class="creds" aria-label="Credentials">
+  <div class="wrap">
+    <ul>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3 6 6.5.9-4.7 4.6 1.1 6.5L12 17l-5.9 3 1.1-6.5L2.5 8.9 9 8z"/></svg></span><span><b>Colts team chiropractor</b>Indianapolis Colts, since 2009</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-3 5 3-1.5-8"/></svg></span><span><b>Team USA Track &amp; Field</b>Chiropractor, Beijing Olympics</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 19V5l8-3 8 3v14l-8 3z"/><path d="M9 12l2 2 4-4"/></svg></span><span><b>DC · ATC · CCEP</b>Chiropractor, athletic trainer, extremity specialist</span></li>
+      <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>86th St, Indianapolis</b>Inside Invoke Wellness Center</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- BIG NUMBERS -->
+<section class="sec">
+  <div class="wrap">
+    <span class="kicker">By the numbers</span>
+    <h2 style="margin-top:10px">Simple. Proven. Local.</h2>
+    <div class="nums">
+      <div class="num"><div class="n">240+</div><div class="l">Google reviews, 5.0 stars</div><div class="s">Google Business Profile</div></div>
+      <div class="num"><div class="n">98%</div><div class="l">of new patients are referred by someone</div><div class="s">Dr. McCray's estimate</div></div>
+      <div class="num"><div class="n">20+</div><div class="l">years working with athletes</div><div class="s">Excell About page</div></div>
+      <div class="num"><div class="n">2009</div><div class="l">Colts team chiropractor since</div><div class="s">Pro Football Chiropractic Society</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec sec-alt" id="reviews">
+  <div class="wrap">
+    <span class="kicker">What patients say on Google</span>
+    <h2 style="margin-top:10px">Don't take our word for it</h2>
+    <div class="revs">
+      <article class="rev"><div class="stars" aria-label="5 stars">★★★★★</div><p class="ph">[Real Google review goes here, copied word for word]</p><div class="who"><span class="av" aria-hidden="true">?</span>[First name as shown on Google]</div></article>
+      <article class="rev"><div class="stars" aria-label="5 stars">★★★★★</div><p class="ph">[Real Google review goes here, copied word for word]</p><div class="who"><span class="av" aria-hidden="true">?</span>[First name as shown on Google]</div></article>
+      <article class="rev"><div class="stars" aria-label="5 stars">★★★★★</div><p class="ph">[Real Google review goes here, copied word for word]</p><div class="who"><span class="av" aria-hidden="true">?</span>[First name as shown on Google]</div></article>
+    </div>
+    <div class="rev-cta">
+      <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Excell+Sports+Chiropractic+1315+W+86th+St+Indianapolis" target="_blank" rel="noopener">Read all 240+ on Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- TAP WHERE IT HURTS -->
+<section class="sec" id="where">
+  <div class="wrap">
+    <span class="kicker">Tap where it hurts</span>
+    <h2 style="margin-top:10px">Where does it hurt?</h2>
+    <p class="lead">Tap a spot. See how we help and read more about that area.</p>
+    <div class="map-grid">
+      <div>
+        <div class="body-wrap" id="bodymap">
+          <svg viewBox="0 0 200 420" aria-hidden="true">
+            <defs><linearGradient id="bg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCE3F2"/><stop offset="1" stop-color="#C8D3EA"/></linearGradient></defs>
+            <g fill="url(#bg1)" stroke="none">
+              <circle cx="100" cy="36" r="23"/>
+              <rect x="91" y="56" width="18" height="20" rx="6"/>
+              <path d="M60 80 Q100 68 140 80 Q146 82 144 96 L134 152 Q129 190 132 224 L68 224 Q71 190 66 152 L56 96 Q54 82 60 80Z"/>
+            </g>
+            <g fill="none" stroke="#CDD7EC" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="62,90 48,148 38,210" stroke-width="20"/>
+              <polyline points="138,90 152,148 162,210" stroke-width="20"/>
+              <polyline points="84,222 80,310 82,392" stroke-width="27"/>
+              <polyline points="116,222 120,310 118,392" stroke-width="27"/>
+            </g>
+            <g fill="#C8D3EA"><ellipse cx="36" cy="222" rx="9" ry="12"/><ellipse cx="164" cy="222" rx="9" ry="12"/><ellipse cx="78" cy="404" rx="15" ry="8"/><ellipse cx="122" cy="404" rx="15" ry="8"/></g>
+            <path d="M100 86 V214" stroke="#EF8903" stroke-width="3" stroke-dasharray="3 7" stroke-linecap="round" opacity=".7"/>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <div class="chips" id="chips" role="group" aria-label="Choose an area"></div>
+        <div class="panel" id="panel" style="margin-top:16px" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec sec-alt" id="services">
+  <div class="wrap">
+    <span class="kicker">What we do</span>
+    <h2 style="margin-top:10px">Care in one place</h2>
+    <div class="svc">
+      <a href="https://excellsportschiro.com/services/chiropractic-adjustments/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 3v18M8 6h8M7 10h10M8 14h8M9 18h6"/></svg></span><span>Chiropractic Adjustments<small>Spine and extremities</small></span></a>
+      <a href="https://excellsportschiro.com/services/spinal-decompression/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v6M12 16v6M8 5l4-3 4 3M8 19l4 3 4-3M6 12h12"/></svg></span><span>Spinal Decompression<small>Gentle traction table</small></span></a>
+      <a href="https://excellsportschiro.com/services/exercise-rehabilitation/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 8v8M18 8v8M3 10v4M21 10v4M6 12h12"/></svg></span><span>Exercise Rehabilitation<small>Get strong, stay active</small></span></a>
+      <a href="https://excellsportschiro.com/services/physical-examination/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 3h6v4H9zM6 5H5v16h14V5h-1M9 13l2 2 4-4"/></svg></span><span>Physical Examination<small>Find the real cause</small></span></a>
+      <a href="https://excellsportschiro.com/services/myofascial-release/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 12c3-6 5 6 8 0s5 6 8 0"/></svg></span><span>Myofascial Release<small>Soft tissue work</small></span></a>
+      <a href="https://excellsportschiro.com/services/hyperbaric-oxygen-therapy/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="8" cy="14" r="4"/><circle cx="16" cy="8" r="3"/><circle cx="17" cy="17" r="2"/></svg></span><span>Hyperbaric Oxygen Therapy<small>Oxygen chamber</small></span></a>
+      <a href="https://excellsportschiro.com/services/custom-orthotic-fitting/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M8 3c-3 4-3 10 0 15 1.5 2.5 6 2.5 7 0 1.5-4-1-6 0-9 .8-2.4-.5-5-3-6"/></svg></span><span>Custom Orthotic Fitting<small>Foot Levelers</small></span></a>
+      <a href="https://excellsportschiro.com/services/allcore-360/"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18M3 12h18"/></svg></span><span>ALLCORE 360<small>Core training system</small></span></a>
+    </div>
+    <div class="also">
+      <p style="margin:0 0 10px;font-weight:700;color:var(--navy)">Also on the schedule:</p>
+      <div class="chips"><span class="chip">Dry needling</span><span class="chip">Massage</span><span class="chip">Cupping &amp; scraping</span><span class="chip">HEIT</span><span class="chip">Assisted stretch</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="sec" id="membership">
+  <div class="wrap">
+    <div class="member">
+      <span class="kicker" style="color:var(--orange)">Membership</span>
+      <h2 style="margin-top:10px">Feel good? Stay that way.</h2>
+      <p>Monthly maintenance plans for patients who want to keep moving. No long contract.</p>
+      <span class="ph-line">[Plan names and prices: from Dr. McCray]</span>
+      <div class="acts">
+        <a class="btn btn-book" href="#" data-toast="New page planned for the rebuild: Membership (plans and prices from Dr. McCray).">See membership plans</a>
+        <a class="btn btn-ghost-w" href="sms:+13176613478">Text us a question</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / STORY -->
+<section class="sec sec-alt" id="about">
+  <div class="wrap">
+    <span class="kicker">Meet your chiropractor</span>
+    <h2 style="margin-top:10px">Dr. Marcus McCray</h2>
+    <div class="about">
+      <div class="photo"><img src="images/dr-mccray.jpg" alt="Dr. Marcus McCray in an Excell Sports Chiropractic shirt" width="663" height="666"></div>
+      <div>
+        <p style="margin:0;font-size:18px">The care he gives the Indianapolis Colts is the same care he gives the everyday active person.</p>
+        <ul class="creds-list">
+          <li>Doctor of Chiropractic, Logan College of Chiropractic</li>
+          <li>B.S. Exercise &amp; Sports Science (Athletic Training), University of Florida</li>
+          <li>Certified Athletic Trainer (ATC) and Certified Chiropractic Extremity Practitioner (CCEP)</li>
+          <li>Indianapolis Colts team chiropractor since 2009</li>
+          <li>Team USA Track &amp; Field chiropractor, Beijing Olympics</li>
+        </ul>
+        <div class="phbox"><b>His story goes here</b>[60-second video or 3 short paragraphs in his words: why he does this work. To record.]</div>
+        <div class="cta-row"><a class="btn btn-navy" href="https://excellsportschiro.com/about-us/">More about Dr. McCray</a></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:54px">Take a look inside</h3>
+    <div class="tour">
+      <div class="tile big"><span><b>Office tour video</b>[Placeholder: 45-second walk-through, front door to treatment room]</span></div>
+      <div class="tile">[Photo: entrance at Invoke Wellness Center]</div>
+      <div class="tile">[Photo: treatment room]</div>
+      <div class="tile">[Photo: rehab / ALLCORE 360 area]</div>
+      <div class="tile">[Photo: hyperbaric chamber]</div>
+    </div>
+
+    <h3 style="margin-top:54px">Your team</h3>
+    <div class="team">
+      <div class="mate"><img src="images/dr-mccray.jpg" alt="" width="78" height="78"><div><b>Dr. Marcus McCray</b><span>DC, ATC, CCEP</span></div></div>
+      <div class="mate"><img src="images/brittany-anderson.jpg" alt="" width="78" height="78"><div><b>Brittany Anderson</b><span>Rehabilitative Specialist · assisted stretch, cupping, scraping</span></div></div>
+      <div class="mate"><div class="noimg">[Photo]</div><div><b>[Front desk]</b><span>[Name and role]</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="sec" id="resources">
+  <div class="wrap">
+    <span class="kicker">Be active and stay active</span>
+    <h2 style="margin-top:10px">Patient resources</h2>
+    <div class="res-grid">
+      <div>
+        <h3>Exercise videos from Dr. McCray</h3>
+        <div class="chips" id="vfilter" role="group" aria-label="Filter videos" style="margin-top:14px">
+          <button class="chip" type="button" data-f="all" aria-pressed="true">All</button>
+          <button class="chip" type="button" data-f="back" aria-pressed="false">Back</button>
+          <button class="chip" type="button" data-f="legs" aria-pressed="false">Legs</button>
+          <button class="chip" type="button" data-f="feet" aria-pressed="false">Feet</button>
+          <button class="chip" type="button" data-f="arms" aria-pressed="false">Arms</button>
+        </div>
+        <div class="vgrid" id="vgrid">
+          <a class="vcard" data-c="back" href="https://www.youtube.com/watch?v=HHLHACi70Xw" target="_blank" rel="noopener"><img src="images/ex-back-pain.jpg" alt="" width="640" height="359"><div><small>Back</small>Fix Back Pain at Home</div></a>
+          <a class="vcard" data-c="legs" href="https://www.youtube.com/watch?v=H4fhuj9SLZQ" target="_blank" rel="noopener"><img src="images/ex-calf-stretches.jpg" alt="" width="640" height="359"><div><small>Legs</small>Essential Calf Stretches</div></a>
+          <a class="vcard" data-c="legs" href="https://www.youtube.com/watch?v=fbbqo8MjAr4" target="_blank" rel="noopener"><img src="images/ex-foam-roller-lower.jpg" alt="" width="640" height="359"><div><small>Legs</small>Foam Roller: Lower Body</div></a>
+          <a class="vcard" data-c="feet" href="https://www.youtube.com/watch?v=pbffQ_UKnRc" target="_blank" rel="noopener"><img src="images/ex-foot-bunions.jpg" alt="" width="640" height="359"><div><small>Feet</small>Foot Pain: Prevent Bunions</div></a>
+          <a class="vcard" data-c="arms" href="https://www.youtube.com/watch?v=Mp2mw74VJiM" target="_blank" rel="noopener"><img src="images/ex-foam-roll-triceps.jpg" alt="" width="640" height="359"><div><small>Arms</small>Foam Roll Your Triceps</div></a>
+        </div>
+      </div>
+      <div>
+        <div class="appbox" id="app">
+          <h3>Get the Excell app</h3>
+          <p>Search "Excell Sports Chiropractic" in your app store.</p>
+          <div class="store">
+            <a href="https://apps.apple.com/us/app/excell-sports-chiropractic/id6444155919" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.7-1-2.7-4.1zM13.9 5c.7-.9 1.2-2 1-3.2-1 .1-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg><span>Download on the<b>App Store</b></span></a>
+            <a href="#" data-toast="Placeholder: Google Play link for the Excell app (could not confirm the Play Store listing)."><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.7-9.7L3.6 2.3zm10.8 10.8l2.7 2.7-11.4 6.5 8.7-9.2zm0-2.2L5.7 1.7l11.4 6.5-2.7 2.7zm3.9-1.9l3.2 1.8c.9.5.9 1.9 0 2.4l-3.2 1.8-3-3 3-3z"/></svg><span>Get it on<b>Google Play</b></span></a>
+          </div>
+        </div>
+        <div class="faq" style="margin-top:22px">
+          <h3>Quick answers</h3>
+          <details><summary>Do you take insurance?</summary><p>We are in network with Cigna only. We accept HSA and FSA, and auto-accident claims with a valid claim number or attorney lien. We do not accept Medicare or Medicaid. For other plans, we give you an itemized receipt to submit yourself. <a href="https://excellsportschiro.com/patient-resources/insurance/">Insurance details</a></p></details>
+          <details><summary>Do I have to commit to a 6–12 month plan?</summary><p>No. Your plan is built on your goals and changes as you progress. Not a preset plan.</p></details>
+          <details><summary>Can I be treated the same day as my exam?</summary><p>Yes, as long as the exam shows no reason not to. Dr. McCray treats you right after the exam.</p></details>
+          <details><summary>Do I have to have my neck adjusted?</summary><p>No. If your neck isn't the problem, it doesn't get adjusted. If it is, there are other techniques too.</p></details>
+          <details><summary>Do you take x-rays?</summary><p>Only when there's a clinical reason to.</p></details>
+          <p style="margin-top:14px"><a href="https://excellsportschiro.com/patient-resources/faqs/">All FAQs</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec sec-alt" id="visit">
+  <div class="wrap">
+    <span class="kicker">Visit us</span>
+    <h2 style="margin-top:10px">Find us on 86th Street</h2>
+    <div class="visit" style="margin-top:24px">
+      <div class="card">
+        <p style="margin:0;font-weight:700;color:var(--navy);font-size:19px">Excell Sports Chiropractic &amp; Rehab</p>
+        <p style="margin:6px 0 0">1315 W 86th St, Ste D<br>Indianapolis, IN 46260<br><span style="color:var(--muted)">Inside Invoke Wellness Center</span></p>
+        <p style="margin:12px 0 0"><a href="tel:+13176613478" style="font-weight:700">(317) 661-3478</a></p>
+        <div class="cta-row">
+          <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&amp;destination=1315+W+86th+St+Ste+D+Indianapolis+IN+46260" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="card">
+        <p style="margin:0 0 8px;font-weight:700;color:var(--navy)">Hours</p>
+        <table class="hours">
+          <tr><td>Monday</td><td>9–1, 3–6</td></tr>
+          <tr><td>Tuesday</td><td>1–6</td></tr>
+          <tr><td>Wednesday</td><td>9–1, 3–6</td></tr>
+          <tr><td>Thursday</td><td>10–2</td></tr>
+          <tr><td>Friday</td><td>9–5</td></tr>
+          <tr><td>Sat–Sun</td><td>Closed</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <h2>Someone sent you here. <span class="o">Come see why.</span></h2>
+    <p>We won't waste your time.</p>
+    <div class="cta-row">
+      <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit</a>
+      <a class="btn btn-ghost-w" href="sms:+13176613478">Text us</a>
+      <a class="btn btn-ghost-w" href="tel:+13176613478">Call (317) 661-3478</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <p style="margin:0;color:#fff;font-weight:700">Excell Sports Chiropractic &amp; Rehab, LLC</p>
+      <p style="margin:6px 0 0">1315 W 86th St, Ste D, Indianapolis, IN 46260 · <a href="tel:+13176613478">(317) 661-3478</a></p>
+    </div>
+    <div><a href="https://excellsportschiro.com/about-us/">About</a><br><a href="https://excellsportschiro.com/contact-us/">Contact</a><br><a href="https://excellsportschiro.com/patient-resources/faqs/">FAQs</a></div>
+    <div><a href="https://excellsportschiro.com/patient-resources/insurance/">Insurance</a><br><a href="https://excellsportschiro.com/privacy-policy/">Privacy Policy</a><br><a href="https://excellsportschiro.com/sms-terms/">SMS Terms</a></div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE BAR -->
+<div class="sticky" role="region" aria-label="Quick actions">
+  <a class="btn btn-book" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit</a>
+  <a class="btn btn-ghost sq" href="sms:+13176613478" aria-label="Text us"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></a>
+  <a class="btn btn-ghost sq" href="tel:+13176613478" aria-label="Call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+</div>
+
+<!-- AI HELPER (placeholder) -->
+<div class="ai">
+  <div class="ai-panel" id="aipanel" role="dialog" aria-label="AI helper, coming soon">
+    <header>Excell helper <button type="button" id="aiclose" aria-label="Close">×</button></header>
+    <div class="body">
+      <span class="soon">Coming soon</span>
+      <div class="msg">Hi! I'm the Excell 24/7 helper. Soon I'll answer questions about cost, insurance, hours and booking, any time of day.</div>
+      <div class="cta-row" style="margin-top:6px">
+        <a class="btn btn-book" style="min-height:44px;font-size:14px" href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener">Book my visit</a>
+        <a class="btn btn-ghost" style="min-height:44px;font-size:14px" href="sms:+13176613478">Text us</a>
+      </div>
+    </div>
+  </div>
+  <button class="ai-btn" type="button" id="aibtn" aria-expanded="false" aria-controls="aipanel">
+    <span class="dot"><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.4-2.3c1.1.3 2.3.5 3.6.5 5.5 0 10-3.9 10-8.6S17.5 3 12 3z"/></svg></span>
+    <span>Ask us anything<small>24/7 AI · coming soon</small></span>
+  </button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var S='https://excellsportschiro.com/services/';
+  var SV={
+    adj:['Chiropractic Adjustments',S+'chiropractic-adjustments/'],
+    dec:['Spinal Decompression',S+'spinal-decompression/'],
+    rehab:['Exercise Rehabilitation',S+'exercise-rehabilitation/'],
+    exam:['Physical Examination',S+'physical-examination/'],
+    myo:['Myofascial Release',S+'myofascial-release/'],
+    hbot:['Hyperbaric Oxygen Therapy',S+'hyperbaric-oxygen-therapy/'],
+    orth:['Custom Orthotic Fitting',S+'custom-orthotic-fitting/'],
+    core:['ALLCORE 360',S+'allcore-360/']
+  };
+  // x,y as % of the figure; services per area are a mockup mapping for Dr. McCray to confirm
+  var AREAS=[
+    {id:'head',name:'Headaches',x:50,y:8.6,s:['exam','adj','myo']},
+    {id:'neck',name:'Neck',x:50,y:16.2,s:['exam','adj','myo','rehab']},
+    {id:'shoulder',name:'Shoulder',x:30,y:21,s:['exam','adj','myo','rehab']},
+    {id:'upper-back',name:'Upper back',x:50,y:27.5,s:['adj','myo','rehab']},
+    {id:'elbow',name:'Elbow',x:76,y:35.2,s:['adj','myo','rehab']},
+    {id:'low-back',name:'Low back',x:50,y:44,s:['exam','adj','dec','rehab','core']},
+    {id:'wrist',name:'Wrist & hand',x:81,y:50.2,s:['adj','myo','rehab']},
+    {id:'hip',name:'Hip',x:36,y:52.6,s:['exam','adj','rehab','core']},
+    {id:'knee',name:'Knee',x:60,y:73.8,s:['exam','adj','rehab','orth']},
+    {id:'foot',name:'Foot & ankle',x:39,y:95,s:['adj','orth','rehab']}
+  ];
+  var map=document.getElementById('bodymap'),chips=document.getElementById('chips'),panel=document.getElementById('panel');
+  var BOOK='https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab';
+  AREAS.forEach(function(a){
+    var b=document.createElement('button');b.type='button';b.className='hs';b.style.left=a.x+'%';b.style.top=a.y+'%';
+    b.setAttribute('aria-label',a.name);b.setAttribute('aria-pressed','false');b.dataset.id=a.id;b.innerHTML='<i></i>';
+    b.addEventListener('click',function(){pick(a.id,true)});map.appendChild(b);
+    var c=document.createElement('button');c.type='button';c.className='chip';c.textContent=a.name;c.dataset.id=a.id;c.setAttribute('aria-pressed','false');
+    c.addEventListener('click',function(){pick(a.id,false)});chips.appendChild(c);
+  });
+  function pick(id,fromMap){
+    var a=AREAS.filter(function(x){return x.id===id})[0];
+    document.querySelectorAll('[data-id]').forEach(function(el){el.setAttribute('aria-pressed',el.dataset.id===id?'true':'false')});
+    var li=a.s.map(function(k){return '<li><a href="'+SV[k][1]+'">'+SV[k][0]+'<span aria-hidden="true">→</span></a></li>'}).join('');
+    panel.innerHTML='<span class="tag">You tapped</span><h3 style="margin-top:6px">'+a.name+'</h3>'+
+      '<p style="margin:8px 0 0;color:var(--muted)">How we can help:</p><ul>'+li+'</ul>'+
+      '<div class="acts"><a class="btn btn-navy" href="#" data-toast="New page planned for the rebuild: '+a.name+' pain (one page per injury).">Read about '+a.name.toLowerCase()+' pain</a>'+
+      '<a class="btn btn-book" href="'+BOOK+'" target="_blank" rel="noopener">Book my visit</a></div>'+
+      '<p class="note">Mockup: which services show for each area is a first guess for Dr. McCray to confirm.</p>';
+    if(fromMap&&window.innerWidth<900){panel.scrollIntoView({behavior:'smooth',block:'nearest'})}
+  }
+  pick('low-back',false);
+
+  // video filter
+  var vf=document.getElementById('vfilter');
+  vf.addEventListener('click',function(e){
+    var b=e.target.closest('button');if(!b)return;var f=b.dataset.f;
+    vf.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+    document.querySelectorAll('#vgrid .vcard').forEach(function(v){v.hidden=!(f==='all'||v.dataset.c===f)});
+  });
+
+  // mobile menu
+  var burger=document.querySelector('.burger'),mnav=document.getElementById('mnav');
+  burger.addEventListener('click',function(){var o=mnav.classList.toggle('open');burger.setAttribute('aria-expanded',o?'true':'false')});
+  mnav.addEventListener('click',function(e){if(e.target.closest('a')){mnav.classList.remove('open');burger.setAttribute('aria-expanded','false')}});
+
+  // AI bubble
+  var aib=document.getElementById('aibtn'),aip=document.getElementById('aipanel');
+  function setAI(o){aip.classList.toggle('open',o);aib.setAttribute('aria-expanded',o?'true':'false')}
+  aib.addEventListener('click',function(){setAI(!aip.classList.contains('open'))});
+  document.getElementById('aiclose').addEventListener('click',function(){setAI(false)});
+
+  // placeholder toasts
+  var toast=document.getElementById('toast'),tt;
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-toast]');if(!t)return;e.preventDefault();
+    toast.textContent=t.dataset.toast;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},3200);
+  });
+})();
+</script>
+</body>
+</html>
