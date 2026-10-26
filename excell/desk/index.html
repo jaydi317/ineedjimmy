@@ -205,6 +205,10 @@
   footer b{color:var(--deep)}
   [hidden]{display:none !important}
   @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+.where{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin:6px 0 10px;font-size:14px;color:#4B5878}
+.where a{display:inline-flex;align-items:center;gap:4px;font-weight:700;color:#06205C;background:#FFF1DE;border:1px solid #F3C98C;border-radius:8px;padding:5px 10px;text-decoration:none}
+.where a::after{content:"\2197";font-weight:700}
+.where .path{flex-basis:100%}
 </style>
 </head>
 <body>
@@ -264,6 +268,7 @@
           <input type="checkbox" id="c1" data-m="1" aria-labelledby="l1">
           <div>
             <label class="t" id="l1" for="c1">Overnight emails checked &amp; answered</label>
+            <div class="where"><a href="https://outlook.office.com/mail/" target="_blank" rel="noopener">Open office email</a></div>
             <div class="extra">
               <div class="inp"><label for="booked" class="mini">Patients booked today (#)</label><input type="text" id="booked" inputmode="numeric" autocomplete="off" placeholder="0"></div>
               <div class="inp"><input type="text" id="n1" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for emails"></div>
@@ -274,6 +279,7 @@
           <input type="checkbox" id="c2" data-m="2" aria-labelledby="l2">
           <div>
             <label class="t" id="l2" for="c2">Overnight texts checked &amp; answered</label>
+            <div class="where"><a href="https://chirotouch.patientengagepro.com/dashboard/messaging/inbox_focused" target="_blank" rel="noopener">Open CT Engage texts</a></div>
             <div class="extra"><div class="inp"><input type="text" id="n2" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for texts"></div></div>
           </div>
         </div>
@@ -281,6 +287,7 @@
           <input type="checkbox" id="c3" data-m="3" aria-labelledby="l3">
           <div>
             <label class="t" id="l3" for="c3">Voicemails checked &amp; returned</label>
+            <div class="where"><a href="https://app.grasshopper.com/" target="_blank" rel="noopener">Open Grasshopper</a></div>
             <div class="extra"><div class="inp"><input type="text" id="n3" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for voicemails"></div></div>
           </div>
         </div>
@@ -297,11 +304,13 @@
       <h2>Closing check</h2>
       <p class="sub">Numbers only. Copy them from the ChiroTouch End-of-Day Summary and Square.</p>
       <h3 style="margin-top:14px">From ChiroTouch end-of-day</h3>
+      <div class="where"><a href="https://practice.chirotouch.com/practice/#/dashboard/" target="_blank" rel="noopener">Open ChiroTouch</a><span class="path">Then: <b>Analytics</b> (left menu) &rarr; <b>Reports</b> tab &rarr; <b>End of Day</b> &rarr; <b>End of Day - Summary</b> &rarr; today&rsquo;s date &rarr; <b>Run Report</b>. Charges, payments (collected) and the appointment totals (seen, no-shows, cancellations) are all on it.</span></div>
       <div class="fields three" id="fldA"></div>
     </div>
 
     <div class="card">
       <h3>What actually came in</h3>
+      <div class="where"><a href="https://app.squareup.com/dashboard/sales/reports/sales-summary" target="_blank" rel="noopener">Open Square sales summary</a><span class="path">Set the date to <b>today</b> and use <b>Total collected</b>. Cash and checks come from the drawer.</span></div>
       <div class="fields" id="fldB"></div>
     </div>
 
