@@ -154,6 +154,7 @@
   .btn[disabled]{opacity:.6;cursor:wait}
   .btn.ghost{background:#fff;color:var(--navy);border:2px solid var(--navy);box-shadow:none;font-size:16px;min-height:48px;font-weight:700}
   .msg{margin-top:10px;font-size:15px;min-height:1.4em}
+  .carry{margin:10px 0 4px;padding:12px 14px;border-radius:10px;background:var(--warn-bg);color:var(--warn);border:2px solid #E3A83B;font-weight:700;font-size:15px}
   .msg.err{color:var(--bad);font-weight:600}
 
   .done{background:var(--ok-bg);border:1px solid #7CCB9C;border-radius:var(--radius);padding:12px 14px;margin:12px 0;font-size:15px}
@@ -260,6 +261,7 @@
       <h2>Morning start-up</h2>
       <span class="draft">Dr. McCray&rsquo;s list</span>
       <p class="sub">Tick each one when it&rsquo;s done. A note is optional.</p>
+      <div id="carry" class="carry" role="status" hidden></div>
       <div class="progress" id="mProgress">0 of 3 done</div>
       <div class="bar"><i id="mBar"></i></div>
 
@@ -268,7 +270,7 @@
           <input type="checkbox" id="c1" data-m="1" aria-labelledby="l1">
           <div>
             <label class="t" id="l1" for="c1">Overnight emails checked &amp; answered</label>
-            <div class="where"><a href="https://outlook.office.com/mail/" target="_blank" rel="noopener">Open office email</a></div>
+            <div class="where"><a href="https://mail.google.com/mail/u/?authuser=excellfrontdesk@gmail.com" target="_blank" rel="noopener">Open front desk Gmail</a><span class="path">excellfrontdesk@gmail.com</span></div>
             <div class="extra">
               <div class="inp"><label for="booked" class="mini">Patients booked today (#)</label><input type="text" id="booked" inputmode="numeric" autocomplete="off" placeholder="0"></div>
               <div class="inp"><input type="text" id="n1" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for emails"></div>
@@ -279,7 +281,7 @@
           <input type="checkbox" id="c2" data-m="2" aria-labelledby="l2">
           <div>
             <label class="t" id="l2" for="c2">Overnight texts checked &amp; answered</label>
-            <div class="where"><a href="https://chirotouch.patientengagepro.com/dashboard/messaging/inbox_focused" target="_blank" rel="noopener">Open CT Engage texts</a></div>
+            <div class="where"><a href="https://app.grasshopper.com/" target="_blank" rel="noopener">Open Grasshopper (texts)</a></div>
             <div class="extra"><div class="inp"><input type="text" id="n2" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for texts"></div></div>
           </div>
         </div>
@@ -287,7 +289,7 @@
           <input type="checkbox" id="c3" data-m="3" aria-labelledby="l3">
           <div>
             <label class="t" id="l3" for="c3">Voicemails checked &amp; returned</label>
-            <div class="where"><a href="https://app.grasshopper.com/" target="_blank" rel="noopener">Open Grasshopper</a></div>
+            <div class="where"><a href="https://app.grasshopper.com/" target="_blank" rel="noopener">Open Grasshopper (voicemails)</a></div>
             <div class="extra"><div class="inp"><input type="text" id="n3" maxlength="140" autocomplete="off" placeholder="Note (optional, no names)" aria-label="Note for voicemails"></div></div>
           </div>
         </div>
@@ -601,6 +603,9 @@ $('submitMorning').addEventListener('click', async () => {
   msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — thank you.' : 'Not sent yet — will retry. You can keep working.';
   const d = {date:todayStr(), time:nowTime(), who:currentWho(), n};
   store.set('xfd_last_morning', d);
+  (function clearCarry(){ const c = store.get('xfd_carry', null); if (!c || c.date === todayStr()) return;
+    const tick = {emails:$('c1').checked, texts:$('c2').checked, voicemails:$('c3').checked};
+    const still = c.items.filter(x => !tick[x]); store.set('xfd_carry', still.length ? {date:c.date, items:still} : null); renderCarry(); })();
   showDone('doneMorning', doneMorningHtml(d));
   M_IDS.forEach(id => { const el = $(id); if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
   store.set('xfd_draft_m', null); updMorning();
@@ -711,6 +716,8 @@ $('submitClosing').addEventListener('click', async () => {
   msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — Dr. McCray has the summary.' : 'Not sent yet — will retry. You can keep working.';
   const rec = {date:todayStr(), time:nowTime(), who:currentWho(), msg:text};
   store.set('xfd_last_closing', rec);
+  const left = []; if (!d.vm) left.push('voicemails'); if (!d.em) left.push('emails'); if (!d.tx) left.push('texts');
+  store.set('xfd_carry', left.length ? {date:todayStr(), items:left} : null);
   showDone('doneClosing', doneClosingHtml(rec));
   C_IDS.forEach(id => { const el = $(id); if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
   store.set('xfd_draft_c', null); renderClosing();
@@ -792,6 +799,13 @@ renderTally();
 /* ============ INIT ============ */
 if (DEMO) $('banner').hidden = false;
 draftLoad('xfd_draft_m', M_IDS); draftLoad('xfd_draft_c', C_IDS);
+function renderCarry(){
+  const el = $('carry'), c = store.get('xfd_carry', null);
+  if (!c || !c.items || !c.items.length || c.date === todayStr()){ el.hidden = true; return; }
+  el.textContent = 'Left from last closing: ' + c.items.join(' & ') + ' not returned yet. Please do these first, then tick them below.';
+  el.hidden = false;
+}
+renderCarry();
 (function restoreDone(){
   const m = store.get('xfd_last_morning', null); if (m && m.date === todayStr()) showDone('doneMorning', doneMorningHtml(m));
   const c = store.get('xfd_last_closing', null); if (c && c.date === todayStr()) showDone('doneClosing', doneClosingHtml(c));
