@@ -220,15 +220,6 @@
       <h1><span class="dot"></span>Excell Front Desk</h1>
       <p>Excell Sports Chiropractic &middot; daily checks</p>
     </div>
-    <div class="who">
-      <label for="who">Who&rsquo;s filling this out</label>
-      <select id="who" aria-describedby="whoHint">
-        <option value="">Choose&hellip;</option>
-        <option>Debbie</option>
-        <option>Front desk</option>
-        <option>Dr. McCray</option>
-      </select>
-    </div>
   </div>
 </header>
 
@@ -446,7 +437,7 @@ const loadQ = () => store.get(Q_KEY, []);
 const saveQ = (q) => store.set(Q_KEY, q.slice(-500));
 let flushP = null, lastOffline = false, lastSavedAt = null;
 
-function currentWho(){ return $('who').value; }
+function currentWho(){ return 'Debbie'; }   // Debbie is the only one who fills this out (Oct 26)
 
 async function postOne(item){
   const body = JSON.stringify({token:TOKEN, kind:item.kind, id:item.id, who:item.who, data:item.data});
@@ -527,19 +518,7 @@ window.addEventListener('online', () => flush());
 document.addEventListener('visibilitychange', () => { if (!document.hidden) flush(); });
 
 /* ---------- who ---------- */
-(function initWho(){
-  const sel = $('who');
-  const last = store.get('xfd_who', '');
-  if (last && [...sel.options].some(o => o.value === last)) sel.value = last;
-  sel.classList.toggle('need', !sel.value);
-  sel.addEventListener('change', () => { store.set('xfd_who', sel.value); sel.classList.toggle('need', !sel.value); });
-})();
-function needWho(msgEl){
-  if (currentWho()) return true;
-  $('who').classList.add('need'); $('who').focus();
-  msgEl.className = 'msg err'; msgEl.textContent = 'Pick who’s filling this out (top right) first.';
-  return false;
-}
+function needWho(){ return true; }   // no name to pick any more
 
 /* ---------- tabs ---------- */
 const TABS = ['morning','closing','calls'];
