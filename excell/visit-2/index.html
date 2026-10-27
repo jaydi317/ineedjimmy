@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Visit 2 Report</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Excell navy + orange. Dr. McCray's recap of the Oct 26 office visit: what's live, his links, what we need from him, what's next. */
+:root{--bg:#F3F5FA;--card:#FFFFFF;--ink:#0B1733;--muted:#4B5878;--line:#D6DCEA;--navy:#06205C;--or:#EF8903;--or-ink:#A85400;--or-soft:#FFF1DE;--go:#17784A;--go-soft:#E2F3E9;
+--display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;--body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.5}
+.pad{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.top{background:var(--navy);color:#fff;padding-block:28px 26px}
+.in{max-width:820px;margin:0 auto}
+.brand{font-family:var(--display);font-weight:800;letter-spacing:.06em;font-size:19px}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:11px;letter-spacing:.2em;opacity:.8}
+h1{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(38px,8vw,58px);line-height:.95;margin:14px 0 10px}
+h1 span{color:var(--or)}
+.top p{margin:0;max-width:62ch;color:#D5DDF0}
+.wrap{max-width:820px;margin:0 auto;padding-block:24px 60px;display:flex;flex-direction:column;gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.n{font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:.1em;color:var(--or-ink);text-transform:uppercase}
+h2{margin:0;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1;color:var(--navy)}
+h3{margin:4px 0 0;font-size:18px;color:var(--navy)}
+p,ol,ul{margin:0}
+ol,ul{padding-left:22px;display:flex;flex-direction:column;gap:7px}
+.wins{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.wins div{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--or);border-radius:12px;padding:14px}
+.wins b{display:block;font-family:var(--display);font-size:22px;text-transform:uppercase;color:var(--navy);line-height:1.05;margin-bottom:6px}
+.wins span{font-size:16px;color:var(--muted)}
+@media (max-width:660px){.wins{grid-template-columns:1fr}}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.links{grid-template-columns:1fr}}
+.links a{display:flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--or-soft);border:1px solid #F3C98C;border-radius:12px;padding:12px 14px;color:var(--navy)}
+.links a b{font-size:17px}
+.links a b::after{content:" \2197"}
+.links a span{font-size:14px;color:var(--muted)}
+.open{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;text-decoration:none;font-weight:700;background:var(--or);color:#06205C;border-radius:10px;padding:11px 16px;font-size:16px}
+.open::after{content:"\2197"}
+.note{font-size:15px;color:var(--muted)}
+.ok{background:var(--go-soft);border-radius:10px;padding:10px 14px;font-size:16px}
+.ask{background:var(--or-soft);border-left:5px solid var(--or);border-radius:10px;padding:10px 14px;font-size:16px}
+.checks{list-style:none;padding-left:0}
+.checks li::before{content:"\2610  ";color:var(--or-ink)}
+table{border-collapse:collapse;width:100%;font-size:16px}
+td,th{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+footer{color:var(--muted);font-size:14px}
+</style>
+</head>
+<body>
+<header class="top pad"><div class="in">
+  <div class="brand">EXCELL SPORTS CHIROPRACTIC<small>VISIT 2 REPORT · MONDAY, OCTOBER 26</small></div>
+  <h1>What we switched on, <span>and what's next.</span></h1>
+  <p>Doc, here's everything from Monday's visit in one place: what's running now, your links, the few things I need from you, and the plan from here.</p>
+</div></header>
+
+<main class="wrap pad">
+
+<section aria-label="Live now">
+  <div class="wins">
+    <div><b>Missed visits get a message</b><span>The day after a No Show, the patient gets a text and an email with your online booking link. Nothing to send by hand.</span></div>
+    <div><b>Your nightly closing email</b><span>When Debbie submits the closing check, you get the day's totals and whether the money matches.</span></div>
+    <div><b>The robot login works</b><span>The reports-only login ran the End of Day Summary with no 2-step code. That was the biggest unknown for automating the nightly numbers.</span></div>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="h-links">
+  <span class="n">Bookmark these</span>
+  <h2 id="h-links">Your links</h2>
+  <div class="links">
+    <a href="https://ineedjimmy.com/excell/desk/" target="_blank" rel="noopener"><b>Front Desk page</b><span>Debbie's daily checks (bookmarked on her computer)</span></a>
+    <a href="https://ineedjimmy.com/excell/desk-guide/" target="_blank" rel="noopener"><b>Debbie's guide</b><span>The whole routine, plus your part at the bottom</span></a>
+    <a href="https://ineedjimmy.com/excell/first-look/" target="_blank" rel="noopener"><b>Website first look</b><span>Your feedback needed (see below)</span></a>
+    <a href="https://ineedjimmy.com/excell/report/" target="_blank" rel="noopener"><b>Week 1 report</b><span>Reviews, recall, Google replies</span></a>
+    <a href="https://app.notion.com/p/3f933948febc8109bd29ed591665c059" target="_blank" rel="noopener"><b>Our shared Notion page</b><span>Excell HQ: write-ups, transcripts, your notes for me</span></a>
+    <a href="https://practice.chirotouch.com/portal/ExcellSportsChiropracticRehab" target="_blank" rel="noopener"><b>Your online booking page</b><span>The link the missed-visit message uses</span></a>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="h-notion">
+  <span class="n">Do this once · 5 minutes</span>
+  <h2 id="h-notion">Connect your Claude to Notion</h2>
+  <p>You're now a full member of my Notion, so your Claude and Muse can read our shared Excell HQ page and everything under it. That includes Monday's write-up and both recordings.</p>
+  <ol>
+    <li>If Notion sent you an invite email (docmmccray@gmail.com), accept it first.</li>
+    <li>In Claude: <b>Settings → Connectors → Notion → Connect</b>. Pick <b>James Davis's Space</b>, then <b>Continue</b>.</li>
+    <li>In Muse: connect Notion the same way.</li>
+    <li>Test it. In your <b>Excell HQ</b> project in Claude, ask: <i>"What happened at the Oct 26 visit, and what's waiting on me?"</i></li>
+  </ol>
+  <p class="ok">Done when your Claude answers from Monday's write-up. Your Claude can also write questions and ideas into the "Doc → Jimmy inbox" on that page, and my team checks it.</p>
+</section>
+
+<section class="card" aria-labelledby="h-web">
+  <span class="n">What I need from you</span>
+  <h2 id="h-web">Your website, first look</h2>
+  <a class="open" href="https://ineedjimmy.com/excell/first-look/" target="_blank" rel="noopener">Open the first look</a>
+  <p>Look it over on your phone and tell me what you like and what you don't: the <b>layout</b>, the <b>wording</b>, and the <b>look</b>. Don't worry about polish. The finished site will pop a lot more. And please confirm:</p>
+  <ul class="checks">
+    <li>Google rating is still 5.0</li>
+    <li>Colts team chiropractor since 2009</li>
+    <li>Team USA Track &amp; Field, Beijing Olympics</li>
+    <li>Brittany is still on the team</li>
+    <li>Your office line can receive texts (for the "Text us" button)</li>
+    <li>The hours on your current site are right</li>
+  </ul>
+  <p class="ask">Easiest way: text me, or just talk it through with Muse or your Claude and have it add the notes to the "Doc → Jimmy inbox" on our Notion page.</p>
+</section>
+
+<section class="card" aria-labelledby="h-debbie">
+  <span class="n">Two quick checks with Debbie</span>
+  <h2 id="h-debbie">So it all works</h2>
+  <h3>1. How does she mark a patient who doesn't show?</h3>
+  <p>The "we missed you" message only goes out when the appointment is marked <b>No Show</b> in ChiroTouch. If she marks it <b>Cancel</b>, nobody gets the message. Debbie's guide tells her to use No Show. Can you confirm that's what she does?</p>
+  <h3>2. Patient replies to the automatic texts land in CT Engage</h3>
+  <p>When a patient replies to a reminder, a "we missed you" or a review request, the reply goes to CT Engage messages, not Grasshopper. Debbie's guide tells her to check both every morning.</p>
+</section>
+
+<section class="card" aria-labelledby="h-done">
+  <span class="n">Everything we did Monday</span>
+  <h2 id="h-done">The full list</h2>
+  <ul>
+    <li><b>Missed-visit message:</b> text + email the day after a No Show, in your wording, with your online booking link. Patient email replies now go to excellfrontdesk@gmail.com. The "Ste D" typo in the footer is fixed.</li>
+    <li><b>Reports-only ChiroTouch login</b> ("Excell Reports"): reports only, with scheduling, charting, billing and settings turned off. It runs the End of Day Summary without a code. You keep the password.</li>
+    <li><b>ChiroTouch ticket</b> sent, asking about running and sending the End of Day report automatically.</li>
+    <li><b>Front Desk page</b> bookmarked on Debbie's computer, with the changes you asked for:
+      <ul>
+        <li>The emails button opens the front desk Gmail. Texts and voicemails open Grasshopper.</li>
+        <li>The name picker is gone, since Debbie is the only one using it.</li>
+        <li>Anything left unreturned at closing shows up in an orange box on her next morning screen.</li>
+      </ul>
+    </li>
+    <li><b>Your alerts</b>, all by email to docmmccray@gmail.com:
+      <ul>
+        <li>The closing summary each evening (✅ when it all matches, ⚠️ when the money is off or something wasn't returned).</li>
+        <li>A "closing not done yet" note around 6:30pm if nothing came in.</li>
+        <li>A "still open from yesterday" reminder around 10am, only if something carried over and she hasn't cleared it (a copy also goes to the front desk Gmail).</li>
+        <li>A one-line week summary on Fridays.</li>
+      </ul>
+      The T-Mobile text didn't come through, and you said email is fine. If you ever want real texts, a texting service is about $3 a month.</li>
+    <li><b>Debbie's guide</b> for starting Tuesday.</li>
+    <li><b>Your own Claude project</b> ("Excell HQ") set up on your laptop with everything we've researched and built.</li>
+    <li><b>Bee and Muse</b> connected, so your recordings can reach my assistants.</li>
+  </ul>
+</section>
+
+<section class="card" aria-labelledby="h-next">
+  <span class="n">The plan from here</span>
+  <h2 id="h-next">What's next</h2>
+  <table>
+    <tr><th>When</th><th>What</th></tr>
+    <tr><td>1–5 business days</td><td>ChiroTouch answers the ticket.</td></tr>
+    <tr><td>Then 1–2 days</td><td>I build the nightly robot that runs the End of Day report on its own.</td></tr>
+    <tr><td>About 2 weeks</td><td>The robot runs side by side with Debbie so we can prove the numbers match.</td></tr>
+    <tr><td>Around mid-November</td><td>Switch over. Debbie stops typing the numbers.</td></tr>
+    <tr><td>After your website feedback</td><td>I fold in your changes and get the site ready to move off GoDaddy to free hosting. I'll tell you when I need you.</td></tr>
+    <tr><td>When you're ready</td><td>Square check: you give me read-only Square access, and the nightly check compares Square with ChiroTouch automatically.</td></tr>
+  </table>
+  <p class="note">Your priorities, in your words: automate the front desk, get the website up, then videos. That's the order we're working in.</p>
+</section>
+
+<section class="card" aria-labelledby="h-later">
+  <span class="n">Parked for later</span>
+  <h2 id="h-later">Ideas we talked about</h2>
+  <ul>
+    <li>Matching each Square payment to ChiroTouch, to catch anyone who wasn't charged.</li>
+    <li>An AI receptionist that knows each patient (only with a company that signs a HIPAA agreement).</li>
+    <li>A running to-do list on the Front Desk page for anything unfinished.</li>
+    <li>A prepaid card so AI can pay routine bills.</li>
+    <li>Your door idea: a system that lets each patient in and tells them which room.</li>
+  </ul>
+</section>
+
+<section class="card" aria-labelledby="h-safe">
+  <span class="n">One reminder</span>
+  <h2 id="h-safe">Keep patient info out</h2>
+  <p>Claude, Muse and Bee don't have a HIPAA agreement with your practice. Keep it to totals and business notes, and <b>turn Bee off during patient care</b>.</p>
+  <p class="ok">Questions anytime: text Jimmy at 626-354-3229.</p>
+</section>
+
+<footer>Prepared by Jimmy Davis · iNeedJimmy · October 27, 2026. No patient information is on this page.</footer>
+</main>
+</body>
+</html>
