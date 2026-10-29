@@ -120,6 +120,9 @@
   .money span{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:700;pointer-events:none}
   .money input{padding-left:26px}
   .f.wide{grid-column:1/-1}
+  .dayrow{margin:12px 0 4px;max-width:360px}
+  .dayrow select{width:100%;font:inherit;font-size:16px;min-height:46px;padding:9px 12px;border:2px solid var(--line);border-radius:10px;background:#fff;color:var(--deep)}
+  .dayrow .late{display:block;margin-top:6px;font-size:14px;font-weight:700;color:var(--warn)}
   @media (max-width:520px){ .fields{grid-template-columns:1fr} }
   @media (min-width:760px){ .fields.three{grid-template-columns:repeat(3,1fr)} }
 
@@ -296,6 +299,7 @@
     <div class="card">
       <h2>Closing check</h2>
       <p class="sub">Numbers only. Copy them from the ChiroTouch End-of-Day Summary and Square.</p>
+      <div class="f dayrow"><label for="forday">Which day are these numbers for?</label><select id="forday"></select><span class="late" id="lateNote" hidden>Entering a missed day. Run that day's End of Day Summary and Square report, not today's.</span></div>
       <h3 style="margin-top:14px">From ChiroTouch end-of-day</h3>
       <div class="where"><a href="https://practice.chirotouch.com/practice/#/dashboard/" target="_blank" rel="noopener">Open ChiroTouch</a><span class="path">Then: <b>Analytics</b> (left menu) &rarr; <b>Reports</b> tab &rarr; <b>End of Day</b> &rarr; <b>End of Day - Summary</b> &rarr; today&rsquo;s date &rarr; <b>Run Report</b>. Charges, payments (collected) and the appointment totals (seen, no-shows, cancellations) are all on it.</span></div>
       <div class="fields three" id="fldA"></div>
@@ -412,6 +416,7 @@ const FIELDS_A = [
   {id:'seen',     label:'Patients seen', hint:'#', req:true},
   {id:'noshows',  label:'No-shows', hint:'#'},
   {id:'cancels',  label:'Cancellations', hint:'#'},
+  {id:'newpts',   label:'New patients', hint:'#, first visits'},
   {id:'collected',label:'Collected per ChiroTouch', hint:'$', money:true, req:true},
 ];
 const FIELDS_B = [
@@ -440,7 +445,7 @@ let flushP = null, lastOffline = false, lastSavedAt = null;
 function currentWho(){ return 'Debbie'; }   // Debbie is the only one who fills this out (Oct 26)
 
 async function postOne(item){
-  const body = JSON.stringify({token:TOKEN, kind:item.kind, id:item.id, who:item.who, data:item.data});
+  const body = JSON.stringify({token:TOKEN, kind:item.kind, id:item.id, who:item.who, data:item.data, forDate:item.forDate || ''});
   const headers = {'Content-Type':'text/plain;charset=utf-8'};
   let res;
   try{
@@ -477,8 +482,8 @@ function flush(){
 
 const inQueue = (id) => loadQ().some(x => x.id === id);
 
-async function send(kind, data){
-  const item = {id:uid(), kind, who:currentWho(), data, t:Date.now()};
+async function send(kind, data, extra){
+  const item = Object.assign({id:uid(), kind, who:currentWho(), data, t:Date.now()}, extra || {});
   if (DEMO){
     const log = store.get(DEMO_KEY, []); log.push(item); store.set(DEMO_KEY, log.slice(-200));
     lastSavedAt = Date.now(); renderStatus(); return true;
@@ -619,12 +624,13 @@ function matchMath(d){
 function closingMessage(d, m){
   const unret = [];
   if (!d.vm) unret.push('voicemails'); if (!d.em) unret.push('emails'); if (!d.tx) unret.push('texts');
-  const day = dayName();
+  const day = pickedDay().label;
   const flag = !m.ok || unret.length;
   const parts = [];
   if (!m.ok) parts.push('off by '+fmt$(Math.abs(m.diff)));
   else parts.push('charges '+fmt$(d.charges), d.seen+' seen');
   if (!m.ok) parts.push(d.seen+' seen');
+  if (d.newpts) parts.push(d.newpts+' new patient'+(d.newpts===1?'':'s'));
   if (d.noshows) parts.push(d.noshows+' no-show'+(d.noshows===1?'':'s'));
   if (m.ok) parts.push('collected matches');
   if (d.billing) parts.push(d.billing+' need billing');
@@ -685,13 +691,21 @@ $('submitClosing').addEventListener('click', async () => {
     $(d._missing[0]).focus(); return;
   }
   const data = {};
-  ['charges','seen','noshows','cancels','collected','square','cash','checks','other','billing'].forEach(k => data[k] = d[k]);
+  ['charges','seen','noshows','cancels','newpts','collected','square','cash','checks','other','billing'].forEach(k => { if (k !== 'newpts' || !d.newpts_blank) data[k] = d[k]; });
   data.vm = d.vm; data.em = d.em; data.tx = d.tx;
   if (d.note) data.note = d.note;
   const m = matchMath(d), text = closingMessage(d, m);
   const btn = $('submitClosing'); btn.disabled = true;
-  const ok = await send('closing', data);
+  const pd = pickedDay();
+  const ok = await send('closing', data, pd.value ? {forDate: pd.value} : null);
   btn.disabled = false;
+  if (pd.value){
+    msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — '+pd.label+"'s closing is in. Today's closing is still to do." : 'Not sent yet — will retry. You can keep working.';
+    C_IDS.forEach(id => { const el = $(id); if (el.type === 'checkbox') el.checked = false; else el.value = ''; });
+    $('forday').value = ''; updLate(); store.set('xfd_draft_c', null); renderClosing();
+    window.scrollTo({top:0, behavior:'smooth'});
+    return;
+  }
   msg.className = 'msg'; msg.textContent = ok ? 'Saved ✓ — Dr. McCray has the summary.' : 'Not sent yet — will retry. You can keep working.';
   const rec = {date:todayStr(), time:nowTime(), who:currentWho(), msg:text};
   store.set('xfd_last_closing', rec);
@@ -778,6 +792,25 @@ renderTally();
 /* ============ INIT ============ */
 if (DEMO) $('banner').hidden = false;
 draftLoad('xfd_draft_m', M_IDS); draftLoad('xfd_draft_c', C_IDS);
+/* ---------- which day (for a missed closing) ---------- */
+(function initDays(){
+  const sel = $('forday'), DN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'], MN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const opts = [];
+  for (let i = 0; i < 7; i++){
+    const d = new Date(); d.setDate(d.getDate() - i);
+    const v = d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
+    const lbl = DN[d.getDay()]+' '+MN[d.getMonth()]+' '+d.getDate();
+    opts.push('<option value="'+(i ? v : '')+'" data-day="'+DN[d.getDay()]+'">'+(i ? lbl+' (missed day)' : 'Today, '+lbl)+'</option>');
+  }
+  sel.innerHTML = opts.join('');
+  sel.addEventListener('change', () => { updLate(); renderClosing(); });
+})();
+function pickedDay(){
+  const sel = $('forday'), o = sel.options[sel.selectedIndex];
+  return {value: sel.value, label: o ? o.getAttribute('data-day') : dayName()};
+}
+function updLate(){ $('lateNote').hidden = !$('forday').value; }
+
 function renderCarry(){
   const el = $('carry'), c = store.get('xfd_carry', null);
   if (!c || !c.items || !c.items.length || c.date === todayStr()){ el.hidden = true; return; }
