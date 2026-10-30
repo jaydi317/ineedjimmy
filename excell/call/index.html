@@ -7,7 +7,7 @@
 <title>ChiroTouch Call Script</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
-/* Excell navy + orange. Dr. McCray's phone script for ChiroTouch support: one goal, five questions, what to do with each answer. */
+/* Excell navy + orange. Dr. McCray's short ChiroTouch call: what we already found in their help center, and the one question only they can answer. */
 :root{--bg:#F3F5FA;--card:#FFFFFF;--ink:#0B1733;--muted:#4B5878;--line:#D6DCEA;--navy:#06205C;--or:#EF8903;--or-ink:#A85400;--or-soft:#FFF1DE;--go:#17784A;--go-soft:#E2F3E9;
 --display:'Barlow Condensed','Arial Narrow',Arial,sans-serif;--body:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif}
 *{box-sizing:border-box}
@@ -34,6 +34,7 @@ ul,ol{padding-left:22px;display:flex;flex-direction:column;gap:6px}
 .if b{color:var(--ink)}
 .key{border:2px solid var(--or)}
 .ok{background:var(--go-soft);border-radius:10px;padding:10px 14px;font-size:16px}
+.found li::marker{content:"\2713  ";color:var(--go);font-weight:800}
 .note{font-size:15px;color:var(--muted)}
 .big{font-family:ui-monospace,Menlo,monospace;font-size:18px;background:var(--bg);border-radius:8px;padding:6px 10px;display:inline-block}
 footer{color:var(--muted);font-size:14px}
@@ -41,76 +42,63 @@ footer{color:var(--muted);font-size:14px}
 </head>
 <body>
 <header class="top pad"><div class="in">
-  <div class="brand">EXCELL SPORTS CHIROPRACTIC<small>CHIROTOUCH CALL SCRIPT · ABOUT 10 MINUTES</small></div>
-  <h1>One call, so Debbie <span>stops typing numbers.</span></h1>
-  <p>Doc, the ticket hasn't been answered, so a call is faster. The goal is one answer: can the End of Day Summary run and reach us automatically, and if not, is it OK for our reports-only login to do it for us? Everything you need to say is below.</p>
+  <div class="brand">EXCELL SPORTS CHIROPRACTIC<small>CHIROTOUCH CALL · ABOUT 5 MINUTES</small></div>
+  <h1>One question <span>only they can answer.</span></h1>
+  <p>Doc, we went through ChiroTouch's own help center and found most of the answers already. There's one thing left that only ChiroTouch can tell us: are we allowed to automate the report login? That answer decides how hands-off Debbie's end of day can be.</p>
 </div></header>
 
 <main class="wrap pad">
 
 <section class="card">
-  <span class="n">Before you dial · 1 minute</span>
-  <h2>Have these ready</h2>
+  <span class="n">Already answered · no need to ask</span>
+  <h2>What we found</h2>
+  <ul class="found">
+    <li><b>Reports can't be scheduled or emailed.</b> ChiroTouch Cloud runs reports by hand, then you open them as PDF or Excel. There's no schedule or auto-email option.</li>
+    <li><b>No API or reporting partner.</b> ChiroTouch has no public API, and the Marketplace has no reporting tools (just Chiro Jobs, CT SmartFit, Embodi and Fullscript).</li>
+    <li><b>New patients are on the End of Day Summary</b> (it counts anyone whose appointment is their very first in the system), along with walk-ins, no-shows and cancellations.</li>
+  </ul>
+  <p class="note">One thing that matters: a ChiroTouch rep has written that their contract prohibits third-party products that work inside ChiroTouch. That's why we're asking permission first, rather than just building it.</p>
+</section>
+
+<section class="card">
+  <span class="n">Before you dial</span>
   <ul>
     <li>Your account number: <span class="big">ACT0000054633</span></li>
-    <li>Be logged in to ChiroTouch, in case they want to look at your screen.</li>
-    <li><b>Easiest way to take notes:</b> turn your Bee on for the call (no patients involved) and my assistant will pull the answers from the recording. Or just jot them down.</li>
+    <li>Optional: turn your Bee on for the call (no patients involved), so my assistant can pull the answer and you don't need notes.</li>
   </ul>
   <a class="call" href="tel:+16198542998">Call ChiroTouch Cloud support · 619-854-2998</a>
-  <p class="note">If they say you're on the wrong line, the other support number is 844-307-4901.</p>
-</section>
-
-<section class="card">
-  <span class="n">Opening</span>
-  <p class="say">Hi, this is Dr. Marcus McCray at Excell Sports Chiropractic, account ACT0000054633. I sent in a support ticket on October 26 about automating our End of Day report and haven't heard back, so I'm calling instead. I have a few quick questions about reports.</p>
-</section>
-
-<section class="card">
-  <span class="n">Question 1</span>
-  <h2>Can it run on its own?</h2>
-  <p class="say">Is there any way to schedule the End of Day Summary to run automatically every day and be emailed to me, or saved as an Excel file?</p>
-  <p class="if"><b>If yes:</b> ask them to walk you through setting it up right now, sent to <b>docmmccray@gmail.com</b>. That's the best possible answer, and we're done.<br>
-  <b>If no:</b> ask "Is that coming, or is there any workaround, like a saved or subscribed report?" Then go to question 2.</p>
-</section>
-
-<section class="card">
-  <span class="n">Question 2</span>
-  <h2>Any official way to get the numbers out?</h2>
-  <p class="say">Is there an official way to send our daily totals to another system? An API, a data feed, or a Marketplace partner that does reporting or analytics? Which ones, and what do they cost?</p>
-  <p class="if"><b>Write down any partner names and prices.</b> If they offer a "full data export," that's a one-time copy that can take weeks. We don't need it, so you can pass.</p>
+  <p class="note">Prefer typing? In ChiroTouch, click the <b>?</b> at the top right → <b>Chat Support</b>, and paste the question below.</p>
 </section>
 
 <section class="card key">
-  <span class="n">Question 3 · the important one</span>
-  <h2>Is our reports-only login OK to automate?</h2>
-  <p class="say">We created a staff login called "Excell Reports" that can only see Analytics. No charting, billing or scheduling. Is it OK under our agreement for a program on our own office computer to log in with that user once a day, run the End of Day Summary, and download it?</p>
-  <p class="if"><b>If yes:</b> ask them to note it on your account or ticket, or email it to you. Getting that in writing is ideal.<br>
-  <b>If no:</b> ask "What would you recommend instead?"<br>
-  <b>If they're not sure:</b> ask "Can you check with someone who knows, or escalate it, and email me the answer?"</p>
+  <span class="n">The question</span>
+  <h2>Can our reports-only login be automated?</h2>
+  <p class="say">Hi, this is Dr. Marcus McCray at Excell Sports Chiropractic, account ACT0000054633. I have a ticket open from October 26 about reports. We made a staff login called "Excell Reports" that can only see Analytics. No charting, billing or scheduling. Is it allowed under our agreement for a program on our own office computer to log in with that user once a day, run the End of Day Summary, and download it? It wouldn't change anything in ChiroTouch.</p>
+  <p class="if"><b>If yes:</b> ask them to note it on your account or ticket, or email it to you. Get it in writing.<br>
+  <b>If no:</b> no problem. We already have a plan that keeps us fully within the rules (below).<br>
+  <b>If they're not sure:</b> ask them to check with someone who knows and email you the answer.</p>
 </section>
 
 <section class="card">
-  <span class="n">Question 4</span>
-  <h2>New patients per day</h2>
-  <p class="say">Does the End of Day Summary show how many new patients we saw that day? If not, which report does?</p>
+  <span class="n">One bonus question</span>
+  <h2>Is something coming?</h2>
+  <p class="say">ChiroTouch says its AI is coming to front-office and back-office work. Is there any plan for End of Day reports to run or email themselves automatically?</p>
 </section>
 
 <section class="card">
   <span class="n">Before you hang up</span>
-  <h2>Get it in writing</h2>
-  <p class="say">Can you add today's answers to my ticket and email me a summary with the case number?</p>
-  <p class="ok">That's it. Text Jimmy "called ChiroTouch" (or forward the email). If your Bee was on, nothing else is needed.</p>
+  <p class="say">Can you add this to my ticket and email me a summary with the case number?</p>
+  <p class="ok">Then text Jimmy "called ChiroTouch" with their answer (or forward the email). If your Bee was on, that's all.</p>
 </section>
 
 <section class="card">
-  <span class="n">Why this matters</span>
+  <span class="n">Either way, Debbie's end of day gets easier</span>
   <h2>What happens next</h2>
   <ul>
-    <li><b>If ChiroTouch can schedule or email the report:</b> we connect it, and Debbie stops typing within days.</li>
-    <li><b>If the reports-only login is OK:</b> I build the robot, run it next to Debbie for about 2 weeks to prove the numbers match, then she stops typing.</li>
-    <li><b>If neither:</b> Debbie clicks Export once a day (about a minute), and everything after that is automatic.</li>
+    <li><b>If they say yes:</b> I build the robot, run it next to Debbie for about 2 weeks to prove the numbers match, then she stops entering numbers.</li>
+    <li><b>If they say no:</b> Debbie keeps running the End of Day Summary (she already does), saves it as Excel, and drops the file onto her Front Desk page. The page fills in the numbers for her. That's about 30 seconds, no typing, and fully within ChiroTouch's rules.</li>
+    <li><b>Square</b> can be pulled automatically with read-only access either way, so that number never needs typing.</li>
   </ul>
-  <p class="note">Either way, the Square side can be automated separately with read-only access, so it never depends on ChiroTouch.</p>
 </section>
 
 <footer>Prepared by Jimmy Davis · iNeedJimmy · October 30, 2026. No patient information is on this page.</footer>
