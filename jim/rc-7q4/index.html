@@ -1,0 +1,182 @@
+<title>Jim Red Carpet</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:wght@400;700&family=IBM+Plex+Mono:wght@600&display=swap">
+<style>
+/* Layout: a run-of-show card stack. One step per card, top to bottom, big tap targets for a phone in one hand. */
+:root{--navy:#002855;--lemon:#F5E617;--paper:#F6F5EF;--card:#fff;--ink:#13213A;--muted:#55627A;--line:#DCDDD3;--ok:#1E6B47;--okbg:#E6F2EB;--warn:#B4322A;--warnbg:#FBEAE7;--chip:#EEF0F5;
+ --display:'Bricolage Grotesque','Arial Narrow',system-ui,sans-serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#0B1424;--card:#132038;--ink:#EAEDF3;--muted:#9AA6BC;--line:#28375A;--ok:#7FD1A6;--okbg:#12271E;--warn:#F08A80;--warnbg:#2C1A1E;--chip:#1C2B47;--navy:#9FC0F0}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#0B1424;--card:#132038;--ink:#EAEDF3;--muted:#9AA6BC;--line:#28375A;--ok:#7FD1A6;--okbg:#12271E;--warn:#F08A80;--warnbg:#2C1A1E;--chip:#1C2B47;--navy:#9FC0F0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.5 var(--body);padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));padding-block:18px 60px}
+.wrap{max-width:820px;margin:0 auto;display:grid;gap:16px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance}
+h1{font-size:clamp(28px,6vw,40px);font-weight:800;line-height:1.05}
+h1 span{background:var(--lemon);color:#002855;padding:0 .1em}
+.sub{color:var(--muted);font-size:15px}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);padding:8px 0;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line)}
+.prog{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.bar b{font:600 13px/1 var(--mono);color:var(--muted);white-space:nowrap}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:10px}
+.step.done{opacity:.55}
+.top{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--paper);display:grid;place-items:center;font:800 17px/1 var(--display)}
+.step.done .num{background:var(--ok)}
+.top h2{font-size:21px;line-height:1.15}
+.belief{font-size:14px;color:var(--muted);margin-top:2px}
+.belief b{color:var(--ink)}
+.who{font:600 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.say{border-left:4px solid var(--lemon);padding:6px 0 6px 12px;font-size:16.5px}
+.ask{border-left:4px solid var(--navy);padding:6px 0 6px 12px;font-size:16.5px}
+.links{display:flex;flex-wrap:wrap;gap:8px}
+.links a{display:inline-block;text-decoration:none;font-weight:700;font-size:15px;color:#002855;background:var(--lemon);border-radius:10px;padding:10px 14px}
+.links a.alt{background:var(--chip);color:var(--ink)}
+.chk{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);cursor:pointer}
+.chk input{width:22px;height:22px}
+.watch{font-size:14px;color:var(--muted)}
+.warnbox{background:var(--warnbg);border:1px solid var(--warn);border-radius:12px;padding:12px 16px;display:grid;gap:6px}
+.okbox{background:var(--okbg);border:1px solid var(--ok);border-radius:12px;padding:12px 16px;display:grid;gap:6px}
+ul{margin:0;padding-left:20px;display:grid;gap:4px}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.price div{background:var(--chip);border-radius:10px;padding:10px 12px}
+.price b{display:block;font:800 18px/1.2 var(--display)}
+.mono{font:600 13px/1.4 var(--mono)}
+:focus-visible{outline:3px solid var(--navy);outline-offset:2px}
+</style>
+<div class="wrap">
+<header style="display:grid;gap:6px">
+  <span class="who">Jimmy + Paul only · not for Jim's eyes</span>
+  <h1>Jim meeting: <span>red carpet</span></h1>
+  <p class="sub">Fri Oct 30, 2 PM, Launch Fishers. Jimmy drives the laptop; Paul follows along on his phone. Tap "Done" after each step and you'll both see where you are.</p>
+</header>
+
+<div class="bar"><div class="prog"><i id="pg"></i></div><b id="pgt">0 of 10</b></div>
+
+<div class="box">
+  <h3>Before Jim sits down (5 min)</h3>
+  <ul>
+    <li>Laptop on Wi-Fi, volume up, charger in.</li>
+    <li>Open these tabs in order: <b>Videos folder</b> (download the 3 you need) · <b>Profit Plan</b> · <b>Behind the Oven</b> · <b>Homepage</b> · <b>Lookup</b>.</li>
+    <li>Paul: open this page on your phone. Granola recording on.</li>
+    <li>Ask Jim if it's OK to record, like last time.</li>
+  </ul>
+  <div class="links">
+    <a href="https://drive.google.com/drive/folders/17B6Nl6zbsnaEWqPg56oD9Qr-VpBWu9k5" target="_blank" rel="noopener">Videos folder (Drive)</a>
+    <a class="alt" href="https://ineedjimmy.com/jim/" target="_blank" rel="noopener">All pages (hub)</a>
+  </div>
+  <p class="watch">Videos to download first: "Jim story video (style B) (phone)", "Jim keynote explainer (rough) (phone)", and "Behind the Oven film" if Claude Code finished it. Don't play film B (A Father's Promise) for Jim yet; it needs Lili's OK.</p>
+</div>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">1</span><div><h2>Warm-up + acknowledge him</h2><p class="belief">Belief: <b>"They see me. What I built matters."</b> · 5 min</p></div></div>
+  <span class="who">Paul opens, Jimmy acknowledges</span>
+  <p class="say">"Jim, before anything else, you need to be acknowledged for what you built. Most businesses have two people: the one with the story people love, and the one who builds the machine. You're the perfect story. 556 reviews. Fans who reorder before the freezer's empty. You got this far on heart alone."</p>
+  <p class="say">"Your only 'fault' is the same one every big-hearted founder has: you've been doing both jobs. That's not on you. You're sitting on a gold mine. The missing piece is the system, and that's our job."</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">2</span><div><h2>Play the story video</h2><p class="belief">Belief: <b>"They get my story."</b> · 2 min</p></div></div>
+  <p class="say">"We made you something. Just watch."</p>
+  <div class="links"><a href="https://drive.google.com/drive/folders/17B6Nl6zbsnaEWqPg56oD9Qr-VpBWu9k5" target="_blank" rel="noopener">Story video (style B)</a></div>
+  <p class="watch">After it ends, say nothing for 3 seconds. Then: "That's your story. Now let's look at your business."</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">3</span><div><h2>Profit Plan: your business today</h2><p class="belief">Belief: <b>"Now I finally see why I'm losing money."</b> · 5 min</p></div></div>
+  <div class="links"><a href="https://ineedjimmy.com/jim/profit-plan/" target="_blank" rel="noopener">Open Profit Plan</a></div>
+  <p class="say">"For every $100 that comes in, about $106 goes out. That's the $1,000 a month you've been covering."</p>
+  <p class="ask"><b>Paul asks right here:</b> "Does the $200K include the bread you trade Chris for wheat?" <br>If yes: "Then your real cash is a little lower, which makes these fixes matter even more."</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">4</span><div><h2>The holes we found</h2><p class="belief">Belief: <b>"It's not my fault, and it's fixable."</b> · 5 min</p></div></div>
+  <p class="say">"None of these are your fault. Every one is costing you money, trust or a store deal, and most are a one-week fix."</p>
+  <p class="watch">Point at three: the "Gluten Free" Amazon tag, the diabetes claims, and the Google pin in the Pacific. Then pause: "Did you know about these?"</p>
+  <p class="ask"><b>Ask:</b> "Do you have product liability insurance?" (He told us no. Make it the day-1 fix, said gently.)</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">5</span><div><h2>What you didn't know you had</h2><p class="belief">Belief: <b>"I'm sitting on more than I thought."</b> · 4 min</p></div></div>
+  <p class="say">"You own your trademarks. You have an exclusive deal on the wheat. Your oven is 89% empty. That's room to grow without buying a thing."</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">6</span><div><h2>The path: matrix + 12 months</h2><p class="belief">Belief: <b>"There's a simple road to the beach."</b> · 5 min</p></div></div>
+  <p class="say">"Start top-left: big money, little work. Then here's where you can be in 1, 3, 6 and 12 months. The last stop is your words: running without you, on the beach."</p>
+  <p class="ask"><b>Paul asks:</b> "What do you pay Roman, Bill and the driver, roughly per week?"</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">7</span><div><h2>Show, don't tell: homepage + his tool</h2><p class="belief">Belief: <b>"They can actually do it. They already did."</b> · 7 min</p></div></div>
+  <div class="links"><a href="https://ineedjimmy.com/jim/homepage/" target="_blank" rel="noopener">New homepage</a><a href="https://ineedjimmy.com/jim/lookup/" target="_blank" rel="noopener">Bread Label Lookup</a></div>
+  <p class="say">"Remember your idea about comparing breads? We built it." Let him type in a bread himself.</p>
+  <p class="watch">Optional: play film A "The Note in the Box" (1:10) from the Drive folder. It's for his website.</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">8</span><div><h2>One decision: Behind the Oven</h2><p class="belief">Belief: <b>"All I have to do is decide. They carry the work."</b> · 4 min</p></div></div>
+  <div class="links"><a href="https://claude.ai/code/artifact/b8edd646-a179-427d-93fc-96cc39ce2a0d" target="_blank" rel="noopener">Behind the Oven (animated)</a><a class="alt" href="https://drive.google.com/drive/folders/17B6Nl6zbsnaEWqPg56oD9Qr-VpBWu9k5" target="_blank" rel="noopener">Keynote video</a></div>
+  <p class="say">"Here's everything you have to do, Jim: make one decision." Hand him the laptop and let him tap "Trust Jimmy &amp; Paul."</p>
+  <p class="watch">The animated page needs Jimmy signed in to Claude on the laptop. If it won't open, play the keynote video instead.</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">9</span><div><h2>The 3 offers</h2><p class="belief">Belief: <b>"The risk is on them. Yes is easy."</b> · 10 min</p></div></div>
+  <p class="say">"Here's what we'd love: let us work really hard for 30 days. You'll see everything we do, then we decide together whether to keep going."</p>
+  <div class="price">
+    <div><b>$4,997</b>30-Day Profit Rescue. Guarantee: we find $1K/mo or keep working free.</div>
+    <div><b>$14,997 + $2,997/mo</b>Growth Engine (90 days). Point here.</div>
+    <div><b>$7,497 + $1,497/mo</b>Partnership, plus a share of growth (written with his attorney).</div>
+  </div>
+  <p class="watch">"Your $797 audit is credited." Stripe code: <span class="mono">JIM797</span>. Don't commit to a percentage in the room. Then stop talking.</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<section class="step" data-s>
+  <div class="top"><span class="num">10</span><div><h2>The close</h2><p class="belief">Belief: <b>"Let's start Monday."</b> · 5 min</p></div></div>
+  <span class="who">Paul closes</span>
+  <p class="ask">"Which part feels most urgent? Do you want to do it yourself, or have us do it? What's your timeline?" Then: <b>"Want us to start Monday?"</b></p>
+  <p class="watch">On a yes: send him the Stripe link (from Jarvis), put JIM797 on screen, set up the bracelet, and book a Monday kickoff. Before you leave, get: 12 months of bank statements, a ShipStation user invite, and Marketing Paul's phone.</p>
+  <label class="chk"><input type="checkbox"> Done</label>
+</section>
+
+<div class="okbox">
+  <h3>Say</h3>
+  <ul><li>"Profit plan" and "assessment"</li><li>Ranges: "about $1,000 a month"</li><li>"Rough draft. Your real numbers will sharpen it."</li></ul>
+</div>
+<div class="warnbox">
+  <h3>Don't say</h3>
+  <ul><li>Any health claim, or "gluten-free"</li><li>"Profitable in a week"</li><li>Anything about Lili</li><li>A final profit-share %</li></ul>
+</div>
+<div class="warnbox">
+  <h3>Where this could go wrong, and the fix</h3>
+  <ul>
+    <li><b>Wi-Fi drops:</b> download the 3 videos as soon as you sit down; the web pages also work on a phone hotspot.</li>
+    <li><b>The Claude page won't open:</b> play the keynote video instead.</li>
+    <li><b>He questions a number:</b> "Great catch. That's exactly why the first 30 days use your real bank data."</li>
+    <li><b>"Let me think about it":</b> "Totally. What would you need to see to feel sure?" Then offer the 30-day Starter as the safe step.</li>
+    <li><b>Stripe links not ready:</b> take a verbal yes, then text him the link tonight.</li>
+    <li><b>The Profit Plan still shows old prices:</b> say the prices on this page out loud.</li>
+  </ul>
+</div>
+</div>
+<script>
+const steps=[...document.querySelectorAll('[data-s]')],pg=document.getElementById('pg'),pgt=document.getElementById('pgt');
+const KEY='jim-rc-v1';let st={};try{st=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+function upd(){const n=steps.filter(s=>s.classList.contains('done')).length;pg.style.width=(n/steps.length*100)+'%';pgt.textContent=n+' of '+steps.length;}
+steps.forEach((s,i)=>{const c=s.querySelector('input');c.id='s'+i;if(st[i]){c.checked=true;s.classList.add('done')}
+ c.addEventListener('change',()=>{s.classList.toggle('done',c.checked);st[i]=c.checked;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){};upd();if(c.checked&&steps[i+1])steps[i+1].scrollIntoView({behavior:'smooth',block:'start'});});});
+upd();
+</script>
