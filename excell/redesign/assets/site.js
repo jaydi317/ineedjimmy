@@ -15,7 +15,7 @@
   // One price check box for Dr. McCray, shown until prices are confirmed
   document.querySelectorAll('[data-price-check]').forEach(function(el){
     if(P.confirmed){ el.hidden = true; return; }
-    el.innerHTML = '<span class="dtc">[DOC TO CONFIRM: price check. These are your Sept 29 answers. Still right, and OK to show on the site? New-patient exam '+esc(P.exam)+' · adjustment '+esc(P.adj)+' · typical first visit '+esc(P.firstVisit)+' · X-rays '+esc(P.xray)+' · added therapy '+esc(P.therapy)+' · follow-ups '+esc(P.followup)+' · plans '+esc(P.plan2)+' a month for 2 visits and '+esc(P.plan4)+' for 4 · '+esc(P.planDiscount)+' off other services and products]</span>';
+    el.innerHTML = '<span class="dtc">[DOC TO CONFIRM: price check. These are your Sept 29 answers. Still right, and OK to show on the site? New-patient exam '+esc(P.exam)+' · adjustment '+esc(P.adj)+' · typical first visit '+esc(P.firstVisit)+' · X-rays '+esc(P.xray)+' · added therapy '+esc(P.therapy)+' · follow-ups '+esc(P.followup)+' · plans '+esc(P.plan2)+' a month for 2 visits and '+esc(P.plan4)+' for 4 · '+esc(P.planDiscount)+' off other services and products · decompression '+esc(P.decomp)+' · hyperbaric '+esc(P.hbot)+']</span>';
   });
   function bookBtn(label,cls){ return '<a class="btn btn-book '+(cls||'')+'" href="'+esc(C.bookUrl)+'" target="_blank" rel="noopener">'+(label||'Book My First Visit')+'</a>'; }
   window.EXCELL_FMT = fmt;
@@ -81,17 +81,38 @@
     s.async = true; document.head.appendChild(s);
   }
 
-  /* ---------- Hello from Dr. McCray audio ---------- */
-  var hb = document.getElementById('hello-play');
-  if(hb){
-    if(C.helloAudio){
-      var au = new Audio(ROOT + C.helloAudio), bar = document.querySelector('.player .bar i');
-      hb.addEventListener('click', function(){ if(au.paused){ au.play(); hb.setAttribute('aria-label','Pause'); } else { au.pause(); hb.setAttribute('aria-label','Play'); } });
-      au.addEventListener('timeupdate', function(){ if(bar && au.duration) bar.style.width = (au.currentTime/au.duration*100) + '%'; });
-    } else {
-      hb.addEventListener('click', function(){ say('Waiting on Dr. McCray: a 30-second hello, recorded on his phone. It plays here once we have it.'); });
-    }
+  /* ---------- Hello from Dr. McCray video ---------- */
+  var hb = document.getElementById('hello-play'), hv = document.getElementById('hello-video');
+  if(hb && hv){
+    hb.addEventListener('click', function(){
+      if(C.helloVideo){
+        hv.innerHTML = '<video controls autoplay playsinline src="'+esc(ROOT + C.helloVideo)+'"></video>';
+      } else {
+        say('Coming soon: a 45-second hello from Dr. McCray, filmed on a phone in the office at the photo visit.');
+      }
+    });
   }
+
+  /* ---------- Out-of-office banner (Dr. McCray texts it; demo: add ?out=1 to any page) ---------- */
+  var OUT = C.outOfOffice || {};
+  var forceOut = /[?&]out=1\b/.test(location.search);
+  if(OUT.show || forceOut){
+    var msg = OUT.show ? OUT.message : (OUT.demoMessage || 'Dr. McCray is out of the office Thursday. Book online for Friday or later.');
+    var bar = document.createElement('div'); bar.className = 'oob'; bar.setAttribute('role','status');
+    bar.innerHTML = '<span class="oob-dot" aria-hidden="true"></span><span>' + esc(msg) + '</span><a href="' + esc(C.bookUrl) + '" target="_blank" rel="noopener">See open times</a>' + (forceOut && !OUT.show ? '<em>Demo</em>' : '');
+    document.body.insertBefore(bar, document.body.firstChild);
+    window.EXCELL_OUT_MSG = msg;
+  }
+
+  /* ---------- Send this to a friend (no rewards, just the link) ---------- */
+  document.addEventListener('click', function(e){
+    var sb = e.target.closest('[data-share]'); if(!sb) return;
+    var url = C.shareUrl || location.href.split('?')[0].split('#')[0];
+    var text = "You need to go see my chiropractor, Dr. McCray at Excell Sports Chiropractic. Book here:";
+    if(navigator.share){ navigator.share({ title: 'Excell Sports Chiropractic', text: text, url: url }).catch(function(){}); }
+    else if(navigator.clipboard){ navigator.clipboard.writeText(text + ' ' + url).then(function(){ say('Link copied. Paste it in a text to your friend.'); }, function(){ say(url); }); }
+    else { say(url); }
+  });
 
   /* ---------- App links + QR code ---------- */
   document.querySelectorAll('[data-app="iphone"]').forEach(function(a){
@@ -198,6 +219,7 @@
         if(f) answer(f);
         return;
       }
+      if(f && f.id === 'hours' && window.EXCELL_OUT_MSG){ add('<b>Heads up:</b> ' + esc(window.EXCELL_OUT_MSG)); }
       if(f){ answer(f); return; }
       add('I don\'t have an approved answer for that one yet. The front desk can help at ' + esc(C.phoneDisplay) + ', or you can book and ask Dr. McCray in person.<br>' + bookBtn());
       menu();

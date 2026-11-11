@@ -22,6 +22,17 @@ window.EXCELL_CONFIG = {
   googlePlaceId: "",            // PLACEHOLDER: the clinic's Google Place ID
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=Excell+Sports+Chiropractic+1315+W+86th+St+Indianapolis",
 
-  // Hello from Dr. McCray. Drop the recording in /audio/ and put its file name here.
-  helloAudio: ""                // PLACEHOLDER: e.g. "audio/hello-dr-mccray.m4a"
+  // Hello from Dr. McCray: a 45-second phone video filmed at the photo visit.
+  helloVideo: "",               // PLACEHOLDER: e.g. "video/hello-dr-mccray.mp4"
+
+  // Out-of-office banner. Plan: Dr. McCray texts "Out Thursday" and this updates itself.
+  // Until that's wired, flip show to true and type the message. Add ?out=1 to any page to preview it.
+  outOfOffice: {
+    show: false,
+    message: "",
+    demoMessage: "Dr. McCray is out of the office Thursday. Online booking is open for Friday and next week."
+  },
+
+  // The link people get when they tap "Send this to a friend". Becomes excellsportschiro.com when the site moves.
+  shareUrl: "https://ineedjimmy.com/excell/redesign/"
 };

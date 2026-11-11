@@ -15,7 +15,7 @@
 */
 window.EXCELL_PRICES = {
   "confirmed": false,
-  "source": "Dr. McCray, Sept 29 voice answers (m1, m2). Replace the older $129/$65/$80 found online.",
+  "source": "Dr. McCray, Sept 29 voice answers (m1, m2) + Nov 4 quick answers (decompression, hyperbaric). Replace the older $129/$65/$80 found online.",
   "exam": "$150",
   "adj": "$75",
   "firstVisit": "$225",
@@ -25,7 +25,9 @@ window.EXCELL_PRICES = {
   "plan2": "$106",
   "plan4": "$212",
   "perVisit": "$53",
-  "planDiscount": "10%"
+  "planDiscount": "10%",
+  "decomp": "$75 a session",
+  "hbot": "$125 a session"
 };
 
 window.EXCELL_FAQ = [

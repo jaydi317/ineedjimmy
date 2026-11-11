@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow">
+<title>Doc, Here's Your New Website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;1,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+.st-hero{background:var(--navy);color:#fff;padding:44px 0 48px}
+.st-hero h1{color:#fff;font-size:clamp(42px,10vw,72px)}
+.st-hero h1 .o{color:var(--orange);font-style:italic;display:block}
+.st-hero p{color:#D6DDF0;font-size:19px;max-width:640px}
+.step{display:grid;grid-template-columns:52px 1fr;gap:14px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:14px}
+.step .n{width:52px;height:52px;border-radius:14px;background:var(--orange);color:var(--navy-ink);display:grid;place-items:center;font:800 28px/1 var(--head)}
+.step h3{font-size:26px}
+.step p{margin:6px 0 0;color:var(--muted)}
+.heard{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+.heard li{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.heard li::before{content:"✓";width:28px;height:28px;border-radius:50%;background:#E3F4EA;color:#16704A;display:grid;place-items:center;font-weight:800}
+.heard li b{display:block;color:var(--navy)}
+.heard li span{font-size:14px;color:var(--muted)}
+.heard li a{font-weight:700;font-size:14px;white-space:nowrap;align-self:center}
+.heard li.extra::before{content:"+";background:var(--orange-soft);color:var(--orange-dk)}
+.heard li.wait-li::before{content:"…";background:#FFF7C2;color:#5A4300}
+.demo-row{display:grid;gap:12px;margin-top:16px}
+.demo{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;color:var(--ink)}
+.demo b{display:block;color:var(--navy);font:800 22px/1.1 var(--head);text-transform:uppercase}
+.demo span{font-size:14px;color:var(--muted)}
+@media(min-width:760px){.demo-row{grid-template-columns:repeat(3,1fr)}}
+.wait{columns:2 260px;column-gap:24px;margin:14px 0 0;padding-left:18px;color:var(--muted)}
+.wait li{margin-bottom:6px;break-inside:avoid}
+.heard-toggle summary{cursor:pointer;font-weight:700;color:var(--navy-2);margin-top:14px}
+</style></head>
+<body data-root="">
+<header class="st-hero"><div class="wrap">
+  <img src="images/excell-logo.png" alt="Excell Sports Chiropractic" width="214" height="100" style="height:52px;width:auto;background:#fff;border-radius:10px;padding:6px 10px">
+  <h1 style="margin-top:22px">Doc, here's your <span class="o">new website.</span></h1>
+  <p>I went back through everything you put in our Notion page and everything you've told me since September, and built it in. This round is about the layout and the features. Once you're happy with those, I make the graphics pop.</p>
+</div></header>
+
+<main>
+<section class="sec"><div class="wrap narrow">
+  <span class="kicker">Two steps</span>
+  <div class="step"><div class="n">1</div><div><h3>Look at your website</h3><p>On your phone is best. Tap around: the first visit page, the service pages, the chat helper in the corner. Yellow boxes are the spots waiting on you.</p><div class="cta-row" style="margin-top:14px"><a class="btn btn-book" href="index.html">Open my new website</a></div></div></div>
+  <div class="step"><div class="n">2</div><div><h3>Answer the questions</h3><p>They fill every yellow box. Tap Talk and answer on the page, or answer them all in one Bee recording, or one voice memo to Jimmy. Short answers are fine. The first five matter most.</p><div class="cta-row" style="margin-top:14px"><a class="btn btn-navy" href="https://ineedjimmy.com/excell-5/questions/">Answer the questions</a></div></div></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <span class="kicker">Take a look</span>
+  <h2 style="margin-top:10px">Start with these three</h2>
+  <div class="demo-row">
+    <a class="demo" href="index.html?out=1"><b>Your out-of-office banner, done</b><span>What the top of your site shows on a day you're out.</span></a>
+    <a class="demo" href="video-styles/index.html"><b>Pick your video style</b><span>Sample explainer videos made from your own footage. Tell me which style you like.</span></a>
+    <a class="demo" href="services/decompression-hyperbaric.html"><b>Decompression + hyperbaric</b><span>What that page looks like, with session packs.</span></a>
+  </div>
+  <p class="note" style="margin-top:12px">Normal day: <a href="index.html">your home page without the banner</a>. Later you'll update the banner just by texting, for example "Out Thursday."</p>
+</div></section>
+
+<section class="sec sec-alt"><div class="wrap narrow">
+  <span class="kicker">You asked, it's built</span>
+  <h2 style="margin-top:10px">Everything from your notes</h2>
+  <p class="lead">From your Nov 2 website review, your Nov 5 automation notes, and your answers in September.</p>
+  <details class="heard-toggle" open><summary>Show or hide the full list</summary>
+  <ul class="heard">
+    <li><div><b>Every page ends at one button: Book My First Visit</b><span>Goes straight to your ChiroTouch booking page</span></div><a href="index.html">See it</a></li>
+    <li><div><b>Kept what you liked</b><span>"Referred by a friend?" opening, where the reviews sit, your credentials up top (CCEP), bio, team, hours, "You won't waste your time"</span></div><a href="index.html">See it</a></li>
+    <li><div><b>Thorough exam and diagnosis first, and you refer out</b><span>The home page says it in three steps</span></div><a href="index.html#exam-first">See it</a></li>
+    <li><div><b>Your first visit + FAQ: the exam, X-rays, costs</b><span>Step by step, with the price shown as a receipt</span></div><a href="first-visit.html">See it</a></li>
+    <li><div><b>Fuller pages: myofascial, exercise rehab, dry needling, massage, cupping</b><span>What it is, what it feels like, how it fits your care</span></div><a href="services/myofascial-release.html">See it</a></li>
+    <li><div><b>Elbow pain and knee pain pages</b><span>Exam first, your extremity training, when you refer out</span></div><a href="conditions/knee-pain.html">See it</a></li>
+    <li><div><b>Membership page for affordable cash-based care</b><span>Your two plans, with the savings per visit</span></div><a href="membership.html">See it</a></li>
+    <li><div><b>Your "out of office" banner</b><span>You said it's the one feature you use, July to January. Here it is both ways.</span></div><a href="index.html?out=1">See it</a></li>
+    <li><div><b>Your instructional videos</b><span>Your exercise videos are back on the home page, plus explainer videos before the first visit</span></div><a href="index.html#care">See it</a></li>
+    <li><div><b>Decompression + hyperbaric page with packs</b><span>The two services you most want more people using</span></div><a href="services/decompression-hyperbaric.html">See it</a></li>
+    <li class="extra"><div><b>Added: "Send this to a friend" button</b><span>Your patients send your page to a friend in one tap. No rewards, just the link.</span></div><a href="index.html#hello">See it</a></li>
+    <li class="extra"><div><b>Added: link to your online product shop</b><span>Your Square shop, in the menu and footer</span></div><a href="index.html#services">See it</a></li>
+  </ul>
+  </details>
+  <h3 style="margin-top:30px">Ready, just waiting on you</h3>
+  <p class="note">Built and in place. Each one switches on when you answer its question or we film it.</p>
+  <ul class="heard">
+    <li class="wait-li"><div><b>"Hello from Dr. McCray"</b><span>Now a 45-second video of you instead of audio. I film it on a phone at the photo visit.</span></div><a href="index.html#hello">See it</a></li>
+    <li class="wait-li"><div><b>Your app on the home page, with a QR code + a front-desk sign</b><span>Goes live when you send the Android link</span></div><a href="index.html#app">See it</a></li>
+    <li class="wait-li"><div><b>A helper that answers exam, X-ray and cost questions, then books</b><span>Working demo: tap "Questions? Ask here" on any page. Goes live with your approved answers. No medical advice, saves nothing.</span></div><a href="index.html">Try it</a></li>
+    <li class="wait-li"><div><b>Google reviews and the count update themselves</b><span>Built to pull your rating and count live from Google. Switches on when I add the Google key.</span></div><a href="index.html#reviews">See it</a></li>
+    <li class="wait-li"><div><b>New office photos</b><span>Spots are ready. I shoot them at a quiet time.</span></div><a href="index.html#about">See it</a></li>
+  </ul>
+
+</div></section>
+
+
+
+<section class="sec sec-alt"><div class="wrap narrow">
+  <span class="kicker">What I'm waiting on</span>
+  <h2 style="margin-top:10px">The yellow boxes</h2>
+  <ul class="wait">
+    <li>A yes on the prices (one price check)</li>
+    <li>How long a first visit takes, forms, when to arrive</li>
+    <li>Membership: who can join, billing, cancelling</li>
+    <li>Your app's Android link</li>
+    <li>OK on the Colts and Beijing wording</li>
+    <li>Who does dry needling, massage and cupping</li>
+    <li>What you do most for elbows and knees</li>
+    <li>Decompression and hyperbaric pack prices, chamber type</li>
+    <li>Your icing and heat videos</li>
+    <li>3 Google reviews to feature</li>
+    <li>A quiet time for photos and your hello video</li>
+  </ul>
+  <div class="cta-row"><a class="btn btn-book" href="https://ineedjimmy.com/excell-5/questions/">Answer the questions</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap narrow">
+  <span class="kicker">What's next</span>
+  <h2 style="margin-top:10px">After your answers</h2>
+  <ol class="steps" style="grid-template-columns:1fr">
+    <li><b>I fill the blanks and make it pop</b><p>Your answers go in, then the graphics and photos get the final polish.</p></li>
+    <li><b>You look one more time</b><p>Nothing goes public without your OK. This page and the site are hidden from Google.</p></li>
+    <li><b>We switch it on</b><p>The new site replaces the old one on excellsportschiro.com.</p></li>
+  </ol>
+  <p class="note" style="margin-top:18px">Separate from the website, still moving: the nightly numbers email, the weekly/monthly scoreboard, and sending your videos to patients through your app. No patient information is on any of these pages.</p>
+</div></section>
+</main>
+<footer><div class="wrap"><p style="margin:0">Prepared for Dr. Marcus McCray by Jimmy Davis · iNeedJimmy.com · Questions? Text Jimmy at 626-354-3229.</p></div></footer>
+</body></html>
