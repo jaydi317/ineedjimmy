@@ -64,11 +64,11 @@ section{padding-block:clamp(56px,8vw,120px);border-bottom:1px solid var(--line);
 /* 1. money bar */
 .money{margin-top:clamp(32px,4vw,56px)}
 .money .scale{position:relative;padding-top:44px}
-.money .track{display:flex;height:clamp(84px,9vw,130px);border-radius:16px;overflow:hidden;width:100%}
+.money .track{position:relative;display:flex;height:clamp(84px,9vw,130px);border-radius:16px;overflow:hidden;width:100%}
 .seg{display:flex;flex-direction:column;justify-content:center;padding:0 clamp(8px,1vw,18px);color:var(--ink);min-width:0;overflow:hidden}
 .seg strong{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,2.6rem);line-height:1}
 .seg span{font-size:var(--fs-small);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.seg.over{background:repeating-linear-gradient(135deg,var(--red) 0 10px,#d9363c 10px 20px);color:#fff}
+.overband{position:absolute;top:0;bottom:0;right:0;background:repeating-linear-gradient(135deg,rgba(255,90,95,.85) 0 10px,rgba(217,54,60,.85) 10px 20px);display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:800;font-size:clamp(.95rem,1.6vw,1.6rem)}
 .line100{position:absolute;top:0;bottom:-14px;border-left:3px dashed var(--cream)}
 .line100 span{position:absolute;top:0;transform:translateX(-80%);white-space:nowrap;font-weight:700;font-size:var(--fs-small);background:var(--navy);padding:2px 8px;border-radius:6px}
 .money .legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:28px}
@@ -139,22 +139,13 @@ section{padding-block:clamp(56px,8vw,120px);border-bottom:1px solid var(--line);
 .key span{display:flex;gap:6px;align-items:center}
 .hint{color:var(--mist);font-size:var(--fs-small);margin-top:8px}
 
-/* 6. offers */
-.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.5vw,24px);margin-top:clamp(32px,4vw,52px);align-items:stretch}
-.offer{border-radius:22px;padding:clamp(20px,2vw,32px);background:var(--navy-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:14px;position:relative;min-width:0}
-.offer .name{font-size:var(--fs-small);font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lemon)}
-.offer h3{font-size:clamp(1.6rem,2.4vw,2.6rem)}
-.offer .price{font-family:var(--display);font-weight:800;font-size:clamp(1.6rem,2.6vw,2.8rem);line-height:1}
-.offer .price small{display:block;font-family:var(--body);font-weight:600;font-size:var(--fs-small);color:var(--mist);margin-top:6px}
-.offer ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:var(--fs-small);color:var(--mist)}
-.offer ul li::marker{color:var(--lemon)}
-.offer .promise{margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-weight:600;font-size:var(--fs-small)}
-.offer.ask{background:var(--lemon);color:var(--ink);border-color:var(--lemon);transform:translateY(-10px)}
-.offer.ask .name{color:var(--navy)}
-.offer.ask .price small,.offer.ask ul{color:var(--navy)}
-.offer.ask ul li::marker{color:var(--navy)}
-.offer.ask .promise{border-color:rgba(0,40,85,.25)}
-.ribbon{position:absolute;top:-14px;right:20px;background:var(--ink);color:var(--lemon);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+/* 7. yours */
+.yours{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.5vw,24px);margin-top:clamp(32px,4vw,52px)}
+.yours ol{margin:0;padding:0;list-style:none;display:contents}
+.yours li{border-radius:18px;padding:clamp(18px,1.8vw,28px);background:var(--navy-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+.yours li b{font-family:var(--display);font-size:clamp(1.2rem,1.7vw,1.8rem);line-height:1.1}
+.yours li span{color:var(--mist);font-size:var(--fs-small)}
+.yours li i{font-style:normal;font-weight:700;color:var(--lemon);font-size:var(--fs-small);letter-spacing:.12em;text-transform:uppercase}
 .note{margin-top:22px;color:var(--mist);font-size:var(--fs-small)}
 
 footer{padding-block:36px;color:var(--mist);font-size:var(--fs-small)}
@@ -164,12 +155,11 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justif
 a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offset:3px}
 
 @media (max-width:1100px){
-  .grid,.offers{grid-template-columns:1fr 1fr}
+  .grid,.yours{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
-  .offer.ask{transform:none}
 }
 @media (max-width:640px){
-  .grid,.offers,.stats{grid-template-columns:1fr}
+  .grid,.yours,.stats{grid-template-columns:1fr}
   .quads{grid-template-columns:1fr}
   .matrix{grid-template-columns:1fr}
   .yax{display:none}
@@ -177,6 +167,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
   .bar img{height:28px}
   .seg span{display:none}
   .seg strong{font-size:1.05rem}
+  .seg.run strong{display:none}
+  .overband{font-size:.68rem;justify-items:start;padding-left:2px}
   .money .legend{grid-template-columns:1fr 1fr}
 }
 </style>
@@ -191,23 +183,23 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
       <a href="#hidden"><span class="n">4</span>What you have</a>
       <a href="#matrix"><span class="n">5</span>What first</a>
       <a href="#plan"><span class="n">6</span>The plan</a>
-      <a href="#offers"><span class="n">7</span>Working together</a>
+      <a href="#yours"><span class="n">7</span>It's yours</a>
     </nav>
   </div>
 </header>
 
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Jim's Amazing Bread · Profit plan · October 30, 2026</div>
+    <div class="eyebrow">Jim's Amazing Bread · Profit plan · updated November 2026</div>
     <h1>People love your bread. <em>Now let's make it pay you.</em></h1>
     <div class="from-to num">
-      <span class="pill bad">−$1,000 a month</span>
+      <span class="pill bad">−$1,000 to $1,700 a month</span>
       <span class="arrow" aria-hidden="true">→</span>
-      <span class="pill good">+$8,700 a month goal</span>
+      <span class="pill good">break-even: about 100 more store loaves a week</span>
       <span class="arrow" aria-hidden="true">→</span>
       <span>a bakery that runs without you</span>
     </div>
-    <p class="meta">Use the arrow keys or the menu to step through. Seven screens, about twenty minutes.</p>
+    <p class="meta">Use the arrow keys or the menu to step through. Seven screens, about twenty minutes. Every number is an estimate built from your own answers.</p>
   </div>
 </section>
 
@@ -242,7 +234,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
       </article>
     </div>
 
-    <p class="lede" style="margin-top:36px">&ldquo;You're sitting on a gold mine. <span class="hl">The only thing missing is the system, and that's our job.</span>&rdquo;</p>
+    <p class="lede" style="margin-top:36px">&ldquo;You're sitting on a gold mine. <span class="hl">The only thing missing is the system, and this plan lays it out.</span>&rdquo;</p>
   </div>
 </section>
 
@@ -250,35 +242,38 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
 <section id="today">
   <div class="wrap">
     <div class="eyebrow"><b>2</b>Your business today</div>
-    <h2>For every <span class="hl">$100</span> that comes in, <span class="hl">$106</span> goes out.</h2>
-    <p class="lede">You're paying about $6 to sell every $100 of bread. Here's where it goes, per month.</p>
+    <h2>For every <span class="hl">$100</span> that comes in, about <span class="hl">$109</span> goes out.</h2>
+    <p class="lede">Here's where it goes in a typical month. Middle estimate, with the Christkindl markets spread across the year.</p>
 
-    <div class="money num" role="img" aria-label="Of every 100 dollars: making the bread 44, shipping 17, Amazon and card fees 3, running the bakery 42. Total 106, so 6 dollars short.">
+    <div class="money num" role="img" aria-label="For every 100 dollars that comes in: making the bread 44, shipping 29, Amazon and card fees 4, getting bread to stores 16, running the bakery 17. About 9 dollars short each time.">
       <div class="scale">
-        <div class="line100" style="left:calc(100% * 100 / 106)"><span>$100 came in</span></div>
+        <div class="line100" style="left:91.4%"><span>$100 came in</span></div>
         <div class="track">
-          <div class="seg" style="flex:0 0 41.51%;background:var(--make)"><strong>$44</strong><span>Making the bread</span></div>
-          <div class="seg" style="flex:0 0 16.04%;background:var(--ship)"><strong>$17</strong><span>Shipping</span></div>
-          <div class="seg" style="flex:0 0 2.83%;padding:0;background:var(--fee)" title="Amazon and card fees: $3"></div>
-          <div class="seg" style="flex:0 0 33.96%;background:var(--run)"><strong>$42</strong><span>Running the bakery</span></div>
-          <div class="seg over" style="flex:0 0 5.66%;padding:0;align-items:center"><strong>−$6</strong></div>
+          <div class="seg" style="flex:0 0 39.95%;background:var(--make)"><strong>$44</strong><span>Making the bread</span></div>
+          <div class="seg" style="flex:0 0 26.16%;background:var(--ship)"><strong>$29</strong><span>Shipping</span></div>
+          <div class="seg" style="flex:0 0 3.59%;padding:0;background:var(--fee)" title="Amazon and card fees: $4"></div>
+          <div class="seg" style="flex:0 0 14.35%;background:#8fe3b8"><strong>$16</strong><span>To the stores</span></div>
+          <div class="seg run" style="flex:0 0 15.95%;background:var(--run)"><strong>$17</strong><span>Bakery</span></div>
+          <div class="overband" style="width:8.6%">−$9</div>
         </div>
       </div>
       <div class="legend">
-        <div><i style="background:var(--make)"></i><span><b>$44 · Making the bread</b>Ingredients, bags, Roman, waste</span></div>
-        <div><i style="background:var(--ship)"></i><span><b>$17 · Shipping</b>Labels, boxes, re-sends. 42¢ of every online dollar</span></div>
-        <div><i style="background:var(--fee)"></i><span><b>$3 · Amazon + card fees</b></span></div>
-        <div><i style="background:var(--run)"></i><span><b>$42 · Running the bakery</b>Building, utilities, driver, marketing, software</span></div>
-        <div><i style="background:var(--red)"></i><span><b>−$6 · Comes out of your pocket</b>About $1,000 a month</span></div>
+        <div><i style="background:var(--make)"></i><span><b>$44 · Making the bread</b>Ingredients and bags for every loaf, including the ones traded for wheat, plus Roman</span></div>
+        <div><i style="background:var(--ship)"></i><span><b>$29 · Shipping</b>Labels, boxes, re-sends. Labels alone take about half of every online dollar</span></div>
+        <div><i style="background:var(--fee)"></i><span><b>$4 · Amazon + card fees</b></span></div>
+        <div><i style="background:#8fe3b8"></i><span><b>$16 · Getting bread to stores</b>Bill, the driver, the Michigan trips</span></div>
+        <div><i style="background:var(--run)"></i><span><b>$17 · Running the bakery</b>Utilities, property tax, marketing, software</span></div>
+        <div><i style="background:var(--red)"></i><span><b>−$9 · Comes out of your pocket</b>About $1,000 a month. About $1,700 in months without Christkindl</span></div>
       </div>
     </div>
 
     <div class="stats num">
-      <div class="stat"><strong>$16,450</strong><span>comes in each month (stores $8,400 · web $4,400 · Amazon $2,400 · Christkindl)</span></div>
-      <div class="stat"><strong class="neg">−$1,000</strong><span>left over each month. You cover it</span></div>
-      <div class="stat"><strong>11%</strong><span>of your oven is used. 450 loaves a week, room for about 4,000</span></div>
-      <div class="stat"><strong>$6.80</strong><span>what a loaf really costs once the empty oven is counted. Stores pay $6.50</span></div>
+      <div class="stat"><strong>$120K to $150K</strong><span>real cash sales a year, today (estimate)</span></div>
+      <div class="stat"><strong class="neg">−$1,000 to $1,700</strong><span>left over each month (estimate). You cover it</span></div>
+      <div class="stat"><strong>140 of 450</strong><span>loaves a week go to Fort Recovery to pay for wheat. So about 6 in 10 loaves bring in cash</span></div>
+      <div class="stat"><strong>11%</strong><span>of your oven is used. Room for about 4,000 loaves a week</span></div>
     </div>
+    <p class="note">Your $200K fits last year, when online ran 50 to 60 orders a week, or a year where the bread traded for wheat counts as sales. Both are fair ways to see it. Your bank statements will settle the exact number.</p>
   </div>
 </section>
 
@@ -287,30 +282,30 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
   <div class="wrap">
     <div class="eyebrow"><b>3</b>Every hole we found</div>
     <h2>Nine leaks. <span class="hl">Most are a one-week fix.</span></h2>
-    <p class="lede">None of these are your fault. Every one of them is costing you money, trust or a store deal.</p>
+    <p class="lede">These are things nobody told you. Each one is costing you money, trust or a store deal.</p>
     <div class="grid">
       <article class="card hole">
         <div class="tag">Amazon · Legal risk <span class="sev">Fix first</span></div>
-        <h3>Two listings say “Gluten Free”</h3>
-        <p>Including your 4-pack with the Amazon's Choice badge. Your bread contains wheat. One complaint can pull the listing, or worse.</p>
-        <div class="fix">Pull the tag, add “Contains: Wheat.”</div>
+        <h3>Two listings carry a gluten claim</h3>
+        <p>Including your 4-pack with the Amazon's Choice badge. Your bread contains wheat, so that claim has to come off. One complaint can pull the listing, or worse.</p>
+        <div class="fix">Take the claim off. Add &ldquo;Contains: Wheat.&rdquo;</div>
       </article>
       <article class="card hole">
         <div class="tag">Amazon · Legal risk <span class="sev">Fix first</span></div>
-        <h3>Eight listings make medical claims</h3>
-        <p>Words like diabetes and leaky gut. Food can't say that. It's the first thing a store, a lawyer or a buyer will flag.</p>
+        <h3>Eight listings make health claims</h3>
+        <p>Food listings can't promise health results. It's the first thing a store, a lawyer or a buyer will flag.</p>
         <div class="fix">Rewrite around taste, six ingredients and how it's made.</div>
       </article>
       <article class="card hole">
         <div class="tag">Website + Amazon</div>
-        <h3>“21 days” on seven pages</h3>
-        <p>Real life is 7–8 days on the counter. People expect three weeks, see mold on day 9, and leave a bad review.</p>
-        <div class="fix">“Fresh 7–8 days on the counter. Freezes for 6 months.”</div>
+        <h3>&ldquo;21 days&rdquo; on seven pages</h3>
+        <p>Real life is 7 to 8 days on the counter. People expect three weeks, see mold on day 9, and leave a bad review.</p>
+        <div class="fix">&ldquo;Fresh 7 to 8 days on the counter. Freezes for about 6 months.&rdquo;</div>
       </article>
       <article class="card hole">
         <div class="tag">Google</div>
         <h3>Your map pin is in the Pacific Ocean</h3>
-        <p>Plus a second, duplicate listing. Anyone searching “bread near me” can't find the bakery.</p>
+        <p>Plus a second, duplicate listing. Anyone searching &ldquo;bread near me&rdquo; can't find the bakery.</p>
         <div class="fix">Move the pin, merge the duplicate. Twenty minutes.</div>
       </article>
       <article class="card hole">
@@ -320,28 +315,28 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
         <div class="fix">Separate account + simple monthly books.</div>
       </article>
       <article class="card hole">
-        <div class="tag">Stores</div>
-        <h3>No insurance certificate on file</h3>
-        <p>Grocers and distributors ask for a liability insurance certificate before they'll stock you. We haven't seen yours.</p>
-        <div class="fix">Confirm your policy and get the certificate ready.</div>
+        <div class="tag">Peace of mind</div>
+        <h3>Protect what you've built</h3>
+        <p>Right now the bakery has no insurance. That's common when a business grows one loaf at a time. A simple food business policy guards everything you've worked for, and it's the certificate store buyers ask for before they stock you.</p>
+        <div class="fix">Ask a local broker for three quotes.</div>
       </article>
       <article class="card hole">
         <div class="tag">Stores + Amazon</div>
         <h3>What bigger buyers will ask for</h3>
-        <p>Barcodes (GS1 UPC), a Nutrition Facts and allergen label, case size, a one-page sell sheet, shelf-life proof, Indiana wholesale registration. Amazon wants claims-clean listings under your own brand name. Today yours shows “BFYSYO.”</p>
-        <div class="fix">One “store-ready kit” we build together.</div>
+        <p>Barcodes (GS1 UPC), a Nutrition Facts and allergen label, case size, a one-page sell sheet, shelf-life proof, Indiana wholesale registration. Amazon wants claims-clean listings under your own brand name. Today yours shows &ldquo;BFYSYO.&rdquo;</p>
+        <div class="fix">One &ldquo;store-ready kit.&rdquo; The checklist is in your kit.</div>
       </article>
       <article class="card hole">
         <div class="tag">Shipping</div>
         <h3>Free shipping on small, faraway boxes</h3>
-        <p>A 2-pack to the West Coast loses about $2 on your site and about $4.75 on Amazon.</p>
-        <div class="fix">Free shipping at $60+. Amazon sells 6- and 12-packs only.</div>
+        <p>Small boxes are where the online money disappears. Shipping is your second-biggest cost, about $3,300 a month. Charging for shipping on small orders could keep about $500 to $1,100 a month (estimate).</p>
+        <div class="fix">$7.99 shipping under $60, free at $60+. Amazon sells 6- and 12-packs only.</div>
       </article>
       <article class="card hole">
         <div class="tag">Price</div>
         <h3>Same prices since 2018</h3>
-        <p>Your costs went up for eight years. Your prices didn't. Rivals online charge $14.67–16.50 a loaf for smaller loaves.</p>
-        <div class="fix">Retail +5–8%. Test $7 wholesale with one store.</div>
+        <p>Your costs went up for eight years. Your prices didn't. Rivals online charge $14.67 to $16.50 a loaf for smaller loaves.</p>
+        <div class="fix">Retail +5 to 8%. Test $7 wholesale with one store.</div>
       </article>
     </div>
   </div>
@@ -358,24 +353,24 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
         <div class="tag">Capacity</div>
         <h3><span class="big num">89%</span>of your oven is empty</h3>
         <p>You can bake about eight times more bread with the same building and the same baker. Every extra loaf costs less to make.</p>
-        <div class="fix">60–80 more store loaves a week = break-even.</div>
+        <div class="fix">About 100 more store loaves a week = break-even. About 36 after the quick fixes.</div>
       </article>
       <article class="card asset">
         <div class="tag">Customers</div>
         <h3><span class="big num">556</span>reviews, mostly 5 stars</h3>
-        <p>About 6 in 10 customers come back. Google 4.9★. 53 superfans we could ask for a video.</p>
+        <p>About 6 in 10 customers come back. Google 4.9★. 51 superfans we could ask for a video.</p>
         <div class="fix">Put them on the homepage and every listing.</div>
       </article>
       <article class="card asset">
         <div class="tag">Brand</div>
         <h3><span class="big">2</span>registered trademarks</h3>
-        <p>“JIM'S AMAZING BREAD” and the logo, registered in 2022. That's the thing you can license or sell someday.</p>
+        <p>&ldquo;JIM'S AMAZING BREAD&rdquo; and the logo, registered in 2022. That's the thing you can license or sell someday.</p>
         <div class="fix">Protect it, then license it with quality rules.</div>
       </article>
       <article class="card asset">
         <div class="tag">Price room</div>
-        <h3><span class="big num">$3–6</span>a loaf of headroom</h3>
-        <p>Online rivals charge $14.67–16.50. You charge $9.58–12.75 for a bigger 2 lb loaf.</p>
+        <h3><span class="big num">$3 to $6</span>a loaf of headroom</h3>
+        <p>Online rivals charge $14.67 to $16.50. You charge $9.58 to $12.75 for a bigger 2 lb loaf.</p>
         <div class="fix">A small first raise is safe.</div>
       </article>
       <article class="card asset">
@@ -387,25 +382,25 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
       <article class="card asset">
         <div class="tag">Wide open</div>
         <h3><span class="big">0</span>rivals let shoppers compare bread</h3>
-        <p>Your idea. We built it: type any bread, see its label next to your six ingredients. “Gently crushed wheat” has zero mentions online. It's yours to own.</p>
+        <p>Your idea. We built it: type any bread, see its label next to your six ingredients. &ldquo;Gently crushed wheat&rdquo; has zero mentions online. It's yours to own.</p>
         <div class="fix">Launch the Bread Label Lookup.</div>
       </article>
       <article class="card asset">
         <div class="tag">Stores</div>
-        <h3><span class="big num">$3.25</span>per store loaf, no box</h3>
-        <p>A store loaf earns about what a nearby online loaf does, with no label, no box and no re-send.</p>
+        <h3><span class="big num">+$900 to $1,900</span>a month for every 100 store loaves</h3>
+        <p>That's for each extra 100 store loaves a week (estimate). A store loaf needs no label, no box and no re-send.</p>
         <div class="fix">Store orders are the engine.</div>
       </article>
       <article class="card asset">
         <div class="tag">Seasonal</div>
         <h3><span class="big num">12,000</span>Christkindl pieces</h3>
-        <p>Double last year, plus Cincinnati. At a guessed $2.50 a piece, about $9K more this season.</p>
+        <p>Double last year, plus Cincinnati. This one season could bring about $15,000 of profit in November and December (estimate). That roughly covers a year of losses.</p>
         <div class="fix">Use the markets to collect emails.</div>
       </article>
       <article class="card asset">
         <div class="tag">Real story</div>
         <h3><span class="big">6</span>ingredients you can count</h3>
-        <p>Wheat crushed on a patented machine in Fort Recovery, Ohio. People are angry at long labels. Yours is short.</p>
+        <p>Wheat crushed on a patented machine in Fort Recovery, Ohio. People are tired of long labels. Yours is short.</p>
         <div class="fix">Lead every page with it.</div>
       </article>
     </div>
@@ -417,24 +412,25 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
   <div class="wrap">
     <div class="eyebrow"><b>5</b>What to do first</div>
     <h2>Start top-left. <span class="hl">Big money with little work.</span></h2>
-    <p class="lede">Every fix, sorted by how much it helps and how hard it is. Monthly dollar estimates in yellow.</p>
+    <p class="lede">Every fix, sorted by how much it helps and how hard it is. Monthly dollar estimates in yellow. They could be off 30 to 50% until your real numbers come in.</p>
     <div class="matrix">
       <div class="yax">Impact ↑</div>
       <div class="quads">
         <div class="quad win">
           <h3>Quick wins <small>High impact · low effort</small></h3>
           <div class="chips num">
-            <span class="chip">Pull “Gluten Free” + medical claims</span>
-            <span class="chip">Price rise: retail +5–8%, wholesale $7<em>+$660</em></span>
-            <span class="chip">Free shipping at $60+ only<em>+$385</em></span>
-            <span class="chip">Amazon: 6- and 12-packs only<em>+$190</em></span>
-            <span class="chip">“21 days” → “7–8 days”</span>
+            <span class="chip">Take the gluten claim + health claims off</span>
+            <span class="chip">$7.99 shipping under $60, free at $60+<em>+$810</em></span>
+            <span class="chip">Price rise: retail +5 to 8%, wholesale $7<em>+$440</em></span>
+            <span class="chip">Amazon: 6- and 12-packs only</span>
+            <span class="chip">&ldquo;21 days&rdquo; → &ldquo;7 to 8 days&rdquo;</span>
+            <span class="chip">Insurance + a bookkeeper<em>costs about $350</em></span>
           </div>
         </div>
         <div class="quad bet">
           <h3>Big bets <small>High impact · more effort</small></h3>
           <div class="chips num">
-            <span class="chip">+200 store loaves a week<em>+$2.6–3.3K</em></span>
+            <span class="chip">Every +100 store loaves a week<em>+$900 to $1.9K</em></span>
             <span class="chip">Store-ready kit (barcodes, label, insurance, sell sheet)</span>
             <span class="chip">Real books you can sell on</span>
             <span class="chip">License the brand to a regional baker</span>
@@ -444,16 +440,16 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
           <h3>Easy extras <small>Smaller impact · low effort</small></h3>
           <div class="chips num">
             <span class="chip">Fix the Google pin + duplicate</span>
-            <span class="chip">Turn subscriptions back on<em>+$110–1K</em></span>
+            <span class="chip">Subscriptions back on, online back to 55 orders a week<em>+$560</em></span>
             <span class="chip">Launch the Bread Label Lookup</span>
-            <span class="chip">Compare carriers on every box<em>+$35</em></span>
+            <span class="chip">Compare carriers on every box</span>
           </div>
         </div>
         <div class="quad">
           <h3>Later <small>Smaller impact today · more effort</small></h3>
           <div class="chips num">
             <span class="chip">New homepage</span>
-            <span class="chip">Referral program<em>+$65</em></span>
+            <span class="chip">Referral program</span>
             <span class="chip">Big chains (Fresh Thyme, Kroger)</span>
             <span class="chip">Shipping far away, at scale</span>
           </div>
@@ -468,61 +464,62 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
 <section id="plan">
   <div class="wrap">
     <div class="eyebrow"><b>6</b>The plan</div>
-    <h2>Twelve months <span class="hl">to the beach.</span></h2>
-    <div class="key"><span>✨ Done by AI, checked by us</span><span>Monthly profit targets are estimates</span></div>
+    <h2>Five stops <span class="hl">to the beach.</span></h2>
+    <div class="key"><span>Each stop is a monthly result (estimate), not a promise</span><span>Store loaves are counted per week</span></div>
     <div class="tl-scroll" tabindex="0" aria-label="Timeline, scroll sideways">
       <div class="tl num">
         <div class="stop">
           <div class="dot">Now</div>
           <h3>Today</h3>
-          <span class="goal">−$1,000 / month</span>
+          <span class="goal">−$1,000 to $1,700 / month</span>
           <ul>
-            <li class="ai">Rewrite every Amazon listing without “Gluten Free” or medical claims</li>
-            <li class="ai">Swap “21 days” for “7–8 days, freezes 6 months” everywhere</li>
-            <li class="ai">Move the Google pin, merge the duplicate</li>
-            <li>Send us ShipStation + bank statements so the numbers become real</li>
+            <li>Take the gluten claim and health claims off every listing</li>
+            <li>Swap &ldquo;21 days&rdquo; for &ldquo;7 to 8 days, freezes about 6 months&rdquo; everywhere</li>
+            <li>Move the Google pin, merge the duplicate</li>
+            <li>Get three insurance quotes</li>
+            <li>Pull the ShipStation export and bank statements so the numbers become real</li>
           </ul>
         </div>
         <div class="stop">
           <div class="dot">1</div>
-          <h3>Month 1</h3>
-          <span class="goal">≈ break-even (+$270)</span>
+          <h3>Quick fixes</h3>
+          <span class="goal">≈ −$700 / month</span>
           <ul>
-            <li class="ai">Free shipping at $60+, Amazon down to 6- and 12-packs</li>
+            <li>$7.99 shipping under $60, free at $60+</li>
+            <li>Amazon down to 6- and 12-packs</li>
             <li>First price rise since 2018. $7 wholesale tested with one store</li>
             <li>Separate business account, simple monthly books</li>
-            <li class="ai">Subscriptions back on, with welcome emails</li>
+          </ul>
+        </div>
+        <div class="stop">
+          <div class="dot">2</div>
+          <h3>Break-even</h3>
+          <span class="goal">$0 · about 36 to 100 more store loaves</span>
+          <ul>
+            <li>Store-ready kit: sell sheet, label, barcodes, case specs</li>
+            <li>Ask your 50 to 60 current stores to take more</li>
+            <li>Subscriptions back on, with welcome emails</li>
+            <li>Review asks and reorder reminders run on their own</li>
           </ul>
         </div>
         <div class="stop">
           <div class="dot">3</div>
-          <h3>Month 3</h3>
-          <span class="goal">≈ +$1,500 / month</span>
+          <h3>+$5K a month</h3>
+          <span class="goal">about 300 more store loaves</span>
           <ul>
-            <li class="ai">Store-ready kit: sell sheet, label, barcodes, case specs</li>
-            <li>+100 store loaves a week from buyers you already have</li>
-            <li class="ai">Bread Label Lookup live on your site</li>
-            <li class="ai">Review asks and reorder reminders run on their own</li>
+            <li>About three more Dayton-sized accounts</li>
+            <li>Co-ops, independent grocers and restaurants along the Indy to Dayton route</li>
+            <li>New homepage: six ingredients, reviews up front</li>
+            <li>Wheat terms with Fort Recovery in writing</li>
           </ul>
         </div>
         <div class="stop">
-          <div class="dot">6</div>
-          <h3>Month 6</h3>
-          <span class="goal">≈ +$3,500 / month</span>
+          <div class="dot">4</div>
+          <h3>+$10K a month</h3>
+          <span class="goal">about 570 more store loaves</span>
           <ul>
-            <li>+200 store loaves a week (two more Dayton-sized stores)</li>
-            <li>Pitch 1–2 nearby co-ops and independent grocers</li>
-            <li class="ai">New homepage: six ingredients, reviews up front</li>
-            <li>Written agreement with your wheat supplier</li>
-          </ul>
-        </div>
-        <div class="stop">
-          <div class="dot">12</div>
-          <h3>Month 12</h3>
-          <span class="goal">≈ +$8,700 / month</span>
-          <ul>
-            <li>+500 store loaves a week. The oven is finally busy</li>
-            <li class="ai">Roman runs the bake from a written playbook</li>
+            <li>The oven is busy, and still under 30% full</li>
+            <li>Roman runs the bake from a written playbook</li>
             <li>Clean books: a business someone can buy</li>
             <li>First talks with a regional baker about licensing</li>
           </ul>
@@ -536,69 +533,38 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--lemon);outline-offs
       </div>
     </div>
     <p class="hint">Scroll sideways on smaller screens →</p>
+    <p class="note">How fast you move depends on how many hands you have. The whole list is roughly 300 to 530 hours of work (estimate), on top of baking, packing and shipping.</p>
   </div>
 </section>
 
 <!-- 7 -->
-<section id="offers">
+<section id="yours">
   <div class="wrap">
-    <div class="eyebrow"><b>7</b>Working together</div>
-    <h2>Three ways <span class="hl">we can do this.</span></h2>
-    <div class="offers num">
-      <article class="offer">
-        <div class="name">Starter</div>
-        <h3>Stop the Leak</h3>
-        <div class="price">$4,997<small>30 days, one time</small></div>
-        <ul>
-          <li>Every claim, tag and “21 days” fixed</li>
-          <li>Shipping and price fixes set up</li>
-          <li>Google listing cleaned up</li>
-          <li>Your real numbers, from your own data</li>
-        </ul>
-        <div class="promise">We find you $10K a year, or we keep working free until we do.</div>
-      </article>
-      <article class="offer ask">
-        <span class="ribbon">What you asked for</span>
-        <div class="name">Partner</div>
-        <h3>Grow It Together</h3>
-        <div class="price">$7,497 + $1,497/mo<small>plus a share of the growth we create</small></div>
-        <ul>
-          <li>Everything in Growth, at a lower cash price</li>
-          <li>A share of the growth we create, written with your attorney</li>
-          <li>Profit bonuses at $5K, $10K and $20K a month</li>
-          <li>Pays on a sale, a license, a family handoff, or a year-5 valuation, with a buyout option</li>
-        </ul>
-        <div class="promise">We only win big when you do.</div>
-      </article>
-      <article class="offer">
-        <div class="name">Growth</div>
-        <h3>Rebuild the Brand</h3>
-        <div class="price">$14,997 + $2,997/mo<small>no share of the business</small></div>
-        <ul>
-          <li>Everything in Starter</li>
-          <li>New homepage + Bread Label Lookup</li>
-          <li>Amazon rebuilt, subscriptions and emails running</li>
-          <li>Store-ready kit and pitches to new stores</li>
-        </ul>
-        <div class="promise">You keep 100% of the upside.</div>
-      </article>
+    <div class="eyebrow"><b>7</b>It's yours</div>
+    <h2>Everything here is yours. <span class="hl">Your team can run with it.</span></h2>
+    <p class="lede">Every fix, number and checklist on these screens is in your kit, written so anyone on your team can pick it up.</p>
+    <div class="yours">
+      <ol>
+        <li><i>Start here</i><b>Clean up the claims</b><span>The gluten claim, the health claims and &ldquo;21 days.&rdquo; About a week, and it protects everything else.</span></li>
+        <li><i>Then</i><b>Fix shipping and price</b><span>Decisions, not projects. The quickest money on this page.</span></li>
+        <li><i>Then</i><b>Fill the oven</b><span>Ask the stores you already have. That's the road to break-even and past it.</span></li>
+      </ol>
     </div>
-    <p class="lede" style="margin-top:28px"><span class="hl">Your $797 audit is credited to whichever you choose.</span></p>
-    <p class="note">Your Starter fee counts toward Growth or Partner if you upgrade within 45 days. Draft terms; an Indiana attorney writes the final agreement.</p>
+    <p class="note">Your bank statements and ShipStation export will sharpen every number here.</p>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <span class="draft">Rough draft · numbers are estimates</span>
-    <span>Built from Jim's own Oct 27 numbers and public 2026 shipping and fee rates (±30–50%). Real ShipStation and bank data will replace them.</span>
-    <span>Prepared by 2 Guys and a Genie · October 30, 2026</span>
+    <span class="draft">Numbers are estimates</span>
+    <span>Built from Jim's own Oct 27 and Oct 29 answers and public 2026 shipping and fee rates. They could be off 30 to 50%. Real ShipStation and bank data will replace them.</span>
+    <span>Prepared by 2 Guys and a Genie · November 2026</span>
   </div>
 </footer>
 
 <script>
 (function(){
-  var ids=["top","built","today","holes","hidden","matrix","plan","offers"];
+  var ids=["top","built","today","holes","hidden","matrix","plan","yours"];
   var links=document.querySelectorAll(".bar nav a");
   function current(){
     var y=window.scrollY+window.innerHeight*0.35, idx=0;
