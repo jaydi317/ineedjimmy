@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Bruce Barker Band · Pick a Look</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=DM+Sans:wght@400;700;800&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0b0720;--pink:#ff3fa4;--cyan:#3ff3ff;--lime:#a6ff4d;--gold:#ffd54a;--paper:#f6f1ff;--mute:#b7acd9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(90% 60% at 50% 0%,#3a1371,transparent 70%),var(--ink);color:var(--paper);font-family:"DM Sans",system-ui,sans-serif;min-height:100vh}
+.wrap{width:min(1100px,100% - 32px);margin:auto;padding:70px 0 60px}
+.k{font-family:VT323;font-size:22px;letter-spacing:.18em;color:var(--cyan)}
+h1{font-family:Righteous;font-weight:400;font-size:clamp(44px,8vw,96px);line-height:.92;margin:.15em 0 .25em}
+h1 span{font-family:"Permanent Marker";color:var(--lime);font-size:.55em;display:block;transform:rotate(-3deg);margin-bottom:.1em}
+p.l{font-size:clamp(17px,1.8vw,20px);color:#ddd5f5;max-width:640px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+a.c{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:24px;overflow:hidden;background:#140a37;border:1px solid #ffffff1c;transition:.3s}
+a.c:hover{transform:translateY(-6px);box-shadow:0 0 0 2px var(--x),0 20px 50px #0008}
+.sw{height:180px;position:relative}
+.c1 .sw{background:linear-gradient(180deg,#140b45,#7a1c78 70%,#0b0720 70%);}
+.c1 .sw::before{content:"";position:absolute;left:50%;top:22%;width:120px;height:120px;transform:translateX(-50%);border-radius:50%;background:linear-gradient(#ffe36b,#ff2f8f)}
+.c1 .sw::after{content:"BAND";position:absolute;inset:auto 0 18% 0;text-align:center;font-family:Righteous;font-size:58px;color:transparent;-webkit-text-stroke:2px #cffcff;text-shadow:0 0 14px var(--cyan),0 0 30px var(--pink)}
+.c2 .sw{background:repeating-linear-gradient(0deg,#f4ead5 0 26px,#eadcc0 26px 27px)}
+.c2 .sw::before{content:"";position:absolute;left:50%;top:50%;width:200px;height:120px;transform:translate(-50%,-50%) rotate(-6deg);border-radius:12px;background:#1a1a1a;box-shadow:0 12px 24px #0006}
+.c2 .sw::after{content:"A";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-6deg);width:170px;height:40px;margin-top:-22px;background:linear-gradient(90deg,#ff3fa4,#ffb23e,#a6ff4d,#3ff3ff);border-radius:4px;font:800 20px/40px "DM Sans";color:#111;text-align:left;padding-left:10px}
+.c3 .sw{background:#11163a;background-image:radial-gradient(#ffffff14 1px,transparent 1px);background-size:6px 6px}
+.c3 .sw::after{content:"CLASS OF '87";position:absolute;inset:0;display:grid;place-items:center;font-family:Righteous;font-size:34px;color:#ffcc3d;letter-spacing:.06em}
+.tx{padding:20px 20px 24px}
+.tx b{font-family:VT323;font-size:20px;letter-spacing:.14em;color:var(--x)}
+.tx h2{font-family:Righteous;font-weight:400;font-size:28px;margin:.1em 0 .3em}
+.tx p{color:#cfc5ee;font-size:15px}
+.note{margin-top:40px;padding:18px 20px;border-radius:18px;border:1px dashed #ffffff33;color:var(--mute);font-size:15px}
+.note a{color:var(--lime)}
+@media(max-width:860px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="k">DRAFT · FOR BRUCE &amp; NATALIE</div>
+  <h1><span>The Bruce Barker</span>Band: pick a look</h1>
+  <p class="l">Three directions for the band's new website. Same band, same facts, three different feels. Click through each one, then tell us what you love, what you'd cut, and what's missing.</p>
+  <div class="grid">
+    <a class="c c1" href="a/" style="--x:#ff3fa4"><div class="sw"></div><div class="tx"><b>LOOK A</b><h2>Neon Sticker</h2><p>Your sticker, come to life: synthwave sun, neon BAND, the Bruce-Box jukebox, and tap-the-wig rock mode.</p></div></a>
+    <a class="c c2" href="b/" style="--x:#ffb23e"><div class="sw"></div><div class="tx"><b>LOOK B</b><h2>Side A / Side B</h2><p>Natalie's mixtape idea. The band is Side A; flip the tape for Bruce the Piano Man on Side B.</p></div></a>
+    <a class="c c3" href="c/" style="--x:#ffcc3d"><div class="sw"></div><div class="tx"><b>LOOK C</b><h2>The Reunion</h2><p>Booking-first, for whoever plans the Class of '87 or '97 reunion. A yearbook of the band.</p></div></a>
+  </div>
+  <p class="note">Mockups only: forms don't send anything yet. Bruce's solo page lives at <a href="/bruce/">ineedjimmy.com/bruce</a>. Made with love by Jimmy Davis.</p>
+</div>
+</body>
+</html>

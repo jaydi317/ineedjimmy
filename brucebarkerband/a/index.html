@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>The Bruce Barker Band · Time travel through the 80s &amp; 90s</title>
+<meta name="description" content="The Bruce Barker Band: eight friends, two decades, one very loud night. 80s and 90s reunions, parties and festivals across Indiana.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Righteous&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=VT323&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0720; --night:#120a36; --violet:#2a1468; --plum:#4b1670;
+  --pink:#ff3fa4; --pink-soft:#ff7cc4; --cyan:#3ff3ff; --lime:#a6ff4d; --sun:#ffb23e; --sun2:#ff5e7a; --gold:#ffd54a;
+  --paper:#f6f1ff; --mute:#b7acd9;
+  --glow-pink:0 0 6px #ff3fa4,0 0 18px #ff3fa4,0 0 42px rgba(255,63,164,.65);
+  --glow-cyan:0 0 6px #3ff3ff,0 0 18px #3ff3ff,0 0 42px rgba(63,243,255,.55);
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:"DM Sans",system-ui,sans-serif;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{width:min(1180px,100% - 32px);margin-inline:auto}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.08;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.scan{position:fixed;inset:0;pointer-events:none;z-index:89;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px);opacity:.35}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,3vw,32px);background:linear-gradient(180deg,rgba(11,7,32,.85),rgba(11,7,32,0));backdrop-filter:blur(2px)}
+.nav .mark{font-family:"Permanent Marker";color:var(--lime);font-size:18px;text-decoration:none;letter-spacing:.5px;text-shadow:0 0 12px rgba(166,255,77,.5)}
+.nav .mark b{font-family:Righteous;color:transparent;-webkit-text-stroke:1px var(--cyan);font-weight:400;margin-left:4px;text-shadow:var(--glow-cyan)}
+.nav .links{display:flex;gap:6px}
+.nav .links a{font-size:13px;font-weight:700;text-decoration:none;padding:9px 14px;border-radius:99px;color:var(--paper);opacity:.85}
+.nav .links a:hover{opacity:1;background:rgba(255,255,255,.07)}
+.nav .links a.cta{background:var(--pink);opacity:1;box-shadow:0 0 22px rgba(255,63,164,.55)}
+@media(max-width:720px){.nav .links a:not(.cta){display:none}}
+
+/* ---------- HERO (the sticker, come to life) ---------- */
+.hero{position:relative;min-height:100svh;overflow:hidden;display:grid;place-items:center;isolation:isolate;padding:110px 0 0}
+.sky{position:absolute;inset:0;z-index:-5;background:
+  radial-gradient(120% 70% at 50% 60%,#ff4f9a33 0%,transparent 55%),
+  linear-gradient(180deg,#07051a 0%,#140b45 32%,#3a1371 58%,#7a1c78 70%,#20093d 70.2%,#0b0720 100%)}
+.stars{position:absolute;inset:0 0 35% 0;z-index:-4;background-image:
+  radial-gradient(1.5px 1.5px at 12% 22%,#fff,transparent),radial-gradient(1px 1px at 28% 12%,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 44% 30%,#ffd5f0,transparent),radial-gradient(1px 1px at 62% 8%,#fff,transparent),
+  radial-gradient(1.5px 1.5px at 78% 26%,#c9f9ff,transparent),radial-gradient(1px 1px at 90% 14%,#fff,transparent),
+  radial-gradient(1px 1px at 6% 40%,#fff,transparent),radial-gradient(1px 1px at 52% 18%,#fff,transparent),
+  radial-gradient(1.2px 1.2px at 35% 44%,#fff,transparent),radial-gradient(1px 1px at 70% 40%,#fff,transparent);animation:twinkle 5s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.55}}
+.sun{position:absolute;z-index:-3;left:50%;top:64%;width:min(74vw,640px);aspect-ratio:1;transform:translate(-50%,-62%);border-radius:50%;
+  background:linear-gradient(180deg,#ffe36b 0%,#ffb23e 30%,#ff6a6a 62%,#ff2f8f 100%);
+  -webkit-mask:linear-gradient(180deg,#000 0 46%,transparent 46% 49%,#000 49% 58%,transparent 58% 62%,#000 62% 70%,transparent 70% 75.5%,#000 75.5% 82%,transparent 82% 88%,#000 88% 92%,transparent 92%);
+          mask:linear-gradient(180deg,#000 0 46%,transparent 46% 49%,#000 49% 58%,transparent 58% 62%,#000 62% 70%,transparent 70% 75.5%,#000 75.5% 82%,transparent 82% 88%,#000 88% 92%,transparent 92%);
+  filter:drop-shadow(0 0 60px rgba(255,94,122,.55))}
+.palm{position:absolute;bottom:30%;z-index:-2;width:clamp(150px,22vw,300px);fill:#0b0720;opacity:.95}
+.palm.l{left:-2%}.palm.r{right:-2%;transform:scaleX(-1)}
+.floor{position:absolute;left:-50%;right:-50%;bottom:0;height:30%;z-index:-2;perspective:320px;overflow:hidden}
+.floor::before{content:"";position:absolute;inset:-100% 0 0;transform:rotateX(62deg);transform-origin:50% 100%;
+  background-image:linear-gradient(rgba(255,63,164,.9) 2px,transparent 2px),linear-gradient(90deg,rgba(63,243,255,.75) 2px,transparent 2px);
+  background-size:70px 70px;animation:grid 1.6s linear infinite;mask:linear-gradient(180deg,transparent,#000 35%)}
+@keyframes grid{to{background-position:0 70px}}
+.floor::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#7a1c78 0%,transparent 30%);mix-blend-mode:screen;opacity:.5}
+
+.title{position:relative;text-align:center;padding:0 16px;margin-top:-6vh}
+.the{font-family:"Permanent Marker";color:var(--lime);font-size:clamp(34px,7.2vw,92px);line-height:.9;transform:rotate(-4deg);display:inline-block;
+  text-shadow:0 3px 0 #2a6a00,0 0 18px rgba(166,255,77,.6),0 0 46px rgba(166,255,77,.35);letter-spacing:1px}
+.band{display:block;font-family:Righteous;font-size:clamp(96px,23vw,300px);line-height:.8;letter-spacing:.02em;margin-top:.04em;
+  color:transparent;-webkit-text-stroke:clamp(2px,.55vw,6px) #cffcff;
+  text-shadow:0 0 4px var(--cyan),0 0 14px var(--cyan),0 0 34px var(--pink),0 0 80px rgba(255,63,164,.7);
+  animation:flicker 4.5s infinite}
+@keyframes flicker{0%,18%,22%,62%,64%,100%{opacity:1}20%,63%{opacity:.55}}
+.pill{display:inline-flex;align-items:center;gap:10px;margin-top:clamp(14px,2.4vw,26px);padding:12px clamp(16px,3vw,30px);border-radius:16px;border:2.5px solid var(--pink-soft);
+  font-weight:700;font-size:clamp(15px,2.1vw,23px);letter-spacing:.02em;background:rgba(11,7,32,.72);
+  box-shadow:var(--glow-pink),inset 0 0 18px rgba(255,63,164,.35)}
+.reflect{position:absolute;left:0;right:0;bottom:3%;text-align:center;font-family:Righteous;font-size:clamp(40px,10vw,130px);color:transparent;-webkit-text-stroke:1px rgba(63,243,255,.35);transform:scaleY(-1);opacity:.28;filter:blur(1px);pointer-events:none;
+  mask:linear-gradient(0deg,#000,transparent 80%)}
+
+/* neon instruments */
+.inst{position:absolute;z-index:-1;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:3}
+.inst.keys{left:max(2vw,8px);bottom:31%;width:clamp(110px,18vw,250px);stroke:#ff9a3e;filter:drop-shadow(0 0 6px #ff9a3e) drop-shadow(0 0 16px #ff6a2a)}
+.inst.guitar{right:max(2vw,8px);bottom:30%;width:clamp(90px,14vw,190px);stroke:var(--gold);filter:drop-shadow(0 0 6px var(--gold)) drop-shadow(0 0 16px #ffae00)}
+.inst.drum{left:50%;bottom:16%;transform:translateX(-50%);width:clamp(120px,15vw,200px);stroke:var(--cyan);filter:drop-shadow(0 0 6px var(--cyan)) drop-shadow(0 0 18px #00c8ff)}
+@media(max-width:640px){.inst.keys,.inst.guitar{opacity:.55}.inst.drum{bottom:9%}}
+
+.sticker{position:absolute;right:clamp(10px,4vw,60px);top:clamp(86px,15vh,140px);width:clamp(96px,13vw,170px);border-radius:50%;border:6px solid #fff;transform:rotate(11deg);
+  box-shadow:0 14px 30px rgba(0,0,0,.55);animation:bob 6s ease-in-out infinite}
+.sticker img{border-radius:50%;aspect-ratio:1;object-fit:cover}
+.sticker::after{content:"";position:absolute;inset:0;border-radius:50%;background:linear-gradient(115deg,transparent 38%,rgba(255,255,255,.45) 48%,transparent 58%);mix-blend-mode:screen}
+@keyframes bob{50%{transform:rotate(7deg) translateY(-8px)}}
+@media(max-width:640px){.sticker{top:auto;bottom:40%;right:12px}}
+
+.scrollcue{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);font-family:VT323;font-size:18px;letter-spacing:.2em;color:var(--mute);opacity:.8}
+
+/* ---------- MARQUEE ---------- */
+.marquee{border-block:2px solid #ff3fa455;background:#0e0828;overflow:hidden;position:relative}
+.marquee .track{display:flex;gap:42px;white-space:nowrap;padding:16px 0;animation:mq 38s linear infinite;width:max-content}
+.marquee span{font-family:Righteous;font-size:clamp(18px,2.4vw,26px);letter-spacing:.04em;color:var(--paper)}
+.marquee span i{font-style:normal;color:var(--pink);margin-left:42px;text-shadow:var(--glow-pink)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- SECTIONS ---------- */
+section{position:relative;padding:clamp(72px,10vw,130px) 0}
+.eyebrow{font-family:VT323;font-size:22px;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);text-shadow:0 0 10px rgba(63,243,255,.6)}
+h2{font-family:Righteous;font-weight:400;font-size:clamp(40px,6.4vw,86px);line-height:.95;letter-spacing:-.005em;margin:.18em 0 .3em}
+h2 .neon{color:transparent;-webkit-text-stroke:2px #ffd1ea;text-shadow:var(--glow-pink)}
+h2 .script{font-family:"Permanent Marker";color:var(--lime);font-size:.62em;display:inline-block;transform:rotate(-4deg);text-shadow:0 0 18px rgba(166,255,77,.45)}
+.lede{font-size:clamp(17px,1.6vw,20px);color:#ddd5f5;max-width:640px}
+
+/* next show ticket */
+.ticketwrap{margin-top:-70px;position:relative;z-index:5}
+.ticket{display:grid;grid-template-columns:1.25fr 1fr;border-radius:26px;overflow:hidden;background:linear-gradient(135deg,#1b0f4d,#2a0f4f);border:1.5px solid #ffffff1c;
+  box-shadow:0 40px 80px rgba(0,0,0,.55),0 0 0 1px #ff3fa430,0 0 60px rgba(255,63,164,.18)}
+.ticket .l{padding:clamp(24px,4vw,46px);position:relative}
+.ticket .r{position:relative;min-height:260px;background:url(../img/flyer-returning-this-season-fountain-park.jpg) 50% 4%/cover}
+.ticket .r::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#220e4e 0%,rgba(34,14,78,.15) 40%,transparent)}
+.ticket .r::after{content:"";position:absolute;left:-14px;top:0;bottom:0;width:28px;background:radial-gradient(circle at 50% 14px,var(--ink) 9px,transparent 10px) 0 0/28px 28px repeat-y}
+.when{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:6px 0 10px}
+.when .d{font-family:Righteous;font-size:clamp(56px,8vw,104px);line-height:.85;color:var(--gold);text-shadow:0 0 24px rgba(255,213,74,.45)}
+.when .m{font-family:VT323;font-size:28px;letter-spacing:.12em;color:var(--pink-soft)}
+.where{font-size:clamp(20px,2.2vw,26px);font-weight:800}
+.why{margin-top:10px;color:#cfc5ee;max-width:520px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{appearance:none;border:0;cursor:pointer;font:800 15px/1 "DM Sans";padding:16px 22px;border-radius:999px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.pink{background:var(--pink);color:#fff;box-shadow:0 10px 30px rgba(255,63,164,.45)}
+.btn.ghost{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 2px #ffffff40}
+.btn.lime{background:var(--lime);color:#14200a;box-shadow:0 10px 30px rgba(166,255,77,.35)}
+@media(max-width:820px){.ticket{grid-template-columns:1fr}.ticket .r{min-height:230px;order:-1}.ticket .r::before{background:linear-gradient(0deg,#1b0f4d,transparent 60%)}.ticket .r::after{display:none}}
+
+/* hammers / pitch */
+.pitch{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
+.quote{font-family:"Permanent Marker";font-size:clamp(26px,3.4vw,44px);line-height:1.15;color:#fff;transform:rotate(-1.5deg)}
+.quote em{font-style:normal;color:var(--pink);text-shadow:var(--glow-pink)}
+.quote + .by{margin-top:18px;font-family:VT323;font-size:22px;letter-spacing:.14em;color:var(--mute)}
+.cartoon{position:relative;border-radius:28px;overflow:hidden;transform:rotate(2.5deg);box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 8px #fff,0 0 0 9px #0002}
+.cartoon img{aspect-ratio:4/5;object-fit:cover;width:100%}
+.cartoon .tag{position:absolute;left:14px;bottom:14px;background:var(--lime);color:#111;font:800 13px "DM Sans";padding:8px 12px;border-radius:10px;transform:rotate(-3deg)}
+.sets{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:34px}
+.set{border-radius:20px;padding:22px;background:linear-gradient(160deg,#21104f,#160a3a);border:1px solid #ffffff1a;position:relative;overflow:hidden}
+.set::before{content:attr(data-big);position:absolute;right:-6px;bottom:-26px;font-family:Righteous;font-size:120px;line-height:1;color:transparent;-webkit-text-stroke:1.5px #ffffff14}
+.set h3{font-family:Righteous;font-weight:400;font-size:28px}
+.set p{color:#cfc5ee;font-size:15px}
+.set .n{font-family:VT323;font-size:22px;color:var(--cyan);letter-spacing:.1em}
+@media(max-width:860px){.pitch{grid-template-columns:1fr}.cartoon{max-width:420px;margin:auto}}
+
+/* jukebox */
+.juke{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(24px,4vw,56px);align-items:center}
+.box{position:relative;border-radius:200px 200px 28px 28px;padding:56px 22px 26px;background:
+  linear-gradient(180deg,#3a1676,#1c0b45);border:3px solid #ffb23e;box-shadow:0 0 0 6px #2a0f55,0 0 0 8px #ff3fa4,0 0 50px rgba(255,63,164,.4),inset 0 0 40px rgba(255,178,62,.25)}
+.box::before{content:"";position:absolute;left:50%;top:16px;width:58%;height:60px;transform:translateX(-50%);border-radius:60px 60px 0 0;
+  background:repeating-linear-gradient(90deg,#ff3fa4 0 10px,#ffb23e 10px 20px,#3ff3ff 20px 30px);opacity:.85;filter:blur(.3px);animation:hue 6s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.box h3{font-family:Righteous;font-weight:400;text-align:center;font-size:26px;margin:14px 0 4px}
+.box .sub{text-align:center;font-family:VT323;color:var(--gold);font-size:20px;letter-spacing:.14em}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.pick{all:unset;cursor:pointer;display:flex;gap:10px;align-items:center;padding:12px;border-radius:12px;background:#0c0626;border:1.5px solid #ffffff1f;font-weight:700;font-size:14px;line-height:1.2;transition:.2s}
+.pick b{font-family:VT323;font-size:22px;color:var(--pink);min-width:30px}
+.pick:hover,.pick[aria-pressed=true]{border-color:var(--cyan);box-shadow:0 0 16px rgba(63,243,255,.4);background:#130a3a}
+.pick:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.screen{position:relative;border-radius:22px;overflow:hidden;background:#000;aspect-ratio:16/9;box-shadow:0 0 0 2px #ffffff22,0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(63,243,255,.15)}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.screen .poster{position:absolute;inset:0;display:grid;place-items:center;background:url(../img/bruce-silhouette-crowd.jpg) center/cover;cursor:pointer}
+.screen .poster::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,transparent,#0008)}
+.screen .play{position:relative;z-index:2;width:86px;height:86px;border-radius:50%;background:var(--pink);display:grid;place-items:center;box-shadow:var(--glow-pink)}
+.screen .play::before{content:"";border-left:26px solid #fff;border-top:16px solid transparent;border-bottom:16px solid transparent;margin-left:6px}
+.nowp{margin-top:14px;font-family:VT323;font-size:22px;letter-spacing:.1em;color:var(--cyan)}
+@media(max-width:860px){.juke{grid-template-columns:1fr}.box{order:2}}
+
+/* giants */
+.giants .head{display:grid;grid-template-columns:1fr auto;align-items:end;gap:20px}
+.giants .head p.lede{max-width:560px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.card{position:relative;border-radius:22px;overflow:hidden;background:#140a37;border:1px solid #ffffff1a;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+.card:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:0 24px 50px rgba(0,0,0,.5),0 0 0 2px var(--c,var(--pink)),0 0 34px color-mix(in srgb,var(--c,var(--pink)) 45%,transparent)}
+.card .ph{position:relative;aspect-ratio:4/5;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.04);transition:transform .6s}
+.card:hover .ph img{transform:scale(1.05)}
+.card .ph img[src*="gary"]{object-position:22% 30%}
+.card .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#140a37 98%)}
+.card .role{position:absolute;left:12px;top:12px;z-index:2;font:800 11px/1 "DM Sans";letter-spacing:.14em;text-transform:uppercase;padding:7px 10px;border-radius:99px;background:#0b0720cc;border:1.5px solid var(--c,var(--pink));color:#fff}
+.card .tx{padding:4px 18px 20px;margin-top:-34px;position:relative;z-index:2}
+.card h3{font-family:Righteous;font-weight:400;font-size:26px;line-height:1}
+.card blockquote{margin-top:10px;font-size:14.5px;color:#d8cff3;line-height:1.5}
+.card blockquote::before{content:"“";font-family:Righteous;color:var(--c,var(--pink));font-size:34px;line-height:0;vertical-align:-12px;margin-right:2px}
+.card.nophoto .ph{display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#3a1676,#140a37)}
+.card.nophoto .ph svg{width:46%;stroke:var(--gold);fill:none;stroke-width:3;filter:drop-shadow(0 0 10px var(--gold))}
+.me{grid-column:span 4;display:grid;grid-template-columns:auto 1fr;gap:0;align-items:stretch;border-radius:26px;overflow:hidden;
+  background:linear-gradient(120deg,#3a0f4e,#1a0b45 60%);border:1.5px solid #ff3fa466;box-shadow:0 0 50px rgba(255,63,164,.18)}
+.me .ph{position:relative;width:clamp(240px,34vw,420px);cursor:pointer}
+.me .ph img.real{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.me .wig{position:absolute;left:50%;top:-6%;width:62%;transform:translate(-50%,-30%) rotate(-8deg) scale(.6);opacity:0;transition:.5s cubic-bezier(.3,1.6,.5,1);pointer-events:none;filter:drop-shadow(0 10px 20px #0008)}
+.me.rock .wig{opacity:1;transform:translate(-50%,0) rotate(-6deg) scale(1)}
+.me .hint{position:absolute;bottom:12px;left:12px;font:800 12px "DM Sans";background:var(--lime);color:#111;padding:8px 10px;border-radius:10px;letter-spacing:.04em}
+.me .tx{padding:clamp(24px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+.me .pre{font-family:"Permanent Marker";color:var(--lime);font-size:clamp(22px,2.6vw,32px);transform:rotate(-2deg);display:inline-block}
+.me h3{font-family:Righteous;font-weight:400;font-size:clamp(42px,6vw,84px);line-height:.9;margin:.1em 0 .2em}
+.me blockquote{font-size:clamp(17px,1.7vw,21px);color:#efe8ff;max-width:560px}
+.me .small{margin-top:14px;color:var(--mute);font-size:14px}
+@media(max-width:1020px){.cards{grid-template-columns:repeat(2,1fr)}.me{grid-column:span 2}}
+@media(max-width:620px){.cards{grid-template-columns:1fr 1fr;gap:12px}.card h3{font-size:20px}.card blockquote{font-size:13px}.card .tx{padding:4px 12px 14px}.me{grid-template-columns:1fr}.me .ph{width:100%;aspect-ratio:4/3}.giants .head{grid-template-columns:1fr}}
+
+/* night pie */
+.night{display:grid;grid-template-columns:auto 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.pie{width:clamp(240px,32vw,380px);aspect-ratio:1;border-radius:50%;position:relative;
+  background:conic-gradient(var(--pink) 0 40%,var(--cyan) 40% 65%,var(--lime) 65% 85%,var(--sun) 85% 100%);
+  box-shadow:0 0 0 10px #140a37,0 0 0 12px #ffffff22,0 0 80px rgba(255,63,164,.35);animation:spin 40s linear infinite}
+.pie::after{content:"";position:absolute;inset:26%;border-radius:50%;background:radial-gradient(circle,#1d0d4a,#0b0720);box-shadow:inset 0 0 20px #000}
+.pie .lbl{position:absolute;inset:0;display:grid;place-items:center;z-index:2;text-align:center;font-family:Righteous;font-size:clamp(18px,2vw,24px);line-height:1;animation:spin 40s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.legend{display:grid;gap:14px;margin-top:20px}
+.legend div{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:14px;font-size:clamp(16px,1.6vw,19px)}
+.legend b{font-family:Righteous;font-weight:400;font-size:clamp(30px,3.2vw,40px);line-height:1}
+@media(max-width:820px){.night{grid-template-columns:1fr;justify-items:center}.night>div:last-child{justify-self:stretch}}
+
+/* forms */
+.book{background:radial-gradient(100% 80% at 80% 0%,#3a1371 0%,transparent 60%),linear-gradient(180deg,#0b0720,#140a37)}
+.bookgrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,70px);align-items:start}
+.perks{display:grid;gap:14px;margin-top:26px}
+.perks div{display:flex;gap:14px;align-items:flex-start;font-size:16.5px;color:#e4dcfa}
+.perks i{flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font-weight:800;background:#ff3fa422;color:var(--pink);border:1px solid #ff3fa466}
+.textbruce{margin-top:28px;padding:18px 20px;border-radius:18px;background:#0b0720;border:1px dashed #ffffff33;font-size:15px;color:var(--mute)}
+.textbruce a{color:var(--lime);font-weight:800;text-decoration:none;font-size:22px;font-family:Righteous;letter-spacing:.03em}
+form.panel{border-radius:28px;padding:clamp(22px,3.4vw,40px);background:linear-gradient(160deg,#1d0e4c,#120836);border:1.5px solid #ffffff1f;
+  box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px #3ff3ff22,inset 0 1px 0 #ffffff14}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fld{display:grid;gap:7px;margin-bottom:14px}
+.fld label{font-size:12.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#cbbff0}
+.fld input,.fld select,.fld textarea{font:500 16px "DM Sans";color:#fff;background:#0b0720;border:1.5px solid #ffffff22;border-radius:14px;padding:14px 15px;outline:none;transition:.2s;width:100%}
+.fld textarea{min-height:96px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(63,243,255,.15)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{cursor:pointer;text-transform:none;letter-spacing:0;font-size:14px;font-weight:700;color:#fff;padding:10px 14px;border-radius:99px;border:1.5px solid #ffffff2a;background:#0b0720;transition:.2s}
+.chips input:checked+label{background:var(--pink);border-color:var(--pink);box-shadow:0 0 18px rgba(255,63,164,.5)}
+.chips input:focus-visible+label{outline:2px solid var(--lime)}
+.done{display:none;text-align:center;padding:30px 10px}
+.done h3{font-family:Righteous;font-weight:400;font-size:36px;color:var(--lime)}
+form.sent .body{display:none}form.sent .done{display:block}
+@media(max-width:860px){.bookgrid{grid-template-columns:1fr}}
+@media(max-width:480px){.f2{grid-template-columns:1fr}}
+
+/* alert */
+.alert{padding:0}
+.alertbox{position:relative;border-radius:30px;overflow:hidden;padding:clamp(28px,5vw,60px);display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;
+  background:linear-gradient(120deg,#ff3fa4 0%,#a12bd8 50%,#3d2bd8 100%);box-shadow:0 30px 80px rgba(161,43,216,.4)}
+.alertbox::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,#ffffff10 0 2px,transparent 2px 22px)}
+.alertbox h2{color:#fff;margin:0}
+.alertbox p{position:relative;font-size:18px;color:#fff;opacity:.95;max-width:460px}
+.alertbox form{position:relative;display:grid;gap:10px}
+.alertbox input{font:600 16px "DM Sans";padding:16px 18px;border-radius:14px;border:0;background:#fffffff0;color:#1a0b45;outline:none}
+.alertbox input:focus{box-shadow:0 0 0 4px #ffffff66}
+.alertbox .btn{justify-content:center;background:#0b0720;color:#fff}
+.alertbox .fine{font-size:12px;opacity:.85}
+.alertbox .done h3{color:#fff}
+@media(max-width:820px){.alertbox{grid-template-columns:1fr}}
+
+/* fund */
+.fund{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;border-radius:26px;padding:clamp(24px,4vw,44px);background:#120836;border:1.5px dashed #ffd54a66}
+.thermo{display:flex;align-items:flex-end;gap:16px}
+.tube{width:46px;height:230px;border-radius:30px;background:#0b0720;border:3px solid #fff;position:relative;overflow:hidden}
+.tube span{position:absolute;left:0;right:0;bottom:0;height:3%;background:linear-gradient(0deg,var(--sun2),var(--gold));transition:height 1.4s cubic-bezier(.2,.8,.2,1)}
+.fund.go .tube span{height:3.7%}
+.fund h3{font-family:Righteous;font-weight:400;font-size:clamp(28px,3.4vw,44px);line-height:1}
+.fund p{color:#d8cff3;margin-top:10px;max-width:560px}
+.fund .goal{font-family:VT323;font-size:22px;color:var(--gold);letter-spacing:.1em;margin-top:12px}
+@media(max-width:700px){.fund{grid-template-columns:1fr}.thermo{justify-content:center}.tube{height:160px}}
+
+/* side b */
+.sideb{display:grid;grid-template-columns:auto 1fr auto;gap:30px;align-items:center;border-radius:26px;padding:clamp(22px,3.6vw,40px);
+  background:linear-gradient(120deg,#f7e9cf,#ffd7c2);color:#1a0b45;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.sideb img{width:clamp(110px,14vw,170px);transform:rotate(-8deg);filter:drop-shadow(0 12px 18px #0005)}
+.sideb .k{font-family:VT323;font-size:22px;letter-spacing:.14em;color:#c2185b}
+.sideb h3{font-family:"Permanent Marker";font-weight:400;font-size:clamp(28px,3.6vw,46px);line-height:1}
+.sideb p{font-size:16.5px;max-width:520px}
+.sideb .btn{background:#1a0b45;color:#fff}
+@media(max-width:760px){.sideb{grid-template-columns:1fr;text-align:center;justify-items:center}}
+
+footer{padding:60px 0 40px;text-align:center;color:var(--mute);font-size:14px}
+footer .big{font-family:"Permanent Marker";color:var(--lime);font-size:26px}
+.draft{position:sticky;bottom:0;z-index:60;background:#0b0720ee;border-top:1px solid #ffffff1a;backdrop-filter:blur(8px);font-size:13px;color:#cbbff0}
+.draft .wrap{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding:10px 0}
+.draft nav{display:flex;gap:6px}
+.draft nav a{text-decoration:none;font-weight:800;padding:6px 11px;border-radius:99px;border:1px solid #ffffff2a}
+.draft nav a.on{background:var(--lime);color:#111;border-color:var(--lime)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="grain"></div><div class="scan"></div>
+
+<header class="nav">
+  <a class="mark" href="#top">The Bruce Barker<b>BAND</b></a>
+  <nav class="links">
+    <a href="#show">Next show</a><a href="#jukebox">Watch</a><a href="#giants">The band</a><a class="cta" href="#book">Book us</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" aria-label="The Bruce Barker Band">
+  <div class="sky"></div><div class="stars"></div><div class="sun"></div>
+  <svg class="palm l" viewBox="0 0 200 300" aria-hidden="true"><path d="M96 300c6-60 10-120 4-176l8-2c8 58 4 118-2 178z"/><path d="M104 124c-30-30-70-36-100-22 34-4 62 6 86 30zM104 124c-14-40-44-66-82-70 32 12 54 36 66 74zM104 124c6-40 30-70 68-80-28 16-46 44-54 82zM104 124c34-22 72-22 96-4-32-8-62 0-88 16zM104 124c-36 0-66 18-80 46 22-22 50-34 82-36z"/></svg>
+  <svg class="palm r" viewBox="0 0 200 300" aria-hidden="true"><path d="M96 300c6-60 10-120 4-176l8-2c8 58 4 118-2 178z"/><path d="M104 124c-30-30-70-36-100-22 34-4 62 6 86 30zM104 124c-14-40-44-66-82-70 32 12 54 36 66 74zM104 124c6-40 30-70 68-80-28 16-46 44-54 82zM104 124c34-22 72-22 96-4-32-8-62 0-88 16zM104 124c-36 0-66 18-80 46 22-22 50-34 82-36z"/></svg>
+  <div class="floor"></div>
+
+  <!-- neon instruments, after the sticker -->
+  <svg class="inst keys" viewBox="0 0 260 150" aria-hidden="true"><rect x="10" y="40" width="240" height="60" rx="6"/><path d="M22 70h216M40 70v30M60 70v30M80 70v30M100 70v30M120 70v30M140 70v30M160 70v30M180 70v30M200 70v30M220 70v30"/><rect x="30" y="48" width="40" height="12" rx="3"/><circle cx="200" cy="54" r="5"/><circle cx="220" cy="54" r="5"/><path d="M50 100l-20 46M210 100l20 46M60 128h140"/></svg>
+  <svg class="inst guitar" viewBox="0 0 200 260" aria-hidden="true"><path d="M150 14l-62 134"/><path d="M146 6l16 8-6 14-16-8z"/><path d="M88 148l-56 30 18 66 34-58 40 30z"/><circle cx="74" cy="196" r="6"/><path d="M96 154l12 6M90 168l12 6"/></svg>
+  <svg class="inst drum" viewBox="0 0 220 170" aria-hidden="true"><ellipse cx="110" cy="96" rx="62" ry="62"/><path d="M84 76l8-22 14 18M136 76l-8-22-14 18M90 96c6 10 14 14 20 14s14-4 20-14M100 90h.1M120 90h.1M106 104l4 4 4-4"/><path d="M40 60h40M150 40h40M60 60l-6 96M170 40l6 116M30 140l20-30M190 140l-20-30"/><ellipse cx="60" cy="58" rx="22" ry="6"/><ellipse cx="170" cy="38" rx="22" ry="6"/></svg>
+
+  <div class="sticker" aria-hidden="true"><img src="../img/band-logo-time-travel-80s-90s.jpg" alt=""></div>
+
+  <div class="title">
+    <span class="the">The Bruce Barker</span>
+    <h1 class="band" aria-label="The Bruce Barker Band">BAND</h1>
+    <div class="pill">Time travel through the 80s and 90s</div>
+  </div>
+  <div class="reflect" aria-hidden="true">BAND</div>
+  <div class="scrollcue">▼ PRESS PLAY ▼</div>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="track" id="mq"></div></div>
+
+<!-- NEXT SHOW -->
+<div class="wrap ticketwrap" id="show">
+  <article class="ticket reveal">
+    <div class="l">
+      <div class="eyebrow">Next show · full band</div>
+      <div class="when"><span class="d">DEC 12</span><span class="m">SATURDAY</span></div>
+      <div class="where">Moose Lodge · Frankfort, Indiana</div>
+      <p class="why">All of us back on stage for the first time since September, and the night raises money for the Clinton County athletic department. Time and tickets coming soon.</p>
+      <div class="btns">
+        <a class="btn pink" href="#alert">Get a Bruce Alert for this show</a>
+        <a class="btn ghost" href="#book">Book us for your night</a>
+      </div>
+    </div>
+    <div class="r" role="img" aria-label="The band together at Fountain Park"></div>
+  </article>
+</div>
+
+<!-- PITCH -->
+<section>
+  <div class="wrap pitch">
+    <div class="reveal">
+      <div class="eyebrow">What you're in for</div>
+      <p class="quote">"As much 80s and 90s as you can possibly handle, with salt and pepper and a little seasoning of the 70s. We're going to absolutely <em>throw hammers at you.</em>"</p>
+      <p class="by">Bruce Barker, bandleader</p>
+      <div class="sets">
+        <div class="set" data-big="80s"><div class="n">SIDE A · 45 SONGS</div><h3>The 80s set</h3><p>Every song that jogs the memory of your time in high school. Class of '87, we got you.</p></div>
+        <div class="set" data-big="90s"><div class="n">SIDE B · 45 SONGS</div><h3>The 90s set</h3><p>Alt-rock, pop and the dance-floor fillers. Class of '97, your reunion soundtrack is ready.</p></div>
+      </div>
+    </div>
+    <figure class="cartoon reveal"><img src="../img/bruce-cartoon-piano.jpg" alt="Painted cartoon of Bruce grinning at the piano with a cheering crowd" loading="lazy"><span class="tag">Full band mode</span></figure>
+  </div>
+</section>
+
+<!-- JUKEBOX -->
+<section id="jukebox" style="padding-top:0">
+  <div class="wrap juke">
+    <div class="box reveal">
+      <h3>The Bruce-Box</h3>
+      <div class="sub">PICK A SONG · PRESS PLAY</div>
+      <div class="picks" id="picks"></div>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Watch the band</div>
+      <h2>Don't take our word <span class="script">for it.</span></h2>
+      <div class="screen" id="screen"><div class="poster" id="poster" role="button" tabindex="0" aria-label="Play video"><span class="play"></span></div></div>
+      <div class="nowp" id="nowp">NOW SELECTED: A1 · LIVING ON A PRAYER</div>
+    </div>
+  </div>
+</section>
+
+<!-- GIANTS -->
+<section class="giants" id="giants" style="background:linear-gradient(180deg,transparent,#120836 20%,#120836 80%,transparent)">
+  <div class="wrap">
+    <div class="head reveal">
+      <div>
+        <div class="eyebrow">Meet the band, in Bruce's words</div>
+        <h2>"If I see further, it's because I stand on the <span class="neon">shoulders of giants.</span>"</h2>
+      </div>
+      <p class="lede">Bruce didn't prepare these. We asked about each person, and this is what came out. All Purdue grads except one, and he grew up rooting for Purdue anyway.</p>
+    </div>
+    <div class="cards" id="cards"></div>
+  </div>
+</section>
+
+<!-- NIGHT PIE -->
+<section>
+  <div class="wrap night">
+    <div class="pie reveal" role="img" aria-label="Pie chart: 40% music, 25% laugh out loud, 20% heart, 15% offended by a joke and getting over it"><div class="lbl">ONE<br>NIGHT</div></div>
+    <div class="reveal">
+      <div class="eyebrow">The scientific breakdown</div>
+      <h2>A night with the <span class="neon">BBB</span></h2>
+      <div class="legend">
+        <div><b style="color:var(--pink)">40%</b><span>Music. Real musicians, top-notch, all nine of us on stage.</span></div>
+        <div><b style="color:var(--cyan)">25%</b><span>Laugh-out-loud. You will get called out. Possibly by name. Possibly not your name.</span></div>
+        <div><b style="color:var(--lime)">20%</b><span>Heart. Two charity shows a year, minimum. Everyone leaves taken care of.</span></div>
+        <div><b style="color:var(--sun)">15%</b><span>Being offended by a joke, then getting over it by the next chorus.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="book" id="book">
+  <div class="wrap bookgrid">
+    <div class="reveal">
+      <div class="eyebrow">Reunions · parties · festivals · fundraisers</div>
+      <h2>Book the band for <span class="script">your night.</span></h2>
+      <p class="lede">Planning the Class of '87 or '97 reunion? A 50th, a block party, a festival stage? Tell Bruce about your night and he'll get back to you himself.</p>
+      <div class="perks">
+        <div><i>1</i><span>Two full sets ready to go: 45 songs of the 80s, 45 of the 90s.</span></div>
+        <div><i>2</i><span>Eight musicians plus a trumpet that shows up when you least expect it.</span></div>
+        <div><i>3</i><span>Requests and shout-outs planned with you before the night, so your crowd feels it was built for them.</span></div>
+      </div>
+      <div class="textbruce">Rather just text? <br><a href="sms:+17654264353">765-426-4353</a> · text or voice</div>
+    </div>
+    <form class="panel reveal" id="bookform" novalidate>
+      <div class="body">
+        <div class="fld"><label>What are we playing?</label>
+          <div class="chips">
+            <input type="radio" name="t" id="t1" checked><label for="t1">80s reunion</label>
+            <input type="radio" name="t" id="t2"><label for="t2">90s reunion</label>
+            <input type="radio" name="t" id="t3"><label for="t3">Private party</label>
+            <input type="radio" name="t" id="t4"><label for="t4">Festival / fair</label>
+            <input type="radio" name="t" id="t5"><label for="t5">Corporate</label>
+            <input type="radio" name="t" id="t6"><label for="t6">Fundraiser</label>
+            <input type="radio" name="t" id="t7"><label for="t7">Other</label>
+          </div>
+        </div>
+        <div class="f2">
+          <div class="fld"><label for="bn">Your name</label><input id="bn" autocomplete="name"></div>
+          <div class="fld"><label for="bp">Mobile</label><input id="bp" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="f2">
+          <div class="fld"><label for="be">Email</label><input id="be" type="email" autocomplete="email"></div>
+          <div class="fld"><label for="by">Class year (if a reunion)</label><input id="by" inputmode="numeric" placeholder="1987"></div>
+        </div>
+        <div class="f2">
+          <div class="fld"><label for="bd">Event date</label><input id="bd" type="date"></div>
+          <div class="fld"><label for="bg">About how many guests?</label><input id="bg" inputmode="numeric"></div>
+        </div>
+        <div class="fld"><label for="bv">City or venue</label><input id="bv"></div>
+        <div class="fld"><label for="bm">What would make the night unforgettable?</label><textarea id="bm" placeholder="Our class song was… The DJ at our last reunion…"></textarea></div>
+        <button class="btn pink" type="submit" style="width:100%;justify-content:center">Send it to Bruce →</button>
+      </div>
+      <div class="done"><h3>Got it. Rock on.</h3><p>Bruce will text you back himself. (Mockup: nothing was sent.)</p></div>
+    </form>
+  </div>
+</section>
+
+<!-- ALERT -->
+<section class="alert" id="alert">
+  <div class="wrap">
+    <div class="alertbox reveal">
+      <div>
+        <h2>Get a Bruce Alert.</h2>
+        <p>Never miss a show. One text when we announce a date, one when it's happening. That's it. Promise. Mostly.</p>
+      </div>
+      <form id="alertform" novalidate>
+        <div class="body" style="display:grid;gap:10px">
+          <input placeholder="First name" aria-label="First name" autocomplete="given-name">
+          <input placeholder="Mobile number" type="tel" aria-label="Mobile number" autocomplete="tel">
+          <input placeholder="Email" type="email" aria-label="Email" autocomplete="email">
+          <button class="btn" type="submit">Put me on the list ⚡</button>
+          <span class="fine">Reply STOP anytime. We'd be sad, but we'd understand.</span>
+        </div>
+        <div class="done"><h3>You're in. 🎹</h3><p>(Mockup: nothing was sent.)</p></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FUND -->
+<section style="padding-bottom:40px">
+  <div class="wrap">
+    <div class="fund reveal" id="fund">
+      <div>
+        <div class="eyebrow" style="color:var(--gold);text-shadow:none">A cause close to our hearts (and scalps)</div>
+        <h3>Bruce's Hair Restoration Fund</h3>
+        <p>Every tip goes straight to a worthy cause. "Proceeds go to charity. Mostly." Real talk: the band plays at least two shows a year for free, and every dollar goes to the community.</p>
+        <div class="goal">RAISED: $3.71 AND A GUITAR PICK · GOAL: $10,000 · STATUS: OPTIMISTIC</div>
+      </div>
+      <div class="thermo"><div class="tube"><span></span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SIDE B -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="sideb reveal">
+      <img src="/bruce/art/cassette-wink.png" alt="" loading="lazy" onerror="this.style.display='none'">
+      <div>
+        <div class="k">FLIP THE TAPE · SIDE B</div>
+        <h3>Bruce the Piano Man</h3>
+        <p>The solo show. The Cactus legend. The guy who knows your name (or makes one up). Head to Side B for the piano bar.</p>
+      </div>
+      <a class="btn" href="/bruce/">Flip to Side B →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="big">The Bruce Barker Band</div>
+  <p>Time travel through the 80s and 90s · Indiana</p>
+</footer>
+
+<div class="draft"><div class="wrap"><span><b>Draft mockup A · "Neon Sticker"</b> by Jimmy Davis · not live yet</span>
+<nav><a class="on" href="/brucebarkerband/a/">A</a><a href="/brucebarkerband/b/">B</a><a href="/brucebarkerband/c/">C</a><a href="/brucebarkerband/">All</a></nav></div></div>
+
+<script>
+(function(){
+  // marquee
+  var songs=["Living on a Prayer","Don't Stop Believin'","Sweet Caroline","Pour Some Sugar on Me","Don't You Forget About Me","Stacey's Mom","Separate Ways","Africa","You Oughta Know","Uptown Funk","Let's Go Crazy","Raspberry Beret","Since U Been Gone","Tom Sawyer","Rosanna"];
+  var t=document.getElementById('mq'),h="";
+  for(var k=0;k<2;k++)songs.forEach(function(s){h+="<span>"+s+"<i>★</i></span>"});
+  t.innerHTML=h;
+
+  // jukebox
+  var vids=[["A1","Living on a Prayer","1142196685","9e585d4619"],["A2","Pour Some Sugar on Me","1147891293","597d81ed81"],["A3","Don't You Forget About Me","1168215559","f2452ec8cd"],["B1","Stacey's Mom","1142086763","5e55c0e4ed"],["B2","Let's Go Crazy","1221236366","1b9981a0b5"],["B3","Book Bruce Now (promo)","1162270589","a2afa8b102"]];
+  var picks=document.getElementById('picks'),scr=document.getElementById('screen'),nowp=document.getElementById('nowp'),cur=0;
+  vids.forEach(function(v,i){var b=document.createElement('button');b.className='pick';b.setAttribute('aria-pressed',i===0);b.innerHTML="<b>"+v[0]+"</b><span>"+v[1]+"</span>";
+    b.onclick=function(){cur=i;[].forEach.call(picks.children,function(c,j){c.setAttribute('aria-pressed',j===i)});play(true)};picks.appendChild(b)});
+  function play(auto){var v=vids[cur];nowp.textContent="NOW PLAYING: "+v[0]+" · "+v[1].toUpperCase();
+    scr.innerHTML='<iframe src="https://player.vimeo.com/video/'+v[2]+'?h='+v[3]+(auto?'&autoplay=1':'')+'&title=0&byline=0&portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="'+v[1]+'"></iframe>'}
+  var poster=document.getElementById('poster');poster.onclick=function(){play(true)};poster.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(true)}};
+
+  // giants
+  var M=[
+    ["BZ","Vocals · soprano","bz-vocals.jpg","My best friend since 1987. She is a sunshine explosion. Miss Positivity. The cup is never half empty, it's always half full.","var(--pink)"],
+    ["Susan","Vocals · alto","susan-vocals.jpg","When I was 16, she asked me to sing a duet with her in choir. She gave me the confidence that I could be worthy of a stage. She kick-started everything.","var(--sun)"],
+    ["Blake Watts","Drums","blake-watts-drums.jpg","Been playing with me since he was 18. Literally the best drummer I've ever heard. And as good as he is, his heart comes to the forefront.","var(--cyan)"],
+    ["Scott Pizzera","Bass","scott-pizzera-bass.jpg","A jazz professor. The glue. The maestro. Truly the professor of the band. He checks every chord.","var(--lime)"],
+    ["Gary Higgins","Keys","gary-higgins-keyboards.jpg","He finds the exact sound an 80s band used and recreates it on one teeny tiny keyboard. What took them fifteen.","var(--gold)"],
+    ["Michael Kelsey","Guitar","michael-kelsey-guitar.jpg","An absolute god of guitar. It's like he has five different hands. He's just so tasty with all his licks.","var(--pink)"],
+    ["JC Hatton","Vocals · high tenor","jc-hatton-vocals.jpg","We've sung together since Purdue. He's never had a bad day in his life. Pour Some Sugar on Me is JC's song now.","var(--cyan)"],
+    ["David Beering","Trumpet · sits in","","Comes up five or six times a night, does his little thing, and steals the show. Brings his trumpet to every gig.","var(--gold)"]
+  ];
+  var cards=document.getElementById('cards'),html="";
+  M.forEach(function(m){html+='<article class="card reveal'+(m[2]?'':' nophoto')+'" style="--c:'+m[4]+'"><div class="ph">'+(m[2]?'<img src="../img/'+m[2]+'" alt="'+m[0]+'" loading="lazy">':'<svg viewBox="0 0 120 80" aria-hidden="true"><path d="M8 40h60l14-14v28L68 40M82 26c14-8 26-8 30 0v28c-4 8-16 8-30 0M30 40v-10M40 40v-10M50 40v-10"/></svg>')+'<span class="role">'+m[1]+'</span></div><div class="tx"><h3>'+m[0]+'</h3><blockquote>'+m[3]+'</blockquote></div></article>'});
+  html+='<article class="me reveal" id="me"><div class="ph" role="button" tabindex="0" aria-label="Tap the wig"><img class="real" src="../img/bruce-thumbs-up-stage.jpg" alt="Bruce Barker on stage, thumbs up"><img class="wig" src="/bruce/art/sticker-bruce-wig.webp" alt="" onerror="this.remove()"><span class="hint">TAP FOR ROCK MODE 🤘</span></div><div class="tx"><span class="pre">…and then there’s me.</span><h3>Bruce Barker</h3><blockquote>"By light-years, I’m the worst musician on the stage. But I’m the face. And obviously, the hair."</blockquote><p class="small">Piano · vocals · the guy who’ll call you out, then buy you a round of applause.</p></div></article>';
+  cards.innerHTML=html;
+  var me=document.getElementById('me'),mp=me.querySelector('.ph');
+  function rock(){me.classList.toggle('rock');me.querySelector('.hint').textContent=me.classList.contains('rock')?'ROCK MODE: ON 🤘':'TAP FOR ROCK MODE 🤘'}
+  mp.onclick=rock;mp.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();rock()}};
+
+  // forms (mockup only, nothing is sent)
+  ['bookform','alertform'].forEach(function(id){var f=document.getElementById(id);f.addEventListener('submit',function(e){e.preventDefault();f.classList.add('sent')})});
+
+  // reveal
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');if(e.target.id==='fund')e.target.classList.add('go');io.unobserve(e.target)}})},{threshold:.12}):null;
+  document.querySelectorAll('.reveal').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+  if(!io){document.getElementById('fund').classList.add('go')}
+})();
+</script>
+</body>
+</html>
