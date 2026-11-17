@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>The Bruce Barker Band · Book the Reunion Band</title>
+<meta name="description" content="Indiana's 80s and 90s cover band for class reunions, parties and festivals. Two full shows ready. Text or call Bruce at 765-426-4353.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&family=Caveat:wght@500;700&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,800;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101B3A; --ink-2:#0A1229; --ink-3:#1B2A55;
+  --gold:#E2B044; --gold-deep:#A97C22;
+  --pink:#FF2E88; --pink-soft:#FF7AB4;
+  --paper:#EFE7D6; --paper-2:#E3D7BE; --paper-ink:#1A2340;
+  --cyan:#6FE6F2;
+  --display:"Graduate", "Rockwell", serif;
+  --body:"Libre Franklin", system-ui, sans-serif;
+  --hand:"Caveat", cursive;
+  --wrap:min(1180px, calc(100% - 32px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:4px}
+.wrap{width:var(--wrap);margin-inline:auto}
+
+/* grain over everything */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.09;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.halftone{position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(circle,rgba(226,176,68,.22) 1.1px,transparent 1.5px);background-size:7px 7px;
+  -webkit-mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 60%);mask-image:radial-gradient(120% 90% at 100% 0%,#000 0%,transparent 60%)}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:rgba(10,18,41,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(226,176,68,.18)}
+.nav .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:15px;letter-spacing:.02em;line-height:1.05}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 2px var(--gold),0 0 18px rgba(255,46,136,.45)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0 0 0 auto;padding:0;font-size:14px;font-weight:500}
+.nav ul a{text-decoration:none;opacity:.8}
+.nav ul a:hover{opacity:1;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--body);font-weight:800;font-size:15px;text-decoration:none;border:0;cursor:pointer;border-radius:999px;padding:13px 22px;transition:transform .15s ease,box-shadow .2s ease}
+.btn:active{transform:translateY(1px)}
+.btn-gold{background:var(--gold);color:var(--ink-2);box-shadow:0 2px 0 var(--gold-deep)}
+.btn-gold:hover{box-shadow:0 2px 0 var(--gold-deep),0 0 0 4px rgba(226,176,68,.25)}
+.btn-pink{background:var(--pink);color:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.15) inset,0 0 26px rgba(255,46,136,.45)}
+.btn-ghost{background:transparent;color:var(--paper);box-shadow:0 0 0 1.5px rgba(239,231,214,.45) inset}
+.btn-ghost:hover{box-shadow:0 0 0 1.5px var(--gold) inset;color:var(--gold)}
+.nav .btn{padding:10px 18px;font-size:14px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:72px 0 0;
+  background:radial-gradient(80% 70% at 85% 10%,#24306a 0%,transparent 60%),radial-gradient(60% 50% at 0% 100%,rgba(255,46,136,.16),transparent 70%),var(--ink)}
+.hero-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:56px;align-items:center;position:relative}
+.kicker{font-family:var(--hand);font-size:30px;color:var(--pink-soft);line-height:1;margin:0 0 18px;transform:rotate(-2deg);display:inline-block}
+.hl{font-family:var(--display);font-weight:400;margin:0;line-height:.92;letter-spacing:-.005em;font-size:clamp(44px,6.5vw,94px);text-transform:uppercase}
+.hl span{display:block}
+@media (min-width:1021px){.hero .photo{width:116%;margin-left:-16%}}
+.hl .o{color:transparent;-webkit-text-stroke:2px var(--gold);text-stroke:2px var(--gold)}
+.hl .s{color:var(--paper);font-size:.62em;line-height:1;margin-top:.28em;max-width:16ch;text-shadow:0 0 0 transparent}
+.hero-sub{max-width:46ch;font-size:19px;color:rgba(239,231,214,.82);margin:26px 0 30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.call-line{font-size:15px;color:rgba(239,231,214,.7);margin-left:6px}
+.call-line a{color:var(--gold);font-weight:700;text-decoration:none;white-space:nowrap}
+
+.photo{position:relative;transform:rotate(2.5deg);background:#f6f0e2;padding:12px 12px 56px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6),0 2px 0 rgba(0,0,0,.2)}
+.photo .crop{position:relative;aspect-ratio:630/265;overflow:hidden;background:#222}
+.photo .crop img{position:absolute;width:174.6%;max-width:none;left:-36.5%;top:-7.55%}
+.photo figcaption{position:absolute;left:16px;right:16px;bottom:10px;font-family:var(--hand);font-size:26px;color:var(--paper-ink);line-height:1.1}
+.tape{position:absolute;width:110px;height:30px;background:rgba(226,176,68,.55);top:-14px;left:50%;transform:translateX(-50%) rotate(-4deg);box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.pill{position:absolute;right:-14px;bottom:-44px;transform:rotate(-4deg);border:2px solid var(--pink);border-radius:999px;padding:9px 18px;font-weight:600;font-size:14px;color:#fff;background:rgba(10,18,41,.92);box-shadow:0 0 18px rgba(255,46,136,.6),inset 0 0 12px rgba(255,46,136,.35);white-space:nowrap}
+
+/* next show ticket */
+.ticket{position:relative;margin-top:72px;display:grid;grid-template-columns:auto 1fr auto;align-items:stretch;background:var(--paper);color:var(--paper-ink);border-radius:14px 14px 0 0;overflow:hidden}
+.ticket .date{background:var(--pink);color:#fff;padding:20px 28px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-family:var(--display);line-height:1}
+.ticket .date b{font-size:44px;font-weight:400}
+.ticket .date small{font-family:var(--body);font-weight:700;font-size:13px;letter-spacing:.04em}
+.ticket .info{padding:20px 28px;border-right:2px dashed rgba(26,35,64,.25)}
+.ticket h2{font-family:var(--display);font-weight:400;font-size:22px;margin:0 0 4px;line-height:1.15}
+.ticket p{margin:0;font-size:15px;color:#3a4566}
+.ticket .stub{padding:20px 28px;display:flex;flex-direction:column;justify-content:center;font-size:14px;max-width:230px}
+.ticket .stub strong{font-family:var(--hand);font-size:26px;color:var(--pink);line-height:1;font-weight:700}
+
+/* ---------- trust ---------- */
+.trust{background:var(--gold);color:var(--ink-2);position:relative}
+.trust .wrap{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:0}
+.trust div{padding:26px 22px;border-left:1px solid rgba(10,18,41,.18);font-size:15px;line-height:1.45}
+.trust div:first-child{border-left:0;padding-left:0}
+.trust b{display:block;font-family:var(--display);font-weight:400;font-size:19px;line-height:1.15;margin-bottom:6px}
+
+/* ---------- paper sections ---------- */
+.paper{background:var(--paper);color:var(--paper-ink);position:relative}
+.paper::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(circle,rgba(26,35,64,.09) 1px,transparent 1.4px);background-size:6px 6px;
+  -webkit-mask-image:linear-gradient(180deg,#000,transparent 40%,transparent 70%,#000);mask-image:linear-gradient(180deg,#000,transparent 40%,transparent 70%,#000)}
+.section{padding:110px 0;position:relative}
+.h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,5vw,64px);line-height:1;margin:0 0 16px;text-transform:uppercase}
+.lede{font-size:19px;max-width:56ch;margin:0;opacity:.85}
+
+/* ---------- year picker ---------- */
+.yp-head{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap;margin-bottom:44px}
+.decades{display:grid;gap:10px}
+.decade{display:grid;grid-template-columns:72px repeat(10,1fr);gap:6px;align-items:center}
+.decade > span{font-family:var(--hand);font-size:26px;color:var(--pink);font-weight:700}
+.yr{font-family:var(--display);font-size:17px;background:transparent;border:1.5px solid rgba(26,35,64,.28);color:var(--paper-ink);border-radius:8px;padding:12px 0;cursor:pointer;transition:background .15s,color .15s,border-color .15s,transform .15s}
+.yr:hover{border-color:var(--paper-ink)}
+.yr[aria-pressed="true"]{background:var(--ink);color:var(--gold);border-color:var(--ink);transform:translateY(-3px);box-shadow:0 6px 0 var(--gold)}
+.yp-card{margin-top:40px;display:grid;grid-template-columns:minmax(220px,.8fr) 1.6fr;background:var(--ink);color:var(--paper);border-radius:18px;overflow:hidden;position:relative;box-shadow:0 30px 60px -30px rgba(10,18,41,.6)}
+.yp-year{position:relative;padding:36px 32px;background:radial-gradient(90% 80% at 0% 0%,#26357a,transparent 70%),var(--ink-2);display:flex;flex-direction:column;justify-content:space-between;gap:24px;overflow:hidden}
+.yp-year .big{font-family:var(--display);font-size:clamp(72px,9vw,118px);line-height:.85;color:transparent;-webkit-text-stroke:2px var(--gold)}
+.yp-year .set{font-family:var(--hand);font-size:28px;color:var(--pink-soft);line-height:1.1}
+.yp-songs{padding:30px 34px 34px}
+.yp-songs h3{margin:0 0 14px;font-size:15px;font-weight:600;color:rgba(239,231,214,.65)}
+.yp-songs ol{list-style:none;margin:0;padding:0}
+.yp-songs li{display:flex;align-items:baseline;gap:14px;padding:13px 0;border-bottom:1px solid rgba(239,231,214,.12);animation:rise .35s ease both}
+.yp-songs li:nth-child(2){animation-delay:.05s}.yp-songs li:nth-child(3){animation-delay:.1s}.yp-songs li:nth-child(4){animation-delay:.15s}
+.yp-songs .t{font-weight:800;font-size:19px}
+.yp-songs .a{color:rgba(239,231,214,.6);font-size:15px}
+.tag{margin-left:auto;flex:none;font-size:12px;font-weight:800;color:var(--pink);border:1.5px solid var(--pink);border-radius:999px;padding:3px 10px;white-space:nowrap;box-shadow:0 0 10px rgba(255,46,136,.3)}
+.yp-foot{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-top:22px}
+.yp-foot p{margin:0;font-size:14px;color:rgba(239,231,214,.6);max-width:40ch}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- yearbook ---------- */
+.yb-head{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end;margin-bottom:56px;border-bottom:3px double var(--paper-ink);padding-bottom:26px}
+.yb-head .note{font-family:var(--hand);font-size:24px;color:var(--pink);line-height:1.15;max-width:22ch;transform:rotate(-2deg);text-align:right}
+.yb{display:grid;grid-template-columns:repeat(4,1fr);gap:44px 30px}
+.yb article{position:relative}
+.portrait{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);border:6px solid #fbf7ee;box-shadow:0 1px 0 rgba(0,0,0,.12),0 14px 26px -18px rgba(10,18,41,.55)}
+.portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(1.04)}
+.portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(circle,rgba(16,27,58,.16) .9px,transparent 1.3px) 0 0/4px 4px,linear-gradient(180deg,rgba(226,176,68,.12),rgba(16,27,58,.22));mix-blend-mode:multiply}
+.yb h3{font-family:var(--display);font-weight:400;font-size:21px;line-height:1.1;margin:16px 0 2px;text-transform:uppercase}
+.yb .inst{font-size:14px;font-weight:600;color:#56607d;margin:0}
+.sup{font-family:var(--hand);font-weight:700;font-size:25px;line-height:1.05;color:var(--pink);margin:10px 0 8px;transform:rotate(-1.5deg);transform-origin:left}
+.yb blockquote{margin:0;font-size:15px;line-height:1.55;font-style:italic;color:#2e3858}
+.absent{display:grid;place-items:center;text-align:center;padding:20px;background:repeating-linear-gradient(-45deg,var(--paper-2) 0 10px,#e9dfca 10px 20px)}
+.absent svg{width:56px;height:56px;color:var(--paper-ink);opacity:.55;margin:0 auto 8px}
+.absent span{font-family:var(--hand);font-size:24px;line-height:1.05;color:var(--paper-ink)}
+
+.me{margin-top:96px;display:grid;grid-template-columns:1.35fr 1fr;background:var(--ink);color:var(--paper);border-radius:18px;overflow:hidden;box-shadow:0 30px 70px -30px rgba(10,18,41,.7)}
+.me .pic{position:relative;min-height:380px}
+.me .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 30%}
+.me .pic::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,var(--ink) 100%)}
+.me .txt{padding:46px 44px;position:relative}
+.me .pre{font-family:var(--hand);font-size:30px;color:var(--pink-soft);margin:0;line-height:1}
+.me h3{font-family:var(--display);font-weight:400;font-size:clamp(36px,4.4vw,56px);line-height:.95;margin:8px 0 6px;color:var(--gold)}
+.me .inst{font-size:15px;opacity:.7;margin:0 0 22px}
+.me blockquote{margin:0 0 22px;font-size:21px;line-height:1.45}
+.me .sup{color:var(--pink-soft);font-size:28px}
+
+/* ---------- video ---------- */
+.vid{background:radial-gradient(70% 60% at 100% 0%,#2a2f72,transparent 60%),var(--ink-2)}
+.vid-grid{display:grid;grid-template-columns:1.7fr 1fr;gap:28px;margin-top:44px;align-items:start}
+.screen{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;box-shadow:0 0 0 1px rgba(226,176,68,.3),0 0 60px -10px rgba(255,46,136,.35)}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.tracks{list-style:none;margin:0;padding:0;border-top:1px solid rgba(239,231,214,.15)}
+.tracks button{width:100%;display:grid;grid-template-columns:44px 1fr auto;align-items:center;gap:10px;text-align:left;background:transparent;border:0;border-bottom:1px solid rgba(239,231,214,.15);color:var(--paper);font:inherit;padding:16px 4px;cursor:pointer}
+.tracks .n{font-family:var(--display);font-size:15px;color:var(--gold);opacity:.7}
+.tracks .tt{font-weight:600;font-size:17px}
+.tracks .pl{width:30px;height:30px;border-radius:50%;border:1.5px solid rgba(239,231,214,.35);display:grid;place-items:center}
+.tracks .pl svg{width:10px;height:10px;fill:currentColor;margin-left:2px}
+.tracks button:hover .tt{color:var(--gold)}
+.tracks button[aria-current="true"] .tt{color:var(--pink-soft)}
+.tracks button[aria-current="true"] .pl{background:var(--pink);border-color:var(--pink);box-shadow:0 0 14px rgba(255,46,136,.6)}
+
+/* ---------- booking ---------- */
+.book{position:relative;overflow:hidden;background:var(--ink)}
+.book-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start}
+.book .h2{font-size:clamp(40px,5.4vw,70px)}
+.steps{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:22px}
+.steps li{display:grid;grid-template-columns:46px 1fr;gap:14px;align-items:start}
+.steps .k{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-size:18px;color:var(--ink-2);background:var(--gold)}
+.steps b{display:block;font-size:17px}
+.steps span{font-size:15px;color:rgba(239,231,214,.7)}
+.phone-card{margin-top:40px;padding:22px 24px;border-radius:14px;border:1.5px solid rgba(226,176,68,.4);background:rgba(226,176,68,.06)}
+.phone-card p{margin:0;font-size:15px;color:rgba(239,231,214,.75)}
+.phone-card a{display:block;font-family:var(--display);font-size:clamp(28px,3.2vw,38px);color:var(--gold);text-decoration:none;line-height:1.2;margin-top:4px}
+
+.form-card{position:relative;background:var(--paper);color:var(--paper-ink);border-radius:20px;padding:44px 40px 40px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7),0 0 0 1px rgba(226,176,68,.5)}
+.form-card::before{content:"";position:absolute;inset:10px;border:1.5px solid rgba(169,124,34,.55);border-radius:13px;pointer-events:none}
+.form-card .seal{position:absolute;top:-30px;right:28px;width:92px;height:92px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--hand);font-weight:700;font-size:21px;line-height:.95;transform:rotate(10deg);box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--pink),0 10px 24px -6px rgba(255,46,136,.6)}
+.form-card h3{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.05;margin:0 0 6px;padding-right:90px}
+.form-card .intro{margin:0 0 26px;font-size:15px;color:#4a5474}
+fieldset{border:0;margin:0 0 20px;padding:0}
+legend,.lbl{display:block;font-size:13px;font-weight:700;color:var(--paper-ink);margin-bottom:8px}
+.lbl .opt{font-weight:500;color:#6b7491}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{font-size:14px;font-weight:600;padding:9px 14px;border-radius:999px;border:1.5px solid rgba(26,35,64,.25);cursor:pointer;transition:all .15s;background:#f7f2e7}
+.chips label:hover{border-color:var(--paper-ink)}
+.chips input:checked + label{background:var(--ink);color:var(--gold);border-color:var(--ink)}
+.chips input:focus-visible + label{outline:3px solid var(--pink);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.row.three{grid-template-columns:1fr 1fr 1fr}
+.field{display:flex;flex-direction:column}
+.field input,.field textarea,.field select{font:inherit;font-size:16px;color:var(--paper-ink);background:#fbf8f1;border:1.5px solid rgba(26,35,64,.2);border-radius:10px;padding:12px 14px;width:100%;transition:border-color .15s,box-shadow .15s}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(226,176,68,.35)}
+.field textarea{min-height:110px;resize:vertical}
+.field.full{margin-bottom:20px}
+.hint{font-family:var(--hand);font-size:20px;color:var(--pink);margin:6px 0 0;line-height:1.1}
+.submit-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:8px}
+.submit-row small{font-size:13px;color:#6b7491;max-width:30ch}
+.submit-row .btn{padding:16px 30px;font-size:16px}
+.thanks{display:none;text-align:center;padding:40px 10px 20px}
+.thanks .big{font-family:var(--display);font-size:clamp(30px,4vw,44px);line-height:1;margin:0 0 10px}
+.thanks p{margin:0 auto;max-width:36ch;color:#4a5474}
+.thanks .hand{font-family:var(--hand);font-size:30px;color:var(--pink);margin-top:18px}
+.form-card.sent form{display:none}
+.form-card.sent .thanks{display:block;animation:rise .4s ease both}
+
+/* ---------- report card ---------- */
+.rc{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px}
+.rc-box{background:#fbf7ee;border:1.5px solid rgba(26,35,64,.15);border-radius:16px;padding:32px;display:grid;grid-template-columns:auto 1fr;gap:30px;align-items:center}
+.rc-box h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0 0 12px;line-height:1.1;grid-column:1/-1}
+.pie{width:170px;height:170px;border-radius:50%;background:conic-gradient(var(--ink) 0 40%,var(--gold) 0 65%,var(--pink) 0 85%,var(--cyan) 0 100%);box-shadow:0 0 0 6px #fbf7ee,0 0 0 7.5px rgba(26,35,64,.2);position:relative}
+.pie::after{content:"";position:absolute;inset:34%;border-radius:50%;background:#fbf7ee}
+.legend{list-style:none;margin:0;padding:0;display:grid;gap:10px;font-size:15px;line-height:1.3}
+.legend li{display:grid;grid-template-columns:14px 44px 1fr;gap:8px;align-items:baseline}
+.legend i{width:12px;height:12px;border-radius:3px;display:block;transform:translateY(1px)}
+.legend b{font-family:var(--display);font-weight:400}
+.thermo{width:44px;height:200px;position:relative;margin-inline:10px}
+.thermo .tube{position:absolute;left:12px;top:0;bottom:30px;width:20px;border-radius:10px;background:#efe6d3;border:2px solid var(--paper-ink);overflow:hidden}
+.thermo .fill{position:absolute;left:0;right:0;bottom:0;height:6%;background:var(--pink);transition:height .5s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px rgba(255,46,136,.6)}
+.thermo .bulb{position:absolute;left:0;bottom:0;width:44px;height:44px;border-radius:50%;background:var(--pink);border:2px solid var(--paper-ink)}
+.fund p{margin:0 0 14px;font-size:15px;color:#3a4566}
+.fund .hand{font-family:var(--hand);font-size:24px;color:var(--pink);line-height:1.1}
+.fund .btn{padding:11px 18px;font-size:14px}
+
+/* ---------- alert + side b ---------- */
+.alert{position:relative;overflow:hidden;background:radial-gradient(60% 80% at 0% 100%,rgba(255,46,136,.28),transparent 60%),var(--ink-2)}
+.alert-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.neon{font-family:var(--display);font-size:clamp(40px,6vw,78px);line-height:.95;margin:0 0 16px;color:#fff;text-shadow:0 0 6px #fff,0 0 18px var(--pink),0 0 42px var(--pink)}
+.alert form{display:grid;gap:12px;background:rgba(239,231,214,.05);border:1.5px solid rgba(255,46,136,.5);border-radius:18px;padding:28px;box-shadow:inset 0 0 30px rgba(255,46,136,.12)}
+.alert .field input{background:rgba(10,18,41,.6);color:var(--paper);border-color:rgba(239,231,214,.25)}
+.alert .field input:focus{border-color:var(--pink);box-shadow:0 0 0 4px rgba(255,46,136,.25)}
+.alert .lbl{color:rgba(239,231,214,.8)}
+.alert .done{display:none;font-family:var(--hand);font-size:30px;color:var(--pink-soft);margin:0;text-align:center}
+.alert form.sent > :not(.done){display:none}
+.alert form.sent .done{display:block}
+
+.sideb{display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center;text-decoration:none;margin-top:72px;padding:22px 28px;border-radius:16px;background:linear-gradient(90deg,rgba(226,176,68,.12),rgba(226,176,68,.03));border:1.5px solid rgba(226,176,68,.35);transition:border-color .2s}
+.sideb:hover{border-color:var(--gold)}
+.sideb .cass{width:120px;height:78px;border-radius:8px;background:var(--gold);position:relative;display:grid;place-items:center;transform:rotate(-6deg)}
+.sideb .cass img{position:absolute;inset:-12px;width:calc(100% + 24px);height:calc(100% + 24px);object-fit:contain}
+.sideb .cass .reel{display:flex;gap:22px}
+.sideb .cass .reel i{width:22px;height:22px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 4px rgba(10,18,41,.2)}
+.sideb .eb{font-family:var(--hand);font-size:24px;color:var(--pink-soft);line-height:1}
+.sideb b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(20px,2.4vw,28px);line-height:1.1;margin-top:4px}
+.sideb .go{font-weight:700;color:var(--gold);white-space:nowrap}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-2);padding:56px 0 0;border-top:1px solid rgba(226,176,68,.2)}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:center;padding-bottom:40px}
+.foot img{width:76px;height:76px;border-radius:12px;object-fit:cover}
+.foot .l{display:flex;gap:18px;align-items:center}
+.foot .l p{margin:0;font-size:14px;color:rgba(239,231,214,.65)}
+.foot .l b{display:block;font-family:var(--display);font-weight:400;font-size:18px;color:var(--paper)}
+.foot .r a{font-family:var(--display);color:var(--gold);text-decoration:none;font-size:22px}
+.draft{background:#060b1a;font-size:13px;color:rgba(239,231,214,.6);padding:14px 0}
+.draft .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+.draft a{color:var(--gold)}
+.draft nav{display:flex;gap:14px}
+
+/* ---------- load sequence ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .hl span{animation:stamp .6s cubic-bezier(.2,.9,.25,1.2) both}
+  .hl span:nth-child(2){animation-delay:.18s}
+  .hl span:nth-child(3){animation-delay:.42s}
+  .hero .photo{animation:drop .9s .55s cubic-bezier(.2,.8,.2,1) both}
+  .hero .pill{animation:flick 1.4s 1.3s steps(1) both}
+}
+@keyframes stamp{from{opacity:0;transform:scale(1.12) translateY(6px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes drop{from{opacity:0;transform:rotate(-8deg) translateY(-40px)}to{opacity:1;transform:rotate(2.5deg)}}
+@keyframes flick{0%{opacity:0}10%{opacity:1}14%{opacity:.2}20%{opacity:1}26%{opacity:.4}30%,100%{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .hero-grid{grid-template-columns:1fr;gap:56px}
+  .hero .photo{max-width:560px}
+  .trust .wrap{grid-template-columns:1fr 1fr}
+  .trust div:nth-child(3){border-left:0;padding-left:0}
+  .trust div{border-top:1px solid rgba(10,18,41,.18)}
+  .trust div:nth-child(-n+2){border-top:0}
+  .yb{grid-template-columns:repeat(3,1fr)}
+  .book-grid,.alert-grid,.vid-grid{grid-template-columns:1fr}
+  .rc{grid-template-columns:1fr}
+  .me{grid-template-columns:1fr}
+  .me .pic{min-height:300px}
+  .me .pic::after{background:linear-gradient(180deg,transparent 60%,var(--ink))}
+}
+@media (max-width:820px){
+  .nav ul{display:none}
+  .nav .btn{margin-left:auto}
+  .decade{grid-template-columns:repeat(5,1fr)}
+  .decade > span{grid-column:1/-1}
+  .yp-card{grid-template-columns:1fr}
+  .yb{grid-template-columns:1fr 1fr;gap:36px 18px}
+}
+@media (max-width:600px){
+  body{font-size:16px}
+  .section{padding:76px 0}
+  .hero{padding-top:44px}
+  .kicker{font-size:25px}
+  .hl{font-size:clamp(38px,12.4vw,60px)}
+  .hl .o{-webkit-text-stroke:1.5px var(--gold)}
+  .hero-sub{font-size:17px}
+  .call-line{margin-left:0;width:100%}
+  .pill{right:8px;font-size:12px;padding:7px 12px}
+  .photo{padding:10px 10px 46px}
+  .photo figcaption{font-size:20px;left:12px;bottom:10px;white-space:nowrap}
+  .ticket{grid-template-columns:auto 1fr;margin-top:60px}
+  .ticket .date{padding:16px 18px}
+  .ticket .date b{font-size:34px}
+  .ticket .info{padding:16px 18px;border-right:0}
+  .ticket h2{font-size:18px}
+  .ticket p{font-size:14px}
+  .ticket .stub{grid-column:1/-1;max-width:none;border-top:2px dashed rgba(26,35,64,.25);padding:14px 18px}
+  .trust .wrap{grid-template-columns:1fr}
+  .trust div{border-left:0!important;padding:18px 0!important;border-top:1px solid rgba(10,18,41,.18)}
+  .trust div:first-child{border-top:0}
+  .yb-head{grid-template-columns:1fr}
+  .yb-head .note{text-align:left}
+  .yb{grid-template-columns:1fr;gap:28px}
+  .yb article{display:grid;grid-template-columns:124px 1fr;gap:16px;align-items:start}
+  .yb h3{margin-top:0;font-size:18px}
+  .sup{font-size:22px}
+  .yb blockquote{font-size:14px}
+  .yp-year{padding:24px}
+  .yp-year .big{font-size:72px}
+  .yp-songs{padding:20px}
+  .yp-songs li{flex-wrap:wrap;gap:2px 10px}
+  .yp-songs .t{font-size:17px}
+  .tag{margin-left:0}
+  .me .txt{padding:30px 22px}
+  .me blockquote{font-size:18px}
+  .form-card{padding:36px 20px 24px}
+  .form-card::before{inset:6px}
+  .form-card .seal{width:76px;height:76px;font-size:17px;right:14px;top:-26px}
+  .form-card h3{font-size:23px;padding-right:62px}
+  .row,.row.three{grid-template-columns:1fr;gap:14px;margin-bottom:14px}
+  .rc-box{grid-template-columns:1fr;justify-items:start;padding:24px}
+  .rc-box.fund-box{grid-template-columns:auto 1fr}
+  .pie{width:150px;height:150px}
+  .sideb{grid-template-columns:1fr;gap:16px;padding:22px}
+  .sideb .cass{width:100px;height:64px}
+  .draft nav{flex-wrap:wrap}
+  .absent{padding:8px}
+  .absent svg{width:34px;height:34px;margin-bottom:4px}
+  .absent span{font-size:17px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="../img/band-logo-time-travel-80s-90s.jpg" alt="">The Bruce<br>Barker Band</a>
+    <ul>
+      <li><a href="#year">Pick your year</a></li>
+      <li><a href="#class">The band</a></li>
+      <li><a href="#watch">Watch</a></li>
+      <li><a href="#alert">Bruce Alert</a></li>
+    </ul>
+    <a class="btn btn-gold" href="#book">Book the band</a>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="halftone"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">Reunion committees, this one's for you</p>
+        <h1 class="hl">
+          <span class="o">Class of '87?</span>
+          <span class="o">Class of '97?</span>
+          <span class="s">We brought the soundtrack.</span>
+        </h1>
+        <p class="hero-sub">The Bruce Barker Band is an eight-piece Indiana cover band with two full shows ready to go: a 45-song 80s set and a 45-song 90s set. Pick your graduation year. We'll play it back to you.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="#book">Check our date</a>
+          <a class="btn btn-ghost" href="#year">Hear your year</a>
+          <span class="call-line">Or text Bruce: <a href="sms:+17654264353">765-426-4353</a></span>
+        </div>
+      </div>
+      <figure class="photo">
+        <span class="tape" aria-hidden="true"></span>
+        <div class="crop"><img src="../img/flyer-returning-this-season-fountain-park.jpg" alt="The Bruce Barker Band standing together in a park, in bright 80s shirts"></div>
+        <figcaption>The whole crew, Fountain Park.</figcaption>
+        <span class="pill">Time travel through the 80s and 90s</span>
+      </figure>
+    </div>
+
+    <div class="ticket" role="group" aria-label="Next show">
+      <div class="date"><small>SAT</small><b>DEC 12</b></div>
+      <div class="info">
+        <h2>Next show: Moose Lodge, Frankfort, Indiana</h2>
+        <p>Full band, first show since September. A free charity night raising money for the Clinton County athletic department.</p>
+      </div>
+      <div class="stub"><strong>Details coming soon</strong>Get them first with a Bruce Alert. <a href="#alert" style="color:var(--paper-ink);font-weight:700">Sign up</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="trust" aria-label="Why committees book us">
+  <div class="wrap">
+    <div><b>Led by Bruce the Piano Man</b>The Purdue legend from the Cactus piano bar in Lafayette, now with a full band behind him.</div>
+    <div><b>Seven Purdue grads</b>Plus a drummer who grew up rooting for them.</div>
+    <div><b>Two full shows</b>45 songs of 80s. 45 songs of 90s. Ready now.</div>
+    <div><b>Two free charity shows</b>At least, every single year.</div>
+  </div>
+</section>
+
+<!-- YEAR PICKER -->
+<section class="paper section" id="year">
+  <div class="wrap">
+    <div class="yp-head">
+      <div>
+        <h2 class="h2">Pick your<br>senior year</h2>
+        <p class="lede">Tap the year you graduated. Here's what was on the radio, and which ones you've already seen us play.</p>
+      </div>
+    </div>
+
+    <div class="decades" role="group" aria-label="Choose a year">
+      <div class="decade" id="d80"><span>the 80s</span></div>
+      <div class="decade" id="d90"><span>the 90s</span></div>
+    </div>
+
+    <div class="yp-card" aria-live="polite">
+      <div class="yp-year">
+        <div class="halftone" style="-webkit-mask-image:radial-gradient(100% 100% at 100% 100%,#000,transparent 70%);mask-image:radial-gradient(100% 100% at 100% 100%,#000,transparent 70%)"></div>
+        <div class="big" id="ypBig">1987</div>
+        <div class="set" id="ypSet">Straight out of the 80s set</div>
+      </div>
+      <div class="yp-songs">
+        <h3>On the radio that year</h3>
+        <ol id="ypList"></ol>
+        <div class="yp-foot">
+          <p>Each set runs 45 songs. Want one that isn't listed? Ask for it in the booking form.</p>
+          <a class="btn btn-pink" id="ypBook" href="#book">Book us for the Class of '87</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YEARBOOK -->
+<section class="paper section" id="class" style="padding-top:20px">
+  <div class="wrap">
+    <div class="yb-head">
+      <div>
+        <h2 class="h2">I stand on the<br>shoulders of giants</h2>
+        <p class="lede">Bruce, on the people behind him. Every quote below is his. The superlatives were voted on by a committee of one.</p>
+      </div>
+      <p class="note">Signed, "Keep rockin', never change"</p>
+    </div>
+
+    <div class="yb">
+      <article>
+        <div class="portrait"><img src="../img/bz-vocals.jpg" alt="BZ singing" loading="lazy" style="object-position:50% 20%"></div>
+        <div>
+          <h3>BZ</h3><p class="inst">Vocals, soprano · lead on 13 songs</p>
+          <p class="sup">Most Positive</p>
+          <blockquote>"My best friend since 1987. She is a sunshine explosion. The cup is never half empty, it's always half full."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/susan-vocals.jpg" alt="Susan singing" loading="lazy" style="object-position:50% 18%"></div>
+        <div>
+          <h3>Susan</h3><p class="inst">Vocals, alto and harmony</p>
+          <p class="sup">Most Likely to Kick-Start Everything</p>
+          <blockquote>"When I was 16, she asked me to sing a duet with her in choir. She gave me the confidence that I could be worthy of being on stage."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/blake-watts-drums.jpg" alt="Blake Watts at the drums" loading="lazy" style="object-position:50% 30%"></div>
+        <div>
+          <h3>Blake Watts</h3><p class="inst">Drums</p>
+          <p class="sup">Best Drummer Bruce Has Ever Heard</p>
+          <blockquote>"He's played with Chris Stapleton, Justin Timberlake, Maren Morris, the Lumineers. As good as he is, his heart and his positivity always come to the forefront."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/scott-pizzera-bass.jpg" alt="Scott Pizzera on bass" loading="lazy" style="object-position:50% 22%"></div>
+        <div>
+          <h3>Scott Pizzera</h3><p class="inst">Bass</p>
+          <p class="sup">Class Professor</p>
+          <blockquote>"A jazz professor. The glue. The maestro. He picks the keys and checks every chord."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/gary-higgins-keyboards.jpg" alt="Gary Higgins at the keyboard" loading="lazy" style="object-position:50% 25%"></div>
+        <div>
+          <h3>Gary Higgins</h3><p class="inst">Keyboards · films every show</p>
+          <p class="sup">Most Sound From the Smallest Keyboard</p>
+          <blockquote>"He finds the exact sound an 80s band used and recreates it on one teeny tiny keyboard. What 80s bands needed 15 keyboards for."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/michael-kelsey-guitar.jpg" alt="Michael Kelsey playing guitar" loading="lazy" style="object-position:50% 20%"></div>
+        <div>
+          <h3>Michael Kelsey</h3><p class="inst">Guitar</p>
+          <p class="sup">Most Likely to Get Signed by Steve Vai</p>
+          <blockquote>"Voted the best unsigned guitarist in America. Steve Vai tried to sign him on the spot. He's just so tasty with all his licks."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait"><img src="../img/jc-hatton-vocals.jpg" alt="JC Hatton singing" loading="lazy" style="object-position:41% 0;transform:scale(2.6);transform-origin:41% 0"></div>
+        <div>
+          <h3>JC Hatton</h3><p class="inst">Vocals, high tenor</p>
+          <p class="sup">Never Had a Bad Day</p>
+          <blockquote>"We've sung together since Purdue, around 1989. He's never had a bad day in his life. Pour Some Sugar on Me is JC's song now."</blockquote>
+        </div>
+      </article>
+      <article>
+        <div class="portrait absent" role="img" aria-label="No photo of David Beering yet">
+          <div>
+            <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 28h30l14-10v28L36 36H6z"/><path d="M14 28v-6M20 28v-6M26 28v-6"/><circle cx="54" cy="32" r="3"/></svg>
+            <span>Absent on<br>picture day</span>
+          </div>
+        </div>
+        <div>
+          <h3>David Beering</h3><p class="inst">Trumpet · sits in 5 or 6 times a night</p>
+          <p class="sup">Best Entrance, Several Times Nightly</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="me">
+      <div class="pic"><img src="../img/bruce-thumbs-up-stage.jpg" alt="Bruce Barker on stage giving a thumbs up" loading="lazy"></div>
+      <div class="txt">
+        <p class="pre">…and then there's me.</p>
+        <h3>Bruce Barker</h3>
+        <p class="inst">Piano and vocals · the only one in color</p>
+        <blockquote>"I'm by light-years the worst musician on the stage. But I'm the face. And obviously, the hair."</blockquote>
+        <p class="sup">Most Likely to Be the Face</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="vid section" id="watch">
+  <div class="halftone"></div>
+  <div class="wrap">
+    <h2 class="h2">Watch the tape</h2>
+    <p class="lede">Real shows, real rooms. Send one to the committee group chat.</p>
+    <div class="vid-grid">
+      <div class="screen"><iframe id="player" src="https://player.vimeo.com/video/1142196685?h=9e585d4619&amp;title=0&amp;byline=0&amp;portrait=0" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="The Bruce Barker Band: Livin' on a Prayer"></iframe></div>
+      <ol class="tracks" id="tracks"></ol>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="book section" id="book">
+  <div class="halftone" style="-webkit-mask-image:radial-gradient(80% 70% at 0% 0%,#000,transparent 60%);mask-image:radial-gradient(80% 70% at 0% 0%,#000,transparent 60%)"></div>
+  <div class="wrap book-grid">
+    <div>
+      <h2 class="h2">Save the date. We'll bring the decade.</h2>
+      <p class="lede">Reunions, birthdays, fundraisers, festivals, proms. Tell Bruce about the night and he'll text you back himself.</p>
+      <ol class="steps">
+        <li><span class="k">1</span><div><b>Tell us about the night</b><span>Two minutes. Your year, your date, your crowd.</span></div></li>
+        <li><span class="k">2</span><div><b>Bruce texts you back</b><span>He'll check the date and talk it through.</span></div></li>
+        <li><span class="k">3</span><div><b>We build the set around your class</b><span>80s, 90s, or both, with a little 70s seasoning.</span></div></li>
+      </ol>
+      <div class="phone-card">
+        <p>Rather just talk? Text or call Bruce.</p>
+        <a href="tel:+17654264353">765-426-4353</a>
+      </div>
+    </div>
+
+    <div class="form-card" id="formCard">
+      <div class="seal" aria-hidden="true">Class<br>reunion<br>ready</div>
+      <form id="bookForm" novalidate>
+        <h3>Book the Bruce Barker Band</h3>
+        <p class="intro">Booking is by inquiry. There's no price list; every night is different, so Bruce talks it through with you.</p>
+
+        <fieldset>
+          <legend>What's the occasion?</legend>
+          <div class="chips">
+            <input type="radio" name="type" id="t1" value="80s reunion" checked><label for="t1">80s reunion</label>
+            <input type="radio" name="type" id="t2" value="90s reunion"><label for="t2">90s reunion</label>
+            <input type="radio" name="type" id="t3" value="Private party"><label for="t3">Private party</label>
+            <input type="radio" name="type" id="t4" value="Festival or fair"><label for="t4">Festival or fair</label>
+            <input type="radio" name="type" id="t5" value="Corporate"><label for="t5">Corporate</label>
+            <input type="radio" name="type" id="t6" value="Fundraiser"><label for="t6">Fundraiser</label>
+            <input type="radio" name="type" id="t7" value="Other"><label for="t7">Other</label>
+          </div>
+        </fieldset>
+
+        <div class="row three">
+          <div class="field"><label class="lbl" for="cy">Class year <span class="opt">(if a reunion)</span></label><input id="cy" name="classyear" inputmode="numeric" placeholder="1987"></div>
+          <div class="field"><label class="lbl" for="dt">Event date</label><input id="dt" name="date" type="date"></div>
+          <div class="field"><label class="lbl" for="gs">Guests, roughly</label><input id="gs" name="guests" inputmode="numeric" placeholder="150"></div>
+        </div>
+        <div class="field full"><label class="lbl" for="vn">City or venue</label><input id="vn" name="venue" placeholder="Lafayette, Indiana"></div>
+
+        <div class="row three">
+          <div class="field"><label class="lbl" for="nm">Your name</label><input id="nm" name="name" autocomplete="name" required></div>
+          <div class="field"><label class="lbl" for="ph">Mobile phone</label><input id="ph" name="phone" type="tel" autocomplete="tel" required></div>
+          <div class="field"><label class="lbl" for="em">Email</label><input id="em" name="email" type="email" autocomplete="email"></div>
+        </div>
+
+        <div class="field full">
+          <label class="lbl" for="ms">What would make the night unforgettable?</label>
+          <textarea id="ms" name="message" placeholder="The song from senior prom. A shout-out to Coach. The whole class on stage for the last one."></textarea>
+          <p class="hint">Song requests go here too.</p>
+        </div>
+
+        <div class="submit-row">
+          <small>Mockup only. Nothing is sent from this draft.</small>
+          <button class="btn btn-pink" type="submit">Send to Bruce</button>
+        </div>
+      </form>
+      <div class="thanks" role="status">
+        <p class="big">Sent to Bruce.</p>
+        <p>Thanks, Bruce will text you back. Keep your phone handy, and start thinking about that set list.</p>
+        <p class="hand">See you on the dance floor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORT CARD -->
+<section class="paper section" id="night">
+  <div class="wrap">
+    <h2 class="h2">What a night looks like</h2>
+    <p class="lede">An honest breakdown, according to Bruce.</p>
+    <div class="rc">
+      <div class="rc-box">
+        <h3>A Night with the BBB</h3>
+        <div class="pie" role="img" aria-label="Pie chart: 40% music, 25% laugh-out-loud, 20% heart, 15% being offended by a joke and getting over it"></div>
+        <ul class="legend">
+          <li><i style="background:var(--ink)"></i><b>40%</b><span>Music</span></li>
+          <li><i style="background:var(--gold)"></i><b>25%</b><span>Laugh-out-loud</span></li>
+          <li><i style="background:var(--pink)"></i><b>20%</b><span>Heart</span></li>
+          <li><i style="background:var(--cyan)"></i><b>15%</b><span>Being offended by a joke and getting over it</span></li>
+        </ul>
+      </div>
+      <div class="rc-box fund-box">
+        <h3>Bruce's Hair Restoration Fund</h3>
+        <div class="thermo" aria-hidden="true"><div class="tube"><div class="fill" id="fill"></div></div><div class="bulb"></div></div>
+        <div class="fund">
+          <p>Proceeds go to charity. Mostly.</p>
+          <p class="hand" id="fundMsg">Current status: follicly optimistic.</p>
+          <button class="btn btn-gold" type="button" id="fundBtn">Chip in a strand</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRUCE ALERT -->
+<section class="alert section" id="alert">
+  <div class="wrap">
+    <div class="alert-grid">
+      <div>
+        <h2 class="neon">Bruce Alert</h2>
+        <p class="lede">Never miss a show. Get a heads-up when the band books a public night, starting with Dec 12 in Frankfort. Request a song while you're at it.</p>
+      </div>
+      <form id="alertForm" novalidate>
+        <div class="field"><label class="lbl" for="ae">Email</label><input id="ae" type="email" autocomplete="email" placeholder="you@email.com"></div>
+        <div class="field"><label class="lbl" for="am">Mobile</label><input id="am" type="tel" autocomplete="tel" placeholder="For show-day texts"></div>
+        <div class="field"><label class="lbl" for="ar">Song request for the next show <span class="opt" style="color:rgba(239,231,214,.5)">(optional)</span></label><input id="ar" placeholder="Don't You (Forget About Me)"></div>
+        <button class="btn btn-pink" type="submit">Turn on Bruce Alerts</button>
+        <p class="done" role="status">You're on the list. See you Dec 12.</p>
+      </form>
+    </div>
+
+    <a class="sideb" href="/bruce/">
+      <span class="cass" aria-hidden="true"><span class="reel"><i></i><i></i></span><img src="/bruce/art/cassette-happy.png" alt="" onerror="this.remove()"></span>
+      <span><span class="eb">Flip the tape</span><b>Bruce the Piano Man, solo</b></span>
+      <span class="go">Side B</span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="l"><img src="../img/band-logo-time-travel-80s-90s.jpg" alt="The Bruce Barker Band logo"><p><b>The Bruce Barker Band</b>Time travel through the 80s and 90s. Indiana.</p></div>
+    <div class="r"><a href="sms:+17654264353">Text 765-426-4353</a></div>
+  </div>
+  <div class="draft">
+    <div class="wrap">
+      <span>Draft mockup by Jimmy Davis · not live yet</span>
+      <nav aria-label="Other mockups"><a href="/brucebarkerband/a/">Mockup A</a><a href="/brucebarkerband/b/">Mockup B</a><a href="/brucebarkerband/c/">Mockup C</a></nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Bruce's own named songs and filmed songs get the badge.
+  var BBB = {"Livin' on a Prayer":"On video","Don't Stop Believin'":"Bruce's pick","Fight for Your Right":"Bruce's pick","Pour Some Sugar on Me":"On video","Don't You (Forget About Me)":"On video","Let's Go Crazy":"On video"};
+  var Y = {
+    1980:[["Another One Bites the Dust","Queen"],["Call Me","Blondie"],["Hit Me with Your Best Shot","Pat Benatar"],["Back in Black","AC/DC"]],
+    1981:[["Don't Stop Believin'","Journey"],["Jessie's Girl","Rick Springfield"],["Start Me Up","The Rolling Stones"]],
+    1982:[["Eye of the Tiger","Survivor"],["Jack & Diane","John Cougar"],["Hurts So Good","John Cougar"],["I Love Rock 'n' Roll","Joan Jett & the Blackhearts"]],
+    1983:[["Billie Jean","Michael Jackson"],["Every Breath You Take","The Police"],["Sweet Dreams (Are Made of This)","Eurythmics"],["Total Eclipse of the Heart","Bonnie Tyler"]],
+    1984:[["Let's Go Crazy","Prince"],["Jump","Van Halen"],["Footloose","Kenny Loggins"],["Girls Just Want to Have Fun","Cyndi Lauper"]],
+    1985:[["Don't You (Forget About Me)","Simple Minds"],["Take On Me","a-ha"],["The Power of Love","Huey Lewis & the News"],["Walking on Sunshine","Katrina & the Waves"]],
+    1986:[["Livin' on a Prayer","Bon Jovi"],["You Give Love a Bad Name","Bon Jovi"],["Danger Zone","Kenny Loggins"],["Higher Love","Steve Winwood"]],
+    1987:[["Pour Some Sugar on Me","Def Leppard"],["Fight for Your Right","Beastie Boys"],["Here I Go Again","Whitesnake"],["With or Without You","U2"]],
+    1988:[["Sweet Child O' Mine","Guns N' Roses"],["Kokomo","The Beach Boys"],["Don't Worry, Be Happy","Bobby McFerrin"]],
+    1989:[["Love Shack","The B-52's"],["Like a Prayer","Madonna"],["Free Fallin'","Tom Petty"],["Wild Thing","Tone Lōc"]],
+    1990:[["Ice Ice Baby","Vanilla Ice"],["U Can't Touch This","MC Hammer"],["Vogue","Madonna"],["Nothing Compares 2 U","Sinéad O'Connor"]],
+    1991:[["Smells Like Teen Spirit","Nirvana"],["Losing My Religion","R.E.M."],["Black or White","Michael Jackson"]],
+    1992:[["Jump Around","House of Pain"],["Baby Got Back","Sir Mix-a-Lot"],["Under the Bridge","Red Hot Chili Peppers"],["Achy Breaky Heart","Billy Ray Cyrus"]],
+    1993:[["What's Up?","4 Non Blondes"],["Two Princes","Spin Doctors"],["Whoomp! (There It Is)","Tag Team"]],
+    1994:[["Hold My Hand","Hootie & the Blowfish"],["Basket Case","Green Day"],["Shine","Collective Soul"]],
+    1995:[["Only Wanna Be with You","Hootie & the Blowfish"],["Wonderwall","Oasis"],["Gangsta's Paradise","Coolio"],["You Oughta Know","Alanis Morissette"]],
+    1996:[["Macarena","Los del Río"],["Ironic","Alanis Morissette"],["Counting Blue Cars","Dishwalla"]],
+    1997:[["Semi-Charmed Life","Third Eye Blind"],["Tubthumping","Chumbawamba"],["MMMBop","Hanson"],["Wannabe","Spice Girls"]],
+    1998:[["Iris","Goo Goo Dolls"],["Closing Time","Semisonic"],["Gettin' Jiggy wit It","Will Smith"]],
+    1999:[["All Star","Smash Mouth"],["Smooth","Santana feat. Rob Thomas"],["Livin' la Vida Loca","Ricky Martin"],["I Want It That Way","Backstreet Boys"]]
+  };
+  var d80=document.getElementById('d80'), d90=document.getElementById('d90');
+  var big=document.getElementById('ypBig'), set=document.getElementById('ypSet'), list=document.getElementById('ypList'), cta=document.getElementById('ypBook');
+  var current=1987;
+  function pick(y){
+    current=y;
+    document.querySelectorAll('.yr').forEach(function(b){b.setAttribute('aria-pressed', +b.dataset.y===y ? 'true':'false')});
+    big.textContent=y;
+    set.textContent = y<1990 ? 'Straight out of the 80s set' : 'Straight out of the 90s set';
+    list.innerHTML = Y[y].map(function(s){
+      var tag = BBB[s[0]] ? '<span class="tag">'+BBB[s[0]]+'</span>' : '';
+      return '<li><span class="t">'+s[0]+'</span><span class="a">'+s[1]+'</span>'+tag+'</li>';
+    }).join('');
+    cta.textContent = "Book us for the Class of '"+String(y).slice(2);
+  }
+  for(var y=1980;y<=1999;y++){
+    var b=document.createElement('button');
+    b.className='yr'; b.type='button'; b.dataset.y=y; b.textContent="'"+String(y).slice(2);
+    b.setAttribute('aria-label','Class of '+y);
+    b.addEventListener('click',function(){pick(+this.dataset.y)});
+    (y<1990?d80:d90).appendChild(b);
+  }
+  pick(1987);
+  cta.addEventListener('click',function(){
+    document.getElementById('cy').value=current;
+    document.getElementById(current<1990?'t1':'t2').checked=true;
+  });
+
+  // videos
+  var V=[["1142196685","9e585d4619","Livin' on a Prayer"],["1147891293","597d81ed81","Pour Some Sugar on Me"],["1168215559","f2452ec8cd","Don't You (Forget About Me)"],["1221236366","1b9981a0b5","Let's Go Crazy"],["1142086763","5e55c0e4ed","Stacey's Mom"],["1162270589","a2afa8b102","Book Bruce now"]];
+  var tr=document.getElementById('tracks'), player=document.getElementById('player');
+  V.forEach(function(v,i){
+    var li=document.createElement('li');
+    li.innerHTML='<button type="button"'+(i===0?' aria-current="true"':'')+'><span class="n">A'+(i+1)+'</span><span class="tt">'+v[2]+'</span><span class="pl"><svg viewBox="0 0 10 10"><path d="M0 0l10 5-10 5z"/></svg></span></button>';
+    li.firstChild.addEventListener('click',function(){
+      player.src='https://player.vimeo.com/video/'+v[0]+'?h='+v[1]+'&title=0&byline=0&portrait=0&autoplay=1';
+      player.title='The Bruce Barker Band: '+v[2];
+      tr.querySelectorAll('button').forEach(function(b){b.removeAttribute('aria-current')});
+      this.setAttribute('aria-current','true');
+    });
+    tr.appendChild(li);
+  });
+
+  // booking form (mock: nothing sent)
+  var bf=document.getElementById('bookForm');
+  bf.addEventListener('submit',function(e){
+    e.preventDefault();
+    var nm=document.getElementById('nm'), ph=document.getElementById('ph');
+    if(!nm.value.trim()){nm.focus();nm.style.borderColor='var(--pink)';return}
+    if(!ph.value.trim()){ph.focus();ph.style.borderColor='var(--pink)';return}
+    document.getElementById('formCard').classList.add('sent');
+  });
+  // fan alert (mock)
+  var af=document.getElementById('alertForm');
+  af.addEventListener('submit',function(e){e.preventDefault();af.classList.add('sent')});
+
+  // hair fund
+  var h=6, msgs=['Current status: follicly optimistic.','A strand! Bruce is visibly moved.','Momentum. Possibly a cowlick.','Getting close to a comb-over.','Bruce is now shopping for shampoo.','Full mullet unlocked. (Proceeds still go to charity.)'];
+  document.getElementById('fundBtn').addEventListener('click',function(){
+    h=Math.min(100,h+19); document.getElementById('fill').style.height=h+'%';
+    document.getElementById('fundMsg').textContent=msgs[Math.min(msgs.length-1,Math.round(h/19))];
+  });
+})();
+</script>
+</body>
+</html>
